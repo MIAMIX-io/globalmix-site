@@ -3,15 +3,22 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
+            
+            // 1. Get the target ID from the href attribute (e.g., "#about")
+            const targetId = this.getAttribute('href');
+            
+            // 2. Safely attempt to find the target element
+            const targetElement = document.querySelector(targetId);
 
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            // 3. CHECK if the element was successfully found before calling scrollIntoView()
+            if (targetElement) {
+                targetElement.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            } else {
+                // Optional: Log a message to the console for debugging
+                console.error(`Error: Target element not found for href: ${targetId}`);
+            }
         });
     });
-
-    // You can add more interactive elements here later, such as:
-    // 1. A toggle function for a mobile navigation menu.
-    // 2. Form submission handling for the contact section.
-    // 3. Simple fade-in animations on scroll.
 });
