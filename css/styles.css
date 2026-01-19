@@ -172,10 +172,13 @@ nav ul li a:not(.btn-primary):hover {
     text-align: center;
     position: relative;
 
-    /* Enable this ONLY if the image exists */
-    /* background: url('../images/global_mix_map.jpg') no-repeat center center / cover; */
+    background-image: url('../images/hero-bg.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
+/* Dark overlay */
 #hero::before {
     content: '';
     position: absolute;
@@ -183,16 +186,20 @@ nav ul li a:not(.btn-primary):hover {
     background: rgba(0, 0, 0, 0.6);
 }
 
+/* Ensure content sits above overlay */
 #hero .container {
     position: relative;
     z-index: 2;
+    max-width: 800px;
 }
 
 #hero h2 {
     font-size: 3rem;
 }
 
+/* Space launch date away from button */
 .launch-date {
+    margin-top: 30px;
     font-style: italic;
     color: var(--secondary-color);
 }
@@ -210,7 +217,7 @@ nav ul li a:not(.btn-primary):hover {
 
 .service-card,
 .company-card {
-    background-color: #ffffff;
+    background-color: var(--white);
     padding: 30px;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
