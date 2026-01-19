@@ -129,12 +129,20 @@ header .container {
     align-items: center;
 }
 
+/* Logo wrapper */
 .logo {
-    font-size: 1.5rem;
-    color: var(--primary-color);
-    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
 }
 
+/* Logo image */
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+/* Navigation */
 nav ul {
     list-style: none;
     display: flex;
@@ -163,7 +171,9 @@ nav ul li a:not(.btn-primary):hover {
     align-items: center;
     text-align: center;
     position: relative;
-    background: url('../images/global_mix_map.jpg') no-repeat center center / cover;
+
+    /* Enable this ONLY if the image exists */
+    /* background: url('../images/global_mix_map.jpg') no-repeat center center / cover; */
 }
 
 #hero::before {
@@ -204,6 +214,7 @@ nav ul li a:not(.btn-primary):hover {
     padding: 30px;
     border-radius: 8px;
     border: 1px solid #e0e0e0;
+    color: var(--black);
 }
 
 .service-card h4 {
@@ -221,6 +232,7 @@ nav ul li a:not(.btn-primary):hover {
     list-style: none;
     margin: 30px auto;
     max-width: 600px;
+    padding: 0;
 }
 
 .club-benefits li {
@@ -251,6 +263,7 @@ footer .container {
     h2 {
         font-size: 2rem;
     }
+
     #hero {
         min-height: 60vh;
     }
@@ -260,10 +273,16 @@ footer .container {
     header .container {
         flex-direction: column;
     }
+
     nav ul {
         margin-top: 15px;
     }
+
     .section {
         padding: 50px 0;
+    }
+
+    .logo-img {
+        height: 32px;
     }
 }
