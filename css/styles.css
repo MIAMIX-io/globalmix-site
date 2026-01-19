@@ -152,14 +152,30 @@ nav ul li {
     margin-left: 25px;
 }
 
+/* Standard nav links */
 nav ul li a:not(.btn-primary) {
     color: var(--white);
     text-decoration: none;
-    transition: color 0.3s;
+    font-weight: 400;
+    transition: color 0.3s ease;
 }
 
 nav ul li a:not(.btn-primary):hover {
     color: var(--primary-color);
+}
+
+/* ===============================
+   Luxury Header Button
+================================ */
+header .btn-primary {
+    padding: 5px 14px;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    border-radius: 3px;
+}
+
+header .btn-primary:hover {
+    transform: translateY(-1px);
 }
 
 /* ===============================
