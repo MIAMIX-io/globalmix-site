@@ -1,24 +1,24 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Enable smooth scrolling for all links with a hash (#)
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            
-            // 1. Get the target ID from the href attribute (e.g., "#about")
-            const targetId = this.getAttribute('href');
-            
-            // 2. Safely attempt to find the target element
-            const targetElement = document.querySelector(targetId);
+document.addEventListener('DOMContentLoaded', () => {
+    const headerOffset = 80; // height of sticky header
 
-            // 3. CHECK if the element was successfully found before calling scrollIntoView()
-            if (targetElement) {
-                targetElement.scrollIntoView({
-                    behavior: 'smooth'
-                });
-            } else {
-                // Optional: Log a message to the console for debugging
-                console.error(`Error: Target element not found for href: ${targetId}`);
-            }
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', e => {
+            const targetId = anchor.getAttribute('href');
+
+            if (targetId === '#') return;
+
+            const targetElement = document.querySelector(targetId);
+            if (!targetElement) return;
+
+            e.preventDefault();
+
+            const elementPosition = targetElement.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+            window.scrollTo({
+                top: offsetPosition,
+                behavior: 'smooth'
+            });
         });
     });
 });
