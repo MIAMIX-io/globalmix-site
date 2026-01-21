@@ -278,6 +278,22 @@ footer .container {
     justify-content: space-between;
     flex-wrap: wrap;
 }
+.footer-logos {
+  display: flex;
+  gap: 32px;
+  align-items: right;
+}
+
+.footer-logos img {
+  max-height: 48px;
+  width: auto;
+  opacity: 0.85;
+  transition: opacity 0.2s;
+}
+
+.footer-logos img:hover {
+  opacity: 1;
+}
 
 /* ===============================
    Responsive
