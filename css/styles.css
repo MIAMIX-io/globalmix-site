@@ -285,7 +285,7 @@ footer .container {
 }
 
 .footer-logos img {
-  max-height: 48px;
+  max-height: 35px;
   width: auto;
   opacity: 0.85;
   transition: opacity 0.2s;
