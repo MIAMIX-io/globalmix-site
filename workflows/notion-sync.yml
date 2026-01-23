@@ -21,8 +21,8 @@ jobs:
       
       - name: Sync Notion pages
         env:
-          NOTION_TOKEN: $ secrets.NOTION_TOKEN_[TEAMSPACE] 
-          NOTION_DATABASE_ID: $ secrets.NOTION_DATABASE_[TEAMSPACE] 
+          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }} 
+          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }} 
         run: node scripts/sync-notion.js
       
       - name: Commit changes
