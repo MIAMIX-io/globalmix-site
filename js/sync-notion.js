@@ -1,20 +1,25 @@
 const { Client } = require('@notionhq/client');
 const fs = require('fs');
 const path = require('path');
-const https = require('https'); // Needed to download images
+const https = require('https');
 
 const notion = new Client({ auth: process.env.NOTION_TOKEN });
 const databaseId = process.env.NOTION_DATABASE_ID;
 
+// 1. CONFIGURATION: Change this one line for future forks/repositories
+const TARGET_WEBSITE = 'globalmix.online'; // Matches your Notion 'Website' Select property
+
 async function syncPages() {
-  console.log("🔄 Starting Sync...");
+  console.log(`🔄 Starting Sync for: ${TARGET_WEBSITE}...`);
   
   const response = await notion.databases.query({
     database_id: databaseId,
     filter: {
       and: [
         { property: 'Sync to GitHub', checkbox: { equals: true } },
-        { property: 'Status', status: { equals: 'Published' } }
+        { property: 'Status', status: { equals: 'Published' } },
+        // 2. FILTER: Only fetch pages tagged for THIS website
+        { property: 'Website', select: { equals: TARGET_WEBSITE } }
       ]
     }
   });
@@ -23,22 +28,18 @@ async function syncPages() {
     const props = page.properties;
     const title = props['Page Title'].title[0]?.plain_text || 'untitled';
     const slug = props['URL Slug'].rich_text[0]?.plain_text || slugify(title);
-    const website = props['Website'].select?.name;
     
-    if (!website) {
-      console.log(`⚠️  Skipping "${title}" - no website assigned`);
-      continue;
-    }
+    // We create the folder based on the website tag (e.g., content/globalmix.online/)
+    // This keeps things organized even if you merge content later.
+    const website = TARGET_WEBSITE; 
 
     // Create folder for post images
     const imageDir = path.join('images', 'posts', slug);
-    if (fs.existsSync(imageDir)) {
-        // Optional: Clean old images? For now, we just overwrite/add.
-    } else {
+    if (!fs.existsSync(imageDir)) {
         fs.mkdirSync(imageDir, { recursive: true });
     }
 
-    // 1. Handle Cover Image
+    // --- HANDLE COVER IMAGE ---
     let coverImage = '';
     if (props['Cover Image'] && props['Cover Image'].files.length > 0) {
         const fileObj = props['Cover Image'].files[0];
@@ -51,26 +52,28 @@ async function syncPages() {
         }
     }
 
-    // 2. Fetch page content
+    // --- FETCH BLOCKS & CONTENT ---
     const blocks = await notion.blocks.children.list({
       block_id: page.id,
       page_size: 100
     });
     
-    // We pass the slug/directory so the function knows where to save inside-post images
     const markdown = await convertBlocksToMarkdown(blocks.results, slug, imageDir);
     const frontmatter = generateFrontmatter(props, coverImage);
     
-    // Write file
-    const filepath = path.join('content', website, `${slug}.md`);
+    // Write file to content/globalmix.online/slug.md
+    // We use the TARGET_WEBSITE variable to set the folder
+    const filepath = path.join('content', 'posts', `${slug}.md`);
+    
     fs.mkdirSync(path.dirname(filepath), { recursive: true });
     fs.writeFileSync(filepath, `${frontmatter}\n\n${markdown}`);
     
-    console.log(`✓ Synced "${title}" → ${website}`);
+    console.log(`✓ Synced "${title}"`);
   }
 }
 
-// Helper to download images
+// --- HELPER FUNCTIONS ---
+
 function downloadImage(url, filepath) {
     return new Promise((resolve, reject) => {
         const file = fs.createWriteStream(filepath);
@@ -81,28 +84,28 @@ function downloadImage(url, filepath) {
                 resolve();
             });
         }).on('error', (err) => {
-            fs.unlink(filepath, () => {}); // Delete the file async. (But we don't check result)
+            fs.unlink(filepath, () => {}); 
             reject(err.message);
         });
     });
 }
 
 function getExtension(url) {
-    // Simple extension extraction
     const cleanUrl = url.split('?')[0];
     const ext = path.extname(cleanUrl);
-    return ext || '.jpg'; // Default to jpg if unknown
+    return ext || '.jpg';
 }
 
 function generateFrontmatter(props, coverImage) {
   const meta = {
-    layout: 'post', // Important for Jekyll
+    layout: 'post',
     title: props['Page Title'].title[0]?.plain_text,
     description: props['Meta Description'].rich_text[0]?.plain_text,
     date: props['Publish Date'].date?.start,
     tags: props['Tags'].multi_select.map(t => t.name),
-    image: coverImage, // Adds the cover image to the post metadata
-    author: props['Author'].rich_text[0]?.plain_text
+    image: coverImage,
+    author: props['Author'].rich_text[0]?.plain_text,
+    excerpt: props['Excerpt']?.rich_text[0]?.plain_text // Added Excerpt
   };
   
   return '---\n' + Object.entries(meta)
@@ -137,21 +140,18 @@ async function convertBlocksToMarkdown(blocks, slug, imageDir) {
       case 'bulleted_list_item':
         output.push('- ' + block.bulleted_list_item.rich_text.map(t => t.plain_text).join(''));
         break;
-        
-      // --- NEW MEDIA HANDLERS ---
-      
+      case 'numbered_list_item':
+        output.push('1. ' + block.numbered_list_item.rich_text.map(t => t.plain_text).join(''));
+        break;
       case 'image':
         const imgObj = block.image;
         const imgUrl = imgObj.file?.url || imgObj.external?.url;
         const caption = imgObj.caption.length ? imgObj.caption[0].plain_text : "Image";
-        
         if (imgUrl) {
-            // Download the image
             const ext = getExtension(imgUrl);
-            const filename = `${block.id}${ext}`; // Use block ID to make it unique
+            const filename = `${block.id}${ext}`;
             const savePath = path.join(imageDir, filename);
             const publicPath = `/images/posts/${slug}/${filename}`;
-            
             try {
                 await downloadImage(imgUrl, savePath);
                 output.push(`![${caption}](${publicPath})`);
@@ -160,20 +160,15 @@ async function convertBlocksToMarkdown(blocks, slug, imageDir) {
             }
         }
         break;
-
       case 'video':
-        // Handle YouTube Embeds simply
         const vidUrl = block.video?.external?.url || block.video?.file?.url;
         if (vidUrl && vidUrl.includes('youtube.com')) {
-             // Convert standard watch URL to embed
              const videoId = vidUrl.split('v=')[1]?.split('&')[0];
              if (videoId) {
                  output.push(`<iframe width="100%" height="400" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allowfullscreen></iframe>`);
              }
         }
         break;
-        
-      // --------------------------
     }
   }
   return output.join('\n\n');
