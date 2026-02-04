@@ -1,15 +1,13 @@
-title: GLOBAL MIX
+title: GLOBAL MIX NETWORK
 description: A Global Ecosystem
-url: "https://www.globalmix.online"
+url: "https://www.globalmix.network"
 baseurl: ""
 
-# This tells Jekyll to look for your Notion articles in the 'content' folder
 collections:
   content:
     output: true
     permalink: /:slug/
 
-# Exclude node_modules so the build doesn't crash
 exclude:
   - node_modules
   - package.json
