@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta de Tango - Show & Milonga</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #0a0a0a;
+            color: #ffffff;
+        }
+        .tango-title {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-red-tango {
+            background-color: #bc0000;
+        }
+        .text-red-tango {
+            color: #bc0000;
+        }
+        .border-red-tango {
+            border-color: #bc0000;
+        }
+        .hero-gradient {
+            /* Nueva imagen de fondo con una pareja de tango */
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.95)), url('https://images.unsplash.com/photo-1545983376-c664177440c3?auto=format&fit=crop&q=80&w=1000');
+            background-size: cover;
+            background-position: center;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(188, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Hero Section -->
+    <header class="hero-gradient h-[60vh] flex flex-col justify-center items-center text-center p-6 border-b-4 border-red-tango">
+        <h2 class="text-red-tango tracking-[0.3em] uppercase text-sm mb-4 font-semibold">Propuesta Exclusiva</h2>
+        <h1 class="tango-title text-5xl md:text-7xl mb-4 italic">Tango & Escena</h1>
+        <div class="w-24 h-1 bg-red-tango mb-6"></div>
+        <p class="max-w-xl text-lg text-gray-300 font-light italic">
+            "Una experiencia que combina la nostalgia del arrabal con la elegancia del escenario moderno."
+        </p>
+    </header>
+
+    <!-- Sobre el Show - Versión Centrada -->
+    <section class="py-20 px-6 max-w-3xl mx-auto text-center">
+        <h3 class="tango-title text-4xl mb-8 text-red-tango">El Espectáculo</h3>
+        <p class="text-gray-300 text-lg leading-relaxed mb-10">
+            Ofrecemos un despliegue artístico versátil, diseñado para cautivar tanto en ambientes íntimos como en grandes espacios, garantizando una atmósfera única de distinción y pasión.
+        </p>
+        <div class="flex flex-wrap justify-center gap-6 md:gap-12">
+            <div class="flex items-center gap-3 bg-[#111] px-6 py-3 rounded-full border border-red-tango/30">
+                <span class="text-red-tango text-xl">●</span> 
+                <span class="font-medium">Música en vivo</span>
+            </div>
+            <div class="flex items-center gap-3 bg-[#111] px-6 py-3 rounded-full border border-red-tango/30">
+                <span class="text-red-tango text-xl">●</span> 
+                <span class="font-medium">Danza Profesional</span>
+            </div>
+            <div class="flex items-center gap-3 bg-[#111] px-6 py-3 rounded-full border border-red-tango/30">
+                <span class="text-red-tango text-xl">●</span> 
+                <span class="font-medium">Repertorio Moderno</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Opciones de Presupuesto -->
+    <section class="bg-[#111] py-16 px-6">
+        <div class="max-w-5xl mx-auto">
+            <h3 class="tango-title text-center text-4xl mb-12">Opciones de <span class="text-red-tango">Contratación</span></h3>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Opción 1 -->
+                <div class="bg-[#1a1a1a] p-8 rounded-xl border-l-4 border-red-tango card-hover">
+                    <h4 class="text-xl font-bold mb-2">Show Full: Música & Danza</h4>
+                    <p class="text-gray-500 text-sm mb-6 italic">La experiencia completa</p>
+                    <ul class="text-gray-300 space-y-3 mb-8">
+                        <li>• Músico multi-instrumentista (En vivo)</li>
+                        <li>• Pareja de baile profesional</li>
+                        <li>• Bloques de danza con pistas y en vivo</li>
+                        <li>• Repertorio de tangos modernos y clásicos</li>
+                    </ul>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-3xl font-bold text-red-tango">$1.100</span>
+                        <span class="text-gray-500 text-sm">/ por fecha</span>
+                    </div>
+                </div>
+
+                <!-- Opción 2 -->
+                <div class="bg-[#1a1a1a] p-8 rounded-xl border-l-4 border-gray-600 card-hover">
+                    <h4 class="text-xl font-bold mb-2">Solo Danza</h4>
+                    <p class="text-gray-500 text-sm mb-6 italic">Elegancia y movimiento</p>
+                    <ul class="text-gray-300 space-y-3 mb-8">
+                        <li>• Pareja de baile profesional</li>
+                        <li>• Selección de pistas de alta calidad</li>
+                        <li>• Intervención en el salón</li>
+                        <li>• Duración adaptable al evento</li>
+                    </ul>
+                    <div class="flex items-baseline gap-2">
+                        <span class="text-3xl font-bold text-white">$600</span>
+                        <span class="text-gray-500 text-sm">/ por fecha</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Oferta de Continuidad -->
+    <section class="py-20 px-6 text-center">
+        <div class="max-w-3xl mx-auto bg-red-tango p-10 rounded-2xl shadow-2xl">
+            <h3 class="tango-title text-3xl mb-4">Acuerdo de Continuidad</h3>
+            <p class="text-white text-lg font-light mb-6 leading-relaxed">
+                Si te interesa establecer una fecha fija (semanal o cada 15 días) para generar una clientela propia del bar, <strong>podemos bajar el presupuesto significativamente</strong>.
+            </p>
+            <p class="text-sm uppercase tracking-widest text-black font-bold">Consúltanos por precios especiales para ciclos</p>
+        </div>
+    </section>
+
+    <!-- Footer - Versión Limpia -->
+    <footer class="bg-black py-16 px-6 text-center border-t border-gray-800">
+        <p class="tango-title text-3xl mb-4 italic text-red-tango">¿Coordinamos una fecha?</p>
+        <p class="text-gray-500 font-light tracking-widest uppercase text-xs">Propuesta artística profesional</p>
+    </footer>
+
+</body>
+</html>
+
