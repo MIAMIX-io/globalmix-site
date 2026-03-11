@@ -326,5 +326,30 @@
             alert('Mobile menu toggle triggered.');
         });
     </script>
+    form.addEventListener('submit', e => {
+    e.preventDefault();
+    btn.disabled = true;
+    btnText.innerHTML = '<div class="loader mr-2"></div> Sending...';
+
+    // Use URLSearchParams for better compatibility with Google Apps Script
+    const formData = new FormData(form);
+    
+    fetch(scriptURL, { 
+        method: 'POST', 
+        body: formData,
+        mode: 'no-cors' // This prevents the 405/CORS error in many browsers
+    })
+    .then(() => {
+        // With 'no-cors', we can't see the response, 
+        // but if it doesn't 'catch' an error, it usually worked.
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
+    })
+    .catch(error => {
+        btn.disabled = false;
+        btnText.innerHTML = 'Submit Inquiry';
+        alert('Submission failed. Please email us directly at info@globalmix.network');
+    });
+});
 </body>
 </html>
