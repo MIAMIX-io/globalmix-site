@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>White Continent Antarctic Expedition | Global Mix Travel</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        h1, h2, h3, .nav-logo { font-family: 'Playfair Display', serif; }
+        
+        .hero-gradient { 
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+                        url('https://images.unsplash.com/photo-1551244072-5d12893278ab?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80'); 
+            background-size: cover; 
+            background-position: center; 
+        }
+
+        .glass-card { 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(10px); 
+            border: 1px solid rgba(255, 255, 255, 0.2); 
+        }
+
+        .itinerary-step:before { 
+            content: ''; 
+            position: absolute; 
+            left: 20px; 
+            top: 0; 
+            bottom: 0; 
+            width: 2px; 
+            background: #e5e7eb; 
+        }
+
+        .itinerary-step:last-child:before { display: none; }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-900">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="nav-logo text-2xl font-bold tracking-tight text-blue-900">
+                    GLOBAL MIX <span class="font-light">TRAVEL</span>
+                </div>
+                <div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-wider items-center">
+                    <a href="#itinerary" class="hover:text-blue-600 transition">Itinerary</a>
+                    <a href="#hotels" class="hover:text-blue-600 transition">Accommodations</a>
+                    <a href="#details" class="hover:text-blue-600 transition">Details</a>
+                    <a href="#booking" class="bg-blue-900 text-white px-6 py-2 rounded-full hover:bg-blue-800 transition">Book Now</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-600"><i class="fas fa-bars fa-lg"></i></button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero-gradient h-screen flex items-center justify-center text-center text-white px-4">
+        <div class="max-w-4xl space-y-6">
+            <p class="uppercase tracking-[0.3em] text-sm md:text-base font-semibold">The 7th Continent Awaits</p>
+            <h1 class="text-5xl md:text-7xl font-bold leading-tight">White Continent Antarctic Expedition</h1>
+            <p class="text-xl md:text-2xl font-light italic max-w-2xl mx-auto">Discover the raw beauty of Antarctica with unparalleled luxury and professional guidance.</p>
+            <div class="pt-8">
+                <a href="#itinerary" class="inline-block border-2 border-white px-10 py-4 text-lg font-semibold hover:bg-white hover:text-blue-900 transition duration-300">
+                    Explore the Journey
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 text-center">
+                <div class="space-y-4">
+                    <div class="text-blue-900 text-4xl"><i class="fas fa-hotel"></i></div>
+                    <h3 class="text-xl font-bold">Elite Stays</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Luxury stays at Alvear Palace, Faena, Los Cauquenes, and Arakur.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="text-blue-900 text-4xl"><i class="fas fa-user-shield"></i></div>
+                    <h3 class="text-xl font-bold">Expert Guides</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Fully escorted expeditions with top-tier polar experts and educators.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="text-blue-900 text-4xl"><i class="fas fa-camera"></i></div>
+                    <h3 class="text-xl font-bold">Unique Wildlife</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Up-close encounters with penguins, whales, and seals in their habitat.</p>
+                </div>
+                <div class="space-y-4">
+                    <div class="text-blue-900 text-4xl"><i class="fas fa-concierge-bell"></i></div>
+                    <h3 class="text-xl font-bold">All-Inclusive</h3>
+                    <p class="text-gray-600 text-sm leading-relaxed">Transfers, premium excursions, and dining—handled with care.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="itinerary" class="py-20 bg-gray-50">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-900 mb-4">Expedition Itinerary</h2>
+                <p class="text-gray-600">A curated 15-day journey from Buenos Aires to the South Pole.</p>
+            </div>
+
+            <div class="space-y-0">
+                <div class="relative pl-16 pb-12 itinerary-step">
+                    <div class="absolute left-0 top-0 w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold z-10">1</div>
+                    <h3 class="text-2xl font-bold mb-2">Buenos Aires: The Paris of the South</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">Arrive at the international airport for a private transfer to the legendary <strong>Hotel Alvear Palace</strong> or <strong>Hotel Faena</strong>. Enjoy a private city tour followed by a premium Tango dinner show.</p>
+                    <div class="grid grid-cols-2 gap-4 mt-4">
+                        <img src="https://images.unsplash.com/photo-1589909202802-8f4aadce1849?auto=format&fit=crop&w=400&q=80" alt="Buenos Aires" class="rounded-lg shadow-md h-40 w-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1549410141-86e7456715f3?auto=format&fit=crop&w=400&q=80" alt="Tango" class="rounded-lg shadow-md h-40 w-full object-cover">
+                    </div>
+                </div>
+
+                <div class="relative pl-16 pb-12 itinerary-step">
+                    <div class="absolute left-0 top-0 w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold z-10">3</div>
+                    <h3 class="text-2xl font-bold mb-2">Ushuaia: The End of the World</h3>
+                    <p class="text-gray-700 leading-relaxed">Fly south to Ushuaia. Relax at <strong>Los Cauquenes</strong> or <strong>Arakur</strong> before exploring Tierra del Fuego National Park. On Day 5, we board our vessel at 4 PM.</p>
+                </div>
+
+                <div class="relative pl-16 pb-12 itinerary-step">
+                    <div class="absolute left-0 top-0 w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold z-10">6</div>
+                    <h3 class="text-2xl font-bold mb-2">The Drake Passage</h3>
+                    <p class="text-gray-700 leading-relaxed">Experience the legendary crossing. Attend expert presentations from our Expedition Team to prepare for land excursions as we cross 60°S.</p>
+                </div>
+
+                <div class="relative pl-16 pb-12 itinerary-step">
+                    <div class="absolute left-0 top-0 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold z-10">8</div>
+                    <h3 class="text-2xl font-bold mb-2">Antarctic Peninsula & Shetland Islands</h3>
+                    <p class="text-gray-700 leading-relaxed mb-4">The heart of the expedition. Daily Zodiac excursions to glaciers and research stations. Witness gentoo penguins, humpback whales, and calving glaciers.</p>
+                    <div class="grid grid-cols-3 gap-4 mt-4">
+                        <img src="https://images.unsplash.com/photo-1516939811850-41da43255b74?auto=format&fit=crop&w=400&q=80" alt="Antarctica" class="rounded-lg shadow-md h-32 w-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1469122312224-c5846569efe1?auto=format&fit=crop&w=400&q=80" alt="Penguins" class="rounded-lg shadow-md h-32 w-full object-cover">
+                        <img src="https://images.unsplash.com/photo-1471333055227-66a9f0f97067?auto=format&fit=crop&w=400&q=80" alt="Iceberg" class="rounded-lg shadow-md h-32 w-full object-cover">
+                    </div>
+                </div>
+
+                <div class="relative pl-16 pb-12 itinerary-step">
+                    <div class="absolute left-0 top-0 w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold z-10">11</div>
+                    <h3 class="text-2xl font-bold mb-2">Reflection & Return</h3>
+                    <p class="text-gray-700 leading-relaxed">Recross the Drake, disembark in Ushuaia for a final overnight, then fly back to Buenos Aires for your international departure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="hotels" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-bold text-center mb-16">World-Class Accommodations</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div class="group overflow-hidden rounded-2xl shadow-xl">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Alvear Palace" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-8 bg-blue-50">
+                        <h4 class="text-2xl font-bold mb-2">Buenos Aires Elite</h4>
+                        <p class="text-gray-600">Choose between the historic elegance of <strong>Alvear Palace</strong> or the modern flair of <strong>Hotel Faena</strong>.</p>
+                    </div>
+                </div>
+                <div class="group overflow-hidden rounded-2xl shadow-xl">
+                    <div class="h-80 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" alt="Los Cauquenes" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-8 bg-blue-50">
+                        <h4 class="text-2xl font-bold mb-2">Patagonian Sanctuary</h4>
+                        <p class="text-gray-600">Stay at <strong>Los Cauquenes</strong> or <strong>Hotel Arakur</strong>, overlooking the breathtaking Beagle Channel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="details" class="py-24 bg-blue-900 text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <div>
+                    <h2 class="text-4xl font-bold mb-6">Join the Journey</h2>
+                    <p class="text-blue-100 text-lg mb-8">This is more than a cruise; it's a profound exploration of our planet's most remote wilderness.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-blue-800 p-4 rounded-lg"><i class="fas fa-tag fa-2x"></i></div>
+                            <div>
+                                <p class="text-blue-200 text-sm uppercase tracking-wide">Investment</p>
+                                <p class="text-3xl font-bold">$16,500 – $19,500 <span class="text-sm font-normal">per person</span></p>
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <div class="bg-blue-800 p-4 rounded-lg"><i class="fas fa-calendar-alt fa-2x"></i></div>
+                            <div>
+                                <p class="text-blue-200 text-sm uppercase tracking-wide">Available Seasons</p>
+                                <p class="text-lg">Nov – Mar (2026/27 & 2027/28)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-12 bg-white/10 p-8 rounded-xl border border-white/20">
+                        <h4 class="text-xl font-bold mb-4">Package Includes:</h4>
+                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-blue-100">
+                            <li><i class="fas fa-check text-blue-400 mr-2"></i> All Private Transfers</li>
+                            <li><i class="fas fa-check text-blue-400 mr-2"></i> 9 Nights Cruise</li>
+                            <li><i class="fas fa-check text-blue-400 mr-2"></i> Tango Dinner Show</li>
+                            <li><i class="fas fa-check text-blue-400 mr-2"></i> National Park Entry</li>
+                            <li><i class="fas fa-check text-blue-400 mr-2"></i> Expedition Parkas</li>
+                            <li><i class="fas fa-check text-blue-400 mr-2"></i> Expert Lectures</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="booking" class="bg-white text-gray-900 p-10 rounded-2xl shadow-2xl">
+                    <h3 class="text-3xl font-bold mb-6">Request a Brochure</h3>
+                    <form action="#" method="POST" class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Full Name</label>
+                            <input type="text" placeholder="John Doe" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Email Address</label>
+                            <input type="email" placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Preferred Date</label>
+                            <select class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none">
+                                <option>January 2027</option>
+                                <option>February 2027</option>
+                                <option>March 2027</option>
+                                <option>Season 2027/2028</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-bold text-gray-700 mb-1">Message</label>
+                            <textarea rows="4" placeholder="Tell us about your travel plans..." class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-900 text-white font-bold py-4 rounded-lg hover:bg-blue-800 transition shadow-lg">
+                            Submit Inquiry
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center border-b border-gray-800 pb-8">
+            <div class="nav-logo text-3xl font-bold text-white mb-4 md:mb-0">
+                GLOBAL MIX <span class="font-light">TRAVEL</span>
+            </div>
+            <div class="flex space-x-6">
+                <a href="#" class="hover:text-white transition"><i class="fab fa-instagram fa-lg"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-facebook fa-lg"></i></a>
+                <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin fa-lg"></i></a>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-sm flex flex-col md:flex-row justify-between text-center md:text-left">
+            <p>&copy; 2026 Global Mix Travel. All rights reserved.</p>
+            <p>Official Website: <a href="http://www.globalmix.travel" class="underline text-blue-400">www.globalmix.travel</a></p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scroll for nav links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80, // Offset for fixed nav
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu placeholder
+        const btn = document.getElementById('mobile-menu-btn');
+        btn.addEventListener('click', () => {
+            alert('Mobile menu toggle triggered.');
+        });
+    </script>
+</body>
+</html>
