@@ -33,13 +33,14 @@
         .itinerary-step:last-child:before { display: none; }
 
         .loader {
-            border: 3px solid #f3f3f3;
+            border: 2px solid #f3f3f3;
+            border-top: 2px solid #ffffff;
             border-radius: 50%;
-            border-top: 3px solid #1e3a8a;
-            width: 20px;
-            height: 20px;
+            width: 18px;
+            height: 18px;
             animation: spin 1s linear infinite;
             display: inline-block;
+            margin-right: 10px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
     </style>
@@ -131,14 +132,8 @@
                 </div>
 
                 <div class="relative pl-16 pb-12 itinerary-step">
-                    <div class="absolute left-0 top-0 w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold z-10">6</div>
-                    <h3 class="text-2xl font-bold mb-2">The Drake Passage</h3>
-                    <p class="text-gray-700 leading-relaxed">Experience the legendary crossing. Attend expert presentations from our Expedition Team to prepare for land excursions as we cross 60°S.</p>
-                </div>
-
-                <div class="relative pl-16 pb-12 itinerary-step">
                     <div class="absolute left-0 top-0 w-10 h-10 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold z-10">8</div>
-                    <h3 class="text-2xl font-bold mb-2">Antarctic Peninsula & Shetland Islands</h3>
+                    <h3 class="text-2xl font-bold mb-2">Antarctic Peninsula</h3>
                     <p class="text-gray-700 leading-relaxed mb-4">The heart of the expedition. Daily Zodiac excursions to glaciers and research stations. Witness gentoo penguins, humpback whales, and calving glaciers.</p>
                     <div class="grid grid-cols-3 gap-4 mt-4">
                         <img src="https://images.unsplash.com/photo-1516939811850-41da43255b74?auto=format&fit=crop&w=400&q=80" alt="Antarctica" class="rounded-lg shadow-md h-32 w-full object-cover">
@@ -146,36 +141,26 @@
                         <img src="https://images.unsplash.com/photo-1471333055227-66a9f0f97067?auto=format&fit=crop&w=400&q=80" alt="Iceberg" class="rounded-lg shadow-md h-32 w-full object-cover">
                     </div>
                 </div>
-
-                <div class="relative pl-16 pb-12 itinerary-step">
-                    <div class="absolute left-0 top-0 w-10 h-10 bg-blue-900 text-white rounded-full flex items-center justify-center font-bold z-10">11</div>
-                    <h3 class="text-2xl font-bold mb-2">Reflection & Return</h3>
-                    <p class="text-gray-700 leading-relaxed">Recross the Drake, disembark in Ushuaia for a final overnight, then fly back to Buenos Aires for your international departure.</p>
-                </div>
             </div>
         </div>
     </section>
 
-    <section id="hotels" class="py-20 bg-white">
+    <section id="hotels" class="py-20 bg-white text-center">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-bold text-center mb-16">World-Class Accommodations</h2>
+            <h2 class="text-4xl font-bold mb-16">World-Class Accommodations</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
                 <div class="group overflow-hidden rounded-2xl shadow-xl">
-                    <div class="h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" alt="Alvear Palace" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=800&q=80" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
                     <div class="p-8 bg-blue-50">
                         <h4 class="text-2xl font-bold mb-2">Buenos Aires Elite</h4>
-                        <p class="text-gray-600">Choose between the historic elegance of <strong>Alvear Palace</strong> or the modern flair of <strong>Hotel Faena</strong>.</p>
+                        <p class="text-gray-600">Historic elegance at Alvear Palace or modern flair at Hotel Faena.</p>
                     </div>
                 </div>
                 <div class="group overflow-hidden rounded-2xl shadow-xl">
-                    <div class="h-80 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" alt="Los Cauquenes" class="w-full h-full object-cover transition duration-500 group-hover:scale-110">
-                    </div>
+                    <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?auto=format&fit=crop&w=800&q=80" class="w-full h-80 object-cover transition duration-500 group-hover:scale-110">
                     <div class="p-8 bg-blue-50">
                         <h4 class="text-2xl font-bold mb-2">Patagonian Sanctuary</h4>
-                        <p class="text-gray-600">Stay at <strong>Los Cauquenes</strong> or <strong>Hotel Arakur</strong>, overlooking the breathtaking Beagle Channel.</p>
+                        <p class="text-gray-600">Stay at Los Cauquenes or Hotel Arakur overlooking the Beagle Channel.</p>
                     </div>
                 </div>
             </div>
@@ -189,70 +174,37 @@
                 <div>
                     <h2 class="text-4xl font-bold mb-6">Join the Journey</h2>
                     <p class="text-blue-100 text-lg mb-8">This is more than a cruise; it's a profound exploration of our planet's most remote wilderness.</p>
-                    
                     <div class="space-y-6">
                         <div class="flex items-center space-x-4">
                             <div class="bg-blue-800 p-4 rounded-lg"><i class="fas fa-tag fa-2x"></i></div>
                             <div>
                                 <p class="text-blue-200 text-sm uppercase tracking-wide">Investment</p>
-                                <p class="text-3xl font-bold">$16,500 – $19,500 <span class="text-sm font-normal">per person</span></p>
+                                <p class="text-3xl font-bold">$16,500 – $19,500 <span class="text-sm font-normal">pp</span></p>
                             </div>
                         </div>
-                        <div class="flex items-center space-x-4">
-                            <div class="bg-blue-800 p-4 rounded-lg"><i class="fas fa-calendar-alt fa-2x"></i></div>
-                            <div>
-                                <p class="text-blue-200 text-sm uppercase tracking-wide">Available Seasons</p>
-                                <p class="text-lg">Nov – Mar (2026/27 & 2027/28)</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="mt-12 bg-white/10 p-8 rounded-xl border border-white/20">
-                        <h4 class="text-xl font-bold mb-4">Package Includes:</h4>
-                        <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm text-blue-100">
-                            <li><i class="fas fa-check text-blue-400 mr-2"></i> All Private Transfers</li>
-                            <li><i class="fas fa-check text-blue-400 mr-2"></i> 9 Nights Cruise</li>
-                            <li><i class="fas fa-check text-blue-400 mr-2"></i> Tango Dinner Show</li>
-                            <li><i class="fas fa-check text-blue-400 mr-2"></i> National Park Entry</li>
-                            <li><i class="fas fa-check text-blue-400 mr-2"></i> Expedition Parkas</li>
-                            <li><i class="fas fa-check text-blue-400 mr-2"></i> Expert Lectures</li>
-                        </ul>
                     </div>
                 </div>
 
                 <div id="booking" class="bg-white text-gray-900 p-10 rounded-2xl shadow-2xl">
-                    <div id="success-message" class="hidden text-center py-8">
-                        <div class="bg-green-100 text-green-700 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                            <i class="fas fa-check fa-2x"></i>
-                        </div>
-                        <h3 class="text-2xl font-bold mb-2">Request Received</h3>
-                        <p class="text-gray-600 mb-6">Thank you. We have sent your inquiry to info@globalmix.network. Our team will contact you shortly.</p>
-                        <button onclick="location.reload()" class="text-blue-900 font-semibold underline">Send another request</button>
+                    <div id="success-msg" class="hidden text-center py-10">
+                        <div class="text-green-500 text-5xl mb-4"><i class="fas fa-check-circle"></i></div>
+                        <h3 class="text-2xl font-bold mb-2">Inquiry Sent</h3>
+                        <p class="text-gray-600">Thank you! We have received your request and will contact you at info@globalmix.network shortly.</p>
+                        <button onclick="location.reload()" class="mt-6 text-blue-900 font-bold underline">Send another</button>
                     </div>
 
                     <form id="expedition-form" class="space-y-4">
-                        <h3 class="text-3xl font-bold mb-6">Request a Brochure</h3>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Full Name</label>
-                            <input type="text" name="name" required placeholder="John Doe" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Email Address</label>
-                            <input type="email" name="email" required placeholder="john@example.com" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none">
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Preferred Date</label>
-                            <select name="date" class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none">
-                                <option>January 2027</option>
-                                <option>February 2027</option>
-                                <option>March 2027</option>
-                                <option>Season 2027/2028</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-sm font-bold text-gray-700 mb-1">Message</label>
-                            <textarea name="message" rows="4" placeholder="Tell us about your travel plans..." class="w-full px-4 py-3 rounded-lg border focus:ring-2 focus:ring-blue-500 outline-none"></textarea>
-                        </div>
+                        <h3 class="text-2xl font-bold mb-6">Request a Brochure</h3>
+                        <input type="text" name="name" required placeholder="Full Name" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500">
+                        <input type="email" name="email" required placeholder="Email Address" class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500">
+                        <select name="date" class="w-full px-4 py-3 rounded-lg border outline-none bg-white">
+                            <option>January 2027</option>
+                            <option>February 2027</option>
+                            <option>March 2027</option>
+                            <option>Season 2027/2028</option>
+                        </select>
+                        <textarea name="message" rows="4" placeholder="Message/Traveler details..." class="w-full px-4 py-3 rounded-lg border outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                        
                         <button type="submit" id="submit-btn" class="w-full bg-blue-900 text-white font-bold py-4 rounded-lg hover:bg-blue-800 transition shadow-lg flex items-center justify-center">
                             <span id="btn-text">Submit Inquiry</span>
                         </button>
@@ -263,93 +215,47 @@
         </div>
     </section>
 
-    <footer class="bg-gray-900 text-gray-400 py-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center border-b border-gray-800 pb-8">
-            <div class="nav-logo text-3xl font-bold text-white mb-4 md:mb-0">
-                GLOBAL MIX <span class="font-light">TRAVEL</span>
-            </div>
-            <div class="flex space-x-6">
-                <a href="#" class="hover:text-white transition"><i class="fab fa-instagram fa-lg"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fab fa-facebook fa-lg"></i></a>
-                <a href="#" class="hover:text-white transition"><i class="fab fa-linkedin fa-lg"></i></a>
-            </div>
-        </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8 text-sm flex flex-col md:flex-row justify-between text-center md:text-left">
-            <p>&copy; 2026 Global Mix Travel. All rights reserved.</p>
-            <p>Official Website: <a href="http://www.globalmix.travel" class="underline text-blue-400">www.globalmix.travel</a></p>
-        </div>
+    <footer class="bg-gray-900 text-gray-400 py-12 text-center">
+        <p>&copy; 2026 Global Mix Travel. Official Website: <a href="http://www.globalmix.travel" class="underline text-blue-400">www.globalmix.travel</a></p>
     </footer>
 
     <script>
-        // Smooth scroll for nav links
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 80, 
-                        behavior: 'smooth'
-                    });
-                }
+                if (target) window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
             });
         });
 
-        // Google Sheets Form Logic
+        // Form Submission
         const scriptURL = 'https://script.google.com/macros/s/AKfycbyLKlZSWQKmZRPfn7TOocdtcd4ew-25Le1TqUpISWExxqMRbC9y1hS6wisgXXQAU1WS/exec';
         const form = document.getElementById('expedition-form');
-        const btn = document.getElementById('submit-btn');
-        const btnText = document.getElementById('btn-text');
-        const successMsg = document.getElementById('success-message');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('success-msg');
 
         form.addEventListener('submit', e => {
             e.preventDefault();
-            btn.disabled = true;
-            btnText.innerHTML = '<div class="loader mr-2"></div> Sending...';
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<div class="loader"></div> Sending...';
 
-            fetch(scriptURL, { method: 'POST', body: new FormData(form)})
-                .then(response => {
-                    form.classList.add('hidden');
-                    successMsg.classList.remove('hidden');
-                })
-                .catch(error => {
-                    btn.disabled = false;
-                    btnText.innerHTML = 'Submit Inquiry';
-                    alert('Error! Please try again later.');
-                    console.error('Error!', error.message);
-                });
-        });
-
-        // Mobile menu placeholder
-        const mobileBtn = document.getElementById('mobile-menu-btn');
-        mobileBtn.addEventListener('click', () => {
-            alert('Mobile menu toggle triggered.');
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: new FormData(form),
+                mode: 'no-cors' // Crucial to prevent 405 error
+            })
+            .then(() => {
+                form.classList.add('hidden');
+                successMsg.classList.remove('hidden');
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = 'Submit Inquiry';
+                alert('Submission failed. Please check your connection.');
+            });
         });
     </script>
-    form.addEventListener('submit', e => {
-    e.preventDefault();
-    btn.disabled = true;
-    btnText.innerHTML = '<div class="loader mr-2"></div> Sending...';
-
-    // Use URLSearchParams for better compatibility with Google Apps Script
-    const formData = new FormData(form);
-    
-    fetch(scriptURL, { 
-        method: 'POST', 
-        body: formData,
-        mode: 'no-cors' // This prevents the 405/CORS error in many browsers
-    })
-    .then(() => {
-        // With 'no-cors', we can't see the response, 
-        // but if it doesn't 'catch' an error, it usually worked.
-        form.classList.add('hidden');
-        successMsg.classList.remove('hidden');
-    })
-    .catch(error => {
-        btn.disabled = false;
-        btnText.innerHTML = 'Submit Inquiry';
-        alert('Submission failed. Please email us directly at info@globalmix.network');
-    });
-});
 </body>
 </html>
