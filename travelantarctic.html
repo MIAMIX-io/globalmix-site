@@ -107,132 +107,183 @@
         </div>
     </section>
 
-    <section id="itinerary" class="py-24 bg-gray-50">
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="itinerary" class="py-24 bg-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
         <div class="text-center mb-16">
-            <h2 class="text-4xl font-bold text-gray-900 mb-4">The Complete Expedition</h2>
-            <p class="text-gray-600">A detailed 16-day luxury journey from the "Paris of the South" to the 7th Continent.</p>
+            <h2 class="text-4xl font-bold text-gray-900 mb-4">Expedition Itinerary</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">A 16-day journey of a lifetime. Follow our route from the vibrant streets of Buenos Aires to the pristine wilderness of the Antarctic Peninsula.</p>
         </div>
 
-        <div class="space-y-4">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            
+            <div class="lg:sticky lg:top-28 flex flex-col items-center">
+                <div class="relative group w-full">
+                    <div class="absolute -inset-1 bg-blue-100 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+                    <img src="https://res.cloudinary.com/enchanting/q_70,f_auto,c_fit,w_1200,h_600/quark-web/2024/09/ANT-EXP-11D2024-map.png" 
+                         alt="Antarctic Expedition Map" 
+                         class="relative rounded-2xl shadow-xl w-full h-auto object-contain bg-white p-2">
+                </div>
+                <p class="mt-4 text-sm text-gray-400 italic font-medium"><i class="fas fa-map-marker-alt mr-2"></i>Route: Buenos Aires — Ushuaia — Antarctic Peninsula</p>
+            </div>
 
-            <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm transition-all duration-300">
-                <button class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50 transition" onclick="toggleDay(1)">
-                    <span class="font-bold text-blue-900"><span class="mr-4 text-gray-400">Day 1</span> Arrival in Buenos Aires</span>
-                    <i id="icon-1" class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
-                </button>
-                <div id="content-1" class="hidden p-6 pt-0 border-t border-gray-50 bg-white">
-                    <p class="text-gray-700 leading-relaxed mb-4">Arrival at Buenos Aires International Airport, where you will be met and privately transferred to your hotel: <strong>Alvear Palace Hotel</strong> or <strong>Faena Hotel</strong>.</p>
-                    <div class="flex items-center text-blue-800 font-semibold italic">
-                        <i class="fas fa-utensils mr-2"></i> Evening: Welcome Dinner with fellow travelers.
+            <div id="itinerary-accordion" class="space-y-4">
+                
+                <div class="border border-gray-100 rounded-xl bg-gray-50 overflow-hidden shadow-sm transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-5 text-left hover:bg-white transition group" onclick="toggleDay(1)">
+                        <span class="font-bold text-blue-900 text-lg flex items-center">
+                            <span class="w-8 text-blue-400 text-sm">01</span> Arrival in Buenos Aires
+                        </span>
+                        <i id="icon-1" class="fas fa-chevron-down text-gray-400 group-hover:text-blue-900 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-1" class="hidden p-6 pt-0 bg-white border-t border-gray-50">
+                        <p class="text-gray-700 leading-relaxed">Arrival at Buenos Aires International Airport. Private transfer to your hotel: <strong>Alvear Palace Hotel</strong> or <strong>Faena Hotel</strong>.</p>
+                        <div class="mt-4 flex items-center text-blue-800 font-semibold italic">
+                            <i class="fas fa-utensils mr-2"></i> Evening: Welcome Dinner to meet fellow travelers.
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm transition-all duration-300">
-                <button class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50 transition" onclick="toggleDay(2)">
-                    <span class="font-bold text-blue-900"><span class="mr-4 text-gray-400">Day 2</span> Discover Buenos Aires</span>
-                    <i id="icon-2" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div id="content-2" class="hidden p-6 pt-0 border-t border-gray-50 bg-white">
-                    <p class="text-gray-700 mb-4">A private city tour exploring iconic landmarks:</p>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-2 mb-4 text-sm text-gray-600">
-                        <li><i class="fas fa-check mr-2 text-blue-500"></i> Plaza de Mayo & Teatro Colón</li>
-                        <li><i class="fas fa-check mr-2 text-blue-500"></i> Leafy avenues of Palermo</li>
-                        <li><i class="fas fa-check mr-2 text-blue-500"></i> Elegant Recoleta district</li>
-                    </ul>
-                    <div class="bg-blue-50 p-4 rounded-lg text-blue-900 font-semibold">
-                        <i class="fas fa-music mr-2"></i> Evening: Premium Tango Dinner Show.
+                <div class="border border-gray-100 rounded-xl bg-gray-50 overflow-hidden shadow-sm transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-5 text-left hover:bg-white transition group" onclick="toggleDay(2)">
+                        <span class="font-bold text-blue-900 text-lg flex items-center">
+                            <span class="w-8 text-blue-400 text-sm">02</span> Discover Buenos Aires
+                        </span>
+                        <i id="icon-2" class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-2" class="hidden p-6 pt-0 bg-white border-t border-gray-50">
+                        <p class="text-gray-700 mb-4">Full day private city tour of iconic neighborhoods:</p>
+                        <ul class="space-y-2 text-gray-600 text-sm mb-4">
+                            <li><i class="fas fa-circle text-[6px] align-middle mr-2 text-blue-400"></i> <strong>Plaza de Mayo</strong> & <strong>Teatro Colón</strong> opera house</li>
+                            <li><i class="fas fa-circle text-[6px] align-middle mr-2 text-blue-400"></i> Leafy avenues of <strong>Palermo</strong> and elegant <strong>Recoleta</strong></li>
+                        </ul>
+                        <div class="bg-blue-50 p-4 rounded-lg text-blue-900 font-bold">
+                            <i class="fas fa-star mr-2"></i> Evening: Premium Tango Dinner Show.
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm transition-all duration-300">
-                <button class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50 transition" onclick="toggleDay(3)">
-                    <span class="font-bold text-blue-900"><span class="mr-4 text-gray-400">Day 3-4</span> Ushuaia & Tierra del Fuego</span>
-                    <i id="icon-3" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div id="content-3" class="hidden p-6 pt-0 border-t border-gray-50 bg-white">
-                    <p class="text-gray-700 mb-4">Fly south to the "End of the World." Check in at <strong>Los Cauquenes</strong> or <strong>Arakur</strong>.</p>
-                    <p class="text-gray-700"><strong>Day 4:</strong> Full-day excursion to Tierra del Fuego National Park, featuring a scenic ride aboard the historic <em>Tren del Fin del Mundo</em>.</p>
-                </div>
-            </div>
-
-            <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm transition-all duration-300">
-                <button class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50 transition" onclick="toggleDay(5)">
-                    <span class="font-bold text-blue-900"><span class="mr-4 text-gray-400">Day 5</span> Embarkation in Ushuaia</span>
-                    <i id="icon-5" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div id="content-5" class="hidden p-6 pt-0 border-t border-gray-50 bg-white">
-                    <p class="text-gray-700">Morning luggage transfer. At 4:00 PM, board your Antarctic expedition ship. Meet your Expedition Team and enjoy your first welcome dinner onboard.</p>
-                </div>
-            </div>
-
-            <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm transition-all duration-300">
-                <button class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50 transition" onclick="toggleDay(6)">
-                    <span class="font-bold text-blue-900"><span class="mr-4 text-gray-400">Day 6-7</span> Crossing the Drake Passage</span>
-                    <i id="icon-6" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div id="content-6" class="hidden p-6 pt-0 border-t border-gray-50 bg-white">
-                    <p class="text-gray-700 mb-4">Cross the meeting point of the Atlantic and Pacific. Prepare for the white continent with polar expert presentations.</p>
-                    <p class="text-sm font-semibold text-blue-700 italic">"Cross the Antarctic Convergence at 60° South where wildlife becomes abundant."</p>
-                </div>
-            </div>
-
-            <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm transition-all duration-300">
-                <button class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50 transition" onclick="toggleDay(8)">
-                    <span class="font-bold text-blue-900"><span class="mr-4 text-gray-400">Day 8-11</span> Antarctic Peninsula & Shetland Islands</span>
-                    <i id="icon-8" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div id="content-8" class="hidden p-6 pt-0 border-t border-gray-50 bg-white">
-                    <p class="text-gray-700 mb-4">Arrive at a world of glaciers and dramatic ice formations. Daily Zodiac excursions exploring remote landing sites.</p>
-                    <div class="grid grid-cols-2 gap-4 text-xs font-bold uppercase tracking-wider text-blue-900">
-                        <div class="bg-gray-100 p-3 rounded">Wildlife: Whales, Orcas, Leopard Seals</div>
-                        <div class="bg-gray-100 p-3 rounded">Birds: Chinstrap, Adélie, & Gentoo Penguins</div>
+                <div class="border border-gray-100 rounded-xl bg-gray-50 overflow-hidden shadow-sm transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-5 text-left hover:bg-white transition group" onclick="toggleDay(3)">
+                        <span class="font-bold text-blue-900 text-lg flex items-center">
+                            <span class="w-8 text-blue-400 text-sm">03</span> Buenos Aires – Ushuaia
+                        </span>
+                        <i id="icon-3" class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-3" class="hidden p-6 pt-0 bg-white border-t border-gray-50">
+                        <p class="text-gray-700 leading-relaxed">Flight to Ushuaia, the southernmost city in the world. Private transfer and check-in at <strong>Los Cauquenes Resort</strong> or <strong>Arakur Ushuaia</strong> with views of the Beagle Channel.</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="border border-gray-200 rounded-xl bg-white overflow-hidden shadow-sm transition-all duration-300">
-                <button class="w-full flex justify-between items-center p-6 text-left hover:bg-blue-50 transition" onclick="toggleDay(12)">
-                    <span class="font-bold text-blue-900"><span class="mr-4 text-gray-400">Day 12-16</span> Reflection & Return</span>
-                    <i id="icon-12" class="fas fa-chevron-down text-gray-400 transition-transform"></i>
-                </button>
-                <div id="content-12" class="hidden p-6 pt-0 border-t border-gray-50 bg-white">
-                    <p class="text-gray-700 mb-2"><strong>Day 12-13:</strong> Return crossing of the Drake. Celebrate the voyage with a final captain’s dinner.</p>
-                    <p class="text-gray-700 mb-2"><strong>Day 14-15:</strong> Disembark in Ushuaia, fly to Buenos Aires for a final overnight stay.</p>
-                    <p class="text-gray-700 font-bold"><strong>Day 16:</strong> Private transfer to Buenos Aires International Airport for your flight home.</p>
+                <div class="border border-gray-100 rounded-xl bg-gray-50 overflow-hidden shadow-sm transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-5 text-left hover:bg-white transition group" onclick="toggleDay(4)">
+                        <span class="font-bold text-blue-900 text-lg flex items-center">
+                            <span class="w-8 text-blue-400 text-sm">04</span> Tierra del Fuego National Park
+                        </span>
+                        <i id="icon-4" class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-4" class="hidden p-6 pt-0 bg-white border-t border-gray-50">
+                        <p class="text-gray-700 mb-4">Full-day excursion exploring dramatic forests, mountains, and coastline. Includes a ride on the historic <strong>Tren del Fin del Mundo</strong> (Train at the End of the World).</p>
+                    </div>
                 </div>
-            </div>
 
+                <div class="border border-gray-100 rounded-xl bg-gray-50 overflow-hidden shadow-sm transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-5 text-left hover:bg-white transition group" onclick="toggleDay(5)">
+                        <span class="font-bold text-blue-900 text-lg flex items-center">
+                            <span class="w-8 text-blue-400 text-sm">05</span> Embarkation in Ushuaia
+                        </span>
+                        <i id="icon-5" class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-5" class="hidden p-6 pt-0 bg-white border-t border-gray-50">
+                        <p class="text-gray-700">Afternoon boarding around 4:00 PM. Welcome briefing, safety orientation, and your first gourmet dinner onboard as the expedition officially begins.</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-100 rounded-xl bg-gray-50 overflow-hidden shadow-sm transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-5 text-left hover:bg-white transition group" onclick="toggleDay(6)">
+                        <span class="font-bold text-blue-900 text-lg flex items-center">
+                            <span class="w-8 text-blue-400 text-sm">06</span> Crossing the Drake Passage
+                        </span>
+                        <i id="icon-6" class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-6" class="hidden p-6 pt-0 bg-white border-t border-gray-50">
+                        <p class="text-gray-700 mb-4">Cross the meeting point of the Atlantic and Pacific Oceans. Enjoy the observation lounge, seabird watching, and expert polar presentations.</p>
+                        <p class="text-sm font-semibold text-blue-700 italic">"Officially enter Antarctic waters at the Antarctic Convergence (~60° South)."</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-100 rounded-xl bg-gray-50 overflow-hidden shadow-sm transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-5 text-left hover:bg-white transition group" onclick="toggleDay(8)">
+                        <span class="font-bold text-blue-900 text-lg flex items-center">
+                            <span class="w-8 text-blue-400 text-sm">08</span> Antarctic Peninsula
+                        </span>
+                        <i id="icon-8" class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-8" class="hidden p-6 pt-0 bg-white border-t border-gray-50">
+                        <p class="text-gray-700 mb-4">Arrival at the 7th continent. Towers of ice and calving glaciers. Daily <strong>Zodiac excursions</strong> to remote sites.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-bold uppercase tracking-widest text-blue-900">
+                            <div class="bg-gray-50 p-3 rounded">Wildlife: Whales, Orcas, Leopard Seals</div>
+                            <div class="bg-gray-50 p-3 rounded">Penguins: Chinstrap, Adélie, Gentoo</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="border border-gray-100 rounded-xl bg-gray-50 overflow-hidden shadow-sm transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-5 text-left hover:bg-white transition group" onclick="toggleDay(12)">
+                        <span class="font-bold text-blue-900 text-lg flex items-center">
+                            <span class="w-8 text-blue-400 text-sm">12</span> Return Crossing
+                        </span>
+                        <i id="icon-12" class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-12" class="hidden p-6 pt-0 bg-white border-t border-gray-50">
+                        <p class="text-gray-700 leading-relaxed">Begin the journey north across the Drake Passage. Final onboard lectures and farewell celebrations reflecting on the expedition's impact.</p>
+                    </div>
+                </div>
+
+                <div class="border border-gray-100 rounded-xl bg-gray-50 overflow-hidden shadow-sm transition-all duration-300">
+                    <button class="w-full flex justify-between items-center p-5 text-left hover:bg-white transition group" onclick="toggleDay(14)">
+                        <span class="font-bold text-blue-900 text-lg flex items-center">
+                            <span class="w-8 text-blue-400 text-sm">14</span> Disembarkation & Return
+                        </span>
+                        <i id="icon-14" class="fas fa-chevron-down text-gray-400 transition-transform duration-300"></i>
+                    </button>
+                    <div id="content-14" class="hidden p-6 pt-0 bg-white border-t border-gray-50">
+                        <ul class="space-y-3 text-gray-700">
+                            <li><strong>Day 14:</strong> Disembark in Ushuaia (7:00 AM). Transfer to hotel for final overnight.</li>
+                            <li><strong>Day 15:</strong> Flight back to Buenos Aires. Private transfer to hotel.</li>
+                            <li><strong>Day 16:</strong> Private transfer to International Airport for your journey home.</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </div>
 </section>
 
 <script>
-function toggleDay(id) {
-    const content = document.getElementById(`content-${id}`);
-    const icon = document.getElementById(`icon-${id}`);
-    
-    // Close all other contents
-    document.querySelectorAll('[id^="content-"]').forEach(el => {
-        if (el.id !== `content-${id}`) {
-            el.classList.add('hidden');
-        }
-    });
+    function toggleDay(id) {
+        const content = document.getElementById(`content-${id}`);
+        const icon = document.getElementById(`icon-${id}`);
+        
+        const isHidden = content.classList.contains('hidden');
+        
+        // Close all others
+        document.querySelectorAll('[id^="content-"]').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('[id^="icon-"]').forEach(el => el.classList.remove('rotate-180'));
 
-    // Reset all other icons
-    document.querySelectorAll('[id^="icon-"]').forEach(el => {
-        if (el.id !== `icon-${id}`) {
-            el.classList.remove('rotate-180');
+        // Toggle current if it was hidden
+        if (isHidden) {
+            content.classList.remove('hidden');
+            icon.classList.add('rotate-180');
         }
-    });
-
-    // Toggle current
-    content.classList.toggle('hidden');
-    icon.classList.toggle('rotate-180');
-}
+    }
 </script>
+
+<style>
+    .rotate-180 { transform: rotate(180deg); }
+</style>
+    
     </section>
 
     <section id="hotels" class="py-24 bg-white">
