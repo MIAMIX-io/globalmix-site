@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="widthÞvice-width, initial-scale=1.0">
+<title>Casa Kristal | Boutique Living in Tulum</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap');
+
+:root {
+--jungle-green: #2D4032;
+--sand: #F4F1EA;
+--gold: #C5A059;
+}
+
+body {
+font-family: 'Plus Jakarta Sans', sans-serif;
+scroll-behavior: smooth;
+}
+
+h1, h2, h3, .serif {
+font-family: 'Playfair Display', serif;
+}
+
+.bg-jungle { background-color: var(--jungle-green); }
+.text-jungle { color: var(--jungle-green); }
+.bg-sand { background-color: var(--sand); }
+.text-gold { color: var(--gold); }
+
+.hero-gradient {
+background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
+}
+
+.fade-in {
+animation: fadeIn 1.5s ease-out;
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.card-hover:hover {
+transform: translateY(-5px);
+transition: all 0.3s ease;
+}
+</style>
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- Navigation -->
+<nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md shadow-sm">
+<div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+<div class="text-2xl font-bold tracking-tighter text-jungle uppercase">
+Casa Kristal
+</div>
+<div class="hidden md:flex space-x-8 text-sm font-semibold uppercase tracking-widest text-gray-600">
+<a href="#vision" class="hover:text-gold transition">Vision</a>
+<a href="#project" class="hover:text-gold transition">The Project</a>
+<a href="#location" class="hover:text-gold transition">Location</a>
+<a href="#investment" class="hover:text-gold transition">Investment</a>
+<a href="#contact" class="px-4 py-2 bg-jungle text-white rounded-full hover:bg-opacity-90 transition">Contact Us</a>
+</div>
+<div class="md:hidden text-jungle">
+<i class="fa-solid fa-bars text-xl"></i>
+</div>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<header class="relative h-screen flex items-center justify-center overflow-hidden">
+<img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q&w 00"
+alt="Luxury Villa in Tulum Jungle"
+class="absolute inset-0 w-full h-full object-cover">
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="relative z-10 text-center text-white px-4 fade-in">
+<p class="uppercase tracking-[0.3em] text-sm mb-4">Private Gated Community • Tulum, Mexico</p>
+<h1 class="text-6xl md:text-8xl font-bold mb-6">Casa Kristal</h1>
+<p class="text-xl md:text-2xl font-light mb-8 max-w-2xl mx-auto italic">
+Modern luxury harmoniously integrated into the Mayan jungle.
+</p>
+<div class="flex flex-col md:flex-row items-center justify-center gap-4">
+<a href="#project" class="bg-white text-jungle px-8 py-4 rounded-full font-bold uppercase tracking-wider hover:bg-gold hover:text-white transition w-full md:w-auto">
+Discover More
+</a>
+<div class="text-2xl font-bold border-l-0 md:border-l-2 border-white/30 md:pl-6">
+$140,000 USD
+</div>
+</div>
+</div>
+</header>
+
+<!-- Project Vision -->
+<section id="vision" class="py-24 bg-sand">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl md:text-5xl font-bold text-jungle mb-8 leading-tight">
+A Boutique Residential Experience
+</h2>
+<p class="text-lg text-gray-700 mb-6 leading-relaxed">
+Casa Kristal Tulum is a development composed of 4 modern single-family homes, designed to merge contemporary architecture with high-efficiency design.
+</p>
+<p class="text-lg text-gray-700 mb-8 leading-relaxed">
+Located strategically in a low-density private community, it offers the perfect balance between privacy, tranquility, and direct connection with nature.
+</p>
+<div class="grid grid-cols-2 gap-6">
+<div class="border-l-4 border-gold pl-4">
+<h4 class="font-bold text-jungle uppercase text-sm">Low Density</h4>
+<p class="text-sm text-gray-600">Only 4 exclusive residences.</p>
+</div>
+<div class="border-l-4 border-gold pl-4">
+<h4 class="font-bold text-jungle uppercase text-sm">Gated Community</h4>
+<p class="text-sm text-gray-600">Private and secure environment.</p>
+</div>
+</div>
+</div>
+<div class="relative">
+<img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q&w00"
+alt="Interior Design" class="rounded-2xl shadow-2xl">
+<div class="absolute -bottom-6 -left-6 bg-jungle text-white p-8 rounded-2xl hidden md:block">
+<p class="text-3xl font-bold">4</p>
+<p class="text-xs uppercase tracking-widest opacity-80">Homes Total</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Design & Layout -->
+<section id="project" class="py-24">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-bold text-jungle mb-4">The Layout</h2>
+<div class="h-1 w-20 bg-gold mx-auto"></div>
+</div>
+
+<div class="grid md:grid-cols-2 gap-12">
+<!-- Ground Floor -->
+<div class="bg-gray-50 p-10 rounded-3xl border border-gray-100 card-hover">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 bg-jungle text-white rounded-full flex items-center justify-center font-bold mr-4">1</div>
+<h3 class="text-2xl font-bold text-jungle">Ground Floor: Social Area</h3>
+</div>
+<ul class="space-y-4 text-gray-600">
+<li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i> Integrated living and dining rooms</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i> Modern functional kitchen</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i> Office or flexible multipurpose room</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i> Full bathroom</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i> Interior design staircase</li>
+</ul>
+</div>
+
+<!-- Top Floor -->
+<div class="bg-gray-50 p-10 rounded-3xl border border-gray-100 card-hover">
+<div class="flex items-center mb-6">
+<div class="w-12 h-12 bg-jungle text-white rounded-full flex items-center justify-center font-bold mr-4">2</div>
+<h3 class="text-2xl font-bold text-jungle">Top Floor: Private Area</h3>
+</div>
+<ul class="space-y-4 text-gray-600">
+<li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i> Two spacious bedrooms with natural lighting</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i> Balcony terrace with jungle views</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i> Full bathroom with premium finishes</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i> Ventilated central gallery</li>
+<li class="flex items-center"><i class="fa-solid fa-check text-gold mr-3"></i> Passive solar control & cross ventilation</li>
+</ul>
+</div>
+</div>
+
+<!-- Pillars -->
+<div class="mt-20 grid md:grid-cols-4 gap-8 text-center">
+<div class="p-6">
+<i class="fa-solid fa-wind text-3xl text-gold mb-4"></i>
+<h5 class="font-bold mb-2">Cross Ventilation</h5>
+<p class="text-sm text-gray-500">Natural constant airflow</p>
+</div>
+<div class="p-6">
+<i class="fa-solid fa-sun text-3xl text-gold mb-4"></i>
+<h5 class="font-bold mb-2">Solar Control</h5>
+<p class="text-sm text-gray-500">Passive thermal efficiency</p>
+</div>
+<div class="p-6">
+<i class="fa-solid fa-leaf text-3xl text-gold mb-4"></i>
+<h5 class="font-bold mb-2">Eco-Integration</h5>
+<p class="text-sm text-gray-500">Respectful of the jungle</p>
+</div>
+<div class="p-6">
+<i class="fa-solid fa-hammer text-3xl text-gold mb-4"></i>
+<h5 class="font-bold mb-2">Optimized Build</h5>
+<p class="text-sm text-gray-500">Reinforced concrete & block</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Location & Connectivity -->
+<section id="location" class="py-24 bg-jungle text-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-2 gap-16 items-center">
+<div>
+<h2 class="text-4xl md:text-5xl font-bold mb-8">Prime Connectivity</h2>
+<p class="text-gray-300 mb-10">Surrounded by the most iconic treasures of the region: Cenote Cristal, Escondido, Corazón del Paraíso, and Calavera.</p>
+
+<div class="space-y-6">
+<div class="flex justify-between items-center border-b border-white/10 pb-4">
+<span>Tulum Center</span>
+<span class="text-gold font-bold">10 Minutes</span>
+</div>
+<div class="flex justify-between items-center border-b border-white/10 pb-4">
+<span>Tulum International Airport</span>
+<span class="text-gold font-bold">30 Minutes</span>
+</div>
+<div class="flex justify-between items-center border-b border-white/10 pb-4">
+<span>Playa del Carmen</span>
+<span class="text-gold font-bold">1 Hour</span>
+</div>
+<div class="flex justify-between items-center border-b border-white/10 pb-4">
+<span>Cancun Int. Airport</span>
+<span class="text-gold font-bold">1 Hour 45 Mins</span>
+</div>
+</div>
+
+<div class="mt-12 p-6 bg-white/5 rounded-2xl">
+<h4 class="font-bold mb-4 flex items-center"><i class="fa-solid fa-train text-gold mr-3"></i> Tren Maya & Flights</h4>
+<p class="text-sm text-gray-400">Direct connection to Cancun, Playa del Carmen, and archaeological zones. Flights from Miami, NY, Dallas, Toronto, Madrid, and more.</p>
+</div>
+</div>
+<div class="h-[500px] rounded-3xl overflow-hidden shadow-2xl">
+<!-- Placeholder for Map/Regional Context -->
+<img src="https://images.unsplash.com/photo-1544735745-b89b57a01f69?auto=format&fit=crop&q&w00"
+alt="Tulum Aerial View" class="w-full h-full object-cover">
+</div>
+</div>
+</div>
+</section>
+
+<!-- Investment Section -->
+<section id="investment" class="py-24">
+<div class="max-w-7xl mx-auto px-6">
+<div class="text-center mb-16">
+<h2 class="text-4xl md:text-5xl font-bold text-jungle mb-4">Investment Opportunity</h2>
+<p class="text-gray-500">Tulum is an international benchmark in eco-luxury and high-value real estate.</p>
+</div>
+
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-sand p-10 rounded-3xl text-center">
+<p class="text-sm uppercase tracking-widest text-gray-500 mb-4">Annual Appreciation</p>
+<div class="text-5xl font-bold text-jungle mb-4">12-15%</div>
+<div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+<div class="bg-gold h-full" style="width: 85%"></div>
+</div>
+</div>
+<div class="bg-sand p-10 rounded-3xl text-center">
+<p class="text-sm uppercase tracking-widest text-gray-500 mb-4">ROI (Return on Investment)</p>
+<div class="text-5xl font-bold text-jungle mb-4">8-10%</div>
+<div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+<div class="bg-gold h-full" style="width: 65%"></div>
+</div>
+</div>
+<div class="bg-sand p-10 rounded-3xl text-center">
+<p class="text-sm uppercase tracking-widest text-gray-500 mb-4">Vacation Demand</p>
+<div class="text-5xl font-bold text-jungle mb-4">High</div>
+<div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+<div class="bg-gold h-full" style="width: 95%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact Footer -->
+<footer id="contact" class="bg-jungle pt-20 pb-10 text-white">
+<div class="max-w-7xl mx-auto px-6">
+<div class="grid md:grid-cols-2 gap-16 mb-20">
+<div>
+<h2 class="text-5xl font-bold mb-8">Invest in the <span class="text-gold">Future</span> of Tulum</h2>
+<p class="text-gray-400 text-lg mb-10 max-w-md">Contact us today to receive a full brochure, floor plans, and investment analysis for Casa Kristal.</p>
+
+<div class="space-y-6">
+<a href="tel:+17864598797" class="flex items-center text-xl hover:text-gold transition">
+<i class="fa-solid fa-phone w-10 text-gold"></i>
++1 786 459 8797
+</a>
+<a href="mailto:info@globalmix.online" class="flex items-center text-xl hover:text-gold transition">
+<i class="fa-solid fa-envelope w-10 text-gold"></i>
+info@globalmix.online
+</a>
+<a href="https://www.globalmix.network/kristaljungle" target="_blank" class="flex items-center text-xl hover:text-gold transition">
+<i class="fa-solid fa-globe w-10 text-gold"></i>
+globalmix.network
+</a>
+</div>
+</div>
+
+<div class="bg-white rounded-3xl p-10 text-gray-800">
+<h3 class="text-2xl font-bold mb-6">Inquiry Form</h3>
+<form onsubmit="event.preventDefault(); alert('Message sent successfully! We will contact you soon.');">
+<div class="space-y-4">
+<input type="text" placeholder="Full Name" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-gold">
+<input type="email" placeholder="Email Address" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-gold">
+<textarea placeholder="Your Message" rows="4" class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:outline-none focus:border-gold"></textarea>
+<button type="submit" class="w-full bg-jungle text-white py-4 rounded-xl font-bold uppercase tracking-widest hover:bg-gold transition">
+Request Information
+</button>
+</div>
+</form>
+</div>
+</div>
+
+<div class="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+<p>© 2024 Casa Kristal Tulum. All rights reserved.</p>
+<div class="flex space-x-6 mt-4 md:mt-0">
+<a href="#" class="hover:text-white transition">Privacy Policy</a>
+<a href="#" class="hover:text-white transition">Terms of Service</a>
+</div>
+</div>
+</div>
+</footer>
+
+</body>
+</html>
