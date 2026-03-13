@@ -333,23 +333,34 @@
                     </div>
                 </div>
                 
-                <div class="bg-white/5 p-8 rounded-3xl backdrop-blur-sm">
-                    <form class="space-y-6">
+                <div class="bg-white/5 p-8 rounded-3xl backdrop-blur-sm relative overflow-hidden">
+                    <div id="success-msg" class="hidden absolute inset-0 flex flex-col items-center justify-center bg-[#1a2f23] z-10 text-center p-8">
+                        <svg class="w-16 h-16 text-gold mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h3 class="text-3xl font-serif mb-2 text-white">Message Sent</h3>
+                        <p class="text-stone-300 mb-6">Thank you for your interest. Our team will contact you shortly.</p>
+                        <button type="button" onclick="location.reload()" class="text-gold text-sm uppercase tracking-widest border-b border-gold pb-1 hover:text-white transition">Send another</button>
+                    </div>
+
+                    <form id="kristal-form" class="space-y-6">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
                                 <label class="block text-xs uppercase tracking-widest mb-2 opacity-60">Full Name</label>
-                                <input type="text" class="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-gold transition">
+                                <input type="text" name="name" required class="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-gold transition">
                             </div>
                             <div>
                                 <label class="block text-xs uppercase tracking-widest mb-2 opacity-60">Email Address</label>
-                                <input type="email" class="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-gold transition">
+                                <input type="email" name="email" required class="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-gold transition">
                             </div>
                         </div>
                         <div>
                             <label class="block text-xs uppercase tracking-widest mb-2 opacity-60">Message</label>
-                            <textarea rows="4" class="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-gold transition"></textarea>
+                            <textarea name="message" rows="4" required class="w-full bg-transparent border-b border-white/20 py-2 focus:outline-none focus:border-gold transition"></textarea>
                         </div>
-                        <button type="button" class="w-full bg-gold text-white font-bold py-4 rounded-full uppercase tracking-widest hover:bg-[#a38a5d] transition">Send Request</button>
+                        <button type="submit" id="submit-btn" class="w-full bg-gold text-white font-bold py-4 rounded-full uppercase tracking-widest hover:bg-[#a38a5d] transition">
+                            Send Request
+                        </button>
                     </form>
                 </div>
             </div>
@@ -364,5 +375,37 @@
         </div>
     </footer>
 
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwMSTdXgg5uEDoNLdPKE1J3PtXtGiSZur0e3kV9bmKBVxVi1G__d2f2YLWCVyzw6YAAEQ/exec';
+        
+        const form = document.getElementById('kristal-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMsg = document.getElementById('success-msg');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault(); // Prevent page reload
+            
+            // UI Feedback
+            const originalText = submitBtn.innerText;
+            submitBtn.disabled = true;
+            submitBtn.innerText = 'Sending...';
+
+            fetch(scriptURL, { 
+                method: 'POST', 
+                body: new FormData(form),
+                mode: 'no-cors' // Crucial to prevent CORS errors on simple forms
+            })
+            .then(() => {
+                form.reset();
+                successMsg.classList.remove('hidden');
+            })
+            .catch(error => {
+                console.error('Error!', error.message);
+                submitBtn.disabled = false;
+                submitBtn.innerText = originalText;
+                alert('There was an error sending your message. Please try again.');
+            });
+        });
+    </script>
 </body>
 </html>
