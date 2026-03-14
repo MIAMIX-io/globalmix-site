@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AZULIK Residences | Global Mix Exclusive</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+body {
+font-family: 'Inter', sans-serif;
+color: #000;
+background-color: #fff;
+scroll-behavior: smooth;
+}
+h1, h2, h3, .serif {
+font-family: 'Playfair Display', serif;
+}
+.fade-in {
+opacity: 0;
+transform: translateY(20px);
+transition: all 0.8s ease-out;
+}
+.fade-in.visible {
+opacity: 1;
+transform: translateY(0);
+}
+.bg-organic {
+background-color: #faf9f6;
+}
+.nav-link::after {
+content: '';
+display: block;
+width: 0;
+height: 1px;
+background: #000;
+transition: width .3s;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+.whatsapp-btn {
+position: fixed;
+bottom: 30px;
+right: 30px;
+background-color: #000;
+color: #fff;
+width: 60px;
+height: 60px;
+border-radius: 50%;
+display: flex;
+align-items: center;
+justify-content: center;
+box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+z-index: 100;
+transition: transform 0.3s ease;
+}
+.whatsapp-btn:hover {
+transform: scale(1.1);
+}
+</style>
+</head>
+<body>
+
+<!-- WhatsApp Floating Button -->
+<a href="https://wa.me/17864598797" target="_blank" class="whatsapp-btn" title="Contact us via WhatsApp">
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
+<path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
+</svg>
+</a>
+
+<!-- Header / Nav -->
+<header class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+<nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+<div class="text-2xl font-bold tracking-tighter serif uppercase tracking-widest">AZVLIK</div>
+<div class="hidden md:flex space-x-8 text-xs uppercase tracking-widest font-medium">
+<a href="#philosophy" class="nav-link">Philosophy</a>
+<a href="#project" class="nav-link">The Project</a>
+<a href="#amenities" class="nav-link">Amenities</a>
+<a href="#contact" class="nav-link">Contact</a>
+</div>
+<div class="hidden md:block">
+<a href="https://www.azulikrealestate.com" target="_blank" class="text-[10px] border border-black px-4 py-2 hover:bg-black hover:text-white transition uppercase tracking-widest font-bold">Official Site</a>
+</div>
+<button class="md:hidden">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16" />
+</svg>
+</button>
+</nav>
+</header>
+
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0 z-0">
+<img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2000" alt="Tulum Jungle Architecture" class="w-full h-full object-cover">
+<div class="absolute inset-0 bg-white/30"></div>
+</div>
+<div class="relative z-10 text-center px-4">
+<span class="block text-xs uppercase tracking-[0.5em] mb-4 fade-in">Tulum, Mexico | Global Mix Exclusive</span>
+<h1 class="text-6xl md:text-8xl lg:text-9xl mb-6 fade-in uppercase">Residences</h1>
+<p class="max-w-xl mx-auto text-sm md:text-base font-light tracking-wide fade-in uppercase">
+A mystical encounter between modernity and the ancestral legacy of the Mayan jungle.
+</p>
+</div>
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+</svg>
+</div>
+</section>
+
+<!-- Philosophy -->
+<section id="philosophy" class="py-24 bg-white">
+<div class="container mx-auto px-6">
+<div class="flex flex-col md:flex-row items-center gap-12">
+<div class="w-full md:w-1/2 fade-in">
+<div class="relative overflow-hidden rounded-sm">
+<img src="https://images.unsplash.com/photo-1540541338287-41700207dee6?auto=format&fit=crop&q=80&w=1000" alt="Azulik Ritual" class="w-full h-[600px] object-cover">
+</div>
+</div>
+<div class="w-full md:w-1/2 space-y-8 fade-in">
+<h2 class="text-4xl md:text-5xl leading-tight">Living on <span class="italic">Sacred Ground.</span></h2>
+<div class="space-y-4 text-gray-600 font-light leading-relaxed">
+<p>AZULIK Residences is a space with an exclusive location. A place of encounter with the nature of the jungle and the residential point with the closest proximity to the Caribbean Sea in Tulum.</p>
+<p>Proximity to AZULIK Tulum allows owners to comfortably integrate regular visits to the hotel to participate in events and enjoy unique amenities.</p>
+</div>
+<div class="pt-6">
+<a href="https://wa.me/17864598797" target="_blank" class="inline-block text-xs uppercase tracking-widest font-semibold border-b border-black pb-2">Schedule Private Viewing</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Global Mix Banner -->
+<section class="py-12 bg-organic border-y border-gray-100">
+<div class="container mx-auto px-6 text-center">
+<p class="text-[10px] uppercase tracking-[0.8em] text-gray-400 font-bold">Exclusively Represented by Global Mix</p>
+</div>
+</section>
+
+<!-- Specs Section -->
+<section id="project" class="py-24 bg-white">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-20">
+<div class="fade-in">
+<h3 class="text-5xl mb-2">4</h3>
+<p class="text-xs uppercase tracking-widest text-gray-500 font-semibold">Integrated Towers</p>
+</div>
+<div class="fade-in">
+<h3 class="text-5xl mb-2">84</h3>
+<p class="text-xs uppercase tracking-widest text-gray-500 font-semibold">Signature Apartments</p>
+</div>
+<div class="fade-in">
+<h3 class="text-5xl mb-2">300m²</h3>
+<p class="text-xs uppercase tracking-widest text-gray-500 font-semibold">Luxury Residences</p>
+</div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-4">
+<div class="group relative overflow-hidden bg-black fade-in h-[500px]">
+<img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-1000" alt="Residencias">
+<div class="absolute inset-0 flex flex-col justify-end p-12 text-white">
+<h4 class="text-3xl mb-2">ROTH Architecture</h4>
+<p class="text-sm font-light opacity-80">Interior decoration curated by ROTH Design and SFER IK.</p>
+</div>
+</div>
+<div class="group relative overflow-hidden bg-black fade-in h-[500px]">
+<img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?auto=format&fit=crop&q=80&w=1200" class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition duration-1000" alt="Detalles">
+<div class="absolute inset-0 flex flex-col justify-end p-12 text-white">
+<h4 class="text-3xl mb-2">A Unique Legacy</h4>
+<p class="text-sm font-light opacity-80">Properties ranging from 70m² to 300m².</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Amenities & Experience -->
+<section id="amenities" class="py-24 bg-organic">
+<div class="container mx-auto px-6">
+<div class="text-center mb-16 fade-in">
+<h2 class="text-5xl mb-4">Living the Jungle</h2>
+<p class="text-gray-500 font-light">World-class amenities for a transformative life.</p>
+</div>
+<div class="grid grid-cols-2 lg:grid-cols-4 gap-8">
+<div class="bg-white p-8 flex flex-col items-center text-center space-y-4 fade-in">
+<span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">01</span>
+<h5 class="text-sm font-semibold uppercase tracking-widest">Jungle Gym</h5>
+</div>
+<div class="bg-white p-8 flex flex-col items-center text-center space-y-4 fade-in">
+<span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">02</span>
+<h5 class="text-sm font-semibold uppercase tracking-widest">Yoga Shala</h5>
+</div>
+<div class="bg-white p-8 flex flex-col items-center text-center space-y-4 fade-in">
+<span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">03</span>
+<h5 class="text-sm font-semibold uppercase tracking-widest">Fire Pit</h5>
+</div>
+<div class="bg-white p-8 flex flex-col items-center text-center space-y-4 fade-in">
+<span class="text-[10px] font-bold uppercase tracking-widest text-gray-400">04</span>
+<h5 class="text-sm font-semibold uppercase tracking-widest">Water Mirrors</h5>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Contact & Info -->
+<footer id="contact" class="py-24 bg-white text-black border-t border-gray-100">
+<div class="container mx-auto px-6">
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
+<div class="space-y-12">
+<div class="space-y-6">
+<h2 class="text-5xl serif">Your sanctuary <br>is waiting.</h2>
+<p class="text-gray-500 font-light max-w-sm leading-relaxed">Global Mix offers exclusive consultancy for the most prestigious units in Azulik Residences.</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="space-y-2">
+<p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">Email Us</p>
+<a href="mailto:info@globalmix.online" class="text-sm font-medium hover:underline">info@globalmix.online</a>
+</div>
+<div class="space-y-2">
+<p class="text-[10px] uppercase tracking-widest text-gray-400 font-bold">WhatsApp / Mobile</p>
+<a href="https://wa.me/17864598797" class="text-sm font-medium hover:underline">+1 786 459 8797</a>
+</div>
+</div>
+</div>
+
+<div class="bg-organic p-10 space-y-6 rounded-sm">
+<p class="text-xs uppercase tracking-widest font-bold mb-4">Request Brochure & Price List</p>
+<input type="text" placeholder="NAME" class="w-full bg-transparent border-b border-black py-4 text-xs tracking-widest focus:outline-none">
+<input type="email" placeholder="EMAIL" class="w-full bg-transparent border-b border-black py-4 text-xs tracking-widest focus:outline-none">
+<textarea placeholder="MESSAGE" rows="3" class="w-full bg-transparent border-b border-black py-4 text-xs tracking-widest focus:outline-none"></textarea>
+<button class="w-full bg-black text-white py-5 text-xs tracking-[0.3em] font-bold hover:bg-gray-800 transition uppercase mt-4">Send Inquiry</button>
+</div>
+</div>
+
+<div class="mt-24 pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest text-gray-400 font-bold uppercase">
+<div class="flex flex-col items-center md:items-start gap-2">
+<p>GLOBAL MIX ONLINE | AZULIK RESIDENCES TULUM</p>
+<a href="https://www.azulikrealestate.com" target="_blank" class="text-black hover:opacity-60 transition">www.azulikrealestate.com</a>
+</div>
+<div class="flex space-x-8 mt-8 md:mt-0">
+<a href="https://wa.me/17864598797" target="_blank">WhatsApp</a>
+<a href="mailto:info@globalmix.online">Email</a>
+<a href="#">Privacy Policy</a>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+// Intersection Observer for fade-in animations
+const faders = document.querySelectorAll('.fade-in');
+const appearOptions = {
+threshold: 0.15,
+rootMargin: "0px 0px -50px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(function(entries, appearOnScroll) {
+entries.forEach(entry => {
+if (!entry.isIntersecting) return;
+entry.target.classList.add('visible');
+appearOnScroll.unobserve(entry.target);
+});
+}, appearOptions);
+
+faders.forEach(fader => {
+appearOnScroll.observe(fader);
+});
+
+// Simple scroll effect for header
+window.addEventListener('scroll', () => {
+const header = document.querySelector('header');
+if (window.scrollY > 50) {
+header.classList.add('py-2', 'bg-white/95');
+header.classList.remove('py-4', 'bg-white/80');
+} else {
+header.classList.add('py-4', 'bg-white/80');
+header.classList.remove('py-2', 'bg-white/95');
+}
+});
+</script>
+</body>
+</html>
