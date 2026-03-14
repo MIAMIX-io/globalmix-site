@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faena District Tulum | A New Dream</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+--faena-red: #E30613;
+--faena-dark: #1A1A1A;
+--faena-cream: #F9F7F2;
+}
+body {
+font-family: 'Montserrat', sans-serif;
+background-color: var(--faena-cream);
+color: var(--faena-dark);
+}
+h1, h2, h3, .serif {
+font-family: 'Playfair Display', serif;
+}
+.bg-red { background-color: var(--faena-red); }
+.text-red { color: var(--faena-red); }
+.border-red { border-color: var(--faena-red); }
+
+.hero-overlay {
+background: linear-gradient(to bottom, rgba(26, 26, 26, 0.3), rgba(227, 6, 19, 0.4));
+}
+
+.reveal {
+opacity: 0;
+transform: translateY(30px);
+transition: all 1s ease-out;
+}
+.reveal.active {
+opacity: 1;
+transform: translateY(0);
+}
+
+.custom-cursor {
+mix-blend-mode: difference;
+}
+
+.nav-link::after {
+content: '';
+position: absolute;
+width: 0;
+height: 1px;
+bottom: -2px;
+left: 0;
+background-color: var(--faena-red);
+transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+width: 100%;
+}
+
+/* Smooth tab transition */
+.tab-content {
+display: none;
+animation: fadeIn 0.5s ease-in-out;
+}
+.tab-content.active {
+display: block;
+}
+@keyframes fadeIn {
+from { opacity: 0; transform: scale(0.98); }
+to { opacity: 1; transform: scale(1); }
+}
+</style>
+</head>
+<body class="overflow-x-hidden">
+
+<!-- Navbar -->
+<nav class="fixed w-full z-50 px-6 py-6 flex justify-between items-center transition-all duration-500" id="navbar">
+<div class="text-white text-2xl font-bold tracking-tighter uppercase">
+FAENA <span class="font-light tracking-[0.2em] ml-1">TULUM</span>
+</div>
+<div class="hidden lg:flex space-x-10 text-white text-[10px] uppercase tracking-[0.3em] font-medium">
+<a href="#vision" class="nav-link relative">Vision</a>
+<a href="#district" class="nav-link relative">The District</a>
+<a href="#residences" class="nav-link relative">Residences</a>
+<a href="#plans" class="nav-link relative">Floorplans</a>
+<a href="#contact" class="nav-link relative">Inquiry</a>
+</div>
+<div class="flex items-center space-x-6">
+<a href="https://wa.me/17864598797" target="_blank" class="hidden sm:block text-white text-[10px] uppercase tracking-widest border border-white/30 px-6 py-2 hover:bg-white hover:text-black transition">WhatsApp</a>
+<button class="text-white lg:hidden">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16"></path></svg>
+</button>
+</div>
+</nav>
+
+<!-- Hero Section -->
+<section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
+<div class="absolute inset-0">
+<img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover scale-110" alt="Faena Tulum Vision">
+<div class="absolute inset-0 hero-overlay"></div>
+</div>
+<div class="relative z-10 text-center px-4 max-w-5xl">
+<p class="text-white uppercase tracking-[0.6em] text-[10px] mb-6 reveal">A New Chapter, A New Dream</p>
+<h1 class="text-white text-7xl md:text-9xl font-light mb-8 reveal" style="transition-delay: 200ms;">
+FAENA <br> <span class="italic serif font-normal">Tulum</span>
+</h1>
+<div class="w-px h-24 bg-red mx-auto reveal" style="transition-delay: 400ms;"></div>
+</div>
+</section>
+
+<!-- Vision -->
+<section id="vision" class="py-32 px-6 text-center bg-white">
+<div class="max-w-4xl mx-auto reveal">
+<h2 class="text-red uppercase tracking-[0.4em] text-[12px] font-bold mb-10">The Vision</h2>
+<blockquote class="text-3xl md:text-5xl serif italic leading-tight text-gray-800 mb-12">
+"There are places of power and places of beauty, this is an ancient land that for centuries has guarded the healing energy for our common future."
+</blockquote>
+<p class="uppercase tracking-[0.3em] text-[11px] font-bold text-gray-500">— Alan Faena</p>
+</div>
+</section>
+
+<!-- Principles Grid -->
+<section class="grid grid-cols-1 md:grid-cols-3">
+<div class="bg-red text-white p-16 flex flex-col justify-center min-h-[400px] reveal">
+<h3 class="text-3xl serif italic mb-6">Human Connection</h3>
+<p class="text-sm font-light leading-loose opacity-80">Community as a foundation for a good life; Faena Tulum is a place that brings people together in collective effort and celebration.</p>
+</div>
+<div class="bg-black text-white p-16 flex flex-col justify-center min-h-[400px] reveal" style="transition-delay: 200ms;">
+<h3 class="text-3xl serif italic mb-6">Personal Wellbeing</h3>
+<p class="text-sm font-light leading-loose opacity-80">Discovery and growth are critical needs. Our relationship to nature filters out the noise so you can find perspective.</p>
+</div>
+<div class="bg-white text-black p-16 flex flex-col justify-center min-h-[400px] reveal" style="transition-delay: 400ms;">
+<h3 class="text-3xl serif italic mb-6">Responsibility</h3>
+<p class="text-sm font-light leading-loose opacity-60">Taking responsibility for our impact is non-negotiable. Respect for people, culture, and traditions is at our core.</p>
+</div>
+</section>
+
+<!-- The District / Masterplan -->
+<section id="district" class="py-32 px-6">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
+<div class="lg:w-1/2 reveal">
+<img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2070&auto=format&fit=crop" class="w-full h-[600px] object-cover shadow-2xl" alt="Architecture Brandon Haw">
+</div>
+<div class="lg:w-1/2 reveal">
+<h2 class="text-5xl serif italic mb-8">A Sense of <span class="text-red">Community</span></h2>
+<p class="text-gray-600 leading-relaxed mb-10 text-lg">
+Conceived by Alan Faena and designed by Brandon Haw Architecture, the masterplan generates an integrated community where residents thrive through nature, art, and music.
+</p>
+<div class="space-y-6">
+<div class="flex items-center space-x-4 group cursor-default">
+<div class="w-10 h-px bg-red transition-all group-hover:w-20"></div>
+<span class="uppercase tracking-widest text-[11px] font-bold">Faena Hotel</span>
+</div>
+<div class="flex items-center space-x-4 group cursor-default">
+<div class="w-10 h-px bg-red transition-all group-hover:w-20"></div>
+<span class="uppercase tracking-widest text-[11px] font-bold">Faena Residences</span>
+</div>
+<div class="flex items-center space-x-4 group cursor-default">
+<div class="w-10 h-px bg-red transition-all group-hover:w-20"></div>
+<span class="uppercase tracking-widest text-[11px] font-bold">Tierra Santa Healing House</span>
+</div>
+<div class="flex items-center space-x-4 group cursor-default">
+<div class="w-10 h-px bg-red transition-all group-hover:w-20"></div>
+<span class="uppercase tracking-widest text-[11px] font-bold">Faena Ocean Club</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Residences (Azulik Style Hybrid) -->
+<section id="residences" class="bg-zinc-900 text-white py-32 relative">
+<div class="max-w-7xl mx-auto px-6">
+<div class="flex flex-col md:flex-row justify-between items-end mb-20">
+<div class="reveal">
+<h2 class="text-5xl md:text-7xl serif italic mb-4">Tropical <span class="text-red">Living</span></h2>
+<p class="text-zinc-400 uppercase tracking-widest text-[10px]">147 Masterfully Crafted Residences</p>
+</div>
+<div class="md:w-1/3 mt-8 reveal">
+<p class="text-sm font-light leading-relaxed opacity-70 italic">"Redefining the art of tropical living... Raw concrete is softened with warm wood accents, ochre yellows, and dusty pinks."</p>
+</div>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="relative overflow-hidden group reveal">
+<img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop" class="w-full h-[500px] object-cover transition-transform duration-1000 group-hover:scale-110" alt="Faena Residence Interior">
+<div class="absolute inset-0 bg-red/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+</div>
+<div class="relative overflow-hidden group reveal" style="transition-delay: 200ms;">
+<img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?q=80&w=2071&auto=format&fit=crop" class="w-full h-[500px] object-cover transition-transform duration-1000 group-hover:scale-110" alt="Faena Residence Terrace">
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center p-12 text-center">
+<p class="text-xl serif italic leading-relaxed">"Interiors crafted from chukum, local polished plaster, intertwining the sacred and the vernacular."</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Floorplans Section -->
+<section id="plans" class="py-32 px-6 bg-[#f0ede6]">
+<div class="max-w-7xl mx-auto">
+<div class="text-center mb-20 reveal">
+<h2 class="text-5xl serif italic mb-4">Floorplans</h2>
+<div class="w-20 h-px bg-red mx-auto"></div>
+</div>
+
+<div class="flex flex-wrap justify-center gap-4 mb-16 reveal">
+<button onclick="switchTab('A')" class="tab-btn px-8 py-3 bg-white text-black text-[10px] uppercase tracking-widest font-bold border border-transparent hover:border-red transition active" data-tab="A">Type A</button>
+<button onclick="switchTab('B')" class="tab-btn px-8 py-3 bg-white text-black text-[10px] uppercase tracking-widest font-bold border border-transparent hover:border-red transition" data-tab="B">Type B</button>
+<button onclick="switchTab('C')" class="tab-btn px-8 py-3 bg-white text-black text-[10px] uppercase tracking-widest font-bold border border-transparent hover:border-red transition" data-tab="C">Type C</button>
+<button onclick="switchTab('D')" class="tab-btn px-8 py-3 bg-white text-black text-[10px] uppercase tracking-widest font-bold border border-transparent hover:border-red transition" data-tab="D">Type D</button>
+</div>
+
+<!-- Tab Contents -->
+<div id="tab-A" class="tab-content active reveal">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="lg:w-2/3 bg-white p-10 shadow-xl">
+<img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?q=80&w=1925&auto=format&fit=crop" class="w-full h-auto" alt="Floorplan A">
+</div>
+<div class="lg:w-1/3">
+<h4 class="text-3xl serif italic mb-6">Type A - Studio</h4>
+<ul class="space-y-4 text-sm mb-10">
+<li class="flex justify-between border-b border-gray-200 pb-2"><span>Interior Area</span> <span class="font-bold">70.30 m²</span></li>
+<li class="flex justify-between border-b border-gray-200 pb-2"><span>Terraces</span> <span class="font-bold">11.20 m²</span></li>
+<li class="flex justify-between border-b border-gray-200 pb-2 text-red"><span>Total Area</span> <span class="font-bold">81.50 m²</span></li>
+</ul>
+<p class="text-sm font-light leading-relaxed text-gray-500 mb-8">Refining the art of tropical living with open-plan layouts and luxury finishes.</p>
+<a href="https://wa.me/17864598797" class="block w-full text-center bg-red text-white py-4 uppercase tracking-[0.2em] text-[10px] font-bold hover:bg-black transition">Request Brochure</a>
+</div>
+</div>
+</div>
+
+<!-- Additional tabs (B, C, D) follow same structure -->
+<div id="tab-B" class="tab-content">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="lg:w-2/3 bg-white p-10 shadow-xl"><img src="https://images.unsplash.com/photo-1512918766775-d56aebb309f9?q=80&w=2070&auto=format&fit=crop" class="w-full h-auto"></div>
+<div class="lg:w-1/3">
+<h4 class="text-3xl serif italic mb-6">Type B - Groundfloor</h4>
+<ul class="space-y-4 text-sm mb-10">
+<li class="flex justify-between border-b border-gray-200 pb-2"><span>Bedrooms</span> <span class="font-bold">2</span></li>
+<li class="flex justify-between border-b border-gray-200 pb-2"><span>Interior Area</span> <span class="font-bold">95.24 m²</span></li>
+<li class="flex justify-between border-b border-gray-200 pb-2 text-red"><span>Total Area</span> <span class="font-bold">141.84 m²</span></li>
+</ul>
+<a href="https://wa.me/17864598797" class="block w-full text-center bg-red text-white py-4 uppercase tracking-[0.2em] text-[10px] font-bold hover:bg-black transition">Request Availability</a>
+</div>
+</div>
+</div>
+
+<div id="tab-C" class="tab-content">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="lg:w-2/3 bg-white p-10 shadow-xl"><img src="https://images.unsplash.com/photo-1449156001437-3a16d1daae39?q=80&w=2070&auto=format&fit=crop" class="w-full h-auto"></div>
+<div class="lg:w-1/3">
+<h4 class="text-3xl serif italic mb-6">Type C - Luxury Villa</h4>
+<ul class="space-y-4 text-sm mb-10">
+<li class="flex justify-between border-b border-gray-200 pb-2"><span>Bedrooms</span> <span class="font-bold">3</span></li>
+<li class="flex justify-between border-b border-gray-200 pb-2 text-red"><span>Total Area</span> <span class="font-bold">272.10 m²</span></li>
+</ul>
+<a href="https://wa.me/17864598797" class="block w-full text-center bg-red text-white py-4 uppercase tracking-[0.2em] text-[10px] font-bold hover:bg-black transition">Request Details</a>
+</div>
+</div>
+</div>
+
+<div id="tab-D" class="tab-content">
+<div class="flex flex-col lg:flex-row gap-16 items-center">
+<div class="lg:w-2/3 bg-white p-10 shadow-xl"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?q=80&w=1970&auto=format&fit=crop" class="w-full h-auto"></div>
+<div class="lg:w-1/3">
+<h4 class="text-3xl serif italic mb-6">Type D - Grand Residence</h4>
+<ul class="space-y-4 text-sm mb-10">
+<li class="flex justify-between border-b border-gray-200 pb-2"><span>Bedrooms</span> <span class="font-bold">3</span></li>
+<li class="flex justify-between border-b border-gray-200 pb-2 text-red"><span>Total Area</span> <span class="font-bold">391.81 m²</span></li>
+</ul>
+<a href="https://wa.me/17864598797" class="block w-full text-center bg-red text-white py-4 uppercase tracking-[0.2em] text-[10px] font-bold hover:bg-black transition">Full Inventory</a>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- Wellness Banner -->
+<section class="relative py-48 text-white overflow-hidden">
+<div class="absolute inset-0">
+<img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?q=80&w=2070&auto=format&fit=crop" class="w-full h-full object-cover" alt="Wellness">
+<div class="absolute inset-0 bg-red/30 mix-blend-multiply"></div>
+<div class="absolute inset-0 bg-black/40"></div>
+</div>
+<div class="relative z-10 text-center max-w-4xl mx-auto px-6 reveal">
+<h2 class="text-6xl serif italic mb-6">Tierra Santa</h2>
+<p class="uppercase tracking-widest text-xs mb-8">The Healing House</p>
+<p class="text-xl font-light italic opacity-90 leading-relaxed">"The axis on which the community turns, a potent vortex emanating a vibration of ease."</p>
+</div>
+</section>
+
+<!-- Contact / Inquiry -->
+<section id="contact" class="py-32 px-6 bg-white">
+<div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20">
+<div class="lg:w-1/2 reveal">
+<h2 class="text-6xl serif italic mb-10">Request <br> <span class="text-red">Information</span></h2>
+<div class="space-y-8">
+<div>
+<p class="uppercase tracking-widest text-[10px] font-bold text-gray-400 mb-2">WhatsApp / Phone</p>
+<a href="tel:+17864598797" class="text-2xl hover:text-red transition">+1 786 459 8797</a>
+</div>
+<div>
+<p class="uppercase tracking-widest text-[10px] font-bold text-gray-400 mb-2">Email Address</p>
+<a href="mailto:info@globalmix.online" class="text-2xl hover:text-red transition">info@globalmix.online</a>
+</div>
+<div>
+<p class="uppercase tracking-widest text-[10px] font-bold text-gray-400 mb-2">Official Website</p>
+<a href="http://faenatulum.com" target="_blank" class="text-2xl hover:text-red transition">faenatulum.com</a>
+</div>
+</div>
+</div>
+<div class="lg:w-1/2 bg-gray-50 p-12 reveal" style="transition-delay: 200ms;">
+<form onsubmit="event.preventDefault(); document.getElementById('success').classList.remove('hidden');" class="space-y-8">
+<div class="border-b border-gray-300">
+<label class="block text-[10px] uppercase tracking-widest font-bold mb-2">Full Name</label>
+<input type="text" placeholder="Your Name" class="w-full bg-transparent py-2 outline-none" required>
+</div>
+<div class="border-b border-gray-300">
+<label class="block text-[10px] uppercase tracking-widest font-bold mb-2">Email Address</label>
+<input type="email" placeholder="email@domain.com" class="w-full bg-transparent py-2 outline-none" required>
+</div>
+<div class="border-b border-gray-300">
+<label class="block text-[10px] uppercase tracking-widest font-bold mb-2">Message</label>
+<textarea rows="3" placeholder="I'm interested in..." class="w-full bg-transparent py-2 outline-none"></textarea>
+</div>
+<button class="bg-red text-white w-full py-5 uppercase tracking-[0.3em] text-[11px] font-bold hover:bg-black transition">Submit Inquiry</button>
+<p id="success" class="hidden text-green-600 text-[11px] font-bold uppercase text-center mt-4">Message sent successfully.</p>
+</form>
+</div>
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-black text-white py-20 px-6 border-t border-white/10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.4em] opacity-40">
+<div class="mb-6 md:mb-0">© 2024 Faena District Tulum | Global Mix</div>
+<div class="flex space-x-12">
+<a href="#" class="hover:text-red">Privacy</a>
+<a href="#" class="hover:text-red">Terms</a>
+<a href="#" class="hover:text-red">Disclaimer</a>
+</div>
+</div>
+</footer>
+
+<script>
+// Reveal elements on scroll
+const revealElements = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('active');
+}
+});
+}, { threshold: 0.15 });
+
+revealElements.forEach(el => observer.observe(el));
+
+// Navbar change on scroll
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+if (window.scrollY > 100) {
+navbar.classList.add('bg-black', 'py-4');
+navbar.classList.remove('py-6');
+} else {
+navbar.classList.remove('bg-black', 'py-4');
+navbar.classList.add('py-6');
+}
+});
+
+// Floorplan tabs
+function switchTab(tabId) {
+// Update buttons
+document.querySelectorAll('.tab-btn').forEach(btn => {
+btn.classList.remove('bg-red', 'text-white', 'border-red');
+btn.classList.add('bg-white', 'text-black', 'border-transparent');
+if(btn.dataset.tab === tabId) {
+btn.classList.add('bg-red', 'text-white', 'border-red');
+btn.classList.remove('bg-white', 'text-black', 'border-transparent');
+}
+});
+// Update content
+document.querySelectorAll('.tab-content').forEach(content => {
+content.classList.remove('active');
+});
+document.getElementById('tab-' + tabId).classList.add('active');
+}
+
+// Initialize first tab
+switchTab('A');
+</script>
+</body>
+</html>
