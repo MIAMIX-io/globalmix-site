@@ -62,14 +62,12 @@ transform: scale(1.1);
 </head>
 <body>
 
-<!-- WhatsApp Floating Button -->
 <a href="https://wa.me/17864598797" target="_blank" class="whatsapp-btn" title="Contact us via WhatsApp">
 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 16 16">
 <path d="M13.601 2.326A7.854 7.854 0 0 0 7.994 0C3.627 0 .068 3.558.064 7.926c0 1.399.366 2.76 1.057 3.965L0 16l4.204-1.102a7.933 7.933 0 0 0 3.79.965h.004c4.368 0 7.926-3.558 7.93-7.93A7.898 7.898 0 0 0 13.6 2.326zM7.994 14.521a6.573 6.573 0 0 1-3.356-.92l-.24-.144-2.494.654.666-2.433-.156-.251a6.56 6.56 0 0 1-1.007-3.505c0-3.626 2.957-6.584 6.591-6.584a6.56 6.56 0 0 1 4.66 1.931 6.557 6.557 0 0 1 1.928 4.66c-.004 3.639-2.961 6.592-6.592 6.592zm3.615-4.934c-.197-.099-1.17-.578-1.353-.646-.182-.065-.315-.099-.445.099-.133.197-.513.646-.627.775-.114.133-.232.148-.43.05-.197-.1-.836-.308-1.592-.985-.59-.525-.985-1.175-1.103-1.372-.114-.198-.011-.304.088-.403.087-.088.197-.232.296-.346.1-.114.133-.198.198-.33.065-.134.034-.248-.015-.347-.05-.099-.445-1.076-.612-1.47-.16-.389-.323-.335-.445-.34-.114-.007-.247-.007-.38-.007a.729.729 0 0 0-.529.247c-.182.198-.691.677-.691 1.654 0 .977.71 1.916.81 2.049.098.133 1.394 2.132 3.383 2.992.47.205.84.326 1.129.418.475.152.904.129 1.246.08.38-.058 1.171-.48 1.338-.943.164-.464.164-.86.114-.943-.049-.084-.182-.133-.38-.232z"/>
 </svg>
 </a>
 
-<!-- Header / Nav -->
 <header class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
 <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
 <div class="text-2xl font-bold tracking-tighter serif uppercase tracking-widest">AZVLIK</div>
@@ -90,10 +88,9 @@ transform: scale(1.1);
 </nav>
 </header>
 
-<!-- Hero Section -->
 <section class="relative h-screen flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0 z-0">
-<img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&q=80&w=2000" alt="Tulum Jungle Architecture" class="w-full h-full object-cover">
+<img src="https://img-v2.gtsstatic.net/reno/imagereader.aspx?url=https%3A%2F%2Fm.sothebysrealty.com%2F1103i215%2F1h1mgwpyxwqr4vtmmzs1g0b6e5i215&w=3840&q=75&option=N&permitphotoenlargement=false" alt="Tulum Jungle Architecture" class="w-full h-full object-cover">
 <div class="absolute inset-0 bg-white/30"></div>
 </div>
 <div class="relative z-10 text-center px-4">
@@ -110,7 +107,6 @@ A mystical encounter between modernity and the ancestral legacy of the Mayan jun
 </div>
 </section>
 
-<!-- Philosophy -->
 <section id="philosophy" class="py-24 bg-white">
 <div class="container mx-auto px-6">
 <div class="flex flex-col md:flex-row items-center gap-12">
@@ -133,14 +129,12 @@ A mystical encounter between modernity and the ancestral legacy of the Mayan jun
 </div>
 </section>
 
-<!-- Global Mix Banner -->
 <section class="py-12 bg-organic border-y border-gray-100">
 <div class="container mx-auto px-6 text-center">
 <p class="text-[10px] uppercase tracking-[0.8em] text-gray-400 font-bold">Exclusively Represented by Global Mix</p>
 </div>
 </section>
 
-<!-- Specs Section -->
 <section id="project" class="py-24 bg-white">
 <div class="container mx-auto px-6">
 <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left mb-20">
@@ -177,7 +171,6 @@ A mystical encounter between modernity and the ancestral legacy of the Mayan jun
 </div>
 </section>
 
-<!-- Amenities & Experience -->
 <section id="amenities" class="py-24 bg-organic">
 <div class="container mx-auto px-6">
 <div class="text-center mb-16 fade-in">
@@ -205,7 +198,6 @@ A mystical encounter between modernity and the ancestral legacy of the Mayan jun
 </div>
 </section>
 
-<!-- Contact & Info -->
 <footer id="contact" class="py-24 bg-white text-black border-t border-gray-100">
 <div class="container mx-auto px-6">
 <div class="grid grid-cols-1 lg:grid-cols-2 gap-20">
@@ -227,13 +219,19 @@ A mystical encounter between modernity and the ancestral legacy of the Mayan jun
 </div>
 </div>
 
-<div class="bg-organic p-10 space-y-6 rounded-sm">
-<p class="text-xs uppercase tracking-widest font-bold mb-4">Request Brochure & Price List</p>
-<input type="text" placeholder="NAME" class="w-full bg-transparent border-b border-black py-4 text-xs tracking-widest focus:outline-none">
-<input type="email" placeholder="EMAIL" class="w-full bg-transparent border-b border-black py-4 text-xs tracking-widest focus:outline-none">
-<textarea placeholder="MESSAGE" rows="3" class="w-full bg-transparent border-b border-black py-4 text-xs tracking-widest focus:outline-none"></textarea>
-<button class="w-full bg-black text-white py-5 text-xs tracking-[0.3em] font-bold hover:bg-gray-800 transition uppercase mt-4">Send Inquiry</button>
-</div>
+<form id="inquiryForm" class="bg-organic p-10 space-y-6 rounded-sm" action="https://script.google.com/macros/s/AKfycbxtgSIZ2nCd8J4QUlxDRkMDo1AUVh7_cgCCVgFoWLTLE5g2enSSneP2SB9TRK4PssgK/exec" method="POST">
+  <p class="text-xs uppercase tracking-widest font-bold mb-4">Request Brochure & Price List</p>
+  
+  <input type="hidden" name="send_to" value="info@globalmix.online">
+  
+  <input type="text" name="name" placeholder="NAME" required class="w-full bg-transparent border-b border-black py-4 text-xs tracking-widest focus:outline-none">
+  <input type="email" name="email" placeholder="EMAIL" required class="w-full bg-transparent border-b border-black py-4 text-xs tracking-widest focus:outline-none">
+  <textarea name="message" placeholder="MESSAGE" rows="3" required class="w-full bg-transparent border-b border-black py-4 text-xs tracking-widest focus:outline-none"></textarea>
+  
+  <button type="submit" id="submitBtn" class="w-full bg-black text-white py-5 text-xs tracking-[0.3em] font-bold hover:bg-gray-800 transition uppercase mt-4">Send Inquiry</button>
+  
+  <div id="formStatus" class="hidden text-xs text-center mt-4 uppercase tracking-widest font-bold"></div>
+</form>
 </div>
 
 <div class="mt-24 pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center text-[10px] tracking-widest text-gray-400 font-bold uppercase">
@@ -280,6 +278,40 @@ header.classList.remove('py-4', 'bg-white/80');
 header.classList.add('py-4', 'bg-white/80');
 header.classList.remove('py-2', 'bg-white/95');
 }
+});
+
+// Form Submission Handler
+const form = document.getElementById('inquiryForm');
+const formStatus = document.getElementById('formStatus');
+const submitBtn = document.getElementById('submitBtn');
+
+form.addEventListener('submit', e => {
+  e.preventDefault(); // Prevents the page from redirecting
+  
+  // Update UI to show sending state
+  submitBtn.textContent = 'SENDING...';
+  submitBtn.classList.add('opacity-50', 'cursor-not-allowed');
+  formStatus.classList.add('hidden');
+  
+  fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+  })
+  .then(response => {
+      // Success state
+      formStatus.textContent = 'Message sent successfully!';
+      formStatus.className = 'text-xs text-center mt-4 uppercase tracking-widest font-bold text-green-600 block';
+      submitBtn.textContent = 'SEND INQUIRY';
+      submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+      form.reset();
+  })
+  .catch(error => {
+      // Error state
+      formStatus.textContent = 'Error sending message. Please try again.';
+      formStatus.className = 'text-xs text-center mt-4 uppercase tracking-widest font-bold text-red-600 block';
+      submitBtn.textContent = 'SEND INQUIRY';
+      submitBtn.classList.remove('opacity-50', 'cursor-not-allowed');
+  });
 });
 </script>
 </body>
