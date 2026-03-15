@@ -72,7 +72,6 @@ to { opacity: 1; transform: scale(1); }
 </head>
 <body class="overflow-x-hidden">
 
-<!-- Navbar -->
 <nav class="fixed w-full z-50 px-6 py-6 flex justify-between items-center transition-all duration-500" id="navbar">
 <div class="text-white text-2xl font-bold tracking-tighter uppercase">
 FAENA <span class="font-light tracking-[0.2em] ml-1">TULUM</span>
@@ -92,7 +91,6 @@ FAENA <span class="font-light tracking-[0.2em] ml-1">TULUM</span>
 </div>
 </nav>
 
-<!-- Hero Section -->
 <section class="relative h-screen w-full flex items-center justify-center overflow-hidden">
 <div class="absolute inset-0">
 <img src="https://www.inmobilia.mx/hubfs/FAENA%20Desktop_Imagen%208.jpg" class="w-full h-full object-cover scale-110" alt="Faena Tulum Vision">
@@ -107,7 +105,6 @@ FAENA <br> <span class="italic serif font-normal">Tulum</span>
 </div>
 </section>
 
-<!-- Vision -->
 <section id="vision" class="py-32 px-6 text-center bg-white">
 <div class="max-w-4xl mx-auto reveal">
 <h2 class="text-red uppercase tracking-[0.4em] text-[12px] font-bold mb-10">The Vision</h2>
@@ -118,7 +115,6 @@ FAENA <br> <span class="italic serif font-normal">Tulum</span>
 </div>
 </section>
 
-<!-- Principles Grid -->
 <section class="grid grid-cols-1 md:grid-cols-3">
 <div class="bg-red text-white p-16 flex flex-col justify-center min-h-[400px] reveal">
 <h3 class="text-3xl serif italic mb-6">Human Connection</h3>
@@ -134,7 +130,6 @@ FAENA <br> <span class="italic serif font-normal">Tulum</span>
 </div>
 </section>
 
-<!-- The District / Masterplan -->
 <section id="district" class="py-32 px-6">
 <div class="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-20">
 <div class="lg:w-1/2 reveal">
@@ -167,7 +162,6 @@ Conceived by Alan Faena and designed by Brandon Haw Architecture, the masterplan
 </div>
 </section>
 
-<!-- Residences (Azulik Style Hybrid) -->
 <section id="residences" class="bg-zinc-900 text-white py-32 relative">
 <div class="max-w-7xl mx-auto px-6">
 <div class="flex flex-col md:flex-row justify-between items-end mb-20">
@@ -195,7 +189,6 @@ Conceived by Alan Faena and designed by Brandon Haw Architecture, the masterplan
 </div>
 </section>
 
-<!-- Floorplans Section -->
 <section id="plans" class="py-32 px-6 bg-[#f0ede6]">
 <div class="max-w-7xl mx-auto">
 <div class="text-center mb-20 reveal">
@@ -210,7 +203,6 @@ Conceived by Alan Faena and designed by Brandon Haw Architecture, the masterplan
 <button onclick="switchTab('D')" class="tab-btn px-8 py-3 bg-white text-black text-[10px] uppercase tracking-widest font-bold border border-transparent hover:border-red transition" data-tab="D">Type D</button>
 </div>
 
-<!-- Tab Contents -->
 <div id="tab-A" class="tab-content active reveal">
 <div class="flex flex-col lg:flex-row gap-16 items-center">
 <div class="lg:w-2/3 bg-white p-10 shadow-xl">
@@ -229,7 +221,6 @@ Conceived by Alan Faena and designed by Brandon Haw Architecture, the masterplan
 </div>
 </div>
 
-<!-- Additional tabs (B, C, D) follow same structure -->
 <div id="tab-B" class="tab-content">
 <div class="flex flex-col lg:flex-row gap-16 items-center">
 <div class="lg:w-2/3 bg-white p-10 shadow-xl"><img src="https://www.cozumel-real-estate.com/wp-content/uploads/2025/08/faena-tulum-plan-b-768x1138.jpg" class="w-full h-auto"></div>
@@ -275,7 +266,6 @@ Conceived by Alan Faena and designed by Brandon Haw Architecture, the masterplan
 </div>
 </section>
 
-<!-- Wellness Banner -->
 <section class="relative py-48 text-white overflow-hidden">
 <div class="absolute inset-0">
 <img src="https://www.faena.com/sites/default/files/styles/hero/public/2025-05/FAE-Faena-Journal-Where%20The%20Jungle%20Meets%20The%20Sea.jpg?h=584c0835&itok=ltijPiud" class="w-full h-full object-cover" alt="Wellness">
@@ -289,7 +279,6 @@ Conceived by Alan Faena and designed by Brandon Haw Architecture, the masterplan
 </div>
 </section>
 
-<!-- Contact / Inquiry -->
 <section id="contact" class="py-32 px-6 bg-white">
 <div class="max-w-7xl mx-auto flex flex-col lg:flex-row gap-20">
 <div class="lg:w-1/2 reveal">
@@ -310,27 +299,27 @@ Conceived by Alan Faena and designed by Brandon Haw Architecture, the masterplan
 </div>
 </div>
 <div class="lg:w-1/2 bg-gray-50 p-12 reveal" style="transition-delay: 200ms;">
-<form onsubmit="event.preventDefault(); document.getElementById('success').classList.remove('hidden');" class="space-y-8">
+<form id="inquiryForm" class="space-y-8">
 <div class="border-b border-gray-300">
 <label class="block text-[10px] uppercase tracking-widest font-bold mb-2">Full Name</label>
-<input type="text" placeholder="Your Name" class="w-full bg-transparent py-2 outline-none" required>
+<input type="text" name="name" placeholder="Your Name" class="w-full bg-transparent py-2 outline-none" required>
 </div>
 <div class="border-b border-gray-300">
 <label class="block text-[10px] uppercase tracking-widest font-bold mb-2">Email Address</label>
-<input type="email" placeholder="email@domain.com" class="w-full bg-transparent py-2 outline-none" required>
+<input type="email" name="email" placeholder="email@domain.com" class="w-full bg-transparent py-2 outline-none" required>
 </div>
 <div class="border-b border-gray-300">
 <label class="block text-[10px] uppercase tracking-widest font-bold mb-2">Message</label>
-<textarea rows="3" placeholder="I'm interested in..." class="w-full bg-transparent py-2 outline-none"></textarea>
+<textarea name="message" rows="3" placeholder="I'm interested in..." class="w-full bg-transparent py-2 outline-none"></textarea>
 </div>
-<button class="bg-red text-white w-full py-5 uppercase tracking-[0.3em] text-[11px] font-bold hover:bg-black transition">Submit Inquiry</button>
+<button type="submit" id="submitBtn" class="bg-red text-white w-full py-5 uppercase tracking-[0.3em] text-[11px] font-bold hover:bg-black transition">Submit Inquiry</button>
 <p id="success" class="hidden text-green-600 text-[11px] font-bold uppercase text-center mt-4">Message sent successfully.</p>
+<p id="error" class="hidden text-red-600 text-[11px] font-bold uppercase text-center mt-4">Error sending message. Please try again.</p>
 </form>
 </div>
 </div>
 </section>
 
-<!-- Footer -->
 <footer class="bg-black text-white py-20 px-6 border-t border-white/10">
 <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center text-[10px] uppercase tracking-[0.4em] opacity-40">
 <div class="mb-6 md:mb-0">© 2024 Faena District Tulum | Global Mix</div>
@@ -387,6 +376,34 @@ document.getElementById('tab-' + tabId).classList.add('active');
 
 // Initialize first tab
 switchTab('A');
+
+// Google Apps Script Form Submission Handler
+const form = document.getElementById('inquiryForm');
+form.addEventListener('submit', e => {
+  e.preventDefault();
+  const submitBtn = document.getElementById('submitBtn');
+  submitBtn.textContent = 'Sending...';
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycby468UjLYL5gemMTQmPHaiv5RU7CQamMMKVKfcbHo-pc2WzSpwP86-w6tVmzf2IUR-l/exec';
+
+  fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+    .then(response => {
+      document.getElementById('success').classList.remove('hidden');
+      document.getElementById('error').classList.add('hidden');
+      form.reset();
+      submitBtn.textContent = 'Submit Inquiry';
+      // Hide success message after 5 seconds
+      setTimeout(() => {
+        document.getElementById('success').classList.add('hidden');
+      }, 5000);
+    })
+    .catch(error => {
+      console.error('Error!', error.message);
+      document.getElementById('error').classList.remove('hidden');
+      document.getElementById('success').classList.add('hidden');
+      submitBtn.textContent = 'Submit Inquiry';
+    });
+});
 </script>
 </body>
 </html>
