@@ -1,0 +1,9 @@
+{
+  "name": "global-mix-builder",
+  "version": "1.0.0",
+  "description": "Dynamic SSG for Global Mix Travel",
+  "main": "build.js",
+  "dependencies": {
+    "@notionhq/client": "^2.2.14"
+  }
+}
