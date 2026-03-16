@@ -1,0 +1,466 @@
+import React, { useState, useEffect } from 'react';
+import {
+Compass, MapPin, Ship, Sun, Mountain, Utensils,
+Menu, X, ChevronRight, Mail, Phone, Globe,
+Clock, Bed, Star, Camera, ChevronDown, MessageCircle,
+Wind, Tent, Waves, Sparkles, Building
+} from 'lucide-react';
+
+const App = () => {
+const [isMenuOpen, setIsMenuOpen] = useState(false);
+const [scrolled, setScrolled] = useState(false);
+const [activeCategory, setActiveCategory] = useState('All');
+
+const contactData = {
+phone: "+1 786 459 8797",
+whatsapp: "17864598797",
+email: "Info@globalmix.online"
+};
+
+useEffect(() => {
+const handleScroll = () => {
+setScrolled(window.scrollY > 50);
+};
+window.addEventListener('scroll', handleScroll);
+return () => window.removeEventListener('scroll', handleScroll);
+}, []);
+
+const asiaJourneys = [
+{
+id: 1,
+title: "Imperial & Modern Japan",
+duration: "9–10 Days",
+countries: "Japan",
+route: "Tokyo → Hakone → Kyoto → Osaka",
+experiences: [
+"Private dinner with a Geisha in Kyoto",
+"Traditional Ryokan stay with private Onsen in Hakone",
+"Guided gastronomic tour with a master chef in Tokyo",
+"First-class Shinkansen (Bullet Train) travel",
+"Sunrise Zen meditation at a historic temple"
+],
+hotels: ["Aman Tokyo", "Gora Kadan Hakone", "The Ritz-Carlton Kyoto"],
+image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=1200",
+category: "East Asia"
+},
+{
+id: 2,
+title: "Elegant Thailand",
+duration: "9 Days",
+countries: "Thailand",
+route: "Bangkok → Chiang Mai → Phuket",
+experiences: [
+"Private sunset cruise on the Chao Phraya River",
+"Visit to an ethical elephant sanctuary in the jungle",
+"Ultra-luxury private villas overlooking the Andaman Sea",
+"Traditional Thai cooking masterclass with a local expert"
+],
+hotels: ["Mandarin Oriental Bangkok", "Four Seasons Resort Chiang Mai", "Amanpuri Phuket"],
+image: "https://images.unsplash.com/photo-1528181304800-2f140819ad1c?auto=format&fit=crop&q=80&w=1200",
+category: "Southeast Asia"
+},
+{
+id: 3,
+title: "Bali & Spiritual Indonesia",
+duration: "8 Days",
+countries: "Indonesia",
+route: "Bali → Ubud → Nusa Dua",
+experiences: [
+"Purification ritual at a sacred Balinese temple",
+"Signature luxury spa treatments in the heart of the jungle",
+"Private candlelit dinner amidst emerald rice paddies",
+"Artisanal workshop with local woodcarvers"
+],
+hotels: ["Four Seasons Resort Bali at Sayan", "St. Regis Bali Resort"],
+image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=1200",
+category: "Tropical"
+},
+{
+id: 4,
+title: "Vietnam & Halong Bay",
+duration: "9 Days",
+countries: "Vietnam",
+route: "Hanoi → Ha Long Bay → Hoi An",
+experiences: [
+"Private boutique cruise through the limestone karsts of Halong Bay",
+"Private Vietnamese culinary workshop in Hoi An",
+"In-depth historical tour of Hanoi with a specialized historian",
+"Vespa tour through the hidden alleys of the Old Quarter"
+],
+hotels: ["Sofitel Legend Metropole Hanoi", "Four Seasons Resort The Nam Hai"],
+image: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=1200",
+category: "Southeast Asia"
+},
+{
+id: 5,
+title: "Majestic India",
+duration: "10 Days",
+countries: "India",
+route: "Delhi → Agra → Jaipur → Udaipur",
+experiences: [
+"Sunrise private viewing of the Taj Mahal",
+"Royal stays in heritage palaces converted into luxury hotels",
+"Wildlife safari in the deserts of Rajasthan",
+"Private astrology reading and blessing in Jaipur"
+],
+hotels: ["The Oberoi Amarvilas Agra", "Taj Lake Palace Udaipur"],
+image: "https://images.unsplash.com/photo-1524492707947-2f85a1a03975?auto=format&fit=crop&q=80&w=1200",
+category: "South Asia"
+},
+{
+id: 6,
+title: "Sophisticated Singapore & Malaysia",
+duration: "7 Days",
+countries: "Singapore & Malaysia",
+route: "Singapore → Kuala Lumpur → Langkawi",
+experiences: [
+"Gourmet private dining with Singapore's skyline views",
+"Helicopter flight over Kuala Lumpur and the Petronas Towers",
+"Tropical beachfront retreat in a UNESCO Geopark",
+"Private mixology session at a hidden speakeasy"
+],
+hotels: ["Raffles Singapore", "The Datai Langkawi"],
+image: "https://images.unsplash.com/photo-1525625232747-074857a744b7?auto=format&fit=crop&q=80&w=1200",
+category: "Southeast Asia"
+},
+{
+id: 7,
+title: "Imperial China",
+duration: "9 Days",
+countries: "China",
+route: "Beijing → Xi’an → Shanghai",
+experiences: [
+"Private sunrise breakfast on the Great Wall of China",
+"Behind-the-scenes access to Terracotta Warriors with an archaeologist",
+"High-end fine dining experience in Shanghai’s Bund",
+"Traditional tea ceremony in a private Ming garden"
+],
+hotels: ["Peninsula Beijing", "The Peninsula Shanghai"],
+image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&q=80&w=1200",
+category: "East Asia"
+},
+{
+id: 8,
+title: "Contemporary South Korea",
+duration: "7 Days",
+countries: "South Korea",
+route: "Seoul → Gyeongju → Busan",
+experiences: [
+"Traditional Korean tea ceremony and calligraphy class",
+"Premium Korean head spa and skin treatments",
+"Signature dining experiences with Michelin-starred chefs",
+"Private exploration of the Gyeongju historic sites"
+],
+hotels: ["Signiel Seoul", "The Shilla Seoul"],
+image: "https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&q=80&w=1200",
+category: "East Asia"
+},
+{
+id: 9,
+title: "Exclusive Maldives",
+duration: "6–7 Days",
+countries: "Maldives",
+route: "Malé → Private Atolls",
+experiences: [
+"Ultra-exclusive overwater villas with private slides",
+"Guided diving in protected coral reefs and bioluminescent bays",
+"Private underwater dinner surrounded by marine life",
+"Castaway sandbank lunch with private butler service"
+],
+hotels: ["Soneva Jani", "Cheval Blanc Randheli"],
+image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&q=80&w=1200",
+category: "Tropical"
+}
+];
+
+const categories = ["All", "East Asia", "Southeast Asia", "South Asia", "Tropical"];
+
+return (
+<div className="min-h-screen bg-[#FDFBF7] text-[#1A1A1A] font-serif selection:bg-[#AF8B58] selection:text-white">
+{/* WhatsApp Floating Button */}
+<a
+href={`https://wa.me/${contactData.whatsapp}`}
+target="_blank"
+rel="noopener noreferrer"
+className="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center gap-2 group"
+>
+<span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap text-sm font-sans font-bold uppercase tracking-widest pl-0 group-hover:pl-2">
+Contact VIP
+</span>
+<MessageCircle size={24} />
+</a>
+
+{/* Navigation */}
+<nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#0F172A]/95 backdrop-blur-md shadow-2xl py-4' : 'bg-transparent py-8'}`}>
+<div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+<div className="flex items-center gap-3">
+<Globe className="w-8 h-8 text-[#AF8B58]" />
+<div className="flex flex-col">
+<span className="text-xl font-bold tracking-tighter leading-none text-white font-sans uppercase">Global Mix</span>
+<span className="text-[10px] tracking-[0.4em] font-medium text-[#AF8B58] font-sans">Travel Asia</span>
+</div>
+</div>
+
+<div className="hidden lg:flex items-center gap-10">
+{['Itineraries', 'Experiences', 'Contact'].map((item) => (
+<a key={item} href="#" className="text-[10px] font-bold tracking-[0.3em] uppercase text-white hover:text-[#AF8B58] transition-colors font-sans">
+{item}
+</a>
+))}
+<div className="flex items-center gap-4 ml-4">
+<a href={`tel:${contactData.phone}`} className="text-white hover:text-[#AF8B58] transition-colors">
+<Phone size={18} />
+</a>
+<button className="bg-[#AF8B58] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#0F172A] transition-all transform hover:scale-105 font-sans">
+ENQUIRE NOW
+</button>
+</div>
+</div>
+
+<button className="lg:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+{isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+</button>
+</div>
+
+{/* Mobile Menu */}
+{isMenuOpen && (
+<div className="absolute top-full left-0 w-full bg-[#0F172A] border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden animate-in slide-in-from-top">
+<a href="#" className="text-white text-sm font-bold tracking-widest uppercase font-sans">Itineraries</a>
+<a href="#" className="text-white text-sm font-bold tracking-widest uppercase font-sans">Experiences</a>
+<a href={`mailto:${contactData.email}`} className="text-white text-sm font-bold tracking-widest uppercase font-sans">Email Us</a>
+<button className="bg-[#AF8B58] text-white py-4 font-bold tracking-widest uppercase font-sans">Plan Journey</button>
+</div>
+)}
+</nav>
+
+{/* Hero Section */}
+<section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
+<div className="absolute inset-0 z-0">
+<img
+src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=2000"
+className="w-full h-full object-cover scale-105"
+alt="Asian Temple"
+/>
+<div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/60 via-transparent to-[#0F172A]/90" />
+</div>
+
+<div className="relative z-10 text-center px-6 max-w-5xl">
+<span className="inline-block mb-6 text-[#AF8B58] tracking-[0.6em] text-xs font-bold uppercase animate-fade-in font-sans">
+Ultra-Luxury Expeditions in Asia
+</span>
+<h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
+Grand Journeys <br /><span className="italic text-[#AF8B58]">of Asia</span>
+</h1>
+<p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-12 font-light font-sans">
+A masterwork collection of journeys where thousand-year-old traditions meet the sophisticated pulse of the future.
+</p>
+<div className="flex flex-col sm:flex-row gap-6 justify-center">
+<button className="bg-white text-[#0F172A] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#AF8B58] hover:text-white transition-all shadow-2xl font-sans">
+Explore Collection
+</button>
+</div>
+</div>
+</section>
+
+{/* Philosophy */}
+<section className="py-24 px-6 bg-white border-b border-black/5">
+<div className="max-w-4xl mx-auto text-center">
+<h2 className="text-xs font-bold tracking-[0.5em] text-[#AF8B58] uppercase mb-10 font-sans">The Zen of Travel</h2>
+<p className="text-3xl md:text-4xl text-[#0F172A] leading-tight mb-8">
+"We bridge the gap between ancient spirits and modern luxuries, crafting narratives that resonate deep within the soul."
+</p>
+<div className="w-20 h-1 bg-[#AF8B58] mx-auto"></div>
+</div>
+</section>
+
+{/* Itineraries Grid */}
+<section className="py-20 px-6">
+<div className="max-w-7xl mx-auto">
+<div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
+<div>
+<h3 className="text-xs font-bold tracking-[0.4em] text-[#AF8B58] uppercase mb-4 font-sans">2025 / 2026 Asia Collection</h3>
+<h4 className="text-4xl md:text-5xl text-[#0F172A]">Signature Routes</h4>
+</div>
+<div className="flex gap-4 overflow-x-auto pb-4 w-full md:w-auto scrollbar-hide">
+{categories.map(cat => (
+<button
+key={cat}
+onClick={() => setActiveCategory(cat)}
+className={`px-6 py-2 text-[10px] font-bold tracking-widest uppercase transition-all whitespace-nowrap font-sans border ${activeCategory === cat ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-transparent text-gray-400 border-black/10 hover:border-[#AF8B58]'}`}
+>
+{cat}
+</button>
+))}
+</div>
+</div>
+
+<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+{asiaJourneys
+.filter(j => activeCategory === 'All' || j.category === activeCategory)
+.map((journey) => (
+<div key={journey.id} className="group flex flex-col h-full bg-white border border-black/5 hover:border-[#AF8B58]/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
+<div className="relative h-80 overflow-hidden">
+<img
+src={journey.image}
+alt={journey.title}
+className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0"
+/>
+<div className="absolute top-6 left-6 flex flex-col gap-2">
+<span className="bg-[#AF8B58] text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-sans">
+{journey.duration}
+</span>
+</div>
+<div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-[#0F172A] to-transparent">
+<div className="flex items-center gap-2 text-[#AF8B58] mb-2">
+<MapPin size={14} />
+<span className="text-[10px] font-bold tracking-widest uppercase font-sans">{journey.countries}</span>
+</div>
+<h5 className="text-2xl text-white leading-tight">{journey.title}</h5>
+</div>
+</div>
+
+<div className="p-8 flex flex-col flex-grow">
+<div className="mb-6">
+<p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans">Selected Itinerary</p>
+<p className="text-sm text-[#0F172A] italic font-medium">{journey.route}</p>
+</div>
+
+<div className="space-y-4 mb-8">
+<p className="text-[10px] font-bold text-[#AF8B58] uppercase tracking-widest font-sans flex items-center gap-2">
+<Sparkles size={12} fill="currentColor" /> Luxe Experiences
+</p>
+<ul className="grid grid-cols-1 gap-2">
+{journey.experiences.map((exp, i) => (
+<li key={i} className="text-xs text-gray-500 flex items-start gap-2 leading-snug font-sans">
+<span className="w-1 h-1 bg-[#AF8B58] rounded-full mt-1.5 shrink-0" />
+{exp}
+</li>
+))}
+</ul>
+</div>
+
+<div className="mt-auto pt-6 border-t border-black/5">
+<p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans flex items-center gap-2">
+<Bed size={12} /> Featured Accommodations
+</p>
+<div className="flex flex-wrap gap-2">
+{journey.hotels.map((h, i) => (
+<span key={i} className="text-[9px] font-bold text-[#0F172A] bg-[#FDFBF7] px-2 py-1 uppercase tracking-tighter">
+{h}
+</span>
+))}
+</div>
+</div>
+
+<button className="mt-8 group-hover:bg-[#0F172A] group-hover:text-white border border-[#0F172A] text-[#0F172A] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans">
+Request Itinerary <ChevronRight size={14} />
+</button>
+</div>
+</div>
+))}
+</div>
+</div>
+</section>
+
+{/* Specialty Section */}
+<section className="py-32 bg-[#0F172A] text-white overflow-hidden">
+<div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+<div className="relative">
+<div className="aspect-[4/5] overflow-hidden">
+<img
+src="https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&q=80&w=1200"
+className="w-full h-full object-cover grayscale opacity-50"
+alt="Asia Expert"
+/>
+</div>
+<div className="absolute -bottom-10 -right-10 bg-[#AF8B58] p-12 hidden md:block">
+<p className="text-4xl italic leading-tight">Asia <br />Specialized <br />Concierge</p>
+</div>
+</div>
+<div>
+<h3 className="text-xs font-bold tracking-[0.5em] text-[#AF8B58] uppercase mb-8 font-sans">UNPARALLELED ACCESS</h3>
+<h4 className="text-5xl md:text-6xl mb-10 leading-none">The Silk Road Reimagined.</h4>
+<div className="space-y-12">
+<div className="flex gap-6">
+<div className="shrink-0 w-12 h-12 rounded-full border border-[#AF8B58] flex items-center justify-center text-[#AF8B58]">
+<Compass size={24} />
+</div>
+<div>
+<h5 className="text-xl mb-3">Cultural Guardians</h5>
+<p className="text-gray-400 font-sans text-sm">Our guides are historians, artists, and monks who offer a truly authentic perspective.</p>
+</div>
+</div>
+<div className="flex gap-6">
+<div className="shrink-0 w-12 h-12 rounded-full border border-[#AF8B58] flex items-center justify-center text-[#AF8B58]">
+<Building size={24} />
+</div>
+<div>
+<h5 className="text-xl mb-3">Privileged Entry</h5>
+<p className="text-gray-400 font-sans text-sm">After-hours temple tours, private museum viewings, and access to hidden palaces.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+{/* Footer / Contact */}
+<footer className="bg-[#0A0F1D] text-white pt-24 pb-12 border-t border-white/5">
+<div className="max-w-7xl mx-auto px-6">
+<div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+<div className="md:col-span-2">
+<div className="flex items-center gap-3 mb-8">
+<Globe className="w-8 h-8 text-[#AF8B58]" />
+<div className="flex flex-col">
+<span className="text-xl font-bold tracking-tighter leading-none text-white font-sans uppercase">Global Mix</span>
+<span className="text-[10px] tracking-[0.4em] font-medium text-[#AF8B58] font-sans">Travel Asia</span>
+</div>
+</div>
+<p className="text-gray-500 font-sans text-sm max-w-sm leading-relaxed mb-10">
+Specializing in ultra-luxury expeditions across Asia, Africa, Europe, and the Americas. We craft legacy moments with privileged access and elite service.
+</p>
+</div>
+
+<div>
+<h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#AF8B58] mb-8 font-sans">Explore</h6>
+<ul className="space-y-4 font-sans text-sm text-gray-400">
+<li className="hover:text-white cursor-pointer transition-colors">Imperial Journeys</li>
+<li className="hover:text-white cursor-pointer transition-colors">Island Sanctuaries</li>
+<li className="hover:text-white cursor-pointer transition-colors">Spiritual Retreats</li>
+<li className="hover:text-white cursor-pointer transition-colors">Gourmet Asia</li>
+</ul>
+</div>
+
+<div>
+<h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#AF8B58] mb-8 font-sans">Direct Contact</h6>
+<ul className="space-y-6 font-sans text-sm text-gray-400">
+<li className="flex gap-4">
+<Phone size={16} className="text-[#AF8B58]" />
+<a href={`tel:${contactData.phone}`} className="hover:text-white">{contactData.phone}</a>
+</li>
+<li className="flex gap-4">
+<MessageCircle size={16} className="text-[#AF8B58]" />
+<a href={`https://wa.me/${contactData.whatsapp}`} className="hover:text-white">WhatsApp VIP Concierge</a>
+</li>
+<li className="flex gap-4">
+<Mail size={16} className="text-[#AF8B58]" />
+<a href={`mailto:${contactData.email}`} className="hover:text-white">{contactData.email}</a>
+</li>
+</ul>
+</div>
+</div>
+
+<div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-600 font-sans tracking-[0.2em] uppercase">
+<p>© 2024 GLOBAL MIX TRAVEL ASIA. ALL RIGHTS RESERVED.</p>
+<div className="flex gap-8">
+<span>Privacy Policy</span>
+<span>Terms of Service</span>
+</div>
+</div>
+</div>
+</footer>
+</div>
+);
+};
+
+export default App;
