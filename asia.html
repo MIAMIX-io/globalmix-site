@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Mix - Travel Asia (Soft Gold Hero)</title>
+    <title>Global Mix - Travel Asia (Imperial Red)</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -240,7 +240,7 @@
             const categories = ["All", "East Asia", "Southeast Asia", "South Asia", "Tropical"];
 
             return (
-                <div className="min-h-screen bg-[#FDFBF7] text-[#1A1A1A] font-serif selection:bg-[#AF8B58] selection:text-white">
+                <div className="min-h-screen bg-[#FDFBF7] text-[#1A1A1A] font-serif selection:bg-[#2C0A0A] selection:text-white">
                     {/* WhatsApp Floating Button */}
                     <a
                         href={`https://wa.me/${contactData.whatsapp}`}
@@ -255,7 +255,7 @@
                     </a>
 
                     {/* Navigation */}
-                    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#0F172A]/95 backdrop-blur-md shadow-2xl py-4' : 'bg-transparent py-8'}`}>
+                    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#2C0A0A]/95 backdrop-blur-md shadow-2xl py-4' : 'bg-transparent py-8'}`}>
                         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                             <div className="flex items-center gap-3">
                                 <Globe className="w-8 h-8 text-[#AF8B58]" />
@@ -275,7 +275,7 @@
                                     <a href={`tel:${contactData.phone}`} className="text-white hover:text-[#AF8B58] transition-colors">
                                         <Phone size={18} />
                                     </a>
-                                    <a href="#itineraries" className="bg-[#AF8B58] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#0F172A] transition-all transform hover:scale-105 font-sans inline-block">
+                                    <a href="#itineraries" className="bg-[#AF8B58] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#2C0A0A] transition-all transform hover:scale-105 font-sans inline-block">
                                         ENQUIRE NOW
                                     </a>
                                 </div>
@@ -288,7 +288,7 @@
 
                         {/* Mobile Menu */}
                         {isMenuOpen && (
-                            <div className="absolute top-full left-0 w-full bg-[#0F172A] border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden animate-in slide-in-from-top">
+                            <div className="absolute top-full left-0 w-full bg-[#2C0A0A] border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden animate-in slide-in-from-top">
                                 {navLinks.map((item) => (
                                     <a 
                                         key={item.name} 
@@ -313,8 +313,8 @@
                                 className="w-full h-full object-cover scale-105"
                                 alt="Asian Temple"
                             />
-                            {/* Slightly softer middle gradient to let the image show through better */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/80 via-[#0F172A]/50 to-[#0F172A]/90" />
+                            {/* Deep Crimson Gradient Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#2C0A0A]/80 via-[#2C0A0A]/50 to-[#2C0A0A]/90" />
                         </div>
 
                         <div className="relative z-10 text-center px-6 max-w-5xl">
@@ -323,7 +323,6 @@
                             </span>
                             <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
                                 Grand Journeys <br />
-                                {/* Reverted to elegant gold with a soft natural drop shadow */}
                                 <span className="italic text-[#AF8B58] drop-shadow-lg">
                                     of Asia
                                 </span>
@@ -332,7 +331,7 @@
                                 A masterwork collection of journeys where thousand-year-old traditions meet the sophisticated pulse of the future.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                                <a href="#itineraries" className="bg-white text-[#0F172A] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#AF8B58] hover:text-white transition-all shadow-2xl font-sans inline-block">
+                                <a href="#itineraries" className="bg-white text-[#2C0A0A] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#AF8B58] hover:text-white transition-all shadow-2xl font-sans inline-block">
                                     Explore Collection
                                 </a>
                             </div>
@@ -343,7 +342,7 @@
                     <section className="py-24 px-6 bg-white border-b border-black/5">
                         <div className="max-w-4xl mx-auto text-center">
                             <h2 className="text-xs font-bold tracking-[0.5em] text-[#AF8B58] uppercase mb-10 font-sans">The Zen of Travel</h2>
-                            <p className="text-3xl md:text-4xl text-[#0F172A] leading-tight mb-8">
+                            <p className="text-3xl md:text-4xl text-[#2C0A0A] leading-tight mb-8">
                                 "We bridge the gap between ancient spirits and modern luxuries, crafting narratives that resonate deep within the soul."
                             </p>
                             <div className="w-20 h-1 bg-[#AF8B58] mx-auto"></div>
@@ -356,14 +355,14 @@
                             <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
                                 <div>
                                     <h3 className="text-xs font-bold tracking-[0.4em] text-[#AF8B58] uppercase mb-4 font-sans">2025 / 2026 Asia Collection</h3>
-                                    <h4 className="text-4xl md:text-5xl text-[#0F172A]">Signature Routes</h4>
+                                    <h4 className="text-4xl md:text-5xl text-[#2C0A0A]">Signature Routes</h4>
                                 </div>
                                 <div className="flex gap-4 overflow-x-auto pb-4 w-full md:w-auto scrollbar-hide">
                                     {categories.map(cat => (
                                         <button
                                             key={cat}
                                             onClick={() => setActiveCategory(cat)}
-                                            className={`px-6 py-2 text-[10px] font-bold tracking-widest uppercase transition-all whitespace-nowrap font-sans border ${activeCategory === cat ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-transparent text-gray-400 border-black/10 hover:border-[#AF8B58]'}`}
+                                            className={`px-6 py-2 text-[10px] font-bold tracking-widest uppercase transition-all whitespace-nowrap font-sans border ${activeCategory === cat ? 'bg-[#2C0A0A] text-white border-[#2C0A0A]' : 'bg-transparent text-gray-400 border-black/10 hover:border-[#AF8B58]'}`}
                                         >
                                             {cat}
                                         </button>
@@ -387,7 +386,7 @@
                                                         {journey.duration}
                                                     </span>
                                                 </div>
-                                                <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-[#0F172A] to-transparent">
+                                                <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-[#2C0A0A] to-transparent">
                                                     <div className="flex items-center gap-2 text-[#AF8B58] mb-2">
                                                         <MapPin size={14} />
                                                         <span className="text-[10px] font-bold tracking-widest uppercase font-sans">{journey.countries}</span>
@@ -399,7 +398,7 @@
                                             <div className="p-8 flex flex-col flex-grow">
                                                 <div className="mb-6">
                                                     <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans">Selected Itinerary</p>
-                                                    <p className="text-sm text-[#0F172A] italic font-medium">{journey.route}</p>
+                                                    <p className="text-sm text-[#2C0A0A] italic font-medium">{journey.route}</p>
                                                 </div>
 
                                                 <div className="space-y-4 mb-8">
@@ -422,14 +421,14 @@
                                                     </p>
                                                     <div className="flex flex-wrap gap-2">
                                                         {journey.hotels.map((h, i) => (
-                                                            <span key={i} className="text-[9px] font-bold text-[#0F172A] bg-[#FDFBF7] px-2 py-1 uppercase tracking-tighter">
+                                                            <span key={i} className="text-[9px] font-bold text-[#2C0A0A] bg-[#FDFBF7] px-2 py-1 uppercase tracking-tighter">
                                                                 {h}
                                                             </span>
                                                         ))}
                                                     </div>
                                                 </div>
 
-                                                <a href="#contact" className="mt-8 group-hover:bg-[#0F172A] group-hover:text-white border border-[#0F172A] text-[#0F172A] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center">
+                                                <a href="#contact" className="mt-8 group-hover:bg-[#2C0A0A] group-hover:text-white border border-[#2C0A0A] text-[#2C0A0A] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center">
                                                     Request Itinerary <ChevronRight size={14} />
                                                 </a>
                                             </div>
@@ -440,7 +439,7 @@
                     </section>
 
                     {/* Specialty Section */}
-                    <section id="experiences" className="py-32 bg-[#0F172A] text-white overflow-hidden scroll-mt-20">
+                    <section id="experiences" className="py-32 bg-[#2C0A0A] text-white overflow-hidden scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="relative">
                                 <div className="aspect-[4/5] overflow-hidden">
@@ -482,7 +481,7 @@
                     </section>
 
                     {/* Footer / Contact */}
-                    <footer id="contact" className="bg-[#0A0F1D] text-white pt-24 pb-12 border-t border-white/5 scroll-mt-20">
+                    <footer id="contact" className="bg-[#1A0505] text-white pt-24 pb-12 border-t border-white/5 scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
                                 <div className="md:col-span-2">
