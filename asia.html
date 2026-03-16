@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Mix - Travel Asia (Balanced Hero)</title>
+    <title>Global Mix - Travel Asia (Soft Gold Hero)</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -54,11 +54,9 @@
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
-        // Import React and ReactDOM from ESM.sh
         import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
         import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
         
-        // Import all required Lucide icons
         import {
             Compass, MapPin, Ship, Sun, Mountain, Utensils,
             Menu, X, ChevronRight, Mail, Phone, Globe,
@@ -315,8 +313,8 @@
                                 className="w-full h-full object-cover scale-105"
                                 alt="Asian Temple"
                             />
-                            {/* Modified to a Refined, Semi-Transparent Navy Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-[#0A192F]/80 via-[#0A192F]/60 to-[#0A192F]/90" />
+                            {/* Slightly softer middle gradient to let the image show through better */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/80 via-[#0F172A]/50 to-[#0F172A]/90" />
                         </div>
 
                         <div className="relative z-10 text-center px-6 max-w-5xl">
@@ -325,7 +323,8 @@
                             </span>
                             <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
                                 Grand Journeys <br />
-                                <span className="italic text-[#0A192F] drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">
+                                {/* Reverted to elegant gold with a soft natural drop shadow */}
+                                <span className="italic text-[#AF8B58] drop-shadow-lg">
                                     of Asia
                                 </span>
                             </h1>
@@ -541,7 +540,6 @@
             );
         };
 
-        // Render the app to the root div
         const root = createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
