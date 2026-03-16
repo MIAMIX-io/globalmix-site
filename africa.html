@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Mix - Travel Africa</title>
+    <title>Global Mix - Travel Asia (Improved Hero)</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -59,7 +59,7 @@
             Compass, MapPin, Ship, Sun, Mountain, Utensils,
             Menu, X, ChevronRight, Mail, Phone, Globe,
             Clock, Bed, Star, Camera, ChevronDown, MessageCircle,
-            Wind, Tent, CameraIcon, Waves
+            Wind, Tent, Waves, Sparkles, Building
         } from 'https://esm.sh/lucide-react@0.292.0';
 
         const App = () => {
@@ -81,158 +81,158 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
-            const africanJourneys = [
+            const asiaJourneys = [
                 {
                     id: 1,
-                    title: "Imperial Morocco & Private Sahara",
-                    duration: "8–10 Days",
-                    countries: "Morocco",
-                    route: "Marrakesh → Merzouga → Fez → Casablanca",
+                    title: "Imperial & Modern Japan",
+                    duration: "9–10 Days",
+                    countries: "Japan",
+                    route: "Tokyo → Hakone → Kyoto → Osaka",
                     experiences: [
-                        "Stay in historic Riads within the Marrakesh Medina",
-                        "Helicopter flight over the Atlas Mountains",
-                        "Luxury desert camp in the Sahara dunes",
-                        "Private starlit dinner in the deep desert",
-                        "Curated tour of the medieval Medina of Fez"
+                        "Private dinner with a Geisha in Kyoto",
+                        "Traditional Ryokan stay with private Onsen in Hakone",
+                        "Guided gastronomic tour with a master chef in Tokyo",
+                        "First-class Shinkansen (Bullet Train) travel",
+                        "Sunrise Zen meditation at a historic temple"
                     ],
-                    hotels: ["Royal Mansour Marrakech", "Riad Fes Relais & Chateaux", "Four Seasons Hotel Casablanca"],
-                    image: "https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?auto=format&fit=crop&q=80&w=1200",
-                    category: "North"
+                    hotels: ["Aman Tokyo", "Gora Kadan Hakone", "The Ritz-Carlton Kyoto"],
+                    image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=1200",
+                    category: "East Asia"
                 },
                 {
                     id: 2,
-                    title: "South Africa: Safari & Cape Town",
+                    title: "Elegant Thailand",
                     duration: "9 Days",
-                    countries: "South Africa",
-                    route: "Cape Town → Kruger National Park",
+                    countries: "Thailand",
+                    route: "Bangkok → Chiang Mai → Phuket",
                     experiences: [
-                        "Private safari with expert ranger",
-                        "Wine tasting in the vineyards of Stellenbosch",
-                        "Helicopter flight over Table Mountain",
-                        "Penguin encounter at Boulders Beach"
+                        "Private sunset cruise on the Chao Phraya River",
+                        "Visit to an ethical elephant sanctuary in the jungle",
+                        "Ultra-luxury private villas overlooking the Andaman Sea",
+                        "Traditional Thai cooking masterclass with a local expert"
                     ],
-                    hotels: ["One&Only Cape Town", "Singita Lebombo Lodge"],
-                    image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=1200",
-                    category: "Safari"
+                    hotels: ["Mandarin Oriental Bangkok", "Four Seasons Resort Chiang Mai", "Amanpuri Phuket"],
+                    image: "https://images.unsplash.com/photo-1528181304800-2f140819ad1c?auto=format&fit=crop&q=80&w=1200",
+                    category: "Southeast Asia"
                 },
                 {
                     id: 3,
-                    title: "Tanzania: Serengeti & Ngorongoro Crater",
+                    title: "Bali & Spiritual Indonesia",
                     duration: "8 Days",
-                    countries: "Tanzania",
-                    route: "Serengeti National Park → Ngorongoro Crater",
+                    countries: "Indonesia",
+                    route: "Bali → Ubud → Nusa Dua",
                     experiences: [
-                        "Sunrise hot air balloon safari",
-                        "Observation of the Great Migration",
-                        "Gourmet dining at an exclusive safari lodge",
-                        "Private descent into the Ngorongoro Crater"
+                        "Purification ritual at a sacred Balinese temple",
+                        "Signature luxury spa treatments in the heart of the jungle",
+                        "Private candlelit dinner amidst emerald rice paddies",
+                        "Artisanal workshop with local woodcarvers"
                     ],
-                    hotels: ["Four Seasons Safari Lodge Serengeti", "andBeyond Ngorongoro Crater Lodge"],
-                    image: "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=80&w=1200",
-                    category: "Safari"
+                    hotels: ["Four Seasons Resort Bali at Sayan", "St. Regis Bali Resort"],
+                    image: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=1200",
+                    category: "Tropical"
                 },
                 {
                     id: 4,
-                    title: "Kenya: Classic Luxury Safari",
-                    duration: "7 Days",
-                    countries: "Kenya",
-                    route: "Nairobi → Maasai Mara National Reserve",
+                    title: "Vietnam & Halong Bay",
+                    duration: "9 Days",
+                    countries: "Vietnam",
+                    route: "Hanoi → Ha Long Bay → Hoi An",
                     experiences: [
-                        "Private safari with expert wildlife photographers",
-                        "Exclusive Maasai cultural immersion",
-                        "Scenic flight over the vast savanna",
-                        "Sundowners on the Mara plains"
+                        "Private boutique cruise through the limestone karsts of Halong Bay",
+                        "Private Vietnamese culinary workshop in Hoi An",
+                        "In-depth historical tour of Hanoi with a specialized historian",
+                        "Vespa tour through the hidden alleys of the Old Quarter"
                     ],
-                    hotels: ["Angama Mara", "Giraffe Manor Nairobi"],
-                    image: "https://plus.unsplash.com/premium_photo-1666669764052-4f8175f051dc?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "Safari"
+                    hotels: ["Sofitel Legend Metropole Hanoi", "Four Seasons Resort The Nam Hai"],
+                    image: "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&q=80&w=1200",
+                    category: "Southeast Asia"
                 },
                 {
                     id: 5,
-                    title: "High-End Pharaonic Egypt",
+                    title: "Majestic India",
                     duration: "10 Days",
-                    countries: "Egypt",
-                    route: "Cairo → Luxor → Aswan",
+                    countries: "India",
+                    route: "Delhi → Agra → Jaipur → Udaipur",
                     experiences: [
-                        "Private tour of the Great Pyramids of Giza",
-                        "Boutique Nile cruise on a private Dahabiya",
-                        "VIP access to archaeological temples",
-                        "High tea at the historic Old Cataract terrace"
+                        "Sunrise private viewing of the Taj Mahal",
+                        "Royal stays in heritage palaces converted into luxury hotels",
+                        "Wildlife safari in the deserts of Rajasthan",
+                        "Private astrology reading and blessing in Jaipur"
                     ],
-                    hotels: ["The St. Regis Cairo", "Sofitel Legend Old Cataract Aswan"],
-                    image: "https://images.unsplash.com/photo-1503177119275-0aa32b3a9368?auto=format&fit=crop&q=80&w=1200",
-                    category: "North"
+                    hotels: ["The Oberoi Amarvilas Agra", "Taj Lake Palace Udaipur"],
+                    image: "https://images.unsplash.com/photo-1524492707947-2f85a1a03975?auto=format&fit=crop&q=80&w=1200",
+                    category: "South Asia"
                 },
                 {
                     id: 6,
-                    title: "Exclusive Botswana",
-                    duration: "8 Days",
-                    countries: "Botswana",
-                    route: "Okavango Delta → Chobe National Park",
+                    title: "Sophisticated Singapore & Malaysia",
+                    duration: "7 Days",
+                    countries: "Singapore & Malaysia",
+                    route: "Singapore → Kuala Lumpur → Langkawi",
                     experiences: [
-                        "Water safari in a traditional mokoro",
-                        "Remote lodge with exclusive air access",
-                        "Elephant observation on the Chobe River",
-                        "Night navigation through Delta channels"
+                        "Gourmet private dining with Singapore's skyline views",
+                        "Helicopter flight over Kuala Lumpur and the Petronas Towers",
+                        "Tropical beachfront retreat in a UNESCO Geopark",
+                        "Private mixology session at a hidden speakeasy"
                     ],
-                    hotels: ["andBeyond Sandibe Okavango Safari Lodge", "Belmond Eagle Island Lodge"],
-                    image: "https://images.unsplash.com/photo-1519066629447-267fffa62d4b?auto=format&fit=crop&q=80&w=1200",
-                    category: "Safari"
+                    hotels: ["Raffles Singapore", "The Datai Langkawi"],
+                    image: "https://images.unsplash.com/photo-1525625232747-074857a744b7?auto=format&fit=crop&q=80&w=1200",
+                    category: "Southeast Asia"
                 },
                 {
                     id: 7,
-                    title: "Namibia: Spectacular Deserts",
-                    duration: "7 Days",
-                    countries: "Namibia",
-                    route: "Windhoek → Sossusvlei → Etosha National Park",
+                    title: "Imperial China",
+                    duration: "9 Days",
+                    countries: "China",
+                    route: "Beijing → Xi’an → Shanghai",
                     experiences: [
-                        "Scenic flight over the giant Sossusvlei dunes",
-                        "Photographic safari in Etosha",
-                        "Private astronomical observatory in the desert",
-                        "Dining under the world's purest night sky"
+                        "Private sunrise breakfast on the Great Wall of China",
+                        "Behind-the-scenes access to Terracotta Warriors with an archaeologist",
+                        "High-end fine dining experience in Shanghai’s Bund",
+                        "Traditional tea ceremony in a private Ming garden"
                     ],
-                    hotels: ["andBeyond Sossusvlei Desert Lodge", "Little Kulala"],
-                    image: "https://images.unsplash.com/photo-1597342809356-6dc1115906c1?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "Adventure"
+                    hotels: ["Peninsula Beijing", "The Peninsula Shanghai"],
+                    image: "https://images.unsplash.com/photo-1508804185872-d7badad00f7d?auto=format&fit=crop&q=80&w=1200",
+                    category: "East Asia"
                 },
                 {
                     id: 8,
-                    title: "Natural Madagascar",
-                    duration: "9 Days",
-                    countries: "Madagascar",
-                    route: "Antananarivo → Avenue of the Baobabs → Nosy Be",
+                    title: "Contemporary South Korea",
+                    duration: "7 Days",
+                    countries: "South Korea",
+                    route: "Seoul → Gyeongju → Busan",
                     experiences: [
-                        "Exploration of primary tropical rainforests",
-                        "Close encounter with wild lemurs",
-                        "Ultra-private beach resort on a remote island",
-                        "Helicopter tour over the Tsingy formations"
+                        "Traditional Korean tea ceremony and calligraphy class",
+                        "Premium Korean head spa and skin treatments",
+                        "Signature dining experiences with Michelin-starred chefs",
+                        "Private exploration of the Gyeongju historic sites"
                     ],
-                    hotels: ["Miavana by Time + Tide"],
-                    image: "https://plus.unsplash.com/premium_photo-1661871178548-e35aece53d53?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "Islands"
+                    hotels: ["Signiel Seoul", "The Shilla Seoul"],
+                    image: "https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&q=80&w=1200",
+                    category: "East Asia"
                 },
                 {
                     id: 9,
-                    title: "Ultra-Exclusive Seychelles",
-                    duration: "7 Days",
-                    countries: "Seychelles",
-                    route: "Mahé Island → Praslin Island → La Digue",
+                    title: "Exclusive Maldives",
+                    duration: "6–7 Days",
+                    countries: "Maldives",
+                    route: "Malé → Private Atolls",
                     experiences: [
-                        "Private yacht cruise between archipelago islands",
-                        "Guided diving in protected coral reefs",
-                        "Private ocean villas with infinity pools",
-                        "Gourmet 'Catch of the Day' beach dining experience"
+                        "Ultra-exclusive overwater villas with private slides",
+                        "Guided diving in protected coral reefs and bioluminescent bays",
+                        "Private underwater dinner surrounded by marine life",
+                        "Castaway sandbank lunch with private butler service"
                     ],
-                    hotels: ["North Island Seychelles", "Raffles Seychelles"],
-                    image: "https://plus.unsplash.com/premium_photo-1664304458186-9a67c1330d02?q=80&w=780&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "Islands"
+                    hotels: ["Soneva Jani", "Cheval Blanc Randheli"],
+                    image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&q=80&w=1200",
+                    category: "Tropical"
                 }
             ];
 
-            const categories = ["All", "Safari", "North", "Islands", "Adventure"];
+            const categories = ["All", "East Asia", "Southeast Asia", "South Asia", "Tropical"];
 
             return (
-                <div className="min-h-screen bg-[#FDFBF7] text-[#1A1A1A] font-serif selection:bg-[#8D5B39] selection:text-white">
+                <div className="min-h-screen bg-[#FDFBF7] text-[#1A1A1A] font-serif selection:bg-[#AF8B58] selection:text-white">
                     {/* WhatsApp Floating Button */}
                     <a
                         href={`https://wa.me/${contactData.whatsapp}`}
@@ -247,28 +247,28 @@
                     </a>
 
                     {/* Navigation */}
-                    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#2D3E2F]/95 backdrop-blur-md shadow-2xl py-4' : 'bg-transparent py-8'}`}>
+                    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#0F172A]/95 backdrop-blur-md shadow-2xl py-4' : 'bg-transparent py-8'}`}>
                         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                             <div className="flex items-center gap-3">
-                                <Globe className="w-8 h-8 text-[#B4924A]" />
+                                <Globe className="w-8 h-8 text-[#AF8B58]" />
                                 <div className="flex flex-col">
                                     <span className="text-xl font-bold tracking-tighter leading-none text-white font-sans uppercase">Global Mix</span>
-                                    <span className="text-[10px] tracking-[0.4em] font-medium text-[#B4924A] font-sans">Travel Africa</span>
+                                    <span className="text-[10px] tracking-[0.4em] font-medium text-[#AF8B58] font-sans">Travel Asia</span>
                                 </div>
                             </div>
 
                             <div className="hidden lg:flex items-center gap-10">
                                 {['Itineraries', 'Experiences', 'Contact'].map((item) => (
-                                    <a key={item} href="#" className="text-[10px] font-bold tracking-[0.3em] uppercase text-white hover:text-[#B4924A] transition-colors font-sans">
+                                    <a key={item} href="#" className="text-[10px] font-bold tracking-[0.3em] uppercase text-white hover:text-[#AF8B58] transition-colors font-sans">
                                         {item}
                                     </a>
                                 ))}
                                 <div className="flex items-center gap-4 ml-4">
-                                    <a href={`tel:${contactData.phone}`} className="text-white hover:text-[#B4924A] transition-colors">
+                                    <a href={`tel:${contactData.phone}`} className="text-white hover:text-[#AF8B58] transition-colors">
                                         <Phone size={18} />
                                     </a>
-                                    <button className="bg-[#B4924A] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#2D3E2F] transition-all transform hover:scale-105 font-sans">
-                                        BOOK YOUR JOURNEY
+                                    <button className="bg-[#AF8B58] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#0F172A] transition-all transform hover:scale-105 font-sans">
+                                        ENQUIRE NOW
                                     </button>
                                 </div>
                             </div>
@@ -280,11 +280,11 @@
 
                         {/* Mobile Menu */}
                         {isMenuOpen && (
-                            <div className="absolute top-full left-0 w-full bg-[#2D3E2F] border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden animate-in slide-in-from-top">
+                            <div className="absolute top-full left-0 w-full bg-[#0F172A] border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden animate-in slide-in-from-top">
                                 <a href="#" className="text-white text-sm font-bold tracking-widest uppercase font-sans">Itineraries</a>
                                 <a href="#" className="text-white text-sm font-bold tracking-widest uppercase font-sans">Experiences</a>
                                 <a href={`mailto:${contactData.email}`} className="text-white text-sm font-bold tracking-widest uppercase font-sans">Email Us</a>
-                                <button className="bg-[#B4924A] text-white py-4 font-bold tracking-widest uppercase font-sans">Enquire Now</button>
+                                <button className="bg-[#AF8B58] text-white py-4 font-bold tracking-widest uppercase font-sans">Plan Journey</button>
                             </div>
                         )}
                     </nav>
@@ -293,25 +293,27 @@
                     <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 z-0">
                             <img
-                                src="https://images.unsplash.com/photo-1489493887464-892be6d1daae?q=80&w=1734&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                className="w-full h-full object-cover"
-                                alt="African Safari"
+                                src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=2000"
+                                className="w-full h-full object-cover scale-105"
+                                alt="Asian Temple"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-b from-[#2D3E2F]/60 via-transparent to-[#2D3E2F]/90" />
+                            {/* Darkened Gradient Overlay - Modification made here */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/95 via-[#0F172A]/70 to-[#0F172A]/100" />
                         </div>
 
                         <div className="relative z-10 text-center px-6 max-w-5xl">
-                            <span className="inline-block mb-6 text-[#B4924A] tracking-[0.6em] text-xs font-bold uppercase animate-fade-in font-sans">
-                                ULTRA-LUXURY EXPEDITIONS IN AFRICA
+                            <span className="inline-block mb-6 text-[#AF8B58] tracking-[0.6em] text-xs font-bold uppercase animate-fade-in font-sans">
+                                Ultra-Luxury Expeditions in Asia
                             </span>
+                            {/* Whitened Span Text - Modification made here */}
                             <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
-                                Grand Journeys <br /><span className="italic text-[#B4924A]">of Africa</span>
+                                Grand Journeys <br /><span className="italic text-white">of Asia</span>
                             </h1>
                             <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-12 font-light font-sans">
-                                Discover the untamed majesty of the African continent through journeys meticulously curated for the world's most discerning travelers.
+                                A masterwork collection of journeys where thousand-year-old traditions meet the sophisticated pulse of the future.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                                <button className="bg-white text-[#2D3E2F] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#B4924A] hover:text-white transition-all shadow-2xl font-sans">
+                                <button className="bg-white text-[#0F172A] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#AF8B58] hover:text-white transition-all shadow-2xl font-sans">
                                     Explore Collection
                                 </button>
                             </div>
@@ -321,28 +323,28 @@
                     {/* Philosophy */}
                     <section className="py-24 px-6 bg-white border-b border-black/5">
                         <div className="max-w-4xl mx-auto text-center">
-                            <h2 className="text-xs font-bold tracking-[0.5em] text-[#8D5B39] uppercase mb-10 font-sans">Our Philosophy</h2>
-                            <p className="text-3xl md:text-4xl text-[#2D3E2F] leading-tight mb-8">
-                                "Africa is not just a destination; it is a reconnection with life in its purest and most exclusive state."
+                            <h2 className="text-xs font-bold tracking-[0.5em] text-[#AF8B58] uppercase mb-10 font-sans">The Zen of Travel</h2>
+                            <p className="text-3xl md:text-4xl text-[#0F172A] leading-tight mb-8">
+                                "We bridge the gap between ancient spirits and modern luxuries, crafting narratives that resonate deep within the soul."
                             </p>
-                            <div className="w-20 h-1 bg-[#B4924A] mx-auto"></div>
+                            <div className="w-20 h-1 bg-[#AF8B58] mx-auto"></div>
                         </div>
                     </section>
 
-                    {/* Journeys Collection */}
+                    {/* Itineraries Grid */}
                     <section className="py-20 px-6">
                         <div className="max-w-7xl mx-auto">
                             <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
                                 <div>
-                                    <h3 className="text-xs font-bold tracking-[0.4em] text-[#8D5B39] uppercase mb-4 font-sans">2025 / 2026 Expeditions</h3>
-                                    <h4 className="text-4xl md:text-5xl text-[#2D3E2F]">Signature Circuits</h4>
+                                    <h3 className="text-xs font-bold tracking-[0.4em] text-[#AF8B58] uppercase mb-4 font-sans">2025 / 2026 Asia Collection</h3>
+                                    <h4 className="text-4xl md:text-5xl text-[#0F172A]">Signature Routes</h4>
                                 </div>
                                 <div className="flex gap-4 overflow-x-auto pb-4 w-full md:w-auto scrollbar-hide">
                                     {categories.map(cat => (
                                         <button
                                             key={cat}
                                             onClick={() => setActiveCategory(cat)}
-                                            className={`px-6 py-2 text-[10px] font-bold tracking-widest uppercase transition-all whitespace-nowrap font-sans border ${activeCategory === cat ? 'bg-[#2D3E2F] text-white border-[#2D3E2F]' : 'bg-transparent text-gray-400 border-black/10 hover:border-[#8D5B39]'}`}
+                                            className={`px-6 py-2 text-[10px] font-bold tracking-widest uppercase transition-all whitespace-nowrap font-sans border ${activeCategory === cat ? 'bg-[#0F172A] text-white border-[#0F172A]' : 'bg-transparent text-gray-400 border-black/10 hover:border-[#AF8B58]'}`}
                                         >
                                             {cat}
                                         </button>
@@ -351,23 +353,23 @@
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                                {africanJourneys
+                                {asiaJourneys
                                     .filter(j => activeCategory === 'All' || j.category === activeCategory)
                                     .map((journey) => (
-                                        <div key={journey.id} className="group flex flex-col h-full bg-white border border-black/5 hover:border-[#B4924A]/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
+                                        <div key={journey.id} className="group flex flex-col h-full bg-white border border-black/5 hover:border-[#AF8B58]/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
                                             <div className="relative h-80 overflow-hidden">
                                                 <img
                                                     src={journey.image}
                                                     alt={journey.title}
-                                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
+                                                    className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0"
                                                 />
                                                 <div className="absolute top-6 left-6 flex flex-col gap-2">
-                                                    <span className="bg-[#8D5B39] text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-sans">
+                                                    <span className="bg-[#AF8B58] text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-sans">
                                                         {journey.duration}
                                                     </span>
                                                 </div>
-                                                <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-[#2D3E2F] to-transparent">
-                                                    <div className="flex items-center gap-2 text-[#B4924A] mb-2">
+                                                <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-[#0F172A] to-transparent">
+                                                    <div className="flex items-center gap-2 text-[#AF8B58] mb-2">
                                                         <MapPin size={14} />
                                                         <span className="text-[10px] font-bold tracking-widest uppercase font-sans">{journey.countries}</span>
                                                     </div>
@@ -377,18 +379,18 @@
 
                                             <div className="p-8 flex flex-col flex-grow">
                                                 <div className="mb-6">
-                                                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans">Exclusive Route</p>
-                                                    <p className="text-sm text-[#2D3E2F] italic font-medium">{journey.route}</p>
+                                                    <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans">Selected Itinerary</p>
+                                                    <p className="text-sm text-[#0F172A] italic font-medium">{journey.route}</p>
                                                 </div>
 
                                                 <div className="space-y-4 mb-8">
-                                                    <p className="text-[10px] font-bold text-[#8D5B39] uppercase tracking-widest font-sans flex items-center gap-2">
-                                                        <Star size={12} fill="currentColor" /> Luxury Experiences
+                                                    <p className="text-[10px] font-bold text-[#AF8B58] uppercase tracking-widest font-sans flex items-center gap-2">
+                                                        <Sparkles size={12} fill="currentColor" /> Luxe Experiences
                                                     </p>
                                                     <ul className="grid grid-cols-1 gap-2">
                                                         {journey.experiences.map((exp, i) => (
                                                             <li key={i} className="text-xs text-gray-500 flex items-start gap-2 leading-snug font-sans">
-                                                                <span className="w-1 h-1 bg-[#B4924A] rounded-full mt-1.5 shrink-0" />
+                                                                <span className="w-1 h-1 bg-[#AF8B58] rounded-full mt-1.5 shrink-0" />
                                                                 {exp}
                                                             </li>
                                                         ))}
@@ -397,19 +399,19 @@
 
                                                 <div className="mt-auto pt-6 border-t border-black/5">
                                                     <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans flex items-center gap-2">
-                                                        <Bed size={12} /> Suggested Hotels
+                                                        <Bed size={12} /> Featured Accommodations
                                                     </p>
                                                     <div className="flex flex-wrap gap-2">
                                                         {journey.hotels.map((h, i) => (
-                                                            <span key={i} className="text-[9px] font-bold text-[#2D3E2F] bg-[#FDFBF7] px-2 py-1 uppercase tracking-tighter">
+                                                            <span key={i} className="text-[9px] font-bold text-[#0F172A] bg-[#FDFBF7] px-2 py-1 uppercase tracking-tighter">
                                                                 {h}
                                                             </span>
                                                         ))}
                                                     </div>
                                                 </div>
 
-                                                <button className="mt-8 group-hover:bg-[#2D3E2F] group-hover:text-white border border-[#2D3E2F] text-[#2D3E2F] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans">
-                                                    Request Details <ChevronRight size={14} />
+                                                <button className="mt-8 group-hover:bg-[#0F172A] group-hover:text-white border border-[#0F172A] text-[#0F172A] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans">
+                                                    Request Itinerary <ChevronRight size={14} />
                                                 </button>
                                             </div>
                                         </div>
@@ -418,41 +420,41 @@
                         </div>
                     </section>
 
-                    {/* Concierge Section */}
-                    <section className="py-32 bg-[#2D3E2F] text-white overflow-hidden">
+                    {/* Specialty Section */}
+                    <section className="py-32 bg-[#0F172A] text-white overflow-hidden">
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="relative">
                                 <div className="aspect-[4/5] overflow-hidden">
                                     <img
-                                        src="https://images.unsplash.com/photo-1542085215-673021bf5caa?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                        src="https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&q=80&w=1200"
                                         className="w-full h-full object-cover grayscale opacity-50"
-                                        alt="Safari Concierge"
+                                        alt="Asia Expert"
                                     />
                                 </div>
-                                <div className="absolute -bottom-10 -right-10 bg-[#8D5B39] p-12 hidden md:block">
-                                    <p className="text-4xl italic leading-tight">Private <br />Concierge <br />In Africa</p>
+                                <div className="absolute -bottom-10 -right-10 bg-[#AF8B58] p-12 hidden md:block">
+                                    <p className="text-4xl italic leading-tight">Asia <br />Specialized <br />Concierge</p>
                                 </div>
                             </div>
                             <div>
-                                <h3 className="text-xs font-bold tracking-[0.5em] text-[#B4924A] uppercase mb-8 font-sans">SPECIALIZED ASSISTANCE</h3>
-                                <h4 className="text-5xl md:text-6xl mb-10 leading-none">Crafting your perfect safari.</h4>
+                                <h3 className="text-xs font-bold tracking-[0.5em] text-[#AF8B58] uppercase mb-8 font-sans">UNPARALLELED ACCESS</h3>
+                                <h4 className="text-5xl md:text-6xl mb-10 leading-none">The Silk Road Reimagined.</h4>
                                 <div className="space-y-12">
                                     <div className="flex gap-6">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#B4924A] flex items-center justify-center text-[#B4924A]">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#AF8B58] flex items-center justify-center text-[#AF8B58]">
                                             <Compass size={24} />
                                         </div>
                                         <div>
-                                            <h5 className="text-xl mb-3">Local Expertise</h5>
-                                            <p className="text-gray-400 font-sans text-sm">Our specialists know every corner of the Okavango and the African savanna.</p>
+                                            <h5 className="text-xl mb-3">Cultural Guardians</h5>
+                                            <p className="text-gray-400 font-sans text-sm">Our guides are historians, artists, and monks who offer a truly authentic perspective.</p>
                                         </div>
                                     </div>
                                     <div className="flex gap-6">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#B4924A] flex items-center justify-center text-[#B4924A]">
-                                            <MessageCircle size={24} />
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#AF8B58] flex items-center justify-center text-[#AF8B58]">
+                                            <Building size={24} />
                                         </div>
                                         <div>
-                                            <h5 className="text-xl mb-3">Multilingual Support</h5>
-                                            <p className="text-gray-400 font-sans text-sm">Personalized attention in English, Spanish, and French throughout your entire journey.</p>
+                                            <h5 className="text-xl mb-3">Privileged Entry</h5>
+                                            <p className="text-gray-400 font-sans text-sm">After-hours temple tours, private museum viewings, and access to hidden palaces.</p>
                                         </div>
                                     </div>
                                 </div>
@@ -461,45 +463,45 @@
                     </section>
 
                     {/* Footer / Contact */}
-                    <footer className="bg-[#1A1A1A] text-white pt-24 pb-12 border-t border-white/5">
+                    <footer className="bg-[#0A0F1D] text-white pt-24 pb-12 border-t border-white/5">
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
                                 <div className="md:col-span-2">
                                     <div className="flex items-center gap-3 mb-8">
-                                        <Globe className="w-8 h-8 text-[#B4924A]" />
+                                        <Globe className="w-8 h-8 text-[#AF8B58]" />
                                         <div className="flex flex-col">
                                             <span className="text-xl font-bold tracking-tighter leading-none text-white font-sans uppercase">Global Mix</span>
-                                            <span className="text-[10px] tracking-[0.4em] font-medium text-[#B4924A] font-sans">Travel Africa</span>
+                                            <span className="text-[10px] tracking-[0.4em] font-medium text-[#AF8B58] font-sans">Travel Asia</span>
                                         </div>
                                     </div>
                                     <p className="text-gray-500 font-sans text-sm max-w-sm leading-relaxed mb-10">
-                                        Specialists in ultra-luxury expeditions across Africa, Europe, and the world. We create memorable moments with privileged access and exclusive service.
+                                        Specializing in ultra-luxury expeditions across Asia, Africa, Europe, and the Americas. We craft legacy moments with privileged access and elite service.
                                     </p>
                                 </div>
 
                                 <div>
-                                    <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#B4924A] mb-8 font-sans">Navigate</h6>
+                                    <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#AF8B58] mb-8 font-sans">Explore</h6>
                                     <ul className="space-y-4 font-sans text-sm text-gray-400">
-                                        <li className="hover:text-white cursor-pointer transition-colors">Signature Safaris</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">Private Aviation</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">Imperial Morocco</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">Seychelles Islands</li>
+                                        <li className="hover:text-white cursor-pointer transition-colors">Imperial Journeys</li>
+                                        <li className="hover:text-white cursor-pointer transition-colors">Island Sanctuaries</li>
+                                        <li className="hover:text-white cursor-pointer transition-colors">Spiritual Retreats</li>
+                                        <li className="hover:text-white cursor-pointer transition-colors">Gourmet Asia</li>
                                     </ul>
                                 </div>
 
                                 <div>
-                                    <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#B4924A] mb-8 font-sans">Direct Contact</h6>
+                                    <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#AF8B58] mb-8 font-sans">Direct Contact</h6>
                                     <ul className="space-y-6 font-sans text-sm text-gray-400">
                                         <li className="flex gap-4">
-                                            <Phone size={16} className="text-[#B4924A]" />
+                                            <Phone size={16} className="text-[#AF8B58]" />
                                             <a href={`tel:${contactData.phone}`} className="hover:text-white">{contactData.phone}</a>
                                         </li>
                                         <li className="flex gap-4">
-                                            <MessageCircle size={16} className="text-[#B4924A]" />
-                                            <a href={`https://wa.me/${contactData.whatsapp}`} className="hover:text-white">VIP WhatsApp</a>
+                                            <MessageCircle size={16} className="text-[#AF8B58]" />
+                                            <a href={`https://wa.me/${contactData.whatsapp}`} className="hover:text-white">WhatsApp VIP Concierge</a>
                                         </li>
                                         <li className="flex gap-4">
-                                            <Mail size={16} className="text-[#B4924A]" />
+                                            <Mail size={16} className="text-[#AF8B58]" />
                                             <a href={`mailto:${contactData.email}`} className="hover:text-white">{contactData.email}</a>
                                         </li>
                                     </ul>
@@ -507,7 +509,7 @@
                             </div>
 
                             <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-600 font-sans tracking-[0.2em] uppercase">
-                                <p>© 2024 GLOBAL MIX TRAVEL AFRICA. ALL RIGHTS RESERVED.</p>
+                                <p>© 2024 GLOBAL MIX TRAVEL ASIA. ALL RIGHTS RESERVED.</p>
                                 <div className="flex gap-8">
                                     <span>Privacy Policy</span>
                                     <span>Terms of Service</span>
