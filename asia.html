@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Mix - Travel Asia</title>
+    <title>Global Mix - Travel Asia (Navy Hero)</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -33,6 +33,10 @@
     </script>
 
     <style>
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
         /* Hide scrollbar for category menu */
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -72,6 +76,12 @@
                 whatsapp: "17864598797",
                 email: "Info@globalmix.online"
             };
+
+            const navLinks = [
+                { name: 'Itineraries', href: '#itineraries' },
+                { name: 'Experiences', href: '#experiences' },
+                { name: 'Contact', href: '#contact' }
+            ];
 
             useEffect(() => {
                 const handleScroll = () => {
@@ -258,18 +268,18 @@
                             </div>
 
                             <div className="hidden lg:flex items-center gap-10">
-                                {['Itineraries', 'Experiences', 'Contact'].map((item) => (
-                                    <a key={item} href="#" className="text-[10px] font-bold tracking-[0.3em] uppercase text-white hover:text-[#AF8B58] transition-colors font-sans">
-                                        {item}
+                                {navLinks.map((item) => (
+                                    <a key={item.name} href={item.href} className="text-[10px] font-bold tracking-[0.3em] uppercase text-white hover:text-[#AF8B58] transition-colors font-sans">
+                                        {item.name}
                                     </a>
                                 ))}
                                 <div className="flex items-center gap-4 ml-4">
                                     <a href={`tel:${contactData.phone}`} className="text-white hover:text-[#AF8B58] transition-colors">
                                         <Phone size={18} />
                                     </a>
-                                    <button className="bg-[#AF8B58] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#0F172A] transition-all transform hover:scale-105 font-sans">
+                                    <a href="#itineraries" className="bg-[#AF8B58] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#0F172A] transition-all transform hover:scale-105 font-sans inline-block">
                                         ENQUIRE NOW
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
 
@@ -281,10 +291,18 @@
                         {/* Mobile Menu */}
                         {isMenuOpen && (
                             <div className="absolute top-full left-0 w-full bg-[#0F172A] border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden animate-in slide-in-from-top">
-                                <a href="#" className="text-white text-sm font-bold tracking-widest uppercase font-sans">Itineraries</a>
-                                <a href="#" className="text-white text-sm font-bold tracking-widest uppercase font-sans">Experiences</a>
+                                {navLinks.map((item) => (
+                                    <a 
+                                        key={item.name} 
+                                        href={item.href} 
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="text-white text-sm font-bold tracking-widest uppercase font-sans"
+                                    >
+                                        {item.name}
+                                    </a>
+                                ))}
                                 <a href={`mailto:${contactData.email}`} className="text-white text-sm font-bold tracking-widest uppercase font-sans">Email Us</a>
-                                <button className="bg-[#AF8B58] text-white py-4 font-bold tracking-widest uppercase font-sans">Plan Journey</button>
+                                <a href="#itineraries" onClick={() => setIsMenuOpen(false)} className="bg-[#AF8B58] text-white py-4 text-center font-bold tracking-widest uppercase font-sans inline-block w-full">Plan Journey</a>
                             </div>
                         )}
                     </nav>
@@ -297,7 +315,7 @@
                                 className="w-full h-full object-cover scale-105"
                                 alt="Asian Temple"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/60 via-transparent to-[#0F172A]/90" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#0F172A]/95 via-[#0F172A]/60 to-[#0F172A]/100" />
                         </div>
 
                         <div className="relative z-10 text-center px-6 max-w-5xl">
@@ -305,15 +323,18 @@
                                 Ultra-Luxury Expeditions in Asia
                             </span>
                             <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
-                                Grand Journeys <br /><span className="italic text-[#AF8B58]">of Asia</span>
+                                Grand Journeys <br />
+                                <span className="italic text-[#0A192F] drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">
+                                    of Asia
+                                </span>
                             </h1>
                             <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-12 font-light font-sans">
                                 A masterwork collection of journeys where thousand-year-old traditions meet the sophisticated pulse of the future.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                                <button className="bg-white text-[#0F172A] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#AF8B58] hover:text-white transition-all shadow-2xl font-sans">
+                                <a href="#itineraries" className="bg-white text-[#0F172A] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#AF8B58] hover:text-white transition-all shadow-2xl font-sans inline-block">
                                     Explore Collection
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </section>
@@ -329,8 +350,8 @@
                         </div>
                     </section>
 
-                    {/* Itineraries Grid */}
-                    <section className="py-20 px-6">
+                    {/* Itineraries Grid - ID Added Here */}
+                    <section id="itineraries" className="py-20 px-6 scroll-mt-24">
                         <div className="max-w-7xl mx-auto">
                             <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
                                 <div>
@@ -408,9 +429,9 @@
                                                     </div>
                                                 </div>
 
-                                                <button className="mt-8 group-hover:bg-[#0F172A] group-hover:text-white border border-[#0F172A] text-[#0F172A] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans">
+                                                <a href="#contact" className="mt-8 group-hover:bg-[#0F172A] group-hover:text-white border border-[#0F172A] text-[#0F172A] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center">
                                                     Request Itinerary <ChevronRight size={14} />
-                                                </button>
+                                                </a>
                                             </div>
                                         </div>
                                     ))}
@@ -418,8 +439,8 @@
                         </div>
                     </section>
 
-                    {/* Specialty Section */}
-                    <section className="py-32 bg-[#0F172A] text-white overflow-hidden">
+                    {/* Specialty Section - ID Added Here */}
+                    <section id="experiences" className="py-32 bg-[#0F172A] text-white overflow-hidden scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="relative">
                                 <div className="aspect-[4/5] overflow-hidden">
@@ -460,8 +481,8 @@
                         </div>
                     </section>
 
-                    {/* Footer / Contact */}
-                    <footer className="bg-[#0A0F1D] text-white pt-24 pb-12 border-t border-white/5">
+                    {/* Footer / Contact - ID Added Here */}
+                    <footer id="contact" className="bg-[#0A0F1D] text-white pt-24 pb-12 border-t border-white/5 scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
                                 <div className="md:col-span-2">
@@ -480,10 +501,10 @@
                                 <div>
                                     <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#AF8B58] mb-8 font-sans">Explore</h6>
                                     <ul className="space-y-4 font-sans text-sm text-gray-400">
-                                        <li className="hover:text-white cursor-pointer transition-colors">Imperial Journeys</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">Island Sanctuaries</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">Spiritual Retreats</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">Gourmet Asia</li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Imperial Journeys</a></li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Island Sanctuaries</a></li>
+                                        <li><a href="#experiences" className="hover:text-white cursor-pointer transition-colors">Spiritual Retreats</a></li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Gourmet Asia</a></li>
                                     </ul>
                                 </div>
 
