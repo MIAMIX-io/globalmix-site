@@ -20,11 +20,16 @@
                     },
                     animation: {
                         'fade-in': 'fadeIn 2s ease-out',
+                        'bounce': 'bounce 2s infinite',
                     },
                     keyframes: {
                         fadeIn: {
                             '0%': { opacity: '0', transform: 'translateY(10px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounce: {
+                            '0%, 100%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' },
+                            '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' },
                         }
                     }
                 }
@@ -248,7 +253,7 @@
                         </a>
                     </section>
 
-                    {/* Intro Section - ID added here */}
+                    {/* Intro Section */}
                     <section id="about-us" className="py-24 px-6 max-w-7xl mx-auto text-center scroll-mt-24">
                         <div className="max-w-3xl mx-auto">
                             <div className="w-12 h-[2px] bg-[#C5A059] mx-auto mb-8"></div>
@@ -259,7 +264,7 @@
                         </div>
                     </section>
 
-                    {/* Expeditions Grid - ID added here */}
+                    {/* Expeditions Grid */}
                     <section id="expeditions" className="py-20 bg-[#f4f4f4] scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
@@ -320,7 +325,7 @@
                         </div>
                     </section>
 
-                    {/* Experience Stats - ID added here */}
+                    {/* Experience Stats */}
                     <section id="experiences" className="py-20 px-6 bg-[#002147] text-white overflow-hidden relative scroll-mt-20">
                         <div className="absolute top-0 right-0 opacity-10 scale-150 -translate-y-1/2">
                             <Compass className="w-[500px] h-[500px]" />
@@ -346,7 +351,7 @@
                         </div>
                     </section>
 
-                    {/* Footer - ID added here */}
+                    {/* Footer */}
                     <footer id="contact" className="bg-[#1a1a1a] text-white pt-20 pb-10 scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
                             <div className="md:col-span-2">
