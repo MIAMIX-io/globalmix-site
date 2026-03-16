@@ -33,6 +33,10 @@
     </script>
 
     <style>
+        /* Smooth scrolling for anchor links */
+        html {
+            scroll-behavior: smooth;
+        }
         /* Hide scrollbar for category menu */
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
@@ -50,11 +54,9 @@
     <div id="root"></div>
 
     <script type="text/babel" data-type="module">
-        // Import React and ReactDOM from ESM.sh
         import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
         import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
         
-        // Import all required Lucide icons
         import {
             Compass, MapPin, Ship, Sun, Mountain, Utensils,
             Menu, X, ChevronRight, Mail, Phone, Globe,
@@ -72,6 +74,12 @@
                 whatsapp: "17864598797",
                 email: "Info@globalmix.online"
             };
+
+            const navLinks = [
+                { name: 'Itineraries', href: '#itineraries' },
+                { name: 'Experiences', href: '#experiences' },
+                { name: 'Contact', href: '#contact' }
+            ];
 
             useEffect(() => {
                 const handleScroll = () => {
@@ -258,18 +266,18 @@
                             </div>
 
                             <div className="hidden lg:flex items-center gap-10">
-                                {['Itineraries', 'Experiences', 'Contact'].map((item) => (
-                                    <a key={item} href="#" className="text-[10px] font-bold tracking-[0.3em] uppercase text-white hover:text-[#B4924A] transition-colors font-sans">
-                                        {item}
+                                {navLinks.map((item) => (
+                                    <a key={item.name} href={item.href} className="text-[10px] font-bold tracking-[0.3em] uppercase text-white hover:text-[#B4924A] transition-colors font-sans">
+                                        {item.name}
                                     </a>
                                 ))}
                                 <div className="flex items-center gap-4 ml-4">
                                     <a href={`tel:${contactData.phone}`} className="text-white hover:text-[#B4924A] transition-colors">
                                         <Phone size={18} />
                                     </a>
-                                    <button className="bg-[#B4924A] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#2D3E2F] transition-all transform hover:scale-105 font-sans">
+                                    <a href="#itineraries" className="bg-[#B4924A] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#2D3E2F] transition-all transform hover:scale-105 font-sans inline-block">
                                         BOOK YOUR JOURNEY
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
 
@@ -281,10 +289,18 @@
                         {/* Mobile Menu */}
                         {isMenuOpen && (
                             <div className="absolute top-full left-0 w-full bg-[#2D3E2F] border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden animate-in slide-in-from-top">
-                                <a href="#" className="text-white text-sm font-bold tracking-widest uppercase font-sans">Itineraries</a>
-                                <a href="#" className="text-white text-sm font-bold tracking-widest uppercase font-sans">Experiences</a>
+                                {navLinks.map((item) => (
+                                    <a 
+                                        key={item.name} 
+                                        href={item.href} 
+                                        onClick={() => setIsMenuOpen(false)}
+                                        className="text-white text-sm font-bold tracking-widest uppercase font-sans"
+                                    >
+                                        {item.name}
+                                    </a>
+                                ))}
                                 <a href={`mailto:${contactData.email}`} className="text-white text-sm font-bold tracking-widest uppercase font-sans">Email Us</a>
-                                <button className="bg-[#B4924A] text-white py-4 font-bold tracking-widest uppercase font-sans">Enquire Now</button>
+                                <a href="#itineraries" onClick={() => setIsMenuOpen(false)} className="bg-[#B4924A] text-white py-4 text-center font-bold tracking-widest uppercase font-sans inline-block w-full">Enquire Now</a>
                             </div>
                         )}
                     </nav>
@@ -293,11 +309,10 @@
                     <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 z-0">
                             <img
-                                src=https://images.unsplash.com/photo-1489493887464-892be6d1daae?q=80&w=1734&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                src="https://images.unsplash.com/photo-1489493887464-892be6d1daae?q=80&w=1734&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                 className="w-full h-full object-cover"
                                 alt="African Safari"
                             />
-                            {/* Re-added the darker gradient from the previous request */}
                             <div className="absolute inset-0 bg-gradient-to-b from-[#2D3E2F]/95 via-[#2D3E2F]/60 to-[#2D3E2F]/100" />
                         </div>
 
@@ -307,7 +322,6 @@
                             </span>
                             <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
                                 Grand Journeys <br />
-                                {/* Changed to dark green with a white background glow so it's readable */}
                                 <span className="italic text-[#1A3626] drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">
                                     of Africa
                                 </span>
@@ -316,9 +330,9 @@
                                 Discover the untamed majesty of the African continent through journeys meticulously curated for the world's most discerning travelers.
                             </p>
                             <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                                <button className="bg-white text-[#2D3E2F] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#B4924A] hover:text-white transition-all shadow-2xl font-sans">
+                                <a href="#itineraries" className="bg-white text-[#2D3E2F] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#B4924A] hover:text-white transition-all shadow-2xl font-sans inline-block">
                                     Explore Collection
-                                </button>
+                                </a>
                             </div>
                         </div>
                     </section>
@@ -334,8 +348,8 @@
                         </div>
                     </section>
 
-                    {/* Journeys Collection */}
-                    <section className="py-20 px-6">
+                    {/* Journeys Collection - ID added here */}
+                    <section id="itineraries" className="py-20 px-6 scroll-mt-24">
                         <div className="max-w-7xl mx-auto">
                             <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
                                 <div>
@@ -413,9 +427,9 @@
                                                     </div>
                                                 </div>
 
-                                                <button className="mt-8 group-hover:bg-[#2D3E2F] group-hover:text-white border border-[#2D3E2F] text-[#2D3E2F] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans">
+                                                <a href="#contact" className="mt-8 group-hover:bg-[#2D3E2F] group-hover:text-white border border-[#2D3E2F] text-[#2D3E2F] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center">
                                                     Request Details <ChevronRight size={14} />
-                                                </button>
+                                                </a>
                                             </div>
                                         </div>
                                     ))}
@@ -423,8 +437,8 @@
                         </div>
                     </section>
 
-                    {/* Concierge Section */}
-                    <section className="py-32 bg-[#2D3E2F] text-white overflow-hidden">
+                    {/* Concierge Section - ID added here */}
+                    <section id="experiences" className="py-32 bg-[#2D3E2F] text-white overflow-hidden scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="relative">
                                 <div className="aspect-[4/5] overflow-hidden">
@@ -465,8 +479,8 @@
                         </div>
                     </section>
 
-                    {/* Footer / Contact */}
-                    <footer className="bg-[#1A1A1A] text-white pt-24 pb-12 border-t border-white/5">
+                    {/* Footer / Contact - ID added here */}
+                    <footer id="contact" className="bg-[#1A1A1A] text-white pt-24 pb-12 border-t border-white/5 scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
                                 <div className="md:col-span-2">
@@ -485,10 +499,10 @@
                                 <div>
                                     <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#B4924A] mb-8 font-sans">Navigate</h6>
                                     <ul className="space-y-4 font-sans text-sm text-gray-400">
-                                        <li className="hover:text-white cursor-pointer transition-colors">Signature Safaris</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">Private Aviation</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">Imperial Morocco</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">Seychelles Islands</li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Signature Safaris</a></li>
+                                        <li><a href="#experiences" className="hover:text-white cursor-pointer transition-colors">Private Concierge</a></li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Imperial Morocco</a></li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Seychelles Islands</a></li>
                                     </ul>
                                 </div>
 
@@ -524,7 +538,6 @@
             );
         };
 
-        // Render the app to the root div
         const root = createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
