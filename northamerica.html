@@ -165,8 +165,8 @@
                     {/* Hero Section */}
                     <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 z-0">
-                            {/* Deep Blue Slate overlay to match original vibe */}
-                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1920&auto=format&fit=crop&fm=webp" className="w-full h-full object-cover scale-105" alt="North America Landscape" fetchPriority="high" />
+                            {/* FIX: Properly wrapped URL in {} to prevent Babel crash from ampersands */}
+                            <img src={"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1920&auto=format&fit=crop&fm=webp"} className="w-full h-full object-cover scale-105" alt="North America Landscape" fetchPriority="high" />
                             <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a]/95 via-[#0f172a]/60 to-[#0f172a]/100" />
                         </div>
 
@@ -275,7 +275,8 @@
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="relative">
                                 <div className="aspect-[4/5] overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?q=80&w=1200&auto=format&fit=crop&fm=webp" className="w-full h-full object-cover grayscale opacity-50" alt="Concierge Expert" loading="lazy" />
+                                    {/* FIX: Properly wrapped URL in {} to prevent Babel crash from ampersands */}
+                                    <img src={"https://images.unsplash.com/photo-1549144511-f099e773c147?q=80&w=1200&auto=format&fit=crop&fm=webp"} className="w-full h-full object-cover grayscale opacity-50" alt="Concierge Expert" loading="lazy" />
                                 </div>
                                 <div className="absolute -bottom-10 -right-10 bg-[#C5A059] p-12 hidden md:block">
                                     <p className="text-4xl italic leading-tight text-[#0f172a]">Private <br />Concierge <br />In America</p>
