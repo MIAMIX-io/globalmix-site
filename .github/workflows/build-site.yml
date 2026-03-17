@@ -6,7 +6,7 @@ on:
       - main
   workflow_dispatch: # Allows manual trigger
   schedule:
-    - cron: '0 0 * * *' # Runs automatically every night at midnight
+    - cron: '0 * * * *' # Runs automatically every hour
 
 jobs:
   build-and-deploy:
