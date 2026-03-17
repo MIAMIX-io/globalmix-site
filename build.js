@@ -26,14 +26,26 @@ async function generateSite() {
     }
 
     try {
-        // 1. Fetch only trips from Notion where "Sync to GitHub" is checked
+        // 1. Fetch trips where Checkbox is TRUE AND Status is "Ready to Sync"
         const response = await notion.databases.query({
             database_id: DATABASE_ID,
             filter: {
-                property: 'Sync to GitHub',
-                checkbox: {
-                    equals: true
-                }
+                and: [
+                    {
+                        property: 'Sync to GitHub',
+                        checkbox: {
+                            equals: true
+                        }
+                    },
+                    {
+                        property: 'Status',
+                        // NOTE: If your 'Status' column is a "Select" dropdown type instead of 
+                        // a "Status" pipeline type, change "status:" below to "select:"
+                        status: {
+                            equals: 'Ready to Sync'
+                        }
+                    }
+                ]
             }
         });
 
@@ -41,7 +53,7 @@ async function generateSite() {
             const props = page.properties;
             
             return {
-                notionPageId: page.id, // We need this to update the status later!
+                notionPageId: page.id, 
                 id: getText(props['Trip ID']),
                 title: getText(props['Trip Name'] || props['Title']), 
                 region: getText(props['Region']),
@@ -58,7 +70,12 @@ async function generateSite() {
             };
         });
 
-        console.log(`Found ${trips.length} trips ready to sync. Building pages...`);
+        console.log(`Found ${trips.length} approved trips ready to sync. Building pages...`);
+
+        if (trips.length === 0) {
+            console.log('No trips matched the "Ready to Sync" + Checkbox criteria. Exiting cleanly.');
+            return;
+        }
 
         // 2. Read the master template
         const templatePath = path.join(__dirname, 'trip-template.html');
@@ -88,22 +105,20 @@ async function generateSite() {
             fs.writeFileSync(path.join(dirPath, 'index.html'), newHtml);
             console.log(`✅ Created: /${safeRegion}/${safeSlug}`);
 
-            // 4. Ping Notion back to update the Status to "Live"
-            // Note: If your Notion Status column is a "Select" type, use { select: { name: 'Live' } }
-            // If it is a "Status" type, use { status: { name: 'Live' } }
-            // We are using Select syntax here as it's the most common for older tables.
+            // 4. Update Notion Status to "Live"
             try {
                 await notion.pages.update({
                     page_id: trip.notionPageId,
                     properties: {
                         'Status': {
-                            select: { name: 'Live' }
+                            // Again, if your Status column is a "Select" type, change "status" to "select"
+                            status: { name: 'Live' }
                         }
                     }
                 });
                 console.log(`   └─ Status updated to "Live" in Notion.`);
             } catch (statusError) {
-                console.log(`   └─ Note: Could not update status in Notion. Please ensure the column is named 'Status' and 'Live' is an available Select option. Error: ${statusError.message}`);
+                console.log(`   └─ ⚠️ Could not update status in Notion. Please ensure the column is named 'Status' and 'Live' is an available option. Error: ${statusError.message}`);
             }
         }
 
@@ -111,7 +126,7 @@ async function generateSite() {
 
     } catch (error) {
         console.error("❌ Error fetching from Notion:", error.message);
-        process.exit(1); // Stop the GitHub Action if it fails
+        process.exit(1); 
     }
 }
 
