@@ -57,7 +57,7 @@
         import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
         
         import { 
-            Compass, MapPin, Globe, Mail, Phone, ChevronRight, Menu, X, ChevronDown, MessageCircle
+            Compass, MapPin, Globe, Mail, Phone, ChevronRight, Menu, X, ChevronDown, MessageCircle, Ship, Building
         } from 'https://esm.sh/lucide-react@0.292.0';
 
         const App = () => {
@@ -113,7 +113,7 @@
                     </a>
 
                     {/* Navigation */}
-                    <nav className={`fixed w-full z-50 transition-all duration-700 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6'}`}>
+                    <nav className={`fixed w-full z-50 transition-all duration-700 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-8'}`}>
                         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                             <div className="flex items-center gap-3">
                                 <div className={`w-10 h-10 dark flex items-center justify-center rounded-sm transition-colors ${scrolled ? 'bg-dark' : 'bg-white'}`}>
@@ -121,11 +121,11 @@
                                 </div>
                                 <div className="flex flex-col text-dark">
                                     <span className={`font-bold tracking-[0.2em] text-sm uppercase ${scrolled ? 'text-dark' : 'text-white'}`}>Global Mix</span>
-                                    <span className={`text-[9px] tracking-[0.3em] font-semibold uppercase ${scrolled ? 'text-gold' : 'text-gold'}`}>Euro-Asia &amp; Middle East</span>
+                                    <span className={`text-[9px] tracking-[0.3em] font-semibold uppercase ${scrolled ? 'text-gold' : 'text-gold'}`}>Euro-Asia & Middle East</span>
                                 </div>
                             </div>
 
-                            <nav className={`hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] ${scrolled ? 'text-gray-600' : 'text-white/90'}`}>
+                            <nav className={`hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] ${scrolled ? 'text-gray-600' : 'text-white/90'}`}>
                                 <a href="#" className="hover:text-gold transition-colors">Home</a>
                                 <a href="#circuits" className="hover:text-gold transition-colors">Itineraries</a>
                                 <a href="#vision" className="hover:text-gold transition-colors">Vision</a>
@@ -133,7 +133,7 @@
                             </nav>
 
                             <div className="flex items-center gap-4">
-                                <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
                                     {isMenuOpen ? <X className={scrolled ? 'text-dark' : 'text-white'} /> : <Menu className={scrolled ? 'text-dark' : 'text-white'} />}
                                 </button>
                                 <a href={`https://wa.me/${contactData.whatsapp}`} className={`hidden md:inline-block px-8 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-gold transition-all duration-500 rounded-sm ${scrolled ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
@@ -162,8 +162,8 @@
 
                         <div className="relative z-10 text-center px-6 max-w-6xl animate-fade-in">
                             <h2 className="text-white text-[11px] md:text-xs uppercase tracking-[0.7em] mb-8 opacity-80 font-semibold">Bridging Worlds</h2>
-                            <h1 className="text-white text-5xl md:text-9xl font-serif mb-10 leading-tight drop-shadow-xl">Euro-Asia <br/><span className="italic">&amp; Middle East</span></h1>
-                            <p className="text-white/90 max-w-3xl mx-auto font-light text-lg md:text-2xl leading-relaxed italic">
+                            <h1 className="text-6xl md:text-9xl font-serif text-white mb-10 leading-[0.85]">Grand Journeys <br/><span className="italic text-gold drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">of Euro-Asia</span></h1>
+                            <p className="text-white/90 max-w-3xl mx-auto font-light text-lg md:text-2xl leading-relaxed mb-12 italic">
                                 "From Imperial grandeur to modern extravagance. A curated selection of 9 ultra-premium journeys."
                             </p>
                             <div className="mt-16">
@@ -209,7 +209,7 @@
                                         </div>
                                         <div className="p-10 flex flex-col flex-grow">
                                             <span className="text-[9px] text-gold font-bold uppercase tracking-[0.3em]">{journey.tag}</span>
-                                            <h4 className="text-2xl font-serif mt-3 mb-5 text-dark leading-tight">{journey.title}</h4>
+                                            <h4 className="text-2xl font-serif mt-3 mb-5 text-dark leading-tight group-hover:text-gold transition-colors">{journey.title}</h4>
                                             <p className="text-gray-500 text-sm mb-8 font-light leading-relaxed flex-grow">{journey.route}. {journey.description}</p>
                                             
                                             <div className="border-t border-gray-100 pt-6">
@@ -236,24 +236,45 @@
                         </div>
                     </section>
 
-                    {/* Quote Section */}
-                    <section className="py-48 relative text-center text-white overflow-hidden">
-                        <div className="absolute inset-0 z-0">
-                            <img src={"https://images.unsplash.com/photo-1489493512598-d08130f49bea?auto=format&fit=crop&q=80&w=2000&fm=webp"} alt="Desert Luxury" className="w-full h-full object-cover" loading="lazy" />
-                            <div className="absolute inset-0 bg-black/50"></div>
-                        </div>
-                        <div className="relative z-10 max-w-4xl mx-auto px-6">
-                            <h3 className="text-4xl md:text-7xl font-serif italic mb-8 leading-tight drop-shadow-lg">"Experience the echoes of empires and the pulse of the future."</h3>
-                            <p className="text-[10px] uppercase tracking-[0.5em] font-bold text-gold">Global Mix Euro-Asia &amp; Middle East</p>
+                    {/* Concierge Section */}
+                    <section id="concierge" className="py-40 bg-[#121212] text-white overflow-hidden scroll-mt-20">
+                        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                            <div className="relative">
+                                <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
+                                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?q=80&w=1200&auto=format&fit=crop&fm=webp" 
+                                         className="w-full h-full object-cover grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-1000" alt="Concierge" loading="lazy" />
+                                </div>
+                                <div className="absolute -bottom-10 -right-10 bg-gold p-12 hidden md:block rounded-sm shadow-2xl transform hover:-translate-y-2 transition-transform duration-500">
+                                    <p className="text-4xl italic leading-tight text-dark font-serif">Private <br />Concierge <br />In Euro-Asia</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-xs font-bold tracking-[0.5em] text-gold uppercase mb-8 font-sans">SPECIALIZED ASSISTANCE</h3>
+                                <h4 className="text-5xl md:text-6xl mb-10 leading-none font-serif text-white">The Luxury of <br/><span className="italic text-gold">No Limits.</span></h4>
+                                <div className="space-y-12">
+                                    <div className="flex gap-6 group">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-dark transition-all duration-500"><Compass size={24} /></div>
+                                        <div><h5 className="text-xl mb-3 font-serif">Imperial Expertise</h5><p className="text-gray-400 font-sans text-sm">Access to historical landmarks and cultural centers with specialized historians and local guides.</p></div>
+                                    </div>
+                                    <div className="flex gap-6 group">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-dark transition-all duration-500"><Ship size={24} /></div>
+                                        <div><h5 className="text-xl mb-3 font-serif">Bespoke Logistics</h5><p className="text-gray-400 font-sans text-sm">From private desert camps to yacht charters across the Bosphorus and the Arabian Gulf.</p></div>
+                                    </div>
+                                    <div className="flex gap-6 group">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-dark transition-all duration-500"><Building size={24} /></div>
+                                        <div><h5 className="text-xl mb-3 font-serif">Premium Inventory</h5><p className="text-gray-400 font-sans text-sm">Privileged entry and priority reservations at the region's most iconic residences and social clubs.</p></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </section>
 
                     {/* Contact Section */}
-                    <section id="contact" className="py-32 px-6 bg-white border-t border-gray-100">
+                    <section id="contact" className="py-32 px-6 bg-white border-t border-gray-100 scroll-mt-20">
                         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24">
                             <div className="lg:w-1/2">
                                 <span className="text-gold uppercase tracking-[0.4em] text-[10px] font-bold">Inquiry &amp; Concierge</span>
-                                <h2 className="text-5xl font-serif mt-6 mb-10 text-dark">The Journey Begins Here</h2>
+                                <h2 className="text-5xl font-serif mt-6 mb-10 text-dark leading-tight">The Journey <br/>Begins Here</h2>
                                 <p className="text-gray-500 mb-16 max-w-md text-lg font-light leading-relaxed">Our regional specialists coordinate every aspect of your itinerary, from private Kremlin access to desert sky-towers.</p>
 
                                 <div className="space-y-10">
@@ -318,7 +339,7 @@
                                 </div>
                                 <div className="flex flex-col">
                                     <span className="font-bold tracking-[0.3em] uppercase text-sm">Global Mix</span>
-                                    <span className="text-[10px] tracking-[0.4em] gold-accent uppercase font-bold">Euro-Asia</span>
+                                    <span className="text-[10px] tracking-[0.4em] text-gold uppercase font-bold">Euro-Asia</span>
                                 </div>
                             </div>
 
@@ -328,7 +349,6 @@
                                 <a href="africa.html" className="hover:text-gold transition-colors">Africa</a>
                                 <a href="caribe.html" className="hover:text-gold transition-colors">Caribe</a>
                                 <a href="trains.html" className="hover:text-gold transition-colors">Luxury Train</a>
-                                <a href="#" className="text-white">Euro-Asia</a>
                             </div>
 
                             <div className="text-[9px] text-gray-400 uppercase tracking-[0.2em] font-medium opacity-50">
