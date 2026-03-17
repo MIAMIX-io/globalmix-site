@@ -38,18 +38,9 @@
     </script>
 
     <style>
-        /* Smooth scrolling for anchor links */
-        html {
-            scroll-behavior: smooth;
-        }
-        /* Hide scrollbar for category menu */
-        .scrollbar-hide::-webkit-scrollbar {
-            display: none;
-        }
-        .scrollbar-hide {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
+        html { scroll-behavior: smooth; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -89,108 +80,30 @@
 
             const handleTripAction = (e, trip, regionName) => {
                 e.preventDefault();
-
-                // 1. Prepare the prefilled email
                 const email = "info@globalmix.online";
                 const subject = encodeURIComponent(`Requesting Full Itinerary: ${trip.title}`);
                 const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me the full itinerary and details for the "${trip.title}" expedition.\n\nThank you!`);
                 const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
 
-                // 2. Recreate the exact URL the build script generated
                 const safeRegion = regionName.toLowerCase().replace(/[^a-z0-9]/g, '');
                 const safeSlug = trip.title.split(' ')[0].toLowerCase().replace(/[^a-z0-9-]/g, ''); 
                 const pageUrl = `/${safeRegion}/${safeSlug}`;
 
-                // 3. Fire the email client
                 window.location.href = mailtoLink;
-
-                // 4. Redirect to the trip page after a tiny 300ms delay to ensure the mailto registers
-                setTimeout(() => {
-                    window.location.href = pageUrl;
-                }, 300);
+                setTimeout(() => { window.location.href = pageUrl; }, 300);
             };
 
             const expeditions = [
-                {
-                    id: 1,
-                    title: "White Continent Expedition",
-                    location: "Antarctica, Buenos Aires & Ushuaia",
-                    description: "The White Continent Expedition represents one of the most extraordinary journeys on the planet. The itinerary begins in the vibrant Argentine capital, Buenos Aires, where European elegance meets Latin American passion. After exploring Ushuaia, travelers sail toward the remote continent of Antarctica, navigating among colossal glaciers and penguin colonies.",
-                    image: "https://images.unsplash.com/photo-1551415923-31d2072bc248?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "polar"
-                },
-                {
-                    id: 2,
-                    title: "Patagonia Grand Wilderness",
-                    location: "Argentine Patagonia",
-                    description: "Explore some of the most impressive landscapes in the Southern Hemisphere. The journey begins in Ushuaia, continues to El Calafate to visit the spectacular Perito Moreno Glacier, and moves to Peninsula Valdes for whale watching, culminating in the glacial lakes of San Carlos de Bariloche.",
-                    image: "https://plus.unsplash.com/premium_photo-1694475710456-682ba042cb7b?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "nature"
-                },
-                {
-                    id: 3,
-                    title: "Fjords & Torres del Paine Expedition",
-                    location: "Chilean Patagonia",
-                    description: "A unique exploration of Patagonia from both sea and land. The journey begins by sailing through the majestic Chilean Fjords—a landscape of glaciers and mountains accessible only by water—and ends at the spectacular Torres del Paine National Park, home to turquoise lakes and granite peaks.",
-                    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=1200",
-                    category: "adventure"
-                },
-                {
-                    id: 4,
-                    title: "Argentina Signature Collection",
-                    location: "Buenos Aires, Mendoza & Iguazu",
-                    description: "This circuit combines three of Argentina's most iconic destinations. Start in the cultural capital of Buenos Aires, continue to the world-renowned wine region of Mendoza at the foot of the Andes, and finish at the majestic Iguazu Falls, a natural wonder surrounded by subtropical jungle.",
-                    image: "https://images.unsplash.com/photo-1495317823589-e67efe1524b0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "luxury"
-                },
-                {
-                    id: 5,
-                    title: "Andean Desert Odyssey",
-                    location: "Uyuni, Atacama & Northern Argentina",
-                    description: "Cross some of the most surreal landscapes on the continent. The journey begins at the extraordinary Salar de Uyuni, the largest salt flat on earth, continues through the Atacama Desert's volcanic landscapes, and concludes exploring the colorful mountains and traditions of Northern Argentina.",
-                    image: "https://plus.unsplash.com/premium_photo-1700576928991-bc207936acb2?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "adventure"
-                },
-                {
-                    id: 6,
-                    title: "Amazon & Jaguar Safari",
-                    location: "Amazon & Pantanal",
-                    description: "Immerse yourself in two of the richest ecosystems on the planet. Begin in the vast Amazon Rainforest, staying in exclusive lodges, then head to the extraordinary Pantanal, considered one of the best places in the world to observe jaguars in their wild state.",
-                    image: "https://plus.unsplash.com/premium_photo-1664302951530-f329f4986976?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "wildlife"
-                },
-                {
-                    id: 7,
-                    title: "Brazil Coastal Elegance",
-                    location: "Rio de Janeiro & Brazilian Coast",
-                    description: "Celebrate Brazil's vibrant culture and natural beauty. The trip begins in iconic Rio de Janeiro, then explores some of the most exclusive destinations along the Brazilian coast, where luxury meets tropical beaches and nautical experiences.",
-                    image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&q=80&w=1200",
-                    category: "luxury"
-                },
-                {
-                    id: 8,
-                    title: "Inca Legacy Journey",
-                    location: "Lima, Machu Picchu & Nazca",
-                    description: "Explore the cultural heritage of the ancient Inca Empire. Start in Lima, a global gastronomic capital, then journey to the legendary citadel of Machu Picchu. The itinerary can also include a flight over the mysterious Nazca Lines.",
-                    image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&q=80&w=1200",
-                    category: "culture"
-                },
-                {
-                    id: 9,
-                    title: "Tropical Nature & Wellness Escape",
-                    location: "Tulum, Los Cabos & Costa Rica",
-                    description: "Connect luxury with tropical nature. The experience begins in Tulum, where the jungle meets Caribbean beaches for wellness retreats, continues to the sophisticated desert-meets-ocean setting of Los Cabos, and concludes in Costa Rica, a global leader in sustainable tourism.",
-                    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=1200",
-                    category: "wellness"
-                },
-                {
-                    id: 10,
-                    title: "Galapagos Evolution Voyage",
-                    location: "Galapagos & Historic Ecuador",
-                    description: "Combine extraordinary nature with cultural heritage. This expedition includes the legendary Galapagos Islands, whose unique ecosystem inspired Darwin, and continues through mainland Ecuador to explore Andean colonial cities and volcanic landscapes.",
-                    image: "https://images.unsplash.com/photo-1709053927514-35877fa158ee?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                    category: "wildlife"
-                }
+                { id: 1, title: "White Continent Expedition", location: "Antarctica, Buenos Aires & Ushuaia", description: "The White Continent Expedition represents one of the most extraordinary journeys on the planet. The itinerary begins in the vibrant Argentine capital, Buenos Aires, where European elegance meets Latin American passion.", image: "https://images.unsplash.com/photo-1551415923-31d2072bc248?q=80&w=2064&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "polar" },
+                { id: 2, title: "Patagonia Grand Wilderness", location: "Argentine Patagonia", description: "Explore some of the most impressive landscapes in the Southern Hemisphere. The journey begins in Ushuaia, continues to El Calafate to visit the spectacular Perito Moreno Glacier, and moves to Peninsula Valdes for whale watching.", image: "https://plus.unsplash.com/premium_photo-1694475710456-682ba042cb7b?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "nature" },
+                { id: 3, title: "Fjords & Torres del Paine Expedition", location: "Chilean Patagonia", description: "A unique exploration of Patagonia from both sea and land. The journey begins by sailing through the majestic Chilean Fjords—a landscape of glaciers and mountains accessible only by water.", image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&q=80&w=1200", category: "adventure" },
+                { id: 4, title: "Argentina Signature Collection", location: "Buenos Aires, Mendoza & Iguazu", description: "This circuit combines three of Argentina's most iconic destinations. Start in the cultural capital of Buenos Aires, continue to the world-renowned wine region of Mendoza at the foot of the Andes, and finish at the majestic Iguazu Falls.", image: "https://images.unsplash.com/photo-1495317823589-e67efe1524b0?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "luxury" },
+                { id: 5, title: "Andean Desert Odyssey", location: "Uyuni, Atacama & Northern Argentina", description: "Cross some of the most surreal landscapes on the continent. The journey begins at the extraordinary Salar de Uyuni, the largest salt flat on earth, continues through the Atacama Desert's volcanic landscapes.", image: "https://plus.unsplash.com/premium_photo-1700576928991-bc207936acb2?q=80&w=1738&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "adventure" },
+                { id: 6, title: "Amazon & Jaguar Safari", location: "Amazon & Pantanal", description: "Immerse yourself in two of the richest ecosystems on the planet. Begin in the vast Amazon Rainforest, staying in exclusive lodges, then head to the extraordinary Pantanal, considered one of the best places in the world.", image: "https://plus.unsplash.com/premium_photo-1664302951530-f329f4986976?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "wildlife" },
+                { id: 7, title: "Brazil Coastal Elegance", location: "Rio de Janeiro & Brazilian Coast", description: "Celebrate Brazil's vibrant culture and natural beauty. The trip begins in iconic Rio de Janeiro, then explores some of the most exclusive destinations along the Brazilian coast, where luxury meets tropical beaches and nautical experiences.", image: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&q=80&w=1200", category: "luxury" },
+                { id: 8, title: "Inca Legacy Journey", location: "Lima, Machu Picchu & Nazca", description: "Explore the cultural heritage of the ancient Inca Empire. Start in Lima, a global gastronomic capital, then journey to the legendary citadel of Machu Picchu. The itinerary can also include a flight over the mysterious Nazca Lines.", image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&q=80&w=1200", category: "culture" },
+                { id: 9, title: "Tropical Nature & Wellness Escape", location: "Tulum, Los Cabos & Costa Rica", description: "Connect luxury with tropical nature. The experience begins in Tulum, where the jungle meets Caribbean beaches for wellness retreats, continues to the sophisticated desert-meets-ocean setting of Los Cabos.", image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&q=80&w=1200", category: "wellness" },
+                { id: 10, title: "Galapagos Evolution Voyage", location: "Galapagos & Historic Ecuador", description: "Combine extraordinary nature with cultural heritage. This expedition includes the legendary Galapagos Islands, whose unique ecosystem inspired Darwin, and continues through mainland Ecuador to explore Andean colonial cities.", image: "https://images.unsplash.com/photo-1709053927514-35877fa158ee?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "wildlife" }
             ];
 
             return (
@@ -208,13 +121,9 @@
 
                             <div className="hidden md:flex items-center gap-10">
                                 {navLinks.map((item) => (
-                                    <a key={item.name} href={item.href} className={`text-sm font-medium tracking-wide hover:text-[#C5A059] transition-colors ${scrolled ? 'text-[#1a1a1a]' : 'text-white'}`}>
-                                        {item.name}
-                                    </a>
+                                    <a key={item.name} href={item.href} className={`text-sm font-medium tracking-wide hover:text-[#C5A059] transition-colors ${scrolled ? 'text-[#1a1a1a]' : 'text-white'}`}>{item.name}</a>
                                 ))}
-                                <a href="#contact" className="bg-[#C5A059] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#b08d4a] transition-all transform hover:scale-105 inline-block">
-                                    Plan Your Journey
-                                </a>
+                                <a href="#contact" className="bg-[#C5A059] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#b08d4a] transition-all transform hover:scale-105 inline-block">Plan Your Journey</a>
                             </div>
 
                             <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -226,14 +135,7 @@
                         {isMenuOpen && (
                             <div className="absolute top-full left-0 w-full bg-white shadow-xl md:hidden flex flex-col p-6 gap-6 animate-in slide-in-from-top duration-300">
                                 {navLinks.map((item) => (
-                                    <a 
-                                        key={item.name} 
-                                        href={item.href} 
-                                        onClick={() => setIsMenuOpen(false)}
-                                        className="text-lg font-medium text-[#1a1a1a] hover:text-[#C5A059]"
-                                    >
-                                        {item.name}
-                                    </a>
+                                    <a key={item.name} href={item.href} onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-[#1a1a1a] hover:text-[#C5A059]">{item.name}</a>
                                 ))}
                                 <a href="#contact" onClick={() => setIsMenuOpen(false)} className="bg-[#002147] text-white py-4 rounded-xl font-bold text-center inline-block w-full">Request Itinerary</a>
                             </div>
@@ -241,38 +143,35 @@
                     </nav>
 
                     {/* Hero Section */}
-                    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+                    <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0">
-                            <img 
-                                src="https://images.unsplash.com/photo-1637966201771-b0b251baa2ef?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                                className="w-full h-full object-cover scale-105"
-                                alt="Andean Landscape"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-b from-[#002147]/80 via-[#002147]/60 to-[#1a1a1a]/90" />
+                            <img src="https://images.unsplash.com/photo-1637966201771-b0b251baa2ef?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="w-full h-full object-cover scale-105" alt="Andean Landscape" />
+                            {/* Upgraded Gradient matching Africa's visual pop */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#002147]/95 via-[#002147]/60 to-[#1a1a1a]/100" />
                         </div>
 
-                        <div className="relative z-10 text-center px-6 max-w-4xl">
-                            <span className="inline-block mb-6 text-white/90 tracking-[0.4em] text-xs font-bold uppercase animate-fade-in">
+                        <div className="relative z-10 text-center px-6 max-w-5xl">
+                            <span className="inline-block mb-6 text-white/90 tracking-[0.6em] text-xs font-bold uppercase animate-fade-in font-sans">
                                 Exploration • Luxury • Authenticity
                             </span>
-                            <h1 className="text-5xl md:text-8xl font-serif text-white mb-8 leading-tight drop-shadow-lg">
-                                Grand Journeys of Latin America
+                            <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
+                                Grand Journeys <br />
+                                <span className="italic text-[#001024] drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">
+                                    of Latin America
+                                </span>
                             </h1>
-                            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-10 font-light italic">
+                            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-10 font-light italic font-sans">
                                 "A curated selection of expeditions designed to discover the most extraordinary landscapes, fascinating cultures, and rich biodiversity of the continent."
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <a href="#expeditions" className="bg-white text-[#002147] px-10 py-4 rounded-full font-bold hover:bg-[#C5A059] hover:text-white transition-all duration-300 shadow-xl inline-block text-center">
+                                <a href="#expeditions" className="bg-white text-[#002147] px-10 py-4 rounded-full font-bold hover:bg-[#C5A059] hover:text-white transition-all duration-300 shadow-xl inline-block text-center font-sans tracking-wider text-xs uppercase">
                                     Explore Expeditions
-                                </a>
-                                <a href="#about-us" className="backdrop-blur-md bg-white/10 border border-white/30 text-white px-10 py-4 rounded-full font-bold hover:bg-white/20 transition-all duration-300 inline-block text-center">
-                                    Our Philosophy
                                 </a>
                             </div>
                         </div>
 
                         <a href="#about-us" className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer hover:opacity-75 transition-opacity">
-                            <ChevronRight className="rotate-90 text-white/70 w-8 h-8" />
+                            <ChevronDown size={20} className="text-white/70 w-8 h-8" />
                         </a>
                     </section>
 
@@ -295,14 +194,9 @@
                                     <h3 className="text-4xl font-serif text-[#002147] mb-2">Our Signature Collection</h3>
                                     <p className="text-gray-500 italic">Ten journeys that define a continent.</p>
                                 </div>
-                                
                                 <div className="flex flex-wrap gap-3">
                                     {['all', 'polar', 'nature', 'luxury', 'wildlife', 'culture'].map((cat) => (
-                                        <button 
-                                            key={cat}
-                                            onClick={() => setActiveTab(cat)}
-                                            className={`px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase transition-all ${activeTab === cat ? 'bg-[#002147] text-white shadow-lg' : 'bg-white text-gray-400 hover:text-[#002147]'}`}
-                                        >
+                                        <button key={cat} onClick={() => setActiveTab(cat)} className={`px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase transition-all ${activeTab === cat ? 'bg-[#002147] text-white shadow-lg' : 'bg-white text-gray-400 hover:text-[#002147]'}`}>
                                             {cat === 'all' ? 'All' : cat}
                                         </button>
                                     ))}
@@ -310,38 +204,19 @@
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                                {expeditions
-                                    .filter(exp => activeTab === 'all' || exp.category === activeTab)
-                                    .map((exp, index) => (
+                                {expeditions.filter(exp => activeTab === 'all' || exp.category === activeTab).map((exp, index) => (
                                     <div key={exp.id} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-black/5 flex flex-col h-full">
                                         <div className="relative h-72 overflow-hidden">
-                                            <img 
-                                                src={exp.image} 
-                                                alt={exp.title}
-                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                            />
-                                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-[#002147] uppercase">
-                                                0{index + 1}
-                                            </div>
+                                            <img src={exp.image} alt={exp.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
+                                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-[#002147] uppercase">0{index + 1}</div>
                                             <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent">
-                                                <div className="flex items-center gap-2 text-white/90 text-sm font-medium">
-                                                    <MapPin className="w-4 h-4 text-[#C5A059]" />
-                                                    {exp.location}
-                                                </div>
+                                                <div className="flex items-center gap-2 text-white/90 text-sm font-medium"><MapPin className="w-4 h-4 text-[#C5A059]" />{exp.location}</div>
                                             </div>
                                         </div>
-                                        
                                         <div className="p-8 flex flex-col flex-grow">
-                                            <h4 className="text-2xl font-serif text-[#002147] mb-4 group-hover:text-[#C5A059] transition-colors">
-                                                {exp.title}
-                                            </h4>
-                                            <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">
-                                                {exp.description}
-                                            </p>
-                                            <button 
-                                                onClick={(e) => handleTripAction(e, exp, "Latin America")} 
-                                                className="mt-auto group-hover:bg-[#002147] group-hover:text-white border border-[#002147] text-[#002147] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center w-full"
-                                            >
+                                            <h4 className="text-2xl font-serif text-[#002147] mb-4 group-hover:text-[#C5A059] transition-colors">{exp.title}</h4>
+                                            <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">{exp.description}</p>
+                                            <button onClick={(e) => handleTripAction(e, exp, "Latin America")} className="mt-auto group-hover:bg-[#002147] group-hover:text-white border border-[#002147] text-[#002147] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center w-full">
                                                 Explore Itinerary <ChevronRight size={14} />
                                             </button>
                                         </div>
@@ -353,67 +228,28 @@
 
                     {/* Experience Stats */}
                     <section className="py-20 px-6 bg-[#002147] text-white overflow-hidden relative">
-                        <div className="absolute top-0 right-0 opacity-10 scale-150 -translate-y-1/2">
-                            <Compass className="w-[500px] h-[500px]" />
-                        </div>
-                        
+                        <div className="absolute top-0 right-0 opacity-10 scale-150 -translate-y-1/2"><Compass className="w-[500px] h-[500px]" /></div>
                         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center relative z-10">
-                            <div>
-                                <div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">15+</div>
-                                <div className="text-sm font-light text-white/70 uppercase tracking-widest">Years Experience</div>
-                            </div>
-                            <div>
-                                <div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">200+</div>
-                                <div className="text-sm font-light text-white/70 uppercase tracking-widest">Unique Itineraries</div>
-                            </div>
-                            <div>
-                                <div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">10</div>
-                                <div className="text-sm font-light text-white/70 uppercase tracking-widest">Destinations</div>
-                            </div>
-                            <div>
-                                <div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">100%</div>
-                                <div className="text-sm font-light text-white/70 uppercase tracking-widest">Tailor Made</div>
-                            </div>
+                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">15+</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Years Experience</div></div>
+                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">200+</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Unique Itineraries</div></div>
+                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">10</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Destinations</div></div>
+                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">100%</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Tailor Made</div></div>
                         </div>
                     </section>
 
-                    {/* Concierge Section - ID added here */}
+                    {/* Concierge Section */}
                     <section id="experiences" className="py-32 bg-[#002147] text-white overflow-hidden scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="relative">
-                                <div className="aspect-[4/5] overflow-hidden">
-                                    <img 
-                                        src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1200&auto=format&fit=crop" 
-                                        className="w-full h-full object-cover grayscale opacity-50"
-                                        alt="Latin America Concierge"
-                                    />
-                                </div>
-                                <div className="absolute -bottom-10 -right-10 bg-[#C5A059] p-12 hidden md:block">
-                                    <p className="text-4xl italic leading-tight text-[#002147]">Private <br />Concierge <br />In Latin America</p>
-                                </div>
+                                <div className="aspect-[4/5] overflow-hidden"><img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1200&auto=format&fit=crop" className="w-full h-full object-cover grayscale opacity-50" alt="Latin America Concierge" /></div>
+                                <div className="absolute -bottom-10 -right-10 bg-[#C5A059] p-12 hidden md:block"><p className="text-4xl italic leading-tight text-[#002147]">Private <br />Concierge <br />In Latin America</p></div>
                             </div>
                             <div>
                                 <h3 className="text-xs font-bold tracking-[0.5em] text-[#C5A059] uppercase mb-8 font-sans">SPECIALIZED ASSISTANCE</h3>
                                 <h4 className="text-5xl md:text-6xl mb-10 leading-none">The Luxury of No Limits.</h4>
                                 <div className="space-y-12">
-                                    <div className="flex gap-6">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059]">
-                                            <Compass size={24} />
-                                        </div>
-                                        <div>
-                                            <h5 className="text-xl mb-3">Local Expertise</h5>
-                                            <p className="text-gray-400 font-sans text-sm">Our specialists intimately know the terrain, from the heights of the Andes to the depths of the Amazon.</p>
-                                        </div>
-                                    </div>
-                                    <div className="flex gap-6">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059]">
-                                            <Trees size={24} />
-                                        </div>
-                                        <div>
-                                            <h5 className="text-xl mb-3">Privileged Access</h5>
-                                            <p className="text-gray-400 font-sans text-sm">Exclusive entry to remote archaeological sites, private estancias, and protected natural reserves.</p>
-                                        </div>
-                                    </div>
+                                    <div className="flex gap-6"><div className="shrink-0 w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059]"><Compass size={24} /></div><div><h5 className="text-xl mb-3">Local Expertise</h5><p className="text-gray-400 font-sans text-sm">Our specialists intimately know the terrain, from the heights of the Andes to the depths of the Amazon.</p></div></div>
+                                    <div className="flex gap-6"><div className="shrink-0 w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059]"><Trees size={24} /></div><div><h5 className="text-xl mb-3">Privileged Access</h5><p className="text-gray-400 font-sans text-sm">Exclusive entry to remote archaeological sites, private estancias, and protected natural reserves.</p></div></div>
                                 </div>
                             </div>
                         </div>
@@ -425,16 +261,10 @@
                             <div className="md:col-span-2">
                                 <div className="flex items-center gap-2 mb-8">
                                     <Globe className="w-10 h-10 text-[#C5A059]" />
-                                    <div className="flex flex-col">
-                                        <span className="text-2xl font-bold tracking-tighter leading-none">GLOBAL MIX</span>
-                                        <span className="text-[12px] tracking-[0.2em] font-medium text-[#C5A059]">TRAVEL</span>
-                                    </div>
+                                    <div className="flex flex-col"><span className="text-2xl font-bold tracking-tighter leading-none">GLOBAL MIX</span><span className="text-[12px] tracking-[0.2em] font-medium text-[#C5A059]">TRAVEL</span></div>
                                 </div>
-                                <p className="text-gray-400 max-w-sm mb-10 leading-relaxed italic">
-                                    "Redefining luxury travel in Latin America through authentic and exclusive expeditions that connect the soul with the land."
-                                </p>
+                                <p className="text-gray-400 max-w-sm mb-10 leading-relaxed italic">"Redefining luxury travel in Latin America through authentic and exclusive expeditions that connect the soul with the land."</p>
                             </div>
-
                             <div>
                                 <h5 className="text-lg font-serif mb-8 border-l-2 border-[#C5A059] pl-4 uppercase tracking-widest text-sm">Company</h5>
                                 <ul className="space-y-4 text-gray-400 text-sm">
@@ -444,32 +274,18 @@
                                     <li><a href="#contact" className="hover:text-white transition-colors cursor-pointer">Travel Agents</a></li>
                                 </ul>
                             </div>
-
                             <div>
                                 <h5 className="text-lg font-serif mb-8 border-l-2 border-[#C5A059] pl-4 uppercase tracking-widest text-sm">Contact</h5>
                                 <ul className="space-y-6 text-gray-400 text-sm">
-                                    <li className="flex items-start gap-4">
-                                        <Phone className="w-5 h-5 text-[#C5A059] shrink-0" />
-                                        <a href="tel:+5491112345678" className="hover:text-white transition-colors">+54 9 11 1234 5678</a>
-                                    </li>
-                                    <li className="flex items-start gap-4">
-                                        <Mail className="w-5 h-5 text-[#C5A059] shrink-0" />
-                                        <a href="mailto:info@globalmix.network" className="hover:text-white transition-colors">info@globalmix.network</a>
-                                    </li>
-                                    <li className="flex items-start gap-4">
-                                        <MapPin className="w-5 h-5 text-[#C5A059] shrink-0" />
-                                        <span>Puerto Madero, Buenos Aires, Argentina</span>
-                                    </li>
+                                    <li className="flex items-start gap-4"><Phone className="w-5 h-5 text-[#C5A059] shrink-0" /><a href="tel:+5491112345678" className="hover:text-white transition-colors">+54 9 11 1234 5678</a></li>
+                                    <li className="flex items-start gap-4"><Mail className="w-5 h-5 text-[#C5A059] shrink-0" /><a href="mailto:info@globalmix.network" className="hover:text-white transition-colors">info@globalmix.network</a></li>
+                                    <li className="flex items-start gap-4"><MapPin className="w-5 h-5 text-[#C5A059] shrink-0" /><span>Puerto Madero, Buenos Aires, Argentina</span></li>
                                 </ul>
                             </div>
                         </div>
-
                         <div className="max-w-7xl mx-auto px-6 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 uppercase tracking-widest">
                             <p>© 2024 GLOBAL MIX Travel. All rights reserved.</p>
-                            <div className="flex gap-8">
-                                <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
-                                <span className="hover:text-white cursor-pointer transition-colors">Terms & Conditions</span>
-                            </div>
+                            <div className="flex gap-8"><span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span><span className="hover:text-white cursor-pointer transition-colors">Terms & Conditions</span></div>
                         </div>
                     </footer>
                 </div>
