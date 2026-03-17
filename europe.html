@@ -150,8 +150,7 @@
               {/* Hero Section */}
               <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 z-0">
-                  <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=2000" className="w-full h-full object-cover scale-105" alt="European Architecture" />
-                  {/* Upgraded Gradient matching Africa's visual pop */}
+                  <img src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&q=80&w=1920&fm=webp" className="w-full h-full object-cover scale-105" alt="European Architecture" fetchpriority="high" />
                   <div className="absolute inset-0 bg-gradient-to-b from-[#002147]/95 via-[#002147]/60 to-[#002147]/100" />
                 </div>
 
@@ -214,7 +213,8 @@
                     {europeanJourneys.filter(j => activeCategory === 'All' || j.category === activeCategory).map((journey) => (
                       <div key={journey.id} className="group flex flex-col h-full bg-white border border-black/5 hover:border-[#B4924A]/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
                         <div className="relative h-80 overflow-hidden">
-                          <img src={journey.image} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0" />
+                          {/* Lazy Load & WebP */}
+                          <img src={`${journey.image}&fm=webp&q=60&w=800`} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[30%] group-hover:grayscale-0" loading="lazy" />
                           <div className="absolute top-6 left-6 flex flex-col gap-2">
                             <span className="bg-[#B4924A] text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-sans">{journey.duration}</span>
                           </div>
@@ -256,7 +256,9 @@
               <section id="experiences" className="py-32 bg-[#002147] text-white overflow-hidden scroll-mt-20">
                 <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                   <div className="relative">
-                    <div className="aspect-[4/5] overflow-hidden"><img src="https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&q=80&w=1200" className="w-full h-full object-cover grayscale opacity-50" alt="Concierge Service" /></div>
+                    <div className="aspect-[4/5] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&q=80&w=1200&fm=webp" className="w-full h-full object-cover grayscale opacity-50" alt="Concierge Service" loading="lazy" />
+                    </div>
                     <div className="absolute -bottom-10 -right-10 bg-[#B4924A] p-12 hidden md:block"><p className="text-4xl italic leading-tight">Elite <br />Concierge <br />24/7</p></div>
                   </div>
                   <div>
