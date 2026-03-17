@@ -1,350 +1,354 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Global Mix Travel | Bespoke Luxury Travel & Expeditions</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
-<style>
-body {
-font-family: 'Inter', sans-serif;
-scroll-behavior: smooth;
--webkit-font-smoothing: antialiased;
-}
-h1, h2, h3, .serif {
-font-family: 'Playfair Display', serif;
-}
-.bg-gold-gradient {
-background: linear-gradient(135deg, #b89149 0%, #e5c98f 50%, #b89149 100%);
-}
-.text-gold {
-color: #b89149;
-}
-.border-gold {
-border-color: #b89149;
-}
-.hover-lift {
-transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
-}
-.hover-lift:hover {
-transform: translateY(-8px);
-box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
-}
-.overlay-dark {
-background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%);
-}
-.nav-glass {
-background: rgba(255, 255, 255, 0.92);
-backdrop-filter: blur(12px);
-}
-.letter-spacing-wide {
-letter-spacing: 0.3em;
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Mix Travel | Bespoke Luxury Travel & Expeditions</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #b89149 0%, #e5c98f 50%, #b89149 100%);
+        }
+        .text-gold {
+            color: #b89149;
+        }
+        .border-gold {
+            border-color: #b89149;
+        }
+        .hover-lift {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        .overlay-dark {
+            background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%);
+        }
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+        }
+        .letter-spacing-wide {
+            letter-spacing: 0.3em;
+        }
+    </style>
 </head>
 <body class="bg-white text-slate-900 selection:bg-gold-gradient selection:text-white">
 
-<!-- Navigation -->
-<nav class="fixed w-full z-50 nav-glass border-b border-slate-100">
-<div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-<div class="flex flex-col">
-<span class="text-xl md:text-2xl font-bold tracking-[0.2em] text-slate-800">GLOBAL<span class="text-gold">MIX</span></span>
-<span class="text-[10px] uppercase tracking-[0.4em] font-light opacity-60">Travel Network</span>
-</div>
-<div class="hidden md:flex space-x-10 items-center text-[11px] uppercase tracking-[0.2em] font-semibold">
-<a href="#destinations" class="hover:text-gold transition-colors">Destinations</a>
-<a href="#antarctica" class="hover:text-gold transition-colors">Antarctica</a>
-<a href="#essence" class="hover:text-gold transition-colors">Our Essence</a>
-<a href="#" class="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-gold-gradient transition-all duration-300 shadow-sm">Inquire Now</a>
-</div>
-<button class="md:hidden text-slate-800">
-<svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16" />
-</svg>
-</button>
-</div>
-</nav>
+    <nav class="fixed w-full z-50 nav-glass border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+            <div class="flex flex-col">
+                <span class="text-xl md:text-2xl font-bold tracking-[0.2em] text-slate-800">GLOBAL<span class="text-gold">MIX</span></span>
+                <span class="text-[10px] uppercase tracking-[0.4em] font-light opacity-60">Travel Network</span>
+            </div>
+            <div class="hidden md:flex space-x-10 items-center text-[11px] uppercase tracking-[0.2em] font-semibold">
+                <a href="#destinations" class="hover:text-gold transition-colors">Destinations</a>
+                <a href="#antarctica" class="hover:text-gold transition-colors">Antarctica</a>
+                <a href="#essence" class="hover:text-gold transition-colors">Our Essence</a>
+                <a href="mailto:info@globalmix.online?subject=Luxury Travel Inquiry" class="bg-slate-900 text-white px-8 py-3 rounded-full hover:bg-gold-gradient transition-all duration-300 shadow-sm">Inquire Now</a>
+            </div>
+            <button class="md:hidden text-slate-800">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 8h16M4 16h16" />
+                </svg>
+            </button>
+        </div>
+    </nav>
 
-<!-- Hero Section -->
-<header class="relative h-[95vh] flex items-center justify-center overflow-hidden">
-<div class="absolute inset-0 z-0">
-<img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&q=80&w=2000" alt="Serene luxury landscape" class="w-full h-full object-cover scale-100 transition-transform duration-[10s] hover:scale-105">
-<div class="absolute inset-0 bg-black/20"></div>
-</div>
+    <header class="relative h-[95vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&q=80&w=2000" alt="Serene luxury landscape" class="w-full h-full object-cover scale-100 transition-transform duration-[10s] hover:scale-105">
+            <div class="absolute inset-0 bg-black/20"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-6 max-w-5xl">
+            <span class="text-white text-xs md:text-sm letter-spacing-wide uppercase mb-6 block opacity-90 font-light">Hand-Crafted Journeys for the Discerning</span>
+            <h1 class="text-5xl md:text-8xl text-white font-bold mb-8 leading-[1.1] tracking-tight">
+                Luxury & <span class="italic font-light">Adventure</span> <br>In Perfect Harmony
+            </h1>
+            <p class="text-white/80 text-lg md:text-2xl mb-12 max-w-3xl mx-auto font-light leading-relaxed">
+                We curate fine, tailor-made itineraries that blend refined elegance with the world’s most daring expeditions.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
+                <a href="#destinations" class="w-full sm:w-auto bg-white text-slate-900 px-12 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-gold-gradient hover:text-white transition-all duration-500 transform hover:scale-105 shadow-xl">
+                    Explore Destinations
+                </a>
+                <a href="latinoamerica.html" class="w-full sm:w-auto border border-white/40 backdrop-blur-sm text-white px-12 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-slate-900 transition-all duration-500">
+                    The Antarctic Special
+                </a>
+            </div>
+        </div>
+        
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
+            <a href="#essence">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white hover:text-gold transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+                </svg>
+            </a>
+        </div>
+    </header>
 
-<div class="relative z-10 text-center px-6 max-w-5xl">
-<span class="text-white text-xs md:text-sm letter-spacing-wide uppercase mb-6 block opacity-90 font-light">Hand-Crafted Journeys for the Discerning</span>
-<h1 class="text-5xl md:text-8xl text-white font-bold mb-8 leading-[1.1] tracking-tight">
-Luxury & <span class="italic font-light">Adventure</span> <br>In Perfect Harmony
-</h1>
-<p class="text-white/80 text-lg md:text-2xl mb-12 max-w-3xl mx-auto font-light leading-relaxed">
-We curate fine, tailor-made itineraries that blend refined elegance with the world’s most daring expeditions.
-</p>
-<div class="flex flex-col sm:flex-row gap-5 justify-center items-center">
-<a href="#destinations" class="w-full sm:w-auto bg-white text-slate-900 px-12 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-gold-gradient hover:text-white transition-all duration-500 transform hover:scale-105 shadow-xl">
-Explore Destinations
-</a>
-<a href="https://www.globalmix.network/travelantarctic" class="w-full sm:w-auto border border-white/40 backdrop-blur-sm text-white px-12 py-5 rounded-full font-bold uppercase text-xs tracking-widest hover:bg-white hover:text-slate-900 transition-all duration-500">
-The Antarctic Special
-</a>
-</div>
-</div>
+    <section id="essence" class="py-32 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <span class="text-gold font-semibold tracking-[0.3em] uppercase text-xs block mb-4">Our Essence</span>
+                    <h2 class="text-4xl md:text-6xl mb-8 leading-tight">Defining the Art of <span class="italic font-light">Fine Travel</span></h2>
+                    <p class="text-slate-500 text-lg md:text-xl leading-relaxed mb-8 font-light">
+                        At Global Mix Travel, we don't just book trips; we architect memories. We believe true luxury lies in the details—those quiet, unhurried moments of awe found in the world's most remote corners, experienced with unparalleled comfort.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-bold text-sm uppercase tracking-widest mb-2">Bespoke Curation</h4>
+                            <p class="text-slate-400 text-sm font-light">Itineraries designed around your personal rhythm and passions.</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm uppercase tracking-widest mb-2">Global Network</h4>
+                            <p class="text-slate-400 text-sm font-light">Direct access to the most exclusive properties and private guides.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="relative">
+                    <img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=1000" alt="Luxury suite view" class="rounded-2xl shadow-2xl">
+                    <div class="absolute -bottom-10 -left-10 bg-slate-50 p-10 rounded-2xl hidden xl:block shadow-lg">
+                        <p class="text-4xl font-serif italic text-gold">"Exceptional."</p>
+                        <p class="text-[10px] uppercase tracking-widest text-slate-400 mt-4">The Gold Standard in Travel</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce opacity-40">
-<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-</svg>
-</div>
-</header>
+    <section id="destinations" class="py-32 px-6 bg-slate-50">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20">
+                <span class="text-gold font-semibold tracking-[0.3em] uppercase text-xs block mb-4">Global Reach</span>
+                <h2 class="text-4xl md:text-6xl">Curated Continents</h2>
+            </div>
 
-<!-- Essence Section -->
-<section id="essence" class="py-32 px-6 bg-white">
-<div class="max-w-6xl mx-auto">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-<div>
-<span class="text-gold font-semibold tracking-[0.3em] uppercase text-xs block mb-4">Our Essence</span>
-<h2 class="text-4xl md:text-6xl mb-8 leading-tight">Defining the Art of <span class="italic font-light">Fine Travel</span></h2>
-<p class="text-slate-500 text-lg md:text-xl leading-relaxed mb-8 font-light">
-At Global Mix Travel, we don't just book trips; we architect memories. We believe true luxury lies in the details—those quiet, unhurried moments of awe found in the world's most remote corners, experienced with unparalleled comfort.
-</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-<div>
-<h4 class="font-bold text-sm uppercase tracking-widest mb-2">Bespoke Curation</h4>
-<p class="text-slate-400 text-sm font-light">Itineraries designed around your personal rhythm and passions.</p>
-</div>
-<div>
-<h4 class="font-bold text-sm uppercase tracking-widest mb-2">Global Network</h4>
-<p class="text-slate-400 text-sm font-light">Direct access to the most exclusive properties and private guides.</p>
-</div>
-</div>
-</div>
-<div class="relative">
-<img src="https://images.unsplash.com/photo-1544644181-1484b3fdfc62?auto=format&fit=crop&q=80&w=1000" alt="Luxury suite view" class="rounded-2xl shadow-2xl">
-<div class="absolute -bottom-10 -left-10 bg-slate-50 p-10 rounded-2xl hidden xl:block shadow-lg">
-<p class="text-4xl font-serif italic text-gold">"Exceptional."</p>
-<p class="text-[10px] uppercase tracking-widest text-slate-400 mt-4">The Gold Standard in Travel</p>
-</div>
-</div>
-</div>
-</div>
-</section>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <a href="latinoamerica.html" class="group relative h-[600px] overflow-hidden rounded-3xl hover-lift">
+                    <img src="https://images.unsplash.com/photo-1518131362479-702336338e55?auto=format&fit=crop&q=80&w=800" alt="Latin America" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 overlay-dark"></div>
+                    <div class="absolute bottom-0 p-10 w-full">
+                        <h3 class="text-white text-4xl mb-2 font-serif">Latin America</h3>
+                        <p class="text-white/60 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">From the mystic Andes to the sophisticated shores of Rio.</p>
+                        <span class="text-white border-b border-gold pb-1 text-[10px] font-bold tracking-[0.3em] uppercase group-hover:text-gold transition-colors">Explore Now</span>
+                    </div>
+                </a>
 
-<!-- Destinations Grid -->
-<section id="destinations" class="py-32 px-6 bg-slate-50">
-<div class="max-w-7xl mx-auto">
-<div class="text-center mb-20">
-<span class="text-gold font-semibold tracking-[0.3em] uppercase text-xs block mb-4">Global Reach</span>
-<h2 class="text-4xl md:text-6xl">Curated Continents</h2>
-</div>
+                <a href="europe.html" class="group relative h-[600px] overflow-hidden rounded-3xl hover-lift lg:mt-16">
+                    <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=800" alt="Europe" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 overlay-dark"></div>
+                    <div class="absolute bottom-0 p-10 w-full">
+                        <h3 class="text-white text-4xl mb-2 font-serif">Europe</h3>
+                        <p class="text-white/60 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">Heritage and haute couture itineraries in the Old World.</p>
+                        <span class="text-white border-b border-gold pb-1 text-[10px] font-bold tracking-[0.3em] uppercase group-hover:text-gold transition-colors">Explore Now</span>
+                    </div>
+                </a>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-<!-- Latam -->
-<a href="https://www.globalmix.network/latinoamerica" class="group relative h-[600px] overflow-hidden rounded-3xl hover-lift">
-<img src="https://images.unsplash.com/photo-1518131362479-702336338e55?auto=format&fit=crop&q=80&w=800" alt="Latin America" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-<div class="absolute inset-0 overlay-dark"></div>
-<div class="absolute bottom-0 p-10 w-full">
-<h3 class="text-white text-4xl mb-2 font-serif">Latin America</h3>
-<p class="text-white/60 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">From the mystic Andes to the sophisticated shores of Rio.</p>
-<span class="text-white border-b border-gold pb-1 text-[10px] font-bold tracking-[0.3em] uppercase group-hover:text-gold transition-colors">Explore Now</span>
-</div>
-</a>
+                <a href="africa.html" class="group relative h-[600px] overflow-hidden rounded-3xl hover-lift">
+                    <img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=800" alt="Africa" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 overlay-dark"></div>
+                    <div class="absolute bottom-0 p-10 w-full">
+                        <h3 class="text-white text-4xl mb-2 font-serif">Africa</h3>
+                        <p class="text-white/60 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">Private safaris and untamed luxury in the wild heart of the world.</p>
+                        <span class="text-white border-b border-gold pb-1 text-[10px] font-bold tracking-[0.3em] uppercase group-hover:text-gold transition-colors">Explore Now</span>
+                    </div>
+                </a>
 
-<!-- Europa -->
-<a href="https://www.globalmix.network/europe" class="group relative h-[600px] overflow-hidden rounded-3xl hover-lift lg:mt-16">
-<img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a?auto=format&fit=crop&q=80&w=800" alt="Europe" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-<div class="absolute inset-0 overlay-dark"></div>
-<div class="absolute bottom-0 p-10 w-full">
-<h3 class="text-white text-4xl mb-2 font-serif">Europe</h3>
-<p class="text-white/60 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">Heritage and haute couture itineraries in the Old World.</p>
-<span class="text-white border-b border-gold pb-1 text-[10px] font-bold tracking-[0.3em] uppercase group-hover:text-gold transition-colors">Explore Now</span>
-</div>
-</a>
+                <a href="asia.html" class="group relative h-[600px] overflow-hidden rounded-3xl hover-lift lg:mt-16">
+                    <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=800" alt="Asia" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
+                    <div class="absolute inset-0 overlay-dark"></div>
+                    <div class="absolute bottom-0 p-10 w-full">
+                        <h3 class="text-white text-4xl mb-2 font-serif">Asia</h3>
+                        <p class="text-white/60 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">A sensory blend of ancient traditions and futuristic hospitality.</p>
+                        <span class="text-white border-b border-gold pb-1 text-[10px] font-bold tracking-[0.3em] uppercase group-hover:text-gold transition-colors">Explore Now</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-<!-- Africa -->
-<a href="https://www.globalmix.network/africa" class="group relative h-[600px] overflow-hidden rounded-3xl hover-lift">
-<img src="https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=800" alt="Africa" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-<div class="absolute inset-0 overlay-dark"></div>
-<div class="absolute bottom-0 p-10 w-full">
-<h3 class="text-white text-4xl mb-2 font-serif">Africa</h3>
-<p class="text-white/60 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">Private safaris and untamed luxury in the wild heart of the world.</p>
-<span class="text-white border-b border-gold pb-1 text-[10px] font-bold tracking-[0.3em] uppercase group-hover:text-gold transition-colors">Explore Now</span>
-</div>
-</a>
+    <section id="antarctica" class="py-32 px-6 bg-[#0a0f18] text-white relative overflow-hidden">
+        <div class="absolute -right-20 top-0 w-1/2 h-full opacity-10 pointer-events-none">
+            <svg viewBox="0 0 500 800" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+                <path d="M250 0L500 800H0L250 0Z" fill="white"/>
+            </svg>
+        </div>
+        
+        <div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            <div class="relative z-10 order-2 lg:order-1">
+                <div class="inline-block px-4 py-1 border border-gold/40 rounded-full mb-6">
+                    <span class="text-gold font-bold tracking-[0.3em] uppercase text-[10px]">Recommended Adventure</span>
+                </div>
+                <h2 class="text-5xl md:text-7xl mb-8 leading-tight font-bold tracking-tight">Antarctica <br><span class="italic font-light text-slate-400">The Silent Continent</span></h2>
+                <p class="text-slate-400 text-lg md:text-xl mb-10 leading-relaxed font-light">
+                    The ultimate frontier. Navigate crystal waters on ultra-luxury expedition vessels. Experience exclusive landings, unparalleled wildlife encounters, and 6-star service at the edge of the world.
+                </p>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold text-xl">✦</span>
+                        <p class="text-sm text-slate-300">All-suite accommodations with private panoramas.</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold text-xl">✦</span>
+                        <p class="text-sm text-slate-300">World-class expedition team and scientists.</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold text-xl">✦</span>
+                        <p class="text-sm text-slate-300">Bespoke itineraries tailored to seasonal cycles.</p>
+                    </div>
+                    <div class="flex items-start gap-4">
+                        <span class="text-gold text-xl">✦</span>
+                        <p class="text-sm text-slate-300">Complimentary premium expedition gear.</p>
+                    </div>
+                </div>
+                <a href="latinoamerica.html" class="inline-block bg-gold-gradient text-slate-950 px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[11px] hover:shadow-[0_0_40px_rgba(184,145,73,0.3)] transition-all transform hover:-translate-y-1">
+                    Discover the White Desert
+                </a>
+            </div>
+            
+            <div class="relative group order-1 lg:order-2">
+                <div class="absolute -inset-1 bg-gradient-to-tr from-gold/30 to-blue-400/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
+                <div class="relative rounded-3xl overflow-hidden shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&q=80&w=1200" alt="Antarctica Icebound" class="w-full aspect-[4/5] object-cover transition-transform duration-[8s] group-hover:scale-105">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                    <div class="absolute bottom-8 left-8">
+                        <p class="text-2xl font-serif">2026 Season</p>
+                        <p class="text-[10px] uppercase tracking-widest text-gold font-bold">Now accepting inquiries</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-<!-- Asia -->
-<a href="https://www.globalmix.network/asia" class="group relative h-[600px] overflow-hidden rounded-3xl hover-lift lg:mt-16">
-<img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=800" alt="Asia" class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110">
-<div class="absolute inset-0 overlay-dark"></div>
-<div class="absolute bottom-0 p-10 w-full">
-<h3 class="text-white text-4xl mb-2 font-serif">Asia</h3>
-<p class="text-white/60 text-sm mb-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">A sensory blend of ancient traditions and futuristic hospitality.</p>
-<span class="text-white border-b border-gold pb-1 text-[10px] font-bold tracking-[0.3em] uppercase group-hover:text-gold transition-colors">Explore Now</span>
-</div>
-</a>
-</div>
-</div>
-</section>
+    <section class="py-32 px-6 bg-white border-b border-slate-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-4xl md:text-6xl mb-12 italic font-light">"Travel is the only thing you buy <br>that makes you richer."</h2>
+            <hr class="w-20 mx-auto border-gold mb-12">
+            <h3 class="text-xl font-light mb-8 text-slate-500">Ready to write your next chapter?</h3>
+            
+            <div id="form-success" class="hidden mb-8 p-6 bg-slate-50 border border-gold/20 text-slate-700 rounded-2xl animate-pulse">
+                <p class="font-bold text-gold uppercase tracking-widest text-xs mb-2">Message Prepared</p>
+                <p class="text-sm">Please press "Send" in your email application to connect with our concierge team.</p>
+            </div>
 
-<!-- Special Antarctica Feature -->
-<section id="antarctica" class="py-32 px-6 bg-[#0a0f18] text-white relative overflow-hidden">
-<!-- Abstract Iceberg Shape -->
-<div class="absolute -right-20 top-0 w-1/2 h-full opacity-10 pointer-events-none">
-<svg viewBox="0 0 500 800" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
-<path d="M250 0L500 800H0L250 0Z" fill="white"/>
-</svg>
-</div>
+            <form onsubmit="handleInquiry(event)" class="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto p-2 bg-slate-50 rounded-full border border-slate-100 shadow-sm">
+                <input type="email" id="inquiryEmail" placeholder="Your email address" required class="flex-1 bg-transparent px-8 py-4 rounded-full text-sm focus:outline-none">
+                <button type="submit" class="bg-slate-900 text-white px-12 py-4 rounded-full hover:bg-gold-gradient transition-all duration-300 font-bold uppercase text-[10px] tracking-widest">
+                    Request Itinerary
+                </button>
+            </form>
+        </div>
+    </section>
 
-<div class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-<div class="relative z-10 order-2 lg:order-1">
-<div class="inline-block px-4 py-1 border border-gold/40 rounded-full mb-6">
-<span class="text-gold font-bold tracking-[0.3em] uppercase text-[10px]">Recommended Adventure</span>
-</div>
-<h2 class="text-5xl md:text-7xl mb-8 leading-tight font-bold tracking-tight">Antarctica <br><span class="italic font-light text-slate-400">The Silent Continent</span></h2>
-<p class="text-slate-400 text-lg md:text-xl mb-10 leading-relaxed font-light">
-The ultimate frontier. Navigate crystal waters on ultra-luxury expedition vessels. Experience exclusive landings, unparalleled wildlife encounters, and 6-star service at the edge of the world.
-</p>
-<div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-12">
-<div class="flex items-start gap-4">
-<span class="text-gold text-xl">✦</span>
-<p class="text-sm text-slate-300">All-suite accommodations with private panoramas.</p>
-</div>
-<div class="flex items-start gap-4">
-<span class="text-gold text-xl">✦</span>
-<p class="text-sm text-slate-300">World-class expedition team and scientists.</p>
-</div>
-<div class="flex items-start gap-4">
-<span class="text-gold text-xl">✦</span>
-<p class="text-sm text-slate-300">Bespoke itineraries tailored to seasonal cycles.</p>
-</div>
-<div class="flex items-start gap-4">
-<span class="text-gold text-xl">✦</span>
-<p class="text-sm text-slate-300">Complimentary premium expedition gear.</p>
-</div>
-</div>
-<a href="https://www.globalmix.network/travelantarctic" class="inline-block bg-gold-gradient text-slate-950 px-12 py-5 rounded-full font-bold uppercase tracking-widest text-[11px] hover:shadow-[0_0_40px_rgba(184,145,73,0.3)] transition-all transform hover:-translate-y-1">
-Discover the White Desert
-</a>
-</div>
+    <footer class="bg-white py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-20">
+                <div class="col-span-1 md:col-span-1">
+                    <div class="text-2xl font-bold tracking-[0.2em] text-slate-800 mb-8 uppercase">
+                        GLOBAL<span class="text-gold">MIX</span>
+                    </div>
+                    <p class="text-slate-400 font-light text-sm leading-relaxed max-w-xs">
+                        Defining the intersection of adventure and sophistication. We provide access to the world's most breathtaking experiences.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-slate-900 mb-8">Destinations</h4>
+                    <ul class="space-y-4 text-xs text-slate-500 font-light uppercase tracking-widest">
+                        <li><a href="latinoamerica.html" class="hover:text-gold transition-colors">Latin America</a></li>
+                        <li><a href="europe.html" class="hover:text-gold transition-colors">Europe</a></li>
+                        <li><a href="africa.html" class="hover:text-gold transition-colors">Africa</a></li>
+                        <li><a href="asia.html" class="hover:text-gold transition-colors">Asia</a></li>
+                    </ul>
+                </div>
 
-<div class="relative group order-1 lg:order-2">
-<div class="absolute -inset-1 bg-gradient-to-tr from-gold/30 to-blue-400/20 rounded-3xl blur-2xl opacity-50 group-hover:opacity-80 transition-opacity"></div>
-<div class="relative rounded-3xl overflow-hidden shadow-2xl">
-<img src="https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&q=80&w=1200" alt="Antarctica Icebound" class="w-full aspect-[4/5] object-cover transition-transform duration-[8s] group-hover:scale-105">
-<div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-<div class="absolute bottom-8 left-8">
-<p class="text-2xl font-serif">2026 Season</p>
-<p class="text-[10px] uppercase tracking-widest text-gold font-bold">Now accepting inquiries</p>
-</div>
-</div>
-</div>
-</div>
-</section>
+                <div>
+                    <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-slate-900 mb-8">Collections</h4>
+                    <ul class="space-y-4 text-xs text-slate-500 font-light uppercase tracking-widest">
+                        <li><a href="latinoamerica.html" class="hover:text-gold transition-colors">Antarctica</a></li>
+                        <li><a href="europe.html" class="hover:text-gold transition-colors">Private Villas</a></li>
+                        <li><a href="africa.html" class="hover:text-gold transition-colors">Safari Camps</a></li>
+                        <li><a href="asia.html" class="hover:text-gold transition-colors">Wellness Retreats</a></li>
+                    </ul>
+                </div>
 
-<!-- Inquiry / Footer -->
-<section class="py-32 px-6 bg-white border-b border-slate-100">
-<div class="max-w-4xl mx-auto text-center">
-<h2 class="text-4xl md:text-6xl mb-12 italic font-light">"Travel is the only thing you buy <br>that makes you richer."</h2>
-<hr class="w-20 mx-auto border-gold mb-12">
-<h3 class="text-xl font-light mb-8 text-slate-500">Ready to write your next chapter?</h3>
+                <div>
+                    <h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-slate-900 mb-8">Contact</h4>
+                    <ul class="space-y-4 text-xs text-slate-500 font-light uppercase tracking-widest">
+                        <li class="lowercase tracking-normal"><a href="mailto:info@globalmix.online" class="hover:text-gold transition-colors">info@globalmix.online</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Instagram</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">LinkedIn</a></li>
+                        <li><a href="#" class="hover:text-gold transition-colors">Private Membership</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.3em] text-slate-300 font-bold">
+                <p>© 2026 Global Mix Travel Network. All Rights Reserved.</p>
+                <div class="flex space-x-8 mt-6 md:mt-0">
+                    <a href="#" class="hover:text-gold transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-gold transition-colors">Terms</a>
+                    <a href="#" class="hover:text-gold transition-colors">Bespoke Club</a>
+                </div>
+            </div>
+        </div>
+    </footer>
 
-<div id="form-success" class="hidden mb-8 p-6 bg-slate-50 border border-gold/20 text-slate-700 rounded-2xl animate-pulse">
-<p class="font-bold text-gold uppercase tracking-widest text-xs mb-2">Message Sent</p>
-<p class="text-sm">A luxury travel consultant will contact you within 24 hours.</p>
-</div>
+    <script>
+        // Smooth scroll reveal for sections
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
 
-<form onsubmit="event.preventDefault(); this.classList.add('hidden'); document.getElementById('form-success').classList.remove('hidden');" class="flex flex-col md:flex-row gap-4 max-w-2xl mx-auto p-2 bg-slate-50 rounded-full border border-slate-100 shadow-sm">
-<input type="email" placeholder="Your email address" required class="flex-1 bg-transparent px-8 py-4 rounded-full text-sm focus:outline-none">
-<button type="submit" class="bg-slate-900 text-white px-12 py-4 rounded-full hover:bg-gold-gradient transition-all duration-300 font-bold uppercase text-[10px] tracking-widest">
-Request Itinerary
-</button>
-</form>
-</div>
-</section>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-12');
+                }
+            });
+        }, observerOptions);
 
-<footer class="bg-white py-20 px-6">
-<div class="max-w-7xl mx-auto">
-<div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-20">
-<div class="col-span-1 md:col-span-1">
-<div class="text-2xl font-bold tracking-[0.2em] text-slate-800 mb-8 uppercase">
-GLOBAL<span class="text-gold">MIX</span>
-</div>
-<p class="text-slate-400 font-light text-sm leading-relaxed max-w-xs">
-Defining the intersection of adventure and sophistication. We provide access to the world's most breathtaking experiences.
-</p>
-</div>
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-12', 'ease-out');
+            observer.observe(section);
+        });
 
-<div>
-<h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-slate-900 mb-8">Destinations</h4>
-<ul class="space-y-4 text-xs text-slate-500 font-light uppercase tracking-widest">
-<li><a href="https://www.globalmix.network/latinoamerica" class="hover:text-gold transition-colors">Latin America</a></li>
-<li><a href="https://www.globalmix.network/europe" class="hover:text-gold transition-colors">Europe</a></li>
-<li><a href="https://www.globalmix.network/africa" class="hover:text-gold transition-colors">Africa</a></li>
-<li><a href="https://www.globalmix.network/asia" class="hover:text-gold transition-colors">Asia</a></li>
-</ul>
-</div>
+        // Functional Email Capture Form
+        function handleInquiry(event) {
+            event.preventDefault();
+            
+            // Get user email
+            const userEmail = document.getElementById('inquiryEmail').value;
+            
+            // Prepare email
+            const destination = "info@globalmix.online";
+            const subject = encodeURIComponent("Luxury Travel Inquiry from Global Mix Homepage");
+            const body = encodeURIComponent(`Hello Global Mix Team,\n\nI am interested in learning more about your luxury expeditions. My contact email is: ${userEmail}\n\nPlease reach out to me with more details.\n\nThank you.`);
+            
+            // Hide form and show success
+            event.target.classList.add('hidden');
+            document.getElementById('form-success').classList.remove('hidden');
 
-<div>
-<h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-slate-900 mb-8">Collections</h4>
-<ul class="space-y-4 text-xs text-slate-500 font-light uppercase tracking-widest">
-<li><a href="https://www.globalmix.network/travelantarctic" class="hover:text-gold transition-colors">Antarctica</a></li>
-<li><a href="#" class="hover:text-gold transition-colors">Private Villas</a></li>
-<li><a href="#" class="hover:text-gold transition-colors">Boutique Cruises</a></li>
-<li><a href="#" class="hover:text-gold transition-colors">Wellness Retreats</a></li>
-</ul>
-</div>
-
-<div>
-<h4 class="font-bold uppercase text-[10px] tracking-[0.3em] text-slate-900 mb-8">Contact</h4>
-<ul class="space-y-4 text-xs text-slate-500 font-light uppercase tracking-widest">
-<li class="lowercase tracking-normal">concierge@globalmix.network</li>
-<li>Instagram</li>
-<li>LinkedIn</li>
-<li>Private Membership</li>
-</ul>
-</div>
-</div>
-
-<div class="pt-10 border-t border-slate-100 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.3em] text-slate-300 font-bold">
-<p>© 2026 Global Mix Travel Network. All Rights Reserved.</p>
-<div class="flex space-x-8 mt-6 md:mt-0">
-<a href="#" class="hover:text-gold transition-colors">Privacy</a>
-<a href="#" class="hover:text-gold transition-colors">Terms</a>
-<a href="#" class="hover:text-gold transition-colors">Bespoke Club</a>
-</div>
-</div>
-</div>
-</footer>
-
-<script>
-// Smooth scroll reveal for sections
-const observerOptions = {
-threshold: 0.1,
-rootMargin: '0px 0px -50px 0px'
-};
-
-const observer = new IntersectionObserver((entries) => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.classList.add('opacity-100', 'translate-y-0');
-entry.target.classList.remove('opacity-0', 'translate-y-12');
-}
-});
-}, observerOptions);
-
-document.querySelectorAll('section').forEach(section => {
-section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-12', 'ease-out');
-observer.observe(section);
-});
-</script>
+            // Open Mail Client
+            setTimeout(() => {
+                window.location.href = `mailto:${destination}?subject=${subject}&body=${body}`;
+            }, 300);
+        }
+    </script>
 </body>
 </html>
-
-
-
-
-Llamada introductoria de 15 minutos / 15-minute introductory call
-
-Consulta de 30 minutos / 30-minute consultation
-
-Sesion de estrategia de 60 minutos / 60-minute strategy session
