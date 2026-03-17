@@ -63,9 +63,10 @@
         import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
         import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
         
+        // FIXED: Added "Ship" to the import list!
         import { 
             MapPin, Globe, Play, Film, Wine, GraduationCap, 
-            Menu, X, Star, Crown, HeartHandshake
+            Menu, X, Star, Crown, HeartHandshake, Ship
         } from 'https://esm.sh/lucide-react@0.292.0';
 
         const App = () => {
@@ -78,7 +79,6 @@
                 };
                 window.addEventListener('scroll', handleScroll);
                 
-                // Intersection Observer for scroll animations
                 const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
                 const observer = new IntersectionObserver((entries) => {
                     entries.forEach(entry => {
@@ -151,12 +151,10 @@
                     {/* Hero Section */}
                     <header id="hero" className="relative h-screen flex items-center justify-center">
                         <div className="absolute inset-0 z-0">
-                            {/* Fetchpriority High & WebP for instant hero load */}
                             <img 
                                 src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=1920&fm=webp&auto=format&fit=crop" 
                                 alt="Global Coastline" 
                                 className="w-full h-full object-cover scale-105" 
-                                fetchpriority="high"
                             />
                             <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/95"></div>
                         </div>
