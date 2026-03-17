@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Mix Luxury Train | Elite Rail Collection</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gold: '#D4AF37',
+                        navy: '#0A1128',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 2s ease-out',
+                        'bounce': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        .train-card:hover .train-image {
+            transform: scale(1.1);
+        }
+    </style>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+    
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
+        import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
+        
+        import { 
+            Compass, MapPin, Train, Utensils, Star, 
+            Menu, X, ChevronRight, ChevronDown, Mail, Phone, Globe, MessageCircle
+        } from 'https://esm.sh/lucide-react@0.292.0';
+
+        const App = () => {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
+            const [activeCategory, setActiveCategory] = useState('All');
+
+            const contactData = {
+                phone: "+1 786 459 8797",
+                whatsapp: "17864598797",
+                email: "info@globalmix.online"
+            };
+
+            const trainJourneys = [
+                { id: 1, title: "Peru Andean Luxury", duration: "6–7 Days", region: "Americas", train: "Hiram Bingham & Andean Explorer", description: "Visit Machu Picchu & Lake Titicaca via the high-altitude peaks of the Andes.", hotels: ["Belmond Palacio Nazarenas", "Cirqa Relais & Châteaux"], image: "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&q=80&w=800", category: "Americas" },
+                { id: 2, title: "Venice Simplon-Orient-Express", duration: "5–6 Days", region: "Europe", train: "London – Paris – Venice", description: "The world's most storied train. Art Deco suites & white-glove service across the heart of Europe.", hotels: ["The Savoy London", "Aman Venice"], image: "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&q=80&w=800", category: "Europe" },
+                { id: 3, title: "Royal Scotsman Highland", duration: "5 Days", region: "Europe", train: "Edinburgh – Highlands Circuit", description: "Whisky tastings & castle visits through the emerald peaks of the Scottish Highlands.", hotels: ["The Balmoral", "Gleneagles Hotel"], image: "https://images.unsplash.com/photo-1506377295352-e3154d43ea9e?auto=format&fit=crop&q=80&w=800", category: "Europe" },
+                { id: 4, title: "Maharajas’ Express India", duration: "7–8 Days", region: "Asia", train: "Delhi – Jaipur – Agra – Mumbai", description: "A grand tour of India with private Taj Mahal access and royal carriage living.", hotels: ["The Oberoi Delhi", "The Taj Mahal Palace Mumbai"], image: "https://images.unsplash.com/photo-1524492707947-2f85a64a6bb8?auto=format&fit=crop&q=80&w=800", category: "Asia" },
+                { id: 5, title: "Rocky Mountaineer Signature", duration: "6–7 Days", region: "Americas", train: "Vancouver – Banff – Lake Louise", description: "Glass-dome panoramic coaches carving through the majestic Canadian Rockies.", hotels: ["Fairmont Pacific Rim", "Fairmont Banff Springs"], image: "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?auto=format&fit=crop&q=80&w=800", category: "Americas" },
+                { id: 6, title: "Rovos Rail Pride of Africa", duration: "6 Days", region: "Africa", train: "Pretoria – Cape Town", description: "Safari extensions & vineyard tours aboard the most luxurious train in the Southern Hemisphere.", hotels: ["Castello di Monte", "One&Only Cape Town"], image: "https://images.unsplash.com/photo-1484318571209-661cf29a69c3?auto=format&fit=crop&q=80&w=800", category: "Africa" },
+                { id: 7, title: "The Blue Train South Africa", duration: "5 Days", region: "Africa", train: "Pretoria – Cape Town Route", description: "Butler service & panoramic suites traveling through the changing landscapes of South Africa.", hotels: ["Saxon Hotel", "The Silo Hotel"], image: "https://images.unsplash.com/photo-1549467231-724128062b32?auto=format&fit=crop&q=80&w=800", category: "Africa" },
+                { id: 8, title: "Seven Stars in Kyushu", duration: "5–6 Days", region: "Asia", train: "Fukuoka – Island Circuit", description: "The pinnacle of Japanese rail. Kaiseki fine dining & onsen visits in ultra-private suites.", hotels: ["The Ritz-Carlton Fukuoka", "Amanemu"], image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800", category: "Asia" },
+                { id: 9, title: "El Transcantábrico Gran Lujo", duration: "8 Days", region: "Europe", train: "San Sebastián – Santiago", description: "Michelin gastronomy & heritage carriages exploring the lush Green Spain coast.", hotels: ["Hotel Maria Cristina", "Parador Hostal dos Reis"], image: "https://images.unsplash.com/photo-1543783232-171f653dd328?auto=format&fit=crop&q=80&w=800", category: "Europe" }
+            ];
+
+            const categories = ["All", "Europe", "Asia", "Africa", "Americas"];
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const handleTripAction = (e, trip) => {
+                e.preventDefault();
+                const subject = encodeURIComponent(`Requesting Rail Itinerary: ${trip.title}`);
+                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me availability and details for the "${trip.title}" journey on the ${trip.train}.\n\nThank you!`);
+                window.location.href = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
+            };
+
+            const handleFormSubmit = (e) => {
+                e.preventDefault();
+                const rail = e.target.rail.value;
+                const subject = encodeURIComponent(`Inquiry: ${rail}`);
+                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nI am interested in the ${rail}. Please contact me with availability.\n\nThank you!`);
+                window.location.href = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
+            };
+
+            return (
+                <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-gold/20">
+                    
+                    {/* Navigation */}
+                    <nav className={`fixed w-full z-50 transition-all duration-700 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-8'}`}>
+                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                                <div className={`w-10 h-10 flex items-center justify-center rounded-sm transition-colors ${scrolled ? 'bg-navy' : 'bg-white'}`}>
+                                    <span className={`font-serif font-bold text-xl ${scrolled ? 'text-white' : 'text-navy'}`}>G</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className={`font-bold tracking-[0.2em] text-sm uppercase ${scrolled ? 'text-navy' : 'text-white'}`}>Global Mix</span>
+                                    <span className="text-[10px] tracking-[0.3em] text-gold uppercase font-semibold">Luxury Train</span>
+                                </div>
+                            </div>
+
+                            <nav className={`hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] ${scrolled ? 'text-gray-600' : 'text-white/90'}`}>
+                                <a href="#" className="hover:text-gold transition-colors">Journeys</a>
+                                <a href="#collection" className="hover:text-gold transition-colors">Collection</a>
+                                <a href="#heritage" className="hover:text-gold transition-colors">Heritage</a>
+                                <a href="#contact" className="hover:text-gold transition-colors">Concierge</a>
+                            </nav>
+
+                            <div className="flex items-center gap-4">
+                                <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                    {isMenuOpen ? <X className={scrolled ? 'text-navy' : 'text-white'} /> : <Menu className={scrolled ? 'text-navy' : 'text-white'} />}
+                                </button>
+                                <a href={`https://wa.me/${contactData.whatsapp}`} className={`hidden md:inline-block px-8 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-gold transition-all duration-500 rounded-sm ${scrolled ? 'bg-navy text-white' : 'bg-white text-navy'}`}>
+                                    Inquire Now
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Mobile Menu */}
+                        {isMenuOpen && (
+                            <div className="absolute top-full left-0 w-full bg-white shadow-xl md:hidden flex flex-col p-8 gap-6 animate-in slide-in-from-top duration-300 border-t border-gray-100">
+                                <a href="#collection" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-navy tracking-widest uppercase">Collection</a>
+                                <a href="#heritage" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-navy tracking-widest uppercase">Heritage</a>
+                                <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-navy tracking-widest uppercase">Contact</a>
+                                <a href={`mailto:${contactData.email}`} className="bg-navy text-white py-4 font-bold text-center uppercase tracking-widest text-xs">Email Concierge</a>
+                            </div>
+                        )}
+                    </nav>
+
+                    {/* Hero Section */}
+                    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            <img src={"https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=2000&fm=webp"} alt="Luxury Train Scene" className="w-full h-full object-cover scale-105" />
+                            <div className="absolute inset-0 bg-black/40"></div>
+                        </div>
+
+                        <div className="relative z-10 text-center px-6 max-w-6xl animate-fade-in">
+                            <h2 className="text-white text-[11px] md:text-xs uppercase tracking-[0.7em] mb-8 opacity-80 font-semibold">World-Class Rail Journeys</h2>
+                            <h1 className="text-white text-5xl md:text-9xl font-serif mb-10 leading-tight">Global <span className="italic">Collection</span></h1>
+                            <p className="text-white/90 max-w-3xl mx-auto font-light text-lg md:text-2xl leading-relaxed italic">
+                                "Experience the golden age of travel across the world's most breathtaking landscapes."
+                            </p>
+                            <div className="mt-16">
+                                <a href="#collection" className="inline-block border border-white text-white px-16 py-6 text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-white hover:text-navy transition-all duration-700">
+                                    Explore the Masterlist
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40">
+                            <span className="text-[9px] uppercase tracking-[0.4em]">Scroll Down</span>
+                            <div className="w-px h-16 bg-gradient-to-b from-white to-transparent" />
+                        </div>
+                    </section>
+
+                    {/* Welcome / Heritage */}
+                    <section id="heritage" className="py-40 px-6 max-w-6xl mx-auto text-center">
+                        <span className="text-gold uppercase tracking-[0.5em] text-[10px] font-bold italic block mb-6">The Art of Slow Travel</span>
+                        <h2 className="text-4xl md:text-6xl font-serif mb-20 text-navy">Legendary Routes, Timeless Luxury</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-3 gap-16 text-left">
+                            <div className="space-y-6">
+                                <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold"><Train size={24} /></div>
+                                <h4 className="text-xl font-serif text-navy">Heritage Rolling Stock</h4>
+                                <p className="text-gray-500 text-sm leading-relaxed font-light">Meticulously restored vintage carriages that tell stories of elegance and history from a bygone era.</p>
+                            </div>
+                            <div className="space-y-6">
+                                <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold"><Utensils size={24} /></div>
+                                <h4 className="text-xl font-serif text-navy">Gastronomic Excellence</h4>
+                                <p className="text-gray-500 text-sm leading-relaxed font-light">Fine dining experiences prepared by world-renowned chefs, paired with the finest local and international wines.</p>
+                            </div>
+                            <div className="space-y-6">
+                                <div className="w-12 h-12 rounded-full bg-gold/10 flex items-center justify-center text-gold"><Compass size={24} /></div>
+                                <h4 className="text-xl font-serif text-navy">Immersive Horizons</h4>
+                                <p className="text-gray-500 text-sm leading-relaxed font-light">Awaken to a new panorama every morning, from the peaks of the Andes to the heart of the Scottish Highlands.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Collection Grid */}
+                    <section id="collection" className="py-24 bg-gray-50 scroll-mt-20">
+                        <div className="max-w-7xl mx-auto px-6">
+                            <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                                <div>
+                                    <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">The Masterlist</span>
+                                    <h3 className="text-5xl font-serif mt-3 text-navy">Elite Rail Collection</h3>
+                                    <div className="h-1 w-24 bg-gold mt-6"></div>
+                                </div>
+                                <div className="flex gap-3 overflow-x-auto pb-2 w-full md:w-auto scrollbar-hide">
+                                    {categories.map(cat => (
+                                        <button 
+                                            key={cat} 
+                                            onClick={() => setActiveCategory(cat)}
+                                            className={`px-6 py-2 text-[9px] font-bold tracking-widest uppercase transition-all border ${activeCategory === cat ? 'bg-navy text-white border-navy shadow-lg' : 'bg-transparent text-gray-400 border-gray-300 hover:border-gold hover:text-gold'}`}
+                                        >
+                                            {cat}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                                {trainJourneys.filter(j => activeCategory === 'All' || j.category === activeCategory).map((journey) => (
+                                    <div key={journey.id} className="train-card group bg-white shadow-sm hover:shadow-2xl transition-all duration-700 overflow-hidden flex flex-col border border-gray-100">
+                                        <div className="h-80 overflow-hidden relative">
+                                            <img src={`${journey.image}&fm=webp&q=70&w=800`} alt={journey.title} className="train-image w-full h-full object-cover transition-transform duration-1000" loading="lazy" />
+                                            <div className="absolute top-5 right-5 bg-white/95 px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest text-navy shadow-sm">{journey.duration}</div>
+                                        </div>
+                                        <div className="p-10 flex flex-col flex-grow">
+                                            <span className="text-[9px] text-gold font-bold uppercase tracking-[0.3em]">{journey.region}</span>
+                                            <h4 className="text-2xl font-serif mt-3 mb-5 text-navy">{journey.title}</h4>
+                                            <p className="text-[11px] uppercase tracking-wider text-gray-400 font-bold mb-6 italic">{journey.train}</p>
+                                            
+                                            <div className="border-t border-gray-100 pt-6 flex-grow">
+                                                <ul className="text-[12px] space-y-3 text-gray-600 font-medium mb-8">
+                                                    {journey.hotels.map((hotel, idx) => (
+                                                        <li key={idx} className="flex items-start gap-2">
+                                                            <span className="text-gold">•</span> {hotel}
+                                                        </li>
+                                                    ))}
+                                                    <li className="pt-2 text-gold italic font-serif text-sm">{journey.description}</li>
+                                                </ul>
+                                            </div>
+
+                                            <button 
+                                                onClick={(e) => handleTripAction(e, journey)}
+                                                className="w-full border border-navy text-navy py-4 text-[9px] font-bold uppercase tracking-[0.3em] hover:bg-navy hover:text-white transition-all duration-500 flex justify-center items-center gap-2"
+                                            >
+                                                Request Itinerary <ChevronRight size={14} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Mid Quote */}
+                    <section className="py-48 relative text-center text-white overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            <img src={"https://images.unsplash.com/photo-1550953372-e565922a9451?auto=format&fit=crop&q=80&w=2000&fm=webp"} alt="Rail Luxury" className="w-full h-full object-cover" loading="lazy" />
+                            <div className="absolute inset-0 bg-black/60"></div>
+                        </div>
+                        <div className="relative z-10 max-w-4xl mx-auto px-6">
+                            <h3 className="text-4xl md:text-7xl font-serif italic mb-8 leading-tight">"A luxury train journey is the ultimate tribute to the romance of exploration."</h3>
+                            <p className="text-[10px] uppercase tracking-[0.5em] font-bold text-gold">Global Mix Luxury Train - Elite Portfolio</p>
+                        </div>
+                    </section>
+
+                    {/* Contact Section */}
+                    <section id="contact" className="py-32 px-6 bg-white border-t border-gray-100">
+                        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24">
+                            <div className="lg:w-1/2">
+                                <span className="text-gold uppercase tracking-[0.4em] text-[10px] font-bold">Inquiry &amp; Concierge</span>
+                                <h2 className="text-5xl font-serif mt-6 mb-10 text-navy">Plan Your Grand Tour</h2>
+                                <p className="text-gray-500 mb-16 max-w-md text-lg font-light leading-relaxed">Our specialized rail concierge team is dedicated to securing the most exclusive suites and coordinating all pre and post-journey arrangements.</p>
+
+                                <div className="space-y-10">
+                                    <div className="flex items-center gap-8 group cursor-pointer" onClick={() => window.open(`https://wa.me/${contactData.whatsapp}`)}>
+                                        <div className="w-14 h-14 bg-navy text-white flex items-center justify-center group-hover:bg-gold transition-all duration-500 rounded-sm">
+                                            <Phone size={20} />
+                                        </div>
+                                        <div>
+                                            <p className="text-[9px] uppercase font-bold text-gray-400 tracking-[0.2em]">Phone &amp; WhatsApp</p>
+                                            <p className="text-2xl font-serif text-navy">{contactData.phone}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-8 group cursor-pointer" onClick={() => window.location.href = `mailto:${contactData.email}`}>
+                                        <div className="w-14 h-14 bg-navy text-white flex items-center justify-center group-hover:bg-gold transition-all duration-500 rounded-sm">
+                                            <Mail size={20} />
+                                        </div>
+                                        <div>
+                                            <p className="text-[9px] uppercase font-bold text-gray-400 tracking-[0.2em]">Email Address</p>
+                                            <p className="text-2xl font-serif text-navy">{contactData.email}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="lg:w-1/2 bg-gray-50 p-12 lg:p-16 rounded-xl border border-gray-100">
+                                <form onSubmit={handleFormSubmit} className="space-y-8">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <div className="space-y-3">
+                                            <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Full Name</label>
+                                            <input name="name" type="text" required className="w-full bg-white border border-gray-200 p-4 focus:border-gold outline-none transition-all font-light text-sm" />
+                                        </div>
+                                        <div className="space-y-3">
+                                            <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Email Address</label>
+                                            <input name="email" type="email" required className="w-full bg-white border border-gray-200 p-4 focus:border-gold outline-none transition-all font-light text-sm" />
+                                        </div>
+                                    </div>
+                                    <div className="space-y-3">
+                                        <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Preferred Rail Experience</label>
+                                        <select name="rail" className="w-full bg-white border border-gray-200 p-4 focus:border-gold outline-none transition-all font-light text-sm cursor-pointer appearance-none">
+                                            {trainJourneys.map(j => <option key={j.id}>{j.title}</option>)}
+                                        </select>
+                                    </div>
+                                    <div className="space-y-3">
+                                        <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Message / Special Requirements</label>
+                                        <textarea rows="4" className="w-full bg-white border border-gray-200 p-4 focus:border-gold outline-none transition-all font-light text-sm"></textarea>
+                                    </div>
+                                    <button type="submit" className="w-full bg-navy text-white py-5 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500 shadow-lg">
+                                        Request Availability
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="bg-navy text-white py-20 px-6">
+                        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 border border-white/20 flex items-center justify-center rounded-sm">
+                                    <span className="font-serif font-bold text-2xl">G</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="font-bold tracking-[0.3em] uppercase text-sm">Global Mix</span>
+                                    <span className="text-[10px] tracking-[0.4em] text-gold uppercase font-bold">Luxury Train</span>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-10 text-[9px] uppercase tracking-[0.3em] text-gray-400 font-bold">
+                                <a href="europe.html" className="hover:text-gold transition-colors">Europe</a>
+                                <a href="asia.html" className="hover:text-gold transition-colors">Asia</a>
+                                <a href="africa.html" className="hover:text-gold transition-colors">Africa</a>
+                                <a href="caribe.html" className="hover:text-gold transition-colors">Caribe</a>
+                            </div>
+
+                            <div className="text-[9px] text-gray-400 uppercase tracking-[0.2em] font-medium opacity-50">
+                                © 2025 Global Mix Network. All Rights Reserved.
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
