@@ -8,17 +8,23 @@ on:
   schedule:
     - cron: '0 * * * *' # Runs automatically every hour
 
+# Explicitly grant the action permission to push code back to the repo
+permissions:
+  contents: write 
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
+      # Upgraded to v4 to fix the Node deprecation warning
       - name: Checkout Code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4 
 
+      # Upgraded to v4 and Node 20
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
 
       - name: Install Dependencies
         run: npm install
@@ -34,5 +40,11 @@ jobs:
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
-          git commit -m "Auto-generated trips from Global Mix Notion Database" || echo "No changes to commit"
-          git push
+          
+          # Smarter Git check: only commit and push IF there are actual changes
+          if git diff-index --quiet HEAD --; then
+            echo "No new trips or updates found. Skipping commit."
+          else
+            git commit -m "Auto-generated trips from Global Mix Notion Database"
+            git push
+          fi
