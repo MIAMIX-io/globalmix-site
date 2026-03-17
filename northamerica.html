@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Mix - Travel North America</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 2s ease-out',
+                        'bounce': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounce: {
+                            '0%, 100%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' },
+                            '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-[#FDFBF7] antialiased">
+    
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
+        import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
+        
+        import { 
+            Compass, MapPin, Ship, Trees, Wind, Sun, Waves, Camera, 
+            Menu, X, ChevronRight, ChevronDown, Mail, Phone, Globe, MessageCircle, Star, Bed, Building
+        } from 'https://esm.sh/lucide-react@0.292.0';
+
+        const App = () => {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
+            const [activeTab, setActiveTab] = useState('All');
+
+            const contactData = {
+                phone: "+1 786 459 8797",
+                whatsapp: "17864598797",
+                email: "Info@globalmix.online"
+            };
+
+            const navLinks = [
+                { name: 'Itineraries', href: '#itineraries' },
+                { name: 'Experiences', href: '#experiences' },
+                { name: 'About Us', href: '#about-us' },
+                { name: 'Contact', href: '#contact' }
+            ];
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    setScrolled(window.scrollY > 50);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const handleTripAction = (e, trip, regionName) => {
+                e.preventDefault();
+                const email = "info@globalmix.online";
+                const subject = encodeURIComponent(`Requesting Full Itinerary: ${trip.title}`);
+                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me the full itinerary and details for the "${trip.title}" expedition.\n\nThank you!`);
+                const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+
+                const safeRegion = regionName.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const safeSlug = trip.title.split(' ')[0].toLowerCase().replace(/[^a-z0-9-]/g, ''); 
+                const pageUrl = `/${safeRegion}/${safeSlug}`;
+
+                window.location.href = mailtoLink;
+                setTimeout(() => { window.location.href = pageUrl; }, 300);
+            };
+
+            const naJourneys = [
+                { id: 1, title: "Alaska Legendary Expedition", duration: "8 Days", countries: "USA", route: "Anchorage → Talkeetna → Denali → Fairbanks", description: "Panoramic Alaska Railroad journey through Denali and a private flight over ancient glaciers.", experiences: ["Panoramic Alaska Railroad journey", "Private flight over glaciers", "Exclusive wildlife spotting"], hotels: ["Sheldon Chalet"], image: "https://images.unsplash.com/photo-1531366930463-d083f237f37f?auto=format&fit=crop&q=80&w=1200", category: "Wilderness" },
+                { id: 2, title: "New York & Miami Signature", duration: "9 Days", countries: "USA", route: "NYC → Miami South Beach", description: "Broadway VIP access, private yachting in Biscayne Bay, and contemporary art tours.", experiences: ["Broadway VIP access", "Private yachting in Biscayne Bay", "Contemporary art tours"], hotels: ["Aman New York", "Faena Hotel"], image: "https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&q=80&w=1200", category: "Urban & Coastal" },
+                { id: 3, title: "California Grand Luxury", duration: "10 Days", countries: "USA", route: "San Francisco → Napa → Monterey → LA", description: "Elite wine country tastings, Big Sur scenic drives, and Hollywood glamour.", experiences: ["Elite wine country tastings", "Big Sur scenic drives", "Hollywood VIP studio access"], hotels: ["Post Ranch Inn"], image: "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=1200", category: "Urban & Coastal" },
+                { id: 4, title: "Hawaiian Islands Luxury", duration: "10 Days", countries: "USA", route: "Oahu → Maui → Hawaii Island", description: "Private volcano helicopter tours and exclusive sunset catamaran sailing.", experiences: ["Private volcano helicopter tours", "Exclusive sunset catamaran sailing", "Private Luau experience"], hotels: ["Four Seasons Hualalai"], image: "https://images.unsplash.com/photo-1542259009477-d625272157b7?auto=format&fit=crop&q=80&w=1200", category: "Coastal" },
+                { id: 5, title: "Canadian Rockies Scenic", duration: "8 Days", countries: "Canada", route: "Vancouver → Banff → Lake Louise", description: "Rocky Mountaineer panoramic train and majestic glacial landscape exploration.", experiences: ["Rocky Mountaineer panoramic train", "Majestic glacial landscape exploration", "Private alpine dining"], hotels: ["Fairmont Chateau Lake Louise"], image: "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&q=80&w=1200", category: "National Parks" },
+                { id: 6, title: "American West National Parks", duration: "7 Days", countries: "USA", route: "Zion → Bryce → Grand Canyon", description: "Helicopter over the Grand Canyon and luxury glamping in the high desert.", experiences: ["Helicopter over the Grand Canyon", "Luxury glamping in the high desert", "Private Navajo guided tours"], hotels: ["Amangiri"], image: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&q=80&w=1200", category: "National Parks" },
+                { id: 7, title: "New England Coastal Heritage", duration: "7 Days", countries: "USA", route: "Boston → Newport → Cape Cod", description: "American history, Gilded Age mansions, and classic Atlantic yachting.", experiences: ["American history private tours", "Gilded Age mansions access", "Classic Atlantic yachting"], hotels: ["The Chanler"], image: "https://images.unsplash.com/photo-1505228395891-9a51e7e86bf6?auto=format&fit=crop&q=80&w=1200", category: "Coastal" },
+                { id: 8, title: "Chicago & Great Lakes Route", duration: "9 Days", countries: "USA", route: "Chicago → Milwaukee → Mackinac Island", description: "Architectural mastery, scenic lake drives, and historic car-free island stays.", experiences: ["Architectural mastery tours", "Scenic lake drives", "Historic car-free island stays"], hotels: ["Grand Hotel Mackinac"], image: "https://images.unsplash.com/photo-1494522855154-9297ac14b55f?auto=format&fit=crop&q=80&w=1200", category: "Urban & Coastal" },
+                { id: 9, title: "Alaska & Yukon Wilderness", duration: "10 Days", countries: "USA/Canada", route: "Anchorage → Dawson City → Whitehorse", description: "Deep expedition into the Klondike Gold Rush territory and arctic wilds.", experiences: ["Klondike Gold Rush territory tour", "Arctic wilds exploration", "Northern Lights private viewing"], hotels: ["Northern Lights Lodge"], image: "https://images.unsplash.com/photo-1502472992487-1789c679f826?auto=format&fit=crop&q=80&w=1200", category: "Wilderness" },
+                { id: 10, title: "Texas Luxury Route", duration: "8 Days", countries: "USA", route: "Dallas → Austin → San Antonio", description: "Elite live music scenes, exclusive ranch estates, and deep Texan culture.", experiences: ["Elite live music VIP access", "Exclusive ranch estate stays", "Deep Texan culinary tours"], hotels: ["Hotel Emma"], image: "https://images.unsplash.com/photo-1531310197839-ccf54634509e?auto=format&fit=crop&q=80&w=1200", category: "Urban & Coastal" },
+                { id: 11, title: "Pacific Northwest Signature", duration: "9 Days", countries: "USA/Canada", route: "Seattle → San Juan Islands → Vancouver", description: "Pacific wildlife exploration, orca spotting, and urban sophistication.", experiences: ["Pacific wildlife exploration", "Private yacht orca spotting", "Urban sophistication dining"], hotels: ["Four Seasons Seattle"], image: "https://images.unsplash.com/photo-1502030127830-a128839bc570?auto=format&fit=crop&q=80&w=1200", category: "Coastal" },
+                { id: 12, title: "Florida Grand Luxury", duration: "15 Days", countries: "USA", route: "Palm Beach → Miami → Florida Keys", description: "Classic Florida grandeur, Caribbean sailing, and exclusive keys retreats.", experiences: ["Classic Florida grandeur tours", "Private Caribbean sailing", "Exclusive keys island retreats"], hotels: ["The Breakers"], image: "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&q=80&w=1200", category: "Coastal" }
+            ];
+
+            const categories = ["All", "Urban & Coastal", "National Parks", "Wilderness", "Coastal"];
+
+            return (
+                <div className="min-h-screen bg-[#FDFBF7] text-[#1A1A1A] font-serif selection:bg-[#C5A059] selection:text-white">
+                    {/* WhatsApp Floating Button */}
+                    <a href={`https://wa.me/${contactData.whatsapp}`} target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center gap-2 group">
+                        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap text-sm font-sans font-bold uppercase tracking-widest pl-0 group-hover:pl-2">Contact VIP</span>
+                        <MessageCircle size={24} />
+                    </a>
+
+                    {/* Navigation */}
+                    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#0f172a]/95 backdrop-blur-md shadow-2xl py-4' : 'bg-transparent py-8'}`}>
+                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                                <Globe className="w-8 h-8 text-[#C5A059]" />
+                                <div className="flex flex-col">
+                                    <span className="text-xl font-bold tracking-tighter leading-none text-white font-sans uppercase">Global Mix</span>
+                                    <span className="text-[10px] tracking-[0.4em] font-medium text-[#C5A059] font-sans">North America</span>
+                                </div>
+                            </div>
+
+                            <div className="hidden lg:flex items-center gap-10">
+                                {navLinks.map((item) => (
+                                    <a key={item.name} href={item.href} className="text-[10px] font-bold tracking-[0.3em] uppercase text-white hover:text-[#C5A059] transition-colors font-sans">{item.name}</a>
+                                ))}
+                                <div className="flex items-center gap-4 ml-4">
+                                    <a href={`tel:${contactData.phone}`} className="text-white hover:text-[#C5A059] transition-colors"><Phone size={18} /></a>
+                                    <a href="#itineraries" className="bg-[#C5A059] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#0f172a] transition-all transform hover:scale-105 font-sans inline-block">ENQUIRE NOW</a>
+                                </div>
+                            </div>
+
+                            <button className="lg:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                            </button>
+                        </div>
+
+                        {/* Mobile Menu */}
+                        {isMenuOpen && (
+                            <div className="absolute top-full left-0 w-full bg-[#0f172a] border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden animate-in slide-in-from-top">
+                                {navLinks.map((item) => (
+                                    <a key={item.name} href={item.href} onClick={() => setIsMenuOpen(false)} className="text-white text-sm font-bold tracking-widest uppercase font-sans">{item.name}</a>
+                                ))}
+                                <a href={`mailto:${contactData.email}`} className="text-white text-sm font-bold tracking-widest uppercase font-sans">Email Us</a>
+                                <a href="#itineraries" onClick={() => setIsMenuOpen(false)} className="bg-[#C5A059] text-white py-4 text-center font-bold tracking-widest uppercase font-sans inline-block w-full">Plan Journey</a>
+                            </div>
+                        )}
+                    </nav>
+
+                    {/* Hero Section */}
+                    <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            {/* Deep Blue Slate overlay to match original vibe */}
+                            <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1920&auto=format&fit=crop&fm=webp" className="w-full h-full object-cover scale-105" alt="North America Landscape" fetchpriority="high" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a]/95 via-[#0f172a]/60 to-[#0f172a]/100" />
+                        </div>
+
+                        <div className="relative z-10 text-center px-6 max-w-5xl">
+                            <span className="inline-block mb-6 text-[#C5A059] tracking-[0.6em] text-xs font-bold uppercase animate-fade-in font-sans">
+                                Global Mix Collection
+                            </span>
+                            <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
+                                Grand Journeys <br />
+                                <span className="italic text-[#C5A059] drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">
+                                    of North America
+                                </span>
+                            </h1>
+                            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-12 font-light font-sans">
+                                An exquisite anthology of legendary journeys and iconic retreats across the continent's most majestic landscapes.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                                <a href="#itineraries" className="bg-white text-[#0f172a] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#C5A059] hover:text-white transition-all shadow-2xl font-sans inline-block">
+                                    Explore Collection
+                                </a>
+                            </div>
+                        </div>
+
+                        <a href="#about-us" className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white/50 flex flex-col items-center gap-2 hover:text-white transition-colors cursor-pointer group z-10">
+                            <span className="text-[10px] tracking-[0.3em] uppercase font-sans">Scroll</span>
+                            <ChevronDown size={20} className="animate-bounce" />
+                        </a>
+                    </section>
+
+                    {/* Philosophy */}
+                    <section id="about-us" className="py-24 px-6 bg-white border-b border-black/5">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <h2 className="text-xs font-bold tracking-[0.5em] text-[#C5A059] uppercase mb-10 font-sans">The Zen of Travel</h2>
+                            <p className="text-3xl md:text-4xl text-[#0f172a] leading-tight mb-8">
+                                "We bridge the gap between untamed wilderness and modern luxuries, crafting narratives that resonate deep within the soul."
+                            </p>
+                            <div className="w-20 h-1 bg-[#C5A059] mx-auto"></div>
+                        </div>
+                    </section>
+
+                    {/* Itineraries Grid */}
+                    <section id="itineraries" className="py-20 px-6 scroll-mt-24">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
+                                <div>
+                                    <h3 className="text-xs font-bold tracking-[0.4em] text-[#C5A059] uppercase mb-4 font-sans">2025 / 2026 Collection</h3>
+                                    <h4 className="text-4xl md:text-5xl text-[#0f172a]">Signature Routes</h4>
+                                </div>
+                                <div className="flex gap-4 overflow-x-auto pb-4 w-full md:w-auto scrollbar-hide">
+                                    {categories.map(cat => (
+                                        <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-6 py-2 text-[10px] font-bold tracking-widest uppercase transition-all whitespace-nowrap font-sans border ${activeCategory === cat ? 'bg-[#0f172a] text-white border-[#0f172a]' : 'bg-transparent text-gray-400 border-black/10 hover:border-[#C5A059]'}`}>
+                                            {cat}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                                {naJourneys.filter(j => activeCategory === 'All' || j.category === activeCategory).map((journey) => (
+                                    <div key={journey.id} className="group flex flex-col h-full bg-white border border-black/5 hover:border-[#C5A059]/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
+                                        <div className="relative h-80 overflow-hidden">
+                                            {/* Lazy Load & WebP */}
+                                            <img src={`${journey.image}&fm=webp&q=60&w=800`} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0" loading="lazy" />
+                                            <div className="absolute top-6 left-6 flex flex-col gap-2">
+                                                <span className="bg-[#C5A059] text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-sans">{journey.duration}</span>
+                                            </div>
+                                            <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-[#0f172a] to-transparent">
+                                                <div className="flex items-center gap-2 text-[#C5A059] mb-2">
+                                                    <MapPin size={14} />
+                                                    <span className="text-[10px] font-bold tracking-widest uppercase font-sans">{journey.countries}</span>
+                                                </div>
+                                                <h5 className="text-2xl text-white leading-tight">{journey.title}</h5>
+                                            </div>
+                                        </div>
+
+                                        <div className="p-8 flex flex-col flex-grow">
+                                            <div className="mb-6">
+                                                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans">Selected Itinerary</p>
+                                                <p className="text-sm text-[#0f172a] italic font-medium">{journey.route}</p>
+                                            </div>
+                                            <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">{journey.description}</p>
+
+                                            <div className="mt-auto pt-6 border-t border-black/5">
+                                                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans flex items-center gap-2">
+                                                    <Bed size={12} /> Featured Accommodations
+                                                </p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {journey.hotels.map((h, i) => (
+                                                        <span key={i} className="text-[9px] font-bold text-[#0f172a] bg-[#FDFBF7] px-2 py-1 uppercase tracking-tighter">{h}</span>
+                                                    ))}
+                                                </div>
+                                            </div>
+
+                                            <button onClick={(e) => handleTripAction(e, journey, "North America")} className="mt-8 group-hover:bg-[#0f172a] group-hover:text-white border border-[#0f172a] text-[#0f172a] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center w-full">
+                                                Request Itinerary <ChevronRight size={14} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Specialty Section */}
+                    <section id="experiences" className="py-32 bg-[#0f172a] text-white overflow-hidden scroll-mt-20">
+                        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                            <div className="relative">
+                                <div className="aspect-[4/5] overflow-hidden">
+                                    <img src="https://images.unsplash.com/photo-1549144511-f099e773c147?q=80&w=1200&auto=format&fit=crop&fm=webp" className="w-full h-full object-cover grayscale opacity-50" alt="Concierge Expert" loading="lazy" />
+                                </div>
+                                <div className="absolute -bottom-10 -right-10 bg-[#C5A059] p-12 hidden md:block">
+                                    <p className="text-4xl italic leading-tight text-[#0f172a]">Private <br />Concierge <br />In America</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-xs font-bold tracking-[0.5em] text-[#C5A059] uppercase mb-8 font-sans">UNPARALLELED ACCESS</h3>
+                                <h4 className="text-5xl md:text-6xl mb-10 leading-none">The American Dream Reimagined.</h4>
+                                <div className="space-y-12">
+                                    <div className="flex gap-6">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059]"><Compass size={24} /></div>
+                                        <div><h5 className="text-xl mb-3">Cultural Guardians</h5><p className="text-gray-400 font-sans text-sm">Our guides provide an authentic perspective from remote Alaskan glaciers to the heart of Manhattan.</p></div>
+                                    </div>
+                                    <div className="flex gap-6">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059]"><Building size={24} /></div>
+                                        <div><h5 className="text-xl mb-3">Privileged Entry</h5><p className="text-gray-400 font-sans text-sm">After-hours museum tours, private vineyard access, and VIP entry to exclusive venues.</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer / Contact */}
+                    <footer id="contact" className="bg-[#080b13] text-white pt-24 pb-12 border-t border-white/5 scroll-mt-20">
+                        <div className="max-w-7xl mx-auto px-6">
+                            <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+                                <div className="md:col-span-2">
+                                    <div className="flex items-center gap-3 mb-8">
+                                        <Globe className="w-8 h-8 text-[#C5A059]" />
+                                        <div className="flex flex-col">
+                                            <span className="text-xl font-bold tracking-tighter leading-none text-white font-sans uppercase">Global Mix</span>
+                                            <span className="text-[10px] tracking-[0.4em] font-medium text-[#C5A059] font-sans">North America</span>
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-500 font-sans text-sm max-w-sm leading-relaxed mb-10">Specializing in ultra-luxury expeditions across Asia, Africa, Europe, and the Americas. We craft legacy moments with privileged access and elite service.</p>
+                                </div>
+
+                                <div>
+                                    <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#C5A059] mb-8 font-sans">Explore</h6>
+                                    <ul className="space-y-4 font-sans text-sm text-gray-400">
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Urban &amp; Coastal</a></li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">National Parks</a></li>
+                                        <li><a href="#experiences" className="hover:text-white cursor-pointer transition-colors">Wilderness Escapes</a></li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Private Flights</a></li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#C5A059] mb-8 font-sans">Direct Contact</h6>
+                                    <ul className="space-y-6 font-sans text-sm text-gray-400">
+                                        <li className="flex gap-4"><Phone size={16} className="text-[#C5A059]" /><a href={`tel:${contactData.phone}`} className="hover:text-white">{contactData.phone}</a></li>
+                                        <li className="flex gap-4"><MessageCircle size={16} className="text-[#C5A059]" /><a href={`https://wa.me/${contactData.whatsapp}`} className="hover:text-white">WhatsApp VIP Concierge</a></li>
+                                        <li className="flex gap-4"><Mail size={16} className="text-[#C5A059]" /><a href={`mailto:${contactData.email}`} className="hover:text-white">{contactData.email}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-600 font-sans tracking-[0.2em] uppercase">
+                                <p>© 2024 GLOBAL MIX TRAVEL NORTH AMERICA. ALL RIGHTS RESERVED.</p>
+                                <div className="flex gap-8"><span>Privacy Policy</span><span>Terms of Service</span></div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
