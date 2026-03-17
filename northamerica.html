@@ -61,8 +61,6 @@
         const App = () => {
             const [isMenuOpen, setIsMenuOpen] = useState(false);
             const [scrolled, setScrolled] = useState(false);
-            
-            // FIX: This was named activeTab before, causing the white screen crash!
             const [activeCategory, setActiveCategory] = useState('All');
 
             const contactData = {
@@ -167,8 +165,7 @@
                     {/* Hero Section */}
                     <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 z-0">
-                            {/* Deep Blue Slate overlay to match original vibe */}
-                            <img src={"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1920&auto=format&fit=crop&fm=webp"} className="w-full h-full object-cover scale-105" alt="North America Landscape" fetchpriority="high" />
+                            <img src={"https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?q=80&w=1920&auto=format&fit=crop&fm=webp"} className="w-full h-full object-cover scale-105" alt="North America Landscape" fetchPriority="high" />
                             <div className="absolute inset-0 bg-gradient-to-b from-[#0f172a]/95 via-[#0f172a]/60 to-[#0f172a]/100" />
                         </div>
 
@@ -230,8 +227,7 @@
                                 {naJourneys.filter(j => activeCategory === 'All' || j.category === activeCategory).map((journey) => (
                                     <div key={journey.id} className="group flex flex-col h-full bg-white border border-black/5 hover:border-[#C5A059]/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
                                         <div className="relative h-80 overflow-hidden">
-                                            {/* Lazy Load & WebP */}
-                                            <img src={`${journey.image}&fm=webp&q=60&w=800`} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0" loading="lazy" />
+                                            <img src={journey.image + "&fm=webp&q=60&w=800"} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0" loading="lazy" />
                                             <div className="absolute top-6 left-6 flex flex-col gap-2">
                                                 <span className="bg-[#C5A059] text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-sans">{journey.duration}</span>
                                             </div>
@@ -318,7 +314,7 @@
                                 <div>
                                     <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#C5A059] mb-8 font-sans">Explore</h6>
                                     <ul className="space-y-4 font-sans text-sm text-gray-400">
-                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Urban &amp; Coastal</a></li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Urban {"&"} Coastal</a></li>
                                         <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">National Parks</a></li>
                                         <li><a href="#experiences" className="hover:text-white cursor-pointer transition-colors">Wilderness Escapes</a></li>
                                         <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Private Flights</a></li>
