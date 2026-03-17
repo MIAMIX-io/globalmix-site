@@ -87,6 +87,29 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
+            const handleTripAction = (e, trip, regionName) => {
+                e.preventDefault();
+
+                // 1. Prepare the prefilled email
+                const email = "info@globalmix.online";
+                const subject = encodeURIComponent(`Requesting Full Itinerary: ${trip.title}`);
+                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me the full itinerary and details for the "${trip.title}" expedition.\n\nThank you!`);
+                const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+
+                // 2. Recreate the exact URL the build script generated
+                const safeRegion = regionName.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const safeSlug = trip.title.split(' ')[0].toLowerCase().replace(/[^a-z0-9-]/g, ''); 
+                const pageUrl = `/${safeRegion}/${safeSlug}`;
+
+                // 3. Fire the email client
+                window.location.href = mailtoLink;
+
+                // 4. Redirect to the trip page after a tiny 300ms delay to ensure the mailto registers
+                setTimeout(() => {
+                    window.location.href = pageUrl;
+                }, 300);
+            };
+
             const expeditions = [
                 {
                     id: 1,
@@ -221,7 +244,7 @@
                     <section className="relative h-screen flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0">
                             <img 
-                                src="https://images.unsplash.com/photo-1637966201771-b0b251baa2ef?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+                                src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&q=80&w=2000" 
                                 className="w-full h-full object-cover scale-105"
                                 alt="Andean Landscape"
                             />
@@ -315,9 +338,12 @@
                                             <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">
                                                 {exp.description}
                                             </p>
-                                            <a href="#contact" className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] uppercase text-[#002147] border-b border-[#002147]/10 pb-2 w-fit hover:border-[#C5A059] transition-all group-hover:gap-4 inline-flex">
-                                                Explore Itinerary <ChevronRight className="w-4 h-4" />
-                                            </a>
+                                            <button 
+                                                onClick={(e) => handleTripAction(e, exp, "Latin America")} 
+                                                className="mt-auto group-hover:bg-[#002147] group-hover:text-white border border-[#002147] text-[#002147] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center w-full"
+                                            >
+                                                Explore Itinerary <ChevronRight size={14} />
+                                            </button>
                                         </div>
                                     </div>
                                 ))}
@@ -326,7 +352,7 @@
                     </section>
 
                     {/* Experience Stats */}
-                    <section id="experiences" className="py-20 px-6 bg-[#002147] text-white overflow-hidden relative scroll-mt-20">
+                    <section className="py-20 px-6 bg-[#002147] text-white overflow-hidden relative">
                         <div className="absolute top-0 right-0 opacity-10 scale-150 -translate-y-1/2">
                             <Compass className="w-[500px] h-[500px]" />
                         </div>
@@ -347,6 +373,48 @@
                             <div>
                                 <div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">100%</div>
                                 <div className="text-sm font-light text-white/70 uppercase tracking-widest">Tailor Made</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Concierge Section - ID added here */}
+                    <section id="experiences" className="py-32 bg-[#002147] text-white overflow-hidden scroll-mt-20">
+                        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                            <div className="relative">
+                                <div className="aspect-[4/5] overflow-hidden">
+                                    <img 
+                                        src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1200&auto=format&fit=crop" 
+                                        className="w-full h-full object-cover grayscale opacity-50"
+                                        alt="Latin America Concierge"
+                                    />
+                                </div>
+                                <div className="absolute -bottom-10 -right-10 bg-[#C5A059] p-12 hidden md:block">
+                                    <p className="text-4xl italic leading-tight text-[#002147]">Private <br />Concierge <br />In Latin America</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-xs font-bold tracking-[0.5em] text-[#C5A059] uppercase mb-8 font-sans">SPECIALIZED ASSISTANCE</h3>
+                                <h4 className="text-5xl md:text-6xl mb-10 leading-none">The Luxury of No Limits.</h4>
+                                <div className="space-y-12">
+                                    <div className="flex gap-6">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059]">
+                                            <Compass size={24} />
+                                        </div>
+                                        <div>
+                                            <h5 className="text-xl mb-3">Local Expertise</h5>
+                                            <p className="text-gray-400 font-sans text-sm">Our specialists intimately know the terrain, from the heights of the Andes to the depths of the Amazon.</p>
+                                        </div>
+                                    </div>
+                                    <div className="flex gap-6">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059]">
+                                            <Trees size={24} />
+                                        </div>
+                                        <div>
+                                            <h5 className="text-xl mb-3">Privileged Access</h5>
+                                            <p className="text-gray-400 font-sans text-sm">Exclusive entry to remote archaeological sites, private estancias, and protected natural reserves.</p>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </section>
