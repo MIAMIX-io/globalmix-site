@@ -41,10 +41,10 @@ jobs:
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
           git add .
           
-          # Smarter Git check: only commit and push IF there are actual changes
-          if git diff-index --quiet HEAD --; then
-            echo "No new trips or updates found. Skipping commit."
-          else
+          # Foolproof check for any changes (including brand new folders)
+          if [ -n "$(git status --porcelain)" ]; then
             git commit -m "Auto-generated trips from Global Mix Notion Database"
             git push
+          else
+            echo "No new trips or updates found. Skipping commit."
           fi
