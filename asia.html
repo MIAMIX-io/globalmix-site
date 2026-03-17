@@ -89,6 +89,29 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
+            const handleTripAction = (e, trip, regionName) => {
+                e.preventDefault();
+
+                // 1. Prepare the prefilled email
+                const email = "info@globalmix.online";
+                const subject = encodeURIComponent(`Requesting Full Itinerary: ${trip.title}`);
+                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me the full itinerary and details for the "${trip.title}" expedition.\n\nThank you!`);
+                const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+
+                // 2. Recreate the exact URL the build script generated
+                const safeRegion = regionName.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const safeSlug = trip.title.split(' ')[0].toLowerCase().replace(/[^a-z0-9-]/g, ''); 
+                const pageUrl = `/${safeRegion}/${safeSlug}`;
+
+                // 3. Fire the email client
+                window.location.href = mailtoLink;
+
+                // 4. Redirect to the trip page after a tiny 300ms delay to ensure the mailto registers
+                setTimeout(() => {
+                    window.location.href = pageUrl;
+                }, 300);
+            };
+
             const asiaJourneys = [
                 {
                     id: 1,
@@ -428,9 +451,12 @@
                                                     </div>
                                                 </div>
 
-                                                <a href="#contact" className="mt-8 group-hover:bg-[#2C0A0A] group-hover:text-white border border-[#2C0A0A] text-[#2C0A0A] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center">
+                                                <button 
+                                                    onClick={(e) => handleTripAction(e, journey, "Asia")} 
+                                                    className="mt-8 group-hover:bg-[#2C0A0A] group-hover:text-white border border-[#2C0A0A] text-[#2C0A0A] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center w-full"
+                                                >
                                                     Request Itinerary <ChevronRight size={14} />
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     ))}
