@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Mix Caribe | Ultra Luxury Travel Collection</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 2s ease-out',
+                        'bounce': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        bounce: {
+                            '0%, 100%': { transform: 'translateY(-25%)', animationTimingFunction: 'cubic-bezier(0.8,0,1,1)' },
+                            '50%': { transform: 'translateY(0)', animationTimingFunction: 'cubic-bezier(0,0,0.2,1)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        html { scroll-behavior: smooth; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+    
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
+        import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
+        
+        import { 
+            Compass, MapPin, Ship, Trees, Wind, Sun, Waves, Camera, 
+            Menu, X, ChevronRight, ChevronDown, Mail, Phone, Globe, MessageCircle, Star, Bed, Building
+        } from 'https://esm.sh/lucide-react@0.292.0';
+
+        const App = () => {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
+            const [activeCategory, setActiveCategory] = useState('All');
+
+            const contactData = {
+                phone: "+1 786 459 8797",
+                whatsapp: "17864598797",
+                email: "info@globalmix.online"
+            };
+
+            const navLinks = [
+                { name: 'Circuits', href: '#circuits' },
+                { name: 'Experience', href: '#experience' },
+                { name: 'Contact', href: '#contact' }
+            ];
+
+            useEffect(() => {
+                const handleScroll = () => {
+                    setScrolled(window.scrollY > 50);
+                };
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const handleTripAction = (e, trip, regionName) => {
+                e.preventDefault();
+                const subject = encodeURIComponent(`Requesting Full Itinerary: ${trip.title}`);
+                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me the full itinerary and details for the "${trip.title}" expedition.\n\nThank you!`);
+                const mailtoLink = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
+
+                const safeRegion = regionName.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const safeSlug = trip.title.split(' ')[0].toLowerCase().replace(/[^a-z0-9-]/g, ''); 
+                const pageUrl = `/${safeRegion}/${safeSlug}`;
+
+                window.location.href = mailtoLink;
+                setTimeout(() => { window.location.href = pageUrl; }, 300);
+            };
+
+            const handleFormSubmit = (e) => {
+                e.preventDefault();
+                const subject = encodeURIComponent("Inquiry from Global Mix Caribe");
+                const body = encodeURIComponent("Hello Global Mix VIP Team,\n\nI would like more information regarding your Caribbean circuits.\n\nThank you!");
+                window.location.href = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
+            };
+
+            const caribeJourneys = [
+                { id: 1, title: "Caribbean Grand Escape", duration: "10 Days", tag: "Bahamas & Turks", route: "Miami – Bahamas – Turks and Caicos", description: "World-class lifestyle and top-tier beaches.", hotels: ["Faena Hotel Miami Beach", "The Ocean Club, A Four Seasons Resort", "Amanyara"], image: "https://images.unsplash.com/photo-1544918877-460635b6d13e?auto=format&fit=crop&q=80&w=800", category: "Elite" },
+                { id: 2, title: "St. Barths & Sophistication", duration: "9 Days", tag: "French Caribbean Chic", route: "Saint Martin – St. Barth – Anguilla", description: "The most exclusive Caribbean flair.", hotels: ["Belmond La Samanna", "Eden Rock St Barths", "Cheval Blanc Isle de France"], image: "https://images.unsplash.com/photo-1589394815804-964ed962eb33?auto=format&fit=crop&q=80&w=800", category: "Elite" },
+                { id: 3, title: "Dominican Republic Luxury", duration: "9 Days", tag: "Culture & Nature", route: "Punta Cana – Santo Domingo – Samaná", description: "A sensory journey through the island.", hotels: ["Eden Roc Cap Cana", "JW Marriott Santo Domingo", "Sublime Samana Hotel"], image: "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&q=80&w=800", category: "Culture" },
+                { id: 4, title: "Casa de Campo Elite", duration: "7 Days", tag: "Elite Experience", route: "La Romana, Dominican Republic", description: "Ultra-luxury immersion in the most prestigious resort in the Caribbean.", hotels: ["Casa de Campo Resort & Villas"], image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&q=80&w=800", category: "Elite" },
+                { id: 5, title: "Jamaica & Cayman Escape", duration: "9 Days", tag: "Rhythm & Sophistication", route: "Montego Bay – Negril – Grand Cayman", description: "British elegance in the tropics.", hotels: ["Round Hill Hotel and Villas", "Rockhouse Hotel", "The Ritz-Carlton Grand Cayman"], image: "https://images.unsplash.com/photo-1545432025-a1c13702138e?auto=format&fit=crop&q=80&w=800", category: "Islands" },
+                { id: 6, title: "Puerto Rico & Virgin Islands", duration: "8 Days", tag: "Culture & Navigation", route: "San Juan – Saint Thomas – Saint John", description: "History and crystal clear waters.", hotels: ["Dorado Beach, a Ritz-Carlton Reserve", "Condado Vanderbilt Hotel", "The Ritz-Carlton St Thomas"], image: "https://images.unsplash.com/photo-1500916434205-0c7742ddb608?auto=format&fit=crop&q=80&w=800", category: "Culture" },
+                { id: 7, title: "Cuba Cultural Luxury", duration: "8 Days", tag: "Unique Heritage", route: "Havana – Trinidad – Varadero", description: "Timeless charm with contemporary luxury.", hotels: ["Gran Hotel Manzana Kempinski", "Iberostar Grand Trinidad", "Royalton Hicacos Resort"], image: "https://images.unsplash.com/photo-1500673922987-e212871fec22?auto=format&fit=crop&q=80&w=800", category: "Culture" },
+                { id: 8, title: "ABC Islands Luxury", duration: "9 Days", tag: "Dutch Caribbean", route: "Aruba – Curaçao – Bonaire", description: "Diving and European refinement.", hotels: ["The Ritz-Carlton Aruba", "Baoase Luxury Resort", "Harbour Village Beach Club"], image: "https://images.unsplash.com/photo-1520116468816-95b69f847357?auto=format&fit=crop&q=80&w=800", category: "Islands" },
+                { id: 9, title: "Grenada & St. Vincent", duration: "9 Days", tag: "Hidden Escape", route: "Grenada – St. Vincent & the Grenadines", description: "The ultimate ultra-private escape.", hotels: ["Silversands Grenada", "Mandarin Oriental Canouan", "Petit St Vincent Private Island"], image: "https://images.unsplash.com/photo-1544256627-226e69123891?auto=format&fit=crop&q=80&w=800", category: "Islands" }
+            ];
+
+            const categories = ["All", "Elite", "Culture", "Islands"];
+
+            return (
+                <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-[#C5A059] selection:text-white">
+                    {/* WhatsApp Floating Button */}
+                    <a href={`https://wa.me/${contactData.whatsapp}`} target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center gap-2 group">
+                        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap text-sm font-sans font-bold uppercase tracking-widest pl-0 group-hover:pl-2">Contact VIP</span>
+                        <MessageCircle size={24} />
+                    </a>
+
+                    {/* Header / Navigation */}
+                    <header className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' : 'bg-transparent py-6'}`}>
+                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                                <div className={`w-10 h-10 flex items-center justify-center rounded-sm transition-colors ${scrolled ? 'bg-gray-900' : 'bg-white'}`}>
+                                    <span className={`font-serif font-bold text-xl ${scrolled ? 'text-white' : 'text-gray-900'}`}>G</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className={`font-bold tracking-[0.2em] text-sm uppercase ${scrolled ? 'text-gray-900' : 'text-white'}`}>Global Mix</span>
+                                    <span className="text-[10px] tracking-[0.3em] text-[#C5A059] uppercase font-semibold">Caribe</span>
+                                </div>
+                            </div>
+
+                            <nav className={`hidden md:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] ${scrolled ? 'text-gray-600' : 'text-white'}`}>
+                                {navLinks.map((item) => (
+                                    <a key={item.name} href={item.href} className="hover:text-[#C5A059] transition-colors">{item.name}</a>
+                                ))}
+                            </nav>
+
+                            <div className="flex items-center gap-4">
+                                <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                    {isMenuOpen ? <X className={scrolled ? 'text-gray-900' : 'text-white'} /> : <Menu className={scrolled ? 'text-gray-900' : 'text-white'} />}
+                                </button>
+                                <a href={`https://wa.me/${contactData.whatsapp}`} className={`hidden md:inline-block px-6 py-2.5 text-[10px] font-bold uppercase tracking-widest hover:bg-[#C5A059] hover:text-white transition-colors duration-500 ${scrolled ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+                                    Book Now
+                                </a>
+                            </div>
+                        </div>
+
+                        {/* Mobile Menu */}
+                        {isMenuOpen && (
+                            <div className="absolute top-full left-0 w-full bg-white shadow-xl md:hidden flex flex-col p-6 gap-6 animate-in slide-in-from-top duration-300 border-t border-gray-100">
+                                {navLinks.map((item) => (
+                                    <a key={item.name} href={item.href} onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-gray-900 tracking-widest uppercase hover:text-[#C5A059]">{item.name}</a>
+                                ))}
+                                <a href={`mailto:${contactData.email}`} onClick={() => setIsMenuOpen(false)} className="bg-gray-900 text-white py-4 font-bold text-center uppercase tracking-widest text-xs inline-block w-full">Request Itinerary</a>
+                            </div>
+                        )}
+                    </header>
+
+                    {/* Hero Section */}
+                    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            {/* FIX: URL wrapped in {} safely */}
+                            <img src={"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=2000&fm=webp"} alt="Caribbean Luxury View" className="w-full h-full object-cover scale-105" fetchPriority="high" />
+                            <div className="absolute inset-0 bg-black/30"></div>
+                        </div>
+
+                        <div className="relative z-10 text-center px-6 animate-fade-in">
+                            <h2 className="text-white text-xs md:text-sm uppercase tracking-[0.6em] mb-6 opacity-90 font-semibold">Luxury Travel Collection</h2>
+                            <h1 className="text-white text-6xl md:text-9xl font-serif mb-8 leading-tight drop-shadow-lg">Elite Portfolio</h1>
+                            <p className="text-white/90 max-w-2xl mx-auto font-light text-lg md:text-2xl leading-relaxed italic">
+                                Nine ultra-premium journeys curated for the world's most discerning travelers.
+                            </p>
+                            <div className="mt-16">
+                                <a href="#circuits" className="inline-block border border-white text-white px-12 py-5 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white hover:text-black transition-all duration-500">
+                                    Discover the Collection
+                                </a>
+                            </div>
+                        </div>
+
+                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+                            <ChevronDown className="w-8 h-8 text-white opacity-70" />
+                        </div>
+                    </section>
+
+                    {/* Welcome Section */}
+                    <section id="experience" className="py-32 px-6 max-w-5xl mx-auto text-center">
+                        <span className="text-[#C5A059] uppercase tracking-[0.4em] text-[10px] font-bold">Ultra-Exclusive Portfolios</span>
+                        <h2 className="text-4xl md:text-6xl font-serif mt-8 mb-10 text-gray-900">Redefining Caribbean Luxury</h2>
+                        <p className="text-gray-500 text-xl leading-relaxed font-light max-w-3xl mx-auto">
+                            Global Mix Caribe presents a curated selection of circuits that blend the exclusivity of the world's finest hotels with the untamed beauty of the Antilles. From private villas at Casa de Campo to spiritual retreats at Amanyara, every detail is designed to exceed high-end expectations.
+                        </p>
+                    </section>
+
+                    {/* Circuits Grid */}
+                    <section id="circuits" className="py-24 bg-gray-50 scroll-mt-20">
+                        <div className="max-w-7xl mx-auto px-6">
+                            <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-6">
+                                <div>
+                                    <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">The Selection</span>
+                                    <h3 className="text-4xl md:text-5xl font-serif mt-3 text-gray-900">Exclusive Circuits</h3>
+                                    <div className="h-1 w-24 bg-[#C5A059] mt-6"></div>
+                                </div>
+                                <div className="flex gap-4 overflow-x-auto pb-2 w-full md:w-auto scrollbar-hide">
+                                    {categories.map(cat => (
+                                        <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-6 py-2 text-[9px] font-bold tracking-widest uppercase transition-all whitespace-nowrap border ${activeCategory === cat ? 'bg-gray-900 text-white border-gray-900' : 'bg-transparent text-gray-500 border-gray-300 hover:border-[#C5A059]'}`}>
+                                            {cat}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                                {caribeJourneys.filter(j => activeCategory === 'All' || j.category === activeCategory).map((journey) => (
+                                    <div key={journey.id} className="group bg-white shadow-sm hover:shadow-2xl transition-all duration-700 overflow-hidden flex flex-col border border-gray-100">
+                                        <div className="h-80 overflow-hidden relative">
+                                            {/* FIX: WebP and lazy loading safely injected */}
+                                            <img src={`${journey.image}&fm=webp`} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy" />
+                                            <div className="absolute top-5 right-5 bg-white/95 px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest text-gray-900">{journey.duration}</div>
+                                            {journey.id === 4 && (
+                                                <div className="absolute bottom-5 left-5 bg-black/80 text-white px-3 py-1 text-[8px] uppercase tracking-[0.3em] font-bold">Exclusive Access</div>
+                                            )}
+                                        </div>
+                                        <div className="p-10 flex flex-col flex-grow">
+                                            <span className="text-[9px] text-[#C5A059] font-bold uppercase tracking-[0.3em]">{journey.tag}</span>
+                                            <h4 className="text-2xl font-serif mt-3 mb-4 text-gray-900">{journey.title}</h4>
+                                            <p className="text-gray-500 text-sm mb-8 font-light leading-relaxed flex-grow">{journey.route}. {journey.description}</p>
+                                            
+                                            <div className="border-t border-gray-100 pt-6">
+                                                <p className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400 mb-4">Signature Hotels</p>
+                                                <ul className="text-[11px] space-y-3 text-gray-700 font-medium mb-8">
+                                                    {journey.hotels.map((hotel, idx) => (
+                                                        <li key={idx} className="flex items-start gap-2">
+                                                            <span className="text-[#C5A059]">•</span> {hotel}
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+
+                                            <button onClick={(e) => handleTripAction(e, journey, "Caribe")} className="mt-auto w-full border border-gray-900 text-gray-900 py-4 text-[9px] font-bold uppercase tracking-[0.3em] hover:bg-gray-900 hover:text-white transition-colors duration-500 flex justify-center items-center gap-2">
+                                                Request Details <ChevronRight size={14} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Experience Quote */}
+                    <section className="py-40 relative text-center text-white overflow-hidden">
+                        <div className="absolute inset-0">
+                            {/* FIX: WebP and URL {} wrapper */}
+                            <img src={"https://images.unsplash.com/photo-1544198365-f5d60b6d8190?auto=format&fit=crop&q=80&w=2000&fm=webp"} alt="Relaxation" className="w-full h-full object-cover" loading="lazy" />
+                            <div className="absolute inset-0 bg-black/60"></div>
+                        </div>
+                        <div className="relative z-10 max-w-4xl mx-auto px-6">
+                            <h3 className="text-4xl md:text-7xl font-serif italic mb-8 leading-tight drop-shadow-lg">"True luxury is not just the destination, but the exclusivity of living it without limits."</h3>
+                            <p className="text-[10px] uppercase tracking-[0.5em] font-bold text-[#C5A059]">Global Mix Caribe - Elite Portfolio</p>
+                        </div>
+                    </section>
+
+                    {/* Contact Section */}
+                    <section id="contact" className="py-32 px-6 bg-white border-t border-gray-100">
+                        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24">
+                            <div className="lg:w-1/2">
+                                <span className="text-[#C5A059] uppercase tracking-[0.4em] text-[10px] font-bold">Inquiry &amp; Concierge</span>
+                                <h2 className="text-5xl font-serif mt-6 mb-10 text-gray-900">Tailoring Your Next Journey</h2>
+                                <p className="text-gray-500 mb-16 max-w-md text-lg font-light leading-relaxed">Our high-end concierge team is available to coordinate every detail of your upcoming Caribbean residence.</p>
+
+                                <div className="space-y-10">
+                                    <div className="flex items-center gap-8 group cursor-pointer" onClick={() => window.open(`https://wa.me/${contactData.whatsapp}`)}>
+                                        <div className="w-14 h-14 border border-gray-100 flex items-center justify-center group-hover:bg-[#C5A059] group-hover:text-white transition-all duration-500 rounded-full text-gray-400">
+                                            <Phone size={20} />
+                                        </div>
+                                        <div>
+                                            <p className="text-[9px] uppercase font-bold text-gray-400 tracking-[0.2em]">Phone &amp; WhatsApp</p>
+                                            <p className="text-2xl font-serif text-gray-900">{contactData.phone}</p>
+                                        </div>
+                                    </div>
+
+                                    <div className="flex items-center gap-8 group cursor-pointer" onClick={() => window.location.href = `mailto:${contactData.email}`}>
+                                        <div className="w-14 h-14 border border-gray-100 flex items-center justify-center group-hover:bg-[#C5A059] group-hover:text-white transition-all duration-500 rounded-full text-gray-400">
+                                            <Mail size={20} />
+                                        </div>
+                                        <div>
+                                            <p className="text-[9px] uppercase font-bold text-gray-400 tracking-[0.2em]">Email Address</p>
+                                            <p className="text-2xl font-serif text-gray-900">{contactData.email}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="lg:w-1/2 bg-gray-50 p-12 lg:p-16 rounded-xl border border-gray-100">
+                                <form onSubmit={handleFormSubmit} className="space-y-8">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                                        <div className="space-y-3">
+                                            <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Full Name</label>
+                                            <input type="text" required className="w-full bg-white border border-gray-200 p-4 focus:border-[#C5A059] outline-none transition-all font-light text-sm" />
+                                        </div>
+                                        <div className="space-y-3">
+                                            <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Email Address</label>
+                                            <input type="email" required className="w-full bg-white border border-gray-200 p-4 focus:border-[#C5A059] outline-none transition-all font-light text-sm" />
+                                        </div>
+                                    </div>
+                                    <div className="space-y-3">
+                                        <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Circuit of Interest</label>
+                                        <select className="w-full bg-white border border-gray-200 p-4 focus:border-[#C5A059] outline-none transition-all font-light text-sm cursor-pointer">
+                                            <option>Caribbean Grand Escape</option>
+                                            <option>St. Barths &amp; Sophistication</option>
+                                            <option>Dominican Republic Luxury</option>
+                                            <option>Casa de Campo Elite</option>
+                                            <option>Jamaica &amp; Cayman Escape</option>
+                                            <option>Puerto Rico &amp; Virgin Islands</option>
+                                            <option>Cuba Cultural Luxury</option>
+                                            <option>ABC Islands Dutch Caribbean</option>
+                                            <option>Grenada &amp; St. Vincent</option>
+                                        </select>
+                                    </div>
+                                    <div className="space-y-3">
+                                        <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Message / Special Requirements</label>
+                                        <textarea rows="4" className="w-full bg-white border border-gray-200 p-4 focus:border-[#C5A059] outline-none transition-all font-light text-sm"></textarea>
+                                    </div>
+                                    <button type="submit" className="w-full bg-gray-900 text-white py-5 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-[#C5A059] transition-all duration-500">
+                                        Send Inquiry
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="bg-gray-900 text-white py-20 px-6">
+                        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
+                            <div className="flex items-center gap-4">
+                                <div className="w-12 h-12 border border-white/20 flex items-center justify-center rounded-sm">
+                                    <span className="font-serif font-bold text-2xl">G</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="font-bold tracking-[0.3em] uppercase text-sm">Global Mix</span>
+                                    <span className="text-[10px] tracking-[0.4em] text-[#C5A059] uppercase font-bold">Caribe</span>
+                                </div>
+                            </div>
+
+                            <div className="flex gap-10 text-[9px] uppercase tracking-[0.3em] text-gray-400 font-bold">
+                                <a href="europe.html" className="hover:text-[#C5A059] transition-colors">Europe</a>
+                                <a href="asia.html" className="hover:text-[#C5A059] transition-colors">Asia</a>
+                                <a href="africa.html" className="hover:text-[#C5A059] transition-colors">Africa</a>
+                                <a href="#" className="text-white">Caribe</a>
+                            </div>
+
+                            <div className="text-[9px] text-gray-500 uppercase tracking-[0.2em] font-medium">
+                                © 2025 Global Mix Network. All Rights Reserved.
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
