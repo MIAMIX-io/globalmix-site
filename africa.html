@@ -120,4 +120,211 @@
                     {/* Navigation */}
                     <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'bg-[#2D3E2F]/95 backdrop-blur-md shadow-2xl py-4' : 'bg-transparent py-8'}`}>
                         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                            <div className="flex items
+                            <div className="flex items-center gap-3">
+                                <Globe className="w-8 h-8 text-[#B4924A]" />
+                                <div className="flex flex-col">
+                                    <span className="text-xl font-bold tracking-tighter leading-none text-white font-sans uppercase">Global Mix</span>
+                                    <span className="text-[10px] tracking-[0.4em] font-medium text-[#B4924A] font-sans">Travel Africa</span>
+                                </div>
+                            </div>
+
+                            <div className="hidden lg:flex items-center gap-10">
+                                {navLinks.map((item) => (
+                                    <a key={item.name} href={item.href} className="text-[10px] font-bold tracking-[0.3em] uppercase text-white hover:text-[#B4924A] transition-colors font-sans">{item.name}</a>
+                                ))}
+                                <div className="flex items-center gap-4 ml-4">
+                                    <a href={`tel:${contactData.phone}`} className="text-white hover:text-[#B4924A] transition-colors"><Phone size={18} /></a>
+                                    <a href="#itineraries" className="bg-[#B4924A] text-white px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] hover:bg-white hover:text-[#2D3E2F] transition-all transform hover:scale-105 font-sans inline-block">BOOK YOUR JOURNEY</a>
+                                </div>
+                            </div>
+
+                            <button className="lg:hidden text-white" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                            </button>
+                        </div>
+
+                        {/* Mobile Menu */}
+                        {isMenuOpen && (
+                            <div className="absolute top-full left-0 w-full bg-[#2D3E2F] border-t border-white/10 p-8 flex flex-col gap-6 lg:hidden animate-in slide-in-from-top">
+                                {navLinks.map((item) => (
+                                    <a key={item.name} href={item.href} onClick={() => setIsMenuOpen(false)} className="text-white text-sm font-bold tracking-widest uppercase font-sans">{item.name}</a>
+                                ))}
+                                <a href={`mailto:${contactData.email}`} className="text-white text-sm font-bold tracking-widest uppercase font-sans">Email Us</a>
+                                <a href="#itineraries" onClick={() => setIsMenuOpen(false)} className="bg-[#B4924A] text-white py-4 text-center font-bold tracking-widest uppercase font-sans inline-block w-full">Enquire Now</a>
+                            </div>
+                        )}
+                    </nav>
+
+                    {/* Hero Section */}
+                    <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            <img src="https://images.unsplash.com/photo-1489493887464-892be6d1daae?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fm=webp" className="w-full h-full object-cover scale-105" alt="African Safari" fetchpriority="high" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#2D3E2F]/80 via-[#2D3E2F]/60 to-[#2D3E2F]/100" />
+                        </div>
+
+                        <div className="relative z-10 text-center px-6 max-w-5xl">
+                            <span className="inline-block mb-6 text-[#B4924A] tracking-[0.6em] text-xs font-bold uppercase animate-fade-in font-sans">
+                                ULTRA-LUXURY EXPEDITIONS IN AFRICA
+                            </span>
+                            <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
+                                Grand Journeys <br />
+                                <span className="italic text-[#1A3626] drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">
+                                    of Africa
+                                </span>
+                            </h1>
+                            <p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto leading-relaxed mb-12 font-light font-sans">
+                                Discover the untamed majesty of the African continent through journeys meticulously curated for the world's most discerning travelers.
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                                <a href="#itineraries" className="bg-white text-[#2D3E2F] px-12 py-5 font-bold text-xs tracking-[0.3em] uppercase hover:bg-[#B4924A] hover:text-white transition-all shadow-2xl font-sans inline-block">
+                                    Explore Collection
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Philosophy */}
+                    <section className="py-24 px-6 bg-white border-b border-black/5">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <h2 className="text-xs font-bold tracking-[0.5em] text-[#8D5B39] uppercase mb-10 font-sans">Our Philosophy</h2>
+                            <p className="text-3xl md:text-4xl text-[#2D3E2F] leading-tight mb-8">
+                                "Africa is not just a destination; it is a reconnection with life in its purest and most exclusive state."
+                            </p>
+                            <div className="w-20 h-1 bg-[#B4924A] mx-auto"></div>
+                        </div>
+                    </section>
+
+                    {/* Journeys Collection */}
+                    <section id="itineraries" className="py-20 px-6 scroll-mt-24">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
+                                <div>
+                                    <h3 className="text-xs font-bold tracking-[0.4em] text-[#8D5B39] uppercase mb-4 font-sans">2025 / 2026 Expeditions</h3>
+                                    <h4 className="text-4xl md:text-5xl text-[#2D3E2F]">Signature Circuits</h4>
+                                </div>
+                                <div className="flex gap-4 overflow-x-auto pb-4 w-full md:w-auto scrollbar-hide">
+                                    {categories.map(cat => (
+                                        <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-6 py-2 text-[10px] font-bold tracking-widest uppercase transition-all whitespace-nowrap font-sans border ${activeCategory === cat ? 'bg-[#2D3E2F] text-white border-[#2D3E2F]' : 'bg-transparent text-gray-400 border-black/10 hover:border-[#8D5B39]'}`}>
+                                            {cat}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                                {africanJourneys.filter(j => activeCategory === 'All' || j.category === activeCategory).map((journey) => (
+                                    <div key={journey.id} className="group flex flex-col h-full bg-white border border-black/5 hover:border-[#B4924A]/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
+                                        <div className="relative h-80 overflow-hidden">
+                                            {/* Lazy Load & WebP */}
+                                            <img src={`${journey.image}&fm=webp&q=60&w=800`} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy" />
+                                            <div className="absolute top-6 left-6 flex flex-col gap-2">
+                                                <span className="bg-[#8D5B39] text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-sans">{journey.duration}</span>
+                                            </div>
+                                            <div className="absolute bottom-0 left-0 w-full p-8 bg-gradient-to-t from-[#2D3E2F] to-transparent">
+                                                <div className="flex items-center gap-2 text-[#B4924A] mb-2"><MapPin size={14} /><span className="text-[10px] font-bold tracking-widest uppercase font-sans">{journey.countries}</span></div>
+                                                <h5 className="text-2xl text-white leading-tight">{journey.title}</h5>
+                                            </div>
+                                        </div>
+
+                                        <div className="p-8 flex flex-col flex-grow">
+                                            <div className="mb-6"><p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans">Exclusive Route</p><p className="text-sm text-[#2D3E2F] italic font-medium">{journey.route}</p></div>
+                                            <div className="space-y-4 mb-8">
+                                                <p className="text-[10px] font-bold text-[#8D5B39] uppercase tracking-widest font-sans flex items-center gap-2"><Star size={12} fill="currentColor" /> Luxury Experiences</p>
+                                                <ul className="grid grid-cols-1 gap-2">
+                                                    {journey.experiences.map((exp, i) => (
+                                                        <li key={i} className="text-xs text-gray-500 flex items-start gap-2 leading-snug font-sans"><span className="w-1 h-1 bg-[#B4924A] rounded-full mt-1.5 shrink-0" />{exp}</li>
+                                                    ))}
+                                                </ul>
+                                            </div>
+
+                                            <div className="mt-auto pt-6 border-t border-black/5">
+                                                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-3 font-sans flex items-center gap-2"><Bed size={12} /> Suggested Hotels</p>
+                                                <div className="flex flex-wrap gap-2">
+                                                    {journey.hotels.map((h, i) => (<span key={i} className="text-[9px] font-bold text-[#2D3E2F] bg-[#FDFBF7] px-2 py-1 uppercase tracking-tighter">{h}</span>))}
+                                                </div>
+                                            </div>
+
+                                            <button onClick={(e) => handleTripAction(e, journey, "Africa")} className="mt-8 group-hover:bg-[#2D3E2F] group-hover:text-white border border-[#2D3E2F] text-[#2D3E2F] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center w-full">
+                                                Request Details <ChevronRight size={14} />
+                                            </button>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Concierge Section */}
+                    <section id="experiences" className="py-32 bg-[#2D3E2F] text-white overflow-hidden scroll-mt-20">
+                        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                            <div className="relative">
+                                <div className="aspect-[4/5] overflow-hidden"><img src="https://plus.unsplash.com/premium_photo-1664302990510-de01ecc54f77?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fm=webp" className="w-full h-full object-cover grayscale opacity-50" alt="Safari Concierge" loading="lazy" /></div>
+                                <div className="absolute -bottom-10 -right-10 bg-[#8D5B39] p-12 hidden md:block"><p className="text-4xl italic leading-tight">Private <br />Concierge <br />In Africa</p></div>
+                            </div>
+                            <div>
+                                <h3 className="text-xs font-bold tracking-[0.5em] text-[#B4924A] uppercase mb-8 font-sans">SPECIALIZED ASSISTANCE</h3>
+                                <h4 className="text-5xl md:text-6xl mb-10 leading-none">Crafting your perfect safari.</h4>
+                                <div className="space-y-12">
+                                    <div className="flex gap-6">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#B4924A] flex items-center justify-center text-[#B4924A]"><Compass size={24} /></div>
+                                        <div><h5 className="text-xl mb-3">Local Expertise</h5><p className="text-gray-400 font-sans text-sm">Our specialists know every corner of the Okavango and the African savanna.</p></div>
+                                    </div>
+                                    <div className="flex gap-6">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#B4924A] flex items-center justify-center text-[#B4924A]"><MessageCircle size={24} /></div>
+                                        <div><h5 className="text-xl mb-3">Multilingual Support</h5><p className="text-gray-400 font-sans text-sm">Personalized attention in English, Spanish, and French throughout your entire journey.</p></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer / Contact */}
+                    <footer id="contact" className="bg-[#1A1A1A] text-white pt-24 pb-12 border-t border-white/5 scroll-mt-20">
+                        <div className="max-w-7xl mx-auto px-6">
+                            <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
+                                <div className="md:col-span-2">
+                                    <div className="flex items-center gap-3 mb-8">
+                                        <Globe className="w-8 h-8 text-[#B4924A]" />
+                                        <div className="flex flex-col">
+                                            <span className="text-xl font-bold tracking-tighter leading-none text-white font-sans uppercase">Global Mix</span>
+                                            <span className="text-[10px] tracking-[0.4em] font-medium text-[#B4924A] font-sans">Travel Africa</span>
+                                        </div>
+                                    </div>
+                                    <p className="text-gray-500 font-sans text-sm max-w-sm leading-relaxed mb-10">Specialists in ultra-luxury expeditions across Africa, Europe, and the world. We create memorable moments with privileged access and exclusive service.</p>
+                                </div>
+
+                                <div>
+                                    <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#B4924A] mb-8 font-sans">Navigate</h6>
+                                    <ul className="space-y-4 font-sans text-sm text-gray-400">
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Signature Safaris</a></li>
+                                        <li><a href="#experiences" className="hover:text-white cursor-pointer transition-colors">Private Concierge</a></li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Imperial Morocco</a></li>
+                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Seychelles Islands</a></li>
+                                    </ul>
+                                </div>
+
+                                <div>
+                                    <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#B4924A] mb-8 font-sans">Direct Contact</h6>
+                                    <ul className="space-y-6 font-sans text-sm text-gray-400">
+                                        <li className="flex gap-4"><Phone size={16} className="text-[#B4924A]" /><a href={`tel:${contactData.phone}`} className="hover:text-white">{contactData.phone}</a></li>
+                                        <li className="flex gap-4"><MessageCircle size={16} className="text-[#B4924A]" /><a href={`https://wa.me/${contactData.whatsapp}`} className="hover:text-white">VIP WhatsApp</a></li>
+                                        <li className="flex gap-4"><Mail size={16} className="text-[#B4924A]" /><a href={`mailto:${contactData.email}`} className="hover:text-white">{contactData.email}</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-600 font-sans tracking-[0.2em] uppercase">
+                                <p>© 2024 GLOBAL MIX TRAVEL AFRICA. ALL RIGHTS RESERVED.</p>
+                                <div className="flex gap-8"><span>Privacy Policy</span><span>Terms of Service</span></div>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
