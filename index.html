@@ -1,153 +1,377 @@
----
-layout: default
-title: Home
----
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Mix | Content, Culture & Experiences</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@200;300;400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+        h1, h2, h3, .serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .bg-gold-gradient {
+            background: linear-gradient(135deg, #C5A059 0%, #e5c98f 50%, #C5A059 100%);
+        }
+        .text-gold {
+            color: #C5A059;
+        }
+        .border-gold {
+            border-color: #C5A059;
+        }
+        .hover-lift {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.5s ease;
+        }
+        .hover-lift:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+        }
+        .overlay-dark {
+            background: linear-gradient(to bottom, rgba(15, 23, 42, 0.2) 0%, rgba(15, 23, 42, 0.95) 100%);
+        }
+        .nav-glass {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(12px);
+        }
+    </style>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body class="bg-[#FDFBF7] text-slate-900 selection:bg-gold-gradient selection:text-white">
 
-<section id="hero" class="hero">
-    <div class="container">
-        <h2>CONTENT • EXPERIENCES • CULTURE • BUSINESS</h2>
+    <div id="root"></div>
 
-        <p>
-            A global ecosystem connecting media, brands, hospitality, and experiences.
-        </p>
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
+        import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
+        
+        import { 
+            MapPin, Globe, Play, Film, Wine, GraduationCap, 
+            ArrowRight, Menu, X, Star, Crown, HeartHandshake
+        } from 'https://esm.sh/lucide-react@0.292.0';
 
-        <a href="mailto:info@globalmix.online
-?subject=Global%20Mix%20Collaboration%20Inquiry
-&body=Hello%20Global%20Mix%20Team%2C%0D%0A%0D%0AI%E2%80%99m%20interested%20in%20learning%20more%20about%20Global%20Mix%20and%20exploring%20potential%20opportunities%20to%20connect.%0D%0A%0D%0ABest%20regards%2C"
-           class="btn-secondary">
-           Join the Global Vision
-        </a>
+        const App = () => {
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
 
-        <p class="launch-date">
-            Official Launch: May 2026
-        </p>
-    </div>
-</section>
+            useEffect(() => {
+                const handleScroll = () => {
+                    setScrolled(window.scrollY > 50);
+                };
+                window.addEventListener('scroll', handleScroll);
+                
+                // Intersection Observer for scroll animations
+                const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+                const observer = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('opacity-100', 'translate-y-0');
+                            entry.target.classList.remove('opacity-0', 'translate-y-12');
+                        }
+                    });
+                }, observerOptions);
 
-<section id="about" class="section dark-bg">
-    <div class="container">
-        <h3>WHAT IS GLOBAL MIX?</h3>
-        <p>
-            An international portal for news, lifestyle, and experiences, placing the world’s most important destinations and cultural hubs at the forefront.
-        </p>
+                document.querySelectorAll('.animate-on-scroll').forEach(section => {
+                    section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-12', 'ease-out');
+                    observer.observe(section);
+                });
 
-        <div class="key-hubs">
-            <h4>Key Hubs</h4>
-            <p>
-                Tulum, Ibiza, Buenos Aires, Rio de Janeiro, Palma de Mallorca.
-            </p>
-        </div>
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
 
-        <div class="mission">
-            <h4>Mission</h4>
-            <p>
-                Connecting global audiences with destinations, events, culture, brands, and unique experiences.
-            </p>
-        </div>
-    </div>
-</section>
+            const navLinks = [
+                { name: 'About', href: '#about' },
+                { name: 'Miamix DNA', href: '#miamix' },
+                { name: 'Club', href: '#club' },
+                { name: 'Ecosystem', href: '#ecosystem' },
+                { name: 'Purpose', href: '#purpose' }
+            ];
 
-<section id="miamix" class="section light-bg">
-    <div class="container">
-        <h3>MIAMIX: THE DNA</h3>
-        <p>
-            The foundation, the origin, and the DNA of the project.
-        </p>
+            return (
+                <div className="overflow-hidden">
+                    {/* Navigation */}
+                    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? 'nav-glass shadow-sm py-4' : 'bg-transparent py-6'}`}>
+                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                                <Globe className={`w-8 h-8 ${scrolled ? 'text-gold' : 'text-white'}`} />
+                                <div className="flex flex-col">
+                                    <span className={`text-xl font-bold tracking-[0.2em] leading-none ${scrolled ? 'text-slate-900' : 'text-white'}`}>
+                                        GLOBAL<span className={scrolled ? 'text-gold' : 'text-white/80'}>MIX</span>
+                                    </span>
+                                </div>
+                            </div>
 
-        <p class="subtitle">
-            MIAMIX WAS THE STARTING POINT. GLOBAL MIX IS THE NEXT LEVEL.
-        </p>
+                            <div className="hidden lg:flex items-center gap-8">
+                                {navLinks.map((item) => (
+                                    <a key={item.name} href={item.href} className={`text-[10px] font-bold tracking-[0.2em] uppercase transition-colors ${scrolled ? 'text-slate-600 hover:text-gold' : 'text-white/80 hover:text-white'}`}>
+                                        {item.name}
+                                    </a>
+                                ))}
+                                <a href="travel.html" className={`px-6 py-2.5 rounded-full text-[10px] font-bold tracking-[0.2em] uppercase transition-all transform hover:scale-105 ${scrolled ? 'bg-slate-900 text-white hover:bg-gold-gradient' : 'bg-white text-slate-900 hover:bg-white/90'}`}>
+                                    Explore Travel
+                                </a>
+                            </div>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <h4>Premium Content</h4>
-                <p>
-                    Articles, features, and coverage focused on luxury, travel, exclusive events, and experiences.
-                </p>
-            </div>
+                            <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                {isMenuOpen ? <X className={scrolled ? 'text-slate-900' : 'text-white'} /> : <Menu className={scrolled ? 'text-slate-900' : 'text-white'} />}
+                            </button>
+                        </div>
 
-            <div class="service-card">
-                <h4>Brand Promotion</h4>
-                <p>
-                    Editorial placements, strategic advertising, and branded content for brands with global ambition.
-                </p>
-            </div>
+                        {/* Mobile Menu */}
+                        {isMenuOpen && (
+                            <div className="absolute top-full left-0 w-full bg-slate-900 p-8 flex flex-col gap-6 lg:hidden shadow-2xl border-t border-white/10">
+                                {navLinks.map((item) => (
+                                    <a key={item.name} href={item.href} onClick={() => setIsMenuOpen(false)} className="text-white text-sm font-bold tracking-widest uppercase">
+                                        {item.name}
+                                    </a>
+                                ))}
+                                <a href="travel.html" className="text-gold text-sm font-bold tracking-widest uppercase">Travel Network</a>
+                            </div>
+                        )}
+                    </nav>
 
-            <div class="service-card">
-                <h4>Creative Services</h4>
-                <p>
-                    Audiovisual production, professional photography, branding, and digital marketing strategies.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+                    {/* Hero Section */}
+                    <header id="hero" className="relative h-screen flex items-center justify-center">
+                        <div className="absolute inset-0 z-0">
+                            {/* Fetchpriority High & WebP for instant hero load */}
+                            <img 
+                                src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=1920&fm=webp&auto=format&fit=crop" 
+                                alt="Global Coastline" 
+                                className="w-full h-full object-cover scale-105" 
+                                fetchpriority="high"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-b from-slate-900/80 via-slate-900/50 to-slate-900/95"></div>
+                        </div>
+                        
+                        <div className="relative z-10 text-center px-6 max-w-5xl mt-20">
+                            <span className="text-gold text-[10px] md:text-xs tracking-[0.4em] uppercase mb-6 block font-bold">
+                                CONTENT • EXPERIENCES • CULTURE • BUSINESS
+                            </span>
+                            <h1 className="text-6xl md:text-8xl lg:text-9xl text-white font-serif mb-6 leading-[0.9] drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]">
+                                GLOBAL <span className="italic text-gold">MIX</span>
+                            </h1>
+                            <p className="text-white/80 text-lg md:text-2xl mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+                                A global ecosystem connecting media, brands, hospitality, and experiences.
+                            </p>
+                            <div className="flex flex-col items-center gap-6">
+                                <a 
+                                    href="mailto:info@globalmix.online?subject=Global%20Mix%20Collaboration%20Inquiry&body=Hello%20Global%20Mix%20Team%2C%0D%0A%0D%0AI%E2%80%99m%20interested%20in%20learning%20more%20about%20Global%20Mix%20and%20exploring%20potential%20opportunities%20to%20connect.%0D%0A%0D%0ABest%20regards%2C" 
+                                    className="bg-gold-gradient text-slate-900 px-12 py-5 rounded-full font-bold uppercase text-[10px] tracking-[0.3em] hover:shadow-[0_0_30px_rgba(197,160,89,0.4)] transition-all transform hover:-translate-y-1"
+                                >
+                                    Join the Global Vision
+                                </a>
+                                <p className="text-white/50 text-[10px] uppercase tracking-[0.3em] font-bold">
+                                    Official Launch: May 2026
+                                </p>
+                            </div>
+                        </div>
+                    </header>
 
-<section id="club" class="section dark-bg club-section">
-    <div class="container">
-        <h3>GLOBAL MIX CLUB</h3>
-        <p>
-            With the launch of Global Mix Club, the audience becomes a community.
-        </p>
-        <p>
-            Our subscribers don’t just travel through imagination — they travel with us.
-        </p>
+                    {/* About Section */}
+                    <section id="about" className="py-32 px-6 bg-white animate-on-scroll">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <h3 className="text-xs font-bold tracking-[0.4em] text-gold uppercase mb-6">What is Global Mix?</h3>
+                            <h2 className="text-3xl md:text-5xl text-slate-900 font-serif leading-tight mb-10">
+                                An international portal for news, lifestyle, and experiences, placing the world’s most important destinations and cultural hubs at the forefront.
+                            </h2>
+                            <p className="text-slate-500 leading-relaxed text-lg mb-16 max-w-2xl mx-auto font-light">
+                                Our mission is connecting global audiences with destinations, events, culture, brands, and unique experiences across borders.
+                            </p>
 
-        <ul class="club-benefits">
-            <li>Curated travel and premium access</li>
-            <li>International experiences & global festivals</li>
-            <li>Formula 1 & world-class sporting events</li>
-        </ul>
+                            <div className="grid grid-cols-2 md:grid-cols-5 gap-6 border-t border-slate-100 pt-16">
+                                {['Tulum', 'Ibiza', 'Buenos Aires', 'Rio de Janeiro', 'Mallorca'].map((city) => (
+                                    <div key={city} className="flex flex-col items-center gap-3">
+                                        <MapPin className="text-gold w-6 h-6" />
+                                        <span className="text-xs font-bold tracking-[0.1em] uppercase text-slate-600">{city}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
 
-        <h4>2026 Upcoming Events</h4>
-        <p>
-            Formula 1, Inter Miami at Freedom Park, and the FIFA World Cup.
-        </p>
-    </div>
-</section>
+                    {/* Miamix DNA Section */}
+                    <section id="miamix" className="py-32 px-6 bg-slate-50 animate-on-scroll">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="text-center mb-20 max-w-3xl mx-auto">
+                                <h3 className="text-xs font-bold tracking-[0.4em] text-gold uppercase mb-4">Miamix: The DNA</h3>
+                                <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-6">The foundation, the origin, and the DNA of the project.</h2>
+                                <p className="text-slate-500 font-light italic text-lg border-l-2 border-gold pl-6 ml-6 inline-block text-left">
+                                    Miamix was the starting point.<br />Global Mix is the next level.
+                                </p>
+                            </div>
 
-<section id="ecosystem" class="section white-bg">
-    <div class="container">
-        <h3>THE GLOBAL MIX ECOSYSTEM</h3>
-        <p class="subtitle">
-            Independent operations. Strategically connected.
-        </p>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div className="bg-white p-12 rounded-2xl shadow-sm hover-lift border border-slate-100">
+                                    <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-gold mb-6"><Film size={20} /></div>
+                                    <h4 className="text-xl font-serif text-slate-900 mb-4">Premium Content</h4>
+                                    <p className="text-slate-500 text-sm leading-relaxed font-light">Articles, features, and coverage focused on luxury, travel, exclusive events, and experiences.</p>
+                                </div>
+                                <div className="bg-white p-12 rounded-2xl shadow-sm hover-lift border border-slate-100">
+                                    <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-gold mb-6"><Star size={20} /></div>
+                                    <h4 className="text-xl font-serif text-slate-900 mb-4">Brand Promotion</h4>
+                                    <p className="text-slate-500 text-sm leading-relaxed font-light">Editorial placements, strategic advertising, and branded content for brands with global ambition.</p>
+                                </div>
+                                <div className="bg-white p-12 rounded-2xl shadow-sm hover-lift border border-slate-100">
+                                    <div className="w-12 h-12 bg-slate-50 rounded-full flex items-center justify-center text-gold mb-6"><Play size={20} /></div>
+                                    <h4 className="text-xl font-serif text-slate-900 mb-4">Creative Services</h4>
+                                    <p className="text-slate-500 text-sm leading-relaxed font-light">Audiovisual production, professional photography, branding, and digital marketing strategies.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-        <div class="companies-grid">
-            <div class="company-card">
-                <h4>QILOMBO – Beverage & Bar Consulting</h4>
-                <p>
-                    Designs beverage programs combining creativity, profitability, and guest experience.
-                    Founded by Robert Eldridge.
-                </p>
-            </div>
+                    {/* Global Mix Club */}
+                    <section id="club" className="relative py-32 px-6 bg-slate-900 text-white overflow-hidden animate-on-scroll">
+                        <div className="absolute inset-0 z-0">
+                            <img src="https://images.unsplash.com/photo-1509822929063-6b6cfc9b42f2?q=80&w=1920&fm=webp&auto=format&fit=crop" className="w-full h-full object-cover opacity-20" loading="lazy" alt="VIP Event" />
+                            <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/90 to-transparent"></div>
+                        </div>
+                        
+                        <div className="relative z-10 max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                            <div>
+                                <h3 className="text-xs font-bold tracking-[0.4em] text-gold uppercase mb-6 flex items-center gap-3">
+                                    <Crown size={16} /> Exclusive Membership
+                                </h3>
+                                <h2 className="text-5xl md:text-7xl font-serif mb-8 leading-tight">Global Mix <br/><span className="italic text-gold">Club</span></h2>
+                                <p className="text-slate-300 text-lg md:text-xl leading-relaxed mb-10 font-light">
+                                    With the launch of the Club, our audience becomes a community. Our subscribers don’t just travel through imagination — they travel with us.
+                                </p>
+                                <ul className="space-y-4 mb-12">
+                                    {['Curated travel and premium access', 'International experiences & global festivals', 'Formula 1 & world-class sporting events'].map((benefit, i) => (
+                                        <li key={i} className="flex items-center gap-4 text-sm font-light text-slate-200">
+                                            <div className="w-1.5 h-1.5 rounded-full bg-gold shrink-0"></div>
+                                            {benefit}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                            <div className="bg-white/5 backdrop-blur-md border border-white/10 p-10 rounded-3xl">
+                                <h4 className="text-gold text-xs font-bold tracking-[0.3em] uppercase mb-6">2026 Upcoming Events</h4>
+                                <div className="space-y-6">
+                                    <div className="border-b border-white/10 pb-6">
+                                        <p className="text-2xl font-serif mb-2">Formula 1</p>
+                                        <p className="text-xs text-slate-400 uppercase tracking-widest">Global Circuits</p>
+                                    </div>
+                                    <div className="border-b border-white/10 pb-6">
+                                        <p className="text-2xl font-serif mb-2">Inter Miami CF</p>
+                                        <p className="text-xs text-slate-400 uppercase tracking-widest">Freedom Park VIP Access</p>
+                                    </div>
+                                    <div>
+                                        <p className="text-2xl font-serif mb-2 text-gold">FIFA World Cup™</p>
+                                        <p className="text-xs text-slate-400 uppercase tracking-widest">North America 2026</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
 
-            <div class="company-card">
-                <h4>ON AIR TV – Audiovisual Production</h4>
-                <p>
-                    Creative arm bringing projects to life through content, event coverage, and multi-platform formats.
-                </p>
-            </div>
+                    {/* Ecosystem Section */}
+                    <section id="ecosystem" className="py-32 px-6 bg-white animate-on-scroll">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="text-center mb-20">
+                                <h3 className="text-xs font-bold tracking-[0.4em] text-gold uppercase mb-4">The Global Mix Ecosystem</h3>
+                                <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-6">Independent operations.<br/><span className="italic font-light">Strategically connected.</span></h2>
+                            </div>
 
-            <div class="company-card">
-                <h4>Import US Trading Corp – Wine & Spirits Importer</h4>
-                <p>
-                    U.S.-based company for legal import, export, and distribution of premium wines and spirits.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                                <div className="p-10 bg-slate-50 rounded-2xl border border-slate-100 hover:border-gold/30 transition-colors">
+                                    <Wine className="w-8 h-8 text-gold mb-6" />
+                                    <h4 className="text-xl font-bold text-slate-900 mb-2">QILOMBO</h4>
+                                    <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-6">Beverage & Bar Consulting</p>
+                                    <p className="text-slate-500 text-sm font-light leading-relaxed">Designs beverage programs combining creativity, profitability, and guest experience. Founded by Robert Eldridge.</p>
+                                </div>
 
-<section id="purpose" class="section dark-bg">
-    <div class="container">
-        <h3>Education with Purpose</h3>
-        <p>
-            The group’s social foundation supports education in rural schools in Entre Ríos, Argentina,
-            providing materials, resources, and direct on-the-ground support.
-        </p>
-        <p class="quote">
-            “We believe that telling stories can also change realities.”
-        </p>
-    </div>
-</section>
+                                <div className="p-10 bg-slate-50 rounded-2xl border border-slate-100 hover:border-gold/30 transition-colors">
+                                    <Film className="w-8 h-8 text-gold mb-6" />
+                                    <h4 className="text-xl font-bold text-slate-900 mb-2">ON AIR TV</h4>
+                                    <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-6">Audiovisual Production</p>
+                                    <p className="text-slate-500 text-sm font-light leading-relaxed">Creative arm bringing projects to life through content, event coverage, and multi-platform formats.</p>
+                                </div>
+
+                                <div className="p-10 bg-slate-50 rounded-2xl border border-slate-100 hover:border-gold/30 transition-colors">
+                                    <Ship className="w-8 h-8 text-gold mb-6" />
+                                    <h4 className="text-xl font-bold text-slate-900 mb-2">Import US Trading Corp</h4>
+                                    <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-6">Wine & Spirits Importer</p>
+                                    <p className="text-slate-500 text-sm font-light leading-relaxed">U.S.-based company for legal import, export, and distribution of premium wines and spirits.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Purpose Section */}
+                    <section id="purpose" className="py-32 px-6 bg-[#FDFBF7] animate-on-scroll">
+                        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-16">
+                            <div className="w-full md:w-1/2 relative">
+                                <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?q=80&w=800&fm=webp&auto=format&fit=crop" alt="Education with purpose" className="rounded-2xl shadow-xl w-full" loading="lazy" />
+                                <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-full shadow-lg border border-slate-100 text-gold">
+                                    <HeartHandshake size={32} />
+                                </div>
+                            </div>
+                            <div className="w-full md:w-1/2">
+                                <h3 className="text-xs font-bold tracking-[0.4em] text-gold uppercase mb-4 flex items-center gap-2"><GraduationCap size={16}/> Foundation</h3>
+                                <h2 className="text-4xl font-serif text-slate-900 mb-6 leading-tight">Education with Purpose</h2>
+                                <p className="text-slate-500 font-light leading-relaxed mb-8">
+                                    The group’s social foundation supports education in rural schools in Entre Ríos, Argentina, providing materials, resources, and direct on-the-ground support.
+                                </p>
+                                <blockquote className="border-l-2 border-gold pl-6 italic text-xl text-slate-800 font-serif">
+                                    “We believe that telling stories can also change realities.”
+                                </blockquote>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="bg-slate-900 text-white pt-20 pb-10">
+                        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12 pb-16">
+                            <div className="md:col-span-2">
+                                <div className="flex items-center gap-2 mb-6">
+                                    <Globe className="w-8 h-8 text-gold" />
+                                    <div className="flex flex-col">
+                                        <span className="text-xl font-bold tracking-[0.2em] leading-none">GLOBAL<span className="text-gold">MIX</span></span>
+                                    </div>
+                                </div>
+                                <p className="text-slate-400 font-light text-sm leading-relaxed max-w-sm">
+                                    A global ecosystem connecting media, brands, hospitality, and experiences across the world's most important destinations.
+                                </p>
+                            </div>
+                            
+                            <div>
+                                <h4 className="font-bold uppercase text-[10px] tracking-[0.3em] text-white mb-6">Network</h4>
+                                <ul className="space-y-4 text-xs text-slate-400 font-light uppercase tracking-widest">
+                                    <li><a href="#miamix" className="hover:text-gold transition-colors">Miamix</a></li>
+                                    <li><a href="#club" className="hover:text-gold transition-colors">Global Mix Club</a></li>
+                                    <li><a href="travel.html" className="hover:text-gold transition-colors">Travel Network</a></li>
+                                    <li><a href="#ecosystem" className="hover:text-gold transition-colors">Corporate Ecosystem</a></li>
+                                </ul>
+                            </div>
+
+                            <div>
+                                <h4 className="font-bold uppercase text-[10px] tracking-[0.3em] text-white mb-6">Connect</h4>
+                                <ul className="space-y-4 text-xs text-slate-400 font-light uppercase tracking-widest">
+                                    <li className="lowercase tracking-normal"><a href="mailto:info@globalmix.online" className="hover:text-gold transition-colors">info@globalmix.online</a></li>
+                                    <li><a href="#" className="hover:text-gold transition-colors">Instagram</a></li>
+                                    <li><a href="#" className="hover:text-gold transition-colors">LinkedIn</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        
+                        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center text-[9px] uppercase tracking-[0.3em] text-slate-500 font-bold max-w-7xl mx-auto px-6">
+                            <p>© 2026 Global Mix. All Rights Reserved.</p>
+                            <div className="flex space-x-8 mt-4 md:mt-0">
+                                <a href="#" className="hover:text-gold transition-colors">Privacy Policy</a>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
+</body>
+</html>
