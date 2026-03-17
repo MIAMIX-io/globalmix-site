@@ -12,19 +12,21 @@ on:
 permissions:
   contents: write 
 
+# Silence the GitHub deprecation warning by forcing Node 24
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      # Upgraded to v4 to fix the Node deprecation warning
       - name: Checkout Code
         uses: actions/checkout@v4 
 
-      # Upgraded to v4 and Node 20
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24' # Upgraded to match GitHub's new standard
 
       - name: Install Dependencies
         run: npm install
