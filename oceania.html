@@ -17,6 +17,16 @@
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                         serif: ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 2s ease-out',
+                        'bounce': 'bounce 2s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
@@ -25,24 +35,14 @@
 
     <style>
         html { scroll-behavior: smooth; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         
-        /* Custom scrollbar matching Oceania theme */
+        /* Oceania theme scrollbar */
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #fdfdfd; }
         ::-webkit-scrollbar-thumb { background: #111; }
         ::-webkit-scrollbar-thumb:hover { background: #ff5e00; }
-        
-        body { overscroll-behavior: none; }
-
-        /* Fade In Keyframes for Hero */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in-1 { animation: fadeIn 1s ease-out forwards; }
-        .animate-fade-in-2 { animation: fadeIn 1s 0.3s ease-out forwards; }
-        .animate-fade-in-3 { animation: fadeIn 1s 0.6s ease-out forwards; }
-        .animate-fade-in-4 { animation: fadeIn 1s 0.9s ease-out forwards; }
     </style>
 
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -54,205 +54,32 @@
     <script type="text/babel" data-type="module">
         import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
         import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
-
-        // --- Custom SVG Icons for Oceania Theme ---
-        const Icons = {
-            Compass: () => (
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"></polygon>
-                </svg>
-            ),
-            Map: () => (
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"></polygon>
-                    <line x1="8" y1="2" x2="8" y2="18"></line>
-                    <line x1="16" y1="6" x2="16" y2="22"></line>
-                </svg>
-            ),
-            MapPin: () => (
-                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                    <circle cx="12" cy="10" r="3"></circle>
-                </svg>
-            ),
-            X: () => (
-                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="18" y1="6" x2="6" y2="18"></line>
-                    <line x1="6" y1="6" x2="18" y2="18"></line>
-                </svg>
-            ),
-            ArrowRight: () => (
-                <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"></line>
-                    <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-            ),
-            Star: () => (
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
-                </svg>
-            ),
-            Waves: () => (
-                <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" strokeWidth="2" fill="none">
-                    <path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.5 0 2.5 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
-                    <path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
-                    <path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1 .6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"></path>
-                </svg>
-            ),
-            MessageCircle: () => (
-                <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
-                </svg>
-            )
-        };
-
-        const contactData = {
-            whatsapp: "17864598797",
-            email: "Info@globalmix.online"
-        };
-
-        const itineraries = [
-            {
-                id: 1,
-                title: "Australia Iconic Grand Tour",
-                route: "Sydney • Melbourne • Uluru • Cairns",
-                duration: "12 Days",
-                image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=1000",
-                description: "The complete Oceania masterclass. From the architectural marvels of the Sydney Opera House to the spiritual red heart of the Outback and the vibrant Great Barrier Reef.",
-                experiences: [
-                    "Opera House & Harbour private yacht cruise",
-                    "Great Ocean Road wildlife safari (Koalas & Kangaroos)",
-                    "Uluru sunset dinner under a canopy of stars",
-                    "Great Barrier Reef helicopter flight from Cairns",
-                    "Gourmet culinary tour in Melbourne's hidden laneways"
-                ]
-            },
-            {
-                id: 2,
-                title: "Australia Wild Luxury",
-                route: "Perth • Margaret River • Ningaloo Reef",
-                duration: "10 Days",
-                image: "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?auto=format&fit=crop&q=80&w=1000",
-                description: "Discover the untamed West. Pristine white beaches, surreal desert landscapes, and the world's most accessible fringe reef.",
-                experiences: [
-                    "Surreal landscapes at the Pinnacles Desert",
-                    "Swimming with whale sharks at Ningaloo Reef",
-                    "Premium wine tasting in Margaret River estates",
-                    "Sunrise kangaroo encounters in the wild",
-                    "Private seaplane transfer to Rottnest Island"
-                ]
-            },
-            {
-                id: 3,
-                title: "Luxury Outback & Reef",
-                route: "Brisbane • Outback Queensland • Lizard Island",
-                duration: "9 Days",
-                image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?q=80&w=2730&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                description: "An ultra-exclusive duality. Experience the raw spirit of an Australian station before retreating to a private island paradise.",
-                experiences: [
-                    "Authentic Australian cattle station experience",
-                    "Unpolluted stargazing in the deep Outback",
-                    "Private flight to Lizard Island (Great Barrier Reef)",
-                    "Gourmet beach picnic on a secluded cay",
-                    "Marine biologist guided reef snorkeling"
-                ]
-            },
-            {
-                id: 4,
-                title: "New Zealand Alpine & Coastal",
-                route: "Auckland • Rotorua • Queenstown",
-                duration: "10 Days",
-                image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1000",
-                description: "A symphony of dramatic landscapes. Witness the geological wonders of the North and the majestic alpine peaks of the South.",
-                experiences: [
-                    "Maori cultural immersion and geothermal baths",
-                    "Helicopter landing on the Southern Alps glaciers",
-                    "Milford Sound private boutique cruise",
-                    "Luxury mountain lodge stay in Queenstown",
-                    "Vineyard tour in the Central Otago region"
-                ]
-            },
-            {
-                id: 5,
-                title: "Australia East Coast Elite",
-                route: "Sydney • Byron Bay • Whitsundays",
-                duration: "11 Days",
-                image: "https://images.unsplash.com/photo-1689834677754-1a2dbaa5887f?q=80&w=1742&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                description: "The ultimate lifestyle voyage. Surf culture meets high-end sailing through the world's most beautiful archipelagos.",
-                experiences: [
-                    "Private surf lessons & wellness in Byron Bay",
-                    "Sailing through the Whitsunday Islands",
-                    "Lunch on Whitehaven Beach's pure silica sands",
-                    "Daintree Rainforest private guided trek",
-                    "Sunset rooftop experience in Sydney"
-                ]
-            },
-            {
-                id: 6,
-                title: "South Australia Wildlife & Desert",
-                route: "Adelaide • Kangaroo Island • Flinders Ranges",
-                duration: "9 Days",
-                image: "https://images.unsplash.com/photo-1605309851717-779f19389c52?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                description: "A deep dive into Australia's 'Galapagos'. Exceptional wildlife encounters paired with ancient desert mountain ranges.",
-                experiences: [
-                    "Wildlife safari (Kangaroos, Koalas, Sea Lions)",
-                    "Stay at an ultra-luxury eco-lodge in the wild",
-                    "Arkaroo Rock ancient aboriginal art tour",
-                    "Premium Shiraz tasting in the Barossa Valley",
-                    "Bush flight over Wilpena Pound"
-                ]
-            },
-            {
-                id: 7,
-                title: "Tasmania Southern Ocean Escape",
-                route: "Hobart • Freycinet • Bruny Island",
-                duration: "8 Days",
-                image: "https://images.unsplash.com/photo-1741573220450-086bc80bb50e?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                description: "Rugged beauty at the edge of the world. A feast for the senses with world-class seafood and dramatic coastal peaks.",
-                experiences: [
-                    "Wineglass Bay hike and private beach access",
-                    "Oyster farm experience (tasting fresh from the water)",
-                    "Bruny Island high-speed coastal adventure",
-                    "Private dinner at MONA (Museum of Old and New Art)",
-                    "Luxury eco-retreat nestled in the forest"
-                ]
-            },
-            {
-                id: 8,
-                title: "Australia Luxury Expedition North",
-                route: "Darwin • Kakadu • Kimberley Region",
-                duration: "10 Days",
-                image: "https://plus.unsplash.com/premium_photo-1706517229039-3e0a3eeb27ef?q=80&w=1450&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                description: "One of the planet's last true wilderness frontiers. Ancient culture and epic waterfalls in the heart of the tropics.",
-                experiences: [
-                    "Aboriginal rock art & storytelling in Kakadu",
-                    "Luxury expedition cruise through the Kimberley",
-                    "Helicopter flight over the Bungle Bungles",
-                    "Horizontal Falls boat adventure",
-                    "Crocodile spotting in the Yellow Water billabong"
-                ]
-            },
-            {
-                id: 9,
-                title: "South Pacific Ultra Paradise",
-                route: "Bora Bora • Tahiti • Tetiaroa",
-                duration: "9 Days",
-                image: "https://images.unsplash.com/photo-1767857393552-9e6a7a7e669a?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-                description: "Unmatched privacy and seclusion. Experience the pinnacle of island luxury in the legendary waters of French Polynesia.",
-                experiences: [
-                    "Stay at 'The Brando' in the Tetiaroa Atoll",
-                    "Overwater villa with private lagoon access",
-                    "Traditional Polynesian outrigger canoe tour",
-                    "Spa rituals using local monoi oils",
-                    "Private stargazing with a Tahitian astronomer"
-                ]
-            }
-        ];
+        
+        import { 
+            Compass, MapPin, Ship, Trees, Wind, Sun, Waves, Camera, 
+            Menu, X, ChevronRight, ChevronDown, Mail, Phone, Globe, MessageCircle, Star, Bed, Building, Map
+        } from 'https://esm.sh/lucide-react@0.292.0';
 
         const App = () => {
             const [selected, setSelected] = useState(null);
             const [scrolled, setScrolled] = useState(false);
+            const [activeCategory, setActiveCategory] = useState('All');
+
+            const contactData = {
+                phone: "+1 786 459 8797",
+                whatsapp: "17864598797",
+                email: "info@globalmix.online"
+            };
+
+            const itineraries = [
+                { id: 1, title: "Australia Iconic Grand Tour", route: "Sydney • Melbourne • Uluru • Cairns", duration: "12 Days", category: "Australia", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=1000", description: "The complete Oceania masterclass. From the architectural marvels of the Sydney Opera House to the spiritual red heart of the Outback and the vibrant Great Barrier Reef.", experiences: ["Opera House & Harbour private yacht cruise", "Great Ocean Road wildlife safari", "Uluru sunset dinner under the stars"] },
+                { id: 2, title: "Australia Wild Luxury", route: "Perth • Margaret River • Ningaloo Reef", duration: "10 Days", category: "Australia", image: "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?auto=format&fit=crop&q=80&w=1000", description: "Discover the untamed West. Pristine white beaches, surreal desert landscapes, and the world's most accessible fringe reef.", experiences: ["Swimming with whale sharks at Ningaloo", "Premium wine tasting in Margaret River", "Private seaplane to Rottnest Island"] },
+                { id: 3, title: "Luxury Outback & Reef", route: "Brisbane • Outback • Lizard Island", duration: "9 Days", category: "Australia", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1000", description: "An ultra-exclusive duality. Experience the raw spirit of an Australian station before retreating to a private island paradise.", experiences: ["Authentic cattle station experience", "Private flight to Lizard Island", "Marine biologist guided snorkeling"] },
+                { id: 4, title: "New Zealand Alpine & Coastal", route: "Auckland • Rotorua • Queenstown", duration: "10 Days", category: "New Zealand", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1000", description: "A symphony of dramatic landscapes. Witness the geological wonders of the North and the majestic alpine peaks of the South.", experiences: ["Maori cultural immersion", "Helicopter landing on glaciers", "Milford Sound private cruise"] },
+                { id: 5, title: "South Pacific Ultra Paradise", route: "Bora Bora • Tahiti • Tetiaroa", duration: "9 Days", category: "Islands", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1000", description: "Unmatched privacy and seclusion. Experience the pinnacle of island luxury in the legendary waters of French Polynesia.", experiences: ["Stay at 'The Brando' in Tetiaroa", "Overwater villa with lagoon access", "Private Tahitian stargazing"] }
+            ];
+
+            const categories = ["All", "Australia", "New Zealand", "Islands"];
 
             useEffect(() => {
                 const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -260,19 +87,11 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
-            const handleTripAction = (e, trip, regionName) => {
+            const handleTripAction = (e, trip) => {
                 e.preventDefault();
-                const email = contactData.email;
-                const subject = encodeURIComponent(`Requesting Full Itinerary: ${trip.title}`);
-                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me the full itinerary and details for the "${trip.title}" expedition.\n\nThank you!`);
-                const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
-
-                const safeRegion = regionName.toLowerCase().replace(/[^a-z0-9]/g, '');
-                const safeSlug = trip.title.split(' ')[0].toLowerCase().replace(/[^a-z0-9-]/g, ''); 
-                const pageUrl = `/${safeRegion}/${safeSlug}`;
-
-                window.location.href = mailtoLink;
-                setTimeout(() => { window.location.href = pageUrl; }, 300);
+                const subject = encodeURIComponent(`Requesting Oceania Itinerary: ${trip.title}`);
+                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me availability and details for the "${trip.title}" expedition.\n\nThank you!`);
+                window.location.href = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
             };
 
             return (
@@ -281,73 +100,70 @@
                     {/* WhatsApp Floating Button */}
                     <a href={`https://wa.me/${contactData.whatsapp}`} target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center gap-2 group">
                         <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap text-sm font-sans font-bold uppercase tracking-widest pl-0 group-hover:pl-2">Contact VIP</span>
-                        <Icons.MessageCircle />
+                        <MessageCircle size={24} />
                     </a>
 
                     {/* Navigation */}
-                    <nav className={`fixed w-full z-50 transition-all duration-1000 ${scrolled ? 'bg-white/95 backdrop-blur-md py-5 shadow-sm' : 'bg-transparent py-10'}`}>
-                        <div className="max-w-[1440px] mx-auto px-10 flex justify-between items-center">
-                            <div className="flex items-center gap-4">
-                                <div className={scrolled ? 'text-orange-600' : 'text-white'}>
-                                    <Icons.Compass />
+                    <nav className={`fixed w-full z-50 transition-all duration-1000 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-8'}`}>
+                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                                <Globe className={`w-8 h-8 ${scrolled ? 'text-orange-600' : 'text-white'}`} />
+                                <div className="flex flex-col">
+                                    <span className={`text-xl font-bold tracking-tighter leading-none ${scrolled ? 'text-black' : 'text-white'}`}>GLOBAL MIX</span>
+                                    <span className={`text-[10px] tracking-[0.4em] font-medium ${scrolled ? 'text-orange-600' : 'text-white/80'}`}>OCEANIA</span>
                                 </div>
-                                <span className={`text-xl font-light tracking-[0.4em] uppercase ${scrolled ? 'text-black' : 'text-white'}`}>
-                                    GLOBALMIX <span className="font-bold">OCEANIA</span>
-                                </span>
                             </div>
-                            <div className={`hidden lg:flex gap-12 text-[10px] font-bold tracking-[0.4em] uppercase ${scrolled ? 'text-neutral-500' : 'text-white/80'}`}>
-                                <a href="#" className="hover:text-orange-500 transition-colors">Australia</a>
-                                <a href="#" className="hover:text-orange-500 transition-colors">New Zealand</a>
-                                <a href="#" className="hover:text-orange-500 transition-colors">Islands</a>
-                                <a href={`mailto:${contactData.email}`} className="hover:text-orange-500 transition-colors">Inquiry</a>
+
+                            <div className="hidden lg:flex items-center gap-10">
+                                {['Itineraries', 'Experience', 'Concierge'].map((link) => (
+                                    <a key={link} href={`#${link.toLowerCase()}`} className={`text-[10px] font-bold tracking-[0.3em] uppercase transition-colors ${scrolled ? 'text-neutral-500 hover:text-orange-600' : 'text-white/80 hover:text-white'}`}>{link}</a>
+                                ))}
+                                <a href="#concierge" className={`px-8 py-3 rounded-sm text-[10px] font-bold tracking-[0.2em] transition-all transform hover:scale-105 ${scrolled ? 'bg-black text-white' : 'bg-white text-black'}`}>INQUIRE NOW</a>
                             </div>
-                            <button className={`p-2 lg:hidden ${scrolled ? 'text-black' : 'text-white'}`}>
-                                <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+
+                            <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                {isMenuOpen ? <X className={scrolled ? 'text-black' : 'text-white'} /> : <Menu className={scrolled ? 'text-black' : 'text-white'} />}
                             </button>
                         </div>
                     </nav>
 
-                    {/* Hero */}
-                    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
-                        <div className="absolute inset-0 z-0">
-                            {/* Fetchpriority High & WebP for instant load */}
-                            <img
-                                src="https://images.unsplash.com/photo-1588001400947-6385aef4ab0e?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-                                className="w-full h-full object-cover scale-105"
-                                alt="Oceania Wilderness"
-                                fetchpriority="high"
-                            />
-                            <div className="absolute inset-0 bg-black/30" />
+                    {/* Hero Section */}
+                    <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0">
+                            <img src={"https://images.unsplash.com/photo-1528150235062-8e104be74c3e?auto=format&fit=crop&q=80&w=1920&fm=webp"} className="w-full h-full object-cover scale-105" alt="Oceania Wilderness" fetchPriority="high" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80" />
                         </div>
 
-                        <div className="relative z-10 text-center px-8 max-w-6xl">
-                            <h2 className="text-white text-[11px] font-bold tracking-[0.6em] uppercase mb-8 opacity-0 animate-fade-in-1">
-                                The South Pacific Discovery
-                            </h2>
-                            <h1 className="text-white text-6xl md:text-[10rem] font-serif italic mb-10 leading-[0.9] opacity-0 animate-fade-in-2">
-                                Infinite Horizons.
+                        <div className="relative z-10 text-center px-6 max-w-6xl">
+                            <span className="inline-block mb-6 text-white/90 tracking-[0.6em] text-xs font-bold uppercase font-sans animate-fade-in">
+                                Exploration • Sophistication • Wild
+                            </span>
+                            <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
+                                Grand Journeys <br />
+                                <span className="italic text-orange-400 drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">
+                                    of Oceania
+                                </span>
                             </h1>
-                            <p className="text-white/90 text-xl md:text-2xl font-light max-w-2xl mx-auto mb-16 leading-relaxed opacity-0 animate-fade-in-3">
-                                Curated journeys across Australia, New Zealand, and the Pacific Islands. Where sophistication meets the wild.
+                            <p className="text-lg md:text-xl text-white/90 max-w-2xl mx-auto leading-relaxed mb-10 font-light italic font-sans">
+                                "Curated journeys across Australia, New Zealand, and the Pacific Islands. Where sophistication meets the wild horizons."
                             </p>
-                            <div className="opacity-0 animate-fade-in-4">
-                                <a href="#circuits" className="inline-block bg-white text-black px-16 py-6 text-[10px] font-bold tracking-[0.5em] uppercase hover:bg-orange-600 hover:text-white transition-all duration-700">
+                            <div className="flex justify-center">
+                                <a href="#itineraries" className="bg-white text-black px-16 py-6 text-[10px] font-bold tracking-[0.5em] uppercase hover:bg-orange-600 hover:text-white transition-all duration-700 shadow-xl">
                                     Explore Circuits
                                 </a>
                             </div>
                         </div>
 
-                        <div className="absolute bottom-16 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40">
-                            <span className="text-[9px] uppercase tracking-[0.4em]">Scroll Down</span>
-                            <div className="w-px h-20 bg-gradient-to-b from-white to-transparent" />
-                        </div>
+                        <a href="#experience" className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer hover:opacity-75 transition-opacity z-10 text-white">
+                            <ChevronDown size={32} />
+                        </a>
                     </section>
 
-                    {/* Intro */}
-                    <section className="py-48 px-10 bg-white border-b border-neutral-100">
+                    {/* Experience Intro */}
+                    <section id="experience" className="py-48 px-10 bg-white border-b border-neutral-100">
                         <div className="max-w-4xl mx-auto text-center">
                             <span className="text-orange-600 font-bold text-[11px] tracking-[0.6em] uppercase mb-10 block">EXPERIENCE DESIGN</span>
-                            <h3 className="text-4xl md:text-6xl font-serif italic text-neutral-800 leading-[1.2] mb-12">
+                            <h3 className="text-3xl md:text-5xl font-serif italic text-neutral-800 leading-[1.3] mb-12">
                                 "Oceania is not just a place, but a state of mind. We balance the raw power of nature with the ultimate refinements of the modern world."
                             </h3>
                             <div className="w-20 h-px bg-neutral-200 mx-auto" />
@@ -355,180 +171,109 @@
                     </section>
 
                     {/* Itinerary Grid */}
-                    <section id="circuits" className="py-32 px-10">
-                        <div className="max-w-[1440px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-12 gap-y-24">
-                            {itineraries.map((item) => (
-                                <div
-                                    key={item.id}
-                                    className="group cursor-pointer flex flex-col"
-                                    onClick={() => setSelected(item)}
-                                >
-                                    <div className="relative aspect-[4/5] overflow-hidden mb-12">
-                                        {/* Lazy Load & WebP */}
-                                        <img
-                                            src={`${item.image}&fm=webp`}
-                                            alt={item.title}
-                                            className="w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-110"
-                                            loading="lazy"
-                                        />
-                                        <div className="absolute inset-0 bg-black/10 group-hover:bg-transparent transition-all duration-700" />
-                                        <div className="absolute top-10 right-10 flex flex-col items-end">
-                                            <span className="bg-white/95 backdrop-blur-md px-5 py-2 text-[10px] font-bold tracking-widest uppercase mb-2">
-                                                {item.duration}
-                                            </span>
+                    <section id="itineraries" className="py-32 px-6 scroll-mt-24 bg-[#fdfdfd]">
+                        <div className="max-w-7xl mx-auto">
+                            <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                                <div>
+                                    <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">Signature Masterlist</span>
+                                    <h3 className="text-5xl font-serif mt-3 text-black">Oceania Collection</h3>
+                                    <div className="h-1 w-24 bg-orange-600 mt-6"></div>
+                                </div>
+                                <div className="flex gap-3 overflow-x-auto pb-2 w-full md:w-auto scrollbar-hide">
+                                    {categories.map(cat => (
+                                        <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-6 py-2 text-[9px] font-bold tracking-widest uppercase transition-all border ${activeCategory === cat ? 'bg-black text-white border-black shadow-lg' : 'bg-transparent text-gray-400 border-gray-300 hover:border-orange-600 hover:text-orange-600'}`}>
+                                            {cat}
+                                        </button>
+                                    ))}
+                                </div>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+                                {itineraries.filter(j => activeCategory === 'All' || j.category === activeCategory).map((item) => (
+                                    <div key={item.id} className="group cursor-pointer flex flex-col bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700" onClick={() => setSelected(item)}>
+                                        <div className="relative aspect-[4/5] overflow-hidden">
+                                            <img src={`${item.image}&fm=webp&q=70&w=800`} alt={item.title} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-110" loading="lazy" />
+                                            <div className="absolute top-8 left-8 bg-white/95 px-5 py-2 text-[10px] font-bold tracking-widest uppercase text-black">{item.duration}</div>
+                                        </div>
+                                        <div className="p-10 flex flex-col flex-grow">
+                                            <div className="flex items-center gap-3 text-orange-600 mb-6 font-bold text-[10px] tracking-widest uppercase"><Map size={14} /> Premium Circuit</div>
+                                            <h4 className="text-3xl font-serif mb-6 group-hover:text-orange-600 transition-colors leading-tight">{item.title}</h4>
+                                            <div className="flex items-center gap-3 text-neutral-400 mb-10 text-[10px] font-bold tracking-widest uppercase"><MapPin size={14} /> {item.route}</div>
+                                            <button onClick={(e) => handleTripAction(e, item)} className="mt-auto w-full border border-black text-black py-4 text-[9px] font-bold uppercase tracking-[0.3em] hover:bg-black hover:text-white transition-all flex justify-center items-center gap-2">
+                                                Request Details <ChevronRight size={14} />
+                                            </button>
                                         </div>
                                     </div>
+                                ))}
+                            </div>
+                        </div>
+                    </section>
 
-                                    <div className="px-2">
-                                        <div className="flex items-center gap-3 text-orange-600 mb-6">
-                                            <Icons.Map />
-                                            <span className="text-[11px] font-bold tracking-[0.4em] uppercase">Premium Circuit</span>
-                                        </div>
-                                        <h4 className="text-4xl font-serif mb-6 group-hover:text-orange-600 transition-colors duration-500 leading-tight">
-                                            {item.title}
-                                        </h4>
-                                        <div className="flex items-center gap-3 text-neutral-400 mb-10">
-                                            <Icons.MapPin />
-                                            <span className="text-[10px] font-bold tracking-[0.2em] uppercase">{item.route}</span>
-                                        </div>
-
-                                        <div className="pt-8 border-t border-neutral-100 flex justify-between items-center group-hover:border-black transition-colors duration-500">
-                                            <span className="text-[10px] font-bold tracking-[0.4em] uppercase text-neutral-400 group-hover:text-black">Itinerary</span>
-                                            <div className="w-12 h-12 rounded-full border border-neutral-200 flex items-center justify-center group-hover:bg-black group-hover:text-white group-hover:border-black transition-all duration-700">
-                                                <Icons.ArrowRight />
-                                            </div>
-                                        </div>
+                    {/* Concierge Section */}
+                    <section id="concierge" className="py-40 bg-[#002f35] text-white overflow-hidden scroll-mt-20">
+                        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                            <div className="relative">
+                                <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
+                                    <img src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=1200&auto=format&fit=crop&fm=webp" 
+                                         className="w-full h-full object-cover grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-1000" alt="Oceania Concierge" loading="lazy" />
+                                </div>
+                                <div className="absolute -bottom-10 -right-10 bg-orange-600 p-12 hidden md:block rounded-sm shadow-2xl transform hover:-translate-y-2 transition-transform duration-500">
+                                    <p className="text-4xl italic leading-tight text-white font-serif">Private <br />Concierge <br />In Oceania</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 className="text-xs font-bold tracking-[0.5em] text-orange-400 uppercase mb-8 font-sans">SPECIALIZED ASSISTANCE</h3>
+                                <h4 className="text-5xl md:text-6xl mb-10 leading-none font-serif text-white">The Luxury of <br/><span className="italic text-orange-400">No Limits.</span></h4>
+                                <div className="space-y-12">
+                                    <div className="flex gap-6 group">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center text-orange-400 group-hover:bg-orange-400 group-hover:text-[#002f35] transition-all duration-500"><Compass size={24} /></div>
+                                        <div><h5 className="text-xl mb-3 font-serif text-[#e0f7fa]">Territory Expertise</h5><p className="text-cyan-100/70 font-sans text-sm">Our specialists intimately know the terrain, from the sacred Uluru to the glaciers of Queenstown.</p></div>
+                                    </div>
+                                    <div className="flex gap-6 group">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center text-orange-400 group-hover:bg-orange-400 group-hover:text-[#002f35] transition-all duration-500"><Ship size={24} /></div>
+                                        <div><h5 className="text-xl mb-3 font-serif text-[#e0f7fa]">Private Fleet</h5><p className="text-cyan-100/70 font-sans text-sm">Access to the region's premier private jet operators, luxury yachts, and off-road expedition vehicles.</p></div>
+                                    </div>
+                                    <div className="flex gap-6 group">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center text-orange-400 group-hover:bg-orange-400 group-hover:text-[#002f35] transition-all duration-500"><Building size={24} /></div>
+                                        <div><h5 className="text-xl mb-3 font-serif text-[#e0f7fa]">Lodge Resourcing</h5><p className="text-cyan-100/70 font-sans text-sm">Priority access to the 'Luxury Lodges of Australia' and exclusive island rentals in the Whitsundays.</p></div>
                                     </div>
                                 </div>
-                            ))}
+                            </div>
                         </div>
                     </section>
 
                     {/* Footer */}
-                    <footer className="bg-neutral-950 text-white py-40 px-10">
-                        <div className="max-w-[1440px] mx-auto">
-                            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-24 mb-32">
-                                <div className="lg:col-span-2">
-                                    <div className="flex items-center gap-4 mb-12 text-orange-500">
-                                        <Icons.Compass />
-                                        <span className="text-3xl font-light tracking-[0.5em] uppercase text-white">GLOBALMIX</span>
-                                    </div>
-                                    <p className="text-neutral-500 max-w-lg text-lg font-light leading-relaxed mb-12">
-                                        Pioneering luxury travel across the Southern Hemisphere. Our circuits are designed for the discerning traveler seeking depth, authenticity, and unparalleled service.
-                                    </p>
-                                    <div className="flex gap-12 font-bold text-[10px] tracking-[0.4em] uppercase text-neutral-600">
-                                        <span className="hover:text-white cursor-pointer transition-colors">Instagram</span>
-                                        <span className="hover:text-white cursor-pointer transition-colors">Private Jet</span>
-                                        <span className="hover:text-white cursor-pointer transition-colors">Expeditions</span>
-                                    </div>
+                    <footer id="contact" className="bg-neutral-950 text-white py-32 px-8">
+                        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-20">
+                            <div className="md:col-span-2">
+                                <div className="flex items-center gap-3 mb-10">
+                                    <Globe className="w-10 h-10 text-orange-600" />
+                                    <div className="flex flex-col"><span className="text-2xl font-bold tracking-tighter leading-none">GLOBAL MIX</span><span className="text-[12px] tracking-[0.2em] font-medium text-orange-600 uppercase">Oceania</span></div>
                                 </div>
-
-                                <div>
-                                    <h5 className="text-[11px] font-bold tracking-[0.6em] uppercase mb-12 text-neutral-400">Territories</h5>
-                                    <ul className="flex flex-col gap-8 text-neutral-500 text-[12px] font-medium tracking-widest uppercase">
-                                        <li className="hover:text-white cursor-pointer transition-colors">Australian Outback</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">New Zealand Alps</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">The Kimberley</li>
-                                        <li className="hover:text-white cursor-pointer transition-colors">Tahitian Atolls</li>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <h5 className="text-[11px] font-bold tracking-[0.6em] uppercase mb-12 text-neutral-400">The Ledger</h5>
-                                    <p className="text-neutral-500 text-xs mb-10 font-light leading-relaxed">Exclusive access to off-market properties and private wildlife guides.</p>
-                                    <div className="relative">
-                                        <input
-                                            type="email"
-                                            placeholder="CONSULTATION EMAIL"
-                                            className="w-full bg-transparent border-b border-neutral-800 py-4 text-[11px] tracking-[0.4em] outline-none focus:border-white transition-colors"
-                                        />
-                                    </div>
-                                </div>
+                                <p className="text-neutral-500 max-w-sm leading-relaxed mb-12 text-sm italic">"Redefining luxury travel in the Southern Hemisphere through authentic and exclusive expeditions."</p>
                             </div>
-
-                            <div className="pt-24 border-t border-neutral-900 flex flex-col md:flex-row justify-between text-[10px] text-neutral-700 tracking-[0.5em] uppercase font-bold">
-                                <span>© 2024 GLOBALMIX NETWORK - OCEANIA COLLECTION</span>
-                                <div className="flex gap-16 mt-8 md:mt-0">
-                                    <span className="hover:text-neutral-400 cursor-pointer">Security</span>
-                                    <span className="hover:text-neutral-400 cursor-pointer">Privacy</span>
-                                </div>
+                            <div>
+                                <h5 className="text-[10px] font-bold tracking-[0.5em] uppercase mb-10 text-neutral-400">Territories</h5>
+                                <ul className="flex flex-col gap-6 text-neutral-500 text-[11px] font-medium tracking-wider uppercase">
+                                    <li><a href="#itineraries" className="hover:text-white transition-colors">Australian Outback</a></li>
+                                    <li><a href="#itineraries" className="hover:text-white transition-colors">New Zealand Alps</a></li>
+                                    <li><a href="#concierge" className="hover:text-white transition-colors">Private Concierge</a></li>
+                                </ul>
                             </div>
+                            <div>
+                                <h5 className="text-[10px] font-bold tracking-[0.5em] uppercase mb-10 text-neutral-400">Contact</h5>
+                                <ul className="flex flex-col gap-6 text-neutral-500 text-[11px] font-medium tracking-wider">
+                                    <li className="flex gap-4"><Phone size={16} className="text-orange-600" /><span>{contactData.phone}</span></li>
+                                    <li className="flex gap-4"><Mail size={16} className="text-orange-600" /><a href={`mailto:${contactData.email}`}>{contactData.email}</a></li>
+                                    <li className="flex gap-4 text-[9px] uppercase"><span>Sydney | Queenstown | Bora Bora</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="max-w-7xl mx-auto pt-20 mt-20 border-t border-neutral-900 flex flex-col md:flex-row justify-between text-[9px] text-neutral-700 tracking-[0.4em] uppercase font-bold">
+                            <span>© 2026 GLOBALMIX NETWORK - OCEANIA</span>
+                            <div className="flex gap-12 mt-6 md:mt-0"><span>Privacy Policy</span><span>Terms {"&"} Conditions</span></div>
                         </div>
                     </footer>
-
-                    {/* Experience Modal Overlay */}
-                    {selected && (
-                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-16">
-                            <div className="absolute inset-0 bg-neutral-950/98 backdrop-blur-2xl" onClick={() => setSelected(null)} />
-
-                            <div className="relative bg-white w-full max-w-[1500px] h-full md:h-auto md:max-h-[90vh] overflow-hidden flex flex-col md:flex-row shadow-[0_0_100px_rgba(0,0,0,0.5)]">
-                                <button
-                                    className="absolute top-12 right-12 z-[110] p-4 bg-black text-white rounded-full hover:bg-orange-600 transition-all duration-500"
-                                    onClick={() => setSelected(null)}
-                                >
-                                    <Icons.X />
-                                </button>
-
-                                <div className="w-full md:w-1/2 h-80 md:h-auto relative">
-                                    <img
-                                        src={`${selected.image}&fm=webp`}
-                                        className="w-full h-full object-cover"
-                                        alt={selected.title}
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent" />
-                                    <div className="absolute bottom-16 left-16">
-                                        <span className="bg-white px-6 py-2 text-[11px] font-bold tracking-[0.5em] uppercase mb-4 inline-block text-black">
-                                            Featured Route
-                                        </span>
-                                        <h2 className="text-white text-4xl md:text-7xl font-serif italic">{selected.title}</h2>
-                                    </div>
-                                </div>
-
-                                <div className="w-full md:w-1/2 p-12 md:p-24 overflow-y-auto">
-                                    <div className="flex items-center gap-6 mb-12">
-                                        <span className="w-12 h-px bg-orange-600"></span>
-                                        <span className="text-[12px] font-bold tracking-[0.6em] text-orange-600 uppercase">Circuit Blueprint</span>
-                                    </div>
-
-                                    <div className="flex items-center gap-4 text-neutral-400 mb-10">
-                                        <Icons.MapPin />
-                                        <span className="text-[12px] font-bold tracking-[0.3em] uppercase">{selected.route}</span>
-                                    </div>
-
-                                    <p className="text-neutral-600 leading-relaxed mb-20 font-light text-xl italic border-l-2 border-neutral-100 pl-10 py-2">
-                                        {selected.description}
-                                    </p>
-
-                                    <div className="mb-20">
-                                        <h5 className="text-[12px] font-bold tracking-[0.5em] uppercase text-neutral-400 mb-12">Signature Experiences</h5>
-                                        <ul className="space-y-8">
-                                            {selected.experiences.map((exp, i) => (
-                                                <li key={i} className="flex gap-8 group/item">
-                                                    <span className="text-orange-600 font-serif italic text-2xl opacity-30 group-hover/item:opacity-100 transition-opacity">0{i+1}</span>
-                                                    <p className="text-lg font-light text-neutral-800 border-b border-neutral-50 pb-4 w-full">
-                                                        {exp}
-                                                    </p>
-                                                </li>
-                                            ))}
-                                        </ul>
-                                    </div>
-
-                                    <div className="flex flex-col gap-10">
-                                        <button 
-                                            onClick={(e) => handleTripAction(e, selected, "Oceania")}
-                                            className="w-full bg-black text-white py-8 text-[11px] font-bold tracking-[0.6em] uppercase hover:bg-orange-600 transition-all duration-700 shadow-2xl"
-                                        >
-                                            Enquire for Private Dates
-                                        </button>
-                                        <div className="flex justify-between text-[9px] font-bold tracking-[0.3em] text-neutral-300 uppercase">
-                                            <span className="flex items-center gap-3"><Icons.Star /> Expert Wildlife Guides</span>
-                                            <span className="flex items-center gap-3"><Icons.Waves /> Private Vessel Access</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    )}
                 </div>
             );
         };
