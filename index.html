@@ -19,9 +19,11 @@
         }
     </script>
     <style>
+        html {
+            scroll-behavior: smooth;
+        }
         body {
             font-family: 'Inter', sans-serif;
-            scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
         }
         h1, h2, h3, .serif {
@@ -149,6 +151,7 @@
                     {/* Hero Section */}
                     <header id="hero" className="relative h-screen flex items-center justify-center">
                         <div className="absolute inset-0 z-0">
+                            {/* Fetchpriority High & WebP for instant hero load */}
                             <img 
                                 src="https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?q=80&w=1920&fm=webp&auto=format&fit=crop" 
                                 alt="Global Coastline" 
@@ -292,8 +295,7 @@
                                 <div className="p-10 bg-slate-50 rounded-2xl border border-slate-100 hover:border-gold/30 transition-colors">
                                     <Wine className="w-8 h-8 text-gold mb-6" />
                                     <h4 className="text-xl font-bold text-slate-900 mb-2">QILOMBO</h4>
-                                    {/* THIS IS THE FIX: ESCAPED AMPERSAND */}
-                                    <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-6">Beverage {"&"} Bar Consulting</p>
+                                    <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-6">Beverage &amp; Bar Consulting</p>
                                     <p className="text-slate-500 text-sm font-light leading-relaxed">Designs beverage programs combining creativity, profitability, and guest experience. Founded by Robert Eldridge.</p>
                                 </div>
 
@@ -307,8 +309,7 @@
                                 <div className="p-10 bg-slate-50 rounded-2xl border border-slate-100 hover:border-gold/30 transition-colors">
                                     <Ship className="w-8 h-8 text-gold mb-6" />
                                     <h4 className="text-xl font-bold text-slate-900 mb-2">Import US Trading Corp</h4>
-                                    {/* THIS IS THE FIX: ESCAPED AMPERSAND */}
-                                    <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-6">Wine {"&"} Spirits Importer</p>
+                                    <p className="text-xs font-bold tracking-widest text-slate-400 uppercase mb-6">Wine &amp; Spirits Importer</p>
                                     <p className="text-slate-500 text-sm font-light leading-relaxed">U.S.-based company for legal import, export, and distribution of premium wines and spirits.</p>
                                 </div>
                             </div>
