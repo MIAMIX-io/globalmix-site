@@ -89,6 +89,29 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
+            const handleTripAction = (e, trip, regionName) => {
+                e.preventDefault();
+
+                // 1. Prepare the prefilled email
+                const email = "info@globalmix.online";
+                const subject = encodeURIComponent(`Requesting Full Itinerary: ${trip.title}`);
+                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me the full itinerary and details for the "${trip.title}" expedition.\n\nThank you!`);
+                const mailtoLink = `mailto:${email}?subject=${subject}&body=${body}`;
+
+                // 2. Recreate the exact URL the build script generated
+                const safeRegion = regionName.toLowerCase().replace(/[^a-z0-9]/g, '');
+                const safeSlug = trip.title.split(' ')[0].toLowerCase().replace(/[^a-z0-9-]/g, ''); 
+                const pageUrl = `/${safeRegion}/${safeSlug}`;
+
+                // 3. Fire the email client
+                window.location.href = mailtoLink;
+
+                // 4. Redirect to the trip page after a tiny 300ms delay to ensure the mailto registers
+                setTimeout(() => {
+                    window.location.href = pageUrl;
+                }, 300);
+            };
+
             const africanJourneys = [
                 {
                     id: 1,
@@ -348,7 +371,7 @@
                         </div>
                     </section>
 
-                    {/* Journeys Collection - ID added here */}
+                    {/* Journeys Collection */}
                     <section id="itineraries" className="py-20 px-6 scroll-mt-24">
                         <div className="max-w-7xl mx-auto">
                             <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
@@ -427,9 +450,12 @@
                                                     </div>
                                                 </div>
 
-                                                <a href="#contact" className="mt-8 group-hover:bg-[#2D3E2F] group-hover:text-white border border-[#2D3E2F] text-[#2D3E2F] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center">
+                                                <button 
+                                                    onClick={(e) => handleTripAction(e, journey, "Africa")} 
+                                                    className="mt-8 group-hover:bg-[#2D3E2F] group-hover:text-white border border-[#2D3E2F] text-[#2D3E2F] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center w-full"
+                                                >
                                                     Request Details <ChevronRight size={14} />
-                                                </a>
+                                                </button>
                                             </div>
                                         </div>
                                     ))}
@@ -437,7 +463,7 @@
                         </div>
                     </section>
 
-                    {/* Concierge Section - ID added here */}
+                    {/* Concierge Section */}
                     <section id="experiences" className="py-32 bg-[#2D3E2F] text-white overflow-hidden scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="relative">
@@ -479,7 +505,7 @@
                         </div>
                     </section>
 
-                    {/* Footer / Contact - ID added here */}
+                    {/* Footer / Contact */}
                     <footer id="contact" className="bg-[#1A1A1A] text-white pt-24 pb-12 border-t border-white/5 scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
