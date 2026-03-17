@@ -12,7 +12,7 @@ on:
 permissions:
   contents: write 
 
-# Silence the GitHub deprecation warning by forcing Node 24
+# This silences the GitHub deprecation warning by forcing Node 24 globally
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
@@ -26,7 +26,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24' # Upgraded to match GitHub's new standard
+          node-version: '24' 
 
       - name: Install Dependencies
         run: npm install
@@ -37,16 +37,18 @@ jobs:
           GLOBALMIX_NOTION_DB_ID: ${{ secrets.GLOBALMIX_NOTION_DB_ID }}
         run: node build.js
 
+      # This creates the .nojekyll file to prevent 404 errors on GitHub Pages
+      - name: Bypass Jekyll
+        run: touch .nojekyll
+
       - name: Commit and Push Generated Pages
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add .
           
-          # Foolproof check for any changes (including brand new folders)
-          if [ -n "$(git status --porcelain)" ]; then
-            git commit -m "Auto-generated trips from Global Mix Notion Database"
-            git push
-          else
-            echo "No new trips or updates found. Skipping commit."
-          fi
+          # Stage all new files and folders
+          git add -A
+          
+          # Commit and push (or quietly skip if no changes exist)
+          git commit -m "Auto-generated trips from Global Mix Notion Database" || echo "No changes to commit"
+          git push origin main
