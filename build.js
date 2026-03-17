@@ -14,6 +14,7 @@ const getText = (prop) => {
     if (prop.select) return prop.select.name;
     if (prop.status) return prop.status.name;
     if (prop.url) return prop.url;
+    if (prop.formula) return prop.formula.string || "N/A"; // <-- Added to read Notion Formulas for the Slug!
     return "N/A";
 };
 
@@ -40,7 +41,7 @@ async function generateSite() {
                     {
                         property: 'Status',
                         // NOTE: If your 'Status' column is a "Select" dropdown type instead of 
-                        // a "Status" pipeline type, change "status:" below to "select:"
+                        // a native Notion "Status" pipeline type, change "status:" below to "select:"
                         status: {
                             equals: 'Ready to Sync'
                         }
@@ -64,6 +65,7 @@ async function generateSite() {
                 experiences: getText(props['Experiences']) || "Exclusive private tours, VIP access, curated luxury",
                 hotels: getText(props['Hotels']),
                 image: getText(props['Image URL']),
+                // Reads the custom formula slug, or creates a fallback if missing
                 slug: getText(props['Slug']) !== "N/A" 
                         ? getText(props['Slug']) 
                         : getText(props['Trip Name'] || props['Title']).split(' ')[0] 
@@ -111,7 +113,7 @@ async function generateSite() {
                     page_id: trip.notionPageId,
                     properties: {
                         'Status': {
-                            // Again, if your Status column is a "Select" type, change "status" to "select"
+                            // Again, if your Status column is a "Select" type, change "status:" to "select:"
                             status: { name: 'Live' }
                         }
                     }
