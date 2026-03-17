@@ -158,8 +158,7 @@
                     {/* Hero Section */}
                     <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 z-0">
-                            <img src="https://images.unsplash.com/photo-1681142385991-780a6b2ab61d?q=80&w=1746&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="w-full h-full object-cover scale-105" alt="Asian Temple" />
-                            {/* Deep Crimson Gradient Overlay matching Africa's visual pop */}
+                            <img src="https://images.unsplash.com/photo-1681142385991-780a6b2ab61d?q=80&w=1920&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&fm=webp" className="w-full h-full object-cover scale-105" alt="Asian Temple" fetchpriority="high" />
                             <div className="absolute inset-0 bg-gradient-to-b from-[#2C0A0A]/95 via-[#2C0A0A]/60 to-[#2C0A0A]/100" />
                         </div>
 
@@ -169,7 +168,7 @@
                             </span>
                             <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
                                 Grand Journeys <br />
-                                <span className="italic text-[#AF8B58] drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">
+                                <span className="italic text-[#150404] drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">
                                     of Asia
                                 </span>
                             </h1>
@@ -216,7 +215,8 @@
                                 {asiaJourneys.filter(j => activeCategory === 'All' || j.category === activeCategory).map((journey) => (
                                     <div key={journey.id} className="group flex flex-col h-full bg-white border border-black/5 hover:border-[#AF8B58]/30 transition-all duration-500 shadow-sm hover:shadow-2xl">
                                         <div className="relative h-80 overflow-hidden">
-                                            <img src={journey.image} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0" />
+                                            {/* Lazy Load & WebP */}
+                                            <img src={`${journey.image}&fm=webp&q=60&w=800`} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0" loading="lazy" />
                                             <div className="absolute top-6 left-6 flex flex-col gap-2">
                                                 <span className="bg-[#AF8B58] text-white px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-sans">{journey.duration}</span>
                                             </div>
@@ -254,96 +254,4 @@
                                                 </p>
                                                 <div className="flex flex-wrap gap-2">
                                                     {journey.hotels.map((h, i) => (
-                                                        <span key={i} className="text-[9px] font-bold text-[#2C0A0A] bg-[#FDFBF7] px-2 py-1 uppercase tracking-tighter">{h}</span>
-                                                    ))}
-                                                </div>
-                                            </div>
-
-                                            <button onClick={(e) => handleTripAction(e, journey, "Asia")} className="mt-8 group-hover:bg-[#2C0A0A] group-hover:text-white border border-[#2C0A0A] text-[#2C0A0A] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center w-full">
-                                                Request Itinerary <ChevronRight size={14} />
-                                            </button>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Specialty Section */}
-                    <section id="experiences" className="py-32 bg-[#2C0A0A] text-white overflow-hidden scroll-mt-20">
-                        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                            <div className="relative">
-                                <div className="aspect-[4/5] overflow-hidden">
-                                    <img src="https://images.unsplash.com/photo-1715176007837-551de2049e6a?q=80&w=772&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="w-full h-full object-cover grayscale opacity-50" alt="Asia Expert" />
-                                </div>
-                                <div className="absolute -bottom-10 -right-10 bg-[#AF8B58] p-12 hidden md:block">
-                                    <p className="text-4xl italic leading-tight">Asia <br />Specialized <br />Concierge</p>
-                                </div>
-                            </div>
-                            <div>
-                                <h3 className="text-xs font-bold tracking-[0.5em] text-[#AF8B58] uppercase mb-8 font-sans">UNPARALLELED ACCESS</h3>
-                                <h4 className="text-5xl md:text-6xl mb-10 leading-none">The Silk Road Reimagined.</h4>
-                                <div className="space-y-12">
-                                    <div className="flex gap-6">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#AF8B58] flex items-center justify-center text-[#AF8B58]"><Compass size={24} /></div>
-                                        <div><h5 className="text-xl mb-3">Cultural Guardians</h5><p className="text-gray-400 font-sans text-sm">Our guides are historians, artists, and monks who offer a truly authentic perspective.</p></div>
-                                    </div>
-                                    <div className="flex gap-6">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-[#AF8B58] flex items-center justify-center text-[#AF8B58]"><Building size={24} /></div>
-                                        <div><h5 className="text-xl mb-3">Privileged Entry</h5><p className="text-gray-400 font-sans text-sm">After-hours temple tours, private museum viewings, and access to hidden palaces.</p></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    {/* Footer / Contact */}
-                    <footer id="contact" className="bg-[#1A0505] text-white pt-24 pb-12 border-t border-white/5 scroll-mt-20">
-                        <div className="max-w-7xl mx-auto px-6">
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
-                                <div className="md:col-span-2">
-                                    <div className="flex items-center gap-3 mb-8">
-                                        <Globe className="w-8 h-8 text-[#AF8B58]" />
-                                        <div className="flex flex-col">
-                                            <span className="text-xl font-bold tracking-tighter leading-none text-white font-sans uppercase">Global Mix</span>
-                                            <span className="text-[10px] tracking-[0.4em] font-medium text-[#AF8B58] font-sans">Travel Asia</span>
-                                        </div>
-                                    </div>
-                                    <p className="text-gray-500 font-sans text-sm max-w-sm leading-relaxed mb-10">Specializing in ultra-luxury expeditions across Asia, Africa, Europe, and the Americas. We craft legacy moments with privileged access and elite service.</p>
-                                </div>
-
-                                <div>
-                                    <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#AF8B58] mb-8 font-sans">Explore</h6>
-                                    <ul className="space-y-4 font-sans text-sm text-gray-400">
-                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Imperial Journeys</a></li>
-                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Island Sanctuaries</a></li>
-                                        <li><a href="#experiences" className="hover:text-white cursor-pointer transition-colors">Spiritual Retreats</a></li>
-                                        <li><a href="#itineraries" className="hover:text-white cursor-pointer transition-colors">Gourmet Asia</a></li>
-                                    </ul>
-                                </div>
-
-                                <div>
-                                    <h6 className="text-[10px] font-bold tracking-[0.4em] uppercase text-[#AF8B58] mb-8 font-sans">Direct Contact</h6>
-                                    <ul className="space-y-6 font-sans text-sm text-gray-400">
-                                        <li className="flex gap-4"><Phone size={16} className="text-[#AF8B58]" /><a href={`tel:${contactData.phone}`} className="hover:text-white">{contactData.phone}</a></li>
-                                        <li className="flex gap-4"><MessageCircle size={16} className="text-[#AF8B58]" /><a href={`https://wa.me/${contactData.whatsapp}`} className="hover:text-white">WhatsApp VIP Concierge</a></li>
-                                        <li className="flex gap-4"><Mail size={16} className="text-[#AF8B58]" /><a href={`mailto:${contactData.email}`} className="hover:text-white">{contactData.email}</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-600 font-sans tracking-[0.2em] uppercase">
-                                <p>© 2024 GLOBAL MIX TRAVEL ASIA. ALL RIGHTS RESERVED.</p>
-                                <div className="flex gap-8"><span>Privacy Policy</span><span>Terms of Service</span></div>
-                            </div>
-                        </div>
-                    </footer>
-                </div>
-            );
-        };
-
-        const root = createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
-</body>
-</html>
+                                                        <span key={i
