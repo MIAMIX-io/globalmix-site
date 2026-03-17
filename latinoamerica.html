@@ -53,7 +53,6 @@
         import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
         import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
         
-        // FIXED: Added ChevronDown to the imports here!
         import { 
             Compass, MapPin, Ship, Trees, Wind, Sun, Waves, Camera, 
             Menu, X, ChevronRight, ChevronDown, Mail, Phone, Globe 
@@ -108,23 +107,23 @@
             ];
 
             return (
-                <div className="min-h-screen bg-[#fcfcfc] text-[#1a1a1a] font-sans selection:bg-[#C5A059] selection:text-white">
+                <div className="min-h-screen bg-[#fcfcfc] text-[#1a1a1a] font-sans selection:bg-[#f4a261] selection:text-white">
                     {/* Navigation */}
                     <nav className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-6'}`}>
                         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                             <div className="flex items-center gap-2">
-                                <Globe className={`w-8 h-8 ${scrolled ? 'text-[#002147]' : 'text-white'}`} />
+                                <Globe className={`w-8 h-8 ${scrolled ? 'text-[#5c2a18]' : 'text-white'}`} />
                                 <div className="flex flex-col">
-                                    <span className={`text-xl font-bold tracking-tighter leading-none ${scrolled ? 'text-[#002147]' : 'text-white'}`}>GLOBAL MIX</span>
-                                    <span className={`text-[10px] tracking-[0.2em] font-medium ${scrolled ? 'text-[#C5A059]' : 'text-white/80'}`}>TRAVEL</span>
+                                    <span className={`text-xl font-bold tracking-tighter leading-none ${scrolled ? 'text-[#5c2a18]' : 'text-white'}`}>GLOBAL MIX</span>
+                                    <span className={`text-[10px] tracking-[0.2em] font-medium ${scrolled ? 'text-[#f4a261]' : 'text-white/80'}`}>TRAVEL</span>
                                 </div>
                             </div>
 
                             <div className="hidden md:flex items-center gap-10">
                                 {navLinks.map((item) => (
-                                    <a key={item.name} href={item.href} className={`text-sm font-medium tracking-wide hover:text-[#C5A059] transition-colors ${scrolled ? 'text-[#1a1a1a]' : 'text-white'}`}>{item.name}</a>
+                                    <a key={item.name} href={item.href} className={`text-sm font-medium tracking-wide hover:text-[#f4a261] transition-colors ${scrolled ? 'text-[#1a1a1a]' : 'text-white'}`}>{item.name}</a>
                                 ))}
-                                <a href="#contact" className="bg-[#C5A059] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#b08d4a] transition-all transform hover:scale-105 inline-block">Plan Your Journey</a>
+                                <a href="#contact" className="bg-[#f4a261] text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-[#df8a48] transition-all transform hover:scale-105 inline-block">Plan Your Journey</a>
                             </div>
 
                             <button className="md:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
@@ -136,9 +135,9 @@
                         {isMenuOpen && (
                             <div className="absolute top-full left-0 w-full bg-white shadow-xl md:hidden flex flex-col p-6 gap-6 animate-in slide-in-from-top duration-300">
                                 {navLinks.map((item) => (
-                                    <a key={item.name} href={item.href} onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-[#1a1a1a] hover:text-[#C5A059]">{item.name}</a>
+                                    <a key={item.name} href={item.href} onClick={() => setIsMenuOpen(false)} className="text-lg font-medium text-[#1a1a1a] hover:text-[#f4a261]">{item.name}</a>
                                 ))}
-                                <a href="#contact" onClick={() => setIsMenuOpen(false)} className="bg-[#002147] text-white py-4 rounded-xl font-bold text-center inline-block w-full">Request Itinerary</a>
+                                <a href="#contact" onClick={() => setIsMenuOpen(false)} className="bg-[#5c2a18] text-white py-4 rounded-xl font-bold text-center inline-block w-full">Request Itinerary</a>
                             </div>
                         )}
                     </nav>
@@ -147,8 +146,8 @@
                     <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0">
                             <img src="https://images.unsplash.com/photo-1637966201771-b0b251baa2ef?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" className="w-full h-full object-cover scale-105" alt="Andean Landscape" />
-                            {/* Upgraded Gradient matching Africa's visual pop */}
-                            <div className="absolute inset-0 bg-gradient-to-b from-[#002147]/95 via-[#002147]/60 to-[#1a1a1a]/100" />
+                            {/* Rich Terracotta/Peach Transparent Gradient */}
+                            <div className="absolute inset-0 bg-gradient-to-b from-[#2d150c]/80 via-[#5c2a18]/50 to-[#1a1a1a]/90" />
                         </div>
 
                         <div className="relative z-10 text-center px-6 max-w-5xl">
@@ -157,7 +156,7 @@
                             </span>
                             <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
                                 Grand Journeys <br />
-                                <span className="italic text-[#001024] drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">
+                                <span className="italic text-[#2d130a] drop-shadow-[0_0_15px_rgba(255,255,255,0.8)]">
                                     of Latin America
                                 </span>
                             </h1>
@@ -165,7 +164,7 @@
                                 "A curated selection of expeditions designed to discover the most extraordinary landscapes, fascinating cultures, and rich biodiversity of the continent."
                             </p>
                             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                                <a href="#expeditions" className="bg-white text-[#002147] px-10 py-4 rounded-full font-bold hover:bg-[#C5A059] hover:text-white transition-all duration-300 shadow-xl inline-block text-center font-sans tracking-wider text-xs uppercase">
+                                <a href="#expeditions" className="bg-white text-[#5c2a18] px-10 py-4 rounded-full font-bold hover:bg-[#f4a261] hover:text-white transition-all duration-300 shadow-xl inline-block text-center font-sans tracking-wider text-xs uppercase">
                                     Explore Expeditions
                                 </a>
                             </div>
@@ -179,8 +178,8 @@
                     {/* Intro Section */}
                     <section id="about-us" className="py-24 px-6 max-w-7xl mx-auto text-center scroll-mt-24">
                         <div className="max-w-3xl mx-auto">
-                            <div className="w-12 h-[2px] bg-[#C5A059] mx-auto mb-8"></div>
-                            <h2 className="text-3xl md:text-5xl font-serif mb-8 text-[#002147]">The Art of Travel</h2>
+                            <div className="w-12 h-[2px] bg-[#f4a261] mx-auto mb-8"></div>
+                            <h2 className="text-3xl md:text-5xl font-serif mb-8 text-[#5c2a18]">The Art of Travel</h2>
                             <p className="text-gray-600 leading-relaxed text-lg">
                                 At GLOBAL MIX, we believe that a great journey is not just a destination, but a personal narrative that combines deep exploration with ultimate comfort. Our circuits are meticulously curated for the contemporary traveler seeking to reconnect with the pure essence of nature and the living traditions of Latin America.
                             </p>
@@ -192,12 +191,12 @@
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                                 <div>
-                                    <h3 className="text-4xl font-serif text-[#002147] mb-2">Our Signature Collection</h3>
+                                    <h3 className="text-4xl font-serif text-[#5c2a18] mb-2">Our Signature Collection</h3>
                                     <p className="text-gray-500 italic">Ten journeys that define a continent.</p>
                                 </div>
                                 <div className="flex flex-wrap gap-3">
                                     {['all', 'polar', 'nature', 'luxury', 'wildlife', 'culture'].map((cat) => (
-                                        <button key={cat} onClick={() => setActiveTab(cat)} className={`px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase transition-all ${activeTab === cat ? 'bg-[#002147] text-white shadow-lg' : 'bg-white text-gray-400 hover:text-[#002147]'}`}>
+                                        <button key={cat} onClick={() => setActiveTab(cat)} className={`px-5 py-2 rounded-full text-xs font-bold tracking-widest uppercase transition-all ${activeTab === cat ? 'bg-[#5c2a18] text-white shadow-lg' : 'bg-white text-gray-400 hover:text-[#5c2a18]'}`}>
                                             {cat === 'all' ? 'All' : cat}
                                         </button>
                                     ))}
@@ -209,15 +208,15 @@
                                     <div key={exp.id} className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-500 border border-black/5 flex flex-col h-full">
                                         <div className="relative h-72 overflow-hidden">
                                             <img src={exp.image} alt={exp.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-                                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-[#002147] uppercase">0{index + 1}</div>
+                                            <div className="absolute top-4 left-4 bg-white/90 backdrop-blur px-3 py-1 rounded-full text-[10px] font-bold tracking-widest text-[#5c2a18] uppercase">0{index + 1}</div>
                                             <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent">
-                                                <div className="flex items-center gap-2 text-white/90 text-sm font-medium"><MapPin className="w-4 h-4 text-[#C5A059]" />{exp.location}</div>
+                                                <div className="flex items-center gap-2 text-white/90 text-sm font-medium"><MapPin className="w-4 h-4 text-[#f4a261]" />{exp.location}</div>
                                             </div>
                                         </div>
                                         <div className="p-8 flex flex-col flex-grow">
-                                            <h4 className="text-2xl font-serif text-[#002147] mb-4 group-hover:text-[#C5A059] transition-colors">{exp.title}</h4>
+                                            <h4 className="text-2xl font-serif text-[#5c2a18] mb-4 group-hover:text-[#f4a261] transition-colors">{exp.title}</h4>
                                             <p className="text-gray-600 text-sm leading-relaxed mb-8 flex-grow">{exp.description}</p>
-                                            <button onClick={(e) => handleTripAction(e, exp, "Latin America")} className="mt-auto group-hover:bg-[#002147] group-hover:text-white border border-[#002147] text-[#002147] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center w-full">
+                                            <button onClick={(e) => handleTripAction(e, exp, "Latin America")} className="mt-auto group-hover:bg-[#5c2a18] group-hover:text-white border border-[#5c2a18] text-[#5c2a18] py-4 px-6 text-[10px] font-bold tracking-[0.3em] uppercase transition-all flex items-center justify-between font-sans text-center w-full">
                                                 Explore Itinerary <ChevronRight size={14} />
                                             </button>
                                         </div>
@@ -228,29 +227,29 @@
                     </section>
 
                     {/* Experience Stats */}
-                    <section className="py-20 px-6 bg-[#002147] text-white overflow-hidden relative">
+                    <section className="py-20 px-6 bg-[#5c2a18] text-white overflow-hidden relative">
                         <div className="absolute top-0 right-0 opacity-10 scale-150 -translate-y-1/2"><Compass className="w-[500px] h-[500px]" /></div>
                         <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-12 text-center relative z-10">
-                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">15+</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Years Experience</div></div>
-                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">200+</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Unique Itineraries</div></div>
-                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">10</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Destinations</div></div>
-                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#C5A059]">100%</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Tailor Made</div></div>
+                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#f4a261]">15+</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Years Experience</div></div>
+                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#f4a261]">200+</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Unique Itineraries</div></div>
+                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#f4a261]">10</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Destinations</div></div>
+                            <div><div className="text-4xl md:text-5xl font-serif mb-2 text-[#f4a261]">100%</div><div className="text-sm font-light text-white/70 uppercase tracking-widest">Tailor Made</div></div>
                         </div>
                     </section>
 
                     {/* Concierge Section */}
-                    <section id="experiences" className="py-32 bg-[#002147] text-white overflow-hidden scroll-mt-20">
+                    <section id="experiences" className="py-32 bg-[#5c2a18] text-white overflow-hidden scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="relative">
                                 <div className="aspect-[4/5] overflow-hidden"><img src="https://images.unsplash.com/photo-1587595431973-160d0d94add1?q=80&w=1200&auto=format&fit=crop" className="w-full h-full object-cover grayscale opacity-50" alt="Latin America Concierge" /></div>
-                                <div className="absolute -bottom-10 -right-10 bg-[#C5A059] p-12 hidden md:block"><p className="text-4xl italic leading-tight text-[#002147]">Private <br />Concierge <br />In Latin America</p></div>
+                                <div className="absolute -bottom-10 -right-10 bg-[#f4a261] p-12 hidden md:block"><p className="text-4xl italic leading-tight text-[#5c2a18]">Private <br />Concierge <br />In Latin America</p></div>
                             </div>
                             <div>
-                                <h3 className="text-xs font-bold tracking-[0.5em] text-[#C5A059] uppercase mb-8 font-sans">SPECIALIZED ASSISTANCE</h3>
+                                <h3 className="text-xs font-bold tracking-[0.5em] text-[#f4a261] uppercase mb-8 font-sans">SPECIALIZED ASSISTANCE</h3>
                                 <h4 className="text-5xl md:text-6xl mb-10 leading-none">The Luxury of No Limits.</h4>
                                 <div className="space-y-12">
-                                    <div className="flex gap-6"><div className="shrink-0 w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059]"><Compass size={24} /></div><div><h5 className="text-xl mb-3">Local Expertise</h5><p className="text-gray-400 font-sans text-sm">Our specialists intimately know the terrain, from the heights of the Andes to the depths of the Amazon.</p></div></div>
-                                    <div className="flex gap-6"><div className="shrink-0 w-12 h-12 rounded-full border border-[#C5A059] flex items-center justify-center text-[#C5A059]"><Trees size={24} /></div><div><h5 className="text-xl mb-3">Privileged Access</h5><p className="text-gray-400 font-sans text-sm">Exclusive entry to remote archaeological sites, private estancias, and protected natural reserves.</p></div></div>
+                                    <div className="flex gap-6"><div className="shrink-0 w-12 h-12 rounded-full border border-[#f4a261] flex items-center justify-center text-[#f4a261]"><Compass size={24} /></div><div><h5 className="text-xl mb-3">Local Expertise</h5><p className="text-gray-400 font-sans text-sm">Our specialists intimately know the terrain, from the heights of the Andes to the depths of the Amazon.</p></div></div>
+                                    <div className="flex gap-6"><div className="shrink-0 w-12 h-12 rounded-full border border-[#f4a261] flex items-center justify-center text-[#f4a261]"><Trees size={24} /></div><div><h5 className="text-xl mb-3">Privileged Access</h5><p className="text-gray-400 font-sans text-sm">Exclusive entry to remote archaeological sites, private estancias, and protected natural reserves.</p></div></div>
                                 </div>
                             </div>
                         </div>
@@ -261,13 +260,13 @@
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-16 mb-20">
                             <div className="md:col-span-2">
                                 <div className="flex items-center gap-2 mb-8">
-                                    <Globe className="w-10 h-10 text-[#C5A059]" />
-                                    <div className="flex flex-col"><span className="text-2xl font-bold tracking-tighter leading-none">GLOBAL MIX</span><span className="text-[12px] tracking-[0.2em] font-medium text-[#C5A059]">TRAVEL</span></div>
+                                    <Globe className="w-10 h-10 text-[#f4a261]" />
+                                    <div className="flex flex-col"><span className="text-2xl font-bold tracking-tighter leading-none">GLOBAL MIX</span><span className="text-[12px] tracking-[0.2em] font-medium text-[#f4a261]">TRAVEL</span></div>
                                 </div>
                                 <p className="text-gray-400 max-w-sm mb-10 leading-relaxed italic">"Redefining luxury travel in Latin America through authentic and exclusive expeditions that connect the soul with the land."</p>
                             </div>
                             <div>
-                                <h5 className="text-lg font-serif mb-8 border-l-2 border-[#C5A059] pl-4 uppercase tracking-widest text-sm">Company</h5>
+                                <h5 className="text-lg font-serif mb-8 border-l-2 border-[#f4a261] pl-4 uppercase tracking-widest text-sm">Company</h5>
                                 <ul className="space-y-4 text-gray-400 text-sm">
                                     <li><a href="#about-us" className="hover:text-white transition-colors cursor-pointer">Our Story</a></li>
                                     <li><a href="#expeditions" className="hover:text-white transition-colors cursor-pointer">2025 Expeditions</a></li>
@@ -276,11 +275,11 @@
                                 </ul>
                             </div>
                             <div>
-                                <h5 className="text-lg font-serif mb-8 border-l-2 border-[#C5A059] pl-4 uppercase tracking-widest text-sm">Contact</h5>
+                                <h5 className="text-lg font-serif mb-8 border-l-2 border-[#f4a261] pl-4 uppercase tracking-widest text-sm">Contact</h5>
                                 <ul className="space-y-6 text-gray-400 text-sm">
-                                    <li className="flex items-start gap-4"><Phone className="w-5 h-5 text-[#C5A059] shrink-0" /><a href="tel:+1 786 459 8797" className="hover:text-white transition-colors">+54 9 11 1234 5678</a></li>
-                                    <li className="flex items-start gap-4"><Mail className="w-5 h-5 text-[#C5A059] shrink-0" /><a href="mailto:info@globalmix.network" className="hover:text-white transition-colors">info@globalmix.network</a></li>
-                                    <li className="flex items-start gap-4"><MapPin className="w-5 h-5 text-[#C5A059] shrink-0" /><span>Puerto Madero, Buenos Aires, Argentina</span></li>
+                                    <li className="flex items-start gap-4"><Phone className="w-5 h-5 text-[#f4a261] shrink-0" /><a href="tel:+5491112345678" className="hover:text-white transition-colors">+54 9 11 1234 5678</a></li>
+                                    <li className="flex items-start gap-4"><Mail className="w-5 h-5 text-[#f4a261] shrink-0" /><a href="mailto:info@globalmix.network" className="hover:text-white transition-colors">info@globalmix.network</a></li>
+                                    <li className="flex items-start gap-4"><MapPin className="w-5 h-5 text-[#f4a261] shrink-0" /><span>Puerto Madero, Buenos Aires, Argentina</span></li>
                                 </ul>
                             </div>
                         </div>
