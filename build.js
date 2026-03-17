@@ -12,6 +12,7 @@ const getText = (prop) => {
     if (prop.title && prop.title.length > 0) return prop.title[0].plain_text;
     if (prop.rich_text && prop.rich_text.length > 0) return prop.rich_text[0].plain_text;
     if (prop.select) return prop.select.name;
+    if (prop.status) return prop.status.name;
     if (prop.url) return prop.url;
     return "N/A";
 };
@@ -25,15 +26,22 @@ async function generateSite() {
     }
 
     try {
-        // 1. Fetch all trips from Notion
+        // 1. Fetch only trips from Notion where "Sync to GitHub" is checked
         const response = await notion.databases.query({
             database_id: DATABASE_ID,
+            filter: {
+                property: 'Sync to GitHub',
+                checkbox: {
+                    equals: true
+                }
+            }
         });
 
         const trips = response.results.map(page => {
             const props = page.properties;
             
             return {
+                notionPageId: page.id, // We need this to update the status later!
                 id: getText(props['Trip ID']),
                 title: getText(props['Trip Name'] || props['Title']), 
                 region: getText(props['Region']),
@@ -50,7 +58,7 @@ async function generateSite() {
             };
         });
 
-        console.log(`Found ${trips.length} trips. Building pages...`);
+        console.log(`Found ${trips.length} trips ready to sync. Building pages...`);
 
         // 2. Read the master template
         const templatePath = path.join(__dirname, 'trip-template.html');
@@ -61,7 +69,7 @@ async function generateSite() {
         const template = fs.readFileSync(templatePath, 'utf-8');
 
         // 3. Generate a folder and index.html for each trip
-        trips.forEach(trip => {
+        for (const trip of trips) {
             const safeRegion = trip.region.toLowerCase().replace(/[^a-z0-9]/g, '');
             const safeSlug = trip.slug.toLowerCase().replace(/[^a-z0-9-]/g, '-');
 
@@ -76,11 +84,30 @@ async function generateSite() {
                 .replace('{{TITLE}}', trip.title)
                 .replace('{{TRIP_JSON_DATA}}', JSON.stringify(trip));
 
+            // Write the file
             fs.writeFileSync(path.join(dirPath, 'index.html'), newHtml);
             console.log(`✅ Created: /${safeRegion}/${safeSlug}`);
-        });
 
-        console.log('🎉 Build complete! All static pages generated.');
+            // 4. Ping Notion back to update the Status to "Live"
+            // Note: If your Notion Status column is a "Select" type, use { select: { name: 'Live' } }
+            // If it is a "Status" type, use { status: { name: 'Live' } }
+            // We are using Select syntax here as it's the most common for older tables.
+            try {
+                await notion.pages.update({
+                    page_id: trip.notionPageId,
+                    properties: {
+                        'Status': {
+                            select: { name: 'Live' }
+                        }
+                    }
+                });
+                console.log(`   └─ Status updated to "Live" in Notion.`);
+            } catch (statusError) {
+                console.log(`   └─ Note: Could not update status in Notion. Please ensure the column is named 'Status' and 'Live' is an available Select option. Error: ${statusError.message}`);
+            }
+        }
+
+        console.log('🎉 Build complete! All static pages generated and Notion is updated.');
 
     } catch (error) {
         console.error("❌ Error fetching from Notion:", error.message);
