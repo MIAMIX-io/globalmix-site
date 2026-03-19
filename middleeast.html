@@ -23,7 +23,8 @@
                         dark: '#1A1A1A',
                     },
                     animation: {
-                        'fade-in': 'fadeIn 2s ease-out',
+                        'fade-in': 'fadeIn 2s ease-out forwards',
+                        'bounce': 'bounce 2s infinite',
                     },
                     keyframes: {
                         fadeIn: {
@@ -41,14 +42,15 @@
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
         
-        .circuit-card:hover .circuit-image {
-            transform: scale(1.08);
-        }
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #fdfdfd; }
+        ::-webkit-scrollbar-thumb { background: #1A1A1A; }
+        ::-webkit-scrollbar-thumb:hover { background: #C2A378; }
     </style>
 
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-<body class="bg-white text-gray-900 antialiased">
+<body class="bg-[#fafafa] antialiased">
     
     <div id="root"></div>
 
@@ -57,12 +59,14 @@
         import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
         
         import { 
-            Compass, MapPin, Globe, Mail, Phone, ChevronRight, Menu, X, ChevronDown, MessageCircle, Ship, Building
+            Compass, MapPin, Globe, Mail, Phone, ChevronRight, ChevronDown, 
+            Menu, X, MessageCircle, Ship, Building, Map
         } from 'https://esm.sh/lucide-react@0.292.0';
 
         const App = () => {
             const [isMenuOpen, setIsMenuOpen] = useState(false);
             const [scrolled, setScrolled] = useState(false);
+            const [activeCategory, setActiveCategory] = useState('All');
 
             const contactData = {
                 phone: "+1 786 459 8797",
@@ -71,16 +75,18 @@
             };
 
             const euroAsiaJourneys = [
-                { id: 1, title: "Ottoman & Arabian Legacy", duration: "10 Days", tag: "Turkey & UAE", route: "Istanbul – Cappadocia – Dubai – Abu Dhabi", description: "Heritage meets ultra-modern luxury in the cradle of civilization.", hotels: ["Çırağan Palace Kempinski Istanbul", "Burj Al Arab Jumeirah, Dubai", "Emirates Palace Mandarin Oriental"], image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&q=80&w=800" },
-                { id: 2, title: "Russia Imperial & Dubai", duration: "10–12 Days", tag: "Imperial Grandeur", route: "Moscow – Saint Petersburg – Dubai", description: "Imperial history meets desert extravagance across two vast cultures.", hotels: ["Four Seasons Hotel Moscow", "Belmond Grand Hotel Europe", "Atlantis The Royal Dubai"], image: "https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&q=80&w=800" },
-                { id: 3, title: "Silk Road Luxury Journey", duration: "12 Days", tag: "Caucasus Gateway", route: "Istanbul – Tbilisi – Baku – Dubai", description: "A modern twist on the historic trade route connecting the East and West.", hotels: ["Stamba Hotel Tbilisi", "Four Seasons Hotel Baku", "Armani Hotel Dubai"], image: "https://images.unsplash.com/photo-1554039363-bb1ab89fc855?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-                { id: 4, title: "Arabian Peninsula Ultra Luxury", duration: "10 Days", tag: "Gulf Collection", route: "Dubai – Abu Dhabi – Doha – Muscat", description: "The ultimate high-end Middle East experience in the rising Gulf capitals.", hotels: ["One&Only One Za’abeel", "Raffles Doha", "Al Bustan Palace Muscat"], image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=800" },
-                { id: 5, title: "Grand Turkey Luxury", duration: "10 Days", tag: "Ottoman Signature", route: "Istanbul – Cappadocia – Izmir – Bodrum", description: "Ottoman heritage and Aegean yachting in the Mediterranean's most storied coast.", hotels: ["The Peninsula Istanbul", "Argos in Cappadocia", "Mandarin Oriental Bodrum"], image: "https://images.unsplash.com/photo-1527838832700-5059252407fa?q=80&w=796&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-                { id: 6, title: "Russia & Black Sea Riviera", duration: "10 Days", tag: "Riviera Routes", route: "Moscow – Sochi – Istanbul", description: "A journey through high-latitude nature, coastal luxury, and deep culture.", hotels: ["The Ritz-Carlton Moscow", "Rodina Grand Hotel Sochi", "Raffles Istanbul"], image: "https://images.unsplash.com/photo-1609854427478-71945c197de7?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-                { id: 7, title: "Luxury Levant & Gulf Escape", duration: "9 Days", tag: "History & Wellness", route: "Dubai – Amman – Petra – Dead Sea", description: "Private archaeological visits and world-class spa luxury in Jordan and the UAE.", hotels: ["Bulgari Resort Dubai", "The St. Regis Amman", "Ishtar Dead Sea Kempinski"], image: "https://images.unsplash.com/photo-1585311746214-764246524f52?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-                { id: 8, title: "Caucasus Hidden Luxury", duration: "9 Days", tag: "Hidden Gems", route: "Tbilisi – Yerevan – Baku", description: "Explore the emerging high-end cultural gems of the mountainous Caucasus.", hotels: ["Rooms Hotel Tbilisi", "The Alexander Yerevan", "Fairmont Baku Flame Towers"], image: "https://images.unsplash.com/photo-1771634915026-5a778ee7be19?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-                { id: 9, title: "Dubai & Maldives Escape", duration: "9–10 Days", tag: "Iconic Duo", route: "Dubai – Maldives", description: "The top-selling combination of metropolitan luxury and overwater bliss.", hotels: ["Atlantis The Royal Dubai", "Soneva Fushi Maldives", "St. Regis Maldives Vommuli"], image: "https://images.unsplash.com/photo-1587134254967-4fd7e97be3c6?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8RHViYWklMjAlMjYlMjBNYWxkaXZlcyUyMEVzY2FwZXxlbnwwfHwwfHx8MA%3D%3D" }
+                { id: 1, title: "Ottoman & Arabian Legacy", category: "Middle East", duration: "10 Days", tag: "Turkey & UAE", route: "Istanbul – Cappadocia – Dubai – Abu Dhabi", description: "Heritage meets ultra-modern luxury in the cradle of civilization.", hotels: ["Çırağan Palace Kempinski Istanbul", "Burj Al Arab Jumeirah, Dubai", "Emirates Palace Mandarin Oriental"], image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&q=80&w=800" },
+                { id: 2, title: "Russia Imperial & Dubai", category: "Russia", duration: "10–12 Days", tag: "Imperial Grandeur", route: "Moscow – Saint Petersburg – Dubai", description: "Imperial history meets desert extravagance across two vast cultures.", hotels: ["Four Seasons Hotel Moscow", "Belmond Grand Hotel Europe", "Atlantis The Royal Dubai"], image: "https://images.unsplash.com/photo-1513326738677-b964603b136d?auto=format&fit=crop&q=80&w=800" },
+                { id: 3, title: "Silk Road Luxury Journey", category: "Caucasus", duration: "12 Days", tag: "Caucasus Gateway", route: "Istanbul – Tbilisi – Baku – Dubai", description: "A modern twist on the historic trade route connecting the East and West.", hotels: ["Stamba Hotel Tbilisi", "Four Seasons Hotel Baku", "Armani Hotel Dubai"], image: "https://images.unsplash.com/photo-1565011523534-747a8601f10a?auto=format&fit=crop&q=80&w=800" },
+                { id: 4, title: "Arabian Peninsula Ultra Luxury", category: "Middle East", duration: "10 Days", tag: "Gulf Collection", route: "Dubai – Abu Dhabi – Doha – Muscat", description: "The ultimate high-end Middle East experience in the rising Gulf capitals.", hotels: ["One&Only One Za’abeel", "Raffles Doha", "Al Bustan Palace Muscat"], image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=800" },
+                { id: 5, title: "Grand Turkey Luxury", category: "Turkey", duration: "10 Days", tag: "Ottoman Signature", route: "Istanbul – Cappadocia – Izmir – Bodrum", description: "Ottoman heritage and Aegean yachting in the Mediterranean's most storied coast.", hotels: ["The Peninsula Istanbul", "Argos in Cappadocia", "Mandarin Oriental Bodrum"], image: "https://images.unsplash.com/photo-1605333396915-47ed6b68a00e?auto=format&fit=crop&q=80&w=800" },
+                { id: 6, title: "Russia & Black Sea Riviera", category: "Russia", duration: "10 Days", tag: "Riviera Routes", route: "Moscow – Sochi – Istanbul", description: "A journey through high-latitude nature, coastal luxury, and deep culture.", hotels: ["The Ritz-Carlton Moscow", "Rodina Grand Hotel Sochi", "Raffles Istanbul"], image: "https://images.unsplash.com/photo-1549468057-5b7fa1a41d7a?auto=format&fit=crop&q=80&w=800" },
+                { id: 7, title: "Luxury Levant & Gulf Escape", category: "Middle East", duration: "9 Days", tag: "History & Wellness", route: "Dubai – Amman – Petra – Dead Sea", description: "Private archaeological visits and world-class spa luxury in Jordan and the UAE.", hotels: ["Bulgari Resort Dubai", "The St. Regis Amman", "Ishtar Dead Sea Kempinski"], image: "https://images.unsplash.com/photo-1542284759-c48463e30f48?auto=format&fit=crop&q=80&w=800" },
+                { id: 8, title: "Caucasus Hidden Luxury", category: "Caucasus", duration: "9 Days", tag: "Hidden Gems", route: "Tbilisi – Yerevan – Baku", description: "Explore the emerging high-end cultural gems of the mountainous Caucasus.", hotels: ["Rooms Hotel Tbilisi", "The Alexander Yerevan", "Fairmont Baku Flame Towers"], image: "https://images.unsplash.com/photo-1549468057-5b7fa1a41d7a?auto=format&fit=crop&q=80&w=800" },
+                { id: 9, title: "Dubai & Maldives Escape", category: "Middle East", duration: "9–10 Days", tag: "Iconic Duo", route: "Dubai – Maldives", description: "The top-selling combination of metropolitan luxury and overwater bliss.", hotels: ["Atlantis The Royal Dubai", "Soneva Fushi Maldives", "St. Regis Maldives Vommuli"], image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&q=80&w=800" }
             ];
+
+            const categories = ["All", "Middle East", "Turkey", "Russia", "Caucasus"];
 
             useEffect(() => {
                 const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -95,16 +101,8 @@
                 window.location.href = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
             };
 
-            const handleFormSubmit = (e) => {
-                e.preventDefault();
-                const destination = e.target.destination.value;
-                const subject = encodeURIComponent(`Availability Request: ${destination}`);
-                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nI am interested in the ${destination} itinerary. Please contact me with availability and rates.\n\nThank you!`);
-                window.location.href = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
-            };
-
             return (
-                <div className="min-h-screen bg-white text-gray-900 font-sans selection:bg-gold/20">
+                <div className="min-h-screen bg-[#fafafa] text-[#1A1A1A] font-sans selection:bg-gold/20">
                     
                     {/* WhatsApp Floating Button */}
                     <a href={`https://wa.me/${contactData.whatsapp}`} target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center gap-2 group">
@@ -112,104 +110,109 @@
                         <MessageCircle size={24} />
                     </a>
 
-                    {/* Navigation */}
-                    <nav className={`fixed w-full z-50 transition-all duration-700 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-3' : 'bg-transparent py-8'}`}>
+                    {/* Navigation - Oceania Style */}
+                    <nav className={`fixed w-full z-50 transition-all duration-1000 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-8'}`}>
                         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                             <div className="flex items-center gap-3">
-                                <div className={`w-10 h-10 dark flex items-center justify-center rounded-sm transition-colors ${scrolled ? 'bg-dark' : 'bg-white'}`}>
-                                    <span className={`font-serif font-bold text-xl ${scrolled ? 'text-white' : 'text-dark'}`}>G</span>
-                                </div>
-                                <div className="flex flex-col text-dark">
-                                    <span className={`font-bold tracking-[0.2em] text-sm uppercase ${scrolled ? 'text-dark' : 'text-white'}`}>Global Mix</span>
-                                    <span className={`text-[9px] tracking-[0.3em] font-semibold uppercase ${scrolled ? 'text-gold' : 'text-gold'}`}>Euro-Asia & Middle East</span>
+                                <Globe className={`w-8 h-8 ${scrolled ? 'text-gold' : 'text-white'}`} />
+                                <div className="flex flex-col">
+                                    <span className={`text-xl font-bold tracking-tighter leading-none ${scrolled ? 'text-dark' : 'text-white'}`}>GLOBAL MIX</span>
+                                    <span className={`text-[10px] tracking-[0.4em] font-medium ${scrolled ? 'text-gold' : 'text-white/80'}`}>EURO-ASIA</span>
                                 </div>
                             </div>
 
-                            <nav className={`hidden lg:flex gap-10 text-[10px] font-bold uppercase tracking-[0.2em] ${scrolled ? 'text-gray-600' : 'text-white/90'}`}>
-                                <a href="#" className="hover:text-gold transition-colors">Home</a>
-                                <a href="#circuits" className="hover:text-gold transition-colors">Itineraries</a>
-                                <a href="#vision" className="hover:text-gold transition-colors">Vision</a>
-                                <a href="#contact" className="hover:text-gold transition-colors">Concierge</a>
-                            </nav>
-
-                            <div className="flex items-center gap-4">
-                                <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                                    {isMenuOpen ? <X className={scrolled ? 'text-dark' : 'text-white'} /> : <Menu className={scrolled ? 'text-dark' : 'text-white'} />}
-                                </button>
-                                <a href={`https://wa.me/${contactData.whatsapp}`} className={`hidden md:inline-block px-8 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-gold transition-all duration-500 rounded-sm ${scrolled ? 'bg-dark text-white' : 'bg-white text-dark'}`}>
-                                    Inquire Now
-                                </a>
+                            <div className="hidden lg:flex items-center gap-10 text-[10px] font-bold tracking-[0.3em] uppercase">
+                                <a href="#circuits" className={`hover:text-gold transition-colors ${scrolled ? 'text-gray-500' : 'text-white/80'}`}>Itineraries</a>
+                                <a href="#vision" className={`hover:text-gold transition-colors ${scrolled ? 'text-gray-500' : 'text-white/80'}`}>Vision</a>
+                                <a href="#concierge" className={`hover:text-gold transition-colors ${scrolled ? 'text-gray-500' : 'text-white/80'}`}>Concierge</a>
+                                <a href="#contact" className={`px-8 py-3 rounded-sm transition-all transform hover:scale-105 ${scrolled ? 'bg-dark text-white' : 'bg-white text-dark'}`}>INQUIRE NOW</a>
                             </div>
+
+                            <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                {isMenuOpen ? <X className={scrolled ? 'text-dark' : 'text-white'} /> : <Menu className={scrolled ? 'text-dark' : 'text-white'} />}
+                            </button>
                         </div>
-
-                        {/* Mobile Menu */}
-                        {isMenuOpen && (
-                            <div className="absolute top-full left-0 w-full bg-white shadow-xl md:hidden flex flex-col p-8 gap-6 animate-in slide-in-from-top duration-300 border-t border-gray-100">
-                                <a href="#circuits" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-dark tracking-widest uppercase hover:text-gold">Itineraries</a>
-                                <a href="#vision" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-dark tracking-widest uppercase hover:text-gold">Vision</a>
-                                <a href="#contact" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-dark tracking-widest uppercase hover:text-gold">Contact</a>
-                                <a href={`mailto:${contactData.email}`} className="bg-dark text-white py-4 font-bold text-center uppercase tracking-widest text-xs">Request Concierge</a>
-                            </div>
-                        )}
                     </nav>
 
+                    {/* Mobile Menu */}
+                    {isMenuOpen && (
+                        <div className="absolute top-20 left-0 w-full bg-white shadow-xl md:hidden flex flex-col p-8 gap-6 z-40 border-t border-gray-100">
+                            <a href="#circuits" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-dark tracking-widest uppercase hover:text-gold">Itineraries</a>
+                            <a href="#vision" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-dark tracking-widest uppercase hover:text-gold">Vision</a>
+                            <a href="#concierge" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-dark tracking-widest uppercase hover:text-gold">Concierge</a>
+                            <a href={`mailto:${contactData.email}`} className="bg-dark text-white py-4 font-bold text-center uppercase tracking-widest text-xs">Request Concierge</a>
+                        </div>
+                    )}
+
                     {/* Hero Section */}
-                    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+                    <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 z-0">
-                            <img src={"https://images.unsplash.com/photo-1517243804125-5bf3fe40f04d?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} alt="Bosphorus Istanbul View" className="w-full h-full object-cover scale-105" fetchPriority="high" />
-                            <div className="absolute inset-0 bg-black/40"></div>
+                            <img src={"https://images.unsplash.com/photo-1541336032412-2048a678540d?auto=format&fit=crop&q=80&w=2000&fm=webp"} alt="Bosphorus Istanbul View" className="w-full h-full object-cover scale-105" fetchPriority="high" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/30 to-black/80"></div>
                         </div>
 
                         <div className="relative z-10 text-center px-6 max-w-6xl animate-fade-in">
-                            <h2 className="text-white text-[11px] md:text-xs uppercase tracking-[0.7em] mb-8 opacity-80 font-semibold">Bridging Worlds</h2>
-                            <h1 className="text-6xl md:text-9xl font-serif text-white mb-10 leading-[0.85]">Grand Journeys <br/><span className="italic text-gold drop-shadow-[0_0_15px_rgba(255,255,255,0.7)]">of Euro-Asia</span></h1>
-                            <p className="text-white/90 max-w-3xl mx-auto font-light text-lg md:text-2xl leading-relaxed mb-12 italic">
+                            <h2 className="text-white/90 text-xs tracking-[0.6em] font-bold uppercase mb-6 block">Bridging Worlds</h2>
+                            <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
+                                Grand Journeys <br />
+                                <span className="italic text-gold drop-shadow-[0_0_15px_rgba(194,163,120,0.5)]">
+                                    of Euro-Asia
+                                </span>
+                            </h1>
+                            <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto font-light italic mb-10">
                                 "From Imperial grandeur to modern extravagance. A curated selection of 9 ultra-premium journeys."
                             </p>
-                            <div className="mt-16">
-                                <a href="#circuits" className="inline-block border border-white text-white px-16 py-6 text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-white hover:text-dark transition-all duration-700">
+                            <div className="flex justify-center">
+                                <a href="#circuits" className="bg-white text-dark px-16 py-6 text-[10px] font-bold tracking-[0.5em] uppercase hover:bg-gold hover:text-white transition-all duration-700 shadow-xl">
                                     Explore Collection
                                 </a>
                             </div>
                         </div>
                         
-                        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40">
-                            <span className="text-[9px] uppercase tracking-[0.4em]">Scroll</span>
-                            <ChevronDown size={24} className="animate-bounce" />
+                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce cursor-pointer hover:opacity-75 transition-opacity z-10">
+                            <a href="#vision"><ChevronDown size={32} /></a>
                         </div>
                     </section>
 
                     {/* Vision Section */}
-                    <section id="vision" className="py-40 px-6 max-w-5xl mx-auto text-center">
-                        <span className="text-gold uppercase tracking-[0.5em] text-[10px] font-bold italic block mb-6">The Pinnacle of Travel</span>
-                        <h2 className="text-4xl md:text-6xl font-serif mb-12 text-dark">Where Heritage Meets Future</h2>
-                        <p className="text-gray-500 text-xl leading-relaxed font-light max-w-3xl mx-auto">
-                            Our Euro-Asia and Middle East collection captures the essence of the new Silk Road. We bring together the imperial echoes of Istanbul and St. Petersburg with the soaring skylines of Dubai and Baku, creating an unparalleled narrative for the high-end traveler.
-                        </p>
+                    <section id="vision" className="py-48 px-10 bg-white border-b border-neutral-100">
+                        <div className="max-w-4xl mx-auto text-center">
+                            <span className="text-gold font-bold text-[11px] tracking-[0.6em] uppercase mb-10 block">The Pinnacle of Travel</span>
+                            <h2 className="text-3xl md:text-5xl font-serif italic text-dark leading-[1.3] mb-12">
+                                "We capture the essence of the new Silk Road, bringing together the imperial echoes of Istanbul with the soaring skylines of Dubai."
+                            </h2>
+                            <div className="w-20 h-px bg-neutral-200 mx-auto" />
+                        </div>
                     </section>
 
                     {/* Circuits Grid */}
-                    <section id="circuits" className="py-24 bg-gray-50 scroll-mt-20">
-                        <div className="max-w-7xl mx-auto px-6">
+                    <section id="circuits" className="py-32 px-6 bg-[#fdfdfd] scroll-mt-20">
+                        <div className="max-w-7xl mx-auto">
                             <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
                                 <div>
-                                    <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">The Elite Selection</span>
-                                    <h3 className="text-5xl font-serif mt-3 text-dark leading-none">Ultra-Premium Circuits</h3>
-                                    <div className="h-1 w-24 bg-gold mt-8"></div>
+                                    <span className="text-[10px] uppercase tracking-[0.3em] text-gray-400 font-bold">Signature Masterlist</span>
+                                    <h3 className="text-5xl font-serif mt-3 text-dark leading-none">Euro-Asia Collection</h3>
+                                    <div className="h-1 w-24 bg-gold mt-6"></div>
                                 </div>
-                                <p className="text-gray-400 text-[10px] max-w-xs uppercase tracking-[0.2em] font-semibold italic md:text-right">Turkey, Russia &amp; The Arabian Peninsula</p>
+                                <div className="flex gap-3 overflow-x-auto pb-2 w-full md:w-auto scrollbar-hide">
+                                    {categories.map(cat => (
+                                        <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-6 py-2 text-[9px] font-bold tracking-widest uppercase transition-all border ${activeCategory === cat ? 'bg-dark text-white border-dark shadow-lg' : 'bg-transparent text-gray-400 border-gray-300 hover:border-gold hover:text-gold'}`}>
+                                            {cat}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-                                {euroAsiaJourneys.map((journey) => (
-                                    <div key={journey.id} className="circuit-card group bg-white shadow-sm hover:shadow-2xl transition-all duration-700 overflow-hidden flex flex-col border border-gray-100">
+                                {euroAsiaJourneys.filter(j => activeCategory === 'All' || j.category === activeCategory).map((journey) => (
+                                    <div key={journey.id} className="group bg-white shadow-sm hover:shadow-2xl transition-all duration-700 overflow-hidden flex flex-col border border-gray-100 rounded-2xl">
                                         <div className="h-80 overflow-hidden relative">
-                                            <img src={`${journey.image}&fm=webp&q=70&w=800`} alt={journey.title} className="circuit-image w-full h-full object-cover transition-transform duration-1000" loading="lazy" />
-                                            <div className="absolute top-5 right-5 bg-white/95 px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest text-dark shadow-sm">{journey.duration}</div>
+                                            <img src={`${journey.image}&fm=webp&q=70&w=800`} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy" />
+                                            <div className="absolute top-5 right-5 bg-white/95 px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest text-dark rounded-full shadow-sm">{journey.duration}</div>
                                         </div>
                                         <div className="p-10 flex flex-col flex-grow">
-                                            <span className="text-[9px] text-gold font-bold uppercase tracking-[0.3em]">{journey.tag}</span>
-                                            <h4 className="text-2xl font-serif mt-3 mb-5 text-dark leading-tight group-hover:text-gold transition-colors">{journey.title}</h4>
+                                            <div className="flex items-center gap-2 text-gold mb-4 font-bold text-[10px] tracking-widest uppercase"><Map size={14} /> Premium Circuit</div>
+                                            <h4 className="text-2xl font-serif mt-3 mb-4 text-dark leading-tight group-hover:text-gold transition-colors">{journey.title}</h4>
                                             <p className="text-gray-500 text-sm mb-8 font-light leading-relaxed flex-grow">{journey.route}. {journey.description}</p>
                                             
                                             <div className="border-t border-gray-100 pt-6">
@@ -225,7 +228,7 @@
 
                                             <button 
                                                 onClick={(e) => handleTripAction(e, journey)}
-                                                className="w-full border border-dark text-dark py-4 text-[9px] font-bold uppercase tracking-[0.3em] hover:bg-dark hover:text-white transition-all duration-500 flex justify-center items-center gap-2"
+                                                className="mt-auto w-full border border-dark text-dark py-4 text-[9px] font-bold uppercase tracking-[0.3em] hover:bg-dark hover:text-white transition-all duration-500 flex justify-center items-center gap-2 rounded-lg"
                                             >
                                                 Request Itinerary <ChevronRight size={14} />
                                             </button>
@@ -236,65 +239,114 @@
                         </div>
                     </section>
 
-                    {/* Concierge Section */}
+                    {/* Concierge Section - Recently Updated Fix */}
                     <section id="concierge" className="py-40 bg-[#121212] text-white overflow-hidden scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="relative">
-                                <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
-                                    <img src="https://images.unsplash.com/photo-1495833066942-79abe24b0c1f?q=80&w=1714&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                                         className="w-full h-full object-cover grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-1000" alt="Concierge" loading="lazy" />
+                                <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border border-white/10">
+                                    <img 
+                                        src={"https://images.unsplash.com/photo-1495833066942-79abe24b0c1f?q=80&w=1714&auto=format&fit=crop&fm=webp"} 
+                                        className="w-full h-full object-cover grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-[1.5s]" 
+                                        alt="Middle East Concierge" 
+                                        loading="lazy" 
+                                    />
                                 </div>
                                 <div className="absolute -bottom-10 -right-10 bg-gold p-12 hidden md:block rounded-sm shadow-2xl transform hover:-translate-y-2 transition-transform duration-500">
-                                    <p className="text-4xl italic leading-tight text-dark font-serif">Private <br />Concierge <br />In Euro-Asia</p>
+                                    <p className="text-4xl italic leading-tight text-dark font-serif">
+                                        Private <br />Concierge <br />In Euro-Asia
+                                    </p>
                                 </div>
                             </div>
+
                             <div>
-                                <h3 className="text-xs font-bold tracking-[0.5em] text-gold uppercase mb-8 font-sans">SPECIALIZED ASSISTANCE</h3>
-                                <h4 className="text-5xl md:text-6xl mb-10 leading-none font-serif text-white">The Luxury of <br/><span className="italic text-gold">No Limits.</span></h4>
+                                <h3 className="text-xs font-bold tracking-[0.5em] text-gold uppercase mb-8 font-sans">
+                                    SPECIALIZED ASSISTANCE
+                                </h3>
+                                <h4 className="text-5xl md:text-6xl mb-10 leading-none font-serif text-white">
+                                    The Luxury of <br/>
+                                    <span className="italic text-gold">No Limits.</span>
+                                </h4>
+                                
                                 <div className="space-y-12">
                                     <div className="flex gap-6 group">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-dark transition-all duration-500"><Compass size={24} /></div>
-                                        <div><h5 className="text-xl mb-3 font-serif">Imperial Expertise</h5><p className="text-gray-400 font-sans text-sm">Access to historical landmarks and cultural centers with specialized historians and local guides.</p></div>
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-dark transition-all duration-500">
+                                            <Compass size={24} />
+                                        </div>
+                                        <div>
+                                            <h5 className="text-xl mb-3 font-serif text-white">Imperial Expertise</h5>
+                                            <p className="text-gray-400 font-sans text-sm leading-relaxed">
+                                                Access to historical landmarks and cultural centers with specialized historians and local guides from St. Petersburg to Istanbul.
+                                            </p>
+                                        </div>
                                     </div>
                                     <div className="flex gap-6 group">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-dark transition-all duration-500"><Ship size={24} /></div>
-                                        <div><h5 className="text-xl mb-3 font-serif">Bespoke Logistics</h5><p className="text-gray-400 font-sans text-sm">From private desert camps to yacht charters across the Bosphorus and the Arabian Gulf.</p></div>
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-dark transition-all duration-500">
+                                            <Ship size={24} />
+                                        </div>
+                                        <div>
+                                            <h5 className="text-xl mb-3 font-serif text-white">Bespoke Logistics</h5>
+                                            <p className="text-gray-400 font-sans text-sm leading-relaxed">
+                                                From private desert camps in the Empty Quarter to yacht charters across the Bosphorus and the Arabian Gulf.
+                                            </p>
+                                        </div>
                                     </div>
                                     <div className="flex gap-6 group">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-dark transition-all duration-500"><Building size={24} /></div>
-                                        <div><h5 className="text-xl mb-3 font-serif">Premium Inventory</h5><p className="text-gray-400 font-sans text-sm">Privileged entry and priority reservations at the region's most iconic residences and social clubs.</p></div>
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-gold flex items-center justify-center text-gold group-hover:bg-gold group-hover:text-dark transition-all duration-500">
+                                            <Building size={24} />
+                                        </div>
+                                        <div>
+                                            <h5 className="text-xl mb-3 font-serif text-white">Premium Inventory</h5>
+                                            <p className="text-gray-400 font-sans text-sm leading-relaxed">
+                                                Privileged entry and priority reservations at the region's most iconic residences, sky-towers, and private social clubs.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </section>
 
-                    {/* Footer */}
-                    <footer className="bg-dark text-white py-20 px-6">
-                        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12">
-                            <div className="flex items-center gap-4">
-                                <div className="w-12 h-12 border border-white/20 flex items-center justify-center rounded-sm">
-                                    <span className="font-serif font-bold text-2xl">G</span>
+                    {/* Footer - Oceania Match */}
+                    <footer id="contact" className="bg-[#121212] text-white pt-32 pb-16 px-6">
+                        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-16 mb-20 text-left">
+                            <div className="md:col-span-2">
+                                <div className="flex items-center gap-3 mb-8">
+                                    <Globe className="w-10 h-10 text-gold" />
+                                    <div className="flex flex-col">
+                                        <span className="text-2xl font-bold tracking-tighter leading-none">GLOBAL MIX</span>
+                                        <span className="text-[12px] tracking-widest text-gold uppercase">Euro-Asia</span>
+                                    </div>
                                 </div>
-                                <div className="flex flex-col">
-                                    <span className="font-bold tracking-[0.3em] uppercase text-sm">Global Mix</span>
-                                    <span className="text-[10px] tracking-[0.4em] text-gold uppercase font-bold">Euro-Asia</span>
-                                </div>
+                                <p className="text-gray-400 max-w-sm mb-10 leading-relaxed italic text-sm">
+                                    "Redefining luxury travel in Euro-Asia &amp; the Middle East through authentic and exclusive expeditions."
+                                </p>
                             </div>
-
-                            <div className="flex flex-wrap justify-center gap-8 text-[9px] uppercase tracking-[0.3em] text-gray-400 font-bold">
-                                <a href="europe.html" className="hover:text-gold transition-colors">Europe</a>
-                                <a href="asia.html" className="hover:text-gold transition-colors">Asia</a>
-                                <a href="africa.html" className="hover:text-gold transition-colors">Africa</a>
-                                <a href="caribe.html" className="hover:text-gold transition-colors">Caribe</a>
-                                <a href="trains.html" className="hover:text-gold transition-colors">Luxury Train</a>
+                            <div>
+                                <h5 className="text-lg font-serif mb-8 border-l-2 border-gold pl-4 uppercase tracking-widest text-sm">Quick Links</h5>
+                                <ul className="space-y-4 text-gray-400 text-sm font-bold tracking-widest uppercase">
+                                    <li><a href="index.html" className="hover:text-white transition-colors">Corporate Hub</a></li>
+                                    <li><a href="travel.html" className="hover:text-white transition-colors">Global Network</a></li>
+                                    <li><a href="oceania.html" className="hover:text-white transition-colors">Oceania</a></li>
+                                </ul>
                             </div>
-
-                            <div className="text-[9px] text-gray-400 uppercase tracking-[0.2em] font-medium opacity-50">
-                                © 2025 Global Mix Network. All Rights Reserved.
+                            <div>
+                                <h5 className="text-lg font-serif mb-8 border-l-2 border-gold pl-4 uppercase tracking-widest text-sm">Contact</h5>
+                                <ul className="space-y-4 text-gray-400 text-sm">
+                                    <li className="flex items-center gap-4"><Phone size={18} className="text-gold" /> <span>{contactData.phone}</span></li>
+                                    <li className="flex items-center gap-4"><Mail size={18} className="text-gold" /> <span>{contactData.email}</span></li>
+                                    <li className="flex items-center gap-4"><MapPin size={18} className="text-gold" /> <span>Istanbul | Dubai</span></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div className="max-w-7xl mx-auto pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 uppercase tracking-widest font-bold">
+                            <p>© 2026 GLOBAL MIX Euro-Asia. All rights reserved.</p>
+                            <div className="flex gap-8">
+                                <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
+                                <span className="hover:text-white cursor-pointer transition-colors">Terms &amp; Conditions</span>
                             </div>
                         </div>
                     </footer>
+
                 </div>
             );
         };
