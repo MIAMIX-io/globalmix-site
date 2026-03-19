@@ -40,6 +40,11 @@
         html { scroll-behavior: smooth; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #fdfdfd; }
+        ::-webkit-scrollbar-thumb { background: #1A1A1A; }
+        ::-webkit-scrollbar-thumb:hover { background: #D4AF37; }
     </style>
 
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
@@ -88,7 +93,8 @@
                         "Video roll: Entrevistas, color de ciudad, hinchas y estadio.",
                         "1 o 2 salidas en vivo desde inmediaciones del estadio/ciudad.",
                         "Material exclusivo para redes sociales del medio."
-                    ]
+                    ],
+                    theme: "blueGold" // UPDATED: Added theme property
                 },
                 {
                     id: "B",
@@ -102,6 +108,7 @@
                         "1 o 2 salidas en vivo digitales (Streaming/Instagram).",
                         "Historias y Reels específicos para el medio."
                     ],
+                    theme: "blueGold", // UPDATED: Added theme property
                     featured: true
                 },
                 {
@@ -115,7 +122,8 @@
                         "Disponibilidad 24h antes y después del encuentro.",
                         "Hasta 3 salidas en vivo por día (6 por partido).",
                         "Cápsulas de audio y Reels para redes sociales."
-                    ]
+                    ],
+                    theme: "blueGold" // UPDATED: Added theme property
                 }
             ];
 
@@ -155,7 +163,6 @@
                     {/* Hero Section */}
                     <section className="relative h-screen flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0 z-0">
-                            {/* Epic Stadium Lights Image */}
                             <img src={"https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2000&fm=webp&auto=format&fit=crop"} alt="World Cup Stadium" className="w-full h-full object-cover scale-105" fetchPriority="high" />
                             <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/50 to-navy/95"></div>
                         </div>
@@ -209,12 +216,15 @@
                                     const Icon = pkg.icon;
                                     return (
                                         <div key={pkg.id} className={`group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border ${pkg.featured ? 'border-gold shadow-xl scale-105 z-10' : 'border-gray-100 shadow-sm'}`}>
-                                            <div className={`p-10 text-center border-b ${pkg.featured ? 'bg-navy text-white' : 'bg-white text-navy border-gray-100'}`}>
-                                                <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6 ${pkg.featured ? 'bg-gold/20 text-gold' : 'bg-navy/5 text-navy'}`}>
+                                            {/* UPDATED: Package header uses theme conditional styling */}
+                                            <div className={`p-10 text-center border-b ${pkg.theme === 'blueGold' ? 'bg-navy text-white' : 'bg-white text-navy border-gray-100'}`}>
+                                                {/* UPDATED: Icon container uses theme conditional styling */}
+                                                <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6 ${pkg.theme === 'blueGold' ? 'bg-gold/20 text-gold' : 'bg-navy/5 text-navy'}`}>
                                                     <Icon size={28} />
                                                 </div>
                                                 <h3 className="text-2xl font-bold tracking-widest uppercase mb-2">{pkg.title}</h3>
-                                                <p className={`text-xs uppercase tracking-[0.2em] font-semibold ${pkg.featured ? 'text-gold' : 'text-gray-500'}`}>{pkg.subtitle}</p>
+                                                {/* UPDATED: Subtitle uses theme conditional styling */}
+                                                <p className={`text-xs uppercase tracking-[0.2em] font-semibold ${pkg.theme === 'blueGold' ? 'text-gold' : 'text-gray-500'}`}>{pkg.subtitle}</p>
                                             </div>
                                             
                                             <div className="p-10 flex flex-col h-full bg-white">
@@ -247,7 +257,7 @@
                     </section>
 
                     {/* Schedule Section */}
-                    <section id="calendario" className="py-32 px-6 bg-white">
+                    <section id="calendario" className="py-32 px-6 bg-white border-t border-gray-100">
                         <div className="max-w-5xl mx-auto">
                             <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
                                 <div>
@@ -302,21 +312,20 @@
                     </section>
 
                     {/* Call to Action */}
-                    <section className="py-40 relative text-center text-white overflow-hidden">
+                    <section id="contact" className="py-40 relative text-center text-white overflow-hidden scroll-mt-10">
                         <div className="absolute inset-0 z-0">
-                            {/* Cinematic fans/stadium background */}
                             <img src={"https://images.unsplash.com/photo-1508344928928-7137b29de216?q=80&w=2000&fm=webp&auto=format&fit=crop"} alt="Fans cheering" className="w-full h-full object-cover" loading="lazy" />
                             <div className="absolute inset-0 bg-navy/80 mix-blend-multiply"></div>
                             <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent"></div>
                         </div>
                         
-                        <div className="relative z-10 max-w-4xl mx-auto px-6">
+                        <div className="relative z-10 max-w-4xl mx-auto px-6 animate-fade-in">
                             <Trophy className="w-16 h-16 text-gold mx-auto mb-8 opacity-80" />
                             <h3 className="text-4xl md:text-6xl font-serif mb-8 leading-tight">¿Listo para asegurar su <br/><span className="italic text-gold">cobertura mundial?</span></h3>
                             <p className="text-gray-300 text-lg mb-12 max-w-2xl mx-auto font-light">
                                 Asegure su cupo ahora y garantice la mejor calidad de imagen, sonido y producción periodística desde las sedes oficiales.
                             </p>
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-8 border border-white/10 p-8 rounded-2xl backdrop-blur-sm bg-white/5">
                                 <a href="mailto:info@globalmix.online" className="w-full sm:w-auto bg-gold text-navy px-12 py-5 text-[10px] font-bold tracking-[0.4em] uppercase hover:bg-white transition-all duration-500 shadow-xl">
                                     Contactar Ventas
                                 </a>
