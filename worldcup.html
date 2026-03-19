@@ -196,7 +196,7 @@
                         </div>
                     </section>
 
-                    {/* Packages Grid */}
+                   {/* Packages Grid */}
                     <section id="paquetes" className="py-24 bg-[#f8fafc] scroll-mt-10">
                         <div className="max-w-7xl mx-auto px-6">
                             <div className="text-center mb-20">
@@ -204,49 +204,124 @@
                             </div>
 
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                                {packages.map((pkg) => {
-                                    const Icon = pkg.icon;
-                                    return (
-                                        <div key={pkg.id} className="group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-gold shadow-xl">
-                                            
-                                            {/* Navy & Gold Header for ALL packages */}
-                                            <div className="p-10 text-center border-b bg-navy text-white">
-                                                <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6 bg-gold/20 text-gold">
-                                                    <Icon size={28} />
-                                                </div>
-                                                <h3 className="text-2xl font-bold tracking-widest uppercase mb-2">{pkg.title}</h3>
-                                                <p className="text-xs uppercase tracking-[0.2em] font-semibold text-gold">{pkg.subtitle}</p>
+                                
+                                {/* PAQUETE A */}
+                                <div className="group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-gold shadow-xl">
+                                    <div className="p-10 text-center border-b bg-navy text-white">
+                                        <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6 bg-gold/20 text-gold">
+                                            <Tv size={28} />
+                                        </div>
+                                        <h3 className="text-2xl font-bold tracking-widest uppercase mb-2">PAQUETE A</h3>
+                                        <p className="text-xs uppercase tracking-[0.2em] font-semibold text-gold">Cobertura Full Televisión</p>
+                                    </div>
+                                    <div className="p-10 flex flex-col h-full bg-white">
+                                        <ul className="space-y-6 mb-12 flex-grow">
+                                            <li className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
+                                                <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                                                <span>Video roll: Entrevistas, color de ciudad, hinchas y estadio.</span>
+                                            </li>
+                                            <li className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
+                                                <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                                                <span>1 o 2 salidas en vivo desde inmediaciones del estadio/ciudad.</span>
+                                            </li>
+                                            <li className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
+                                                <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                                                <span>Material exclusivo para redes sociales del medio.</span>
+                                            </li>
+                                        </ul>
+                                        <div className="pt-8 border-t border-gray-100 text-center">
+                                            <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-gray-400 mb-4">Inversión</p>
+                                            <div className="mb-4">
+                                                <span className="text-sm font-bold text-gray-500 align-top">USD</span>
+                                                <span className="text-4xl font-serif text-navy mx-1">1,500</span>
+                                                <span className="text-xs text-gray-400 uppercase tracking-widest">/ partido</span>
                                             </div>
-                                            
-                                            {/* Features & Pricing */}
-                                            <div className="p-10 flex flex-col h-full bg-white">
-                                                <ul className="space-y-6 mb-12 flex-grow">
-                                                    {pkg.features.map((feature, idx) => (
-                                                        <li key={idx} className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
-                                                            <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
-                                                            <span>{feature}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                                
-                                                <div className="pt-8 border-t border-gray-100 text-center">
-                                                    <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-gray-400 mb-4">Inversión</p>
-                                                    <div className="mb-4">
-                                                        <span className="text-sm font-bold text-gray-500 align-top">USD</span>
-                                                        <span className="text-4xl font-serif text-navy mx-1">{pkg.priceMatch}</span>
-                                                        <span className="text-xs text-gray-400 uppercase tracking-widest">/ partido</span>
-                                                    </div>
-                                                    
-                                                    {/* Full Package Box */}
-                                                    <div className="bg-navy/5 py-4 rounded-xl mt-4 border border-gold/30 shadow-inner">
-                                                        <p className="text-sm text-navy font-bold tracking-wide">USD {pkg.pricePack}</p>
-                                                        <p className="text-[9px] uppercase tracking-wider text-gray-500 font-semibold mt-1">Pack 4 Partidos Completos</p>
-                                                    </div>
-                                                </div>
+                                            <div className="bg-navy/5 py-4 rounded-xl mt-4 border border-gold/30 shadow-inner">
+                                                <p className="text-sm text-navy font-bold tracking-wide">USD 4,000</p>
+                                                <p className="text-[9px] uppercase tracking-wider text-gray-500 font-semibold mt-1">Pack 4 Partidos Completos</p>
                                             </div>
                                         </div>
-                                    );
-                                })}
+                                    </div>
+                                </div>
+
+                                {/* PAQUETE B */}
+                                <div className="group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-gold shadow-xl">
+                                    <div className="p-10 text-center border-b bg-navy text-white">
+                                        <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6 bg-gold/20 text-gold">
+                                            <Smartphone size={28} />
+                                        </div>
+                                        <h3 className="text-2xl font-bold tracking-widest uppercase mb-2">PAQUETE B</h3>
+                                        <p className="text-xs uppercase tracking-[0.2em] font-semibold text-gold">Digitales & Magazines</p>
+                                    </div>
+                                    <div className="p-10 flex flex-col h-full bg-white">
+                                        <ul className="space-y-6 mb-12 flex-grow">
+                                            <li className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
+                                                <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                                                <span>Video roll optimizado para web y redes sociales.</span>
+                                            </li>
+                                            <li className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
+                                                <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                                                <span>1 o 2 salidas en vivo digitales (Streaming/Instagram).</span>
+                                            </li>
+                                            <li className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
+                                                <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                                                <span>Historias y Reels específicos para el medio.</span>
+                                            </li>
+                                        </ul>
+                                        <div className="pt-8 border-t border-gray-100 text-center">
+                                            <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-gray-400 mb-4">Inversión</p>
+                                            <div className="mb-4">
+                                                <span className="text-sm font-bold text-gray-500 align-top">USD</span>
+                                                <span className="text-4xl font-serif text-navy mx-1">1,000</span>
+                                                <span className="text-xs text-gray-400 uppercase tracking-widest">/ partido</span>
+                                            </div>
+                                            <div className="bg-navy/5 py-4 rounded-xl mt-4 border border-gold/30 shadow-inner">
+                                                <p className="text-sm text-navy font-bold tracking-wide">USD 3,000</p>
+                                                <p className="text-[9px] uppercase tracking-wider text-gray-500 font-semibold mt-1">Pack 4 Partidos Completos</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* PAQUETE C */}
+                                <div className="group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-gold shadow-xl">
+                                    <div className="p-10 text-center border-b bg-navy text-white">
+                                        <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6 bg-gold/20 text-gold">
+                                            <Radio size={28} />
+                                        </div>
+                                        <h3 className="text-2xl font-bold tracking-widest uppercase mb-2">PAQUETE C</h3>
+                                        <p className="text-xs uppercase tracking-[0.2em] font-semibold text-gold">Cobertura para Radio</p>
+                                    </div>
+                                    <div className="p-10 flex flex-col h-full bg-white">
+                                        <ul className="space-y-6 mb-12 flex-grow">
+                                            <li className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
+                                                <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                                                <span>Disponibilidad 24h antes y después del encuentro.</span>
+                                            </li>
+                                            <li className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
+                                                <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                                                <span>Hasta 3 salidas en vivo por día (6 por partido).</span>
+                                            </li>
+                                            <li className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
+                                                <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                                                <span>Cápsulas de audio y Reels para redes sociales.</span>
+                                            </li>
+                                        </ul>
+                                        <div className="pt-8 border-t border-gray-100 text-center">
+                                            <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-gray-400 mb-4">Inversión</p>
+                                            <div className="mb-4">
+                                                <span className="text-sm font-bold text-gray-500 align-top">USD</span>
+                                                <span className="text-4xl font-serif text-navy mx-1">500</span>
+                                                <span className="text-xs text-gray-400 uppercase tracking-widest">/ partido</span>
+                                            </div>
+                                            <div className="bg-navy/5 py-4 rounded-xl mt-4 border border-gold/30 shadow-inner">
+                                                <p className="text-sm text-navy font-bold tracking-wide">USD 1,500</p>
+                                                <p className="text-[9px] uppercase tracking-wider text-gray-500 font-semibold mt-1">Pack 4 Partidos Completos</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </section>
