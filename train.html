@@ -345,67 +345,6 @@
                         </div>
                     </section>
 
-                    {/* Contact Section */}
-                    <section id="contact" className="py-32 px-6 bg-white border-t border-gray-100 scroll-mt-20">
-                        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-24">
-                            <div className="lg:w-1/2 text-left">
-                                <span className="text-gold uppercase tracking-[0.4em] text-[10px] font-bold">Inquiry &amp; Concierge</span>
-                                <h2 className="text-5xl font-serif mt-6 mb-10 text-navy leading-tight">Plan Your Grand Tour</h2>
-                                <p className="text-gray-500 mb-16 max-w-md text-lg font-light leading-relaxed">Our specialized rail concierge team is dedicated to securing the most exclusive suites and coordinating all pre and post-journey arrangements.</p>
-
-                                <div className="space-y-10">
-                                    <div className="flex items-center gap-8 group cursor-pointer" onClick={() => window.open(`https://wa.me/${contactData.whatsapp}`)}>
-                                        <div className="w-14 h-14 bg-navy text-white flex items-center justify-center group-hover:bg-gold transition-all duration-500 rounded-sm shadow-lg">
-                                            <Phone size={20} />
-                                        </div>
-                                        <div>
-                                            <p className="text-[9px] uppercase font-bold text-gray-400 tracking-[0.2em]">Phone &amp; WhatsApp</p>
-                                            <p className="text-2xl font-serif text-navy">{contactData.phone}</p>
-                                        </div>
-                                    </div>
-
-                                    <div className="flex items-center gap-8 group cursor-pointer" onClick={() => window.location.href = `mailto:${contactData.email}`}>
-                                        <div className="w-14 h-14 bg-navy text-white flex items-center justify-center group-hover:bg-gold transition-all duration-500 rounded-sm shadow-lg">
-                                            <Mail size={20} />
-                                        </div>
-                                        <div>
-                                            <p className="text-[9px] uppercase font-bold text-gray-400 tracking-[0.2em]">Email Address</p>
-                                            <p className="text-2xl font-serif text-navy">{contactData.email}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div className="lg:w-1/2 bg-gray-50 p-12 lg:p-16 rounded-xl border border-gray-100">
-                                <form onSubmit={handleFormSubmit} className="space-y-8">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
-                                        <div className="space-y-3">
-                                            <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Full Name</label>
-                                            <input name="name" type="text" required className="w-full bg-white border border-gray-200 p-4 focus:border-gold outline-none transition-all font-light text-sm" />
-                                        </div>
-                                        <div className="space-y-3">
-                                            <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Email Address</label>
-                                            <input name="email" type="email" required className="w-full bg-white border border-gray-200 p-4 focus:border-gold outline-none transition-all font-light text-sm" />
-                                        </div>
-                                    </div>
-                                    <div className="space-y-3 text-left">
-                                        <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Preferred Rail Experience</label>
-                                        <select name="rail" className="w-full bg-white border border-gray-200 p-4 focus:border-gold outline-none transition-all font-light text-sm cursor-pointer appearance-none">
-                                            {trainJourneys.map(j => <option key={j.id}>{j.title}</option>)}
-                                        </select>
-                                    </div>
-                                    <div className="space-y-3 text-left">
-                                        <label className="text-[9px] uppercase font-bold tracking-[0.2em] text-gray-400">Special Requirements</label>
-                                        <textarea rows="4" className="w-full bg-white border border-gray-200 p-4 focus:border-gold outline-none transition-all font-light text-sm"></textarea>
-                                    </div>
-                                    <button type="submit" className="w-full bg-navy text-white py-5 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-gold transition-all duration-500 shadow-lg">
-                                        Request Availability
-                                    </button>
-                                </form>
-                            </div>
-                        </div>
-                    </section>
-
                     {/* Footer */}
                     <footer className="bg-navy text-white py-20 px-6">
                         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-left">
