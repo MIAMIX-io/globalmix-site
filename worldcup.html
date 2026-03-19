@@ -208,7 +208,8 @@
                                     const Icon = pkg.icon;
                                     return (
                                         <div key={pkg.id} className="group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border border-gold shadow-xl">
-                                            {/* Navy Header */}
+                                            
+                                            {/* Navy & Gold Header for ALL packages */}
                                             <div className="p-10 text-center border-b bg-navy text-white">
                                                 <div className="w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6 bg-gold/20 text-gold">
                                                     <Icon size={28} />
@@ -235,6 +236,8 @@
                                                         <span className="text-4xl font-serif text-navy mx-1">{pkg.priceMatch}</span>
                                                         <span className="text-xs text-gray-400 uppercase tracking-widest">/ partido</span>
                                                     </div>
+                                                    
+                                                    {/* Full Package Box */}
                                                     <div className="bg-navy/5 py-4 rounded-xl mt-4 border border-gold/30 shadow-inner">
                                                         <p className="text-sm text-navy font-bold tracking-wide">USD {pkg.pricePack}</p>
                                                         <p className="text-[9px] uppercase tracking-wider text-gray-500 font-semibold mt-1">Pack 4 Partidos Completos</p>
