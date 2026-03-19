@@ -3,242 +3,356 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarifario Cobertura Mundial 2026 - Global Mix</title>
+    <title>Global Mix Media | Cobertura Mundial 2026</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        gold: '#D4AF37', // Trophy Gold
+                        navy: '#0A1128', // Stadium Navy
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1.5s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .bg-gradient-header {
-            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
-        }
-        .card-shadow {
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
-        }
+        html { scroll-behavior: smooth; }
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
+
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
-<body class="bg-slate-50 text-slate-900">
+<body class="bg-[#fafafa] antialiased">
+    
+    <div id="root"></div>
 
-    <!-- Header Section -->
-    <header class="bg-gradient-header text-white py-12 px-6 text-center shadow-lg">
-        <div class="max-w-4xl mx-auto">
-            <p class="uppercase tracking-widest text-blue-200 font-bold mb-2 text-sm">Propuesta Comercial</p>
-            <h1 class="text-4xl md:text-5xl font-extrabold mb-4">COBERTURA MUNDIAL 2026</h1>
-            <p class="text-xl md:text-2xl text-blue-100 opacity-90">Junio 2026 | EE.UU. - México - Canadá</p>
-            <div class="mt-6 inline-flex bg-white/20 backdrop-blur-md rounded-full px-6 py-2 border border-white/30">
-                <span class="font-semibold">Seguimiento Exclusivo: Argentina & Paraguay</span>
-            </div>
-        </div>
-    </header>
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
+        import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
+        import { 
+            Trophy, Tv, Smartphone, Radio, Calendar, MapPin, 
+            Clock, Globe, Mail, Phone, Menu, X, ChevronDown, CheckCircle2
+        } from 'https://esm.sh/lucide-react@0.292.0';
 
-    <main class="max-w-6xl mx-auto px-4 py-12">
-        
-        <!-- Intro & Included -->
-        <section class="mb-16 text-center">
-            <h2 class="text-3xl font-bold mb-6 text-blue-900">Paquetes de Cobertura Premium</h2>
-            <p class="text-lg text-slate-600 max-w-3xl mx-auto">
-                Ofrecemos servicios de producción de campo y cobertura periodística para las selecciones de <strong>Argentina</strong> y <strong>Paraguay</strong>. Cada paquete incluye la cobertura de 4 partidos clave, incluyendo la inauguración en CDMX.
-            </p>
-        </section>
+        const App = () => {
+            const [scrolled, setScrolled] = useState(false);
+            const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-        <!-- Pricing Cards -->
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
-            
-            <!-- Paquete TV -->
-            <div class="bg-white rounded-2xl overflow-hidden card-shadow border border-slate-100 flex flex-col">
-                <div class="bg-blue-600 p-6 text-white text-center">
-                    <div class="mb-4 inline-block p-3 bg-white/20 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold">PAQUETE A</h3>
-                    <p class="text-blue-100 text-sm">Cobertura Full Televisión</p>
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            const schedule = [
+                { date: "10 Jun", match: "INAUGURACIÓN: México vs Invitado", venue: "Estadio Azteca, CDMX", time: "19:00", highlight: true },
+                { date: "12 Jun", match: "Paraguay vs Estados Unidos", venue: "SoFi Stadium, Inglewood, CA", time: "21:00", highlight: false },
+                { date: "16 Jun", match: "Argentina vs Argelia", venue: "Arrowhead Stadium, Kansas City, MO", time: "21:00", highlight: false },
+                { date: "20 Jun", match: "Paraguay vs Ganador Playoff C", venue: "Levi's Stadium, Santa Clara, CA", time: "00:00", highlight: false },
+                { date: "22 Jun", match: "Argentina vs Austria", venue: "AT&T Stadium, Arlington, TX", time: "13:00", highlight: false },
+                { date: "25 Jun", match: "Paraguay vs Australia", venue: "Levi's Stadium, Santa Clara, CA", time: "22:00", highlight: false },
+                { date: "27 Jun", match: "Jordania vs Argentina", venue: "AT&T Stadium, Arlington, TX", time: "22:00", highlight: false }
+            ];
+
+            const packages = [
+                {
+                    id: "A",
+                    icon: Tv,
+                    title: "PAQUETE A",
+                    subtitle: "Cobertura Full Televisión",
+                    priceMatch: "1,500",
+                    pricePack: "4,000",
+                    features: [
+                        "Video roll: Entrevistas, color de ciudad, hinchas y estadio.",
+                        "1 o 2 salidas en vivo desde inmediaciones del estadio/ciudad.",
+                        "Material exclusivo para redes sociales del medio."
+                    ]
+                },
+                {
+                    id: "B",
+                    icon: Smartphone,
+                    title: "PAQUETE B",
+                    subtitle: "Digitales & Magazines",
+                    priceMatch: "1,000",
+                    pricePack: "3,000",
+                    features: [
+                        "Video roll optimizado para web y redes sociales.",
+                        "1 o 2 salidas en vivo digitales (Streaming/Instagram).",
+                        "Historias y Reels específicos para el medio."
+                    ],
+                    featured: true
+                },
+                {
+                    id: "C",
+                    icon: Radio,
+                    title: "PAQUETE C",
+                    subtitle: "Cobertura para Radio",
+                    priceMatch: "500",
+                    pricePack: "1,500",
+                    features: [
+                        "Disponibilidad 24h antes y después del encuentro.",
+                        "Hasta 3 salidas en vivo por día (6 por partido).",
+                        "Cápsulas de audio y Reels para redes sociales."
+                    ]
+                }
+            ];
+
+            return (
+                <div className="min-h-screen bg-[#fafafa] text-gray-900 font-sans selection:bg-gold/30">
+                    
+                    {/* Navigation */}
+                    <nav className={`fixed w-full z-50 transition-all duration-700 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-8'}`}>
+                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                                <div className={`w-10 h-10 flex items-center justify-center rounded-sm transition-colors ${scrolled ? 'bg-navy' : 'bg-white'}`}>
+                                    <span className={`font-serif font-bold text-xl ${scrolled ? 'text-white' : 'text-navy'}`}>G</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className={`font-bold tracking-[0.2em] text-sm uppercase ${scrolled ? 'text-navy' : 'text-white'}`}>Global Mix</span>
+                                    <span className="text-[10px] tracking-[0.3em] text-gold uppercase font-semibold">Media &amp; Sports</span>
+                                </div>
+                            </div>
+
+                            <div className={`hidden lg:flex gap-10 text-[10px] font-bold tracking-[0.3em] uppercase ${scrolled ? 'text-gray-600' : 'text-white/90'}`}>
+                                <a href="#propuesta" className="hover:text-gold transition-colors">La Propuesta</a>
+                                <a href="#paquetes" className="hover:text-gold transition-colors">Paquetes</a>
+                                <a href="#calendario" className="hover:text-gold transition-colors">Calendario</a>
+                            </div>
+
+                            <div className="flex items-center gap-4">
+                                <a href="mailto:info@globalmix.online" className={`hidden md:inline-block px-8 py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-gold transition-all duration-500 rounded-sm ${scrolled ? 'bg-navy text-white' : 'bg-white text-navy'}`}>
+                                    Contactar Ventas
+                                </a>
+                                <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
+                                    {isMenuOpen ? <X className={scrolled ? 'text-navy' : 'text-white'} /> : <Menu className={scrolled ? 'text-navy' : 'text-white'} />}
+                                </button>
+                            </div>
+                        </div>
+                    </nav>
+
+                    {/* Hero Section */}
+                    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            {/* Epic Stadium Lights Image */}
+                            <img src={"https://images.unsplash.com/photo-1522778119026-d647f0596c20?q=80&w=2000&fm=webp&auto=format&fit=crop"} alt="World Cup Stadium" className="w-full h-full object-cover scale-105" fetchPriority="high" />
+                            <div className="absolute inset-0 bg-gradient-to-b from-navy/80 via-navy/50 to-navy/95"></div>
+                        </div>
+
+                        <div className="relative z-10 text-center px-6 max-w-5xl animate-fade-in">
+                            <span className="inline-flex items-center gap-3 text-gold tracking-[0.4em] text-[10px] font-bold uppercase mb-8 border border-gold/40 px-6 py-2 rounded-full backdrop-blur-sm">
+                                <Trophy size={14} /> Propuesta Comercial Premium
+                            </span>
+                            <h1 className="text-5xl md:text-8xl font-serif text-white mb-6 leading-[1.1] drop-shadow-xl">
+                                Cobertura Mundial <br />
+                                <span className="italic text-gold">2026</span>
+                            </h1>
+                            <p className="text-white/80 text-lg md:text-xl max-w-2xl mx-auto font-light mb-8 tracking-wide">
+                                Junio 2026 | EE.UU. • México • Canadá
+                            </p>
+                            <p className="text-white text-sm md:text-base max-w-2xl mx-auto font-semibold uppercase tracking-widest mb-12 bg-white/10 py-3 rounded-lg backdrop-blur-md">
+                                Seguimiento Exclusivo: Argentina &amp; Paraguay
+                            </p>
+                            <a href="#paquetes" className="inline-block bg-gold text-navy px-16 py-5 text-[10px] font-bold uppercase tracking-[0.4em] hover:bg-white transition-all duration-700 shadow-[0_0_30px_rgba(212,175,55,0.3)] hover:-translate-y-1">
+                                Ver Paquetes
+                            </a>
+                        </div>
+                        
+                        <div className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 text-white/40">
+                            <span className="text-[9px] uppercase tracking-[0.4em]">Explorar</span>
+                            <div className="w-px h-16 bg-gradient-to-b from-white to-transparent" />
+                        </div>
+                    </section>
+
+                    {/* Intro Section */}
+                    <section id="propuesta" className="py-32 px-6 bg-white text-center">
+                        <div className="max-w-4xl mx-auto">
+                            <span className="text-gold uppercase tracking-[0.5em] text-[10px] font-bold italic block mb-6">Producción de Alto Nivel</span>
+                            <h2 className="text-3xl md:text-5xl font-serif mb-10 text-navy leading-tight">Servicios de Producción de Campo <br />y Cobertura Periodística</h2>
+                            <p className="text-gray-500 text-lg md:text-xl leading-relaxed font-light mb-12">
+                                Ofrecemos una cobertura integral y premium para las selecciones de <strong className="text-navy font-semibold">Argentina</strong> y <strong className="text-navy font-semibold">Paraguay</strong>. Cada paquete garantiza contenido de primera línea de 4 partidos clave, incluyendo la gran inauguración en CDMX.
+                            </p>
+                            <div className="w-20 h-[1px] bg-gold mx-auto" />
+                        </div>
+                    </section>
+
+                    {/* Packages Grid */}
+                    <section id="paquetes" className="py-24 bg-[#f8fafc] scroll-mt-10">
+                        <div className="max-w-7xl mx-auto px-6">
+                            <div className="text-center mb-20">
+                                <h3 className="text-4xl md:text-5xl font-serif text-navy">Paquetes de Cobertura</h3>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                                {packages.map((pkg) => {
+                                    const Icon = pkg.icon;
+                                    return (
+                                        <div key={pkg.id} className={`group bg-white rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl border ${pkg.featured ? 'border-gold shadow-xl scale-105 z-10' : 'border-gray-100 shadow-sm'}`}>
+                                            <div className={`p-10 text-center border-b ${pkg.featured ? 'bg-navy text-white' : 'bg-white text-navy border-gray-100'}`}>
+                                                <div className={`w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-6 ${pkg.featured ? 'bg-gold/20 text-gold' : 'bg-navy/5 text-navy'}`}>
+                                                    <Icon size={28} />
+                                                </div>
+                                                <h3 className="text-2xl font-bold tracking-widest uppercase mb-2">{pkg.title}</h3>
+                                                <p className={`text-xs uppercase tracking-[0.2em] font-semibold ${pkg.featured ? 'text-gold' : 'text-gray-500'}`}>{pkg.subtitle}</p>
+                                            </div>
+                                            
+                                            <div className="p-10 flex flex-col h-full bg-white">
+                                                <ul className="space-y-6 mb-12 flex-grow">
+                                                    {pkg.features.map((feature, idx) => (
+                                                        <li key={idx} className="flex items-start gap-4 text-sm text-gray-600 leading-relaxed">
+                                                            <CheckCircle2 className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                                                            <span>{feature}</span>
+                                                        </li>
+                                                    ))}
+                                                </ul>
+                                                
+                                                <div className="pt-8 border-t border-gray-100 text-center">
+                                                    <p className="text-[10px] uppercase font-bold tracking-[0.3em] text-gray-400 mb-4">Inversión</p>
+                                                    <div className="mb-2">
+                                                        <span className="text-sm font-bold text-gray-500 align-top">USD</span>
+                                                        <span className="text-4xl font-serif text-navy mx-1">{pkg.priceMatch}</span>
+                                                        <span className="text-xs text-gray-400 uppercase tracking-widest">/ partido</span>
+                                                    </div>
+                                                    <div className="bg-gray-50 py-3 rounded-lg mt-4 border border-gray-100">
+                                                        <p className="text-sm text-gray-600 font-semibold">USD {pkg.pricePack} <span className="text-[10px] uppercase tracking-wider text-gray-400 font-normal">/ Pack 4 Partidos</span></p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Schedule Section */}
+                    <section id="calendario" className="py-32 px-6 bg-white">
+                        <div className="max-w-5xl mx-auto">
+                            <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+                                <div>
+                                    <span className="text-gold font-bold text-[10px] tracking-[0.5em] uppercase mb-4 block">El Recorrido</span>
+                                    <h2 className="text-4xl md:text-5xl font-serif text-navy">Calendario Oficial</h2>
+                                </div>
+                                <div className="inline-flex items-center gap-2 bg-navy text-white px-5 py-2.5 rounded-sm text-[10px] uppercase tracking-widest font-bold">
+                                    <Clock size={14} className="text-gold" />
+                                    Zona Horaria: ET (Eastern Time)
+                                </div>
+                            </div>
+
+                            <div className="bg-white border border-gray-100 rounded-2xl shadow-xl overflow-hidden">
+                                <div className="overflow-x-auto">
+                                    <table className="w-full text-left border-collapse">
+                                        <thead>
+                                            <tr className="bg-[#f8fafc] text-[10px] uppercase tracking-widest text-gray-500 border-b border-gray-200">
+                                                <th className="py-6 px-8 font-bold whitespace-nowrap">Fecha</th>
+                                                <th className="py-6 px-8 font-bold">Encuentro</th>
+                                                <th className="py-6 px-8 font-bold">Sede / Estadio</th>
+                                                <th className="py-6 px-8 font-bold text-right">Hora (ET)</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-gray-100">
+                                            {schedule.map((row, idx) => (
+                                                <tr key={idx} className={`hover:bg-gray-50 transition-colors ${row.highlight ? 'bg-gold/5' : ''}`}>
+                                                    <td className="py-6 px-8 whitespace-nowrap">
+                                                        <div className="flex items-center gap-3">
+                                                            <Calendar size={16} className={row.highlight ? "text-gold" : "text-gray-400"} />
+                                                            <span className="font-semibold text-gray-900">{row.date}</span>
+                                                        </div>
+                                                    </td>
+                                                    <td className="py-6 px-8">
+                                                        <span className={`font-serif text-lg ${row.highlight ? 'text-gold font-bold italic' : 'text-navy'}`}>
+                                                            {row.match}
+                                                        </span>
+                                                    </td>
+                                                    <td className="py-6 px-8 text-sm text-gray-600 flex items-center gap-2 mt-1">
+                                                        <MapPin size={14} className="text-gray-400 shrink-0" />
+                                                        {row.venue}
+                                                    </td>
+                                                    <td className="py-6 px-8 text-right font-mono font-bold text-navy">
+                                                        {row.time}
+                                                    </td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Call to Action */}
+                    <section className="py-40 relative text-center text-white overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            {/* Cinematic fans/stadium background */}
+                            <img src={"https://images.unsplash.com/photo-1508344928928-7137b29de216?q=80&w=2000&fm=webp&auto=format&fit=crop"} alt="Fans cheering" className="w-full h-full object-cover" loading="lazy" />
+                            <div className="absolute inset-0 bg-navy/80 mix-blend-multiply"></div>
+                            <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/60 to-transparent"></div>
+                        </div>
+                        
+                        <div className="relative z-10 max-w-4xl mx-auto px-6">
+                            <Trophy className="w-16 h-16 text-gold mx-auto mb-8 opacity-80" />
+                            <h3 className="text-4xl md:text-6xl font-serif mb-8 leading-tight">¿Listo para asegurar su <br/><span className="italic text-gold">cobertura mundial?</span></h3>
+                            <p className="text-gray-300 text-lg mb-12 max-w-2xl mx-auto font-light">
+                                Asegure su cupo ahora y garantice la mejor calidad de imagen, sonido y producción periodística desde las sedes oficiales.
+                            </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-8">
+                                <a href="mailto:info@globalmix.online" className="w-full sm:w-auto bg-gold text-navy px-12 py-5 text-[10px] font-bold tracking-[0.4em] uppercase hover:bg-white transition-all duration-500 shadow-xl">
+                                    Contactar Ventas
+                                </a>
+                                <div className="flex items-center gap-3 text-gold">
+                                    <Mail size={18} />
+                                    <span className="font-mono tracking-wider">info@globalmix.online</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="bg-navy text-white pt-20 pb-10 px-6 border-t border-white/10">
+                        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+                            <div className="flex items-center gap-4">
+                                <div className="w-10 h-10 border border-gold/30 flex items-center justify-center rounded-sm">
+                                    <span className="font-serif font-bold text-xl text-gold">G</span>
+                                </div>
+                                <div className="flex flex-col">
+                                    <span className="font-bold tracking-[0.3em] uppercase text-sm">Global Mix</span>
+                                    <span className="text-[9px] tracking-[0.4em] text-gold uppercase font-bold">Media &amp; Sports</span>
+                                </div>
+                            </div>
+
+                            <div className="text-[10px] text-gray-500 uppercase tracking-[0.2em] font-medium">
+                                © 2026 Global Mix. Cobertura Especial Argentina y Paraguay.
+                            </div>
+                        </div>
+                    </footer>
+
                 </div>
-                <div class="p-8 flex-grow">
-                    <ul class="space-y-4 mb-8 text-sm text-slate-600">
-                        <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">✓</span>
-                            <span>Video roll: Entrevistas, color de ciudad, hinchas y estadio.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">✓</span>
-                            <span>1 o 2 salidas en vivo desde inmediaciones del estadio/ciudad.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-blue-500 mr-2">✓</span>
-                            <span>Material exclusivo para redes sociales del medio.</span>
-                        </li>
-                    </ul>
-                    <div class="mt-auto pt-6 border-t border-slate-100 text-center">
-                        <p class="text-slate-400 text-xs uppercase font-bold tracking-tighter">Inversión</p>
-                        <p class="text-2xl font-bold text-blue-700">USD 1,500 <span class="text-sm font-normal text-slate-400">/ partido</span></p>
-                        <p class="text-lg font-bold text-slate-800 mt-1">USD 4,000 <span class="text-sm font-normal text-slate-400">/ Pack 4 Partidos</span></p>
-                    </div>
-                </div>
-            </div>
+            );
+        };
 
-            <!-- Paquete Digital -->
-            <div class="bg-white rounded-2xl overflow-hidden card-shadow border border-slate-100 flex flex-col scale-105 transform z-10">
-                <div class="bg-green-600 p-6 text-white text-center">
-                    <div class="mb-4 inline-block p-3 bg-white/20 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold">PAQUETE B</h3>
-                    <p class="text-green-100 text-sm">Digitales & Magazines</p>
-                </div>
-                <div class="p-8 flex-grow">
-                    <ul class="space-y-4 mb-8 text-sm text-slate-600">
-                        <li class="flex items-start">
-                            <span class="text-green-500 mr-2">✓</span>
-                            <span>Video roll optimizado para web y redes sociales.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-green-500 mr-2">✓</span>
-                            <span>1 o 2 salidas en vivo digitales (Streaming/Instagram).</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-green-500 mr-2">✓</span>
-                            <span>Historias y Reels específicos para el medio.</span>
-                        </li>
-                    </ul>
-                    <div class="mt-auto pt-6 border-t border-slate-100 text-center">
-                        <p class="text-slate-400 text-xs uppercase font-bold tracking-tighter">Inversión</p>
-                        <p class="text-2xl font-bold text-green-700">USD 1,000 <span class="text-sm font-normal text-slate-400">/ partido</span></p>
-                        <p class="text-lg font-bold text-slate-800 mt-1">USD 3,000 <span class="text-sm font-normal text-slate-400">/ Pack 4 Partidos</span></p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Paquete Radio -->
-            <div class="bg-white rounded-2xl overflow-hidden card-shadow border border-slate-100 flex flex-col">
-                <div class="bg-orange-500 p-6 text-white text-center">
-                    <div class="mb-4 inline-block p-3 bg-white/20 rounded-full">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-bold">PAQUETE C</h3>
-                    <p class="text-orange-100 text-sm">Cobertura para Radio</p>
-                </div>
-                <div class="p-8 flex-grow">
-                    <ul class="space-y-4 mb-8 text-sm text-slate-600">
-                        <li class="flex items-start">
-                            <span class="text-orange-500 mr-2">✓</span>
-                            <span>Disponibilidad 24h antes y después del encuentro.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-orange-500 mr-2">✓</span>
-                            <span>Hasta 3 salidas en vivo por día (6 por partido).</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-orange-500 mr-2">✓</span>
-                            <span>Cápsulas de audio y Reels para redes sociales.</span>
-                        </li>
-                    </ul>
-                    <div class="mt-auto pt-6 border-t border-slate-100 text-center">
-                        <p class="text-slate-400 text-xs uppercase font-bold tracking-tighter">Inversión</p>
-                        <p class="text-2xl font-bold text-orange-600">USD 500 <span class="text-sm font-normal text-slate-400">/ partido</span></p>
-                        <p class="text-lg font-bold text-slate-800 mt-1">USD 1,500 <span class="text-sm font-normal text-slate-400">/ Pack 4 Partidos</span></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Schedule Section -->
-        <section class="bg-white rounded-3xl p-8 card-shadow overflow-hidden border border-slate-100">
-            <div class="flex flex-col md:flex-row md:items-center justify-between mb-8">
-                <div>
-                    <h2 class="text-2xl font-bold text-blue-900">Calendario de Cobertura</h2>
-                    <p class="text-slate-500">Eventos clave incluidos en los paquetes</p>
-                </div>
-                <div class="mt-4 md:mt-0 bg-blue-50 text-blue-700 px-4 py-2 rounded-lg font-semibold text-sm">
-                    Zona Horaria: ET (Eastern Time)
-                </div>
-            </div>
-            
-            <div class="overflow-x-auto">
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="border-b border-slate-100">
-                            <th class="pb-4 font-bold text-slate-400 text-sm uppercase">Fecha</th>
-                            <th class="pb-4 font-bold text-slate-400 text-sm uppercase">Encuentro</th>
-                            <th class="pb-4 font-bold text-slate-400 text-sm uppercase">Sede / Estadio</th>
-                            <th class="pb-4 font-bold text-slate-400 text-sm uppercase text-right">Hora (ET)</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-slate-50 text-slate-700">
-                        <tr>
-                            <td class="py-4 font-semibold">10 Jun</td>
-                            <td class="py-4 font-bold text-blue-600 italic">INAUGURACIÓN: México vs Invitado</td>
-                            <td class="py-4">Estadio Azteca, CDMX</td>
-                            <td class="py-4 text-right">19:00</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 font-semibold">12 Jun</td>
-                            <td class="py-4">Paraguay vs Estados Unidos</td>
-                            <td class="py-4">SoFi Stadium, Inglewood, CA</td>
-                            <td class="py-4 text-right">21:00</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 font-semibold">16 Jun</td>
-                            <td class="py-4">Argentina vs Argelia</td>
-                            <td class="py-4">Arrowhead Stadium, Kansas City, MO</td>
-                            <td class="py-4 text-right">21:00</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 font-semibold text-orange-600">20 Jun</td>
-                            <td class="py-4">Paraguay vs Ganador Playoff C</td>
-                            <td class="py-4">Levi's Stadium, Santa Clara, CA</td>
-                            <td class="py-4 text-right font-bold">00:00</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 font-semibold">22 Jun</td>
-                            <td class="py-4">Argentina vs Austria</td>
-                            <td class="py-4">AT&T Stadium, Arlington, TX</td>
-                            <td class="py-4 text-right">13:00</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 font-semibold">25 Jun</td>
-                            <td class="py-4">Paraguay vs Australia</td>
-                            <td class="py-4">Levi's Stadium, Santa Clara, CA</td>
-                            <td class="py-4 text-right">22:00</td>
-                        </tr>
-                        <tr>
-                            <td class="py-4 font-semibold">27 Jun</td>
-                            <td class="py-4">Jordania vs Argentina</td>
-                            <td class="py-4">AT&T Stadium, Arlington, TX</td>
-                            <td class="py-4 text-right">22:00</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-        </section>
-
-        <!-- Call to Action -->
-        <section class="mt-16 bg-blue-900 rounded-3xl p-10 text-white text-center relative overflow-hidden">
-            <div class="relative z-10">
-                <h2 class="text-3xl font-bold mb-4">¿Listo para cubrir el Mundial con nosotros?</h2>
-                <p class="text-blue-200 mb-8 max-w-2xl mx-auto">Asegure su cupo ahora y garantice la mejor calidad de imagen y sonido para su audiencia. Producción profesional desde las sedes oficiales.</p>
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                    <a href="mailto:info@globalmix.online" class="bg-white text-blue-900 px-8 py-3 rounded-full font-bold hover:bg-blue-50 transition-colors">
-                        Contactar Ventas
-                    </a>
-                    <p class="font-semibold text-blue-300">info@globalmix.online</p>
-                </div>
-            </div>
-            <!-- Decorative circle -->
-            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-64 h-64 bg-blue-800 rounded-full opacity-50"></div>
-            <div class="absolute bottom-0 left-0 -ml-10 -mb-10 w-40 h-40 bg-blue-700 rounded-full opacity-30"></div>
-        </section>
-
-    </main>
-
-    <footer class="py-8 border-t border-slate-200 text-center text-slate-400 text-sm">
-        <p>© 2026 Global Mix - Cobertura Especial Argentina y Paraguay</p>
-    </footer>
-
+        const root = createRoot(document.getElementById('root'));
+        root.render(<App />);
+    </script>
 </body>
 </html>
-
