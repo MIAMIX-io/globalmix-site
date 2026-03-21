@@ -55,7 +55,7 @@
         
         import { 
             Compass, MapPin, Ship, Trees, Wind, Sun, Waves, Camera, 
-            Menu, X, ChevronRight, ChevronDown, Mail, Phone, Globe, MessageCircle, Star, Bed, Building
+            Menu, X, ChevronRight, ChevronDown, Mail, Phone, Globe, MessageCircle, Star, Bed, Building, Map
         } from 'https://esm.sh/lucide-react@0.292.0';
 
         const App = () => {
@@ -83,30 +83,36 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
-            const handleTripAction = (e, trip, regionName) => {
+            // 1. ACTION FOR THE BUTTON (Opens Email Draft)
+            const handleEmailInquiry = (e, trip) => {
                 e.preventDefault();
+                e.stopPropagation(); // Prevents the image link from triggering
                 const subject = encodeURIComponent(`Requesting Full Itinerary: ${trip.title}`);
                 const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me the full itinerary and details for the "${trip.title}" expedition.\n\nThank you!`);
-                const mailtoLink = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
+                window.location.href = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
+            };
 
-                const safeRegion = regionName.toLowerCase().replace(/[^a-z0-9]/g, '');
-                const safeSlug = trip.title.split(' ')[0].toLowerCase().replace(/[^a-z0-9-]/g, ''); 
-                const pageUrl = `/${safeRegion}/${safeSlug}`;
-
-                window.location.href = mailtoLink;
-                setTimeout(() => { window.location.href = pageUrl; }, 300);
+            // 2. ACTION FOR THE IMAGE (Navigates to the Notion-Synced Slug)
+            const handleImageClick = (e, trip) => {
+                e.preventDefault();
+                if (trip.slug) {
+                    window.location.href = `https://${trip.slug}`;
+                } else {
+                    const safeSlug = trip.title.toLowerCase().replace(/[^a-z0-9]+/g, '-'); 
+                    window.location.href = `/travel/caribbean/${safeSlug}`;
+                }
             };
 
             const caribeJourneys = [
-                { id: 1, title: "Caribbean Grand Escape", duration: "10 Days", tag: "Bahamas & Turks", route: "Miami – Bahamas – Turks and Caicos", description: "World-class lifestyle and top-tier beaches.", hotels: ["Faena Hotel Miami Beach", "The Ocean Club, A Four Seasons Resort", "Amanyara"], image: "https://images.unsplash.com/photo-1544918877-460635b6d13e?auto=format&fit=crop&q=80&w=800", category: "Elite" },
-                { id: 2, title: "St. Barths & Sophistication", duration: "9 Days", tag: "French Caribbean Chic", route: "Saint Martin – St. Barth – Anguilla", description: "The most exclusive Caribbean flair.", hotels: ["Belmond La Samanna", "Eden Rock St Barths", "Cheval Blanc Isle de France"], image: "https://images.unsplash.com/photo-1497632689487-5ff95ff86b7a?q=80&w=2066&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Elite" },
-                { id: 3, title: "Dominican Republic Luxury", duration: "9 Days", tag: "Culture & Nature", route: "Punta Cana – Santo Domingo – Samaná", description: "A sensory journey through the island.", hotels: ["Eden Roc Cap Cana", "JW Marriott Santo Domingo", "Sublime Samana Hotel"], image: "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&q=80&w=800", category: "Culture" },
-                { id: 4, title: "Casa de Campo Elite", duration: "7 Days", tag: "Elite Experience", route: "La Romana, Dominican Republic", description: "Ultra-luxury immersion in the most prestigious resort in the Caribbean.", hotels: ["Casa de Campo Resort & Villas"], image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&q=80&w=800", category: "Elite" },
-                { id: 5, title: "Jamaica & Cayman Escape", duration: "9 Days", tag: "Rhythm & Sophistication", route: "Montego Bay – Negril – Grand Cayman", description: "British elegance in the tropics.", hotels: ["Round Hill Hotel and Villas", "Rockhouse Hotel", "The Ritz-Carlton Grand Cayman"], image: "https://images.unsplash.com/photo-1606466123170-d39e5346aa76?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Islands" },
-                { id: 6, title: "Puerto Rico & Virgin Islands", duration: "8 Days", tag: "Culture & Navigation", route: "San Juan – Saint Thomas – Saint John", description: "History and crystal clear waters.", hotels: ["Dorado Beach, a Ritz-Carlton Reserve", "Condado Vanderbilt Hotel", "The Ritz-Carlton St Thomas"], image: "https://plus.unsplash.com/premium_photo-1677010272257-8ab1fa4146c3?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Culture" },
-                { id: 7, title: "Cuba Cultural Luxury", duration: "8 Days", tag: "Unique Heritage", route: "Havana – Trinidad – Varadero", description: "Timeless charm with contemporary luxury.", hotels: ["Gran Hotel Manzana Kempinski", "Iberostar Grand Trinidad", "Royalton Hicacos Resort"], image: "https://images.unsplash.com/photo-1570299437522-f66ff98d52e7?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Culture" },
-                { id: 8, title: "ABC Islands Luxury", duration: "9 Days", tag: "Dutch Caribbean", route: "Aruba – Curaçao – Bonaire", description: "Diving and European refinement.", hotels: ["The Ritz-Carlton Aruba", "Baoase Luxury Resort", "Harbour Village Beach Club"], image: "https://images.unsplash.com/photo-1674161738619-fe98dfd57081?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Islands" },
-                { id: 9, title: "Grenada & St. Vincent", duration: "9 Days", tag: "Hidden Escape", route: "Grenada – St. Vincent & the Grenadines", description: "The ultimate ultra-private escape.", hotels: ["Silversands Grenada", "Mandarin Oriental Canouan", "Petit St Vincent Private Island"], image: "https://images.unsplash.com/photo-1722902634840-e90760f9cbcc?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Islands" }
+                { id: 1, title: "Caribbean Grand Escape", duration: "10 Days", tag: "Bahamas & Turks", slug: "globalmix.network/travel/caribbean/bahamas-turks-cb-01", route: "Miami – Bahamas – Turks and Caicos", description: "World-class lifestyle and top-tier beaches.", hotels: ["Faena Hotel Miami Beach", "The Ocean Club, A Four Seasons Resort", "Amanyara"], image: "https://images.unsplash.com/photo-1544918877-460635b6d13e?auto=format&fit=crop&q=80&w=800", category: "Elite" },
+                { id: 2, title: "St. Barths & Sophistication", duration: "9 Days", tag: "French Caribbean Chic", slug: "globalmix.network/travel/caribbean/french-caribbean-chic-cb-03", route: "Saint Martin – St. Barth – Anguilla", description: "The most exclusive Caribbean flair.", hotels: ["Belmond La Samanna", "Eden Rock St Barths", "Cheval Blanc Isle de France"], image: "https://images.unsplash.com/photo-1497632689487-5ff95ff86b7a?q=80&w=2066&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Elite" },
+                { id: 3, title: "Dominican Republic Luxury", duration: "9 Days", tag: "Culture & Nature", slug: "globalmix.network/travel/caribbean/culture-nature-cb-04", route: "Punta Cana – Santo Domingo – Samaná", description: "A sensory journey through the island.", hotels: ["Eden Roc Cap Cana", "JW Marriott Santo Domingo", "Sublime Samana Hotel"], image: "https://images.unsplash.com/photo-1543731068-7e0f5beff43a?auto=format&fit=crop&q=80&w=800", category: "Culture" },
+                { id: 4, title: "Casa de Campo Elite", duration: "7 Days", tag: "Elite Experience", slug: "globalmix.network/travel/caribbean/elite-experience-cb-05", route: "La Romana, Dominican Republic", description: "Ultra-luxury immersion in the most prestigious resort in the Caribbean.", hotels: ["Casa de Campo Resort & Villas"], image: "https://images.unsplash.com/photo-1602002418082-a4443e081dd1?auto=format&fit=crop&q=80&w=800", category: "Elite" },
+                { id: 5, title: "Jamaica & Cayman Escape", duration: "9 Days", tag: "Rhythm & Sophistication", slug: "globalmix.network/travel/caribbean/rhythm-sophistication-cb-06", route: "Montego Bay – Negril – Grand Cayman", description: "British elegance in the tropics.", hotels: ["Round Hill Hotel and Villas", "Rockhouse Hotel", "The Ritz-Carlton Grand Cayman"], image: "https://images.unsplash.com/photo-1606466123170-d39e5346aa76?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Islands" },
+                { id: 6, title: "Puerto Rico & Virgin Islands", duration: "8 Days", tag: "Culture & Navigation", slug: "globalmix.network/travel/caribbean/culture-navigation-cb-07", route: "San Juan – Saint Thomas – Saint John", description: "History and crystal clear waters.", hotels: ["Dorado Beach, a Ritz-Carlton Reserve", "Condado Vanderbilt Hotel", "The Ritz-Carlton St Thomas"], image: "https://plus.unsplash.com/premium_photo-1677010272257-8ab1fa4146c3?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Culture" },
+                { id: 7, title: "Cuba Cultural Luxury", duration: "8 Days", tag: "Unique Heritage", slug: "globalmix.network/travel/caribbean/unique-heritage-cb-08", route: "Havana – Trinidad – Varadero", description: "Timeless charm with contemporary luxury.", hotels: ["Gran Hotel Manzana Kempinski", "Iberostar Grand Trinidad", "Royalton Hicacos Resort"], image: "https://images.unsplash.com/photo-1570299437522-f66ff98d52e7?q=80&w=928&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Culture" },
+                { id: 8, title: "ABC Islands Luxury", duration: "9 Days", tag: "Dutch Caribbean", slug: "globalmix.network/travel/caribbean/dutch-caribbean-cb-09", route: "Aruba – Curaçao – Bonaire", description: "Diving and European refinement.", hotels: ["The Ritz-Carlton Aruba", "Baoase Luxury Resort", "Harbour Village Beach Club"], image: "https://images.unsplash.com/photo-1674161738619-fe98dfd57081?q=80&w=774&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Islands" },
+                { id: 9, title: "Grenada & St. Vincent", duration: "9 Days", tag: "Hidden Escape", slug: "globalmix.network/travel/caribbean/hidden-escape-cb-10", route: "Grenada – St. Vincent & the Grenadines", description: "The ultimate ultra-private escape.", hotels: ["Silversands Grenada", "Mandarin Oriental Canouan", "Petit St Vincent Private Island"], image: "https://images.unsplash.com/photo-1722902634840-e90760f9cbcc?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D", category: "Islands" }
             ];
 
             const categories = ["All", "Elite", "Culture", "Islands"];
@@ -201,13 +207,16 @@
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                                 {caribeJourneys.filter(j => activeCategory === 'All' || j.category === activeCategory).map((journey) => (
                                     <div key={journey.id} className="group bg-white shadow-sm hover:shadow-2xl transition-all duration-700 overflow-hidden flex flex-col border border-gray-100 rounded-2xl">
-                                        <div className="h-80 overflow-hidden relative">
+                                        
+                                        {/* IMAGE ACTION: Links to the Generated Notion Slug */}
+                                        <a href={journey.slug ? `https://${journey.slug}` : `#`} onClick={(e) => handleImageClick(e, journey)} className="h-80 overflow-hidden relative block cursor-pointer">
                                             <img src={`${journey.image}&fm=webp`} alt={journey.title} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy" />
-                                            <div className="absolute top-5 right-5 bg-white/95 px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest text-gray-900 rounded-full">{journey.duration}</div>
+                                            <div className="absolute top-5 right-5 bg-white/95 px-4 py-1.5 text-[9px] font-bold uppercase tracking-widest text-gray-900 rounded-full shadow-sm">{journey.duration}</div>
                                             {journey.id === 4 && (
-                                                <div className="absolute bottom-5 left-5 bg-black/80 text-white px-3 py-1 text-[8px] uppercase tracking-[0.3em] font-bold">Exclusive Access</div>
+                                                <div className="absolute bottom-5 left-5 bg-black/80 text-white px-3 py-1 text-[8px] uppercase tracking-[0.3em] font-bold rounded-sm">Exclusive Access</div>
                                             )}
-                                        </div>
+                                        </a>
+
                                         <div className="p-10 flex flex-col flex-grow">
                                             <span className="text-[9px] text-[#C5A059] font-bold uppercase tracking-[0.3em]">{journey.tag}</span>
                                             <h4 className="text-2xl font-serif mt-3 mb-4 text-gray-900 group-hover:text-[#C5A059] transition-colors">{journey.title}</h4>
@@ -224,7 +233,11 @@
                                                 </ul>
                                             </div>
 
-                                            <button onClick={(e) => handleTripAction(e, journey, "Caribe")} className="mt-auto w-full border border-gray-900 text-gray-900 py-4 text-[9px] font-bold uppercase tracking-[0.3em] hover:bg-gray-900 hover:text-white transition-all flex justify-center items-center gap-2 rounded-lg">
+                                            {/* BUTTON ACTION: Opens Mail Draft */}
+                                            <button 
+                                                onClick={(e) => handleEmailInquiry(e, journey)} 
+                                                className="mt-auto w-full border border-gray-900 text-gray-900 py-4 text-[9px] font-bold uppercase tracking-[0.3em] hover:bg-gray-900 hover:text-white transition-all flex justify-center items-center gap-2 rounded-lg"
+                                            >
                                                 Request Details <ChevronRight size={14} />
                                             </button>
                                         </div>
@@ -234,17 +247,18 @@
                         </div>
                     </section>
 
-                    <section id="experience" class="py-32 bg-[#006064] text-white overflow-hidden scroll-mt-20">
-                        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
-                            <div class="relative">
-                                <div class="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border-4 border-white/10">
+                    {/* Concierge Section */}
+                    <section id="experience" className="py-32 bg-[#006064] text-white overflow-hidden scroll-mt-20">
+                        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+                            <div className="relative">
+                                <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border-4 border-white/10">
                                     <img src="https://images.unsplash.com/photo-1573548842355-73bb50e50323?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
                                          className="w-full h-full object-cover grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-1000" 
                                          alt="Caribbean Concierge" 
                                          loading="lazy" />
                                 </div>
-                                <div class="absolute -bottom-10 -right-10 bg-[#00ced1] p-12 hidden md:block rounded-sm shadow-2xl transform hover:-translate-y-2 transition-transform duration-500">
-                                    <p class="text-4xl italic leading-tight text-[#00363a] font-serif">
+                                <div className="absolute -bottom-10 -right-10 bg-[#00ced1] p-12 hidden md:block rounded-sm shadow-2xl transform hover:-translate-y-2 transition-transform duration-500">
+                                    <p className="text-4xl italic leading-tight text-[#00363a] font-serif">
                                         Private <br />Concierge <br />In the Antilles
                                     </p>
                                 </div>
@@ -307,10 +321,9 @@
                             <div>
                                 <h5 className="text-lg font-serif mb-8 border-l-2 border-[#C5A059] pl-4 uppercase tracking-widest text-sm">Company</h5>
                                 <ul className="space-y-4 text-gray-400 text-sm">
-                                    <li><a href="#" className="hover:text-white transition-colors">Our Story</a></li>
+                                    <li><a href="index.html" className="hover:text-white transition-colors">Our Story</a></li>
                                     <li><a href="#circuits" className="hover:text-white transition-colors">Elite Collection</a></li>
-                                    <li><a href="#" className="hover:text-white transition-colors">Sustainability</a></li>
-                                    <li><a href="#" className="hover:text-white transition-colors">Concierge Services</a></li>
+                                    <li><a href="travel.html" className="hover:text-white transition-colors">Global Network</a></li>
                                 </ul>
                             </div>
                             <div>
@@ -323,8 +336,8 @@
                             </div>
                         </div>
                         <div className="max-w-7xl mx-auto px-6 pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 uppercase tracking-widest">
-                            <p>© 2025 GLOBAL MIX Caribe. All rights reserved.</p>
-                            <div className="flex gap-8"><span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span><span className="hover:text-white cursor-pointer transition-colors">Terms & Conditions</span></div>
+                            <p>© 2026 GLOBAL MIX Caribe. All rights reserved.</p>
+                            <div className="flex gap-8"><span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span><span className="hover:text-white cursor-pointer transition-colors">Terms &amp; Conditions</span></div>
                         </div>
                     </footer>
                 </div>
