@@ -2,7 +2,7 @@ const { Client } = require('@notionhq/client');
 const fs = require('fs');
 const path = require('path');
 
-// Initialize Notion Client using the specific Global Mix secrets
+// Initialize Notion Client
 const notion = new Client({ auth: process.env.GLOBALMIX_NOTION_API_KEY });
 const DATABASE_ID = process.env.GLOBALMIX_NOTION_DB_ID; 
 
@@ -18,6 +18,52 @@ const getText = (prop) => {
     return "N/A";
 };
 
+// 🆕 Helper function to convert Notion blocks into styled HTML
+function convertBlocksToHtml(blocks) {
+    let html = '';
+    
+    for (const block of blocks) {
+        switch(block.type) {
+            case 'paragraph':
+                const pText = block.paragraph.rich_text.map(t => t.plain_text).join('');
+                if (pText.trim() === '') {
+                    html += `<br/>`; // Handle empty lines
+                } else {
+                    html += `<p class="text-gray-600 font-light leading-relaxed mb-6 text-lg">${pText}</p>`;
+                }
+                break;
+            case 'heading_1':
+                const h1Text = block.heading_1.rich_text.map(t => t.plain_text).join('');
+                html += `<h2 class="text-4xl font-serif text-gray-900 mt-12 mb-6">${h1Text}</h2>`;
+                break;
+            case 'heading_2':
+                const h2Text = block.heading_2.rich_text.map(t => t.plain_text).join('');
+                html += `<h3 class="text-3xl font-serif text-gray-900 mt-10 mb-4">${h2Text}</h3>`;
+                break;
+            case 'heading_3':
+                const h3Text = block.heading_3.rich_text.map(t => t.plain_text).join('');
+                html += `<h4 class="text-2xl font-serif text-gray-900 mt-8 mb-3">${h3Text}</h4>`;
+                break;
+            case 'bulleted_list_item':
+                const liText = block.bulleted_list_item.rich_text.map(t => t.plain_text).join('');
+                html += `<li class="ml-6 list-disc text-gray-600 mb-3 leading-relaxed">${liText}</li>`;
+                break;
+            case 'numbered_list_item':
+                const numText = block.numbered_list_item.rich_text.map(t => t.plain_text).join('');
+                html += `<li class="ml-6 list-decimal text-gray-600 mb-3 leading-relaxed">${numText}</li>`;
+                break;
+            case 'quote':
+                const quoteText = block.quote.rich_text.map(t => t.plain_text).join('');
+                html += `<blockquote class="border-l-4 border-[#C5A059] pl-6 py-2 my-8 text-xl italic font-serif text-gray-800 bg-gray-50/50 rounded-r-lg">"${quoteText}"</blockquote>`;
+                break;
+            // You can add more cases here for images or videos later if needed!
+        }
+    }
+    
+    // Wrap lists in ul/ol tags if needed, but modern browsers render consecutive <li> fine.
+    return html;
+}
+
 async function generateSite() {
     console.log('Connecting to Global Mix Notion Database...');
 
@@ -31,38 +77,23 @@ async function generateSite() {
             database_id: DATABASE_ID,
             filter: {
                 and: [
-                    {
-                        property: 'Sync to GitHub',
-                        checkbox: {
-                            equals: true
-                        }
-                    },
-                    {
-                        property: 'Status',
-                        status: {
-                            equals: 'Ready to Sync'
-                        }
-                    }
+                    { property: 'Sync to GitHub', checkbox: { equals: true } },
+                    { property: 'Status', status: { equals: 'Ready to Sync' } }
                 ]
             }
         });
 
+        // Parse standard properties
         const trips = response.results.map(page => {
             const props = page.properties;
             
-            // 1. EXTRACT CLEAN SLUG FROM NOTION
-            // If Notion has "globalmix.network/travel/africa/morocco-af-01", this extracts just "morocco-af-01"
             let rawSlug = getText(props['Slug']);
             if (rawSlug !== "N/A" && rawSlug.includes('/')) {
                 rawSlug = rawSlug.split('/').pop(); 
             }
             const cleanSlug = rawSlug !== "N/A" ? rawSlug : getText(props['Trip Name'] || props['Title']).split(' ')[0];
 
-            // 2. NORMALIZE REGION NAME
-            // Converts "Latin America" to "latin-america", "Middle East" to "middle-east", etc.
             let rawRegion = getText(props['Region']).toLowerCase().trim().replace(/\s+/g, '-');
-            
-            // Handle edge cases to match our HTML routing
             if (rawRegion === 'caribe' || rawRegion === 'caribbean') rawRegion = 'caribbean';
 
             return {
@@ -75,7 +106,7 @@ async function generateSite() {
                 duration: getText(props['Duration']),
                 countries: getText(props['Location'] || props['Location/Countries']),
                 route: getText(props['Route']),
-                experiences: getText(props['Experiences']) || "Exclusive private tours, VIP access, curated luxury",
+                experiences: getText(props['Experiences']),
                 hotels: getText(props['Hotels']),
                 image: getText(props['Image URL']),
                 slug: cleanSlug.toLowerCase().replace(/[^a-z0-9-]/g, '-')
@@ -97,19 +128,26 @@ async function generateSite() {
         const template = fs.readFileSync(templatePath, 'utf-8');
 
         for (const trip of trips) {
-            // 3. BUILD CORRECT FOLDER PATH
-            // Outputs to: /travel/{region}/{slug}/index.html
-            // This perfectly matches your "globalmix.network/travel/..." URLs
+            // 🆕 FETCH THE INNER PAGE BLOCKS FROM NOTION
+            console.log(`   └─ Fetching detailed page content for: ${trip.title}`);
+            const blocksResponse = await notion.blocks.children.list({
+                block_id: trip.notionPageId,
+                page_size: 100 // Adjust if you have extremely long pages
+            });
+            
+            // Convert blocks to styled HTML and attach it to the trip object
+            trip.pageContentHtml = convertBlocksToHtml(blocksResponse.results);
+
             const dirPath = path.join(__dirname, 'travel', trip.safeRegion, trip.slug);
             
             if (!fs.existsSync(dirPath)) {
                 fs.mkdirSync(dirPath, { recursive: true });
             }
 
-            // Inject data into template
+            // Inject data into template (using safe stringify to prevent HTML breakages inside JSON)
             let newHtml = template
                 .replace(/{{TITLE}}/g, trip.title)
-                .replace(/{{TRIP_JSON_DATA}}/g, JSON.stringify(trip));
+                .replace(/{{TRIP_JSON_DATA}}/g, JSON.stringify(trip).replace(/</g, '\\u003c'));
 
             fs.writeFileSync(path.join(dirPath, 'index.html'), newHtml);
             console.log(`✅ Created: /travel/${trip.safeRegion}/${trip.slug}/index.html`);
@@ -118,13 +156,8 @@ async function generateSite() {
             try {
                 await notion.pages.update({
                     page_id: trip.notionPageId,
-                    properties: {
-                        'Status': {
-                            status: { name: 'Live' }
-                        }
-                    }
+                    properties: { 'Status': { status: { name: 'Live' } } }
                 });
-                console.log(`   └─ Status updated to "Live" in Notion.`);
             } catch (statusError) {
                 console.log(`   └─ ⚠️ Could not update status in Notion. Error: ${statusError.message}`);
             }
