@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script>
-        window.TRIP_DATA = {"notionPageId":"242f6a67-1a88-4efd-ab75-e4d997fd1ed3","id":"LA-01","title":"White Continent Expedition","region":"Latin America","safeRegion":"latin-america","category":"Polar","duration":"N/A","countries":"Antarctica, Buenos Aires & Ushuaia","route":"Buenos Aires → Ushuaia → Antarctica","experiences":"N/A","hotels":"N/A","image":"https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&q=80&w=1200","slug":"antarctica-buenos-aires-ushuaia-la-01"};
+        window.TRIP_DATA = {"notionPageId":"242f6a67-1a88-4efd-ab75-e4d997fd1ed3","id":"LA-01","title":"White Continent Expedition","region":"Latin America","safeRegion":"latin-america","category":"Polar","duration":"N/A","countries":"Antarctica, Buenos Aires & Ushuaia","route":"Buenos Aires → Ushuaia → Antarctica","experiences":"N/A","hotels":"N/A","image":"https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&q=80&w=1200","slug":"antarctica-buenos-aires-ushuaia-la-01","pageContentHtml":"\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Cover Article\u003c/h3>\u003cp class=\"text-gray-600 font-light leading-relaxed mb-6 text-lg\">White Continent Expedition is a rare kind of luxury: not about shopping streets or rooftop bars, but about access—ice, silence, and wildlife at the edge of the map. The journey begins with Buenos Aires’ elegance, then pivots to Ushuaia, the world’s southernmost gateway city, before embarking on an Antarctic voyage where each day is shaped by weather, wildlife, and ice conditions.\u003c/p>\u003cp class=\"text-gray-600 font-light leading-relaxed mb-6 text-lg\">This itinerary is structured to make expedition travel feel polished: buffers for embarkation, clear packing expectations, and a run of show that reflects how Antarctic days truly unfold.\u003c/p>\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Run of Show (11 Days)\u003c/h3>\u003ch4 class=\"text-2xl font-serif text-gray-900 mt-8 mb-3\">At-a-glance\u003c/h4>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Days 1–2: Buenos Aires\u003c/li>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Day 3: Ushuaia + embarkation\u003c/li>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Days 4–9: Antarctica expedition days\u003c/li>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Days 10–11: Return + departure\u003c/li>\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Day-by-day Details (Drop-downs)\u003c/h3>\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Notes for Planning\u003c/h3>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Reality of Antarctica: daily timing is flexible by design.\u003c/li>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Packing: waterproof layers, gloves, eye protection, and dry bags.\u003c/li>"};
     </script>
 </head>
 <body class="antialiased bg-[#FDFBF7]">
@@ -32,10 +32,14 @@
                 "Africa": { mainBg: "bg-[#2D3E2F]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] text-[#1A3626]" },
                 "Asia": { mainBg: "bg-[#2C0A0A]", accent: "text-[#AF8B58]", bgAccent: "bg-[#AF8B58]", heroDrop: "drop-shadow-lg text-[#AF8B58]" },
                 "Europe": { mainBg: "bg-[#002147]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-lg text-[#B4924A]" },
-                "Latin America": { mainBg: "bg-[#002147]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-white" }
+                "Latin America": { mainBg: "bg-[#002147]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-white" },
+                "Caribbean": { mainBg: "bg-[#006064]", accent: "text-[#00ced1]", bgAccent: "bg-[#00ced1]", heroDrop: "drop-shadow-lg text-white" },
+                "Oceania": { mainBg: "bg-[#111111]", accent: "text-[#ea580c]", bgAccent: "bg-[#ea580c]", heroDrop: "drop-shadow-lg text-white" },
+                "North America": { mainBg: "bg-[#0f172a]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-[#C5A059]" }
             };
 
-            const theme = themes[trip.region] || themes["Europe"]; // Fallback
+            // Fallback to Europe theme if region isn't explicitly matched
+            const theme = themes[trip.region] || themes["Europe"]; 
 
             useEffect(() => {
                 const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -95,7 +99,7 @@
                                     <Star size={16} /> Curated Experiences
                                 </h3>
                                 <ul className="space-y-4">
-                                    {trip.experiences.split(',').map((exp, i) => (
+                                    {(trip.experiences || "").split(',').map((exp, i) => (
                                         <li key={i} className="text-sm text-gray-600 flex items-start gap-3 font-sans">
                                             <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${theme.bgAccent}`} />
                                             {exp.trim()}
@@ -104,6 +108,21 @@
                                 </ul>
                             </div>
                         </div>
+
+                        {/* Notion Page Content Block */}
+                        {trip.pageContentHtml && (
+                            <div className="mt-12 pt-12 border-t border-gray-200">
+                                <span className={`text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block font-sans ${theme.accent}`}>
+                                    The Journey Details
+                                </span>
+                                
+                                {/* dangerouslySetInnerHTML is React's way of rendering raw HTML strings */}
+                                <div 
+                                    className="notion-content-container font-sans" 
+                                    dangerouslySetInnerHTML={{ __html: trip.pageContentHtml }} 
+                                />
+                            </div>
+                        )}
                     </section>
                 </div>
             );

@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script>
-        window.TRIP_DATA = {"notionPageId":"363fba41-1196-464d-8614-771f97f653a3","id":"CB-06","title":"Jamaica & Cayman Escape","region":"Caribbean","safeRegion":"caribbean","category":"Islands","duration":"9 Days","countries":"Rhythm & Sophistication","route":"Montego Bay – Negril – Grand Cayman","experiences":"N/A","hotels":"Round Hill Hotel and Villas | Rockhouse Hotel | The Ritz-Carlton Grand Cayman","image":"https://images.unsplash.com/photo-1606466123170-d39e5346aa76?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","slug":"rhythm-sophistication-cb-06"};
+        window.TRIP_DATA = {"notionPageId":"363fba41-1196-464d-8614-771f97f653a3","id":"CB-06","title":"Jamaica & Cayman Escape","region":"Caribbean","safeRegion":"caribbean","category":"Islands","duration":"9 Days","countries":"Rhythm & Sophistication","route":"Montego Bay – Negril – Grand Cayman","experiences":"N/A","hotels":"Round Hill Hotel and Villas | Rockhouse Hotel | The Ritz-Carlton Grand Cayman","image":"https://images.unsplash.com/photo-1606466123170-d39e5346aa76?q=80&w=1740&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D","slug":"rhythm-sophistication-cb-06","pageContentHtml":""};
     </script>
 </head>
 <body class="antialiased bg-[#FDFBF7]">
@@ -32,10 +32,14 @@
                 "Africa": { mainBg: "bg-[#2D3E2F]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] text-[#1A3626]" },
                 "Asia": { mainBg: "bg-[#2C0A0A]", accent: "text-[#AF8B58]", bgAccent: "bg-[#AF8B58]", heroDrop: "drop-shadow-lg text-[#AF8B58]" },
                 "Europe": { mainBg: "bg-[#002147]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-lg text-[#B4924A]" },
-                "Latin America": { mainBg: "bg-[#002147]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-white" }
+                "Latin America": { mainBg: "bg-[#002147]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-white" },
+                "Caribbean": { mainBg: "bg-[#006064]", accent: "text-[#00ced1]", bgAccent: "bg-[#00ced1]", heroDrop: "drop-shadow-lg text-white" },
+                "Oceania": { mainBg: "bg-[#111111]", accent: "text-[#ea580c]", bgAccent: "bg-[#ea580c]", heroDrop: "drop-shadow-lg text-white" },
+                "North America": { mainBg: "bg-[#0f172a]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-[#C5A059]" }
             };
 
-            const theme = themes[trip.region] || themes["Europe"]; // Fallback
+            // Fallback to Europe theme if region isn't explicitly matched
+            const theme = themes[trip.region] || themes["Europe"]; 
 
             useEffect(() => {
                 const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -95,7 +99,7 @@
                                     <Star size={16} /> Curated Experiences
                                 </h3>
                                 <ul className="space-y-4">
-                                    {trip.experiences.split(',').map((exp, i) => (
+                                    {(trip.experiences || "").split(',').map((exp, i) => (
                                         <li key={i} className="text-sm text-gray-600 flex items-start gap-3 font-sans">
                                             <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${theme.bgAccent}`} />
                                             {exp.trim()}
@@ -104,6 +108,21 @@
                                 </ul>
                             </div>
                         </div>
+
+                        {/* Notion Page Content Block */}
+                        {trip.pageContentHtml && (
+                            <div className="mt-12 pt-12 border-t border-gray-200">
+                                <span className={`text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block font-sans ${theme.accent}`}>
+                                    The Journey Details
+                                </span>
+                                
+                                {/* dangerouslySetInnerHTML is React's way of rendering raw HTML strings */}
+                                <div 
+                                    className="notion-content-container font-sans" 
+                                    dangerouslySetInnerHTML={{ __html: trip.pageContentHtml }} 
+                                />
+                            </div>
+                        )}
                     </section>
                 </div>
             );

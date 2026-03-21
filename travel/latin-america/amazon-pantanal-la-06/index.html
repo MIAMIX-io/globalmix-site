@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script>
-        window.TRIP_DATA = {"notionPageId":"0e704d94-46d7-41f1-a3dd-4d3a12578bf2","id":"LA-06","title":"Amazon & Jaguar Safari","region":"Latin America","safeRegion":"latin-america","category":"Wildlife","duration":"N/A","countries":"Amazon & Pantanal","route":"Amazon Rainforest → Pantanal","experiences":"N/A","hotels":"N/A","image":"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=80&w=1200","slug":"amazon-pantanal-la-06"};
+        window.TRIP_DATA = {"notionPageId":"0e704d94-46d7-41f1-a3dd-4d3a12578bf2","id":"LA-06","title":"Amazon & Jaguar Safari","region":"Latin America","safeRegion":"latin-america","category":"Wildlife","duration":"N/A","countries":"Amazon & Pantanal","route":"Amazon Rainforest → Pantanal","experiences":"N/A","hotels":"N/A","image":"https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&q=80&w=1200","slug":"amazon-pantanal-la-06","pageContentHtml":"\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Cover Article\u003c/h3>\u003cp class=\"text-gray-600 font-light leading-relaxed mb-6 text-lg\">Amazon & Jaguar Safari is the kind of Latin America journey that feels like two expeditions stitched into one seamless, high-touch itinerary: first, the immersive scale of the Amazon rainforest, then the open waterways of the Pantanal—widely considered the best place on Earth to see jaguars in the wild.\u003c/p>\u003cp class=\"text-gray-600 font-light leading-relaxed mb-6 text-lg\">In the Amazon, the experience is about texture and depth: blackwater channels, night sounds that never fully fade, and small encounters that feel cinematic—pink river dolphins at the surface, monkeys moving through the canopy, and guided walks that reveal a rainforest’s hidden logic. In the Pantanal, it becomes about clarity: long sightlines, wildlife-rich riverbanks, and boat-based tracking where the day’s best moment can be a jaguar stepping out of the brush and holding a calm, unhurried gaze.\u003c/p>\u003cp class=\"text-gray-600 font-light leading-relaxed mb-6 text-lg\">This itinerary is designed for travelers who want a luxury finish without losing the rawness of place. It prioritizes expert naturalist guiding, boat-based jaguar tracking near Porto Jofre, and lodge stays that keep transfers efficient so more time is spent in the field.\u003c/p>\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Suggested Itinerary (11 Days)\u003c/h3>\u003cblockquote class=\"border-l-4 border-[#C5A059] pl-6 py-2 my-8 text-xl italic font-serif text-gray-800 bg-gray-50/50 rounded-r-lg\">\"This is a web-informed, best-practice schedule. Lodges and flight routings can be swapped based on availability, budget, and preferred entry city.\"\u003c/blockquote>\u003ch4 class=\"text-2xl font-serif text-gray-900 mt-8 mb-3\">At-a-glance\u003c/h4>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Days 1–5: Amazon (Manaus + rainforest lodge)\u003c/li>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Days 6–11: Pantanal (Cuiabá + Porto Jofre jaguar focus)\u003c/li>\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Day-by-day Details (Drop-downs)\u003c/h3>\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Notes for Planning\u003c/h3>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Seasonality: The Pantanal’s dry season (roughly July–October) typically concentrates wildlife and improves jaguar sighting odds.\u003c/li>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Pacing: This structure keeps transit days clean and protects full field days in both ecosystems.\u003c/li>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Wildlife ethics: Prioritize operators that respect distance and animal behavior at all times.\u003c/li>"};
     </script>
 </head>
 <body class="antialiased bg-[#FDFBF7]">
@@ -32,10 +32,14 @@
                 "Africa": { mainBg: "bg-[#2D3E2F]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] text-[#1A3626]" },
                 "Asia": { mainBg: "bg-[#2C0A0A]", accent: "text-[#AF8B58]", bgAccent: "bg-[#AF8B58]", heroDrop: "drop-shadow-lg text-[#AF8B58]" },
                 "Europe": { mainBg: "bg-[#002147]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-lg text-[#B4924A]" },
-                "Latin America": { mainBg: "bg-[#002147]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-white" }
+                "Latin America": { mainBg: "bg-[#002147]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-white" },
+                "Caribbean": { mainBg: "bg-[#006064]", accent: "text-[#00ced1]", bgAccent: "bg-[#00ced1]", heroDrop: "drop-shadow-lg text-white" },
+                "Oceania": { mainBg: "bg-[#111111]", accent: "text-[#ea580c]", bgAccent: "bg-[#ea580c]", heroDrop: "drop-shadow-lg text-white" },
+                "North America": { mainBg: "bg-[#0f172a]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-[#C5A059]" }
             };
 
-            const theme = themes[trip.region] || themes["Europe"]; // Fallback
+            // Fallback to Europe theme if region isn't explicitly matched
+            const theme = themes[trip.region] || themes["Europe"]; 
 
             useEffect(() => {
                 const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -95,7 +99,7 @@
                                     <Star size={16} /> Curated Experiences
                                 </h3>
                                 <ul className="space-y-4">
-                                    {trip.experiences.split(',').map((exp, i) => (
+                                    {(trip.experiences || "").split(',').map((exp, i) => (
                                         <li key={i} className="text-sm text-gray-600 flex items-start gap-3 font-sans">
                                             <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${theme.bgAccent}`} />
                                             {exp.trim()}
@@ -104,6 +108,21 @@
                                 </ul>
                             </div>
                         </div>
+
+                        {/* Notion Page Content Block */}
+                        {trip.pageContentHtml && (
+                            <div className="mt-12 pt-12 border-t border-gray-200">
+                                <span className={`text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block font-sans ${theme.accent}`}>
+                                    The Journey Details
+                                </span>
+                                
+                                {/* dangerouslySetInnerHTML is React's way of rendering raw HTML strings */}
+                                <div 
+                                    className="notion-content-container font-sans" 
+                                    dangerouslySetInnerHTML={{ __html: trip.pageContentHtml }} 
+                                />
+                            </div>
+                        )}
                     </section>
                 </div>
             );

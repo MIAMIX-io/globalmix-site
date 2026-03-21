@@ -12,7 +12,7 @@
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
     <script>
-        window.TRIP_DATA = {"notionPageId":"3efb15bd-940a-4626-8351-05a80e0d0f15","id":"EU-08","title":"Norwegian Fjords","region":"Europe","safeRegion":"europe","category":"Nature","duration":"7 Days","countries":"Norway","route":"Oslo → Bergen → Norwegian Fjords","experiences":"N/A","hotels":"The Thief Oslo","image":"https://images.unsplash.com/photo-1491555103947-3c607374020a?auto=format&fit=crop&q=80&w=1200","slug":"norway-eu-08"};
+        window.TRIP_DATA = {"notionPageId":"3efb15bd-940a-4626-8351-05a80e0d0f15","id":"EU-08","title":"Norwegian Fjords","region":"Europe","safeRegion":"europe","category":"Nature","duration":"7 Days","countries":"Norway","route":"Oslo → Bergen → Norwegian Fjords","experiences":"N/A","hotels":"The Thief Oslo","image":"https://images.unsplash.com/photo-1491555103947-3c607374020a?auto=format&fit=crop&q=80&w=1200","slug":"norway-eu-08","pageContentHtml":"\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Cover Article\u003c/h3>\u003cp class=\"text-gray-600 font-light leading-relaxed mb-6 text-lg\">Norwegian Fjords is a clean, design-forward journey through Norway’s most dramatic natural architecture. Oslo sets a modern baseline—museums, waterfront dining, and Scandinavian minimalism—then the itinerary shifts west where fjords carve deep into the landscape and every transfer feels like a panorama.\u003c/p>\u003cp class=\"text-gray-600 font-light leading-relaxed mb-6 text-lg\">This run of show is built for comfort, clear pacing, and maximum scenery.\u003c/p>\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Run of Show (7 Days)\u003c/h3>\u003ch4 class=\"text-2xl font-serif text-gray-900 mt-8 mb-3\">At-a-glance\u003c/h4>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Days 1–2: Oslo\u003c/li>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Days 3–4: Bergen\u003c/li>\u003cli class=\"ml-6 list-disc text-gray-600 mb-3 leading-relaxed\">Days 5–7: Fjords + depart\u003c/li>\u003ch3 class=\"text-3xl font-serif text-gray-900 mt-10 mb-4\">Day-by-day Details (Drop-downs)\u003c/h3>"};
     </script>
 </head>
 <body class="antialiased bg-[#FDFBF7]">
@@ -32,10 +32,14 @@
                 "Africa": { mainBg: "bg-[#2D3E2F]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] text-[#1A3626]" },
                 "Asia": { mainBg: "bg-[#2C0A0A]", accent: "text-[#AF8B58]", bgAccent: "bg-[#AF8B58]", heroDrop: "drop-shadow-lg text-[#AF8B58]" },
                 "Europe": { mainBg: "bg-[#002147]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-lg text-[#B4924A]" },
-                "Latin America": { mainBg: "bg-[#002147]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-white" }
+                "Latin America": { mainBg: "bg-[#002147]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-white" },
+                "Caribbean": { mainBg: "bg-[#006064]", accent: "text-[#00ced1]", bgAccent: "bg-[#00ced1]", heroDrop: "drop-shadow-lg text-white" },
+                "Oceania": { mainBg: "bg-[#111111]", accent: "text-[#ea580c]", bgAccent: "bg-[#ea580c]", heroDrop: "drop-shadow-lg text-white" },
+                "North America": { mainBg: "bg-[#0f172a]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-[#C5A059]" }
             };
 
-            const theme = themes[trip.region] || themes["Europe"]; // Fallback
+            // Fallback to Europe theme if region isn't explicitly matched
+            const theme = themes[trip.region] || themes["Europe"]; 
 
             useEffect(() => {
                 const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -95,7 +99,7 @@
                                     <Star size={16} /> Curated Experiences
                                 </h3>
                                 <ul className="space-y-4">
-                                    {trip.experiences.split(',').map((exp, i) => (
+                                    {(trip.experiences || "").split(',').map((exp, i) => (
                                         <li key={i} className="text-sm text-gray-600 flex items-start gap-3 font-sans">
                                             <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${theme.bgAccent}`} />
                                             {exp.trim()}
@@ -104,6 +108,21 @@
                                 </ul>
                             </div>
                         </div>
+
+                        {/* Notion Page Content Block */}
+                        {trip.pageContentHtml && (
+                            <div className="mt-12 pt-12 border-t border-gray-200">
+                                <span className={`text-[10px] font-bold tracking-[0.4em] uppercase mb-6 block font-sans ${theme.accent}`}>
+                                    The Journey Details
+                                </span>
+                                
+                                {/* dangerouslySetInnerHTML is React's way of rendering raw HTML strings */}
+                                <div 
+                                    className="notion-content-container font-sans" 
+                                    dangerouslySetInnerHTML={{ __html: trip.pageContentHtml }} 
+                                />
+                            </div>
+                        )}
                     </section>
                 </div>
             );
