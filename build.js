@@ -14,7 +14,7 @@ const getText = (prop) => {
     if (prop.select) return prop.select.name;
     if (prop.status) return prop.status.name;
     if (prop.url) return prop.url;
-    if (prop.formula) return prop.formula.string || "N/A"; // <-- Added to read Notion Formulas for the Slug!
+    if (prop.formula) return prop.formula.string || "N/A"; 
     return "N/A";
 };
 
@@ -27,7 +27,6 @@ async function generateSite() {
     }
 
     try {
-        // 1. Fetch trips where Checkbox is TRUE AND Status is "Ready to Sync"
         const response = await notion.databases.query({
             database_id: DATABASE_ID,
             filter: {
@@ -40,8 +39,6 @@ async function generateSite() {
                     },
                     {
                         property: 'Status',
-                        // NOTE: If your 'Status' column is a "Select" dropdown type instead of 
-                        // a native Notion "Status" pipeline type, change "status:" below to "select:"
                         status: {
                             equals: 'Ready to Sync'
                         }
@@ -53,11 +50,27 @@ async function generateSite() {
         const trips = response.results.map(page => {
             const props = page.properties;
             
+            // 1. EXTRACT CLEAN SLUG FROM NOTION
+            // If Notion has "globalmix.network/travel/africa/morocco-af-01", this extracts just "morocco-af-01"
+            let rawSlug = getText(props['Slug']);
+            if (rawSlug !== "N/A" && rawSlug.includes('/')) {
+                rawSlug = rawSlug.split('/').pop(); 
+            }
+            const cleanSlug = rawSlug !== "N/A" ? rawSlug : getText(props['Trip Name'] || props['Title']).split(' ')[0];
+
+            // 2. NORMALIZE REGION NAME
+            // Converts "Latin America" to "latin-america", "Middle East" to "middle-east", etc.
+            let rawRegion = getText(props['Region']).toLowerCase().trim().replace(/\s+/g, '-');
+            
+            // Handle edge cases to match our HTML routing
+            if (rawRegion === 'caribe' || rawRegion === 'caribbean') rawRegion = 'caribbean';
+
             return {
                 notionPageId: page.id, 
                 id: getText(props['Trip ID']),
                 title: getText(props['Trip Name'] || props['Title']), 
                 region: getText(props['Region']),
+                safeRegion: rawRegion,
                 category: getText(props['Category']),
                 duration: getText(props['Duration']),
                 countries: getText(props['Location'] || props['Location/Countries']),
@@ -65,10 +78,7 @@ async function generateSite() {
                 experiences: getText(props['Experiences']) || "Exclusive private tours, VIP access, curated luxury",
                 hotels: getText(props['Hotels']),
                 image: getText(props['Image URL']),
-                // Reads the custom formula slug, or creates a fallback if missing
-                slug: getText(props['Slug']) !== "N/A" 
-                        ? getText(props['Slug']) 
-                        : getText(props['Trip Name'] || props['Title']).split(' ')[0] 
+                slug: cleanSlug.toLowerCase().replace(/[^a-z0-9-]/g, '-')
             };
         });
 
@@ -79,7 +89,6 @@ async function generateSite() {
             return;
         }
 
-        // 2. Read the master template
         const templatePath = path.join(__dirname, 'trip-template.html');
         if (!fs.existsSync(templatePath)) {
             console.error("❌ trip-template.html not found! Make sure it is in the root directory.");
@@ -87,12 +96,11 @@ async function generateSite() {
         }
         const template = fs.readFileSync(templatePath, 'utf-8');
 
-        // 3. Generate a folder and index.html for each trip
         for (const trip of trips) {
-            const safeRegion = trip.region.toLowerCase().replace(/[^a-z0-9]/g, '');
-            const safeSlug = trip.slug.toLowerCase().replace(/[^a-z0-9-]/g, '-');
-
-            const dirPath = path.join(__dirname, safeRegion, safeSlug);
+            // 3. BUILD CORRECT FOLDER PATH
+            // Outputs to: /travel/{region}/{slug}/index.html
+            // This perfectly matches your "globalmix.network/travel/..." URLs
+            const dirPath = path.join(__dirname, 'travel', trip.safeRegion, trip.slug);
             
             if (!fs.existsSync(dirPath)) {
                 fs.mkdirSync(dirPath, { recursive: true });
@@ -100,27 +108,25 @@ async function generateSite() {
 
             // Inject data into template
             let newHtml = template
-                .replace('{{TITLE}}', trip.title)
-                .replace('{{TRIP_JSON_DATA}}', JSON.stringify(trip));
+                .replace(/{{TITLE}}/g, trip.title)
+                .replace(/{{TRIP_JSON_DATA}}/g, JSON.stringify(trip));
 
-            // Write the file
             fs.writeFileSync(path.join(dirPath, 'index.html'), newHtml);
-            console.log(`✅ Created: /${safeRegion}/${safeSlug}`);
+            console.log(`✅ Created: /travel/${trip.safeRegion}/${trip.slug}/index.html`);
 
-            // 4. Update Notion Status to "Live"
+            // Update Notion Status to "Live"
             try {
                 await notion.pages.update({
                     page_id: trip.notionPageId,
                     properties: {
                         'Status': {
-                            // Again, if your Status column is a "Select" type, change "status:" to "select:"
                             status: { name: 'Live' }
                         }
                     }
                 });
                 console.log(`   └─ Status updated to "Live" in Notion.`);
             } catch (statusError) {
-                console.log(`   └─ ⚠️ Could not update status in Notion. Please ensure the column is named 'Status' and 'Live' is an available option. Error: ${statusError.message}`);
+                console.log(`   └─ ⚠️ Could not update status in Notion. Error: ${statusError.message}`);
             }
         }
 
