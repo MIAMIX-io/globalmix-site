@@ -18,7 +18,7 @@ const getText = (prop) => {
     return "N/A";
 };
 
-// 🆕 UPDATED: Async HTML Converter to handle Toggles and Callouts
+// Async HTML Converter to handle text and Toggles
 async function convertBlocksToHtml(blocks, notionClient) {
     let html = '';
     
@@ -57,18 +57,7 @@ async function convertBlocksToHtml(blocks, notionClient) {
                 html += `<blockquote class="border-l-4 border-[#C5A059] pl-6 py-2 my-8 text-xl italic font-serif text-gray-800 bg-gray-50/50 rounded-r-lg">"${quoteText}"</blockquote>`;
                 break;
                 
-            // 🆕 NEW: Callout Block
-            case 'callout':
-                const calloutText = block.callout.rich_text.map(t => t.plain_text).join('');
-                const icon = block.callout.icon?.type === 'emoji' ? block.callout.icon.emoji : '';
-                html += `
-                    <div class="bg-gray-50 border border-gray-200 border-l-4 border-l-[#C5A059] p-6 my-8 flex items-start gap-4 rounded-r-lg shadow-sm">
-                        ${icon ? `<span class="text-2xl shrink-0">${icon}</span>` : ''}
-                        <div class="text-gray-700 font-sans text-sm leading-relaxed">${calloutText}</div>
-                    </div>`;
-                break;
-
-            // 🆕 NEW: Toggle (Dropdown) Block - RECURSIVE
+            // Toggle (Dropdown) Block - RECURSIVE
             case 'toggle':
                 const toggleTitle = block.toggle.rich_text.map(t => t.plain_text).join('');
                 let toggleContent = '';
@@ -173,7 +162,7 @@ async function generateSite() {
                 page_size: 100
             });
             
-            // 🆕 Pass the 'notion' client so the function can fetch nested toggles!
+            // Pass the 'notion' client so the function can fetch nested toggles!
             trip.pageContentHtml = await convertBlocksToHtml(blocksResponse.results, notion);
 
             const dirPath = path.join(__dirname, 'travel', trip.safeRegion, trip.slug);
