@@ -18,8 +18,8 @@ const getText = (prop) => {
     return "N/A";
 };
 
-// 🆕 Helper function to convert Notion blocks into styled HTML
-function convertBlocksToHtml(blocks) {
+// 🆕 UPDATED: Async HTML Converter to handle Toggles and Callouts
+async function convertBlocksToHtml(blocks, notionClient) {
     let html = '';
     
     for (const block of blocks) {
@@ -27,7 +27,7 @@ function convertBlocksToHtml(blocks) {
             case 'paragraph':
                 const pText = block.paragraph.rich_text.map(t => t.plain_text).join('');
                 if (pText.trim() === '') {
-                    html += `<br/>`; // Handle empty lines
+                    html += `<br/>`; 
                 } else {
                     html += `<p class="text-gray-600 font-light leading-relaxed mb-6 text-lg">${pText}</p>`;
                 }
@@ -56,11 +56,49 @@ function convertBlocksToHtml(blocks) {
                 const quoteText = block.quote.rich_text.map(t => t.plain_text).join('');
                 html += `<blockquote class="border-l-4 border-[#C5A059] pl-6 py-2 my-8 text-xl italic font-serif text-gray-800 bg-gray-50/50 rounded-r-lg">"${quoteText}"</blockquote>`;
                 break;
-            // You can add more cases here for images or videos later if needed!
+                
+            // 🆕 NEW: Callout Block
+            case 'callout':
+                const calloutText = block.callout.rich_text.map(t => t.plain_text).join('');
+                const icon = block.callout.icon?.type === 'emoji' ? block.callout.icon.emoji : '';
+                html += `
+                    <div class="bg-gray-50 border border-gray-200 border-l-4 border-l-[#C5A059] p-6 my-8 flex items-start gap-4 rounded-r-lg shadow-sm">
+                        ${icon ? `<span class="text-2xl shrink-0">${icon}</span>` : ''}
+                        <div class="text-gray-700 font-sans text-sm leading-relaxed">${calloutText}</div>
+                    </div>`;
+                break;
+
+            // 🆕 NEW: Toggle (Dropdown) Block - RECURSIVE
+            case 'toggle':
+                const toggleTitle = block.toggle.rich_text.map(t => t.plain_text).join('');
+                let toggleContent = '';
+                
+                // If the toggle has items inside it, fetch them using the API!
+                if (block.has_children && notionClient) {
+                    const childrenResponse = await notionClient.blocks.children.list({ 
+                        block_id: block.id, 
+                        page_size: 100 
+                    });
+                    // Recursively convert the inside of the toggle to HTML
+                    toggleContent = await convertBlocksToHtml(childrenResponse.results, notionClient);
+                }
+                
+                // Build a pure HTML/Tailwind dropdown accordion (<details> tag)
+                html += `
+                    <details class="group border border-gray-200 rounded-xl my-5 bg-white overflow-hidden shadow-sm open:shadow-md transition-all">
+                        <summary class="flex justify-between items-center font-serif text-lg cursor-pointer p-6 bg-gray-50/50 hover:bg-gray-50 transition-colors outline-none text-gray-900">
+                            ${toggleTitle}
+                            <span class="transition-transform duration-300 group-open:-rotate-180 text-gray-400 group-hover:text-[#C5A059]">
+                                <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20"><path d="M6 9l6 6 6-6"></path></svg>
+                            </span>
+                        </summary>
+                        <div class="p-6 border-t border-gray-100 text-gray-600 font-sans text-sm leading-relaxed bg-white">
+                            ${toggleContent}
+                        </div>
+                    </details>`;
+                break;
         }
     }
-    
-    // Wrap lists in ul/ol tags if needed, but modern browsers render consecutive <li> fine.
     return html;
 }
 
@@ -128,15 +166,15 @@ async function generateSite() {
         const template = fs.readFileSync(templatePath, 'utf-8');
 
         for (const trip of trips) {
-            // 🆕 FETCH THE INNER PAGE BLOCKS FROM NOTION
+            // FETCH THE INNER PAGE BLOCKS FROM NOTION
             console.log(`   └─ Fetching detailed page content for: ${trip.title}`);
             const blocksResponse = await notion.blocks.children.list({
                 block_id: trip.notionPageId,
-                page_size: 100 // Adjust if you have extremely long pages
+                page_size: 100
             });
             
-            // Convert blocks to styled HTML and attach it to the trip object
-            trip.pageContentHtml = convertBlocksToHtml(blocksResponse.results);
+            // 🆕 Pass the 'notion' client so the function can fetch nested toggles!
+            trip.pageContentHtml = await convertBlocksToHtml(blocksResponse.results, notion);
 
             const dirPath = path.join(__dirname, 'travel', trip.safeRegion, trip.slug);
             
@@ -144,7 +182,7 @@ async function generateSite() {
                 fs.mkdirSync(dirPath, { recursive: true });
             }
 
-            // Inject data into template (using safe stringify to prevent HTML breakages inside JSON)
+            // Inject data into template
             let newHtml = template
                 .replace(/{{TITLE}}/g, trip.title)
                 .replace(/{{TRIP_JSON_DATA}}/g, JSON.stringify(trip).replace(/</g, '\\u003c'));
