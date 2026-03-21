@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxury Outback & Reef | Global Mix</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <script>
+        window.TRIP_DATA = {"notionPageId":"52b66295-effc-4b2a-951d-503ff3fab3bf","id":"OC-03","title":"Luxury Outback & Reef","region":"Oceania","safeRegion":"oceania","category":"Wilderness","duration":"9 Days","countries":"Brisbane, Outback Queensland & Great Barrier Reef","route":"Brisbane • Outback Queensland • Lizard Island","experiences":"Authentic Australian cattle station experience | Unpolluted stargazing in the deep Outback | Private flight to Lizard Island (Great Barrier Reef) | Gourmet beach picnic on a secluded cay | Marine biologist guided reef snorkeling","hotels":"N/A","image":"https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1000","slug":"brisbane-outback-queensland-great-barrier-reef-oc-03"};
+    </script>
+</head>
+<body class="antialiased bg-[#FDFBF7]">
+    <div id="root"></div>
+
+    <script type="text/babel" data-type="module">
+        import React, { useState, useEffect } from 'https://esm.sh/react@18.2.0';
+        import { createRoot } from 'https://esm.sh/react-dom@18.2.0/client';
+        import { MapPin, Star, Bed, ChevronRight, Globe } from 'https://esm.sh/lucide-react@0.292.0';
+
+        const TripPage = () => {
+            const trip = window.TRIP_DATA;
+            const [scrolled, setScrolled] = useState(false);
+
+            // Dynamic Region Styling Dictionary
+            const themes = {
+                "Africa": { mainBg: "bg-[#2D3E2F]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] text-[#1A3626]" },
+                "Asia": { mainBg: "bg-[#2C0A0A]", accent: "text-[#AF8B58]", bgAccent: "bg-[#AF8B58]", heroDrop: "drop-shadow-lg text-[#AF8B58]" },
+                "Europe": { mainBg: "bg-[#002147]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-lg text-[#B4924A]" },
+                "Latin America": { mainBg: "bg-[#002147]", accent: "text-[#C5A059]", bgAccent: "bg-[#C5A059]", heroDrop: "drop-shadow-lg text-white" }
+            };
+
+            const theme = themes[trip.region] || themes["Europe"]; // Fallback
+
+            useEffect(() => {
+                const handleScroll = () => setScrolled(window.scrollY > 50);
+                window.addEventListener('scroll', handleScroll);
+                return () => window.removeEventListener('scroll', handleScroll);
+            }, []);
+
+            return (
+                <div className="min-h-screen font-serif text-[#1A1A1A]">
+                    {/* Header */}
+                    <nav className={`fixed w-full z-50 transition-all duration-500 ${scrolled ? `${theme.mainBg}/95 backdrop-blur-md shadow-xl py-4` : 'bg-transparent py-8'}`}>
+                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                            <div className="flex items-center gap-3">
+                                <Globe className={`w-8 h-8 ${theme.accent}`} />
+                                <div className="flex flex-col">
+                                    <span className="text-xl font-bold tracking-tighter leading-none text-white font-sans uppercase">Global Mix</span>
+                                    <span className={`text-[10px] tracking-[0.4em] font-medium font-sans uppercase ${theme.accent}`}>Travel {trip.region}</span>
+                                </div>
+                            </div>
+                            <button className={`${theme.bgAccent} text-white px-8 py-3 text-[10px] font-bold tracking-[0.2em] font-sans hover:scale-105 transition-transform`}>
+                                REQUEST ITINERARY
+                            </button>
+                        </div>
+                    </nav>
+
+                    {/* Hero */}
+                    <section className="relative h-[80vh] flex items-center justify-center overflow-hidden">
+                        <div className="absolute inset-0 z-0">
+                            <img src={trip.image} className="w-full h-full object-cover scale-105" alt={trip.title} />
+                            <div className={`absolute inset-0 bg-gradient-to-b from-${theme.mainBg.replace('bg-', '')}/80 via-transparent to-${theme.mainBg.replace('bg-', '')}/90`} />
+                        </div>
+                        <div className="relative z-10 text-center px-6 max-w-4xl">
+                            <span className={`inline-block mb-6 tracking-[0.6em] text-xs font-bold uppercase font-sans ${theme.accent}`}>
+                                Exclusive {trip.duration} Expedition
+                            </span>
+                            <h1 className="text-6xl md:text-8xl font-serif text-white mb-8 leading-[0.85]">
+                                {trip.title.split(' ').slice(0, -1).join(' ')} <br />
+                                <span className={`italic ${theme.heroDrop}`}>
+                                    {trip.title.split(' ').slice(-1)}
+                                </span>
+                            </h1>
+                        </div>
+                    </section>
+
+                    {/* Content Details */}
+                    <section className="py-24 px-6 max-w-4xl mx-auto bg-white -mt-20 relative z-20 shadow-2xl rounded-t-3xl">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                            <div>
+                                <h3 className={`text-xs font-bold tracking-[0.4em] uppercase mb-4 font-sans ${theme.accent}`}>The Route</h3>
+                                <p className="text-xl italic text-[#1A1A1A] mb-8">{trip.route}</p>
+                                
+                                <h3 className={`text-xs font-bold tracking-[0.4em] uppercase mb-4 font-sans ${theme.accent}`}>Featured Accommodations</h3>
+                                <p className="text-sm font-sans text-gray-600 leading-relaxed">{trip.hotels}</p>
+                            </div>
+                            <div>
+                                <h3 className={`text-xs font-bold tracking-[0.4em] uppercase mb-6 font-sans flex items-center gap-2 ${theme.accent}`}>
+                                    <Star size={16} /> Curated Experiences
+                                </h3>
+                                <ul className="space-y-4">
+                                    {trip.experiences.split(',').map((exp, i) => (
+                                        <li key={i} className="text-sm text-gray-600 flex items-start gap-3 font-sans">
+                                            <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${theme.bgAccent}`} />
+                                            {exp.trim()}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            );
+        };
+
+        const root = createRoot(document.getElementById('root'));
+        root.render(<TripPage />);
+    </script>
+</body>
+</html>
