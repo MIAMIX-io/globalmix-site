@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Mix - Travel Oceania</title>
+    <title>Global Mix - Travel Oceania | Elite Portfolio</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -40,7 +40,7 @@
         ::-webkit-scrollbar { width: 5px; }
         ::-webkit-scrollbar-track { background: #fdfdfd; }
         ::-webkit-scrollbar-thumb { background: #111; }
-        ::-webkit-scrollbar-thumb:hover { background: #ff5e00; }
+        ::-webkit-scrollbar-thumb:hover { background: #ea580c; } /* orange-600 */
         
         body { overscroll-behavior: none; }
     </style>
@@ -53,7 +53,7 @@
 
     <script>
         window.onerror = function(msg, url, line) {
-            alert("Error: " + msg + "\nLine: " + line);
+            console.error("Error: " + msg + "\nLine: " + line);
             return false;
         };
     </script>
@@ -79,11 +79,11 @@
             };
 
             const itineraries = [
-                { id: 1, title: "Australia Iconic Grand Tour", route: "Sydney • Melbourne • Uluru • Cairns", duration: "12 Days", category: "Australia", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=1000", description: "The complete Oceania masterclass. From the architectural marvels of the Sydney Opera House to the spiritual red heart of the Outback." },
-                { id: 2, title: "Australia Wild Luxury", route: "Perth • Margaret River • Ningaloo Reef", duration: "10 Days", category: "Australia", image: "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?auto=format&fit=crop&q=80&w=1000", description: "Discover the untamed West. Pristine white beaches, surreal desert landscapes, and the world's most accessible fringe reef." },
-                { id: 3, title: "Luxury Outback & Reef", route: "Brisbane • Outback • Lizard Island", duration: "9 Days", category: "Australia", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1000", description: "An ultra-exclusive duality. Experience the raw spirit of an Australian station before retreating to a private island paradise." },
-                { id: 4, title: "New Zealand Alpine & Coastal", route: "Auckland • Rotorua • Queenstown", duration: "10 Days", category: "New Zealand", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1000", description: "A symphony of dramatic landscapes. Witness the geological wonders of the North and the majestic alpine peaks of the South." },
-                { id: 5, title: "South Pacific Ultra Paradise", route: "Bora Bora • Tahiti • Tetiaroa", duration: "9 Days", category: "Islands", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1000", description: "Unmatched privacy and seclusion. Experience the pinnacle of island luxury in the legendary waters of French Polynesia." }
+                { id: 1, title: "Australia Iconic Grand Tour", route: "Sydney • Melbourne • Uluru • Cairns", duration: "12 Days", category: "Australia", slug: "globalmix.network/travel/oceania/australia-iconic-oc-01", image: "https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&q=80&w=1000", description: "The complete Oceania masterclass. From the architectural marvels of the Sydney Opera House to the spiritual red heart of the Outback." },
+                { id: 2, title: "Australia Wild Luxury", route: "Perth • Margaret River • Ningaloo Reef", duration: "10 Days", category: "Australia", slug: "globalmix.network/travel/oceania/australia-wild-oc-02", image: "https://images.unsplash.com/photo-1529108190281-9a4f620bc2d8?auto=format&fit=crop&q=80&w=1000", description: "Discover the untamed West. Pristine white beaches, surreal desert landscapes, and the world's most accessible fringe reef." },
+                { id: 3, title: "Luxury Outback & Reef", route: "Brisbane • Outback • Lizard Island", duration: "9 Days", category: "Australia", slug: "globalmix.network/travel/oceania/outback-reef-oc-03", image: "https://images.unsplash.com/photo-1523482580672-f109ba8cb9be?auto=format&fit=crop&q=80&w=1000", description: "An ultra-exclusive duality. Experience the raw spirit of an Australian station before retreating to a private island paradise." },
+                { id: 4, title: "New Zealand Alpine & Coastal", route: "Auckland • Rotorua • Queenstown", duration: "10 Days", category: "New Zealand", slug: "globalmix.network/travel/oceania/new-zealand-alpine-oc-04", image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=1000", description: "A symphony of dramatic landscapes. Witness the geological wonders of the North and the majestic alpine peaks of the South." },
+                { id: 5, title: "South Pacific Ultra Paradise", route: "Bora Bora • Tahiti • Tetiaroa", duration: "9 Days", category: "Islands", slug: "globalmix.network/travel/oceania/south-pacific-oc-05", image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1000", description: "Unmatched privacy and seclusion. Experience the pinnacle of island luxury in the legendary waters of French Polynesia." }
             ];
 
             const categories = ["All", "Australia", "New Zealand", "Islands"];
@@ -94,19 +94,33 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
-            const handleTripAction = (e, trip) => {
+            // 1. ACTION FOR THE BUTTON (Opens Email Draft)
+            const handleEmailInquiry = (e, trip) => {
                 e.preventDefault();
-                const subject = encodeURIComponent(`Inquiry: ${trip.title}`);
-                const body = encodeURIComponent(`Hello Global Mix Team,\n\nI am interested in the ${trip.title} itinerary in Oceania. Please send details.\n\nThank you.`);
+                e.stopPropagation();
+                const subject = encodeURIComponent(`Requesting Full Itinerary: ${trip.title}`);
+                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me the full itinerary and details for the "${trip.title}" Oceania expedition.\n\nThank you!`);
                 window.location.href = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
+            };
+
+            // 2. ACTION FOR THE IMAGE (Navigates to the Notion-Synced Slug)
+            const handleImageClick = (e, trip) => {
+                e.preventDefault();
+                if (trip.slug) {
+                    window.location.href = `https://${trip.slug}`;
+                } else {
+                    const safeSlug = trip.title.toLowerCase().replace(/[^a-z0-9]+/g, '-'); 
+                    window.location.href = `/travel/oceania/${safeSlug}`;
+                }
             };
 
             return (
                 <div className="min-h-screen bg-[#fafafa] text-[#121212] font-sans selection:bg-orange-100">
                     
                     {/* Floating WhatsApp */}
-                    <a href={`https://wa.me/${contactData.whatsapp}`} target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform">
-                        <MessageCircle size={28} />
+                    <a href={`https://wa.me/${contactData.whatsapp}`} target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 z-[60] bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:scale-110 transition-transform flex items-center gap-2 group">
+                        <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-500 whitespace-nowrap text-sm font-sans font-bold uppercase tracking-widest pl-0 group-hover:pl-2">Contact VIP</span>
+                        <MessageCircle size={24} />
                     </a>
 
                     {/* Navigation */}
@@ -123,38 +137,49 @@
                             <div className="hidden lg:flex items-center gap-10">
                                 <a href="#itineraries" className={`text-[10px] font-bold tracking-widest uppercase ${scrolled ? 'text-neutral-500' : 'text-white/80'} hover:text-orange-600 transition-colors`}>Itineraries</a>
                                 <a href="#concierge" className={`text-[10px] font-bold tracking-widest uppercase ${scrolled ? 'text-neutral-500' : 'text-white/80'} hover:text-orange-600 transition-colors`}>Concierge</a>
-                                <a href="#contact" className={`px-8 py-3 rounded-sm text-[10px] font-bold tracking-widest transition-all ${scrolled ? 'bg-black text-white' : 'bg-white text-black'} hover:scale-105`}>INQUIRE</a>
+                                <a href={`mailto:${contactData.email}`} className={`px-8 py-3 rounded-sm text-[10px] font-bold tracking-widest transition-all ${scrolled ? 'bg-black text-white' : 'bg-white text-black'} hover:scale-105 uppercase`}>INQUIRE NOW</a>
                             </div>
 
                             <button className="lg:hidden" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-                                <Menu className={scrolled ? 'text-black' : 'text-white'} />
+                                {isMenuOpen ? <X className={scrolled ? 'text-black' : 'text-white'} /> : <Menu className={scrolled ? 'text-black' : 'text-white'} />}
                             </button>
                         </div>
                     </nav>
 
+                    {/* Mobile Menu */}
+                    {isMenuOpen && (
+                        <div className="absolute top-20 left-0 w-full bg-white shadow-xl md:hidden flex flex-col p-8 gap-6 z-40 border-t border-gray-100">
+                            <a href="#itineraries" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-black tracking-widest uppercase hover:text-orange-600">Itineraries</a>
+                            <a href="#concierge" onClick={() => setIsMenuOpen(false)} className="text-sm font-bold text-black tracking-widest uppercase hover:text-orange-600">Concierge</a>
+                            <a href={`mailto:${contactData.email}`} className="bg-black text-white py-4 font-bold text-center uppercase tracking-widest text-xs">Request Concierge</a>
+                        </div>
+                    )}
+
                     {/* Hero Section */}
                     <section className="relative h-[95vh] flex items-center justify-center overflow-hidden">
                         <div className="absolute inset-0">
-                            <img src={"https://images.unsplash.com/photo-1588001400947-6385aef4ab0e?q=80&w=1548&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"} className="w-full h-full object-cover" alt="Oceania" fetchPriority="high" />
+                            <img src={"https://images.unsplash.com/photo-1588001400947-6385aef4ab0e?q=80&w=1548&auto=format&fit=crop&fm=webp"} className="w-full h-full object-cover object-left" alt="Oceania" fetchPriority="high" />
                             <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80" />
                         </div>
 
-                        <div className="relative z-10 text-center px-6 animate-fade-in">
+                        <div className="relative z-10 text-center px-6 animate-fade-in max-w-5xl">
                             <span className="text-white/90 tracking-[0.6em] text-xs font-bold uppercase mb-6 block">Exploration • Luxury • Wild</span>
                             <h1 className="text-6xl md:text-9xl font-serif text-white mb-8 leading-[0.85]">
                                 Grand Journeys <br />
                                 <span className="italic text-orange-400 drop-shadow-xl">of Oceania</span>
                             </h1>
                             <p className="text-white/90 text-lg md:text-xl max-w-2xl mx-auto font-light italic mb-10">"Where sophistication meets the wild horizons of the South Pacific."</p>
-                            <a href="#itineraries" className="bg-white text-black px-12 py-5 text-[10px] font-bold tracking-widest uppercase hover:bg-orange-600 hover:text-white transition-all shadow-2xl">Explore Masterlist</a>
+                            <div className="flex justify-center">
+                                <a href="#itineraries" className="bg-white text-black px-12 py-5 text-[10px] font-bold tracking-widest uppercase hover:bg-orange-600 hover:text-white transition-all shadow-2xl">Explore Masterlist</a>
+                            </div>
                         </div>
-                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce">
-                            <ChevronDown size={32} />
+                        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-white animate-bounce cursor-pointer hover:opacity-75 transition-opacity">
+                            <a href="#experience"><ChevronDown size={32} /></a>
                         </div>
                     </section>
 
                     {/* Intro Section */}
-                    <section id="experience" className="py-40 bg-white text-center px-6">
+                    <section id="experience" className="py-40 bg-white text-center px-6 scroll-mt-20">
                         <div className="max-w-4xl mx-auto">
                             <span className="text-orange-600 font-bold text-[11px] tracking-[0.5em] uppercase mb-8 block">Experience Design</span>
                             <h2 className="text-3xl md:text-5xl font-serif italic text-gray-800 leading-tight mb-10">
@@ -184,15 +209,29 @@
                             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
                                 {itineraries.filter(j => activeCategory === 'All' || j.category === activeCategory).map((item) => (
                                     <div key={item.id} className="group bg-white border border-gray-100 shadow-sm hover:shadow-2xl transition-all duration-700 flex flex-col rounded-2xl overflow-hidden">
-                                        <div className="h-80 overflow-hidden relative">
-                                            <img src={`${item.image}&fm=webp&q=70&w=800`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110" loading="lazy" alt={item.title} />
-                                            <div className="absolute top-5 right-5 bg-white/90 px-4 py-1.5 text-[9px] font-bold uppercase rounded-full">{item.duration}</div>
-                                        </div>
+                                        
+                                        {/* IMAGE ACTION: Links to the Generated Notion Slug */}
+                                        <a href={item.slug ? `https://${item.slug}` : `#`} onClick={(e) => handleImageClick(e, item)} className="h-80 overflow-hidden relative block cursor-pointer">
+                                            <img src={`${item.image}&fm=webp&q=70&w=800`} className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 grayscale-[10%] group-hover:grayscale-0" loading="lazy" alt={item.title} />
+                                            <div className="absolute top-5 right-5 bg-white/95 px-4 py-1.5 text-[9px] font-bold uppercase rounded-full text-black shadow-sm">{item.duration}</div>
+                                        </a>
+
                                         <div className="p-10 flex flex-col flex-grow">
                                             <div className="flex items-center gap-2 text-orange-600 mb-4 font-bold text-[10px] uppercase tracking-widest"><Map size={14} /> Premium Circuit</div>
                                             <h4 className="text-2xl font-serif mb-4 group-hover:text-orange-600 transition-colors">{item.title}</h4>
+                                            
+                                            <div className="mb-6 border-l-2 border-orange-600/30 pl-4 flex-grow">
+                                                <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Route</p>
+                                                <p className="text-sm text-gray-600 italic font-medium">{item.route}</p>
+                                            </div>
+
                                             <p className="text-gray-500 text-sm mb-8 font-light leading-relaxed flex-grow">{item.description}</p>
-                                            <button onClick={(e) => handleTripAction(e, item)} className="w-full border border-black py-4 text-[9px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all flex justify-center items-center gap-2 rounded-lg">
+                                            
+                                            {/* BUTTON ACTION: Opens Mail Draft */}
+                                            <button 
+                                                onClick={(e) => handleEmailInquiry(e, item)} 
+                                                className="w-full border border-black py-4 text-[9px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all flex justify-center items-center gap-2 rounded-lg"
+                                            >
                                                 Request Itinerary <ChevronRight size={14} />
                                             </button>
                                         </div>
@@ -202,15 +241,17 @@
                         </div>
                     </section>
 
-                    {/* Concierge Section */}
+                    {/* Concierge Section - Fixed className issues */}
                     <section id="concierge" className="py-40 bg-[#003135] text-white overflow-hidden scroll-mt-20">
                         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
                             <div className="relative">
-                                <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl">
-                                    <img src="https://plus.unsplash.com/premium_photo-1661927951140-dc5de87bc8c7?q=80&w=1752&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                                         className="w-full h-full object-cover grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-1000" alt="Concierge" loading="lazy" />
+                                <div className="aspect-[4/5] overflow-hidden rounded-2xl shadow-2xl border border-white/10">
+                                    <img src="https://images.unsplash.com/photo-1549488344-1f9b8d2bd1f3?q=80&w=1200&auto=format&fit=crop&fm=webp" 
+                                         className="w-full h-full object-cover grayscale opacity-30 hover:grayscale-0 hover:opacity-100 transition-all duration-[1.5s]" 
+                                         alt="Concierge" 
+                                         loading="lazy" />
                                 </div>
-                                <div className="absolute -bottom-10 -right-10 bg-orange-600 p-12 hidden md:block shadow-2xl transform hover:-translate-y-2 transition-transform">
+                                <div className="absolute -bottom-10 -right-10 bg-orange-600 p-12 hidden md:block shadow-2xl transform hover:-translate-y-2 transition-transform rounded-sm">
                                     <p className="text-4xl italic leading-tight text-white font-serif">Private <br />Concierge <br />In Oceania</p>
                                 </div>
                             </div>
@@ -219,12 +260,16 @@
                                 <h4 className="text-5xl md:text-6xl mb-10 leading-none font-serif">The Luxury of <br/><span className="italic text-orange-400">No Limits.</span></h4>
                                 <div className="space-y-12">
                                     <div className="flex gap-6 group">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center text-orange-400 group-hover:bg-orange-400 group-hover:text-[#003135] transition-all"><Compass size={24} /></div>
-                                        <div><h5 className="text-xl mb-3 font-serif">Territory Expertise</h5><p className="text-cyan-100/70 text-sm">Insider access to the most remote luxury lodges in the Outback and the hidden reefs of Fiji.</p></div>
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center text-orange-400 group-hover:bg-orange-400 group-hover:text-[#003135] transition-all duration-500"><Compass size={24} /></div>
+                                        <div><h5 className="text-xl mb-3 font-serif">Territory Expertise</h5><p className="text-cyan-100/70 text-sm leading-relaxed">Insider access to the most remote luxury lodges in the Outback and the hidden reefs of Fiji.</p></div>
                                     </div>
                                     <div className="flex gap-6 group">
-                                        <div className="shrink-0 w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center text-orange-400 group-hover:bg-orange-400 group-hover:text-[#003135] transition-all"><Ship size={24} /></div>
-                                        <div><h5 className="text-xl mb-3 font-serif">Private Access</h5><p className="text-cyan-100/70 text-sm">Charter private vessels for the Whitsundays or heli-transfers over the Southern Alps.</p></div>
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center text-orange-400 group-hover:bg-orange-400 group-hover:text-[#003135] transition-all duration-500"><Ship size={24} /></div>
+                                        <div><h5 className="text-xl mb-3 font-serif">Private Access</h5><p className="text-cyan-100/70 text-sm leading-relaxed">Charter private vessels for the Whitsundays or heli-transfers over the Southern Alps.</p></div>
+                                    </div>
+                                    <div className="flex gap-6 group">
+                                        <div className="shrink-0 w-12 h-12 rounded-full border border-orange-400 flex items-center justify-center text-orange-400 group-hover:bg-orange-400 group-hover:text-[#003135] transition-all duration-500"><Building size={24} /></div>
+                                        <div><h5 className="text-xl mb-3 font-serif">Off-Market Inventory</h5><p className="text-cyan-100/70 text-sm leading-relaxed">Priority access to private island estates and ultra-luxury lodges that remain unavailable to the public.</p></div>
                                     </div>
                                 </div>
                             </div>
@@ -237,29 +282,36 @@
                             <div className="md:col-span-2">
                                 <div className="flex items-center gap-3 mb-8">
                                     <Globe className="w-10 h-10 text-orange-600" />
-                                    <div className="flex flex-col"><span className="text-2xl font-bold tracking-tighter leading-none">GLOBAL MIX</span><span className="text-[12px] tracking-widest text-orange-600 uppercase">Oceania</span></div>
+                                    <div className="flex flex-col">
+                                        <span className="text-2xl font-bold tracking-tighter leading-none">GLOBAL MIX</span>
+                                        <span className="text-[12px] tracking-widest text-orange-600 uppercase">Oceania</span>
+                                    </div>
                                 </div>
-                                <p className="text-gray-400 max-w-sm mb-10 italic">"Redefining luxury travel in the Southern Hemisphere through exclusive expeditions."</p>
+                                <p className="text-gray-400 max-w-sm mb-10 italic leading-relaxed text-sm">"Redefining luxury travel in the Southern Hemisphere through exclusive expeditions and uncompromising service."</p>
                             </div>
                             <div>
-                                <h5 className="font-serif mb-8 border-l-2 border-orange-600 pl-4 uppercase tracking-widest text-sm">Links</h5>
-                                <ul className="space-y-4 text-gray-400 text-sm">
+                                <h5 className="font-serif mb-8 border-l-2 border-orange-600 pl-4 uppercase tracking-widest text-sm">Explore</h5>
+                                <ul className="space-y-4 text-gray-400 text-sm font-bold tracking-widest uppercase">
                                     <li><a href="index.html" className="hover:text-white transition-colors">Corporate Hub</a></li>
                                     <li><a href="travel.html" className="hover:text-white transition-colors">Global Network</a></li>
-                                    <li><a href="middleeast.html" className="hover:text-white transition-colors">Middle East</a></li>
+                                    <li><a href="#itineraries" className="hover:text-white transition-colors">Masterlist</a></li>
                                 </ul>
                             </div>
                             <div>
                                 <h5 className="font-serif mb-8 border-l-2 border-orange-600 pl-4 uppercase tracking-widest text-sm">Contact</h5>
-                                <ul className="space-y-4 text-gray-400 text-sm">
-                                    <li className="flex gap-4"><Phone size={18} className="text-orange-600" /> {contactData.phone}</li>
-                                    <li className="flex gap-4"><Mail size={18} className="text-orange-600" /> {contactData.email}</li>
+                                <ul className="space-y-6 text-gray-400 text-sm">
+                                    <li className="flex items-center gap-4"><Phone size={18} className="text-orange-600" /> {contactData.phone}</li>
+                                    <li className="flex items-center gap-4"><Mail size={18} className="text-orange-600" /> {contactData.email}</li>
+                                    <li className="flex items-center gap-4"><MapPin size={18} className="text-orange-600" /> Sydney | Queenstown</li>
                                 </ul>
                             </div>
                         </div>
                         <div className="max-w-7xl mx-auto pt-10 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-[10px] text-gray-500 uppercase tracking-widest font-bold">
                             <p>© 2026 GLOBAL MIX Oceania. All rights reserved.</p>
-                            <div className="flex gap-8"><span>Privacy Policy</span><span>Terms &amp; Conditions</span></div>
+                            <div className="flex gap-8">
+                                <span className="hover:text-white cursor-pointer transition-colors">Privacy Policy</span>
+                                <span className="hover:text-white cursor-pointer transition-colors">Terms &amp; Conditions</span>
+                            </div>
                         </div>
                     </footer>
                 </div>
