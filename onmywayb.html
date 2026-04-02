@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ON MY WAY | Rental Car Miami</title>
+    
+    <!-- Google Fonts: Montserrat (Sofisticada y versátil) y Yellowtail (Para el logo) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700;900&family=Yellowtail&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        logo: ['Yellowtail', 'cursive'],
+                    },
+                    colors: {
+                        navy: {
+                            800: '#0b1c3d', // Azul marino corporativo
+                            900: '#061126', // Azul muy oscuro (Fondo principal)
+                            950: '#030814', // Casi negro azulado (Para secciones de contraste)
+                        },
+                        brand: {
+                            cyan: '#2DB0E6',   // El color de "OMW"
+                            orange: '#F37623', // El color de "Car Rental"
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- FontAwesome para iconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Animación refinada para el botón flotante de WhatsApp */
+        @keyframes pulse-whatsapp {
+            0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4); }
+            70% { transform: scale(1.05); box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+            100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+        .whatsapp-float {
+            animation: pulse-whatsapp 3s infinite; /* Más lento y sutil */
+            background-color: #25D366;
+        }
+        .whatsapp-float:hover {
+            background-color: #128C7E;
+            animation: none;
+            transform: scale(1.1);
+        }
+        
+        /* Overlay oscuro y muy elegante para la imagen del hero */
+        .hero-overlay {
+            background: linear-gradient(to bottom, rgba(3, 8, 20, 0.6) 0%, rgba(6, 17, 38, 0.95) 100%);
+        }
+
+        /* Navbar estilo cristal esmerilado oscuro */
+        .navbar-scrolled {
+            background-color: rgba(6, 17, 38, 0.95);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Transición suave para las tarjetas */
+        .vehicle-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .vehicle-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px -10px rgba(45, 176, 230, 0.15); /* Brillo sutil cyan al hacer hover */
+            border-color: rgba(45, 176, 230, 0.3);
+        }
+    </style>
+</head>
+<body class="bg-navy-900 text-gray-300 font-sans antialiased flex flex-col min-h-screen selection:bg-brand-cyan selection:text-white">
+
+    <!-- Navegación -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-6 border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            <div class="flex justify-between items-center">
+                
+                <!-- LOGO VECTORIAL INCRUSTADO (Alta Calidad) -->
+                <div class="flex-shrink-0 w-48 md:w-56 transition-transform hover:scale-105">
+                    <a href="#" aria-label="Inicio">
+                        <svg viewBox="0 0 1000 500" class="w-full h-auto drop-shadow-lg">
+                            <defs>
+                                <style>
+                                    .car-line { fill: none; stroke: #2DB0E6; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round; }
+                                    .text-omw { font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 240px; fill: #2DB0E6; }
+                                    .text-car { font-family: 'Yellowtail', cursive; font-size: 140px; fill: #F37623; }
+                                    .text-miami { font-family: 'Montserrat', sans-serif; font-weight: 500; font-size: 36px; fill: #2DB0E6; }
+                                </style>
+                            </defs>
+                            <!-- Silueta del Auto -->
+                            <path class="car-line" d="M 220 200 C 280 130, 380 110, 500 110 C 620 110, 720 130, 780 200" />
+                            <path class="car-line" d="M 220 200 C 200 215, 175 220, 150 220" />
+                            <path class="car-line" d="M 780 200 C 800 215, 825 220, 850 220" />
+                            
+                            <!-- Textos -->
+                            <text x="500" y="390" class="text-omw" text-anchor="middle">OMW</text>
+                            <text x="500" y="485" class="text-car" text-anchor="middle">Car Rental</text>
+                            
+                            <!-- MIAMI espaciado -->
+                            <text x="375" y="560" class="text-miami" text-anchor="middle">M</text>
+                            <text x="435" y="560" class="text-miami" text-anchor="middle">I</text>
+                            <text x="500" y="560" class="text-miami" text-anchor="middle">A</text>
+                            <text x="565" y="560" class="text-miami" text-anchor="middle">M</text>
+                            <text x="625" y="560" class="text-miami" text-anchor="middle">I</text>
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Menú Desktop -->
+                <div class="hidden md:flex space-x-12 items-center">
+                    <a href="#inicio" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-[0.2em] font-medium">Home</a>
+                    <a href="#vehiculos" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-[0.2em] font-medium">Vehículos</a>
+                    <a href="#acerca" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-[0.2em] font-medium">Acerca</a>
+                    <a href="#contacto" class="text-gray-400 hover:text-white transition-colors text-sm uppercase tracking-[0.2em] font-medium">Contacto</a>
+                    
+                    <!-- Accesos Directos Top (Sutiles) -->
+                    <div class="flex space-x-6 border-l border-navy-800 pl-8">
+                        <a href="https://instagram.com/omwrental" target="_blank" class="text-gray-500 hover:text-brand-orange transition-colors" title="Instagram">
+                            <i class="fa-brands fa-instagram text-xl"></i>
+                        </a>
+                        <a href="mailto:info@omwrentalcar.com" class="text-gray-500 hover:text-brand-cyan transition-colors" title="Email">
+                            <i class="fa-regular fa-envelope text-xl"></i>
+                        </a>
+                        <a href="https://wa.me/17863988843" target="_blank" class="text-gray-500 hover:text-green-500 transition-colors" title="WhatsApp">
+                            <i class="fa-brands fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <div class="md:hidden flex items-center gap-6">
+                    <a href="https://wa.me/17863988843" target="_blank" class="text-green-500 text-2xl"><i class="fa-brands fa-whatsapp"></i></a>
+                    <button id="mobile-menu-button" class="text-gray-400 hover:text-white focus:outline-none p-2">
+                        <i class="fa-solid fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden bg-navy-950 border-t border-navy-800 absolute w-full left-0 top-full shadow-2xl">
+            <div class="px-6 py-8 space-y-4 flex flex-col items-center">
+                <a href="#inicio" class="mobile-link block py-4 text-lg font-medium text-white tracking-[0.2em] uppercase">Home</a>
+                <a href="#vehiculos" class="mobile-link block py-4 text-lg font-medium text-white tracking-[0.2em] uppercase">Vehículos</a>
+                <a href="#acerca" class="mobile-link block py-4 text-lg font-medium text-white tracking-[0.2em] uppercase">Acerca</a>
+                <a href="#contacto" class="mobile-link block py-4 text-lg font-medium text-white tracking-[0.2em] uppercase">Contacto</a>
+                
+                <div class="flex justify-center space-x-10 pt-8 mt-4 border-t border-navy-800 w-full">
+                    <a href="https://instagram.com/omwrental" target="_blank" class="text-gray-500 hover:text-brand-orange text-3xl"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="mailto:info@omwrentalcar.com" class="text-gray-500 hover:text-brand-cyan text-3xl"><i class="fa-regular fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header / Inicio (Elegante y minimalista) -->
+    <header id="inicio" class="relative h-screen flex items-center justify-center">
+        <!-- Imagen de fondo -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1485291571150-772bcfc10da5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Miami Night Drive" class="w-full h-full object-cover object-center" />
+            <div class="absolute inset-0 hero-overlay"></div>
+        </div>
+        
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto mt-20">
+            <p class="text-gray-400 tracking-[0.5em] uppercase mb-8 text-sm md:text-base font-light">Cover Subline</p>
+            
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 tracking-widest uppercase leading-tight drop-shadow-lg">
+                EXPERIENCE <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-brand-cyan to-blue-200">MIAMI</span>
+            </h1>
+            
+            <p class="text-xl md:text-2xl text-gray-300 font-light mb-16 max-w-2xl mx-auto leading-relaxed">
+                Conducir con estilo y comodidad nunca fue tan fácil.
+            </p>
+            
+            <a href="#vehiculos" class="inline-block px-12 py-5 bg-transparent border border-gray-400 text-white font-medium hover:bg-white hover:text-navy-950 hover:border-white transition-all duration-300 uppercase tracking-[0.2em] text-sm md:text-base">
+                Get Started
+            </a>
+        </div>
+        
+        <!-- Flecha sutil animada indicando scroll -->
+        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10 animate-bounce opacity-50">
+            <a href="#vehiculos" class="text-white hover:text-brand-cyan transition-colors">
+                <i class="fa-solid fa-angle-down text-2xl"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Vehículos: La Flota -->
+    <section id="vehiculos" class="py-32 bg-navy-900 relative">
+        <div class="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
+            
+            <!-- Título de Sección Elegante -->
+            <div class="flex flex-col items-center mb-24">
+                <span class="text-brand-orange font-logo text-3xl mb-2">Nuestra Flota</span>
+                <h2 class="text-4xl md:text-5xl font-bold text-white tracking-[0.2em] uppercase mb-8 text-center">Vehículos</h2>
+                <div class="w-12 h-[2px] bg-brand-cyan"></div>
+            </div>
+
+            <!-- Grilla 2x2 Fina y limpia -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 md:gap-16">
+                
+                <!-- Vehículo 1: Económicos -->
+                <div class="vehicle-card bg-navy-950 border border-navy-800 p-8 flex flex-col h-full rounded-sm">
+                    <div class="overflow-hidden mb-8 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1590362891991-f776e747a588?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Hyundai Elantra" class="w-full h-72 object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700" />
+                    </div>
+                    
+                    <div class="flex flex-col flex-grow">
+                        <span class="text-gray-500 font-medium tracking-[0.2em] uppercase text-xs mb-3">Categoría: Económicos</span>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white uppercase tracking-wide">Hyundai Elantra</h3>
+                        </div>
+                        <p class="text-xl text-brand-cyan mb-6 font-light">Desde $55 por día</p>
+                        <p class="text-gray-400 text-base md:text-lg font-light leading-relaxed mb-10 flex-grow">
+                            La opción ideal para moverte con libertad y comodidad por la ciudad sin gastar de más. Perfecto para viajes cortos o quienes buscan eficiencia y estilo a bajo costo.
+                        </p>
+                        
+                        <a href="https://wa.me/17863988843?text=Hola,%20me%20interesa%20reservar%20el%20Hyundai%20Elantra%20(Económico)" target="_blank" class="group flex items-center justify-between border border-navy-700 hover:border-brand-cyan px-6 py-4 transition-all duration-300">
+                            <span class="text-white group-hover:text-brand-cyan uppercase tracking-[0.2em] text-sm font-medium transition-colors">Reservar</span>
+                            <i class="fa-solid fa-arrow-right text-gray-500 group-hover:text-brand-cyan transition-colors"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vehículo 2: SUVs -->
+                <div class="vehicle-card bg-navy-950 border border-navy-800 p-8 flex flex-col h-full rounded-sm">
+                    <div class="overflow-hidden mb-8 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mitsubishi Outlander" class="w-full h-72 object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700" />
+                    </div>
+                    
+                    <div class="flex flex-col flex-grow">
+                        <span class="text-gray-500 font-medium tracking-[0.2em] uppercase text-xs mb-3">Categoría: SUVs</span>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white uppercase tracking-wide">Mitsubishi Outlander</h3>
+                        </div>
+                        <p class="text-xl text-brand-cyan mb-6 font-light">Desde $75 por día</p>
+                        <p class="text-gray-400 text-base md:text-lg font-light leading-relaxed mb-10 flex-grow">
+                            Más espacio, más comodidad. Este SUV combina elegancia y potencia, ideal para familias pequeñas o grupos de amigos que buscan disfrutar del camino con estilo.
+                        </p>
+                        
+                        <a href="https://wa.me/17863988843?text=Hola,%20me%20interesa%20reservar%20el%20Mitsubishi%20Outlander%20(SUV)" target="_blank" class="group flex items-center justify-between border border-navy-700 hover:border-brand-cyan px-6 py-4 transition-all duration-300">
+                            <span class="text-white group-hover:text-brand-cyan uppercase tracking-[0.2em] text-sm font-medium transition-colors">Reservar</span>
+                            <i class="fa-solid fa-arrow-right text-gray-500 group-hover:text-brand-cyan transition-colors"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vehículo 3: Caravanas -->
+                <div class="vehicle-card bg-navy-950 border border-navy-800 p-8 flex flex-col h-full rounded-sm">
+                    <div class="overflow-hidden mb-8 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1517026575980-3e1e2dedeab4?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Dodge Caravan" class="w-full h-72 object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700" />
+                    </div>
+                    
+                    <div class="flex flex-col flex-grow">
+                        <span class="text-gray-500 font-medium tracking-[0.2em] uppercase text-xs mb-3">Categoría: Caravanas</span>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white uppercase tracking-wide">Dodge Caravan</h3>
+                        </div>
+                        <p class="text-xl text-brand-cyan mb-6 font-light">Desde $75 por día</p>
+                        <p class="text-gray-400 text-base md:text-lg font-light leading-relaxed mb-10 flex-grow">
+                            Diseñada para familias o grupos grandes, con amplio espacio para pasajeros y equipaje. La mejor opción para viajes largos, cómodos y sin complicaciones.
+                        </p>
+                        
+                        <a href="https://wa.me/17863988843?text=Hola,%20me%20interesa%20reservar%20la%20Dodge%20Caravan%20(Caravana)" target="_blank" class="group flex items-center justify-between border border-navy-700 hover:border-brand-cyan px-6 py-4 transition-all duration-300">
+                            <span class="text-white group-hover:text-brand-cyan uppercase tracking-[0.2em] text-sm font-medium transition-colors">Reservar</span>
+                            <i class="fa-solid fa-arrow-right text-gray-500 group-hover:text-brand-cyan transition-colors"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Vehículo 4: Lujo -->
+                <div class="vehicle-card bg-navy-950 border border-navy-800 p-8 flex flex-col h-full rounded-sm">
+                    <div class="overflow-hidden mb-8 rounded-sm">
+                        <img src="https://images.unsplash.com/photo-1552519507-da3b142c6e3d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Mustang Convertible" class="w-full h-72 object-cover object-bottom opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700" />
+                    </div>
+                    
+                    <div class="flex flex-col flex-grow">
+                        <span class="text-gray-500 font-medium tracking-[0.2em] uppercase text-xs mb-3">Categoría: Lujo</span>
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-2xl font-bold text-white uppercase tracking-wide">Mustang Convertible</h3>
+                        </div>
+                        <p class="text-xl text-brand-cyan mb-6 font-light">Desde $110 por día</p>
+                        <p class="text-gray-400 text-base md:text-lg font-light leading-relaxed mb-10 flex-grow">
+                            Si quieres una experiencia única, nuestros Mustang descapotables ofrecen potencia, estilo y libertad. El auto perfecto para quienes quieren disfrutar del sol de Florida.
+                        </p>
+                        
+                        <a href="https://wa.me/17863988843?text=Hola,%20me%20interesa%20reservar%20el%20Mustang%20Convertible%20(Lujo)" target="_blank" class="group flex items-center justify-between border border-navy-700 hover:border-brand-cyan px-6 py-4 transition-all duration-300">
+                            <span class="text-white group-hover:text-brand-cyan uppercase tracking-[0.2em] text-sm font-medium transition-colors">Reservar</span>
+                            <i class="fa-solid fa-arrow-right text-gray-500 group-hover:text-brand-cyan transition-colors"></i>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Acerca de (Texto inmersivo) -->
+    <section id="acerca" class="py-32 bg-navy-950 border-t border-white/5 relative overflow-hidden">
+        <!-- Detalle decorativo sutil de fondo -->
+        <div class="absolute -right-40 -bottom-40 opacity-5 pointer-events-none">
+            <i class="fa-solid fa-car-side text-[30rem] text-brand-cyan"></i>
+        </div>
+
+        <div class="max-w-4xl mx-auto px-6 sm:px-8 lg:px-12 text-center relative z-10">
+            <span class="text-brand-orange font-logo text-3xl mb-4 block">Conócenos</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-white tracking-[0.2em] uppercase mb-16">¡Bienvenidos a<br> ON MY WAY!</h2>
+            
+            <div class="space-y-8 text-gray-400">
+                <p class="text-lg md:text-xl font-light leading-loose">
+                    Nuestro compromiso es simplificar la experiencia de alquiler, centrándonos en un servicio eficiente y agradable, caracterizado por la transparencia y la personalización.
+                </p>
+                <p class="text-lg md:text-xl font-light leading-loose">
+                    Valoramos su tiempo, ya sea que esté disfrutando de unas vacaciones o cumpliendo con un viaje de negocios.
+                </p>
+                <div class="w-12 h-[1px] bg-gray-700 mx-auto my-12"></div>
+                <p class="text-xl md:text-2xl font-medium leading-loose text-white tracking-wide">
+                    ¡Reserve hoy mismo su vehículo ideal con ON MY WAY y comience su aventura en Miami para experimentar la diferencia!
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto / Footer Minimalista -->
+    <footer id="contacto" class="bg-navy-900 border-t border-white/5 pt-32 pb-16">
+        <div class="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 text-center">
+            
+            <span class="text-brand-orange font-logo text-3xl mb-4 block">Hablemos</span>
+            <h2 class="text-3xl md:text-5xl font-bold text-white tracking-[0.2em] uppercase mb-20">Contáctenos</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-16 md:gap-8 mb-24 max-w-4xl mx-auto">
+                <!-- WhatsApp Info -->
+                <div class="flex flex-col items-center group">
+                    <a href="https://wa.me/17863988843" target="_blank" class="w-16 h-16 border border-gray-700 rounded-full flex items-center justify-center text-gray-400 group-hover:text-green-500 group-hover:border-green-500 transition-all duration-500 mb-6 text-2xl">
+                        <i class="fa-brands fa-whatsapp"></i>
+                    </a>
+                    <h4 class="text-white font-medium tracking-[0.2em] uppercase text-sm mb-3">WhatsApp</h4>
+                    <p class="text-gray-400 font-light tracking-widest">+1 (786) 398-8843</p>
+                </div>
+
+                <!-- Instagram Info -->
+                <div class="flex flex-col items-center group">
+                    <a href="https://instagram.com/omwrental" target="_blank" class="w-16 h-16 border border-gray-700 rounded-full flex items-center justify-center text-gray-400 group-hover:text-brand-orange group-hover:border-brand-orange transition-all duration-500 mb-6 text-2xl">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                    <h4 class="text-white font-medium tracking-[0.2em] uppercase text-sm mb-3">Instagram</h4>
+                    <p class="text-gray-400 font-light tracking-widest">@omwrental</p>
+                </div>
+                
+                <!-- Email Info -->
+                <div class="flex flex-col items-center group">
+                    <a href="mailto:info@omwrentalcar.com" class="w-16 h-16 border border-gray-700 rounded-full flex items-center justify-center text-gray-400 group-hover:text-brand-cyan group-hover:border-brand-cyan transition-all duration-500 mb-6 text-2xl">
+                        <i class="fa-regular fa-envelope"></i>
+                    </a>
+                    <h4 class="text-white font-medium tracking-[0.2em] uppercase text-sm mb-3">Email</h4>
+                    <p class="text-gray-400 font-light tracking-widest">info@omwrentalcar.com</p>
+                </div>
+            </div>
+            
+            <!-- Logo pequeño en el footer -->
+            <div class="w-32 mx-auto mb-12 opacity-50 hover:opacity-100 transition-opacity">
+                 <svg viewBox="0 0 1000 500" class="w-full h-auto">
+                    <!-- Silueta del Auto -->
+                    <path style="fill: none; stroke: #2DB0E6; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round;" d="M 220 200 C 280 130, 380 110, 500 110 C 620 110, 720 130, 780 200" />
+                    <path style="fill: none; stroke: #2DB0E6; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round;" d="M 220 200 C 200 215, 175 220, 150 220" />
+                    <path style="fill: none; stroke: #2DB0E6; stroke-width: 12; stroke-linecap: round; stroke-linejoin: round;" d="M 780 200 C 800 215, 825 220, 850 220" />
+                    <!-- Textos -->
+                    <text x="500" y="390" style="font-family: 'Montserrat', sans-serif; font-weight: 900; font-size: 240px; fill: #2DB0E6;" text-anchor="middle">OMW</text>
+                    <text x="500" y="485" style="font-family: 'Yellowtail', cursive; font-size: 140px; fill: #F37623;" text-anchor="middle">Car Rental</text>
+                </svg>
+            </div>
+
+            <div class="border-t border-gray-800 pt-10 flex flex-col md:flex-row justify-between items-center text-xs tracking-widest text-gray-600 font-light uppercase">
+                <p class="mb-4 md:mb-0">&copy; 2026 OMW Rental Car. Todos los derechos reservados.</p>
+                <a href="#inicio" class="hover:text-brand-cyan transition-colors flex items-center gap-2">
+                    Volver arriba <i class="fa-solid fa-angle-up"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GLOBO DIRECTO A WHATSAPP (Ajustado) -->
+    <a href="https://wa.me/17863988843" target="_blank" class="whatsapp-float fixed bottom-8 right-8 md:bottom-12 md:right-12 w-16 h-16 rounded-full flex items-center justify-center text-white z-50 shadow-2xl cursor-pointer transition-all duration-300 text-3xl" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // Efecto de Navbar translúcido al hacer scroll
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('navbar-scrolled', 'py-4');
+                navbar.classList.remove('border-white/5', 'py-6');
+            } else {
+                navbar.classList.remove('navbar-scrolled', 'py-4');
+                navbar.classList.add('border-white/5', 'py-6');
+            }
+        });
+
+        // Toggle del Menú Móvil
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
+
+
