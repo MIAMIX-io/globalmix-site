@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ROCKET Futbol 5 - Federal, Entre Ríos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --rocket-red: #cc2b2b;
+            --rocket-dark: #121417;
+            --rocket-silver: #e2e8f0;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--rocket-dark);
+            color: white;
+            scroll-behavior: smooth;
+        }
+        .font-sport {
+            font-family: 'Orbitron', sans-serif;
+        }
+        .hero-gradient {
+            background: linear-gradient(rgba(18, 20, 23, 0.8), rgba(18, 20, 23, 0.9)), 
+                        url('https://images.unsplash.com/photo-1574629810360-7efbbe195018?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+        .card-hover:hover {
+            transform: translateY(-10px);
+            border-color: var(--rocket-red);
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+        .promo-badge {
+            background: linear-gradient(45deg, #cc2b2b, #ff4d4d);
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navegación -->
+    <nav class="fixed w-full z-50 bg-black/80 backdrop-blur-md border-b border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <div class="flex items-center gap-3">
+                    <!-- Placeholder para el logo adjunto -->
+                    <div class="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center border border-red-600">
+                        <i class="fas fa-rocket text-red-600 text-xl"></i>
+                    </div>
+                    <span class="font-sport text-xl font-bold tracking-tighter">ROCKET <span class="text-red-600">F5</span></span>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-8">
+                        <a href="#inicio" class="hover:text-red-600 px-3 py-2 transition-colors">Inicio</a>
+                        <a href="#canchas" class="hover:text-red-600 px-3 py-2 transition-colors">Canchas</a>
+                        <a href="#kiosco" class="hover:text-red-600 px-3 py-2 transition-colors">MaxiKiosco</a>
+                        <a href="#eventos" class="hover:text-red-600 px-3 py-2 transition-colors">Eventos</a>
+                        <a href="#contacto" class="bg-red-600 hover:bg-red-700 px-5 py-2 rounded-full transition-colors">Reservar Ahora</a>
+                    </div>
+                </div>
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-white p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Menú móvil -->
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-b border-white/10 px-4 pt-2 pb-6 space-y-2">
+            <a href="#inicio" class="block py-2">Inicio</a>
+            <a href="#canchas" class="block py-2">Canchas</a>
+            <a href="#kiosco" class="block py-2">MaxiKiosco</a>
+            <a href="#eventos" class="block py-2">Eventos</a>
+            <a href="https://wa.me/5493454452247" class="block py-2 text-red-500 font-bold">Reservar</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="hero-gradient min-h-screen flex items-center justify-center pt-20 px-4 text-center">
+        <div class="max-w-4xl">
+            <div class="mb-6 inline-block promo-badge px-6 py-2 rounded-full font-bold text-sm uppercase tracking-widest">
+                🔥 ¡PROMO IMPERDIBLE!
+            </div>
+            <h1 class="text-5xl md:text-8xl font-sport font-bold mb-4 tracking-tighter">
+                ROCKET <span class="text-red-600">FUTBOL 5</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Las mejores canchas de Federal te esperan para vivir la pasión del fútbol.
+            </p>
+            
+            <div class="bg-white/5 backdrop-blur-lg border border-white/20 p-8 rounded-3xl mb-10 shadow-2xl">
+                <p class="text-gray-400 uppercase tracking-widest text-sm mb-2">Alquiler de Cancha</p>
+                <div class="flex items-center justify-center gap-2">
+                    <span class="text-3xl font-light">$</span>
+                    <span class="text-6xl md:text-7xl font-sport font-bold text-white">15.000</span>
+                    <span class="text-xl text-red-500 font-bold">/ Hora</span>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="https://wa.me/5493454452247" target="_blank" class="bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-10 rounded-xl text-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp"></i> RESERVAR TURNO
+                </a>
+                <a href="#canchas" class="bg-white/10 hover:bg-white/20 text-white font-bold py-4 px-10 rounded-xl text-lg border border-white/20 transition-all">
+                    VER INSTALACIONES
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Secciones de Servicios -->
+    <section class="py-24 bg-zinc-950">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Canchas -->
+                <div id="canchas" class="bg-zinc-900 border border-white/5 rounded-3xl p-8 card-hover overflow-hidden relative">
+                    <div class="absolute -right-4 -top-4 opacity-10">
+                        <i class="fas fa-soccer-ball text-9xl"></i>
+                    </div>
+                    <div class="h-14 w-14 bg-red-600/20 rounded-2xl flex items-center justify-center mb-6 border border-red-600/30">
+                        <i class="fas fa-pitch-control-full text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-sport font-bold mb-4 uppercase">Canchas Premium</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Césped sintético de última generación, iluminación LED profesional y vestuarios equipados para que solo te preocupes por jugar.
+                    </p>
+                    <ul class="text-sm space-y-3 text-gray-300">
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> Iluminación Nocturna</li>
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> Césped de alta densidad</li>
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> Vestuarios con ducha</li>
+                    </ul>
+                </div>
+
+                <!-- MaxiKiosco -->
+                <div id="kiosco" class="bg-zinc-900 border border-white/5 rounded-3xl p-8 card-hover overflow-hidden relative">
+                    <div class="absolute -right-4 -top-4 opacity-10">
+                        <i class="fas fa-store text-9xl"></i>
+                    </div>
+                    <div class="h-14 w-14 bg-red-600/20 rounded-2xl flex items-center justify-center mb-6 border border-red-600/30">
+                        <i class="fas fa-hamburger text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-sport font-bold mb-4 uppercase">MaxiKiosco</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        El post-partido se vive mejor acá. Bebidas heladas, snacks, golosinas y todo lo que necesitás antes y después de la cancha.
+                    </p>
+                    <ul class="text-sm space-y-3 text-gray-300">
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> Bebidas bien frías</li>
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> Snacks y Galletitas</li>
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> Recarga de energía</li>
+                    </ul>
+                </div>
+
+                <!-- Eventos -->
+                <div id="eventos" class="bg-zinc-900 border border-white/5 rounded-3xl p-8 card-hover overflow-hidden relative">
+                    <div class="absolute -right-4 -top-4 opacity-10">
+                        <i class="fas fa-birthday-cake text-9xl"></i>
+                    </div>
+                    <div class="h-14 w-14 bg-red-600/20 rounded-2xl flex items-center justify-center mb-6 border border-red-600/30">
+                        <i class="fas fa-users text-red-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-sport font-bold mb-4 uppercase">Eventos & Torneos</h3>
+                    <p class="text-gray-400 mb-6 leading-relaxed">
+                        Festejá tu cumpleaños o armá un torneo con amigos. Contamos con salón de usos múltiples y parrilla para el tercer tiempo.
+                    </p>
+                    <ul class="text-sm space-y-3 text-gray-300">
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> Cumpleaños Infantiles</li>
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> Quincho con Parrilla</li>
+                        <li><i class="fas fa-check text-red-600 mr-2"></i> Torneos Relámpago</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Info Section & Ubicación -->
+    <section id="contacto" class="py-24 bg-zinc-900">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex flex-col lg:flex-row gap-16 items-center">
+                <div class="lg:w-1/2">
+                    <h2 class="text-4xl font-sport font-bold mb-8 italic">DONDE EL <span class="text-red-600">FÚTBOL</span> DESPEGA</h2>
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-red-600 p-3 rounded-lg"><i class="fas fa-map-marker-alt"></i></div>
+                            <div>
+                                <h4 class="font-bold text-lg">Dirección</h4>
+                                <p class="text-gray-400">Anderson 550, Ciudad de Federal, Entre Ríos.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="bg-green-600 p-3 rounded-lg"><i class="fab fa-whatsapp"></i></div>
+                            <div>
+                                <h4 class="font-bold text-lg">WhatsApp de Reservas</h4>
+                                <p class="text-gray-400">+54 9 3454 452247</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <div class="bg-gradient-to-tr from-yellow-500 to-purple-600 p-3 rounded-lg"><i class="fab fa-instagram"></i></div>
+                            <div>
+                                <h4 class="font-bold text-lg">Instagram</h4>
+                                <p class="text-gray-400">@rocket.f5</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-10 p-6 bg-red-600/10 border border-red-600/20 rounded-2xl">
+                        <p class="text-red-500 font-bold mb-2 uppercase text-xs tracking-widest">Atención</p>
+                        <p class="text-lg">Abierto todos los días. ¡Vení a disfrutar del mejor ambiente deportivo de la ciudad!</p>
+                    </div>
+                </div>
+                <div class="lg:w-1/2 w-full h-[400px] bg-zinc-800 rounded-3xl overflow-hidden border border-white/10 shadow-2xl relative">
+                    <!-- Placeholder de Mapa -->
+                    <div class="absolute inset-0 flex items-center justify-center flex-col text-center p-6">
+                        <i class="fas fa-map-marked-alt text-6xl text-zinc-600 mb-4"></i>
+                        <p class="text-zinc-400 italic mb-4 font-sport">Ubicados estratégicamente en Federal</p>
+                        <a href="https://www.google.com/maps/search/Anderson+550,+Federal,+Entre+Rios" target="_blank" class="bg-white text-black font-bold py-3 px-8 rounded-full hover:bg-red-600 hover:text-white transition-all">
+                            VER EN GOOGLE MAPS
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-12 bg-black border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+            <div class="mb-8 flex items-center justify-center gap-3">
+                <i class="fas fa-rocket text-red-600 text-2xl"></i>
+                <span class="font-sport text-2xl font-bold tracking-tighter">ROCKET <span class="text-red-600">F5</span></span>
+            </div>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="https://instagram.com/rocket.f5" target="_blank" class="text-2xl text-gray-500 hover:text-red-600 transition-colors">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://wa.me/5493454452247" target="_blank" class="text-2xl text-gray-500 hover:text-green-500 transition-colors">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            <p class="text-gray-600 text-sm">
+                &copy; 2024 ROCKET Futbol 5. Federal, Entre Ríos. Todos los derechos reservados.
+            </p>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5493454452247" target="_blank" class="whatsapp-float">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Lógica del menú móvil
+        const menuBtn = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Cerrar menú al clickear link
+        const navLinks = mobileMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+
+</body>
+</html>
+
