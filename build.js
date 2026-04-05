@@ -185,6 +185,7 @@ async function generateSite() {
                     page_id: trip.notionPageId,
                     properties: { 'Status': { status: { name: 'Live' } } }
                 });
+                console.log(`   └─ Status updated to "Live" in Notion.`);
             } catch (statusError) {
                 console.log(`   └─ ⚠️ Could not update status in Notion. Error: ${statusError.message}`);
             }
