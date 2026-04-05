@@ -4,6 +4,6 @@
   "description": "Dynamic SSG for Global Mix Travel",
   "main": "build.js",
   "dependencies": {
-    "@notionhq/client": "^2.2.14"
+    "@notionhq/client": "^2.3.0"
   }
 }
