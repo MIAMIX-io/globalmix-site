@@ -21,8 +21,8 @@ jobs:
       
       - name: Sync Notion pages & Build HTML
         env:
-          GLOBALMIX_NOTION_API_KEY: ${{ secrets.NOTION_TOKEN }} 
-          GLOBALMIX_NOTION_DB_ID: ${{ secrets.NOTION_DATABASE_ID }} 
+          GLOBALMIX_NOTION_API_KEY: ${{ secrets.GLOBALMIX_NOTION_API_KEY }} 
+          GLOBALMIX_NOTION_DB_ID: ${{ secrets.GLOBALMIX_NOTION_DB_ID }}
         run: node build.js
       
       - name: Commit changes
