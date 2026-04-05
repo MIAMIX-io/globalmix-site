@@ -1,54 +1,35 @@
-name: Generate Dynamic Trip Pages
+name: Build Global Mix Site
 
 on:
-  push:
-    branches:
-      - main
-  workflow_dispatch: # Allows manual trigger
   schedule:
-    - cron: '0 * * * *' # Runs automatically every hour
-
-# Explicitly grant the action permission to push code back to the repo
-permissions:
-  contents: write 
-
-# This silences the GitHub deprecation warning by forcing Node 24 globally
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    - cron: '*/15 * * * *'  # Runs every 15 minutes
+  workflow_dispatch:  # Allows you to click "Run workflow" manually in GitHub
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4 
-
+      - uses: actions/checkout@v4
+      
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '24' 
-
-      - name: Install Dependencies
-        run: npm install
-
-      - name: Fetch Notion Data & Generate Pages
+          node-version: '20'
+      
+      - name: Install dependencies
+        run: npm install @notionhq/client
+      
+      - name: Sync Notion pages & Build HTML
         env:
-          GLOBALMIX_NOTION_API_KEY: ${{ secrets.GLOBALMIX_NOTION_API_KEY }}
-          GLOBALMIX_NOTION_DB_ID: ${{ secrets.GLOBALMIX_NOTION_DB_ID }}
+          GLOBALMIX_NOTION_API_KEY: ${{ secrets.NOTION_TOKEN }} 
+          GLOBALMIX_NOTION_DB_ID: ${{ secrets.NOTION_DATABASE_ID }} 
         run: node build.js
-
-      # This creates the .nojekyll file to prevent 404 errors on GitHub Pages
-      - name: Bypass Jekyll
-        run: touch .nojekyll
-
-      - name: Commit and Push Generated Pages
+      
+      - name: Commit changes
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          # Stage all new files and folders
-          git add -A
-          
-          # Commit and push (or quietly skip if no changes exist)
-          git commit -m "Auto-generated trips from Global Mix Notion Database" || echo "No changes to commit"
-          git push origin main
+          git config user.name "Notion Sync Bot"
+          git config user.email "bot@globalmix.online"
+          git add .
+          git diff --quiet && git diff --staged --quiet || \
+            git commit -m "Auto-build from Notion $(date +'%Y-%m-%d %H:%M')"
+          git push
