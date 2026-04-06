@@ -27,6 +27,11 @@
             const trip = window.TRIP_DATA;
             const [scrolled, setScrolled] = useState(false);
 
+            // Contact Info for the Email Template
+            const contactData = {
+                email: "info@globalmix.online"
+            };
+
             // Dynamic Region Styling Dictionary
             const themes = {
                 "Africa": { mainBg: "bg-[#2D3E2F]", accent: "text-[#B4924A]", bgAccent: "bg-[#B4924A]", heroDrop: "drop-shadow-[0_0_15px_rgba(255,255,255,0.7)] text-[#1A3626]" },
@@ -47,6 +52,14 @@
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
+            // Action to open the specific email draft
+            const handleEmailInquiry = (e) => {
+                e.preventDefault();
+                const subject = encodeURIComponent(`Requesting Full Itinerary: ${trip.title}`);
+                const body = encodeURIComponent(`Hello Global Mix VIP Team,\n\nPlease send me the full itinerary and details for the "${trip.title}" expedition in ${trip.region}.\n\nThank you!`);
+                window.location.href = `mailto:${contactData.email}?subject=${subject}&body=${body}`;
+            };
+
             return (
                 <div className="min-h-screen font-serif text-[#1A1A1A]">
                     {/* Header */}
@@ -59,7 +72,11 @@
                                     <span className={`text-[10px] tracking-[0.4em] font-medium font-sans uppercase ${theme.accent}`}>Travel {trip.region}</span>
                                 </div>
                             </div>
-                            <button className={`${theme.bgAccent} text-white px-8 py-3 text-[10px] font-bold tracking-[0.2em] font-sans hover:scale-105 transition-transform`}>
+                            
+                            {/* WORKING EMAIL BUTTON */}
+                            <button 
+                                onClick={handleEmailInquiry}
+                                className={`${theme.bgAccent} text-white px-8 py-3 text-[10px] font-bold tracking-[0.2em] font-sans hover:scale-105 transition-transform cursor-pointer`}>
                                 REQUEST ITINERARY
                             </button>
                         </div>
@@ -99,7 +116,8 @@
                                     <Star size={16} /> Curated Experiences
                                 </h3>
                                 <ul className="space-y-4">
-                                    {(trip.experiences || "").split(',').map((exp, i) => (
+                                    {/* PIPED SEPARATOR LOGIC INCORPORATED */}
+                                    {(trip.experiences || "").split('|').map((exp, i) => (
                                         <li key={i} className="text-sm text-gray-600 flex items-start gap-3 font-sans">
                                             <span className={`w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 ${theme.bgAccent}`} />
                                             {exp.trim()}
