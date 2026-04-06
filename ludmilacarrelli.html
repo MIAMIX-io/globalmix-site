@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ludmila Mariel Carrelli Sosa | Perfil Profesional</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; scroll-behavior: smooth; }
+        .glass-nav { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(12px); }
+        .bg-global { 
+            background: radial-gradient(circle at top right, #1e40af, #1e3a8a, #0f172a); 
+        }
+        .text-gradient {
+            background: linear-gradient(to right, #60a5fa, #ffffff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card-brand {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            background: white;
+            border: 1px solid #e5e7eb;
+        }
+        .card-brand:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            border-color: #3b82f6;
+        }
+        .profile-border {
+            border: 8px solid rgba(255, 255, 255, 0.1);
+            outline: 2px solid #3b82f6;
+        }
+        .section-curve {
+            clip-path: ellipse(150% 100% at 50% 100%);
+        }
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            z-index: 100;
+            transition: all 0.3s ease;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-900">
+
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/5491161852388" target="_blank" class="whatsapp-float bg-[#25D366] text-white p-4 rounded-full shadow-2xl flex items-center justify-center">
+        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
+        </svg>
+    </a>
+
+    <!-- Header / Navigation -->
+    <nav class="fixed w-full z-50 glass-nav border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center text-white font-extrabold text-xl">L</div>
+                <span class="text-lg font-extrabold tracking-tighter text-slate-800 uppercase">Ludmila Carrelli</span>
+            </div>
+            <div class="hidden md:flex space-x-10 text-xs font-bold uppercase tracking-widest text-slate-500">
+                <a href="#inicio" class="hover:text-blue-600 transition">Inicio</a>
+                <a href="#perfil" class="hover:text-blue-600 transition">Perfil</a>
+                <a href="#global-mix" class="text-blue-600">Global Mix Group</a>
+                <a href="#experiencia" class="hover:text-blue-600 transition">Trayectoria</a>
+                <a href="#contacto" class="px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative min-h-screen bg-global pt-32 pb-20 flex items-center overflow-hidden">
+        <div class="absolute top-0 right-0 w-1/2 h-full bg-blue-500/10 blur-[120px] rounded-full -mr-64 -mt-64"></div>
+        <div class="absolute bottom-0 left-0 w-1/3 h-full bg-blue-400/5 blur-[100px] rounded-full -ml-32 -mb-32"></div>
+
+        <div class="max-w-7xl mx-auto px-6 relative z-10 flex flex-col md:flex-row items-center gap-16">
+            <div class="flex-1 text-center md:text-left">
+                <div class="inline-block px-4 py-1 rounded-full bg-blue-500/20 text-blue-300 text-xs font-bold uppercase tracking-[0.2em] mb-6">
+                    Professional Media Profile
+                </div>
+                <h1 class="text-5xl md:text-7xl font-extrabold text-white mb-6 leading-tight">
+                    Ludmila Mariel <br><span class="text-gradient">Carrelli Sosa</span>
+                </h1>
+                <p class="text-blue-100/80 text-xl md:text-2xl font-light mb-10 max-w-xl">
+                    Locutora Nacional y Periodista con visión global, especializada en contenidos digitales y producción de medios.
+                </p>
+                <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="https://wa.me/5491161852388" target="_blank" class="px-8 py-4 bg-white text-blue-900 font-bold rounded-xl hover:bg-blue-50 transition shadow-lg flex items-center gap-2">
+                        <svg class="w-5 h-5 text-[#25D366]" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+                        WhatsApp
+                    </a>
+                    <a href="#experiencia" class="px-8 py-4 bg-blue-600/30 text-white border border-white/20 font-bold rounded-xl hover:bg-blue-600/50 transition">Trayectoria</a>
+                </div>
+            </div>
+            <div class="flex-1 flex justify-center">
+                <div class="relative">
+                    <div class="absolute inset-0 bg-blue-500 blur-2xl opacity-20 rounded-full"></div>
+                    <div class="w-72 h-72 md:w-[450px] md:h-[450px] rounded-3xl overflow-hidden profile-border shadow-2xl rotate-3 hover:rotate-0 transition duration-500 bg-slate-800">
+                        <!-- Usa tu archivo image.png aquí -->
+                        <img src="https://api.screenshotmachine.com/?key=YOUR_KEY&url=https://your-image-path.jpg&size=600x600" alt="Ludmila Carrelli" class="w-full h-full object-cover" 
+                             onerror="this.src='https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&q=80&w=800'">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Profile Section -->
+    <section id="perfil" class="py-32 px-6 bg-white relative">
+        <div class="max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+                <div class="md:col-span-4">
+                    <h2 class="text-sm font-bold text-blue-600 uppercase tracking-widest mb-2">Presentación</h2>
+                    <h3 class="text-4xl font-extrabold text-slate-900">Perfil Profesional</h3>
+                </div>
+                <div class="md:col-span-8">
+                    <div class="relative">
+                        <svg class="absolute -top-6 -left-6 w-12 h-12 text-blue-100 fill-current" viewBox="0 0 24 24"><path d="M14.017 21L14.017 18C14.017 16.8954 14.9124 16 16.017 16H19.017C19.5693 16 20.017 15.5523 20.017 15V9C20.017 8.44772 19.5693 8 19.017 8H16.017C14.9124 8 14.017 7.10457 14.017 6V3H21.017V21H14.017ZM3.017 21L3.017 18C3.017 16.8954 3.91243 16 5.017 16H8.017C8.56928 16 9.017 15.5523 9.017 15V9C9.017 8.44772 8.56928 8 8.017 8H5.017C3.91243 8 3.017 7.10457 3.017 6V3H10.017V21H3.017Z"/></svg>
+                        <p class="text-2xl text-slate-600 font-light leading-relaxed relative z-10">
+                            Profesional de medios, proactiva y organizada, con experiencia en producción, locución, columnismo y gestión de contenidos digitales. Se destaca por su capacidad de trabajo en equipo, responsabilidad y enfoque creativo en la generación de contenido.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Global Mix Group Section -->
+    <section id="global-mix" class="py-32 px-6 bg-slate-950 text-white overflow-hidden relative">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-0 left-0 w-full h-full" style="background-image: radial-gradient(#3b82f6 1px, transparent 1px); background-size: 40px 40px;"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto relative z-10">
+            <div class="text-center mb-20">
+                <h2 class="text-blue-500 font-bold tracking-[0.3em] uppercase text-xs mb-4">Strategic Partnership</h2>
+                <h3 class="text-4xl md:text-5xl font-extrabold mb-6">Global Mix Group <span class="text-blue-400">USA</span></h3>
+                <p class="text-slate-400 max-w-2xl mx-auto text-lg font-light">
+                    Agente en colaboración activa para el ecosistema de medios y turismo líder en Estados Unidos y Latinoamérica.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <a href="https://www.miamix.io" target="_blank" class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition group">
+                    <div class="w-12 h-12 bg-blue-600 rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9h18"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">MIAMIX</h4>
+                    <p class="text-slate-400 text-sm mb-4">Plataforma digital líder en la escena de Miami.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase">Visitar →</span>
+                </a>
+
+                <a href="https://www.globalmix.online" target="_blank" class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition group">
+                    <div class="w-12 h-12 bg-blue-600 rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Global Mix Magazine</h4>
+                    <p class="text-slate-400 text-sm mb-4">Revista de estilo de vida y cultura global.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase">Visitar →</span>
+                </a>
+
+                <a href="https://www.goobalmix.network/travel" target="_blank" class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition group">
+                    <div class="w-12 h-12 bg-blue-600 rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Global Mix Travel</h4>
+                    <p class="text-slate-400 text-sm mb-4">Red de experiencias y turismo internacional.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase">Visitar →</span>
+                </a>
+
+                <a href="https://somoslarevistausa.com" target="_blank" class="bg-white/5 border border-white/10 p-8 rounded-2xl hover:bg-white/10 transition group">
+                    <div class="w-12 h-12 bg-blue-600 rounded-xl mb-6 flex items-center justify-center group-hover:scale-110 transition">
+                        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/></svg>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">SOMOS La Revista</h4>
+                    <p class="text-slate-400 text-sm mb-4">El medio referente de la comunidad latina en USA.</p>
+                    <span class="text-blue-400 text-xs font-bold uppercase">Visitar →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Timeline -->
+    <section id="experiencia" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+                <div>
+                    <h2 class="text-blue-600 font-extrabold text-sm uppercase tracking-widest mb-4">Media Experience</h2>
+                    <h3 class="text-5xl font-extrabold text-slate-900">Trayectoria <br>Profesional</h3>
+                </div>
+                <div class="text-slate-500 max-w-sm text-right font-light">
+                    Sólida experiencia en los principales canales y plataformas de comunicación de Argentina.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <div class="space-y-6">
+                    <h4 class="text-lg font-extrabold border-b border-blue-100 pb-4 flex items-center gap-2">
+                        <span class="w-2 h-6 bg-red-600 rounded-full"></span>
+                        TV & Streaming
+                    </h4>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <p class="text-xs font-bold text-red-600 mb-2">AMÉRICA TV • 2025</p>
+                        <h5 class="text-xl font-bold text-slate-900 mb-3">LAM</h5>
+                        <p class="text-sm text-slate-500">Participación en uno de los programas líderes de espectáculos.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <p class="text-xs font-bold text-red-600 mb-2">EL TRECE • 2025</p>
+                        <h5 class="text-xl font-bold text-slate-900 mb-3">Otro Día Perdido / 8 Escalones</h5>
+                        <p class="text-sm text-slate-500">Producción y contenido para formatos de entretenimiento.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <p class="text-xs font-bold text-red-600 mb-2">OLGA • 2025</p>
+                        <h5 class="text-xl font-bold text-slate-900 mb-3">Gracias Mercedes</h5>
+                        <p class="text-sm text-slate-500">Colaboración en la nueva plataforma referente del streaming.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h4 class="text-lg font-extrabold border-b border-blue-100 pb-4 flex items-center gap-2">
+                        <span class="w-2 h-6 bg-blue-600 rounded-full"></span>
+                        Radio & Digital
+                    </h4>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <p class="text-xs font-bold text-blue-600 mb-2">AM 1460 • 2024 - 2025</p>
+                        <h5 class="text-xl font-bold text-slate-900 mb-3">Radio Contacto</h5>
+                        <p class="text-sm text-slate-500">Locutora y Community Manager para el programa 'Pasajes'.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <p class="text-xs font-bold text-blue-600 mb-2">EDITORIAL • 2024</p>
+                        <h5 class="text-xl font-bold text-slate-900 mb-3">Castelar Digital</h5>
+                        <p class="text-sm text-slate-500">Redacción y cobertura de notas de actualidad y cultura.</p>
+                    </div>
+                    <div class="bg-white p-6 rounded-2xl border border-slate-100 shadow-sm">
+                        <p class="text-xs font-bold text-blue-600 mb-2">FM 93.9 • 2022 - 2023</p>
+                        <h5 class="text-xl font-bold text-slate-900 mb-3">En Tránsito</h5>
+                        <p class="text-sm text-slate-500">Locución, producción y redacción en 'La Voz de Castelar'.</p>
+                    </div>
+                </div>
+
+                <div class="space-y-6">
+                    <h4 class="text-lg font-extrabold border-b border-blue-100 pb-4 flex items-center gap-2">
+                        <span class="w-2 h-6 bg-slate-400 rounded-full"></span>
+                        Formación
+                    </h4>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h5 class="font-bold text-slate-900 mb-1">Locutora Nacional</h5>
+                        <p class="text-sm text-slate-500">Universidad Nacional de la Matanza</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h5 class="font-bold text-slate-900 mb-1">Lic. Comunicación Social</h5>
+                        <p class="text-sm text-slate-500">UNLaM (En curso)</p>
+                    </div>
+                    <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
+                        <h5 class="font-bold text-slate-900 mb-1">Gestión de Redes</h5>
+                        <p class="text-sm text-slate-500">CFP nº 408 Morón</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer / CTA -->
+    <footer id="contacto" class="bg-slate-950 text-white pt-32 pb-12 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center border-b border-white/10 pb-20 mb-12 gap-12">
+                <div class="text-center md:text-left">
+                    <h3 class="text-4xl font-extrabold mb-4">¿Hablamos de tu próximo proyecto?</h3>
+                    <p class="text-slate-400 text-lg">Disponible para colaboraciones internacionales y gestión de medios.</p>
+                </div>
+                <div class="flex flex-col md:flex-row gap-6">
+                    <a href="mailto:luucomunicacionok@gmail.com" class="px-8 py-4 bg-blue-600 rounded-xl font-bold text-center hover:bg-blue-700 transition">Email Ludmila</a>
+                    <a href="https://wa.me/5491161852388" target="_blank" class="px-8 py-4 bg-[#25D366] rounded-xl font-bold text-center hover:bg-[#128C7E] transition flex items-center justify-center gap-2">
+                        WhatsApp Directo
+                    </a>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 text-center md:text-left">
+                <div>
+                    <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-2">WhatsApp</p>
+                    <a href="https://wa.me/5491161852388" class="text-xl font-bold hover:text-blue-400 transition">+54 9 11 6185‑2388</a>
+                </div>
+                <div>
+                    <p class="text-slate-500 text-xs font-bold uppercase tracking-widest mb-2">Ubicación</p>
+                    <p class="text-xl font-bold">Zona Oeste, Morón</p>
+                </div>
+                <div class="flex justify-center md:justify-end items-center gap-6">
+                    <a href="https://instagram.com/luucomunicadoraok" target="_blank" class="text-slate-400 hover:text-white transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="https://youtube.com/@luucomunicadora" target="_blank" class="text-slate-400 hover:text-white transition">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="flex items-center gap-2">
+                    <div class="w-8 h-8 bg-blue-600 rounded flex items-center justify-center font-bold text-white">L</div>
+                    <span class="text-slate-500 font-bold uppercase tracking-widest text-xs">Carrelli Sosa</span>
+                </div>
+                <div class="text-slate-600 text-xs text-center">
+                    &copy; 2025 • Diseñado profesionalmente para Ludmila Mariel Carrelli Sosa • Agente Global Mix Group
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+
