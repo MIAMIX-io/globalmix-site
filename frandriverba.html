@@ -1,0 +1,360 @@
+```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fran Driver BA | Traslados Premium y Privados en Buenos Aires</title>
+    <meta name="description" content="Servicio de traslados ejecutivos y privados en Buenos Aires. Viajes exclusivos a Ezeiza, Aeroparque, disponibilidad 24 horas.">
+    <meta name="keywords" content="traslados privados, servicio ejecutivo, chofer privado Buenos Aires, Ezeiza a Centro, traslados VIP, larga distancia, Fran Driver BA">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Playfair Display (Serif) & Lato (Sans) for Luxury Feel -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#050505',
+                            charcoal: '#111111',
+                            gray: '#2a2a2a',
+                            red: '#E63946',       /* Elegant Red */
+                            redDark: '#BA1826',   /* Deeper Red for hover states */
+                            textMuted: '#a0a0a0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+        }
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.7) 100%), url('https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        .glass-panel {
+            background: rgba(17, 17, 17, 0.6);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(230, 57, 70, 0.1); /* Red tinted border */
+        }
+        .red-gradient-text {
+            background: linear-gradient(to right, #E63946, #ff7b85);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        /* Subtle fade-in animation */
+        .fade-in-up {
+            animation: fadeInUp 1s ease-out forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .delay-100 { animation-delay: 100ms; }
+        .delay-200 { animation-delay: 200ms; }
+        .delay-300 { animation-delay: 300ms; }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-red selection:text-white">
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-brand-black/90 backdrop-blur-md border-b border-white/5 transition-all duration-300 py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <!-- Luxury Logo (Red) -->
+                <div class="flex-shrink-0 flex items-center gap-4 cursor-pointer" onclick="window.scrollTo(0,0)">
+                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="49" stroke="#E63946" stroke-width="1.5"/>
+                        <circle cx="50" cy="50" r="43" stroke="#E63946" stroke-width="0.5" stroke-dasharray="2 2"/>
+                        <text x="50" y="58" font-family="Playfair Display" font-weight="700" font-size="32" fill="#E63946" text-anchor="middle" letter-spacing="2">FD</text>
+                    </svg>
+                    <div class="flex flex-col">
+                        <span class="font-serif font-semibold text-xl tracking-widest uppercase text-white leading-none">Fran Driver</span>
+                        <span class="text-[10px] tracking-[0.3em] text-brand-red uppercase mt-1">Buenos Aires</span>
+                    </div>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-10 items-center">
+                    <a href="#servicios" class="text-xs tracking-widest uppercase text-brand-textMuted hover:text-brand-red transition duration-300">Servicios</a>
+                    <a href="#vehiculo" class="text-xs tracking-widest uppercase text-brand-textMuted hover:text-brand-red transition duration-300">La Unidad</a>
+                    <a href="#tarifas" class="text-xs tracking-widest uppercase text-brand-textMuted hover:text-brand-red transition duration-300">Tarifas</a>
+                    <a href="https://wa.me/5491167818247?text=Hola%20Francisco,%20deseo%20consultar%20por%20un%20traslado%20privado." target="_blank" class="border border-brand-red text-brand-red px-6 py-2.5 text-xs tracking-widest uppercase hover:bg-brand-red hover:text-white transition-all duration-300">
+                        Reservar
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-bg min-h-screen flex items-center pt-20 relative">
+        <!-- Subtle gradient overlay bottom -->
+        <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-black to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="max-w-3xl fade-in-up">
+                <p class="text-brand-red uppercase tracking-[0.3em] text-xs font-bold mb-6 flex items-center">
+                    <span class="w-12 h-[1px] bg-brand-red mr-4"></span> Servicio Privado de Excelencia
+                </p>
+                <h1 class="font-serif text-5xl md:text-7xl text-white leading-tight mb-8">
+                    El arte de viajar con <br>
+                    <span class="font-style: italic font-light text-brand-red">exclusividad</span>
+                </h1>
+                <p class="text-lg text-brand-textMuted mb-10 font-light leading-relaxed max-w-xl">
+                    Experimente traslados premium en Buenos Aires y alrededores. Puntualidad, discreción y confort absoluto en cada trayecto. Disponibilidad 24 horas.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-5">
+                    <a href="https://wa.me/5491167818247?text=Hola%20Francisco,%20deseo%20solicitar%20un%20traslado." target="_blank" class="bg-brand-red text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-brand-redDark transition-colors duration-300 text-center">
+                        Contactar Chofer
+                    </a>
+                    <a href="#servicios" class="border border-white/20 text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:border-brand-red hover:text-brand-red transition-colors duration-300 text-center">
+                        Descubrir Más
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="servicios" class="py-24 bg-brand-black relative border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20 fade-in-up delay-100">
+                <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">Nuestros Servicios</h2>
+                <div class="w-24 h-[1px] bg-brand-red mx-auto"></div>
+                <p class="mt-6 text-brand-textMuted max-w-2xl mx-auto font-light">Diseñados para satisfacer las más altas exigencias corporativas y personales.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="glass-panel p-10 hover:-translate-y-2 transition-transform duration-500 group fade-in-up delay-100">
+                    <i class="fa-solid fa-city text-3xl text-brand-red mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></i>
+                    <h3 class="font-serif text-xl text-white mb-4">Buenos Aires y Alrededores</h3>
+                    <p class="text-brand-textMuted font-light leading-relaxed text-sm">
+                        Traslados ejecutivos y turísticos dentro de CABA y AMBA. Disfrute de la ciudad sin preocuparse por el tráfico o el estacionamiento.
+                    </p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="glass-panel p-10 hover:-translate-y-2 transition-transform duration-500 group fade-in-up delay-200">
+                    <i class="fa-solid fa-plane-arrival text-3xl text-brand-red mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></i>
+                    <h3 class="font-serif text-xl text-white mb-4">Transfers a Aeropuertos</h3>
+                    <p class="text-brand-textMuted font-light leading-relaxed text-sm">
+                        Recepción y traslado hacia o desde Aeropuerto de Ezeiza (EZE) y Aeroparque (AEP). Monitoreo de vuelos para garantizar puntualidad.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="glass-panel p-10 hover:-translate-y-2 transition-transform duration-500 group relative fade-in-up delay-300">
+                    <i class="fa-solid fa-map text-3xl text-brand-red mb-8 opacity-80 group-hover:opacity-100 transition-opacity"></i>
+                    <h3 class="font-serif text-xl text-white mb-4">Larga Distancia</h3>
+                    <p class="text-brand-textMuted font-light leading-relaxed text-sm">
+                        Viajes interurbanos de larga distancia. Sujeto a cotización y disponibilidad previa. Máximo confort para trayectos extensos.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Vehicle Section -->
+    <section id="vehiculo" class="py-24 bg-brand-charcoal border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row items-center gap-16">
+                <!-- Abstract Luxury Car Image Placeholder (Slight red tint) -->
+                <div class="w-full lg:w-1/2 relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-brand-red to-brand-redDark opacity-20 blur group-hover:opacity-30 transition duration-1000"></div>
+                    <img src="https://images.unsplash.com/photo-1549399542-7e3f8b79c341?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Detalle interior auto" class="relative z-10 w-full h-[500px] object-cover grayscale group-hover:grayscale-[50%] transition duration-1000">
+                    <div class="absolute bottom-6 right-6 z-20 bg-brand-black/80 backdrop-blur-sm p-4 border border-white/10">
+                        <p class="text-brand-red font-serif italic text-lg">Toyota Etios XLS</p>
+                        <p class="text-xs tracking-widest text-white uppercase mt-1">Hatchback Rojo</p>
+                    </div>
+                </div>
+
+                <div class="w-full lg:w-1/2">
+                    <h2 class="font-serif text-3xl md:text-4xl text-white mb-8">La Unidad</h2>
+                    <p class="text-brand-textMuted font-light text-lg mb-8 leading-relaxed">
+                        Nuestra unidad operativa es un elegante <span class="text-white font-normal">Toyota Etios XLS Hatchback</span> color rojo. Seleccionado meticulosamente por su destacado confort de marcha, confiabilidad y estándares de seguridad.
+                    </p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-snowflake text-brand-red mt-1"></i>
+                            <div>
+                                <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-1">Climatización</h4>
+                                <p class="text-brand-textMuted text-xs font-light">Temperatura ideal en todo momento del año.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-shield-halved text-brand-red mt-1"></i>
+                            <div>
+                                <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-1">Seguridad</h4>
+                                <p class="text-brand-textMuted text-xs font-light">Mantenimiento preventivo al día.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-spray-can-sparkles text-brand-red mt-1"></i>
+                            <div>
+                                <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-1">Higiene</h4>
+                                <p class="text-brand-textMuted text-xs font-light">Unidad sanitizada e impecable previo a cada viaje.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-4">
+                            <i class="fa-solid fa-suitcase text-brand-red mt-1"></i>
+                            <div>
+                                <h4 class="text-white text-sm font-bold uppercase tracking-wider mb-1">Equipaje</h4>
+                                <p class="text-brand-textMuted text-xs font-light">Espacio optimizado para maletas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Highlight Section -->
+    <section id="tarifas" class="py-24 bg-brand-black bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] relative">
+        <div class="absolute inset-0 bg-brand-black/95"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="font-serif text-3xl md:text-4xl text-white mb-4">Tarifas Preferenciales</h2>
+                <div class="w-24 h-[1px] bg-brand-red mx-auto"></div>
+            </div>
+
+            <div class="max-w-xl mx-auto glass-panel p-1 relative overflow-hidden">
+                <!-- Red Accent Line -->
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-redDark via-brand-red to-brand-redDark"></div>
+                
+                <div class="bg-brand-charcoal p-10 text-center">
+                    <span class="inline-block border border-brand-red/30 text-brand-red text-[10px] tracking-[0.2em] uppercase px-3 py-1 mb-6">Trayecto Destacado</span>
+                    
+                    <h3 class="font-serif text-2xl text-white mb-2 flex items-center justify-center gap-4">
+                        Aeropuerto Ezeiza <i class="fa-solid fa-arrow-right-arrow-left text-brand-red/50 text-sm"></i> Centro BA
+                    </h3>
+                    <p class="text-brand-textMuted font-light text-sm mb-10">Tarifa fija por tramo (Ida o Vuelta)</p>
+                    
+                    <div class="flex justify-center items-start mb-10">
+                        <span class="text-brand-red text-2xl mt-2 mr-1">$</span>
+                        <span class="text-6xl font-serif text-white tracking-tight">30.000</span>
+                        <span class="text-brand-textMuted text-sm ml-2 mt-auto mb-2">ARS</span>
+                    </div>
+                    
+                    <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-white/10 to-transparent mb-8"></div>
+                    
+                    <ul class="text-brand-textMuted font-light text-sm mb-10 space-y-4 max-w-xs mx-auto text-left">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-4 text-xs"></i> Disponibilidad 24 Hrs</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-4 text-xs"></i> Recepción en terminal</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-brand-red mr-4 text-xs"></i> Asistencia con equipaje</li>
+                    </ul>
+                    
+                    <a href="https://wa.me/5491167818247?text=Hola%20Francisco,%20deseo%20reservar%20el%20traslado%20Ezeiza-Centro%20por%20$30.000." target="_blank" class="block w-full bg-brand-red text-white px-8 py-4 text-sm font-bold tracking-widest uppercase hover:bg-white hover:text-brand-black transition-colors duration-300">
+                        Solicitar Reserva
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-12 text-center">
+                <p class="text-brand-textMuted text-sm font-light">
+                    Para otros destinos o requerimientos especiales, por favor contáctenos para una cotización personalizada.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer & Contact -->
+    <footer class="bg-brand-charcoal pt-20 pb-10 border-t border-white/10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mb-16">
+                <!-- Brand Info -->
+                <div class="md:col-span-5">
+                    <div class="flex items-center gap-4 mb-6">
+                        <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="49" stroke="#E63946" stroke-width="1.5"/>
+                            <text x="50" y="58" font-family="Playfair Display" font-weight="700" font-size="32" fill="#E63946" text-anchor="middle" letter-spacing="2">FD</text>
+                        </svg>
+                        <span class="font-serif text-xl tracking-widest uppercase text-white">Fran Driver</span>
+                    </div>
+                    <p class="text-brand-textMuted font-light text-sm leading-relaxed max-w-sm">
+                        Redefiniendo el transporte privado en Buenos Aires. Compromiso absoluto con la puntualidad, seguridad y el confort de nuestros pasajeros.
+                    </p>
+                </div>
+                
+                <!-- Quick Links -->
+                <div class="md:col-span-3">
+                    <h4 class="font-serif text-lg text-white mb-6 tracking-wide">Explorar</h4>
+                    <ul class="space-y-4">
+                        <li><a href="#servicios" class="text-brand-textMuted hover:text-brand-red text-sm transition-colors">Nuestros Servicios</a></li>
+                        <li><a href="#vehiculo" class="text-brand-textMuted hover:text-brand-red text-sm transition-colors">Características de la Unidad</a></li>
+                        <li><a href="#tarifas" class="text-brand-textMuted hover:text-brand-red text-sm transition-colors">Tarifas y Reservas</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div class="md:col-span-4">
+                    <h4 class="font-serif text-lg text-white mb-6 tracking-wide">Contacto Ejecutivo</h4>
+                    <ul class="space-y-5 text-sm font-light">
+                        <li>
+                            <a href="https://wa.me/5491167818247" target="_blank" class="flex items-center gap-4 text-brand-textMuted hover:text-white transition-colors group">
+                                <i class="fa-brands fa-whatsapp text-brand-red text-lg group-hover:scale-110 transition-transform"></i>
+                                <span>+54 9 11 6781-8247</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://instagram.com/fran.driver.ba" target="_blank" class="flex items-center gap-4 text-brand-textMuted hover:text-white transition-colors group">
+                                <i class="fa-brands fa-instagram text-brand-red text-lg group-hover:scale-110 transition-transform"></i>
+                                <span>@fran.driver.ba</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="mailto:Francisco.Tosar@gmail.com" class="flex items-center gap-4 text-brand-textMuted hover:text-white transition-colors group">
+                                <i class="fa-regular fa-envelope text-brand-red text-lg group-hover:scale-110 transition-transform"></i>
+                                <span>Francisco.Tosar@gmail.com</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-brand-textMuted font-light uppercase tracking-widest">
+                <p>&copy; <span id="year"></span> Fran Driver BA.</p>
+                <p class="mt-4 md:mt-0">Buenos Aires, Argentina</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Minimalist Floating WhatsApp -->
+    <a href="https://wa.me/5491167818247?text=Hola,%20deseo%20hacer%20una%20consulta%20sobre%20un%20traslado." target="_blank" class="fixed bottom-8 right-8 z-50 bg-brand-black border border-brand-red text-brand-red w-14 h-14 rounded-full flex items-center justify-center text-2xl shadow-[0_0_20px_rgba(230,57,70,0.2)] hover:bg-brand-red hover:text-white transition-all duration-500" aria-label="Contactar por WhatsApp">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+    </script>
+</body>
+</html>
+
+
+```
