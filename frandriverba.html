@@ -111,8 +111,14 @@
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero-bg min-h-screen flex items-center pt-20 relative">
-        <!-- Subtle gradient overlay bottom -->
+    <section class="min-h-screen flex items-center pt-20 relative overflow-hidden">
+        
+        <video autoplay loop muted playsinline class="absolute inset-0 w-full h-full object-cover">
+            <source src="video/HeroBack.mov" type="video/mp4">
+        </video>
+
+        <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(5, 5, 5, 0.95) 0%, rgba(5, 5, 5, 0.7) 100%);"></div>
+
         <div class="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-brand-black to-transparent"></div>
         
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
@@ -138,7 +144,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Services Section -->
     <section id="servicios" class="py-24 bg-brand-black relative border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
