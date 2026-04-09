@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agendar Traslado | Fran Driver BA</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#050505',
+                            charcoal: '#111111',
+                            gray: '#2a2a2a',
+                            red: '#E63946',
+                            redDark: '#BA1826',
+                            textMuted: '#a0a0a0'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #050505; color: #ffffff; }
+        .glass-panel {
+            background: rgba(17, 17, 17, 0.7);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(230, 57, 70, 0.15);
+        }
+        /* Loader Animation */
+        .loader {
+            border: 3px solid rgba(255,255,255,0.1);
+            border-bottom-color: #E63946;
+            border-radius: 50%;
+            display: inline-block;
+            box-sizing: border-box;
+            animation: rotation 1s linear infinite;
+        }
+        @keyframes rotation {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="font-sans antialiased selection:bg-brand-red selection:text-white bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]">
+
+    <nav class="absolute w-full z-50 py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="index.html" class="flex items-center gap-4 group">
+                    <i class="fa-solid fa-arrow-left text-brand-red group-hover:-translate-x-1 transition-transform"></i>
+                    <span class="text-xs tracking-widest uppercase text-brand-textMuted group-hover:text-white transition duration-300">Volver al Inicio</span>
+                </a>
+                
+                <div class="flex-shrink-0 flex items-center gap-4">
+                    <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="49" stroke="#E63946" stroke-width="1.5"/>
+                        <text x="50" y="58" font-family="Playfair Display" font-weight="700" font-size="24" fill="#E63946" text-anchor="middle" letter-spacing="2">FD</text>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen pt-32 pb-24 flex items-center relative">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] bg-brand-red/10 blur-[120px] rounded-full pointer-events-none"></div>
+
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="text-center mb-12">
+                <h1 class="font-serif text-4xl md:text-5xl text-white mb-4">Agendar Traslado</h1>
+                <div class="w-16 h-[1px] bg-brand-red mx-auto mb-6"></div>
+                <p class="text-brand-textMuted font-light">Complete los datos a continuación para programar su viaje. Recibirá una confirmación oficial en su correo y calendario.</p>
+            </div>
+
+            <div class="glass-panel p-8 md:p-12 relative overflow-hidden shadow-2xl">
+                <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-brand-redDark via-brand-red to-brand-redDark"></div>
+
+                <form id="booking-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold tracking-widest text-brand-textMuted uppercase mb-2">Nombre Completo *</label>
+                            <input type="text" name="nombre" required class="w-full bg-brand-charcoal/80 border border-white/10 text-white px-4 py-3 focus:border-brand-red outline-none transition-colors">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold tracking-widest text-brand-textMuted uppercase mb-2">Teléfono / WhatsApp *</label>
+                            <input type="tel" name="telefono" required class="w-full bg-brand-charcoal/80 border border-white/10 text-white px-4 py-3 focus:border-brand-red outline-none transition-colors">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold tracking-widest text-brand-textMuted uppercase mb-2">Correo Electrónico *</label>
+                        <input type="email" name="email" required class="w-full bg-brand-charcoal/80 border border-white/10 text-white px-4 py-3 focus:border-brand-red outline-none transition-colors" placeholder="Donde recibirá la invitación al calendario">
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4 border-t border-white/5">
+                        <div>
+                            <label class="block text-xs font-bold tracking-widest text-brand-textMuted uppercase mb-2">Punto de Origen *</label>
+                            <input type="text" name="origen" required class="w-full bg-brand-charcoal/80 border border-white/10 text-white px-4 py-3 focus:border-brand-red outline-none transition-colors" placeholder="Ej: Aeropuerto Ezeiza">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold tracking-widest text-brand-textMuted uppercase mb-2">Punto de Destino *</label>
+                            <input type="text" name="destino" required class="w-full bg-brand-charcoal/80 border border-white/10 text-white px-4 py-3 focus:border-brand-red outline-none transition-colors" placeholder="Ej: Hotel Alvear, Recoleta">
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div>
+                            <label class="block text-xs font-bold tracking-widest text-brand-textMuted uppercase mb-2">Fecha *</label>
+                            <input type="date" name="fecha" required class="w-full bg-brand-charcoal/80 border border-white/10 text-white px-4 py-3 focus:border-brand-red outline-none transition-colors [color-scheme:dark]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold tracking-widest text-brand-textMuted uppercase mb-2">Hora *</label>
+                            <input type="time" name="hora" required class="w-full bg-brand-charcoal/80 border border-white/10 text-white px-4 py-3 focus:border-brand-red outline-none transition-colors [color-scheme:dark]">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold tracking-widest text-brand-textMuted uppercase mb-2">Nº Vuelo (Opcional)</label>
+                            <input type="text" name="vuelo" class="w-full bg-brand-charcoal/80 border border-white/10 text-white px-4 py-3 focus:border-brand-red outline-none transition-colors">
+                        </div>
+                    </div>
+
+                    <div class="pt-6">
+                        <button type="submit" id="submit-btn" class="w-full bg-brand-red text-white py-4 text-sm font-bold tracking-widest uppercase hover:bg-brand-redDark transition-all duration-300 flex justify-center items-center gap-3 shadow-[0_0_15px_rgba(230,57,70,0.3)]">
+                            <span>Confirmar Reserva</span>
+                            <span id="btn-spinner" class="loader w-4 h-4 hidden"></span>
+                        </button>
+                    </div>
+                </form>
+
+                <div id="success-message" class="hidden text-center py-10">
+                    <div class="w-20 h-20 bg-brand-red/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fa-solid fa-check text-4xl text-brand-red"></i>
+                    </div>
+                    <h3 class="font-serif text-2xl text-white mb-2">¡Reserva Solicitada!</h3>
+                    <p class="text-brand-textMuted font-light mb-8">Hemos recibido sus datos. Se enviará una invitación a su calendario en breve.</p>
+                    <a href="index.html" class="border border-brand-red text-brand-red px-8 py-3 text-xs font-bold tracking-widest uppercase hover:bg-brand-red hover:text-white transition-colors">Volver al Inicio</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // REPLACE THIS URL with your actual Google Script Web App URL once published
+        const GOOGLE_SCRIPT_URL = "TU_LINK_DE_GOOGLE_SCRIPT_AQUI"; 
+
+        const form = document.getElementById('booking-form');
+        const submitBtn = document.getElementById('submit-btn');
+        const btnSpinner = document.getElementById('btn-spinner');
+        const successMessage = document.getElementById('success-message');
+
+        form.addEventListener('submit', e => {
+            e.preventDefault();
+            
+            // UI Update: Show loading state
+            submitBtn.disabled = true;
+            submitBtn.querySelector('span:first-child').innerText = "Procesando...";
+            btnSpinner.classList.remove('hidden');
+
+            // Gather form data
+            const formData = new FormData(form);
+
+            // Send to Google Script without leaving the page
+            fetch(GOOGLE_SCRIPT_URL, { method: 'POST', body: formData })
+                .then(response => {
+                    // Hide Form, Show Success Message
+                    form.classList.add('hidden');
+                    successMessage.classList.remove('hidden');
+                })
+                .catch(error => {
+                    alert('Hubo un error al procesar su solicitud. Por favor, intente vía WhatsApp.');
+                    // Reset Button
+                    submitBtn.disabled = false;
+                    submitBtn.querySelector('span:first-child').innerText = "Confirmar Reserva";
+                    btnSpinner.classList.add('hidden');
+                });
+        });
+    </script>
+</body>
+</html>
