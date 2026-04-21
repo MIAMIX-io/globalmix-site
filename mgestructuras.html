@@ -1,0 +1,562 @@
+```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MG Estructuras y Montajes | Galpones y Tinglados</title>
+    <meta name="description" content="Diseño, fabricación y montaje de estructuras metálicas en Entre Ríos. Más de 10 años de experiencia.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts: Barlow (Industrial/Technical vibe) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Barlow', 'sans-serif'],
+                        heading: ['Barlow Condensed', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            red: '#dc2626',    // Industrial Red (Rojo maquinaria)
+                            dark: '#18181b',   // Zinc 900 (Hierro oscuro)
+                            steel: '#64748b',  // Slate 500 (Acero)
+                            silver: '#cbd5e1', // Slate 300 (Gris plata)
+                            silverlight: '#e2e8f0', // Slate 200
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 12px; }
+        ::-webkit-scrollbar-track { background: #cbd5e1; border-left: 2px solid #94a3b8; }
+        ::-webkit-scrollbar-thumb { background: #dc2626; border: 2px solid #cbd5e1; }
+        ::-webkit-scrollbar-thumb:hover { background: #b91c1c; }
+
+        /* Efectos Metálicos y Estructurales */
+        .bg-brushed-metal {
+            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 40%, #f8fafc 50%, #cbd5e1 60%, #94a3b8 100%);
+        }
+        .bg-dark-metal {
+            background: linear-gradient(135deg, #18181b 0%, #27272a 40%, #3f3f46 50%, #27272a 60%, #09090b 100%);
+        }
+        /* Sombra dura estilo bloque industrial */
+        .industrial-shadow {
+            box-shadow: 6px 6px 0px 0px #18181b;
+            transition: all 0.2s ease;
+        }
+        .industrial-shadow:hover {
+            box-shadow: 3px 3px 0px 0px #18181b;
+            transform: translate(3px, 3px);
+        }
+        .industrial-shadow-white {
+            box-shadow: 6px 6px 0px 0px #ffffff;
+        }
+    </style>
+</head>
+<body class="font-sans text-brand-dark bg-brand-silverlight antialiased selection:bg-brand-red selection:text-white">
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-40 bg-brand-dark text-white border-b-4 border-brand-red transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <!-- Logo Area -->
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="flex items-center gap-3 group">
+                        <!-- REEMPLAZAR EL SRC CON TU LOGO FINAL -->
+                        <div class="w-14 h-14 bg-black flex items-center justify-center overflow-hidden border-2 border-gray-600 group-hover:border-brand-red transition-colors">
+                             <img src="logo-mg.png" alt="MG Logo" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';">
+                             <span class="hidden font-heading font-bold text-2xl text-white">MG</span>
+                        </div>
+                        <div class="hidden sm:block flex flex-col leading-none">
+                            <span class="font-heading font-bold text-2xl tracking-wide uppercase m-0 p-0">Estructuras</span>
+                            <span class="text-sm text-brand-red font-bold tracking-[0.2em] uppercase m-0 p-0">Y Montajes</span>
+                        </div>
+                    </a>
+                </div>
+                
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#inicio" class="text-gray-300 hover:text-brand-red transition-colors font-heading font-semibold text-lg tracking-wide uppercase">Inicio</a>
+                    <a href="#servicios" class="text-gray-300 hover:text-brand-red transition-colors font-heading font-semibold text-lg tracking-wide uppercase">Servicios</a>
+                    <a href="#nosotros" class="text-gray-300 hover:text-brand-red transition-colors font-heading font-semibold text-lg tracking-wide uppercase">Nosotros</a>
+                    <a href="#proyectos" class="text-gray-300 hover:text-brand-red transition-colors font-heading font-semibold text-lg tracking-wide uppercase">Proyectos</a>
+                    <a href="#contacto" class="bg-brand-red text-white px-6 py-2 font-heading font-bold uppercase text-lg hover:bg-red-700 transition-colors border-2 border-brand-red">Cotizar</a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-brand-red hover:text-white focus:outline-none">
+                        <i class="fas fa-bars text-3xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-dark border-t border-gray-700">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#inicio" class="block px-3 py-2 text-white font-heading text-lg font-medium hover:bg-gray-800 uppercase tracking-wide">Inicio</a>
+                <a href="#servicios" class="block px-3 py-2 text-white font-heading text-lg font-medium hover:bg-gray-800 uppercase tracking-wide">Servicios</a>
+                <a href="#nosotros" class="block px-3 py-2 text-white font-heading text-lg font-medium hover:bg-gray-800 uppercase tracking-wide">Nosotros</a>
+                <a href="#proyectos" class="block px-3 py-2 text-white font-heading text-lg font-medium hover:bg-gray-800 uppercase tracking-wide">Proyectos</a>
+                <a href="#contacto" class="block px-3 py-2 text-brand-red font-heading text-lg font-bold hover:bg-gray-800 uppercase tracking-wide">Contacto / Cotizar</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Floating Action Buttons (WhatsApp & Instagram) -->
+    <div class="fixed bottom-6 right-6 flex flex-col gap-4 z-50">
+        <!-- Instagram -->
+        <a href="https://instagram.com/mg.estructura" target="_blank" rel="noopener noreferrer" 
+           class="w-12 h-12 flex items-center justify-center text-white bg-gradient-to-tr from-yellow-400 via-pink-500 to-purple-600 industrial-shadow hover:scale-105"
+           aria-label="Síguenos en Instagram">
+            <i class="fab fa-instagram text-2xl"></i>
+        </a>
+        <!-- WhatsApp -->
+        <a href="https://wa.me/5493454497073?text=Hola,%20me%20gustar%C3%ADa%20pedir%20un%20presupuesto" target="_blank" rel="noopener noreferrer" 
+           class="w-14 h-14 flex items-center justify-center text-white bg-green-500 industrial-shadow hover:bg-green-600 hover:scale-105"
+           aria-label="Contáctanos por WhatsApp">
+            <i class="fab fa-whatsapp text-3xl"></i>
+        </a>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative pt-24 pb-32 lg:pt-32 lg:pb-48 overflow-hidden bg-brand-dark border-b-8 border-brand-red">
+        <!-- Background Image with Overlay -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1504307651254-35680f356fce?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" alt="Estructura Metálica" class="w-full h-full object-cover opacity-40 grayscale">
+            <div class="absolute inset-0 bg-gradient-to-r from-brand-dark via-brand-dark/80 to-transparent"></div>
+            <!-- Textura superpuesta de malla/puntitos -->
+            <div class="absolute inset-0" style="background-image: radial-gradient(#64748b 1px, transparent 1px); background-size: 20px 20px; opacity: 0.15;"></div>
+        </div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 lg:mt-24">
+            <div class="max-w-3xl bg-brand-dark/50 p-6 md:p-10 border-l-8 border-brand-red backdrop-blur-sm">
+                <span class="text-brand-red font-heading font-bold tracking-[0.2em] uppercase text-lg mb-3 block">🏗️ Construyendo el futuro</span>
+                <h1 class="text-5xl sm:text-6xl lg:text-7xl font-heading font-extrabold text-white leading-none mb-6 uppercase">
+                    Soluciones metálicas a medida, <br><span class="text-brand-red">pensadas para durar.</span>
+                </h1>
+                <p class="text-lg sm:text-2xl text-gray-300 mb-8 font-medium">
+                    Diseñamos, fabricamos y montamos galpones, tinglados y estructuras con precisión, eficiencia y compromiso.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-6">
+                    <a href="#contacto" class="inline-flex justify-center items-center px-8 py-4 bg-brand-red text-white font-heading font-bold uppercase tracking-wider border-2 border-brand-red industrial-shadow text-xl hover:bg-red-700 hover:border-red-700 transition-colors">
+                        Pedir Presupuesto
+                    </a>
+                    <a href="#proyectos" class="inline-flex justify-center items-center px-8 py-4 bg-transparent border-2 border-white text-white font-heading font-bold uppercase tracking-wider hover:bg-white hover:text-brand-dark transition-colors text-xl">
+                        Ver Trabajos
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introducción / Nosotros -->
+    <section id="nosotros" class="py-16 bg-brushed-metal border-b border-brand-steel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center max-w-4xl">
+            <div class="inline-block bg-brand-dark text-brand-red px-4 py-1 font-heading font-bold uppercase tracking-widest mb-4 border border-brand-red">Sobre Nosotros</div>
+            <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-dark mb-6 uppercase leading-tight">Construimos espacios sólidos para el <span class="text-brand-steel">crecimiento de tu proyecto</span></h2>
+            <p class="text-xl text-gray-800 mb-8 font-medium">
+                En <strong>MG Estructuras y Montajes</strong> somos una empresa familiar con más de 10 años de experiencia, trabajando en toda la provincia de Entre Ríos con altos estándares de calidad. Nos especializamos en la construcción de estructuras metálicas que resisten el paso del tiempo.
+            </p>
+            <div class="flex justify-center gap-6 mt-8 flex-wrap">
+                <div class="flex items-center gap-3 bg-white px-6 py-3 border-2 border-brand-dark industrial-shadow">
+                    <i class="fas fa-check-square text-brand-red text-2xl"></i>
+                    <span class="font-bold text-brand-dark uppercase tracking-wide">+10 Años Experiencia</span>
+                </div>
+                <div class="flex items-center gap-3 bg-white px-6 py-3 border-2 border-brand-dark industrial-shadow">
+                    <i class="fas fa-check-square text-brand-red text-2xl"></i>
+                    <span class="font-bold text-brand-dark uppercase tracking-wide">Empresa Familiar</span>
+                </div>
+                <div class="flex items-center gap-3 bg-white px-6 py-3 border-2 border-brand-dark industrial-shadow">
+                    <i class="fas fa-check-square text-brand-red text-2xl"></i>
+                    <span class="font-bold text-brand-dark uppercase tracking-wide">Calidad Garantizada</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios -->
+    <section id="servicios" class="py-20 bg-brand-silverlight">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-dark mb-4 uppercase">Nuestros Servicios</h2>
+                <div class="w-32 h-2 bg-brand-red mx-auto border border-brand-dark"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Servicio 1 -->
+                <div class="bg-white p-8 border-4 border-brand-dark industrial-shadow group hover:bg-gray-50">
+                    <div class="w-16 h-16 bg-brand-dark text-brand-red flex items-center justify-center mb-6 border-2 border-brand-red transform group-hover:-rotate-3 transition-transform">
+                        <i class="fas fa-warehouse text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold text-brand-dark mb-3 uppercase">Galpones Metálicos</h3>
+                    <p class="text-gray-700 mb-4 font-medium">Diseño y construcción de galpones industriales, agrícolas y comerciales.</p>
+                    <ul class="text-brand-dark font-semibold space-y-2">
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Estructuras a medida</li>
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Cubiertas y cerramientos</li>
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Montaje completo</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 2 -->
+                <div class="bg-white p-8 border-4 border-brand-dark industrial-shadow group hover:bg-gray-50">
+                    <div class="w-16 h-16 bg-brand-dark text-brand-red flex items-center justify-center mb-6 border-2 border-brand-red transform group-hover:-rotate-3 transition-transform">
+                        <i class="fas fa-car-side text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold text-brand-dark mb-3 uppercase">Tinglados</h3>
+                    <p class="text-gray-700 mb-4 font-medium">Soluciones prácticas y económicas para protección de maquinaria o áreas.</p>
+                    <ul class="text-brand-dark font-semibold space-y-2">
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Rápida ejecución</li>
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Alta resistencia</li>
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Adaptables al terreno</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 3 -->
+                <div class="bg-white p-8 border-4 border-brand-dark industrial-shadow group hover:bg-gray-50">
+                    <div class="w-16 h-16 bg-brand-dark text-brand-red flex items-center justify-center mb-6 border-2 border-brand-red transform group-hover:-rotate-3 transition-transform">
+                        <i class="fas fa-layer-group text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold text-brand-dark mb-3 uppercase">Estructuras Metálicas</h3>
+                    <p class="text-gray-700 mb-4 font-medium">Fabricación de todo tipo de estructuras para necesidades específicas.</p>
+                    <ul class="text-brand-dark font-semibold space-y-2">
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Techos y cubiertas</li>
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Entrepisos metálicos</li>
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Pórticos y refuerzos</li>
+                    </ul>
+                </div>
+
+                <!-- Servicio 4 -->
+                <div class="bg-white p-8 border-4 border-brand-dark industrial-shadow group hover:bg-gray-50">
+                    <div class="w-16 h-16 bg-brand-dark text-brand-red flex items-center justify-center mb-6 border-2 border-brand-red transform group-hover:-rotate-3 transition-transform">
+                        <i class="fas fa-hard-hat text-3xl"></i>
+                    </div>
+                    <h3 class="text-2xl font-heading font-bold text-brand-dark mb-3 uppercase">Montajes Industriales</h3>
+                    <p class="text-gray-700 mb-4 font-medium">Armado y montaje en obra con personal altamente capacitado.</p>
+                    <ul class="text-brand-dark font-semibold space-y-2">
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Seguridad en obra</li>
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Cumplimiento de plazos</li>
+                        <li class="flex items-center"><div class="w-2 h-2 bg-brand-red mr-3"></div>Equipamiento adecuado</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sectores y Proceso -->
+    <section class="py-20 bg-dark-metal text-white border-y-8 border-brand-steel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
+                <!-- Sectores -->
+                <div>
+                    <h2 class="text-4xl font-heading font-extrabold mb-6 uppercase text-brand-silver">Sectores de Trabajo</h2>
+                    <p class="text-gray-400 mb-8 text-lg font-medium">Adaptamos nuestras soluciones de ingeniería metálica a las demandas de distintos sectores productivos y particulares.</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="bg-brand-dark p-5 border border-gray-600 flex items-center gap-4 hover:border-brand-red transition-colors">
+                            <i class="fas fa-tractor text-brand-red text-3xl"></i>
+                            <span class="font-heading font-bold text-xl uppercase tracking-wide">Agro (Silos, rurales)</span>
+                        </div>
+                        <div class="bg-brand-dark p-5 border border-gray-600 flex items-center gap-4 hover:border-brand-red transition-colors">
+                            <i class="fas fa-industry text-brand-red text-3xl"></i>
+                            <span class="font-heading font-bold text-xl uppercase tracking-wide">Industria</span>
+                        </div>
+                        <div class="bg-brand-dark p-5 border border-gray-600 flex items-center gap-4 hover:border-brand-red transition-colors">
+                            <i class="fas fa-store text-brand-red text-3xl"></i>
+                            <span class="font-heading font-bold text-xl uppercase tracking-wide">Comercio</span>
+                        </div>
+                        <div class="bg-brand-dark p-5 border border-gray-600 flex items-center gap-4 hover:border-brand-red transition-colors">
+                            <i class="fas fa-home text-brand-red text-3xl"></i>
+                            <span class="font-heading font-bold text-xl uppercase tracking-wide">Viviendas / Part.</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proceso -->
+                <div>
+                    <h2 class="text-4xl font-heading font-extrabold mb-6 uppercase text-brand-silver">Fases de Trabajo</h2>
+                    <!-- Línea de acero estilo viga -->
+                    <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-2 before:bg-brand-steel">
+                        
+                        <!-- Paso 1 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <!-- Tuerca/Perno -->
+                            <div class="flex items-center justify-center w-12 h-12 bg-brand-red text-white font-heading font-extrabold text-2xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 border-4 border-brand-dark shadow-[0_0_0_4px_#dc2626] z-10 transform rotate-45">
+                                <span class="-rotate-45">1</span>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-brand-dark p-5 border border-gray-600">
+                                <h4 class="font-heading font-bold text-xl text-brand-red uppercase">Asesoramiento inicial</h4>
+                                <p class="text-gray-300 mt-2 font-medium">Escuchamos tu necesidad y evaluamos las dimensiones del proyecto.</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 2 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-12 h-12 bg-brand-red text-white font-heading font-extrabold text-2xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 border-4 border-brand-dark shadow-[0_0_0_4px_#dc2626] z-10 transform rotate-45">
+                                <span class="-rotate-45">2</span>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-brand-dark p-5 border border-gray-600">
+                                <h4 class="font-heading font-bold text-xl text-brand-red uppercase">Diseño y presupuesto</h4>
+                                <p class="text-gray-300 mt-2 font-medium">Propuesta técnica, cálculo de materiales y oferta económica.</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 3 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-12 h-12 bg-brand-red text-white font-heading font-extrabold text-2xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 border-4 border-brand-dark shadow-[0_0_0_4px_#dc2626] z-10 transform rotate-45">
+                                <span class="-rotate-45">3</span>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-brand-dark p-5 border border-gray-600">
+                                <h4 class="font-heading font-bold text-xl text-brand-red uppercase">Fabricación</h4>
+                                <p class="text-gray-300 mt-2 font-medium">Producción en taller con perfiles, vigas y materiales certificados.</p>
+                            </div>
+                        </div>
+
+                        <!-- Paso 4 -->
+                        <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active">
+                            <div class="flex items-center justify-center w-12 h-12 bg-brand-red text-white font-heading font-extrabold text-2xl shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 border-4 border-brand-dark shadow-[0_0_0_4px_#dc2626] z-10 transform rotate-45">
+                                <span class="-rotate-45">4</span>
+                            </div>
+                            <div class="w-[calc(100%-4rem)] md:w-[calc(50%-3rem)] bg-brand-dark p-5 border border-gray-600">
+                                <h4 class="font-heading font-bold text-xl text-brand-red uppercase">Montaje en obra</h4>
+                                <p class="text-gray-300 mt-2 font-medium">Instalación rápida, segura y eficiente en tu terreno con grúas y equipo especializado.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Proyectos -->
+    <section id="proyectos" class="py-20 bg-brushed-metal">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl md:text-5xl font-heading font-extrabold text-brand-dark mb-4 uppercase">Nuestras Obras</h2>
+                <div class="w-32 h-2 bg-brand-red mx-auto mb-6 border border-brand-dark"></div>
+                <p class="text-gray-800 font-medium max-w-2xl mx-auto text-lg">Conoce la calidad de nuestras terminaciones. Estructuras metálicas pensadas para resistir las condiciones climáticas más adversas.</p>
+            </div>
+
+            <!-- Grilla de Imágenes (Reemplazar src con fotos reales) -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                <!-- Foto 1 -->
+                <div class="group relative overflow-hidden bg-brand-dark border-4 border-brand-dark industrial-shadow h-72">
+                    <img src="https://images.unsplash.com/photo-1541888081273-df5b4e7b8a74?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Construcción Galpón" class="w-full h-full object-cover group-hover:scale-105 group-hover:grayscale transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-heading font-bold uppercase text-xl border-2 border-brand-red px-6 py-3">Estructura Industrial</span>
+                    </div>
+                </div>
+                <!-- Foto 2 -->
+                <div class="group relative overflow-hidden bg-brand-dark border-4 border-brand-dark industrial-shadow h-72">
+                    <img src="https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Techos Metálicos" class="w-full h-full object-cover group-hover:scale-105 group-hover:grayscale transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-heading font-bold uppercase text-xl border-2 border-brand-red px-6 py-3">Montaje de Cubiertas</span>
+                    </div>
+                </div>
+                <!-- Foto 3 -->
+                <div class="group relative overflow-hidden bg-brand-dark border-4 border-brand-dark industrial-shadow h-72">
+                    <img src="https://images.unsplash.com/photo-1530392305595-dfbbbcde1c73?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Detalle de estructura" class="w-full h-full object-cover group-hover:scale-105 group-hover:grayscale transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-heading font-bold uppercase text-xl border-2 border-brand-red px-6 py-3">Terminaciones</span>
+                    </div>
+                </div>
+                <!-- Foto 4 -->
+                <div class="group relative overflow-hidden bg-brand-dark border-4 border-brand-dark industrial-shadow h-72">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Tinglado agrícola" class="w-full h-full object-cover group-hover:scale-105 group-hover:grayscale transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-heading font-bold uppercase text-xl border-2 border-brand-red px-6 py-3">Tinglados Agrícolas</span>
+                    </div>
+                </div>
+                <!-- Foto 5 -->
+                <div class="group relative overflow-hidden bg-brand-dark border-4 border-brand-dark industrial-shadow h-72">
+                    <img src="https://images.unsplash.com/photo-1616422285623-11b30ab0bba7?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Obra en proceso" class="w-full h-full object-cover group-hover:scale-105 group-hover:grayscale transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-heading font-bold uppercase text-xl border-2 border-brand-red px-6 py-3">Obras en Proceso</span>
+                    </div>
+                </div>
+                <!-- Foto 6 -->
+                <div class="group relative overflow-hidden bg-brand-dark border-4 border-brand-dark industrial-shadow h-72">
+                    <img src="https://images.unsplash.com/photo-1542621334-a254cf47733d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80" alt="Estructura terminada" class="w-full h-full object-cover group-hover:scale-105 group-hover:grayscale transition-all duration-500">
+                    <div class="absolute inset-0 bg-brand-dark/80 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span class="text-white font-heading font-bold uppercase text-xl border-2 border-brand-red px-6 py-3">Trabajos a Medida</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <a href="https://instagram.com/mg.estructura" target="_blank" class="inline-flex items-center gap-3 bg-brand-dark text-white px-6 py-3 font-heading font-bold uppercase text-lg border-2 border-brand-dark hover:bg-white hover:text-brand-dark transition-colors industrial-shadow">
+                    Ver más en Instagram <i class="fab fa-instagram text-xl text-brand-red"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-16 bg-brand-silver">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl md:text-4xl font-heading font-extrabold text-center text-brand-dark mb-12 uppercase">Clientes Satisfechos</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Testimonio 1 -->
+                <div class="bg-brand-silverlight p-6 border-l-8 border-brand-red border-y-2 border-r-2 border-brand-dark industrial-shadow">
+                    <div class="flex text-yellow-500 mb-4 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-800 font-medium italic mb-6">"Nos hicieron el galpón para la maquinaria agrícola. Cumplieron con los plazos y la estructura es súper sólida. Muy recomendables en la zona."</p>
+                    <p class="font-heading font-bold text-xl text-brand-dark uppercase">- Carlos M. <span class="text-brand-steel text-sm ml-2">Sector Agro</span></p>
+                </div>
+                <!-- Testimonio 2 -->
+                <div class="bg-brand-silverlight p-6 border-l-8 border-brand-red border-y-2 border-r-2 border-brand-dark industrial-shadow">
+                    <div class="flex text-yellow-500 mb-4 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-800 font-medium italic mb-6">"Excelente atención de parte de toda la familia. Se nota que saben lo que hacen, nos asesoraron desde el primer momento."</p>
+                    <p class="font-heading font-bold text-xl text-brand-dark uppercase">- Roberto G. <span class="text-brand-steel text-sm ml-2">Comercio</span></p>
+                </div>
+                <!-- Testimonio 3 -->
+                <div class="bg-brand-silverlight p-6 border-l-8 border-brand-red border-y-2 border-r-2 border-brand-dark industrial-shadow">
+                    <div class="flex text-yellow-500 mb-4 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-800 font-medium italic mb-6">"Armaron un entrepiso metálico en nuestra fábrica. Trabajo prolijo, rápido y con todas las medidas de seguridad correspondientes."</p>
+                    <p class="font-heading font-bold text-xl text-brand-dark uppercase">- Diego L. <span class="text-brand-steel text-sm ml-2">Industria</span></p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Compromiso / Banner CTA -->
+    <section class="py-12 bg-brand-red text-white border-y-4 border-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-3xl md:text-4xl font-heading font-extrabold mb-4 uppercase flex justify-center items-center gap-3">
+                <i class="fas fa-shield-alt text-brand-dark"></i> Calidad Estructural Garantizada
+            </h2>
+            <p class="text-xl mb-0 max-w-3xl mx-auto font-bold text-white/90">
+                Cada proyecto es una inversión. Aseguramos estructuras firmes, materiales de primera calidad y responsabilidad en cada fase del montaje.
+            </p>
+        </div>
+    </section>
+
+    <!-- Contacto y Footer -->
+    <footer id="contacto" class="bg-dark-metal text-white pt-16 border-t-8 border-brand-steel">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                
+                <!-- Info de Contacto -->
+                <div>
+                    <h2 class="text-4xl font-heading font-extrabold mb-6 text-white uppercase">¿Proyecto en mente? <br><span class="text-brand-red">Hablemos.</span></h2>
+                    <p class="text-gray-400 mb-8 text-lg">Pedí tu presupuesto sin compromiso. Estamos listos para llevar a cabo tu estructura metálica.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-5 bg-brand-dark p-4 border border-gray-700">
+                            <div class="w-12 h-12 bg-brand-red text-white flex items-center justify-center border-2 border-brand-dark">
+                                <i class="fas fa-map-marker-alt text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-xl uppercase text-brand-silver">Ubicación</h4>
+                                <p class="text-gray-400 font-medium">Uruguay 1752, Federal, Entre Ríos</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-5 bg-brand-dark p-4 border border-gray-700">
+                            <div class="w-12 h-12 bg-brand-red text-white flex items-center justify-center border-2 border-brand-dark">
+                                <i class="fab fa-whatsapp text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-xl uppercase text-brand-silver">WhatsApp</h4>
+                                <a href="https://wa.me/5493454497073" target="_blank" class="text-brand-red hover:text-white transition-colors text-lg font-bold">+54 9 3454 497073</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center gap-5 bg-brand-dark p-4 border border-gray-700">
+                            <div class="w-12 h-12 bg-brand-red text-white flex items-center justify-center border-2 border-brand-dark">
+                                <i class="fab fa-instagram text-2xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-xl uppercase text-brand-silver">Instagram</h4>
+                                <a href="https://instagram.com/mg.estructura" target="_blank" class="text-gray-400 hover:text-brand-red transition-colors font-medium text-lg">@mg.estructura</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8">
+                        <a href="https://wa.me/5493454497073?text=Hola,%20me%20gustar%C3%ADa%20pedir%20un%20presupuesto" target="_blank" class="inline-flex items-center gap-3 bg-green-600 text-white font-heading font-bold text-xl uppercase py-4 px-8 border-2 border-green-800 hover:bg-green-700 transition-colors industrial-shadow">
+                            <i class="fab fa-whatsapp text-2xl"></i> Iniciar Chat
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Google Maps (Marco metálico) -->
+                <div class="bg-brand-silver p-3 border-4 border-brand-dark industrial-shadow h-80 md:h-full min-h-[350px]">
+                    <iframe 
+                        src="https://maps.google.com/maps?q=Uruguay%201752,%20Federal,%20Entre%20Rios,%20Argentina&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                        width="100%" 
+                        height="100%" 
+                        style="border: 2px solid #18181b;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+            
+            <!-- Bottom Footer -->
+            <div class="border-t-2 border-gray-800 py-8 text-center text-gray-500 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="font-heading uppercase tracking-wide font-semibold text-gray-400">&copy; <span id="year"></span> MG Estructuras y Montajes. Todos los derechos reservados.</p>
+                <div class="flex gap-6 font-heading uppercase font-bold text-gray-400">
+                    <a href="#" class="hover:text-brand-red transition-colors">Inicio</a>
+                    <a href="#servicios" class="hover:text-brand-red transition-colors">Servicios</a>
+                    <a href="#proyectos" class="hover:text-brand-red transition-colors">Proyectos</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const btn = document.getElementById('mobile-menu-btn');
+        const menu = document.getElementById('mobile-menu');
+
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
+
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-[0_4px_10px_rgba(0,0,0,0.5)]');
+                nav.classList.replace('bg-brand-dark', 'bg-[#0f1115]');
+            } else {
+                nav.classList.remove('shadow-[0_4px_10px_rgba(0,0,0,0.5)]');
+                nav.classList.replace('bg-[#0f1115]', 'bg-brand-dark');
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+```
