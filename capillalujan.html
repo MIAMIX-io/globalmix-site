@@ -1,416 +1,314 @@
-```react
-import React, { useState, useEffect } from 'react';
-import { 
-  Menu, X, Home, Users, History, Calendar, Heart, 
-  MapPin, Phone, Mail, Instagram, MessageCircle, 
-  Hammer, BookOpen, Wifi, Camera, ChevronRight,
-  Award, Landmark, Quote
-} from 'lucide-react';
+```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Capilla Nuestra Señora de Luján - Colonia Federal</title>
+    <!-- Tailwind CSS para el diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Serif para títulos, Sans para cuerpo -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Iconos FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Inter', sans-serif; color: #000000; background-color: #ffffff; }
+        h1, h2, h3, h4, .font-serif { font-family: 'Playfair Display', serif; }
+        
+        .wood-texture {
+            background-color: #1a0f0a;
+            background-image: url("https://www.transparenttextures.com/patterns/wood-pattern.png");
+        }
+        
+        .bg-vatican-yellow { background-color: #FACC15; }
+        .text-vatican-yellow { color: #FACC15; }
+        .border-vatican-yellow { border-color: #FACC15; }
+        
+        .btn-black {
+            background-color: #000000;
+            color: #FACC15;
+            transition: all 0.3s ease;
+            border-bottom: 4px solid #FACC15;
+        }
+        .btn-black:hover {
+            transform: translateY(-2px);
+            background-color: #1a1a1a;
+        }
 
-const App = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState('inicio');
-  const [scrolled, setScrolled] = useState(false);
+        /* Animación suave para secciones */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="antialiased">
 
-  const WHATSAPP_NUMBER = "5493454656179";
-  const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20el%20proyecto%20de%20la%20Capilla.`;
+    <!-- Navegación -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 bg-white border-b border-transparent py-4">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center">
+                <a href="#inicio" class="flex items-center space-x-3">
+                    <div class="bg-vatican-yellow p-2 border-2 border-black">
+                        <i class="fa-solid fa-church text-black text-xl"></i>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-serif font-black text-xl leading-tight uppercase">Capilla Luján</span>
+                        <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-amber-600">Colonia Federal</span>
+                    </div>
+                </a>
 
-  // Estilos de madera y colores personalizados
-  const colors = {
-    yellow: '#FACC15', // amber-400
-    woodDark: '#431407', // madera oscura (orange-950)
-    woodMedium: '#78350f', // madera media (amber-900)
-    white: '#FFFFFF',
-    cream: '#FFFBEB', // amber-50
-    black: '#000000'
-  };
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#comunidad" class="text-xs font-black uppercase tracking-widest hover:text-amber-500">Comunidad</a>
+                    <a href="#historia" class="text-xs font-black uppercase tracking-widest hover:text-amber-500">Historia</a>
+                    <a href="#proyecto" class="text-xs font-black uppercase tracking-widest hover:text-amber-500">Museo</a>
+                    <a href="#donaciones" class="text-xs font-black uppercase tracking-widest hover:text-amber-500">Donar</a>
+                    <a href="https://wa.me/5493454656179" target="_blank" class="btn-black px-6 py-2 font-bold text-xs uppercase tracking-widest">Contacto</a>
+                </div>
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
-
-  const navLinks = [
-    { id: 'inicio', label: 'Inicio', icon: <Home className="w-4 h-4" /> },
-    { id: 'comunidad', label: 'Comunidad', icon: <Users className="w-4 h-4" /> },
-    { id: 'historia', label: 'Historia', icon: <History className="w-4 h-4" /> },
-    { id: 'proyecto', label: 'Museo', icon: <Hammer className="w-4 h-4" /> },
-    { id: 'eventos', label: 'Eventos', icon: <Calendar className="w-4 h-4" /> },
-    { id: 'donaciones', label: 'Donar', icon: <Heart className="w-4 h-4" /> },
-  ];
-
-  const scrollToSection = (id) => {
-    setActiveSection(id);
-    setIsMenuOpen(false);
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
-
-  return (
-    <div className="min-h-screen bg-white font-sans text-black selection:bg-amber-200">
-      {/* --- NAVEGACIÓN --- */}
-      <nav className={`fixed w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/95 shadow-md py-2 border-amber-100' : 'bg-white py-4 border-transparent'}`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center">
-            <div className="flex items-center space-x-3 cursor-pointer" onClick={() => scrollToSection('inicio')}>
-              <div className="bg-amber-400 p-2 rounded-sm border-2 border-stone-800">
-                <Landmark className="text-black w-6 h-6" />
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif font-black text-xl leading-tight uppercase tracking-tight">Capilla Luján</span>
-                <span className="text-[10px] uppercase tracking-[0.2em] font-bold text-amber-600">Colonia Federal</span>
-              </div>
+                <!-- Mobile Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-black text-2xl focus:outline-none">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
             </div>
-
-            {/* Desktop Menu */}
-            <div className="hidden md:flex items-center space-x-8">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className={`text-xs font-black uppercase tracking-widest transition-colors hover:text-amber-500 ${activeSection === link.id ? 'text-black border-b-2 border-amber-400' : 'text-stone-500'}`}
-                >
-                  {link.label}
-                </button>
-              ))}
-              <a 
-                href={WHATSAPP_LINK}
-                target="_blank"
-                className="bg-stone-900 text-amber-400 px-6 py-2 rounded-none font-bold text-xs uppercase tracking-widest hover:bg-black transition-all border-b-4 border-amber-500"
-              >
-                Contacto
-              </a>
-            </div>
-
-            {/* Mobile Toggle */}
-            <div className="md:hidden">
-              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-black p-2">
-                {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
-              </button>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile Menu Overlay */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white absolute top-full left-0 w-full shadow-2xl animate-in slide-in-from-top duration-300">
-            <div className="px-4 py-6 space-y-2 border-t-4 border-amber-400">
-              {navLinks.map((link) => (
-                <button
-                  key={link.id}
-                  onClick={() => scrollToSection(link.id)}
-                  className="flex items-center space-x-4 w-full px-4 py-4 text-black border-b border-stone-100 last:border-0 font-bold uppercase text-sm tracking-widest"
-                >
-                  <span className="text-amber-500">{link.icon}</span>
-                  <span>{link.label}</span>
-                </button>
-              ))}
-              <a 
-                href={WHATSAPP_LINK}
-                className="w-full mt-4 bg-black text-amber-400 py-5 font-black uppercase tracking-[0.2em] flex items-center justify-center space-x-2"
-              >
-                <MessageCircle size={20} />
-                <span>WhatsApp</span>
-              </a>
-            </div>
-          </div>
-        )}
-      </nav>
-
-      {/* --- HERO SECTION --- */}
-      <section id="inicio" className="relative h-screen flex items-center justify-center pt-20">
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=2000" 
-            alt="Paisaje rural amanecer"
-            className="w-full h-full object-cover opacity-20 grayscale-[0.5]"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white" />
         </div>
         
-        <div className="relative z-10 text-center px-4 max-w-5xl">
-          <div className="flex justify-center mb-8">
-            <div className="w-24 h-1 bg-amber-400" />
-          </div>
-          <h1 className="text-6xl md:text-8xl font-serif font-black text-black mb-8 leading-tight tracking-tighter">
-            Capilla Nuestra Señora de Luján
-          </h1>
-          <p className="text-xl md:text-2xl text-stone-700 mb-12 max-w-3xl mx-auto font-medium leading-relaxed italic border-l-4 border-amber-400 pl-6 bg-amber-50/50 py-4">
-            En el corazón de Colonia Federal, Entre Ríos. Un símbolo de fe, historia y comunidad forjado por el trabajo y la tierra.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <button 
-              onClick={() => scrollToSection('proyecto')}
-              className="w-full sm:w-auto bg-stone-900 text-white px-10 py-5 font-black text-sm uppercase tracking-[0.2em] hover:bg-black transition-all shadow-xl flex items-center justify-center space-x-3 border-b-4 border-amber-500"
-            >
-              <span>El Gran Proyecto</span>
-              <ChevronRight size={18} className="text-amber-400" />
-            </button>
-            <button 
-              onClick={() => scrollToSection('comunidad')}
-              className="w-full sm:w-auto bg-amber-400 text-black px-10 py-5 font-black text-sm uppercase tracking-[0.2em] hover:bg-amber-500 transition-all shadow-xl"
-            >
-              Nuestra Comunidad
-            </button>
-          </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t-4 border-vatican-yellow absolute w-full left-0 shadow-2xl">
+            <div class="px-4 py-6 space-y-4">
+                <a href="#comunidad" class="block font-black uppercase text-sm tracking-widest py-2 border-b border-gray-100">Comunidad</a>
+                <a href="#historia" class="block font-black uppercase text-sm tracking-widest py-2 border-b border-gray-100">Historia</a>
+                <a href="#proyecto" class="block font-black uppercase text-sm tracking-widest py-2 border-b border-gray-100">Museo</a>
+                <a href="#donaciones" class="block font-black uppercase text-sm tracking-widest py-2 border-b border-gray-100">Donar</a>
+                <a href="https://wa.me/5493454656179" target="_blank" class="block w-full bg-black text-vatican-yellow text-center py-4 font-black uppercase tracking-widest">WhatsApp</a>
+            </div>
         </div>
-      </section>
+    </nav>
 
-      {/* --- SECCIÓN MADERA (COMUNIDAD) --- */}
-      <section id="comunidad" className="py-24 bg-stone-900 text-white relative overflow-hidden">
-        {/* Textura visual de madera */}
-        <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/wood-pattern.png")' }} />
+    <!-- Hero Section -->
+    <section id="inicio" class="relative h-screen flex items-center justify-center pt-20 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&q=80&w=2000" class="w-full h-full object-cover opacity-20 grayscale-[0.5]" alt="Campo Entre Rios">
+            <div class="absolute inset-0 bg-gradient-to-b from-white via-transparent to-white"></div>
+        </div>
         
-        <div className="max-w-7xl mx-auto px-4 relative z-10">
-          <div className="grid md:grid-cols-2 gap-20 items-center">
-            <div className="order-2 md:order-1">
-              <span className="text-amber-400 font-black uppercase tracking-[0.3em] text-xs mb-4 block">Legado Agrícola</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold mb-8 text-white">La Comunidad de Colonia Federal</h2>
-              <p className="text-stone-300 text-lg leading-relaxed mb-10 font-light">
-                Nacida de la colonización agrícola, nuestra comunidad se forjó con familias que transformaron la tierra con esfuerzo. La Capilla es el punto donde convergen nuestra cultura del trabajo y nuestra fe profunda.
-              </p>
-              
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
-                {[
-                  { title: "Tradición Rural", icon: <Landmark className="text-amber-400" /> },
-                  { title: "Cultura del Trabajo", icon: <Hammer className="text-amber-400" /> },
-                  { title: "Identidad Comunitaria", icon: <Users className="text-amber-400" /> },
-                  { title: "Fe Inquebrantable", icon: <Award className="text-amber-400" /> }
-                ].map((item, idx) => (
-                  <div key={idx} className="flex items-center space-x-4 group">
-                    <div className="p-3 border border-stone-700 rounded-sm group-hover:bg-amber-400 group-hover:border-amber-400 transition-all group-hover:text-black">
-                      {item.icon}
-                    </div>
-                    <span className="font-black uppercase text-xs tracking-widest">{item.title}</span>
-                  </div>
-                ))}
-              </div>
+        <div class="relative z-10 text-center px-4 max-w-5xl reveal">
+            <div class="flex justify-center mb-8">
+                <div class="w-24 h-1 bg-vatican-yellow"></div>
             </div>
-            <div className="order-1 md:order-2 relative">
-              <div className="absolute inset-0 border-8 border-amber-400 -translate-x-4 -translate-y-4 -z-10" />
-              <img 
-                src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800" 
-                alt="Madera y Campo"
-                className="w-full h-[500px] object-cover shadow-2xl grayscale-[0.3] hover:grayscale-0 transition-all duration-700"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* --- HISTORIA (BLANCO Y NEGRO) --- */}
-      <section id="historia" className="py-24 bg-white">
-        <div className="max-w-4xl mx-auto px-4 text-center">
-          <div className="inline-block p-4 bg-amber-400 mb-8 border-2 border-black">
-            <History className="w-8 h-8 text-black" />
-          </div>
-          <h2 className="text-4xl md:text-5xl font-serif font-black mb-10 tracking-tight">Historia de la Capilla</h2>
-          <div className="space-y-8 text-lg text-stone-700 leading-relaxed text-left">
-            <p className="first-letter:text-7xl first-letter:font-serif first-letter:float-left first-letter:mr-3 first-letter:text-black">
-              La Capilla surgió gracias al esfuerzo de vecinos y familias que deseaban un refugio espiritual cercano. Generaciones enteras han construido su historia alrededor de este lugar sagrado.
+            <h1 class="text-5xl md:text-8xl font-serif font-black text-black mb-8 leading-tight tracking-tighter">
+                Capilla Nuestra Señora de Luján
+            </h1>
+            <p class="text-xl md:text-2xl text-stone-700 mb-12 max-w-3xl mx-auto font-medium italic border-l-4 border-vatican-yellow pl-6 bg-amber-50/50 py-4">
+                En el corazón de Colonia Federal, Entre Ríos. Un legado de fe, historia y comunidad forjado por el trabajo y la tierra.
             </p>
-            <p>
-              Desde bautismos hasta fiestas patronales, la devoción a la <strong>Virgen de Luján</strong> ha sido el nexo espiritual que une nuestras raíces con la identidad nacional.
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <a href="#proyecto" class="w-full sm:w-auto btn-black px-10 py-5 font-black text-sm uppercase tracking-[0.2em] flex items-center justify-center space-x-3 shadow-xl">
+                    <span>El Gran Proyecto</span>
+                    <i class="fa-solid fa-chevron-right text-vatican-yellow"></i>
+                </a>
+                <a href="#comunidad" class="w-full sm:w-auto bg-vatican-yellow text-black px-10 py-5 font-black text-sm uppercase tracking-[0.2em] hover:bg-amber-500 transition-all shadow-xl">
+                    Nuestra Comunidad
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comunidad (Estilo Madera) -->
+    <section id="comunidad" class="py-24 wood-texture text-white relative">
+        <div class="max-w-7xl mx-auto px-4 relative z-10">
+            <div class="grid md:grid-cols-2 gap-20 items-center">
+                <div class="reveal">
+                    <span class="text-vatican-yellow font-black uppercase tracking-[0.3em] text-xs mb-4 block">Legado Agrícola</span>
+                    <h2 class="text-4xl md:text-5xl font-serif font-bold mb-8">La Comunidad de Colonia Federal</h2>
+                    <p class="text-stone-300 text-lg leading-relaxed mb-10 font-light">
+                        Nacida de la colonización agrícola, nuestra comunidad se forjó con familias que transformaron la tierra con esfuerzo. La Capilla es el punto donde convergen nuestra cultura del trabajo y nuestra fe profunda.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
+                        <div class="flex items-center space-x-4"><i class="fa-solid fa-wheat-awn text-vatican-yellow text-xl"></i><span class="font-black uppercase text-xs tracking-widest">Tradición Rural</span></div>
+                        <div class="flex items-center space-x-4"><i class="fa-solid fa-hammer text-vatican-yellow text-xl"></i><span class="font-black uppercase text-xs tracking-widest">Cultura del Trabajo</span></div>
+                        <div class="flex items-center space-x-4"><i class="fa-solid fa-users text-vatican-yellow text-xl"></i><span class="font-black uppercase text-xs tracking-widest">Identidad Fuerte</span></div>
+                        <div class="flex items-center space-x-4"><i class="fa-solid fa-cross text-vatican-yellow text-xl"></i><span class="font-black uppercase text-xs tracking-widest">Fe Inquebrantable</span></div>
+                    </div>
+                </div>
+                <div class="relative reveal">
+                    <div class="absolute inset-0 border-8 border-vatican-yellow -translate-x-4 -translate-y-4 -z-10"></div>
+                    <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=800" alt="Campo Federal" class="w-full h-[500px] object-cover shadow-2xl grayscale-[0.3]">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historia (Blanco y Negro) -->
+    <section id="historia" class="py-24 bg-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-block p-4 bg-vatican-yellow mb-8 border-2 border-black reveal">
+                <i class="fa-solid fa-clock-rotate-left text-black text-2xl"></i>
+            </div>
+            <h2 class="text-4xl md:text-5xl font-serif font-black mb-10 reveal">Historia de la Capilla</h2>
+            <div class="space-y-8 text-lg text-stone-700 text-left reveal">
+                <p class="leading-relaxed"><span class="text-6xl font-serif float-left mr-3 text-black">L</span>a capilla surge gracias al esfuerzo de vecinos y familias de la colonia, con el objetivo de contar con un espacio de fe cercano. A lo largo de los años, ha sido testigo de celebraciones religiosas, encuentros comunitarios y generaciones enteras que construyeron su historia alrededor de este lugar.</p>
+                <p>La devoción a la <strong>Virgen de Luján</strong>, patrona de la Argentina, refuerza el vínculo espiritual que une a toda la comunidad. Las visitas del Obispo representan momentos especiales que fortalecen la fe y consolidan el vínculo con la Iglesia.</p>
+                <div class="bg-amber-50 p-8 border-l-8 border-vatican-yellow my-12 italic text-xl font-serif text-black">
+                    "Hoy ese legado nos impulsa a dar un paso más: recuperar nuestro patrimonio y proyectarlo hacia el futuro."
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proyecto Museo (Amarillo) -->
+    <section id="proyecto" class="py-24 bg-vatican-yellow">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="bg-white border-[16px] border-black shadow-2xl flex flex-col lg:flex-row reveal">
+                <div class="lg:w-1/2 p-12 lg:p-20">
+                    <h2 class="text-5xl font-serif font-black mb-6 leading-tight">Proyecto de Recuperación</h2>
+                    <p class="text-xl text-black mb-10 font-bold border-b-2 border-vatican-yellow pb-6">Transformando el antiguo edificio sin techo en un Guardián de nuestra Memoria.</p>
+                    <ul class="space-y-8">
+                        <li class="flex items-start space-x-4">
+                            <div class="bg-vatican-yellow p-3 border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]"><i class="fa-solid fa-trowel-bricks"></i></div>
+                            <div><h4 class="font-black uppercase text-sm tracking-widest">Restauración</h4><p class="text-stone-600 text-xs">Nuevo techo y refuerzo estructural.</p></div>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <div class="bg-vatican-yellow p-3 border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]"><i class="fa-solid fa-monument"></i></div>
+                            <div><h4 class="font-black uppercase text-sm tracking-widest">Museo de la Colonia</h4><p class="text-stone-600 text-xs">Objetos y fotos de familias pioneras.</p></div>
+                        </li>
+                        <li class="flex items-start space-x-4">
+                            <div class="bg-vatican-yellow p-3 border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]"><i class="fa-solid fa-wifi"></i></div>
+                            <div><h4 class="font-black uppercase text-sm tracking-widest">Sala SUM Digital</h4><p class="text-stone-600 text-xs">Capacitaciones y conectividad para la zona.</p></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="lg:w-1/2 bg-stone-200 relative min-h-[400px]">
+                    <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&q=80&w=1000" class="absolute inset-0 w-full h-full object-cover" alt="Recuperación">
+                    <div class="absolute inset-0 bg-amber-400/20 mix-blend-multiply"></div>
+                    <div class="absolute bottom-0 right-0 p-8 bg-black text-white max-w-xs"><p class="font-serif italic">Construyendo futuro para las próximas generaciones.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donaciones -->
+    <section id="donaciones" class="py-24 bg-stone-950 text-white relative text-center">
+        <div class="max-w-5xl mx-auto px-4 reveal">
+            <i class="fa-solid fa-heart text-vatican-yellow text-6xl mb-10"></i>
+            <h2 class="text-5xl font-serif font-bold mb-8 italic">Cada aporte es un ladrillo más.</h2>
+            <p class="text-xl text-stone-400 mb-12 font-light max-w-2xl mx-auto leading-relaxed">
+                Podés colaborar con materiales, mano de obra o aportes económicos. Ayudanos a recuperar este símbolo de Colonia Federal.
             </p>
-            <div className="bg-amber-50 p-8 border-l-8 border-amber-400 my-12">
-               <Quote className="text-amber-500 w-12 h-12 mb-4 opacity-50" />
-               <p className="text-xl font-serif italic text-stone-900 leading-relaxed">
-                 "Las visitas del Obispo son hitos que consolidan nuestra fe y nos recuerdan que somos parte de una Iglesia viva que camina junto a su pueblo."
-               </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="https://wa.me/5493454656179" class="bg-vatican-yellow text-black px-12 py-6 font-black text-lg uppercase tracking-widest hover:bg-amber-500 transition-all shadow-[8px_8px_0px_rgba(255,255,255,0.1)]">Donar Materiales</a>
+                <a href="https://wa.me/5493454656179" class="bg-white text-black px-12 py-6 font-black text-lg uppercase tracking-widest hover:bg-stone-200 transition-all">Colaborar con Dinero</a>
             </div>
-          </div>
         </div>
-      </section>
+    </section>
 
-      {/* --- PROYECTO MUSEO (MADERA Y AMARILLO) --- */}
-      <section id="proyecto" className="py-24 bg-amber-400">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="bg-white border-[16px] border-stone-900 shadow-2xl flex flex-col lg:flex-row">
-            <div className="lg:w-1/2 p-12 lg:p-20 flex flex-col justify-center">
-              <h2 className="text-5xl font-serif font-black mb-6 text-black leading-tight">Proyecto de Recuperación</h2>
-              <p className="text-xl text-stone-800 mb-10 font-bold border-b-2 border-amber-400 pb-6">
-                El antiguo edificio, hoy sin techo, espera volver a la vida para ser el Guardián de nuestra Memoria.
-              </p>
-              
-              <ul className="space-y-8">
-                {[
-                  { title: "Restauración del Edificio", desc: "Nuevo techo y preservación de la estructura original.", icon: <Hammer /> },
-                  { title: "Museo de la Colonia", desc: "Objetos históricos de las familias pioneras.", icon: <BookOpen /> },
-                  { title: "Salón de Usos Múltiples", desc: "Capacitaciones, talleres y conectividad digital.", icon: <Wifi /> }
-                ].map((item, i) => (
-                  <li key={i} className="flex items-start space-x-6">
-                    <div className="bg-amber-400 p-3 text-black border-2 border-black shadow-[4px_4px_0px_rgba(0,0,0,1)]">
-                      {item.icon}
+    <!-- Contacto -->
+    <section id="contacto" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-0 border-4 border-black reveal">
+                <div class="p-12 md:p-20">
+                    <h2 class="text-4xl font-serif font-black mb-12 uppercase tracking-tighter">Contacto</h2>
+                    <div class="space-y-10">
+                        <div class="flex items-start space-x-6">
+                            <i class="fa-solid fa-location-dot text-vatican-yellow text-2xl"></i>
+                            <div><h5 class="font-black uppercase text-xs tracking-widest mb-1">Ubicación</h5><p class="font-bold">Colonia Federal, Entre Ríos, Argentina</p></div>
+                        </div>
+                        <div class="flex items-start space-x-6">
+                            <i class="fa-solid fa-phone text-vatican-yellow text-2xl"></i>
+                            <div><h5 class="font-black uppercase text-xs tracking-widest mb-1">WhatsApp</h5><p class="font-black text-2xl tracking-tighter">+54 9 3454 65 6179</p></div>
+                        </div>
                     </div>
-                    <div>
-                      <h4 className="text-lg font-black uppercase tracking-wider">{item.title}</h4>
-                      <p className="text-stone-600 text-sm">{item.desc}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
+                </div>
+                <div class="bg-vatican-yellow p-12 md:p-20 flex flex-col justify-center items-center text-center">
+                    <i class="fa-solid fa-envelope-open-text text-black text-6xl mb-8 opacity-20"></i>
+                    <h4 class="text-2xl font-serif font-bold mb-6">Estamos para escucharte</h4>
+                    <p class="text-black mb-10 font-medium">Escribinos para sumarte al proyecto o coordinar donaciones.</p>
+                    <a href="https://wa.me/5493454656179" target="_blank" class="w-full bg-black text-white py-5 font-black uppercase tracking-widest flex items-center justify-center space-x-4">
+                        <i class="fa-brands fa-whatsapp"></i>
+                        <span>Enviar mensaje directo</span>
+                    </a>
+                </div>
             </div>
-            <div className="lg:w-1/2 relative min-h-[500px] bg-stone-200">
-              <img 
-                src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000" 
-                alt="Arquitectura madera y blanco"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-              <div className="absolute inset-0 bg-amber-400/20 mix-blend-multiply" />
-              <div className="absolute bottom-0 right-0 p-12 bg-stone-900 text-white max-w-sm">
-                <p className="font-serif italic text-lg">"Un espacio donde el pasado educa al presente."</p>
-              </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-stone-900 text-white py-20 text-center">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex items-center justify-center space-x-3 mb-10">
+                <div class="w-12 h-1 bg-vatican-yellow"></div>
+                <span class="font-serif text-3xl font-bold tracking-tighter uppercase">Capilla Luján</span>
+                <div class="w-12 h-1 bg-vatican-yellow"></div>
             </div>
-          </div>
+            <p class="text-stone-500 max-w-2xl mx-auto mb-12 font-medium">Recuperando el pasado para sembrar futuro. Colonia Federal, Entre Ríos.</p>
+            <p class="text-stone-600 text-[10px] font-black uppercase tracking-[0.3em] pt-10 border-t border-stone-800">
+                &copy; 2024 Capilla Nuestra Señora de Luján - Todos los derechos reservados.
+            </p>
         </div>
-      </section>
+    </footer>
 
-      {/* --- EVENTOS (MODERNO/LÍMPIO) --- */}
-      <section id="eventos" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="flex items-end justify-between mb-16 border-b-4 border-black pb-8">
-            <h2 className="text-5xl font-serif font-black uppercase tracking-tighter">Eventos</h2>
-            <div className="hidden md:block text-amber-500 font-black uppercase tracking-widest text-xs">Agenda Tradicional</div>
-          </div>
-          
-          <div className="grid md:grid-cols-3 gap-0 border-collapse">
-            {[
-              { title: "Fiesta Patronal", date: "8 DE MAYO", detail: "Procesión y almuerzo criollo." },
-              { title: "Confirmaciones", date: "SÁBADO 18:00", detail: "Ceremonia solemne con el Obispo." },
-              { title: "Encuentro de Fe", date: "MENSUAL", detail: "Misas especiales y catequesis." }
-            ].map((ev, i) => (
-              <div key={i} className="p-12 border border-stone-200 hover:bg-amber-50 transition-colors group">
-                <span className="text-amber-500 font-black text-sm block mb-4 tracking-widest">{ev.date}</span>
-                <h4 className="text-2xl font-serif font-bold mb-6 group-hover:translate-x-2 transition-transform">{ev.title}</h4>
-                <p className="text-stone-500 text-sm mb-8">{ev.detail}</p>
-                <div className="w-10 h-1 bg-black group-hover:w-full transition-all duration-500" />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+    <!-- WhatsApp Flotante -->
+    <a href="https://wa.me/5493454656179" target="_blank" class="fixed bottom-8 right-8 z-50 bg-vatican-yellow text-black p-5 shadow-[8px_8px_0px_rgba(0,0,0,1)] border-2 border-black hover:-translate-y-2 transition-all">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+    </a>
 
-      {/* --- DONACIONES (FONDO MADERA OSCURA) --- */}
-      <section id="donaciones" className="py-24 bg-stone-950 text-white relative">
-        <div className="absolute inset-0 opacity-20 pointer-events-none" style={{ backgroundImage: 'url("https://www.transparenttextures.com/patterns/black-linen.png")' }} />
+    <script>
+        // Manejo del menú móvil
+        const btn = document.getElementById('mobile-menu-button');
+        const menu = document.getElementById('mobile-menu');
         
-        <div className="max-w-5xl mx-auto px-4 text-center relative z-10">
-          <Heart className="w-16 h-16 text-amber-400 mx-auto mb-10" />
-          <h2 className="text-5xl font-serif font-bold mb-8 italic">Cada aporte construye una pared más.</h2>
-          <p className="text-xl text-stone-400 mb-12 font-light max-w-2xl mx-auto leading-relaxed">
-            Podés colaborar con materiales, mano de obra o aportes económicos. Ayudanos a devolverle el techo a nuestra historia.
-          </p>
-          
-          <div className="flex flex-col sm:flex-row justify-center gap-6">
-            <a 
-              href={WHATSAPP_LINK}
-              className="bg-amber-400 text-black px-12 py-6 font-black text-lg uppercase tracking-widest hover:bg-amber-500 transition-all shadow-[8px_8px_0px_rgba(255,255,255,0.1)]"
-            >
-              Donar Materiales
-            </a>
-            <a 
-              href={WHATSAPP_LINK}
-              className="bg-white text-black px-12 py-6 font-black text-lg uppercase tracking-widest hover:bg-stone-200 transition-all"
-            >
-              Transferencia Bancaria
-            </a>
-          </div>
-        </div>
-      </section>
+        btn.addEventListener('click', () => {
+            menu.classList.toggle('hidden');
+        });
 
-      {/* --- CONTACTO --- */}
-      <section id="contacto" className="py-24 bg-white">
-        <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-2 gap-0 border-4 border-black">
-            <div className="p-12 md:p-20 bg-white">
-              <h2 className="text-4xl font-serif font-black mb-12 uppercase tracking-tighter">Ubicación y Contacto</h2>
-              <div className="space-y-10">
-                <div className="flex items-start space-x-6">
-                  <MapPin className="text-amber-500 shrink-0" size={24} />
-                  <div>
-                    <h5 className="font-black uppercase text-xs tracking-widest mb-2">Dirección</h5>
-                    <p className="text-stone-600 font-bold">Colonia Federal, Entre Ríos, Argentina</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-6">
-                  <Phone className="text-amber-500 shrink-0" size={24} />
-                  <div>
-                    <h5 className="font-black uppercase text-xs tracking-widest mb-2">WhatsApp Oficial</h5>
-                    <p className="text-stone-900 font-black text-2xl tracking-tighter">+54 9 3454 65 6179</p>
-                  </div>
-                </div>
-                <div className="flex items-start space-x-6">
-                  <Mail className="text-amber-500 shrink-0" size={24} />
-                  <div>
-                    <h5 className="font-black uppercase text-xs tracking-widest mb-2">Correo Electrónico</h5>
-                    <p className="text-stone-600 font-bold">comunidad@capillalujan.ar</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            <div className="bg-amber-400 p-12 md:p-20 flex flex-col justify-center items-center text-center">
-              <Landmark size={80} className="text-black mb-8 opacity-20" />
-              <h4 className="text-2xl font-serif font-bold mb-6">Estamos para escucharte</h4>
-              <p className="text-stone-800 mb-10 font-medium">Sumate a las reuniones de comisión o envianos tus ideas para el nuevo Museo.</p>
-              <a 
-                href={WHATSAPP_LINK}
-                className="w-full bg-black text-white py-5 font-black uppercase tracking-widest flex items-center justify-center space-x-4 hover:bg-stone-800 transition-all"
-              >
-                <MessageCircle />
-                <span>Enviar mensaje directo</span>
-              </a>
-            </div>
-          </div>
-        </div>
-      </section>
+        // Cerrar menú móvil al hacer click en un link
+        const links = menu.querySelectorAll('a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                menu.classList.add('hidden');
+            });
+        });
 
-      {/* --- FOOTER --- */}
-      <footer className="bg-stone-900 text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 text-center">
-          <div className="flex items-center justify-center space-x-3 mb-10">
-            <div className="w-12 h-1 bg-amber-400" />
-            <span className="font-serif text-3xl font-bold tracking-tighter uppercase">Capilla Luján</span>
-            <div className="w-12 h-1 bg-amber-400" />
-          </div>
-          <p className="text-stone-500 max-w-2xl mx-auto mb-12 font-medium">
-            Recuperando el pasado para sembrar futuro. Colonia Federal, Entre Ríos.
-          </p>
-          <div className="pt-10 border-t border-stone-800 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-stone-600 text-[10px] font-black uppercase tracking-[0.3em]">
-              &copy; {new Date().getFullYear()} Capilla Nuestra Señora de Luján
-            </p>
-            <div className="flex space-x-6">
-              <Instagram className="text-stone-600 hover:text-amber-400 cursor-pointer transition-colors" size={20} />
-              <Mail className="text-stone-600 hover:text-amber-400 cursor-pointer transition-colors" size={20} />
-            </div>
-          </div>
-        </div>
-      </footer>
+        // Cambio de estilo del Navbar al scrollear
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('shadow-md');
+                nav.classList.remove('py-4');
+                nav.classList.add('py-2');
+            } else {
+                nav.classList.remove('shadow-md');
+                nav.classList.add('py-4');
+                nav.classList.remove('py-2');
+            }
+        });
 
-      {/* --- WHATSAPP FLOATING (Estilo Amarillo/Negro) --- */}
-      <a 
-        href={WHATSAPP_LINK}
-        target="_blank"
-        className="fixed bottom-8 right-8 z-50 bg-amber-400 text-black p-5 rounded-none shadow-[8px_8px_0px_rgba(0,0,0,1)] hover:-translate-y-2 active:translate-y-0 transition-all border-2 border-black"
-      >
-        <div className="relative">
-          <MessageCircle size={32} />
-          <span className="absolute -top-1 -right-1 flex h-3 w-3">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-black opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-black"></span>
-          </span>
-        </div>
-      </a>
-    </div>
-  );
-};
-
-export default App;
+        // Animación al scrollear (Reveal)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        // Lanzar una vez al inicio
+        reveal();
+    </script>
+</body>
+</html>
 
 ```
