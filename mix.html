@@ -1,0 +1,384 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIX MAGAZINE | Global Mix Group</title>
+    <!-- SEO Básico -->
+    <meta name="description" content="MIX MAGAZINE - La plataforma definitiva de cultura pop, estilo de vida y tendencias globales.">
+    <!-- Fuentes y Estilos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@300;400;700;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        editorialBlack: '#0F0F0F',
+                        softWhite: '#F5F5F2',
+                        premiumRed: '#A11217',
+                        steelGray: '#8D8D8D',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Archivo Black', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #F5F5F2; color: #0F0F0F; scroll-behavior: smooth; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* Animación Sponsor Ticker */
+        .sponsor-track {
+            display: flex;
+            white-space: nowrap;
+            gap: 5rem;
+            animation: scroll 40s linear infinite;
+        }
+        @keyframes scroll {
+            from { transform: translateX(0); }
+            to { transform: translateX(-50%); }
+        }
+
+        /* Efectos de Interacción */
+        .article-card-scroll { min-width: 300px; transition: all 0.4s ease; }
+        @media (min-width: 768px) { .article-card-scroll { min-width: 450px; } }
+        
+        .nav-underline { position: relative; }
+        .nav-underline::after {
+            content: ''; position: absolute; width: 0; height: 2px;
+            bottom: -4px; left: 0; background-color: #A11217;
+            transition: width 0.3s ease;
+        }
+        .nav-underline:hover::after { width: 100%; }
+
+        #mobile-menu { transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1); }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- BARRA SUPERIOR DE GRUPO -->
+    <div class="bg-editorialBlack text-white py-2 px-6 flex justify-between items-center text-[10px] uppercase tracking-[0.2em] font-bold z-[60] relative border-b border-white/10">
+        <div class="flex gap-6 items-center">
+            <div class="hidden sm:flex gap-3 pr-6 border-r border-white/20">
+                <a href="#" class="hover:text-premiumRed transition"><i data-lucide="instagram" class="w-3.5 h-3.5"></i></a>
+                <a href="#" class="hover:text-premiumRed transition"><i data-lucide="facebook" class="w-3.5 h-3.5"></i></a>
+                <a href="#" class="hover:text-premiumRed transition"><i data-lucide="twitter" class="w-3.5 h-3.5"></i></a>
+            </div>
+            <a href="https://www.miamix.io" target="_blank" class="hover:text-premiumRed transition">MIAMIX.IO</a>
+            <a href="https://www.globalmix.online" target="_blank" class="hover:text-premiumRed transition">GLOBAL MIX</a>
+        </div>
+        <div class="flex items-center gap-4 text-steelGray italic">
+            <span class="hidden md:inline uppercase not-italic tracking-widest text-[9px]">The Premium Network</span>
+            <a href="#" class="text-white hover:text-premiumRed transition"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+        </div>
+    </div>
+
+    <!-- HEADER PRINCIPAL -->
+    <header class="bg-softWhite border-b-4 border-editorialBlack sticky top-0 z-50">
+        <div class="max-w-[1400px] mx-auto px-4 py-4 md:py-8 flex justify-between items-end">
+            <div class="flex-1 hidden lg:block">
+                <button onclick="toggleMenu()" class="flex items-center gap-3 group">
+                    <div class="bg-editorialBlack p-2 group-hover:bg-premiumRed transition">
+                        <i data-lucide="menu" class="w-5 h-5 text-white"></i>
+                    </div>
+                    <span class="font-black text-xs tracking-widest uppercase">Menú</span>
+                </button>
+            </div>
+            
+            <div class="flex-1 text-center">
+                <h1 class="font-heading text-6xl md:text-8xl lg:text-9xl tracking-tighter leading-none">MIX</h1>
+                <div class="font-bold text-[10px] tracking-[0.5em] mt-2 text-editorialBlack uppercase">Magazine</div>
+            </div>
+
+            <div class="flex-1 flex justify-end gap-2 md:gap-6 items-center">
+                <div class="hidden sm:flex gap-4 items-center mr-4">
+                    <a href="#" class="text-editorialBlack hover:text-premiumRed transition"><i data-lucide="instagram" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-editorialBlack hover:text-premiumRed transition"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    <a href="#" class="text-editorialBlack hover:text-premiumRed transition"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                </div>
+                <button class="p-2 hover:text-premiumRed transition"><i data-lucide="search" class="w-5 h-5"></i></button>
+                <button onclick="toggleMenu()" class="lg:hidden p-2"><i data-lucide="menu" class="w-6 h-6"></i></button>
+            </div>
+        </div>
+
+        <!-- NAVEGACIÓN DESKTOP -->
+        <nav class="hidden lg:block border-t border-gray-200">
+            <ul class="max-w-7xl mx-auto flex justify-center gap-8 py-4 text-[10px] font-black uppercase tracking-[0.15em]">
+                <li><a href="#" class="nav-underline transition">Home</a></li>
+                <li><a href="#" class="nav-underline transition">Viajes</a></li>
+                <li><a href="#" class="nav-underline transition">Moda</a></li>
+                <li><a href="#" class="text-premiumRed font-black italic underline-offset-4 underline">Música</a></li>
+                <li><a href="#" class="nav-underline transition">Deportes</a></li>
+                <li><a href="#" class="nav-underline transition">Espectáculos</a></li>
+                <li><a href="#" class="nav-underline transition">Personajes</a></li>
+                <li><a href="#" class="nav-underline transition">Arte & Cultura</a></li>
+                <li><a href="#" class="nav-underline transition">Gastronomía</a></li>
+                <li><a href="#" class="nav-underline transition">Lifestyle</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- SPONSOR TICKER -->
+    <div class="bg-editorialBlack py-3 overflow-hidden border-b border-premiumRed/20">
+        <div class="sponsor-track">
+            <span class="text-premiumRed font-black text-[10px] uppercase italic tracking-[0.2em] flex items-center gap-2">
+                <i data-lucide="zap" class="w-3 h-3 fill-premiumRed"></i> SPONSORS OFICIALES
+            </span>
+            <span class="text-white/40 font-heading text-xl uppercase italic">VOGUE GROUP</span>
+            <span class="text-white/40 font-heading text-xl uppercase italic">MERCEDES BENZ</span>
+            <span class="text-white/40 font-heading text-xl uppercase italic">ROLEX LUXURY</span>
+            <span class="text-white/40 font-heading text-xl uppercase italic">GLOBAL AIRLINES</span>
+            <span class="text-white/40 font-heading text-xl uppercase italic">APPLE INC</span>
+            <!-- Loop Duplicado -->
+            <span class="text-white/40 font-heading text-xl uppercase italic">VOGUE GROUP</span>
+            <span class="text-white/40 font-heading text-xl uppercase italic">MERCEDES BENZ</span>
+        </div>
+    </div>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="max-w-[1440px] mx-auto px-4 py-8">
+        
+        <!-- SECCIÓN PORTADA (HERO) -->
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-1 border-b-8 border-editorialBlack pb-1">
+            <div class="lg:col-span-8 relative group cursor-pointer overflow-hidden bg-editorialBlack h-[500px] md:h-[750px]">
+                <img src="https://images.unsplash.com/photo-1514525253361-bee8718a300a?auto=format&fit=crop&q=80&w=1600" class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition duration-1000 group-hover:scale-105" alt="Main Story">
+                <div class="absolute inset-0 bg-gradient-to-t from-editorialBlack via-transparent to-transparent opacity-90"></div>
+                <div class="absolute bottom-0 left-0 p-6 md:p-12 text-white">
+                    <span class="bg-premiumRed text-white px-4 py-1 text-[10px] font-black uppercase tracking-widest mb-6 inline-block">MÚSICA / TENDENCIAS</span>
+                    <h2 class="font-heading text-6xl md:text-[120px] uppercase tracking-tighter leading-[0.8] mb-6 group-hover:text-premiumRed transition">BASS<br>CULTURE</h2>
+                    <p class="mt-2 text-steelGray max-w-xl font-bold text-sm md:text-lg uppercase tracking-tight leading-tight italic">Exploramos el fenómeno underground que está redefiniendo el sonido de las capitales mundiales.</p>
+                </div>
+            </div>
+            
+            <!-- SIDEBAR: CHART / RANKING -->
+            <div class="lg:col-span-4 bg-editorialBlack text-white p-8 flex flex-col">
+                <div class="flex justify-between items-center mb-12 border-b border-premiumRed pb-4">
+                    <h3 class="font-heading text-2xl uppercase italic tracking-tighter">MIX CHART</h3>
+                    <i data-lucide="headphones" class="w-6 h-6 text-premiumRed"></i>
+                </div>
+                <div class="space-y-10 flex-grow">
+                    <div class="flex gap-6 items-start group cursor-pointer">
+                        <span class="font-heading text-4xl text-premiumRed/30 group-hover:text-premiumRed transition">01</span>
+                        <div>
+                            <h4 class="font-heading text-xl uppercase leading-none">NOCHE ETERNA</h4>
+                            <p class="text-[10px] text-steelGray font-black tracking-widest mt-2 uppercase italic">Santi & Los Fantasmas</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start group cursor-pointer border-t border-white/5 pt-8">
+                        <span class="font-heading text-4xl text-premiumRed/30 group-hover:text-premiumRed transition">02</span>
+                        <div>
+                            <h4 class="font-heading text-xl uppercase leading-none">NEÓN VIBES</h4>
+                            <p class="text-[10px] text-steelGray font-black tracking-widest mt-2 uppercase italic">Luna Park Collective</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-6 items-start group cursor-pointer border-t border-white/5 pt-8">
+                        <span class="font-heading text-4xl text-premiumRed/30 group-hover:text-premiumRed transition">03</span>
+                        <div>
+                            <h4 class="font-heading text-xl uppercase leading-none">URBAN BEAT</h4>
+                            <p class="text-[10px] text-steelGray font-black tracking-widest mt-2 uppercase italic">The Mix Project</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="mt-12 w-full border-2 border-premiumRed text-premiumRed py-4 font-black text-[10px] tracking-[0.4em] uppercase hover:bg-premiumRed hover:text-white transition">Full Playlist</button>
+            </div>
+        </section>
+
+        <!-- SECCIÓN SCROLL HORIZONTAL DE ARTÍCULOS -->
+        <section class="mt-24">
+            <div class="flex justify-between items-end mb-10 border-b-2 border-editorialBlack pb-4">
+                <h2 class="font-heading text-4xl md:text-6xl uppercase tracking-tighter italic">Historias Destacadas</h2>
+                <div class="flex gap-4 mb-2">
+                    <button onclick="scrollGrid('left')" class="p-3 border-2 border-gray-200 hover:border-premiumRed hover:text-premiumRed transition"><i data-lucide="arrow-left" class="w-6 h-6"></i></button>
+                    <button onclick="scrollGrid('right')" class="p-3 border-2 border-gray-200 hover:border-premiumRed hover:text-premiumRed transition"><i data-lucide="arrow-right" class="w-6 h-6"></i></button>
+                </div>
+            </div>
+            
+            <div id="article-scroll" class="flex gap-8 overflow-x-auto hide-scrollbar snap-x snap-mandatory py-4">
+                <!-- Tarjeta 1 -->
+                <div class="article-card-scroll snap-start group cursor-pointer">
+                    <div class="overflow-hidden mb-6 relative aspect-[16/10] bg-editorialBlack">
+                        <img src="https://images.unsplash.com/photo-1523381294911-8d3ecaa40403?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100" alt="Moda">
+                        <div class="absolute top-4 left-4 bg-premiumRed text-white text-[9px] font-black px-3 py-1 uppercase tracking-widest">Streetwear</div>
+                    </div>
+                    <h3 class="font-heading text-3xl uppercase leading-[0.9] group-hover:text-premiumRed transition">EL LUJO SE MUDA<br>A LA CALLE.</h3>
+                    <p class="text-steelGray text-xs font-bold uppercase tracking-tight mt-4 italic">Cómo las sudaderas reemplazaron al traje en la alta dirección.</p>
+                </div>
+                <!-- Tarjeta 2 -->
+                <div class="article-card-scroll snap-start group cursor-pointer">
+                    <div class="overflow-hidden mb-6 relative aspect-[16/10] bg-editorialBlack">
+                        <img src="https://images.unsplash.com/photo-1506459225024-1428097a7e18?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100" alt="Arquitectura">
+                        <div class="absolute top-4 left-4 bg-premiumRed text-white text-[9px] font-black px-3 py-1 uppercase tracking-widest">Arquitectura</div>
+                    </div>
+                    <h3 class="font-heading text-3xl uppercase leading-[0.9] group-hover:text-premiumRed transition">ESPACIOS QUE<br>RESPIRAN.</h3>
+                    <p class="text-steelGray text-xs font-bold uppercase tracking-tight mt-4 italic">La nueva ola de diseño sostenible en edificios corporativos.</p>
+                </div>
+                <!-- Tarjeta 3 -->
+                <div class="article-card-scroll snap-start group cursor-pointer">
+                    <div class="overflow-hidden mb-6 relative aspect-[16/10] bg-editorialBlack">
+                        <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-110 transition duration-700 opacity-80 group-hover:opacity-100" alt="Wellness">
+                        <div class="absolute top-4 left-4 bg-premiumRed text-white text-[9px] font-black px-3 py-1 uppercase tracking-widest">Wellness</div>
+                    </div>
+                    <h3 class="font-heading text-3xl uppercase leading-[0.9] group-hover:text-premiumRed transition">EL ARTE DEL<br>SILENCIO.</h3>
+                    <p class="text-steelGray text-xs font-bold uppercase tracking-tight mt-4 italic">Refugios digitales para desconectar de la hiperconexión actual.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- BANNER PUBLICITARIO / GRUPO -->
+        <section class="mt-32 grid grid-cols-1 md:grid-cols-2 gap-1 bg-editorialBlack border-4 border-editorialBlack">
+            <a href="https://www.miamix.io" target="_blank" class="group bg-softWhite p-16 relative overflow-hidden flex flex-col justify-between min-h-[400px]">
+                <div class="flex justify-between items-start">
+                    <h4 class="font-heading text-4xl italic tracking-tighter">MIAMIX</h4>
+                    <i data-lucide="external-link" class="w-8 h-8 group-hover:text-premiumRed transition"></i>
+                </div>
+                <div class="relative z-10">
+                    <p class="text-editorialBlack font-black uppercase tracking-[0.3em] text-[10px] mb-4">Plataforma Hermana</p>
+                    <p class="text-editorialBlack text-2xl font-serif italic max-w-xs leading-tight">Tu guía esencial del estilo de vida en la ciudad del sol.</p>
+                </div>
+            </a>
+            <a href="https://www.globalmix.online" target="_blank" class="group bg-premiumRed p-16 relative overflow-hidden flex flex-col justify-between min-h-[400px] text-white">
+                <div class="flex justify-between items-start">
+                    <h4 class="font-heading text-4xl tracking-tighter">GLOBAL MIX</h4>
+                    <i data-lucide="globe" class="w-8 h-8 group-hover:scale-125 transition"></i>
+                </div>
+                <div class="relative z-10">
+                    <p class="text-white/70 font-black uppercase tracking-[0.3em] text-[10px] mb-4">Network Internacional</p>
+                    <p class="text-white text-2xl font-serif italic max-w-xs leading-tight">Conectando las mentes más brillantes de la cultura global.</p>
+                </div>
+            </a>
+        </section>
+
+    </main>
+
+    <!-- FOOTER MODERNO -->
+    <footer class="bg-editorialBlack text-white pt-24 pb-12 px-6 mt-32">
+        <div class="max-w-[1440px] mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-16">
+                <div class="md:col-span-5">
+                    <h2 class="font-heading text-8xl md:text-[150px] tracking-tighter leading-none mb-12">MIX</h2>
+                    <p class="text-steelGray font-bold uppercase tracking-tighter text-[11px] leading-relaxed max-w-sm mb-12 italic">
+                        La voz definitiva de la cultura moderna, música y entretenimiento premium. Parte integral de Global Mix Group.
+                    </p>
+                    <div class="flex flex-col gap-8">
+                        <h5 class="text-premiumRed font-black text-[10px] uppercase tracking-[0.4em]">SÍGUENOS EN LA RED</h5>
+                        <div class="flex gap-4">
+                            <a href="#" class="bg-white/5 p-5 rounded-full hover:bg-premiumRed transition duration-500 hover:-translate-y-2"><i data-lucide="instagram" class="w-6 h-6"></i></a>
+                            <a href="#" class="bg-white/5 p-5 rounded-full hover:bg-premiumRed transition duration-500 hover:-translate-y-2"><i data-lucide="facebook" class="w-6 h-6"></i></a>
+                            <a href="#" class="bg-white/5 p-5 rounded-full hover:bg-premiumRed transition duration-500 hover:-translate-y-2"><i data-lucide="twitter" class="w-6 h-6"></i></a>
+                            <a href="#" class="bg-white/5 p-5 rounded-full hover:bg-premiumRed transition duration-500 hover:-translate-y-2"><i data-lucide="youtube" class="w-6 h-6"></i></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:col-span-3">
+                    <h5 class="text-premiumRed font-black text-[10px] uppercase tracking-widest mb-10">Explorar</h5>
+                    <ul class="space-y-6 text-[10px] font-black uppercase tracking-[0.2em] text-steelGray">
+                        <li><a href="#" class="hover:text-white transition">Música & Beats</a></li>
+                        <li><a href="#" class="hover:text-white transition">Moda Urbana</a></li>
+                        <li><a href="#" class="hover:text-white transition">Destinos Lujo</a></li>
+                        <li><a href="#" class="hover:text-white transition">Arte Digital</a></li>
+                        <li><a href="#" class="hover:text-white transition">Agenda Cultural</a></li>
+                        <li><a href="#" class="hover:text-white transition">Edición Impresa</a></li>
+                    </ul>
+                </div>
+
+                <div class="md:col-span-4">
+                    <h5 class="text-premiumRed font-black text-[10px] uppercase tracking-widest mb-10">Global Mix Group</h5>
+                    <div class="space-y-6">
+                        <div class="border-l-4 border-white/10 pl-6 py-2 hover:border-premiumRed transition cursor-default">
+                            <span class="block text-white font-heading text-2xl uppercase italic">MIAMIX</span>
+                            <p class="text-steelGray text-[9px] font-bold tracking-[0.2em] uppercase mt-2">Lifestyle & City Guide</p>
+                        </div>
+                        <div class="border-l-4 border-white/10 pl-6 py-2 hover:border-premiumRed transition cursor-default">
+                            <span class="block text-white font-heading text-2xl uppercase italic">GLOBAL MIX</span>
+                            <p class="text-steelGray text-[9px] font-bold tracking-[0.2em] uppercase mt-2">International Network</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-white/5 mt-32 pt-10 flex flex-col md:flex-row justify-between items-center text-[8px] font-black tracking-[0.5em] text-steelGray uppercase gap-6">
+                <span>© 2024 GLOBAL MIX GROUP. ALL RIGHTS RESERVED.</span>
+                <div class="flex gap-12">
+                    <a href="#" class="hover:text-premiumRed transition">Privacy</a>
+                    <a href="#" class="hover:text-premiumRed transition">Advertising</a>
+                    <a href="#" class="hover:text-premiumRed transition">Contact</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- MENÚ MÓVIL (DESPLEGABLE) -->
+    <div id="mobile-menu" class="fixed inset-y-0 right-0 w-full md:w-[600px] bg-editorialBlack z-[100] translate-x-full border-l-[15px] border-premiumRed shadow-2xl">
+        <div class="p-8 flex justify-between items-center border-b border-white/5">
+            <h2 class="font-heading text-5xl text-white italic">MIX</h2>
+            <button onclick="toggleMenu()" class="text-white hover:text-premiumRed transition p-2">
+                <i data-lucide="x" class="w-12 h-12"></i>
+            </button>
+        </div>
+        <div class="p-12 overflow-y-auto h-full pb-48">
+            <nav class="space-y-6">
+                <a href="#" class="block text-6xl font-heading text-white hover:text-premiumRed transition uppercase italic">HOME</a>
+                <a href="#" class="block text-6xl font-heading text-premiumRed hover:text-white transition uppercase">MÚSICA</a>
+                <a href="#" class="block text-6xl font-heading text-white hover:text-premiumRed transition uppercase italic">VIAJES</a>
+                <a href="#" class="block text-6xl font-heading text-white hover:text-premiumRed transition uppercase">MODA</a>
+                <a href="#" class="block text-6xl font-heading text-white hover:text-premiumRed transition uppercase italic">ARTE</a>
+                <a href="#" class="block text-6xl font-heading text-white hover:text-premiumRed transition uppercase">LIFE</a>
+            </nav>
+            
+            <div class="mt-24 grid grid-cols-2 gap-4">
+                <a href="#" class="bg-white/5 p-8 text-white font-black text-xs tracking-widest uppercase hover:bg-premiumRed transition text-center italic">Video</a>
+                <a href="#" class="bg-white/5 p-8 text-white font-black text-xs tracking-widest uppercase hover:bg-premiumRed transition text-center italic">Newsletter</a>
+                <a href="#" class="bg-white/5 p-8 text-white font-black text-xs tracking-widest uppercase hover:bg-premiumRed transition text-center italic">Agenda</a>
+                <a href="#" class="bg-white/5 p-8 text-white font-black text-xs tracking-widest uppercase hover:bg-premiumRed transition text-center italic">Shop</a>
+            </div>
+
+            <div class="mt-24 border-t border-white/5 pt-12">
+                <span class="text-premiumRed font-black text-xs uppercase tracking-widest mb-10 block">Conecta con Global Mix</span>
+                <div class="flex flex-col gap-6">
+                    <a href="https://www.miamix.io" class="text-steelGray hover:text-white transition font-heading text-3xl italic">MIAMIX.IO</a>
+                    <a href="https://www.globalmix.online" class="text-steelGray hover:text-white transition font-heading text-3xl">GLOBALMIX.ONLINE</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Inicializar Iconos
+        lucide.createIcons();
+
+        // Control de Menú Móvil
+        function toggleMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const isClosed = menu.classList.contains('translate-x-full');
+            if (isClosed) {
+                menu.classList.remove('translate-x-full');
+                document.body.style.overflow = 'hidden';
+            } else {
+                menu.classList.add('translate-x-full');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // Control de Scroll Horizontal
+        function scrollGrid(direction) {
+            const container = document.getElementById('article-scroll');
+            const amount = window.innerWidth > 768 ? 500 : 320;
+            container.scrollBy({
+                left: direction === 'left' ? -amount : amount,
+                behavior: 'smooth'
+            });
+        }
+    </script>
+</body>
+</html>
+
+```
