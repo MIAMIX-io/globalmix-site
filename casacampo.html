@@ -60,16 +60,35 @@
             letter-spacing: 4px;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             color: var(--warm-white);
             text-decoration: none;
             margin-left: 30px;
             font-size: 0.85rem;
             transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .nav-links a:hover {
             color: var(--sunset-gold);
+        }
+        
+        .nav-links a.external-link {
+            border: 1px solid var(--sunset-gold);
+            padding: 8px 15px;
+            border-radius: 3px;
+            color: var(--sunset-gold);
+        }
+        
+        .nav-links a.external-link:hover {
+            background: var(--sunset-gold);
+            color: var(--charcoal);
         }
 
         /* Hero Section with Ember Particles */
@@ -82,8 +101,8 @@
             align-items: center;
             text-align: center;
             overflow: hidden;
-            /* Using the stunning airstrip sunset image as the base */
-            background: url('C2A0027E-2186-4BF0-880D-F22A9453E977.png') center/cover no-repeat;
+            /* Temp Img: Sunset / Airstrip vibe */
+            background: url('https://images.unsplash.com/photo-1540960086884-3ad911af857f?q=80&w=2000&auto=format&fit=crop') center/cover no-repeat;
             background-attachment: fixed;
         }
 
@@ -257,9 +276,10 @@
             transform: scale(1.05);
         }
 
-        .card-1 .card-bg { background-image: url('C2A0027E-2186-4BF0-880D-F22A9453E977.png'); }
-        .card-2 .card-bg { background-image: url('IMG_3178.jpg'); }
-        .card-3 .card-bg { background-image: url('C5AD88BB-9576-4434-9CD8-7190F9245437.PNG'); }
+        /* Temp Imgs for Cards */
+        .card-1 .card-bg { background-image: url('https://images.unsplash.com/photo-1616053303862-2f0855263625?q=80&w=800&auto=format&fit=crop'); }
+        .card-2 .card-bg { background-image: url('https://images.unsplash.com/photo-1598928506311-c55ded91a20c?q=80&w=800&auto=format&fit=crop'); }
+        .card-3 .card-bg { background-image: url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=800&auto=format&fit=crop'); }
 
         .card-overlay {
             position: absolute;
@@ -289,11 +309,11 @@
             position: relative;
         }
 
-        /* Full width banner */
+        /* Full width banner - Temp Img: Panoramic Lodge view */
         .wide-banner {
             width: 100%;
             height: 400px;
-            background: url('IMG_3183.jpg') center/cover;
+            background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?q=80&w=2000&auto=format&fit=crop') center/cover;
             background-attachment: fixed;
             margin: 60px 0;
             position: relative;
@@ -367,7 +387,8 @@
             .grid-2 { grid-template-columns: 1fr; }
             .hero-content h1 { font-size: 3rem; }
             nav { flex-direction: column; gap: 15px; padding: 15px; }
-            .nav-links a { margin: 0 15px; }
+            .nav-links a { margin: 10px; }
+            .nav-links { flex-wrap: wrap; justify-content: center; }
         }
     </style>
 </head>
@@ -380,6 +401,7 @@
             <a href="#features">Experience</a>
             <a href="#architecture">Architecture</a>
             <a href="#arrival">The Arrival</a>
+            <a href="https://www.globalmix.network/observatorio" target="_blank" class="external-link">Observatorio</a>
         </div>
     </nav>
 
@@ -399,7 +421,7 @@
         </div>
         
         <div class="grid-2 reveal">
-            <div class="image-block" style="background-image: url('99550152-CAE6-4FBF-8753-A280FEF804D7.png');"></div>
+            <div class="image-block" style="background-image: url('https://images.unsplash.com/photo-1587061949409-02df41d5e562?q=80&w=1000&auto=format&fit=crop');"></div>
             <div class="text-block">
                 <h3>A Highly Differentiated Proposition</h3>
                 <p>Designed for an exclusive segment, including international tourists, executives, premium sports fishermen, and private aircraft owners. The experience begins the moment you land.</p>
@@ -456,7 +478,7 @@
                 <p><strong>The Central Fire Pit (Fogón):</strong> The nocturnal heart of the hotel. It provides an authentic Argentine identity—ideal for folklore, wine tastings, and stargazing under the vast rural sky.</p>
                 <p><strong>Multi-Purpose Room (SUM):</strong> A flexible space designed for yoga, wellness, corporate events, workshops, and exclusive private gatherings.</p>
             </div>
-            <div class="image-block" style="background-image: url('IMG_3184.jpg'); background-size: contain; background-repeat: no-repeat; background-color: #eee;"></div>
+            <div class="image-block" style="background-image: url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=1000&auto=format&fit=crop'); background-position: center; background-color: #eee;"></div>
         </div>
     </section>
 
@@ -497,7 +519,7 @@
                     </div>
                 </div>
             </div>
-            <div class="image-block" style="background-image: url('C2A0027E-2186-4BF0-880D-F22A9453E977.png'); height: 100%;"></div>
+            <div class="image-block" style="background-image: url('https://images.unsplash.com/photo-1540960086884-3ad911af857f?q=80&w=1000&auto=format&fit=crop'); height: 100%;"></div>
         </div>
     </section>
 
