@@ -125,6 +125,7 @@
             position: relative;
             z-index: 3;
             padding: 0 20px;
+            width: 100%;
         }
 
         .hero-content h1 {
@@ -246,7 +247,7 @@
 
         .card-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
             perspective: 1000px;
             max-width: 1400px;
@@ -309,7 +310,6 @@
             position: relative;
         }
 
-        /* Full width banner - Temp Img: Panoramic Lodge view */
         .wide-banner {
             width: 100%;
             height: 400px;
@@ -382,13 +382,59 @@
             transform: translateY(0);
         }
 
-        /* Responsive */
-        @media (max-width: 900px) {
-            .grid-2 { grid-template-columns: 1fr; }
-            .hero-content h1 { font-size: 3rem; }
-            nav { flex-direction: column; gap: 15px; padding: 15px; }
-            .nav-links a { margin: 10px; }
-            .nav-links { flex-wrap: wrap; justify-content: center; }
+        /* =========================================
+           RESPONSIVE DESIGN (Tablet & iPad)
+           ========================================= */
+        @media (max-width: 1024px) {
+            nav { padding: 15px 30px; }
+            .nav-links a { margin-left: 15px; font-size: 0.8rem; }
+            
+            section { padding: 80px 30px; }
+            .hero-content h1 { font-size: 3.5rem; }
+            
+            .grid-2 { gap: 30px; }
+            .image-block { height: 400px; }
+            
+            .section-header { margin-bottom: 40px; }
+            .section-header h2 { font-size: 2.2rem; }
+            
+            .wide-banner { height: 300px; background-attachment: scroll; /* fixes iOS attachment bug */ }
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (Mobile)
+           ========================================= */
+        @media (max-width: 768px) {
+            nav { 
+                flex-direction: column; 
+                padding: 15px 20px; 
+                gap: 15px; 
+            }
+            .nav-links { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 10px;
+            }
+            .nav-links a { margin: 0; }
+            
+            #hero { background-attachment: scroll; /* better performance on mobile */ }
+            .hero-content h1 { font-size: 2.5rem; margin-bottom: 15px; }
+            .hero-content p { font-size: 1rem; margin-bottom: 30px; }
+            
+            section { padding: 60px 20px; }
+            .section-header h2 { font-size: 1.8rem; }
+            .section-header p { font-size: 1rem; }
+            
+            .grid-2 { grid-template-columns: 1fr; gap: 40px; }
+            .image-block { height: 300px; }
+            
+            .feature-card { height: 350px; }
+            
+            .step { flex-direction: column; gap: 10px; padding: 15px; }
+            .step:hover { transform: none; } /* Disable hover slide on mobile */
+            
+            footer { padding: 40px 20px; }
+            footer h2 { font-size: 1.2rem !important; }
         }
     </style>
 </head>
@@ -421,7 +467,7 @@
         </div>
         
         <div class="grid-2 reveal">
-            <div class="image-block" style="background-image: /images/campo01.png/></div>
+            <div class="image-block" style="background-image: url('/images/campo01.png');"></div>
             <div class="text-block">
                 <h3>A Highly Differentiated Proposition</h3>
                 <p>Designed for an exclusive segment, including international tourists, executives, premium sports fishermen, and private aircraft owners. The experience begins the moment you land.</p>
@@ -544,24 +590,25 @@
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             particles = [];
-            // Create particles
-            for (let i = 0; i < 150; i++) {
+            // Reduce particle count on smaller screens for performance
+            let particleCount = width < 768 ? 75 : 150;
+            
+            for (let i = 0; i < particleCount; i++) {
                 particles.push({
                     x: Math.random() * width,
                     y: Math.random() * height,
-                    z: Math.random() * 2 + 0.1, // Depth for 3D parallax
+                    z: Math.random() * 2 + 0.1, 
                     radius: Math.random() * 2 + 0.5,
                     vx: (Math.random() - 0.5) * 0.5,
-                    vy: (Math.random() - 1) * 0.5, // Float upwards
+                    vy: (Math.random() - 1) * 0.5, 
                     alpha: Math.random() * 0.8 + 0.2,
-                    color: Math.random() > 0.5 ? '#d4a373' : '#ff7a00' // Gold and orange embers
+                    color: Math.random() > 0.5 ? '#d4a373' : '#ff7a00' 
                 });
             }
         }
 
         window.addEventListener('resize', initParticles);
 
-        // Track mouse on hero section
         document.getElementById('hero').addEventListener('mousemove', (e) => {
             mouseX = (e.clientX - width / 2) * 0.05;
             mouseY = (e.clientY - height / 2) * 0.05;
@@ -571,25 +618,20 @@
             ctx.clearRect(0, 0, width, height);
 
             particles.forEach(p => {
-                // Move particle
                 p.x += p.vx;
                 p.y += p.vy;
 
-                // Apply Parallax offset based on depth (z)
                 let px = p.x - (mouseX * p.z);
                 let py = p.y - (mouseY * p.z);
 
-                // Wrap around edges
                 if (p.x < 0) p.x = width;
                 if (p.x > width) p.x = 0;
                 if (p.y < 0) p.y = height;
                 if (p.y > height) p.y = 0;
 
-                // Draw ember
                 ctx.beginPath();
                 ctx.arc(px, py, p.radius * p.z, 0, Math.PI * 2);
                 ctx.fillStyle = p.color;
-                // Fade based on z-index and native alpha
                 ctx.globalAlpha = p.alpha * (p.z / 2);
                 ctx.shadowBlur = 10;
                 ctx.shadowColor = p.color;
@@ -602,18 +644,20 @@
         initParticles();
         animateParticles();
 
-        // --- 2. 3D Tilt Effect for Feature Cards ---
+        // --- 2. 3D Tilt Effect for Feature Cards (Disabled on Mobile/Tablet for UX) ---
         const cards = document.querySelectorAll('.feature-card');
 
         cards.forEach(card => {
             card.addEventListener('mousemove', function(e) {
+                // Ignore tilt on screens smaller than 1024px to prevent sticky touch behavior
+                if(window.innerWidth <= 1024) return;
+
                 const rect = this.getBoundingClientRect();
                 const centerX = rect.left + rect.width / 2;
                 const centerY = rect.top + rect.height / 2;
                 const mX = e.clientX - centerX;
                 const mY = e.clientY - centerY;
 
-                // Max rotation of 15 degrees
                 const rotateX = (mY / (rect.height / 2)) * -15; 
                 const rotateY = (mX / (rect.width / 2)) * 15;
 
@@ -621,6 +665,8 @@
             });
 
             card.addEventListener('mouseleave', function() {
+                if(window.innerWidth <= 1024) return;
+                
                 this.style.transform = 'rotateX(0deg) rotateY(0deg)';
                 this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
                 
@@ -637,12 +683,12 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('active');
-                    observer.unobserve(entry.target); // Only animate once
+                    observer.unobserve(entry.target); 
                 }
             });
         }, {
             root: null,
-            threshold: 0.15, // Trigger when 15% visible
+            threshold: 0.15,
             rootMargin: "0px 0px -50px 0px"
         });
 
