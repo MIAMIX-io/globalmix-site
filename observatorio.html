@@ -49,6 +49,7 @@
             background: rgba(26, 27, 30, 0.8);
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.05);
+            transition: all 0.3s ease;
         }
 
         .logo {
@@ -59,12 +60,19 @@
             letter-spacing: 4px;
         }
 
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
         .nav-links a {
             color: var(--warm-white);
             text-decoration: none;
             margin-left: 30px;
             font-size: 0.9rem;
             transition: color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         .nav-links a:hover {
@@ -91,16 +99,18 @@
             width: 100%;
             height: 100%;
             z-index: 1;
+            pointer-events: none;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
             padding: 0 20px;
+            width: 100%;
         }
 
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             margin-bottom: 20px;
             text-shadow: 0 10px 30px rgba(0,0,0,0.8);
         }
@@ -121,8 +131,9 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             transition: all 0.3s ease;
-            background: transparent;
+            background: rgba(0,0,0,0.4);
             cursor: pointer;
+            backdrop-filter: blur(5px);
         }
 
         .cta-btn:hover {
@@ -156,9 +167,9 @@
         #features {
             padding: 100px 50px;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 40px;
-            perspective: 1000px; /* Required for 3D effect */
+            perspective: 1000px;
             max-width: 1400px;
             margin: 0 auto;
         }
@@ -174,26 +185,38 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        /* Replace these background images with the actual filenames from your uploaded images */
-        .card-1 { background: url('C2A0027E-2186-4BF0-880D-F22A9453E977.png') center/cover; } /* Airstrip */
-        .card-2 { background: url('C5AD88BB-9576-4434-9CD8-7190F9245437.PNG') center/cover; } /* Dining */
-        .card-3 { background: url('IMG_3178.jpg') center/cover; } /* Bedroom */
+        .card-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .feature-card:hover .card-bg {
+            transform: scale(1.05);
+        }
+
+        /* Image tags updated to specified local structure */
+        .card-1 .card-bg { background-image: url('/images/observatorio01.png'); } 
+        .card-2 .card-bg { background-image: url('/images/observatorio02.png'); } 
+        .card-3 .card-bg { background-image: url('/images/observatorio03.png'); } 
 
         .card-overlay {
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to top, rgba(11, 19, 43, 0.9) 0%, rgba(26, 27, 30, 0.2) 100%);
+            background: linear-gradient(to top, rgba(11, 19, 43, 0.95) 0%, rgba(26, 27, 30, 0.2) 100%);
             display: flex;
             flex-direction: column;
             justify-content: flex-end;
             padding: 30px;
-            transform: translateZ(50px); /* Pushes text forward in 3D space */
+            transform: translateZ(50px);
         }
 
         .card-overlay h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
-            color: var(--warm-white);
+            color: var(--gold-accent);
         }
 
         .card-overlay p {
@@ -232,6 +255,7 @@
             margin-bottom: 15px;
             padding-left: 25px;
             position: relative;
+            color: #ccc;
         }
 
         .details-text li::before {
@@ -243,11 +267,11 @@
 
         .details-image {
             flex: 1;
-            /* Using the exterior twilight view */
-            background: url('99550152-CAE6-4FBF-8753-A280FEF804D7.png') center/cover;
+            background: url('/images/observatorio04.png') center/cover;
             height: 500px;
             border-radius: 10px;
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            width: 100%;
         }
 
         /* Footer */
@@ -255,7 +279,7 @@
             background: #000;
             padding: 50px;
             text-align: center;
-            border-top: 1px solid #333;
+            border-top: 1px solid #222;
         }
 
         footer p {
@@ -263,18 +287,51 @@
             font-size: 0.9rem;
         }
 
-        /* Responsive Design */
+        /* =========================================
+           RESPONSIVE DESIGN (Tablet & iPad)
+           ========================================= */
+        @media (max-width: 1024px) {
+            nav { padding: 15px 30px; }
+            .nav-links a { margin-left: 15px; font-size: 0.8rem; }
+            
+            #concept, #features, #details { padding: 80px 30px; }
+            .hero-content h1 { font-size: 3.5rem; }
+            
+            #details { flex-direction: column; gap: 40px; }
+            .details-image { height: 400px; }
+            
+            #concept h2 { font-size: 2.2rem; }
+            .feature-card { height: 400px; }
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (Mobile)
+           ========================================= */
         @media (max-width: 768px) {
-            #details {
-                flex-direction: column;
+            nav { 
+                flex-direction: column; 
+                padding: 15px 20px; 
+                gap: 15px; 
             }
-            .hero-content h1 {
-                font-size: 2.5rem;
+            .nav-links { 
+                flex-wrap: wrap; 
+                justify-content: center; 
+                gap: 10px;
             }
-            nav {
-                flex-direction: column;
-                gap: 15px;
-            }
+            .nav-links a { margin: 0; }
+            
+            .hero-content h1 { font-size: 2.5rem; margin-bottom: 15px; }
+            .hero-content p { font-size: 1rem; margin-bottom: 30px; }
+            
+            #concept, #features, #details { padding: 60px 20px; }
+            
+            #concept h2 { font-size: 1.8rem; }
+            #concept p { font-size: 1rem; }
+            
+            .feature-card { height: 350px; }
+            .details-image { height: 300px; }
+            
+            footer { padding: 40px 20px; }
         }
     </style>
 </head>
@@ -305,6 +362,7 @@
 
     <section id="features">
         <div class="feature-card card-1">
+            <div class="card-bg"></div>
             <div class="card-overlay">
                 <h3>Private Fly-In Access</h3>
                 <p>Arrive effortlessly. Our property features a private, illuminated 20-meter wide airstrip, allowing exclusive aircraft access directly to the resort grounds.</p>
@@ -312,6 +370,7 @@
         </div>
 
         <div class="feature-card card-2">
+            <div class="card-bg"></div>
             <div class="card-overlay">
                 <h3>Regional Gastronomy</h3>
                 <p>Savor authentic flavors in our panoramic dining room. Featuring an open-concept kitchen, warm wood beams, and expansive glass walls that merge the indoors with the rural horizon.</p>
@@ -319,6 +378,7 @@
         </div>
 
         <div class="feature-card card-3">
+            <div class="card-bg"></div>
             <div class="card-overlay">
                 <h3>Minimalist Luxury</h3>
                 <p>Retreat to elegance. Our suites utilize stone, wood, and a dark visual palette to minimize light pollution, ensuring your focus remains on the breathtaking landscape.</p>
@@ -358,7 +418,11 @@
             width = canvas.width = window.innerWidth;
             height = canvas.height = window.innerHeight;
             stars = [];
-            for (let i = 0; i < 400; i++) {
+            
+            // Less stars on mobile for better performance
+            let starCount = width < 768 ? 150 : 400;
+            
+            for (let i = 0; i < starCount; i++) {
                 stars.push({
                     x: Math.random() * width,
                     y: Math.random() * height,
@@ -412,16 +476,17 @@
         });
 
         function handleMouseMove(e) {
+            // Disable 3D tilt on tablet/mobile screens for better UX
+            if(window.innerWidth <= 1024) return;
+            
             const card = this;
             const cardRect = card.getBoundingClientRect();
             
-            // Calculate mouse position relative to the center of the card
             const centerX = cardRect.left + cardRect.width / 2;
             const centerY = cardRect.top + cardRect.height / 2;
             const mouseX = e.clientX - centerX;
             const mouseY = e.clientY - centerY;
 
-            // Calculate rotation (adjust the divisor to increase/decrease the tilt effect)
             const rotateX = (mouseY / (cardRect.height / 2)) * -10; 
             const rotateY = (mouseX / (cardRect.width / 2)) * 10;
 
@@ -429,10 +494,11 @@
         }
 
         function handleMouseLeave() {
-            this.style.transform = 'rotateX(0deg) rotateY(0deg)';
-            this.style.transition = 'transform 0.5s ease-out';
+            if(window.innerWidth <= 1024) return;
             
-            // Remove the transition after it finishes so it doesn't lag on the next mouse enter
+            this.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+            
             setTimeout(() => {
                 this.style.transition = 'transform 0.1s';
             }, 500);
