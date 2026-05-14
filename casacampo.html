@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBSERVATORIO FEDERAL | Rural Astrotourism</title>
+    <style>
+        /* CSS Variables based on Project Palette */
+        :root {
+            --charcoal: #1a1b1e;
+            --smoke: #4a4a4a;
+            --warm-white: #f8f5f0;
+            --night-blue: #0b132b;
+            --gold-accent: #c5a059;
+            --dark-metal: #222222;
+        }
+
+        /* Reset & Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--charcoal);
+            color: var(--warm-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 50px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(26, 27, 30, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .logo {
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--warm-white);
+            text-decoration: none;
+            letter-spacing: 4px;
+        }
+
+        .nav-links a {
+            color: var(--warm-white);
+            text-decoration: none;
+            margin-left: 30px;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold-accent);
+        }
+
+        /* Immersive Hero Section */
+        #hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            background: radial-gradient(circle at center, var(--night-blue) 0%, var(--charcoal) 100%);
+        }
+
+        canvas#starfield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 20px;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto 40px;
+            color: #ccc;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            border: 1px solid var(--gold-accent);
+            color: var(--gold-accent);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+            background: transparent;
+            cursor: pointer;
+        }
+
+        .cta-btn:hover {
+            background: var(--gold-accent);
+            color: var(--charcoal);
+        }
+
+        /* Concept Section */
+        #concept {
+            padding: 100px 50px;
+            text-align: center;
+            background: var(--dark-metal);
+            position: relative;
+            z-index: 10;
+        }
+
+        #concept h2 {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--gold-accent);
+        }
+
+        #concept p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+            color: #bbb;
+        }
+
+        /* 3D Features Section */
+        #features {
+            padding: 100px 50px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            perspective: 1000px; /* Required for 3D effect */
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            position: relative;
+            height: 450px;
+            border-radius: 10px;
+            transform-style: preserve-3d;
+            transition: transform 0.1s;
+            cursor: pointer;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Replace these background images with the actual filenames from your uploaded images */
+        .card-1 { background: url('C2A0027E-2186-4BF0-880D-F22A9453E977.png') center/cover; } /* Airstrip */
+        .card-2 { background: url('C5AD88BB-9576-4434-9CD8-7190F9245437.PNG') center/cover; } /* Dining */
+        .card-3 { background: url('IMG_3178.jpg') center/cover; } /* Bedroom */
+
+        .card-overlay {
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to top, rgba(11, 19, 43, 0.9) 0%, rgba(26, 27, 30, 0.2) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 30px;
+            transform: translateZ(50px); /* Pushes text forward in 3D space */
+        }
+
+        .card-overlay h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--warm-white);
+        }
+
+        .card-overlay p {
+            font-size: 0.95rem;
+            color: #ddd;
+            transform: translateZ(30px);
+        }
+
+        /* Architecture / Details Section */
+        #details {
+            padding: 100px 50px;
+            background: var(--charcoal);
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .details-text {
+            flex: 1;
+        }
+
+        .details-text h2 {
+            color: var(--gold-accent);
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .details-text ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .details-text li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .details-text li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: var(--gold-accent);
+        }
+
+        .details-image {
+            flex: 1;
+            /* Using the exterior twilight view */
+            background: url('99550152-CAE6-4FBF-8753-A280FEF804D7.png') center/cover;
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        /* Footer */
+        footer {
+            background: #000;
+            padding: 50px;
+            text-align: center;
+            border-top: 1px solid #333;
+        }
+
+        footer p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            #details {
+                flex-direction: column;
+            }
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">OBSERVATORIO FEDERAL</a>
+        <div class="nav-links">
+            <a href="#concept">The Concept</a>
+            <a href="#features">Experience</a>
+            <a href="#details">Architecture</a>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <canvas id="starfield"></canvas>
+        <div class="hero-content">
+            <h1>Astral Nights Await</h1>
+            <p>A contemporary rural refuge where the vast landscapes of Northern Entre Ríos meet the infinite universe.</p>
+            <a href="#features" class="cta-btn">Discover the Experience</a>
+        </div>
+    </header>
+
+    <section id="concept">
+        <h2>A Dark Sky Destination</h2>
+        <p>OBSERVATORIO FEDERAL is an exclusive rural astrotourism destination designed to seamlessly integrate into the natural landscape. Benefiting from exceptionally low light pollution, we transform premium rural hospitality into an immersive scientific and sensory journey beneath the stars.</p>
+    </section>
+
+    <section id="features">
+        <div class="feature-card card-1">
+            <div class="card-overlay">
+                <h3>Private Fly-In Access</h3>
+                <p>Arrive effortlessly. Our property features a private, illuminated 20-meter wide airstrip, allowing exclusive aircraft access directly to the resort grounds.</p>
+            </div>
+        </div>
+
+        <div class="feature-card card-2">
+            <div class="card-overlay">
+                <h3>Regional Gastronomy</h3>
+                <p>Savor authentic flavors in our panoramic dining room. Featuring an open-concept kitchen, warm wood beams, and expansive glass walls that merge the indoors with the rural horizon.</p>
+            </div>
+        </div>
+
+        <div class="feature-card card-3">
+            <div class="card-overlay">
+                <h3>Minimalist Luxury</h3>
+                <p>Retreat to elegance. Our suites utilize stone, wood, and a dark visual palette to minimize light pollution, ensuring your focus remains on the breathtaking landscape.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="details">
+        <div class="details-image"></div>
+        <div class="details-text">
+            <h2>Contemporary Rural Architecture</h2>
+            <p>Our aesthetic language is built on charcoal black, smoke gray, and deep night blue. The architecture uses horizontal designs that respect the landscape, providing views from every room.</p>
+            <ul>
+                <li><strong>10 Exclusive Suites:</strong> Designed for maximum comfort with radiant heating and natural materials.</li>
+                <li><strong>Immersive Observatory:</strong> Equipped with automatic telescopes and red-light systems for perfect night vision adaptation.</li>
+                <li><strong>Harmonic Design:</strong> Predominant dark metallic and stone details reduce internal light pollution, turning the hotel into a visual extension of the night.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 OBSERVATORIO FEDERAL | Northern Entre Ríos, Argentina. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // --- 1. Canvas Starfield Effect ---
+        const canvas = document.getElementById('starfield');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let stars = [];
+
+        // Mouse tracking for 3D parallax effect on stars
+        let mouseX = 0;
+        let mouseY = 0;
+
+        function initCanvas() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            stars = [];
+            for (let i = 0; i < 400; i++) {
+                stars.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    z: Math.random() * 2, // depth for parallax
+                    radius: Math.random() * 1.5
+                });
+            }
+        }
+
+        window.addEventListener('resize', initCanvas);
+        
+        document.getElementById('hero').addEventListener('mousemove', (e) => {
+            mouseX = (e.clientX - width / 2) * 0.05;
+            mouseY = (e.clientY - height / 2) * 0.05;
+        });
+
+        function animateStars() {
+            ctx.clearRect(0, 0, width, height);
+            ctx.fillStyle = '#ffffff';
+
+            stars.forEach(star => {
+                // Apply parallax based on star depth (z)
+                let px = star.x - (mouseX * star.z);
+                let py = star.y - (mouseY * star.z);
+
+                // Wrap around edges
+                if (px < 0) px += width;
+                if (px > width) px -= width;
+                if (py < 0) py += height;
+                if (py > height) py -= height;
+
+                ctx.beginPath();
+                ctx.arc(px, py, star.radius, 0, Math.PI * 2);
+                // Make closer stars slightly brighter
+                ctx.globalAlpha = star.z / 2 + 0.2; 
+                ctx.fill();
+            });
+
+            requestAnimationFrame(animateStars);
+        }
+
+        initCanvas();
+        animateStars();
+
+        // --- 2. 3D Tilt Effect for Feature Cards ---
+        const cards = document.querySelectorAll('.feature-card');
+
+        cards.forEach(card => {
+            card.addEventListener('mousemove', handleMouseMove);
+            card.addEventListener('mouseleave', handleMouseLeave);
+        });
+
+        function handleMouseMove(e) {
+            const card = this;
+            const cardRect = card.getBoundingClientRect();
+            
+            // Calculate mouse position relative to the center of the card
+            const centerX = cardRect.left + cardRect.width / 2;
+            const centerY = cardRect.top + cardRect.height / 2;
+            const mouseX = e.clientX - centerX;
+            const mouseY = e.clientY - centerY;
+
+            // Calculate rotation (adjust the divisor to increase/decrease the tilt effect)
+            const rotateX = (mouseY / (cardRect.height / 2)) * -10; 
+            const rotateY = (mouseX / (cardRect.width / 2)) * 10;
+
+            card.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        }
+
+        function handleMouseLeave() {
+            this.style.transform = 'rotateX(0deg) rotateY(0deg)';
+            this.style.transition = 'transform 0.5s ease-out';
+            
+            // Remove the transition after it finishes so it doesn't lag on the next mouse enter
+            setTimeout(() => {
+                this.style.transition = 'transform 0.1s';
+            }, 500);
+        }
+
+        // --- 3. Smooth Scrolling for Navigation ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
