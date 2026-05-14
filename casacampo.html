@@ -57,7 +57,7 @@
             color: var(--warm-white);
             text-decoration: none;
             letter-spacing: 4px;
-            z-index: 102; /* Keeps logo above mobile menu */
+            z-index: 102;
         }
 
         .nav-links {
@@ -91,13 +91,13 @@
             color: var(--charcoal);
         }
 
-        /* Hamburger Menu Icon (Hidden on Desktop) */
+        /* Hamburger Menu Icon */
         .hamburger {
             display: none;
             cursor: pointer;
             flex-direction: column;
             gap: 6px;
-            z-index: 102; /* Keeps icon above mobile menu overlay */
+            z-index: 102;
         }
 
         .hamburger span {
@@ -108,7 +108,7 @@
             transition: all 0.3s ease;
         }
 
-        /* Hero Section - Bulletproof Mobile Setup */
+        /* Hero Section */
         #hero {
             position: relative;
             height: 100vh;
@@ -122,7 +122,7 @@
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
-            background-attachment: scroll;
+            background-attachment: scroll; /* Default for all touch devices */
         }
 
         #hero::before {
@@ -334,7 +334,7 @@
             position: relative;
         }
 
-        /* Banner - Bulletproof Mobile Setup */
+        /* Banner */
         .wide-banner {
             width: 100%;
             height: 400px;
@@ -342,7 +342,7 @@
             background-position: center;
             background-size: cover;
             background-repeat: no-repeat;
-            background-attachment: scroll;
+            background-attachment: scroll; /* Default for all touch devices */
             margin: 60px 0;
             position: relative;
         }
@@ -398,7 +398,7 @@
             margin-top: 20px;
         }
 
-        /* Scroll Reveal Animation Classes */
+        /* Scroll Reveal */
         .reveal {
             opacity: 0;
             transform: translateY(40px);
@@ -412,8 +412,9 @@
 
         /* =========================================
            DESKTOP PARALLAX INJECTION 
+           (Hover/Pointer check safely isolates iPads)
            ========================================= */
-        @media (min-width: 1025px) {
+        @media (hover: hover) and (pointer: fine) {
             #hero, .wide-banner {
                 background-attachment: fixed;
             }
@@ -427,6 +428,7 @@
             .nav-links a { margin-left: 15px; font-size: 0.8rem; }
             
             section { padding: 80px 30px; }
+            #hero { height: 80vh; }
             .hero-content h1 { font-size: 3.5rem; }
             
             .grid-2 { gap: 30px; }
@@ -446,16 +448,12 @@
                 padding: 15px 25px; 
             }
             
-            /* Show Hamburger Icon */
-            .hamburger {
-                display: flex;
-            }
+            .hamburger { display: flex; }
 
-            /* Convert Nav Links into Off-Canvas Menu */
             .nav-links { 
                 position: fixed;
                 top: 0;
-                right: -100%; /* Hide off-screen by default */
+                right: -100%;
                 width: 75vw;
                 height: 100vh;
                 background: rgba(26, 27, 30, 0.95);
@@ -468,10 +466,7 @@
                 z-index: 101;
             }
 
-            /* Class added via JS to open menu */
-            .nav-links.nav-active {
-                right: 0;
-            }
+            .nav-links.nav-active { right: 0; }
 
             .nav-links a { 
                 margin: 0; 
@@ -479,16 +474,9 @@
                 letter-spacing: 2px;
             }
 
-            /* Hamburger Animation to 'X' */
-            .hamburger.toggle span:nth-child(1) {
-                transform: rotate(-45deg) translate(-5px, 6px);
-            }
-            .hamburger.toggle span:nth-child(2) {
-                opacity: 0;
-            }
-            .hamburger.toggle span:nth-child(3) {
-                transform: rotate(45deg) translate(-5px, -6px);
-            }
+            .hamburger.toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.toggle span:nth-child(2) { opacity: 0; }
+            .hamburger.toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
             
             #hero { height: 85vh; }
             .hero-content h1 { font-size: 2.5rem; margin-bottom: 15px; }
@@ -656,7 +644,6 @@
     </footer>
 
     <script>
-        // --- 0. Mobile Hamburger Menu Logic ---
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
         const navItems = document.querySelectorAll('.nav-links a');
@@ -666,7 +653,6 @@
             hamburger.classList.toggle('toggle');
         });
 
-        // Close menu when a link is clicked
         navItems.forEach(item => {
             item.addEventListener('click', () => {
                 navLinks.classList.remove('nav-active');
@@ -674,7 +660,6 @@
             });
         });
 
-        // --- 1. Immersive 3D Ember/Dust Particle System for Hero ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
@@ -741,7 +726,6 @@
         initParticles();
         animateParticles();
 
-        // --- 2. 3D Tilt Effect for Feature Cards ---
         const cards = document.querySelectorAll('.feature-card');
 
         cards.forEach(card => {
@@ -772,7 +756,6 @@
             });
         });
 
-        // --- 3. Scroll Reveal Animations ---
         const revealElements = document.querySelectorAll('.reveal');
 
         const revealObserver = new IntersectionObserver((entries, observer) => {
@@ -790,7 +773,6 @@
 
         revealElements.forEach(el => revealObserver.observe(el));
 
-        // --- 4. Smooth Scrolling for Navigation ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
