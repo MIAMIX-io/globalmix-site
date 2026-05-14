@@ -13,7 +13,6 @@
             --sunset-gold: #d4a373;
             --wood-brown: #8b5a2b;
             --dark-metal: #121212;
-            --overlay: rgba(26, 27, 30, 0.85);
         }
 
         * {
@@ -58,6 +57,7 @@
             color: var(--warm-white);
             text-decoration: none;
             letter-spacing: 4px;
+            z-index: 102; /* Keeps logo above mobile menu */
         }
 
         .nav-links {
@@ -75,7 +75,7 @@
             letter-spacing: 1px;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--sunset-gold);
         }
         
@@ -91,7 +91,24 @@
             color: var(--charcoal);
         }
 
-        /* Hero Section with Ember Particles */
+        /* Hamburger Menu Icon (Hidden on Desktop) */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            flex-direction: column;
+            gap: 6px;
+            z-index: 102; /* Keeps icon above mobile menu overlay */
+        }
+
+        .hamburger span {
+            display: block;
+            width: 30px;
+            height: 2px;
+            background-color: var(--warm-white);
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section - Bulletproof Mobile Setup */
         #hero {
             position: relative;
             height: 100vh;
@@ -101,8 +118,11 @@
             align-items: center;
             text-align: center;
             overflow: hidden;
-            background: url('images/campo05.png') center/cover no-repeat;
-            background-attachment: fixed;
+            background-image: url('images/campo05.png');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
         }
 
         #hero::before {
@@ -239,7 +259,6 @@
             box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        /* Class for framing Landscape Images perfectly */
         .landscape-format {
             height: auto !important;
             aspect-ratio: 16 / 9;
@@ -315,11 +334,15 @@
             position: relative;
         }
 
+        /* Banner - Bulletproof Mobile Setup */
         .wide-banner {
             width: 100%;
             height: 400px;
-            background: url('images/campo06.PNG') center/cover;
-            background-attachment: fixed;
+            background-image: url('images/campo06.PNG');
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: scroll;
             margin: 60px 0;
             position: relative;
         }
@@ -388,6 +411,15 @@
         }
 
         /* =========================================
+           DESKTOP PARALLAX INJECTION 
+           ========================================= */
+        @media (min-width: 1025px) {
+            #hero, .wide-banner {
+                background-attachment: fixed;
+            }
+        }
+
+        /* =========================================
            RESPONSIVE DESIGN (Tablet & iPad)
            ========================================= */
         @media (max-width: 1024px) {
@@ -403,28 +435,62 @@
             .section-header { margin-bottom: 40px; }
             .section-header h2 { font-size: 2.2rem; }
             
-            /* CRITICAL FIX: Removes fixed attachment on iPad/Tablet to prevent iOS rendering bug */
-            #hero { background-attachment: scroll; background-position: center; }
-            .wide-banner { height: 300px; background-attachment: scroll; background-position: center; }
+            .wide-banner { height: 300px; }
         }
 
         /* =========================================
-           RESPONSIVE DESIGN (Mobile)
+           RESPONSIVE DESIGN (Mobile + Hamburger)
            ========================================= */
         @media (max-width: 768px) {
             nav { 
-                flex-direction: column; 
-                padding: 15px 20px; 
-                gap: 15px; 
+                padding: 15px 25px; 
             }
-            .nav-links { 
-                flex-wrap: wrap; 
-                justify-content: center; 
-                gap: 10px;
-            }
-            .nav-links a { margin: 0; }
             
-            #hero { height: 85vh; background-attachment: scroll; background-position: center; }
+            /* Show Hamburger Icon */
+            .hamburger {
+                display: flex;
+            }
+
+            /* Convert Nav Links into Off-Canvas Menu */
+            .nav-links { 
+                position: fixed;
+                top: 0;
+                right: -100%; /* Hide off-screen by default */
+                width: 75vw;
+                height: 100vh;
+                background: rgba(26, 27, 30, 0.95);
+                backdrop-filter: blur(15px);
+                flex-direction: column;
+                justify-content: center;
+                gap: 40px;
+                transition: right 0.4s ease;
+                box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+                z-index: 101;
+            }
+
+            /* Class added via JS to open menu */
+            .nav-links.nav-active {
+                right: 0;
+            }
+
+            .nav-links a { 
+                margin: 0; 
+                font-size: 1.2rem;
+                letter-spacing: 2px;
+            }
+
+            /* Hamburger Animation to 'X' */
+            .hamburger.toggle span:nth-child(1) {
+                transform: rotate(-45deg) translate(-5px, 6px);
+            }
+            .hamburger.toggle span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.toggle span:nth-child(3) {
+                transform: rotate(45deg) translate(-5px, -6px);
+            }
+            
+            #hero { height: 85vh; }
             .hero-content h1 { font-size: 2.5rem; margin-bottom: 15px; }
             .hero-content p { font-size: 1rem; margin-bottom: 30px; }
             
@@ -435,7 +501,6 @@
             .grid-2 { grid-template-columns: 1fr; gap: 40px; }
             .image-block { height: 300px; }
             
-            .landscape-format { height: auto !important; }
             .feature-card { height: 350px; }
             
             .step { flex-direction: column; gap: 10px; padding: 15px; }
@@ -450,7 +515,14 @@
 
     <nav>
         <a href="#hero" class="logo">HOTEL DE CAMPO</a>
-        <div class="nav-links">
+        
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="nav-links" id="nav-links">
             <a href="#concept">The Concept</a>
             <a href="aviation">Aviation</a>
             <a href="suites">Suites</a>
@@ -522,7 +594,7 @@
         </div>
     </section>
 
-    <div class="wide-banner reveal"></div>
+    <div class="wide-banner"></div>
 
     <section id="architecture">
         <div class="grid-2 reveal">
@@ -584,13 +656,30 @@
     </footer>
 
     <script>
+        // --- 0. Mobile Hamburger Menu Logic ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        // Close menu when a link is clicked
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+            });
+        });
+
         // --- 1. Immersive 3D Ember/Dust Particle System for Hero ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
         let width, height;
         let particles = [];
 
-        // Mouse interaction for parallax
         let mouseX = 0;
         let mouseY = 0;
 
