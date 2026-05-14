@@ -75,7 +75,7 @@
             letter-spacing: 1px;
         }
 
-        .nav-links a:hover {
+        .nav-links a:hover, .nav-links a.active {
             color: var(--sunset-gold);
         }
         
@@ -309,6 +309,7 @@
             position: relative;
         }
 
+        /* REMOVED REVEAL CLASS SO BANNER ALWAYS SHOWS */
         .wide-banner {
             width: 100%;
             height: 400px;
@@ -397,6 +398,7 @@
             .section-header { margin-bottom: 40px; }
             .section-header h2 { font-size: 2.2rem; }
             
+            /* Removes fixed attachment on iPad/Tablet to prevent iOS bug */
             .wide-banner { height: 300px; background-attachment: scroll; }
         }
 
@@ -440,12 +442,12 @@
 <body>
 
     <nav>
-        <a href="#" class="logo">HOTEL DE CAMPO</a>
+        <a href="#hero" class="logo">HOTEL DE CAMPO</a>
         <div class="nav-links">
             <a href="#concept">The Concept</a>
-            <a href="#features">Experience</a>
-            <a href="#architecture">Architecture</a>
-            <a href="#arrival">The Arrival</a>
+            <a href="/casacampo/aviation.html">Aviation</a>
+            <a href="/casacampo/suites.html">Suites</a>
+            <a href="/casacampo/gastronomy.html">Gastronomy</a>
             <a href="https://www.globalmix.network/observatorio" target="_blank" class="external-link">Observatorio</a>
         </div>
     </nav>
@@ -487,7 +489,7 @@
         </div>
 
         <div class="card-grid reveal">
-            <div class="feature-card card-1">
+            <div class="feature-card card-1" onclick="window.location.href='/casacampo/aviation.html'">
                 <div class="card-bg"></div>
                 <div class="card-overlay">
                     <h3>Private Aviation</h3>
@@ -495,7 +497,7 @@
                 </div>
             </div>
 
-            <div class="feature-card card-2">
+            <div class="feature-card card-2" onclick="window.location.href='/casacampo/suites.html'">
                 <div class="card-bg"></div>
                 <div class="card-overlay">
                     <h3>Boutique Suites</h3>
@@ -503,7 +505,7 @@
                 </div>
             </div>
 
-            <div class="feature-card card-3">
+            <div class="feature-card card-3" onclick="window.location.href='/casacampo/gastronomy.html'">
                 <div class="card-bg"></div>
                 <div class="card-overlay">
                     <h3>Regional Gastronomy</h3>
@@ -513,7 +515,7 @@
         </div>
     </section>
 
-    <div class="wide-banner reveal"></div>
+    <div class="wide-banner"></div>
 
     <section id="architecture">
         <div class="grid-2 reveal">
