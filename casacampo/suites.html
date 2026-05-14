@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique Suites | CASA CAMPO</title>
+    <style>
+        :root { --charcoal: #1a1b1e; --stone-gray: #3a3a3a; --warm-white: #f4efe8; --sunset-gold: #d4a373; --wood-brown: #8b5a2b; --dark-metal: #121212; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Helvetica Neue', Arial, sans-serif; background-color: var(--charcoal); color: var(--warm-white); overflow-x: hidden; line-height: 1.6; }
+        h1, h2, h3 { font-weight: 300; letter-spacing: 2px; text-transform: uppercase; }
+
+        nav { position: fixed; top: 0; width: 100%; padding: 20px 50px; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(26, 27, 30, 0.7); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease; }
+        .logo { font-size: 1.2rem; font-weight: 400; color: var(--warm-white); text-decoration: none; letter-spacing: 4px; }
+        .nav-links { display: flex; align-items: center; }
+        .nav-links a { color: var(--warm-white); text-decoration: none; margin-left: 30px; font-size: 0.85rem; transition: color 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-links a:hover, .nav-links a.active { color: var(--sunset-gold); }
+        .nav-links a.external-link { border: 1px solid var(--sunset-gold); padding: 8px 15px; border-radius: 3px; color: var(--sunset-gold); }
+        .nav-links a.external-link:hover { background: var(--sunset-gold); color: var(--charcoal); }
+
+        #hero { position: relative; height: 80vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; overflow: hidden; background: url('/images/suites01.png') center/cover no-repeat; background-attachment: fixed; }
+        #hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(26, 27, 30, 1) 100%); z-index: 1; }
+        canvas#particle-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 2; pointer-events: none; }
+        .hero-content { position: relative; z-index: 3; padding: 0 20px; width: 100%; }
+        .hero-content h1 { font-size: 4rem; margin-bottom: 20px; color: #fff; }
+        .hero-content p { font-size: 1.2rem; max-width: 700px; margin: 0 auto; color: #e0e0e0; }
+
+        section { padding: 100px 50px; position: relative; z-index: 10; background: var(--charcoal); }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; max-width: 1400px; margin: 0 auto; align-items: center; }
+        .text-block h2 { color: var(--sunset-gold); font-size: 2.2rem; margin-bottom: 20px; }
+        .text-block p { margin-bottom: 20px; color: #ccc; }
+        .text-block ul { list-style: none; margin-top: 20px; }
+        .text-block li { margin-bottom: 15px; padding-left: 25px; position: relative; color: #ddd; }
+        .text-block li::before { content: '✦'; position: absolute; left: 0; color: var(--sunset-gold); font-size: 0.9rem; }
+        .image-block { height: 500px; border-radius: 5px; background-size: cover; background-position: center; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+
+        footer { background: #0d0d0d; padding: 60px 50px; text-align: center; border-top: 1px solid #222; }
+        footer p { color: #666; font-size: 0.9rem; margin-top: 20px; }
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        @media (max-width: 1024px) { nav { padding: 15px 30px; } .nav-links a { margin-left: 15px; } section { padding: 80px 30px; } .hero-content h1 { font-size: 3rem; } .grid-2 { gap: 30px; } .image-block { height: 400px; } }
+        @media (max-width: 768px) { nav { flex-direction: column; padding: 15px 20px; gap: 15px; } .nav-links { flex-wrap: wrap; justify-content: center; gap: 10px; } .nav-links a { margin: 0; } #hero { background-attachment: scroll; height: 60vh; } .hero-content h1 { font-size: 2.2rem; } section { padding: 60px 20px; } .grid-2 { grid-template-columns: 1fr; gap: 40px; } .image-block { height: 300px; } }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="casacampo.html" class="logo">HOTEL DE CAMPO</a>
+        <div class="nav-links">
+            <a href="casacampo.html">Home</a>
+            <a href="aviation.html">Aviation</a>
+            <a href="suites.html" class="active">Suites</a>
+            <a href="gastronomy.html">Gastronomy</a>
+            <a href="https://www.globalmix.network/observatorio" target="_blank" class="external-link">Observatorio</a>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <canvas id="particle-canvas"></canvas>
+        <div class="hero-content reveal active">
+            <h1>Minimalist Luxury</h1>
+            <p>Your private retreat blending modern comforts with the untamed beauty of the rural landscape.</p>
+        </div>
+    </header>
+
+    <section>
+        <div class="grid-2 reveal">
+            <div class="text-block">
+                <h2>Designed for Serenity</h2>
+                <p>Our boutique accommodation is intentionally scaled to maintain an atmosphere of profound tranquility. With a maximum capacity of just 22 guests, the lodge promises uncompromised privacy and deeply personalized service.</p>
+                <p>The layout features an efficient central corridor separating the spaces, ensuring superior acoustic isolation. Every suite faces outward, offering uninterrupted, panoramic views of the horizon directly from your bed.</p>
+                <ul>
+                    <li><strong>8 Double Suites & 2 Triple Suites:</strong> Thoughtfully appointed for couples, executives, or small families.</li>
+                    <li><strong>Private Galleries:</strong> Each room features its own exterior deck, creating a seamless indoor-outdoor connection.</li>
+                    <li><strong>Natural Materials:</strong> Designed using local stone, warm woods, and premium textiles.</li>
+                </ul>
+            </div>
+            <div class="image-block" style="background-image: url('/images/suites02.png');"></div>
+        </div>
+    </section>
+
+    <section style="background: var(--dark-metal);">
+        <div class="grid-2 reveal">
+            <div class="image-block" style="background-image: url('/images/suites03.png');"></div>
+            <div class="text-block">
+                <h2>Uncompromising Comfort</h2>
+                <p>Despite the remote setting, no luxury is spared. The architecture itself works to enhance your comfort, utilizing single-story design for ease of accessibility and high-end thermal efficiency to adapt to the Argentine seasons.</p>
+                <ul>
+                    <li><strong>Radiant Heating:</strong> Ensuring perfect warmth during cool rural nights.</li>
+                    <li><strong>Dark-Sky Compliant:</strong> Low internal light pollution design to keep the focus on the stargazing experience outside.</li>
+                    <li><strong>Silenced Environment:</strong> Surrounded by native vegetation acting as natural wind and sound barriers.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <h2 style="color: var(--sunset-gold); font-size: 1.5rem; letter-spacing: 3px;">HOTEL DE CAMPO PREMIUM</h2>
+        <p>Federal, Entre Ríos, Argentina</p>
+        <p>&copy; 2026 Fly-In Lodge & Boutique Hotel. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height, particles = [], mouseX = 0, mouseY = 0;
+        function initParticles() { width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; particles = []; let particleCount = width < 768 ? 50 : 100; for (let i = 0; i < particleCount; i++) { particles.push({ x: Math.random() * width, y: Math.random() * height, z: Math.random() * 2 + 0.1, radius: Math.random() * 2 + 0.5, vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 1) * 0.5, alpha: Math.random() * 0.8 + 0.2, color: Math.random() > 0.5 ? '#d4a373' : '#ff7a00' }); } }
+        window.addEventListener('resize', initParticles);
+        document.getElementById('hero').addEventListener('mousemove', (e) => { mouseX = (e.clientX - width / 2) * 0.05; mouseY = (e.clientY - height / 2) * 0.05; });
+        function animateParticles() { ctx.clearRect(0, 0, width, height); particles.forEach(p => { p.x += p.vx; p.y += p.vy; let px = p.x - (mouseX * p.z), py = p.y - (mouseY * p.z); if (p.x < 0) p.x = width; if (p.x > width) p.x = 0; if (p.y < 0) p.y = height; if (p.y > height) p.y = 0; ctx.beginPath(); ctx.arc(px, py, p.radius * p.z, 0, Math.PI * 2); ctx.fillStyle = p.color; ctx.globalAlpha = p.alpha * (p.z / 2); ctx.shadowBlur = 10; ctx.shadowColor = p.color; ctx.fill(); }); requestAnimationFrame(animateParticles); }
+        initParticles(); animateParticles();
+
+        const revealElements = document.querySelectorAll('.reveal');
+        const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('active'); observer.unobserve(entry.target); } }); }, { threshold: 0.15, rootMargin: "0px 0px -50px 0px" });
+        revealElements.forEach(el => revealObserver.observe(el));
+    </script>
+</body>
+</html>
