@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spa & Wellness | CASA CAMPO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root { --black: #0a0a0c; --charcoal: #141418; --smoke: #1e1e24; --muted: #2c2c36; --border: rgba(255,255,255,0.07); --gold: #c8a96e; --gold-light: #e2c898; --cream: #f4ede0; --blue-night: #0d1b35; --text-dim: rgba(244,237,224,0.5); --text-mid: rgba(244,237,224,0.75); --text-full: #f4ede0; }
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--black); color: var(--text-mid); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; line-height: 1.8; }
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; color: var(--cream); line-height: 1.1; }
+        em { font-style: italic; color: var(--gold); }
+
+        @media (hover: hover) and (pointer: fine) {
+            body { cursor: none; }
+            #cursor { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; mix-blend-mode: difference; }
+            #cursor-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cream); position: absolute; transform: translate(-50%,-50%); transition: transform 0.1s; }
+            #cursor-ring { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); position: absolute; transform: translate(-50%,-50%); transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s; }
+            body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring, body:has(input:focus) #cursor-ring { width: 56px; height: 56px; opacity: 0.6; }
+        }
+        @media (hover: none) { #cursor { display: none; } }
+
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; transition: background 0.6s, padding 0.4s; }
+        nav.scrolled { background: rgba(10,10,12,0.88); backdrop-filter: blur(18px); padding: 18px 60px; border-bottom: 1px solid var(--border); }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); text-decoration: none; z-index: 102; }
+        .nav-logo span { color: var(--gold); }
+        .nav-links { display: flex; gap: 42px; list-style: none; align-items: center; }
+        .nav-links a { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; font-weight: 400; }
+        .nav-links a:hover, .nav-links a.active { color: var(--gold); }
+        .nav-cta { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black) !important; background: var(--gold); padding: 10px 24px; border: none; font-family: 'Jost', sans-serif; font-weight: 400; transition: background 0.3s; text-decoration: none; }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 102; }
+        .hamburger span { display: block; width: 30px; height: 2px; background-color: var(--cream); transition: all 0.3s ease; }
+
+        #hero { position: relative; height: 85vh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; background-image: url('images/spa01.png'); background-position: center; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; }
+        #hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(10,10,12,0.4) 0%, rgba(10,10,12,0.95) 100%); }
+        .hero-content { position: relative; z-index: 3; text-align: center; max-width: 900px; padding: 0 30px; width: 100%; }
+        .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; display: flex; align-items: center; justify-content: center; gap: 16px; }
+        .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+        .hero-title { font-size: clamp(3rem, 6vw, 5.5rem); margin-bottom: 20px; color: var(--cream); }
+        .hero-title em { display: block; font-size: 0.6em; letter-spacing: 0.05em; line-height: 1.5; }
+        .hero-sub { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 40px; }
+        .btn-primary { display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 16px 38px; border: 1px solid var(--gold); text-decoration: none; transition: all 0.3s; font-weight: 400; cursor: none; }
+        .btn-primary:hover { background: transparent; color: var(--gold); }
+
+        section { padding: 120px 50px; position: relative; z-index: 10; background: var(--black); }
+        .section-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
+        .section-eyebrow::after { content: ''; display: block; width: 50px; height: 1px; background: var(--gold); opacity: 0.5; }
+        .section-title { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-bottom: 24px; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; max-width: 1400px; margin: 0 auto; align-items: center; }
+        .text-block p { margin-bottom: 20px; color: var(--text-mid); font-size: 0.95rem; line-height: 1.9; }
+        .image-block { height: 600px; border-radius: 4px; background-size: cover; background-position: center; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+
+        .amenities-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; margin-top: 40px; }
+        .amenity-item { display: flex; flex-direction: column; }
+        .amenity-item h4 { font-family: 'Jost', sans-serif; font-size: 0.85rem; letter-spacing: 0.1em; color: var(--cream); margin-bottom: 8px; font-weight: 400; }
+        .amenity-item p { font-size: 0.8rem; color: var(--text-dim); margin-bottom: 0; line-height: 1.6; }
+
+        footer { background: var(--black); border-top: 1px solid var(--border); padding: 80px 60px 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; max-width: 1400px; margin: 0 auto 60px; }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); }
+        .footer-logo span { color: var(--gold); }
+        .footer-brand p { font-size: 0.8rem; line-height: 1.9; color: var(--text-dim); margin-top: 16px; max-width: 300px; }
+        .footer-col h4 { font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .footer-col a { font-size: 0.8rem; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--cream); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 30px; }
+        .footer-bottom p { font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.2s; }
+
+        @media (hover: hover) and (pointer: fine) { #hero { background-attachment: fixed; } }
+        @media (max-width: 1024px) { nav { padding: 20px 30px; } .nav-links a { margin-left: 20px; font-size: 0.65rem; } section { padding: 100px 40px; } .grid-2 { gap: 40px; } .image-block { height: 450px; } .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+        @media (max-width: 768px) {
+            nav { padding: 15px 25px; } .hamburger { display: flex; }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 80vw; height: 100vh; background: rgba(10,10,12,0.98); backdrop-filter: blur(20px); flex-direction: column; justify-content: center; gap: 35px; transition: right 0.4s ease; box-shadow: -10px 0 30px rgba(0,0,0,0.8); z-index: 101; border-left: 1px solid var(--border); }
+            .nav-links.nav-active { right: 0; } .nav-links a { margin: 0; font-size: 1.1rem; letter-spacing: 0.15em; }
+            .hamburger.toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); } .hamburger.toggle span:nth-child(2) { opacity: 0; } .hamburger.toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+            #hero { height: 70vh; } .hero-title { font-size: 2.8rem; } .hero-sub { font-size: 0.7rem; }
+            section { padding: 80px 25px; } .grid-2 { grid-template-columns: 1fr; gap: 50px; } .image-block { height: 320px; } .amenities-grid { grid-template-columns: 1fr; gap: 20px; }
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; } .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"><div id="cursor-dot"></div><div id="cursor-ring"></div></div>
+
+    <nav id="navbar">
+        <a href="/casacampo" class="nav-logo">Casa <span>Campo</span></a>
+        <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="/casacampo">The Estate</a></li>
+            <li><a href="/casacampo/suites">Suites</a></li>
+            <li><a href="/casacampo/equestrian">Equestrian</a></li>
+            <li><a href="#" class="active">Spa</a></li>
+            <li><a href="https://www.globalmix.network/observatorio" class="nav-cta">Observatorio</a></li>
+        </ul>
+    </nav>
+
+    <header id="hero">
+        <div class="hero-content reveal visible">
+            <div class="hero-eyebrow">Wellness & Harmony</div>
+            <h1 class="hero-title">Spa & <em>Wellness</em></h1>
+            <p class="hero-sub">Disconnect and rejuvenate in the heart of the Argentine Pampas.</p>
+            <a href="#facility" class="btn-primary" style="margin-top: 20px;">Explore the Sanctuary</a>
+        </div>
+    </header>
+
+    <section id="facility">
+        <div class="grid-2">
+            <div class="reveal">
+                <div class="section-eyebrow">Holistic Therapies</div>
+                <h2 class="section-title">Inspired by the <em>Earth</em></h2>
+                <div class="text-block">
+                    <p>Our wellness sanctuary utilizes natural elements native to Entre Ríos, blending them into a modern, minimalist facility designed for absolute relaxation.</p>
+                    <p>Whether recovering after a day of polo or preparing for a night of stargazing, our treatments focus on restoring harmony to both body and mind.</p>
+                </div>
+                
+                <div class="amenities-grid reveal reveal-delay-1">
+                    <div class="amenity-item">
+                        <h4>Thermal Circuit</h4>
+                        <p>Heated hydrotherapy pools, dry sauna, and cold plunge designed to revitalize circulation.</p>
+                    </div>
+                    <div class="amenity-item">
+                        <h4>Massage Therapies</h4>
+                        <p>Custom treatments ranging from deep tissue recovery to soothing aromatherapy sessions.</p>
+                    </div>
+                    <div class="amenity-item">
+                        <h4>Relaxation Lounge</h4>
+                        <p>A quiet, glass-enclosed space overlooking the fields, perfect for meditation and organic teas.</p>
+                    </div>
+                    <div class="amenity-item">
+                        <h4>In-Suite Service</h4>
+                        <p>Enjoy select massage and wellness services in the absolute privacy of your own suite.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="image-block reveal reveal-delay-1" style="background-image: url('images/spa02.png');"></div>
+        </div>
+    </section>
+
+    <section style="background: var(--charcoal);">
+        <div class="grid-2">
+            <div class="image-block reveal" style="background-image: url('images/spa03.png');"></div>
+            <div class="reveal reveal-delay-1">
+                <div class="section-eyebrow">Disconnect</div>
+                <h2 class="section-title">A Sanctuary of <em>Silence</em></h2>
+                <div class="text-block">
+                    <p>The true luxury of Casa Campo is the profound silence. Our spa environment is strictly regulated to preserve this peace, offering a digital detox zone where the only sounds are the wind and nature.</p>
+                    <ul>
+                        <li>Expert wellness practitioners on staff</li>
+                        <li>Organic, locally sourced essential oils</li>
+                        <li>Private yoga and stretching sessions available</li>
+                        <li>Exclusive access for lodge guests only</li>
+                    </ul>
+                </div>
+                <a href="mailto:spa@casacampo.com.ar" class="btn-primary" style="margin-top: 30px;">Request Spa Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">Casa <span>Campo</span></div>
+                <p>The ultimate fly-in lodge in northern Entre Ríos, Argentina. Where luxury hospitality, aviation, and untamed nature seamlessly merge.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Experiences</h4>
+                <ul>
+                    <li><a href="/casacampo/aviation">Private Aviation</a></li>
+                    <li><a href="/casacampo/suites">Boutique Suites</a></li>
+                    <li><a href="/casacampo/gastronomy">Regional Gastronomy</a></li>
+                    <li><a href="/casacampo/observatorio">Observatorio</a></li>
+                    <li><a href="/casacampo/spa">Spa & Wellness</a></li>
+                    <li><a href="/casacampo/equestrian">Equestrian & Outdoors</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Estate</h4>
+                <ul>
+                    <li><a href="/casacampo#concept">The Concept</a></li>
+                    <li><a href="/casacampo#architecture">Architecture</a></li>
+                    <li><a href="/casacampo#arrival">The Arrival</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@casacampo.com.ar">info@casacampo.com.ar</a></li>
+                    <li><a href="tel:+5493442000000">+54 9 3442 000 000</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Casa Campo · Entre Ríos, Argentina</p>
+            <p>Premium Fly-In Lodge</p>
+        </div>
+    </footer>
+
+    <script>
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+        function animateCursor() { if(!dot || !ring) return; rx += (mx - rx) * 0.18; ry += (my - ry) * 0.18; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; ring.style.left = rx + 'px'; ring.style.top = ry + 'px'; requestAnimationFrame(animateCursor); }
+        if(window.matchMedia("(hover: hover) and (pointer: fine)").matches) { animateCursor(); }
+
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
+        hamburger.addEventListener('click', () => { navLinks.classList.toggle('nav-active'); hamburger.classList.toggle('toggle'); });
+        navItems.forEach(item => { item.addEventListener('click', () => { navLinks.classList.remove('nav-active'); hamburger.classList.remove('toggle'); }); });
+
+        const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }); }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+        
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => { anchor.addEventListener('click', function (e) { e.preventDefault(); const target = document.querySelector(this.getAttribute('href')); if(target) target.scrollIntoView({ behavior: 'smooth' }); }); });
+    </script>
+</body>
+</html>
