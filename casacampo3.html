@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CASA CAMPO | Premium Fly-In Lodge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ── CSS VARIABLES ── */
+        :root {
+            --black: #0a0a0c;
+            --charcoal: #141418;
+            --smoke: #1e1e24;
+            --muted: #2c2c36;
+            --border: rgba(255,255,255,0.07);
+            --gold: #c8a96e;
+            --gold-light: #e2c898;
+            --cream: #f4ede0;
+            --blue-night: #0d1b35;
+            --text-dim: rgba(244,237,224,0.5);
+            --text-mid: rgba(244,237,224,0.75);
+            --text-full: #f4ede0;
+        }
+
+        /* ── RESET & BASE ── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--black);
+            color: var(--text-mid);
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: var(--cream);
+            line-height: 1.1;
+        }
+
+        em { font-style: italic; color: var(--gold); }
+
+        /* ── CUSTOM CURSOR (Hidden on mobile) ── */
+        @media (hover: hover) and (pointer: fine) {
+            body { cursor: none; }
+            #cursor {
+                position: fixed; top: 0; left: 0; z-index: 9999;
+                pointer-events: none; mix-blend-mode: difference;
+            }
+            #cursor-dot {
+                width: 6px; height: 6px; border-radius: 50%;
+                background: var(--cream);
+                position: absolute; transform: translate(-50%,-50%);
+                transition: transform 0.1s;
+            }
+            #cursor-ring {
+                width: 36px; height: 36px; border-radius: 50%;
+                border: 1px solid rgba(255,255,255,0.4);
+                position: absolute; transform: translate(-50%,-50%);
+                transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
+            }
+            body:has(a:hover) #cursor-ring,
+            body:has(button:hover) #cursor-ring,
+            body:has(.feature-card:hover) #cursor-ring { width: 56px; height: 56px; opacity: 0.6; }
+        }
+        @media (hover: none) {
+            #cursor { display: none; }
+        }
+
+        /* ── NAVIGATION ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 28px 60px;
+            display: flex; align-items: center; justify-content: space-between;
+            transition: background 0.6s, padding 0.4s;
+        }
+        nav.scrolled {
+            background: rgba(10,10,12,0.88);
+            backdrop-filter: blur(18px);
+            padding: 18px 60px;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem; font-weight: 400;
+            letter-spacing: 0.28em; text-transform: uppercase;
+            color: var(--cream); text-decoration: none;
+            z-index: 102;
+        }
+        .nav-logo span { color: var(--gold); }
+        
+        .nav-links { display: flex; gap: 42px; list-style: none; align-items: center; }
+        .nav-links a {
+            font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--text-mid); text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta {
+            font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--black) !important; background: var(--gold);
+            padding: 10px 24px; border: none;
+            font-family: 'Jost', sans-serif; font-weight: 400;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+        .nav-cta:hover { background: var(--gold-light); }
+
+        .hamburger {
+            display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 102;
+        }
+        .hamburger span {
+            display: block; width: 30px; height: 2px; background-color: var(--cream); transition: all 0.3s ease;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            position: relative; height: 100vh; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background-image: url('images/campo05.png');
+            background-position: center; background-size: cover; background-repeat: no-repeat;
+            background-attachment: scroll;
+        }
+        #hero::before {
+            content: ''; position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(to bottom, rgba(10,10,12,0.4) 0%, rgba(10,10,12,0.9) 100%);
+        }
+        canvas#particle-canvas { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+        
+        .hero-content { position: relative; z-index: 3; text-align: center; max-width: 900px; padding: 0 30px; }
+        .hero-eyebrow {
+            font-size: 0.65rem; letter-spacing: 0.38em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 24px;
+            display: flex; align-items: center; justify-content: center; gap: 16px;
+        }
+        .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+        .hero-title {
+            font-size: clamp(3rem, 7vw, 6.5rem); margin-bottom: 20px; color: var(--cream);
+        }
+        .hero-title em { display: block; font-size: 0.6em; letter-spacing: 0.05em; line-height: 1.5; }
+        .hero-sub {
+            font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--text-mid); margin-bottom: 40px;
+        }
+        .btn-primary {
+            display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--black); background: var(--gold); padding: 16px 38px; border: 1px solid var(--gold); text-decoration: none; transition: all 0.3s; font-weight: 400;
+        }
+        .btn-primary:hover { background: transparent; color: var(--gold); }
+
+        /* ── INTRO BAND (MARQUEE) ── */
+        .intro-band {
+            background: var(--charcoal); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            padding: 24px 0; overflow: hidden;
+        }
+        .marquee-track {
+            display: flex; gap: 80px; white-space: nowrap; animation: marquee 30s linear infinite;
+        }
+        .marquee-item {
+            font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-dim);
+            display: flex; align-items: center; gap: 16px;
+        }
+        .marquee-item::before { content: '✦'; color: var(--gold); font-size: 0.6rem; }
+
+        /* ── GENERAL SECTIONS ── */
+        section { padding: 120px 50px; position: relative; z-index: 10; }
+        .section-eyebrow {
+            font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.38em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
+        }
+        .section-eyebrow::after { content: ''; display: block; width: 50px; height: 1px; background: var(--gold); opacity: 0.5; }
+        .section-title { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-bottom: 24px; }
+        
+        /* ── GRID & BLOCKS ── */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1400px; margin: 0 auto; align-items: center; }
+        .text-block ul { list-style: none; margin-top: 24px; }
+        .text-block li { margin-bottom: 15px; padding-left: 25px; position: relative; font-size: 0.85rem; color: var(--text-mid); }
+        .text-block li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 0.8rem; }
+        .image-block { height: 500px; border-radius: 4px; background-size: cover; background-position: center; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+        .landscape-format { height: auto !important; aspect-ratio: 16 / 9; width: 100%; }
+
+        /* ── EXPERIENCES CARDS ── */
+        #features { background: var(--charcoal); }
+        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; perspective: 1000px; max-width: 1400px; margin: 60px auto 0; }
+        .feature-card { position: relative; height: 480px; border-radius: 4px; transform-style: preserve-3d; transition: transform 0.1s; cursor: none; overflow: hidden; border: 1px solid var(--border); }
+        .card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.7s ease; filter: brightness(0.8); }
+        .feature-card:hover .card-bg { transform: scale(1.05); filter: brightness(0.6); }
+        
+        .card-1 .card-bg { background-image: url('images/campo02.png'); }
+        .card-2 .card-bg { background-image: url('images/campo03.png'); }
+        .card-3 .card-bg { background-image: url('images/campo04.png'); }
+
+        .card-overlay {
+            position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.1) 100%);
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; transform: translateZ(50px);
+        }
+        .card-overlay h3 { font-size: 1.8rem; margin-bottom: 12px; color: var(--cream); }
+        .card-overlay p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.7; }
+
+        /* ── BANNER ── */
+        .wide-banner {
+            width: 100%; height: 500px; background-image: url('images/campo06.PNG');
+            background-position: center; background-size: cover; background-repeat: no-repeat;
+            background-attachment: scroll; position: relative; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+        }
+        .wide-banner::after { content: ''; position: absolute; inset: 0; background: rgba(10,10,12,0.3); }
+
+        /* ── ARRIVAL TIMELINE ── */
+        #arrival { background: var(--smoke); }
+        .timeline { display: flex; flex-direction: column; gap: 0; }
+        .timeline-item { display: flex; gap: 24px; padding: 28px 0; border-bottom: 1px solid var(--border); }
+        .timeline-item:first-child { padding-top: 0; }
+        .timeline-item:last-child { border-bottom: none; }
+        .timeline-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold); flex-shrink: 0; line-height: 1; padding-top: 2px; min-width: 32px; }
+        .timeline-text h4 { font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream); font-weight: 400; margin-bottom: 8px; }
+        .timeline-text p { font-size: 0.85rem; line-height: 1.8; color: var(--text-dim); }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); border-top: 1px solid var(--border); padding: 80px 60px 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; max-width: 1400px; margin: 0 auto 60px; }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); }
+        .footer-logo span { color: var(--gold); }
+        .footer-brand p { font-size: 0.8rem; line-height: 1.9; color: var(--text-dim); margin-top: 16px; max-width: 300px; }
+        .footer-col h4 { font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .footer-col a { font-size: 0.8rem; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--cream); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 30px; }
+        .footer-bottom p { font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        /* ── ANIMATIONS ── */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.2s; }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ── RESPONSIVE: DESKTOP PARALLAX ── */
+        @media (hover: hover) and (pointer: fine) {
+            #hero, .wide-banner { background-attachment: fixed; }
+        }
+
+        /* ── RESPONSIVE: TABLET & IPAD ── */
+        @media (max-width: 1024px) {
+            nav { padding: 20px 30px; }
+            .nav-links a { margin-left: 20px; }
+            section { padding: 100px 40px; }
+            .hero-title { font-size: 4rem; }
+            .grid-2 { gap: 40px; }
+            .image-block { height: 400px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+        }
+
+        /* ── RESPONSIVE: MOBILE ── */
+        @media (max-width: 768px) {
+            nav { padding: 15px 25px; }
+            .hamburger { display: flex; }
+            
+            .nav-links {
+                position: fixed; top: 0; right: -100%;
+                width: 80vw; height: 100vh;
+                background: rgba(10,10,12,0.98); backdrop-filter: blur(20px);
+                flex-direction: column; justify-content: center; gap: 35px;
+                transition: right 0.4s ease; box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+                z-index: 101; border-left: 1px solid var(--border);
+            }
+            .nav-links.nav-active { right: 0; }
+            .nav-links a { margin: 0; font-size: 1.1rem; letter-spacing: 0.15em; }
+            
+            .hamburger.toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.toggle span:nth-child(2) { opacity: 0; }
+            .hamburger.toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+            #hero { height: 85vh; }
+            .hero-title { font-size: 3rem; }
+            .hero-sub { font-size: 0.7rem; }
+            
+            section { padding: 80px 25px; }
+            .grid-2 { grid-template-columns: 1fr; gap: 50px; }
+            .image-block { height: 320px; }
+            .feature-card { height: 380px; }
+            
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor">
+        <div id="cursor-dot"></div>
+        <div id="cursor-ring"></div>
+    </div>
+
+    <nav id="navbar">
+        <a href="#hero" class="nav-logo">Casa <span>Campo</span></a>
+        
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#concept">The Concept</a></li>
+            <li><a href="aviation">Aviation</a></li>
+            <li><a href="suites">Suites</a></li>
+            <li><a href="gastronomy">Gastronomy</a></li>
+            <li><a href="https://www.globalmix.network/observatorio" class="nav-cta">Observatorio</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <canvas id="particle-canvas"></canvas>
+        <div class="hero-content reveal visible">
+            <div class="hero-eyebrow">Northern Entre Ríos, Argentina</div>
+            <h1 class="hero-title">
+                Casa
+                <em>Campo</em>
+            </h1>
+            <p class="hero-sub">The Ultimate Fly-In Lodge</p>
+            <a href="#concept" class="btn-primary">Discover the Destination</a>
+        </div>
+    </section>
+
+    <div class="intro-band">
+        <div class="marquee-track">
+            <span class="marquee-item">Premium Fly-In Lodge</span>
+            <span class="marquee-item">Boutique Hospitality</span>
+            <span class="marquee-item">Private Aerodrome</span>
+            <span class="marquee-item">Regional Gastronomy</span>
+            <span class="marquee-item">Northern Entre Ríos</span>
+            <span class="marquee-item">Premium Fly-In Lodge</span>
+            <span class="marquee-item">Boutique Hospitality</span>
+            <span class="marquee-item">Private Aerodrome</span>
+            <span class="marquee-item">Regional Gastronomy</span>
+            <span class="marquee-item">Northern Entre Ríos</span>
+        </div>
+    </div>
+
+    <section id="concept">
+        <div class="grid-2">
+            <div class="reveal">
+                <div class="section-eyebrow">Boutique Lodge & Aerodrome</div>
+                <h2 class="section-title">A Highly Differentiated <em>Proposition</em></h2>
+                <p style="margin-bottom: 20px; font-size: 0.9rem;">We combine three high-value concepts rarely integrated in Argentina: boutique rural hospitality, premium experiences, and direct private flight access. This transforms the hotel into a destination in itself.</p>
+                <p style="font-size: 0.9rem;">Designed for an exclusive segment, including international tourists, executives, premium sports fishermen, and private aircraft owners. The experience begins the moment you land.</p>
+                <div class="text-block">
+                    <ul>
+                        <li>13.2 Hectares of private grounds with natural landscaping</li>
+                        <li>Exclusive capacity of 22 guests (8 Double, 2 Triple Rooms)</li>
+                        <li>Total privacy, personalized service, and a relaxed atmosphere</li>
+                        <li>Hangar, VIP reception, and pilot lounge on site</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="image-block reveal reveal-delay-1" style="background-image: url('images/campo01.png');"></div>
+        </div>
+    </section>
+
+    <section id="features">
+        <div style="text-align: center; max-width: 700px; margin: 0 auto;" class="reveal">
+            <div class="section-eyebrow" style="justify-content: center;">Experiential Luxury</div>
+            <h2 class="section-title">Curated <em>Experiences</em></h2>
+            <p>Every aspect of the lodge is crafted to generate an emotional connection with the rural landscape and Argentine traditions.</p>
+        </div>
+
+        <div class="card-grid reveal reveal-delay-1">
+            <div class="feature-card card-1" onclick="window.location.href='aviation'">
+                <div class="card-bg"></div>
+                <div class="card-overlay">
+                    <h3>Private Aviation</h3>
+                    <p>An 800 x 20m private airstrip designed for light aviation and turboprops. Placed at a perfect distance to ensure safety and silence.</p>
+                </div>
+            </div>
+
+            <div class="feature-card card-2" onclick="window.location.href='suites'">
+                <div class="card-bg"></div>
+                <div class="card-overlay">
+                    <h3>Boutique Suites</h3>
+                    <p>Designed with an efficient central corridor and private exterior galleries. Acoustic separation and panoramic views.</p>
+                </div>
+            </div>
+
+            <div class="feature-card card-3" onclick="window.location.href='gastronomy'">
+                <div class="card-bg"></div>
+                <div class="card-overlay">
+                    <h3>Regional Gastronomy</h3>
+                    <p>A spectacular glass-enclosed dining room with an open kitchen. Enjoy premium meats, open fires, and regional cuisine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="wide-banner reveal"></div>
+
+    <section id="architecture">
+        <div class="grid-2">
+            <div class="text-block reveal">
+                <div class="section-eyebrow">Design</div>
+                <h2 class="section-title">Immersive <em>Architecture</em></h2>
+                <p>The single-story layout perfectly integrates into the environment, avoiding aggressive visual impact while maximizing accessibility and operational efficiency. The chosen aesthetic blends stone, wood, black metal, and large glass panes.</p>
+                <ul>
+                    <li><strong>The Central Fogón:</strong> The nocturnal heart of the hotel. It provides an authentic Argentine identity—ideal for folklore, wine tastings, and stargazing.</li>
+                    <li><strong>Multi-Purpose Room (SUM):</strong> A flexible space designed for yoga, wellness, corporate events, workshops, and exclusive private gatherings.</li>
+                </ul>
+            </div>
+            <div class="image-block landscape-format reveal reveal-delay-1" style="background-image: url('images/campo07.PNG');"></div>
+        </div>
+    </section>
+
+    <section id="arrival">
+        <div class="grid-2" style="align-items: start;">
+            <div class="image-block reveal" style="background-image: url('images/campo08.png'); height: 100%; min-height: 500px;"></div>
+            <div class="reveal reveal-delay-1">
+                <div class="section-eyebrow">The Journey</div>
+                <h2 class="section-title">The Arrival <em>Experience</em></h2>
+                <p style="margin-bottom: 40px; font-size: 0.9rem;">The aerial entrance completely transforms the guest's perception, making the journey a fundamental part of the adventure.</p>
+                
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-num">I</div>
+                        <div class="timeline-text">
+                            <h4>Takeoff</h4>
+                            <p>Depart from Buenos Aires, Rosario, Córdoba, Montevideo, or Asunción in a private aircraft.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-num">II</div>
+                        <div class="timeline-text">
+                            <h4>Scenic Flight</h4>
+                            <p>Enjoy a panoramic journey over the fields, estuaries, the Paraná River, and the native forests of Entre Ríos.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-num">III</div>
+                        <div class="timeline-text">
+                            <h4>Direct Landing</h4>
+                            <p>Touch down directly inside the establishment on our secure 800m private runway.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-num">IV</div>
+                        <div class="timeline-text">
+                            <h4>Premium Reception</h4>
+                            <p>Be greeted by a safari-style vehicle, champagne welcome, and a personalized check-in by the central fire pit.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">Casa <span>Campo</span></div>
+                <p>The ultimate fly-in lodge in northern Entre Ríos, Argentina. Where luxury hospitality, aviation, and untamed nature seamlessly merge.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Experiences</h4>
+                <ul>
+                    <li><a href="aviation">Private Aviation</a></li>
+                    <li><a href="suites">Boutique Suites</a></li>
+                    <li><a href="gastronomy">Regional Gastronomy</a></li>
+                    <li><a href="https://www.globalmix.network/observatorio">Observatorio</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Estate</h4>
+                <ul>
+                    <li><a href="#concept">The Concept</a></li>
+                    <li><a href="#architecture">Architecture</a></li>
+                    <li><a href="#arrival">The Arrival</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@casacampo.com.ar">info@casacampo.com.ar</a></li>
+                    <li><a href="tel:+5493442000000">+54 9 3442 000 000</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Casa Campo · Entre Ríos, Argentina</p>
+            <p>Premium Fly-In Lodge</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Custom Cursor ---
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+        function animateCursor() {
+            if(!dot || !ring) return;
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+            ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        if(window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            animateCursor();
+        }
+
+        // --- Nav Scroll Effect ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // --- Mobile Hamburger Menu ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+            });
+        });
+
+        // --- Ember/Dust Particle System ---
+        const canvas = document.getElementById('particle-canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        let particles = [];
+
+        function initParticles() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
+            let particleCount = width < 768 ? 50 : 120;
+            for (let i = 0; i < particleCount; i++) {
+                particles.push({
+                    x: Math.random() * width, y: Math.random() * height,
+                    z: Math.random() * 2 + 0.1, radius: Math.random() * 2 + 0.5,
+                    vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 1) * 0.5, 
+                    alpha: Math.random() * 0.8 + 0.2, color: Math.random() > 0.5 ? '#d4a373' : '#ff7a00' 
+                });
+            }
+        }
+        window.addEventListener('resize', initParticles);
+        
+        let pMouseX = 0, pMouseY = 0;
+        document.getElementById('hero').addEventListener('mousemove', (e) => {
+            pMouseX = (e.clientX - width / 2) * 0.05;
+            pMouseY = (e.clientY - height / 2) * 0.05;
+        });
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, width, height);
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                let px = p.x - (pMouseX * p.z);
+                let py = p.y - (pMouseY * p.z);
+                if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
+                if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
+                ctx.beginPath(); ctx.arc(px, py, p.radius * p.z, 0, Math.PI * 2);
+                ctx.fillStyle = p.color; ctx.globalAlpha = p.alpha * (p.z / 2);
+                ctx.shadowBlur = 10; ctx.shadowColor = p.color; ctx.fill();
+            });
+            requestAnimationFrame(animateParticles);
+        }
+        initParticles(); animateParticles();
+
+        // --- 3D Tilt Effect for Feature Cards ---
+        const cards = document.querySelectorAll('.feature-card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', function(e) {
+                if(window.innerWidth <= 1024) return;
+                const rect = this.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const mX = e.clientX - centerX;
+                const mY = e.clientY - centerY;
+                const rotateX = (mY / (rect.height / 2)) * -12; 
+                const rotateY = (mX / (rect.width / 2)) * 12;
+                this.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+            });
+            card.addEventListener('mouseleave', function() {
+                if(window.innerWidth <= 1024) return;
+                this.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+                setTimeout(() => { this.style.transition = 'transform 0.1s'; }, 500);
+            });
+        });
+
+        // --- Scroll Reveal Animations ---
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+        }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    </script>
+</body>
+</html>
