@@ -25,160 +25,62 @@
 
         /* ── RESET & BASE ── */
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-        
         html { scroll-behavior: smooth; }
-
-        body {
-            background: var(--black);
-            color: var(--text-mid);
-            font-family: 'Jost', sans-serif;
-            font-weight: 300;
-            overflow-x: hidden;
-            line-height: 1.8;
-        }
-
-        h1, h2, h3, h4 {
-            font-family: 'Cormorant Garamond', serif;
-            font-weight: 300;
-            color: var(--cream);
-            line-height: 1.1;
-        }
-
+        body { background: var(--black); color: var(--text-mid); font-family: 'Jost', sans-serif; font-weight: 300; overflow-x: hidden; line-height: 1.8; }
+        h1, h2, h3, h4 { font-family: 'Cormorant Garamond', serif; font-weight: 300; color: var(--cream); line-height: 1.1; }
         em { font-style: italic; color: var(--gold); }
 
-        /* ── CUSTOM CURSOR (Hidden on mobile) ── */
+        /* ── CUSTOM CURSOR ── */
         @media (hover: hover) and (pointer: fine) {
             body { cursor: none; }
-            #cursor {
-                position: fixed; top: 0; left: 0; z-index: 9999;
-                pointer-events: none; mix-blend-mode: difference;
-            }
-            #cursor-dot {
-                width: 6px; height: 6px; border-radius: 50%;
-                background: var(--cream);
-                position: absolute; transform: translate(-50%,-50%);
-                transition: transform 0.1s;
-            }
-            #cursor-ring {
-                width: 36px; height: 36px; border-radius: 50%;
-                border: 1px solid rgba(255,255,255,0.4);
-                position: absolute; transform: translate(-50%,-50%);
-                transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
-            }
-            body:has(a:hover) #cursor-ring,
-            body:has(button:hover) #cursor-ring,
-            body:has(.feature-card:hover) #cursor-ring { width: 56px; height: 56px; opacity: 0.6; }
+            #cursor { position: fixed; top: 0; left: 0; z-index: 9999; pointer-events: none; mix-blend-mode: difference; }
+            #cursor-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--cream); position: absolute; transform: translate(-50%,-50%); transition: transform 0.1s; }
+            #cursor-ring { width: 36px; height: 36px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.4); position: absolute; transform: translate(-50%,-50%); transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s; }
+            body:has(a:hover) #cursor-ring, body:has(button:hover) #cursor-ring, body:has(.feature-card:hover) #cursor-ring { width: 56px; height: 56px; opacity: 0.6; }
         }
-        @media (hover: none) {
-            #cursor { display: none; }
-        }
+        @media (hover: none) { #cursor { display: none; } }
 
         /* ── NAVIGATION ── */
-        nav {
-            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-            padding: 28px 60px;
-            display: flex; align-items: center; justify-content: space-between;
-            transition: background 0.6s, padding 0.4s;
-        }
-        nav.scrolled {
-            background: rgba(10,10,12,0.88);
-            backdrop-filter: blur(18px);
-            padding: 18px 60px;
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.2rem; font-weight: 400;
-            letter-spacing: 0.28em; text-transform: uppercase;
-            color: var(--cream); text-decoration: none;
-            z-index: 102;
-        }
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 28px 60px; display: flex; align-items: center; justify-content: space-between; transition: background 0.6s, padding 0.4s; }
+        nav.scrolled { background: rgba(10,10,12,0.88); backdrop-filter: blur(18px); padding: 18px 60px; border-bottom: 1px solid var(--border); }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; letter-spacing: 0.28em; text-transform: uppercase; color: var(--cream); text-decoration: none; z-index: 102; }
         .nav-logo span { color: var(--gold); }
         
         .nav-links { display: flex; gap: 42px; list-style: none; align-items: center; }
-        .nav-links a {
-            font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
-            color: var(--text-mid); text-decoration: none;
-            transition: color 0.3s;
-            font-weight: 400;
-        }
+        .nav-links a { font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--text-mid); text-decoration: none; transition: color 0.3s; font-weight: 400; }
         .nav-links a:hover { color: var(--gold); }
-        .nav-cta {
-            font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-            color: var(--black) !important; background: var(--gold);
-            padding: 10px 24px; border: none;
-            font-family: 'Jost', sans-serif; font-weight: 400;
-            transition: background 0.3s;
-            text-decoration: none;
-        }
+        .nav-cta { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--black) !important; background: var(--gold); padding: 10px 24px; border: none; font-family: 'Jost', sans-serif; font-weight: 400; transition: background 0.3s; text-decoration: none; }
         .nav-cta:hover { background: var(--gold-light); }
 
-        .hamburger {
-            display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 102;
-        }
-        .hamburger span {
-            display: block; width: 30px; height: 2px; background-color: var(--cream); transition: all 0.3s ease;
-        }
+        .hamburger { display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 102; }
+        .hamburger span { display: block; width: 30px; height: 2px; background-color: var(--cream); transition: all 0.3s ease; }
 
         /* ── HERO ── */
-        #hero {
-            position: relative; height: 100vh; overflow: hidden;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background-image: url('images/campo05.png');
-            background-position: center; background-size: cover; background-repeat: no-repeat;
-            background-attachment: scroll;
-        }
-        #hero::before {
-            content: ''; position: absolute; inset: 0; z-index: 1;
-            background: linear-gradient(to bottom, rgba(10,10,12,0.4) 0%, rgba(10,10,12,0.9) 100%);
-        }
+        #hero { position: relative; height: 100vh; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; background-image: url('images/campo05.png'); background-position: center; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; }
+        #hero::before { content: ''; position: absolute; inset: 0; z-index: 1; background: linear-gradient(to bottom, rgba(10,10,12,0.4) 0%, rgba(10,10,12,0.9) 100%); }
         canvas#particle-canvas { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
         
-        .hero-content { position: relative; z-index: 3; text-align: center; max-width: 900px; padding: 0 30px; }
-        .hero-eyebrow {
-            font-size: 0.65rem; letter-spacing: 0.38em; text-transform: uppercase;
-            color: var(--gold); margin-bottom: 24px;
-            display: flex; align-items: center; justify-content: center; gap: 16px;
-        }
+        .hero-content { position: relative; z-index: 3; text-align: center; max-width: 900px; padding: 0 30px; width: 100%; }
+        .hero-eyebrow { font-size: 0.65rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; display: flex; align-items: center; justify-content: center; gap: 16px; }
         .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
-        .hero-title {
-            font-size: clamp(3rem, 7vw, 6.5rem); margin-bottom: 20px; color: var(--cream);
-        }
+        .hero-title { font-size: clamp(3rem, 7vw, 6.5rem); margin-bottom: 20px; color: var(--cream); }
         .hero-title em { display: block; font-size: 0.6em; letter-spacing: 0.05em; line-height: 1.5; }
-        .hero-sub {
-            font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
-            color: var(--text-mid); margin-bottom: 40px;
-        }
-        .btn-primary {
-            display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
-            color: var(--black); background: var(--gold); padding: 16px 38px; border: 1px solid var(--gold); text-decoration: none; transition: all 0.3s; font-weight: 400;
-        }
+        .hero-sub { font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); margin-bottom: 40px; }
+        .btn-primary { display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--black); background: var(--gold); padding: 16px 38px; border: 1px solid var(--gold); text-decoration: none; transition: all 0.3s; font-weight: 400; }
         .btn-primary:hover { background: transparent; color: var(--gold); }
 
         /* ── INTRO BAND (MARQUEE) ── */
-        .intro-band {
-            background: var(--charcoal); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-            padding: 24px 0; overflow: hidden;
-        }
-        .marquee-track {
-            display: flex; gap: 80px; white-space: nowrap; animation: marquee 30s linear infinite;
-        }
-        .marquee-item {
-            font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-dim);
-            display: flex; align-items: center; gap: 16px;
-        }
+        .intro-band { background: var(--charcoal); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 24px 0; overflow: hidden; }
+        .marquee-track { display: flex; gap: 80px; white-space: nowrap; animation: marquee 30s linear infinite; }
+        .marquee-item { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-dim); display: flex; align-items: center; gap: 16px; }
         .marquee-item::before { content: '✦'; color: var(--gold); font-size: 0.6rem; }
 
         /* ── GENERAL SECTIONS ── */
         section { padding: 120px 50px; position: relative; z-index: 10; }
-        .section-eyebrow {
-            font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.38em; text-transform: uppercase;
-            color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
-        }
+        .section-eyebrow { font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.38em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 14px; }
         .section-eyebrow::after { content: ''; display: block; width: 50px; height: 1px; background: var(--gold); opacity: 0.5; }
         .section-title { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-bottom: 24px; }
         
-        /* ── GRID & BLOCKS ── */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1400px; margin: 0 auto; align-items: center; }
         .text-block ul { list-style: none; margin-top: 24px; }
         .text-block li { margin-bottom: 15px; padding-left: 25px; position: relative; font-size: 0.85rem; color: var(--text-mid); }
@@ -189,27 +91,16 @@
         /* ── EXPERIENCES CARDS ── */
         #features { background: var(--charcoal); }
         .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; perspective: 1000px; max-width: 1400px; margin: 60px auto 0; }
-        .feature-card { position: relative; height: 480px; border-radius: 4px; transform-style: preserve-3d; transition: transform 0.1s; overflow: hidden; border: 1px solid var(--border); }
+        .feature-card { position: relative; height: 480px; border-radius: 4px; transform-style: preserve-3d; transition: transform 0.1s; cursor: none; overflow: hidden; border: 1px solid var(--border); }
         .card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.7s ease; filter: brightness(0.8); }
         .feature-card:hover .card-bg { transform: scale(1.05); filter: brightness(0.6); }
         
-        .card-1 .card-bg { background-image: url('images/campo02.png'); }
-        .card-2 .card-bg { background-image: url('images/campo03.png'); }
-        .card-3 .card-bg { background-image: url('images/campo04.png'); }
-
-        .card-overlay {
-            position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.1) 100%);
-            display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; transform: translateZ(50px);
-        }
+        .card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,10,12,0.95) 0%, rgba(10,10,12,0.1) 100%); display: flex; flex-direction: column; justify-content: flex-end; padding: 40px; transform: translateZ(50px); }
         .card-overlay h3 { font-size: 1.8rem; margin-bottom: 12px; color: var(--cream); }
         .card-overlay p { font-size: 0.85rem; color: var(--text-dim); line-height: 1.7; }
 
-        /* ── BANNER (Fixed for Desktop Parallax) ── */
-        .wide-banner {
-            width: 100%; height: 500px; background-image: url('images/campo06.PNG');
-            background-position: center; background-size: cover; background-repeat: no-repeat;
-            background-attachment: scroll; position: relative; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-        }
+        /* ── BANNER ── */
+        .wide-banner { width: 100%; height: 500px; background-image: url('images/campo06.PNG'); background-position: center; background-size: cover; background-repeat: no-repeat; background-attachment: scroll; position: relative; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
         .wide-banner::after { content: ''; position: absolute; inset: 0; background: rgba(10,10,12,0.3); }
 
         /* ── ARRIVAL TIMELINE ── */
@@ -261,31 +152,19 @@
         @media (max-width: 768px) {
             nav { padding: 15px 25px; }
             .hamburger { display: flex; }
-            
-            .nav-links {
-                position: fixed; top: 0; right: -100%;
-                width: 80vw; height: 100vh;
-                background: rgba(10,10,12,0.98); backdrop-filter: blur(20px);
-                flex-direction: column; justify-content: center; gap: 35px;
-                transition: right 0.4s ease; box-shadow: -10px 0 30px rgba(0,0,0,0.8);
-                z-index: 101; border-left: 1px solid var(--border);
-            }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 80vw; height: 100vh; background: rgba(10,10,12,0.98); backdrop-filter: blur(20px); flex-direction: column; justify-content: center; gap: 35px; transition: right 0.4s ease; box-shadow: -10px 0 30px rgba(0,0,0,0.8); z-index: 101; border-left: 1px solid var(--border); }
             .nav-links.nav-active { right: 0; }
             .nav-links a { margin: 0; font-size: 1.1rem; letter-spacing: 0.15em; }
-            
             .hamburger.toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
             .hamburger.toggle span:nth-child(2) { opacity: 0; }
             .hamburger.toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
-
             #hero { height: 85vh; }
             .hero-title { font-size: 3rem; }
             .hero-sub { font-size: 0.7rem; }
-            
             section { padding: 80px 25px; }
             .grid-2 { grid-template-columns: 1fr; gap: 50px; }
             .image-block { height: 320px; }
             .feature-card { height: 380px; }
-            
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
         }
@@ -302,17 +181,15 @@
         <a href="#hero" class="nav-logo">Casa <span>Campo</span></a>
         
         <div class="hamburger" id="hamburger">
-            <span></span>
-            <span></span>
-            <span></span>
+            <span></span><span></span><span></span>
         </div>
 
         <ul class="nav-links" id="nav-links">
             <li><a href="#concept">The Concept</a></li>
-            <li><a href="aviation">Aviation</a></li>
-            <li><a href="suites">Suites</a></li>
-            <li><a href="gastronomy">Gastronomy</a></li>
-            <li><a href="https://www.globalmix.network/observatorio" class="nav-cta">Observatorio</a></li>
+            <li><a href="/casacampo/aviation">Aviation</a></li>
+            <li><a href="/casacampo/suites">Suites</a></li>
+            <li><a href="/casacampo/gastronomy">Gastronomy</a></li>
+            <li><a href="/casacampo/observatorio" class="nav-cta">Observatorio</a></li>
         </ul>
     </nav>
 
@@ -335,12 +212,12 @@
             <span class="marquee-item">Boutique Hospitality</span>
             <span class="marquee-item">Private Aerodrome</span>
             <span class="marquee-item">Regional Gastronomy</span>
-            <span class="marquee-item">Northern Entre Ríos</span>
+            <span class="marquee-item">Dark Sky Reserve</span>
             <span class="marquee-item">Premium Fly-In Lodge</span>
             <span class="marquee-item">Boutique Hospitality</span>
             <span class="marquee-item">Private Aerodrome</span>
             <span class="marquee-item">Regional Gastronomy</span>
-            <span class="marquee-item">Northern Entre Ríos</span>
+            <span class="marquee-item">Dark Sky Reserve</span>
         </div>
     </div>
 
@@ -349,7 +226,7 @@
             <div class="reveal">
                 <div class="section-eyebrow">Boutique Lodge & Aerodrome</div>
                 <h2 class="section-title">A Highly Differentiated <em>Proposition</em></h2>
-                <p style="margin-bottom: 20px; font-size: 0.9rem;">We combine three high-value concepts rarely integrated in Argentina: boutique rural hospitality, premium experiences, and direct private flight access. This transforms the hotel into a destination in itself.</p>
+                <p style="margin-bottom: 20px; font-size: 0.9rem;">We combine concepts rarely integrated in Argentina: boutique rural hospitality, premium experiences, and direct private flight access. This transforms the hotel into a destination in itself.</p>
                 <p style="font-size: 0.9rem;">Designed for an exclusive segment, including international tourists, executives, premium sports fishermen, and private aircraft owners. The experience begins the moment you land.</p>
                 <div class="text-block">
                     <ul>
@@ -372,27 +249,51 @@
         </div>
 
         <div class="card-grid reveal reveal-delay-1">
-            <div class="feature-card card-1" onclick="window.location.href='aviation'">
-                <div class="card-bg"></div>
+            <div class="feature-card" onclick="window.location.href='/casacampo/aviation'">
+                <div class="card-bg" style="background-image: url('images/campo02.png');"></div>
                 <div class="card-overlay">
                     <h3>Private Aviation</h3>
                     <p>An 800 x 20m private airstrip designed for light aviation and turboprops. Placed at a perfect distance to ensure safety and silence.</p>
                 </div>
             </div>
 
-            <div class="feature-card card-2" onclick="window.location.href='suites'">
-                <div class="card-bg"></div>
+            <div class="feature-card" onclick="window.location.href='/casacampo/suites'">
+                <div class="card-bg" style="background-image: url('images/campo03.png');"></div>
                 <div class="card-overlay">
                     <h3>Boutique Suites</h3>
                     <p>Designed with an efficient central corridor and private exterior galleries. Acoustic separation and panoramic views.</p>
                 </div>
             </div>
 
-            <div class="feature-card card-3" onclick="window.location.href='gastronomy'">
-                <div class="card-bg"></div>
+            <div class="feature-card" onclick="window.location.href='/casacampo/gastronomy'">
+                <div class="card-bg" style="background-image: url('images/campo04.png');"></div>
                 <div class="card-overlay">
                     <h3>Regional Gastronomy</h3>
                     <p>A spectacular glass-enclosed dining room with an open kitchen. Enjoy premium meats, open fires, and regional cuisine.</p>
+                </div>
+            </div>
+
+            <div class="feature-card" onclick="window.location.href='/casacampo/observatorio'">
+                <div class="card-bg" style="background-image: url('images/observatorio01.png');"></div>
+                <div class="card-overlay">
+                    <h3>Dark Sky Observatory</h3>
+                    <p>An immersive scientific and sensory journey beneath the stars. Professional telescopes, astrophotography, and guided observation.</p>
+                </div>
+            </div>
+
+            <div class="feature-card" onclick="window.location.href='/casacampo/spa'">
+                <div class="card-bg" style="background-image: url('images/spa01.png');"></div>
+                <div class="card-overlay">
+                    <h3>Spa & Wellness</h3>
+                    <p>Disconnect and rejuvenate. Holistic treatments, thermal circuits, and nature-inspired therapies designed for ultimate relaxation.</p>
+                </div>
+            </div>
+
+            <div class="feature-card" onclick="window.location.href='/casacampo/equestrian'">
+                <div class="card-bg" style="background-image: url('images/equestrian01.png');"></div>
+                <div class="card-overlay">
+                    <h3>Equestrian & Outdoors</h3>
+                    <p>Experience the Pampas. Polo lessons, guided horseback expeditions, Golden Dorado fishing, and exclusive hunting reserves.</p>
                 </div>
             </div>
         </div>
@@ -466,10 +367,12 @@
             <div class="footer-col">
                 <h4>Experiences</h4>
                 <ul>
-                    <li><a href="aviation">Private Aviation</a></li>
-                    <li><a href="suites">Boutique Suites</a></li>
-                    <li><a href="gastronomy">Regional Gastronomy</a></li>
-                    <li><a href="https://www.globalmix.network/observatorio">Observatorio</a></li>
+                    <li><a href="/casacampo/aviation">Private Aviation</a></li>
+                    <li><a href="/casacampo/suites">Boutique Suites</a></li>
+                    <li><a href="/casacampo/gastronomy">Regional Gastronomy</a></li>
+                    <li><a href="/casacampo/observatorio">Observatorio</a></li>
+                    <li><a href="/casacampo/spa">Spa & Wellness</a></li>
+                    <li><a href="/casacampo/equestrian">Equestrian & Outdoors</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -510,72 +413,44 @@
             ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
             requestAnimationFrame(animateCursor);
         }
-        if(window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-            animateCursor();
-        }
+        if(window.matchMedia("(hover: hover) and (pointer: fine)").matches) { animateCursor(); }
 
         // --- Nav Scroll Effect ---
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            navbar.classList.toggle('scrolled', window.scrollY > 50);
-        });
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
 
         // --- Mobile Hamburger Menu ---
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
         const navItems = document.querySelectorAll('.nav-links a');
-
-        hamburger.addEventListener('click', () => {
-            navLinks.classList.toggle('nav-active');
-            hamburger.classList.toggle('toggle');
-        });
-
-        navItems.forEach(item => {
-            item.addEventListener('click', () => {
-                navLinks.classList.remove('nav-active');
-                hamburger.classList.remove('toggle');
-            });
-        });
+        hamburger.addEventListener('click', () => { navLinks.classList.toggle('nav-active'); hamburger.classList.toggle('toggle'); });
+        navItems.forEach(item => { item.addEventListener('click', () => { navLinks.classList.remove('nav-active'); hamburger.classList.remove('toggle'); }); });
 
         // --- Ember/Dust Particle System ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
-        let width, height;
-        let particles = [];
-
+        let width, height, particles = [];
         function initParticles() {
-            width = canvas.width = window.innerWidth;
-            height = canvas.height = window.innerHeight;
-            particles = [];
+            width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; particles = [];
             let particleCount = width < 768 ? 50 : 120;
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
-                    x: Math.random() * width, y: Math.random() * height,
-                    z: Math.random() * 2 + 0.1, radius: Math.random() * 2 + 0.5,
-                    vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 1) * 0.5, 
-                    alpha: Math.random() * 0.8 + 0.2, color: Math.random() > 0.5 ? '#d4a373' : '#ff7a00' 
+                    x: Math.random() * width, y: Math.random() * height, z: Math.random() * 2 + 0.1, radius: Math.random() * 2 + 0.5,
+                    vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 1) * 0.5, alpha: Math.random() * 0.8 + 0.2, color: Math.random() > 0.5 ? '#d4a373' : '#ff7a00' 
                 });
             }
         }
         window.addEventListener('resize', initParticles);
-        
         let pMouseX = 0, pMouseY = 0;
-        document.getElementById('hero').addEventListener('mousemove', (e) => {
-            pMouseX = (e.clientX - width / 2) * 0.05;
-            pMouseY = (e.clientY - height / 2) * 0.05;
-        });
-
+        document.getElementById('hero').addEventListener('mousemove', (e) => { pMouseX = (e.clientX - width / 2) * 0.05; pMouseY = (e.clientY - height / 2) * 0.05; });
         function animateParticles() {
             ctx.clearRect(0, 0, width, height);
             particles.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
-                let px = p.x - (pMouseX * p.z);
-                let py = p.y - (pMouseY * p.z);
+                let px = p.x - (pMouseX * p.z), py = p.y - (pMouseY * p.z);
                 if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
                 if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
-                ctx.beginPath(); ctx.arc(px, py, p.radius * p.z, 0, Math.PI * 2);
-                ctx.fillStyle = p.color; ctx.globalAlpha = p.alpha * (p.z / 2);
-                ctx.shadowBlur = 10; ctx.shadowColor = p.color; ctx.fill();
+                ctx.beginPath(); ctx.arc(px, py, p.radius * p.z, 0, Math.PI * 2); ctx.fillStyle = p.color; ctx.globalAlpha = p.alpha * (p.z / 2); ctx.shadowBlur = 10; ctx.shadowColor = p.color; ctx.fill();
             });
             requestAnimationFrame(animateParticles);
         }
@@ -586,29 +461,21 @@
         cards.forEach(card => {
             card.addEventListener('mousemove', function(e) {
                 if(window.innerWidth <= 1024) return;
-                const rect = this.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                const mX = e.clientX - centerX;
-                const mY = e.clientY - centerY;
-                const rotateX = (mY / (rect.height / 2)) * -12; 
-                const rotateY = (mX / (rect.width / 2)) * 12;
+                const rect = this.getBoundingClientRect(); const centerX = rect.left + rect.width / 2; const centerY = rect.top + rect.height / 2;
+                const mX = e.clientX - centerX; const mY = e.clientY - centerY;
+                const rotateX = (mY / (rect.height / 2)) * -12; const rotateY = (mX / (rect.width / 2)) * 12;
                 this.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             });
             card.addEventListener('mouseleave', function() {
                 if(window.innerWidth <= 1024) return;
-                this.style.transform = 'rotateX(0deg) rotateY(0deg)';
-                this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+                this.style.transform = 'rotateX(0deg) rotateY(0deg)'; this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
                 setTimeout(() => { this.style.transition = 'transform 0.1s'; }, 500);
             });
         });
 
         // --- Scroll Reveal Animations ---
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
-        }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
+        const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }); }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
     </script>
 </body>
 </html>
