@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OBSERVATORIO FEDERAL | Rural Astrotourism</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* ── CSS VARIABLES ── */
+        :root {
+            --black: #0a0a0c;
+            --charcoal: #141418;
+            --smoke: #1e1e24;
+            --muted: #2c2c36;
+            --border: rgba(255,255,255,0.07);
+            --gold: #c8a96e;
+            --gold-light: #e2c898;
+            --cream: #f4ede0;
+            --blue-night: #0d1b35;
+            --text-dim: rgba(244,237,224,0.5);
+            --text-mid: rgba(244,237,224,0.75);
+            --text-full: #f4ede0;
+        }
+
+        /* ── RESET & BASE ── */
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: var(--black);
+            color: var(--text-mid);
+            font-family: 'Jost', sans-serif;
+            font-weight: 300;
+            overflow-x: hidden;
+            line-height: 1.8;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            color: var(--cream);
+            line-height: 1.1;
+        }
+
+        em { font-style: italic; color: var(--gold); }
+
+        /* ── CUSTOM CURSOR (Hidden on mobile) ── */
+        @media (hover: hover) and (pointer: fine) {
+            body { cursor: none; }
+            #cursor {
+                position: fixed; top: 0; left: 0; z-index: 9999;
+                pointer-events: none; mix-blend-mode: difference;
+            }
+            #cursor-dot {
+                width: 6px; height: 6px; border-radius: 50%;
+                background: var(--cream);
+                position: absolute; transform: translate(-50%,-50%);
+                transition: transform 0.1s;
+            }
+            #cursor-ring {
+                width: 36px; height: 36px; border-radius: 50%;
+                border: 1px solid rgba(255,255,255,0.4);
+                position: absolute; transform: translate(-50%,-50%);
+                transition: transform 0.15s ease, width 0.3s, height 0.3s, opacity 0.3s;
+            }
+            body:has(a:hover) #cursor-ring,
+            body:has(button:hover) #cursor-ring,
+            body:has(.obs-feature:hover) #cursor-ring { width: 56px; height: 56px; opacity: 0.6; }
+        }
+        @media (hover: none) {
+            #cursor { display: none; }
+        }
+
+        /* ── NAVIGATION ── */
+        nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+            padding: 28px 60px;
+            display: flex; align-items: center; justify-content: space-between;
+            transition: background 0.6s, padding 0.4s;
+        }
+        nav.scrolled {
+            background: rgba(10,10,12,0.88);
+            backdrop-filter: blur(18px);
+            padding: 18px 60px;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.1rem; font-weight: 400;
+            letter-spacing: 0.28em; text-transform: uppercase;
+            color: var(--cream); text-decoration: none;
+            z-index: 102;
+        }
+        .nav-logo span { color: var(--gold); }
+        
+        .nav-links { display: flex; gap: 42px; list-style: none; align-items: center; }
+        .nav-links a {
+            font-size: 0.68rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--text-mid); text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 400;
+        }
+        .nav-links a:hover { color: var(--gold); }
+        .nav-cta {
+            font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--black) !important; background: var(--gold);
+            padding: 10px 24px; border: none;
+            font-family: 'Jost', sans-serif; font-weight: 400;
+            transition: background 0.3s;
+            text-decoration: none;
+        }
+        .nav-cta:hover { background: var(--gold-light); }
+
+        .hamburger {
+            display: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 102;
+        }
+        .hamburger span {
+            display: block; width: 30px; height: 2px; background-color: var(--cream); transition: all 0.3s ease;
+        }
+
+        /* ── HERO ── */
+        #hero {
+            position: relative; height: 100vh; overflow: hidden;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background-image: url('images/observatorio01.png');
+            background-position: center; background-size: cover; background-repeat: no-repeat;
+            background-attachment: scroll; /* Mobile safe default */
+        }
+        .hero-bg-overlay {
+            position: absolute; inset: 0; z-index: 1;
+            background: radial-gradient(ellipse 80% 60% at 50% 70%, rgba(13,27,53,0.6) 0%, rgba(10,10,12,0.85) 70%, var(--black) 100%);
+        }
+        canvas#star-canvas { position: absolute; inset: 0; z-index: 2; pointer-events: none; }
+        
+        .hero-content { position: relative; z-index: 3; text-align: center; max-width: 900px; padding: 0 30px; }
+        .hero-eyebrow {
+            font-size: 0.65rem; letter-spacing: 0.38em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 24px;
+            display: flex; align-items: center; justify-content: center; gap: 16px;
+        }
+        .hero-eyebrow::before, .hero-eyebrow::after { content: ''; display: block; width: 40px; height: 1px; background: var(--gold); }
+        .hero-title {
+            font-size: clamp(3rem, 7vw, 6.5rem); margin-bottom: 20px; color: var(--cream); line-height: 0.92;
+        }
+        .hero-title em { display: block; font-size: 0.6em; letter-spacing: 0.05em; line-height: 1.5; }
+        .hero-sub {
+            font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+            color: var(--text-mid); margin-bottom: 40px;
+        }
+        .btn-primary {
+            display: inline-block; font-family: 'Jost', sans-serif; font-size: 0.7rem; letter-spacing: 0.22em; text-transform: uppercase;
+            color: var(--black); background: var(--gold); padding: 16px 38px; border: 1px solid var(--gold); text-decoration: none; transition: all 0.3s; font-weight: 400;
+        }
+        .btn-primary:hover { background: transparent; color: var(--gold); }
+
+        /* ── MARQUEE ── */
+        .intro-band {
+            background: var(--charcoal); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            padding: 24px 0; overflow: hidden;
+        }
+        .marquee-track {
+            display: flex; gap: 80px; white-space: nowrap; animation: marquee 30s linear infinite;
+        }
+        .marquee-item {
+            font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--text-dim);
+            display: flex; align-items: center; gap: 16px;
+        }
+        .marquee-item::before { content: '✦'; color: var(--gold); font-size: 0.6rem; }
+
+        /* ── GENERAL SECTIONS ── */
+        section { padding: 120px 50px; position: relative; z-index: 10; }
+        .section-eyebrow {
+            font-family: 'Jost', sans-serif; font-size: 0.6rem; letter-spacing: 0.38em; text-transform: uppercase;
+            color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; gap: 14px;
+        }
+        .section-eyebrow::after { content: ''; display: block; width: 50px; height: 1px; background: var(--gold); opacity: 0.5; }
+        .section-title { font-size: clamp(2.2rem, 4vw, 3.5rem); margin-bottom: 24px; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; max-width: 1400px; margin: 0 auto; align-items: center; }
+        .text-block p { margin-bottom: 20px; color: var(--text-mid); font-size: 0.9rem; }
+        .image-block { height: 500px; border-radius: 4px; background-size: cover; background-position: center; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
+
+        /* ── ASTRAL NIGHT FEATURE (Timeline) ── */
+        #astral {
+            position: relative; min-height: 100vh; display: flex; align-items: center; overflow: hidden;
+            background-image: url('images/observatorio02.png');
+            background-size: cover; background-position: center; background-attachment: scroll;
+        }
+        .astral-overlay {
+            position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(135deg, rgba(10,10,12,0.95) 0%, rgba(13,27,53,0.7) 50%, rgba(10,10,12,0.95) 100%);
+        }
+        .astral-content {
+            position: relative; z-index: 2; max-width: 1400px; margin: 0 auto; padding: 40px 0;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;
+        }
+        .astral-timeline { display: flex; flex-direction: column; gap: 0; }
+        .timeline-item { display: flex; gap: 24px; padding: 24px 0; border-bottom: 1px solid var(--border); }
+        .timeline-item:first-child { padding-top: 0; }
+        .timeline-item:last-child { border-bottom: none; }
+        .timeline-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; color: var(--gold); flex-shrink: 0; line-height: 1; min-width: 32px; }
+        .timeline-text strong { display: block; font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--cream); font-weight: 400; margin-bottom: 6px; }
+        .timeline-text p { font-size: 0.85rem; line-height: 1.8; color: var(--text-dim); }
+
+        /* ── OBSERVATORY INFRASTRUCTURE GRID ── */
+        #infrastructure { background: var(--charcoal); padding-top: 140px; }
+        .obs-grid {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+            background: var(--border); border: 1px solid var(--border); margin-top: 60px; max-width: 1400px; margin-left: auto; margin-right: auto;
+        }
+        .obs-feature { background: var(--black); padding: 48px 36px; transition: background 0.4s; }
+        .obs-feature:hover { background: rgba(200,169,110,0.04); }
+        .obs-icon { font-size: 1.8rem; margin-bottom: 22px; display: block; }
+        .obs-feature-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; color: var(--cream); margin-bottom: 14px; }
+        .obs-feature-desc { font-size: 0.8rem; line-height: 1.7; color: var(--text-dim); }
+
+        /* ── EVENTS TICKER ── */
+        #events {
+            background-image: url('images/observatorio03.png');
+            background-position: center; background-size: cover; background-attachment: scroll;
+            position: relative;
+        }
+        #events::before {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to right, rgba(13,27,53,0.95) 0%, rgba(10,10,12,0.98) 100%);
+        }
+        .events-inner {
+            max-width: 1400px; margin: 0 auto; position: relative; z-index: 1;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;
+        }
+        .event-row {
+            display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 28px;
+            padding: 24px 0; border-bottom: 1px solid rgba(255,255,255,0.06); transition: background 0.3s;
+        }
+        .event-row:hover { background: rgba(200,169,110,0.05); padding-left: 10px; }
+        .event-date { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--gold); }
+        .event-name { font-size: 0.85rem; color: var(--cream); letter-spacing: 0.04em; }
+        .event-type { font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--text-dim); border: 1px solid var(--border); padding: 5px 12px; }
+
+        /* ── FOOTER ── */
+        footer { background: var(--black); border-top: 1px solid var(--border); padding: 80px 60px 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; max-width: 1400px; margin: 0 auto 60px; }
+        .footer-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--cream); }
+        .footer-logo span { color: var(--gold); }
+        .footer-brand p { font-size: 0.8rem; line-height: 1.9; color: var(--text-dim); margin-top: 16px; max-width: 300px; }
+        .footer-col h4 { font-family: 'Jost', sans-serif; font-size: 0.65rem; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold); margin-bottom: 24px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+        .footer-col a { font-size: 0.8rem; color: var(--text-dim); text-decoration: none; transition: color 0.3s; }
+        .footer-col a:hover { color: var(--cream); }
+        .footer-bottom { max-width: 1400px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 30px; }
+        .footer-bottom p { font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        /* ── ANIMATIONS ── */
+        .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s ease, transform 0.9s ease; }
+        .reveal.visible { opacity: 1; transform: translateY(0); }
+        .reveal-delay-1 { transition-delay: 0.2s; }
+        .reveal-delay-2 { transition-delay: 0.4s; }
+        @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* ── RESPONSIVE: DESKTOP PARALLAX ── */
+        @media (hover: hover) and (pointer: fine) {
+            #hero, #astral, #events { background-attachment: fixed; }
+        }
+
+        /* ── RESPONSIVE: TABLET & IPAD ── */
+        @media (max-width: 1024px) {
+            nav { padding: 20px 30px; }
+            .nav-links a { margin-left: 20px; font-size: 0.75rem; }
+            section { padding: 100px 40px; }
+            .hero-title { font-size: 4rem; }
+            .grid-2 { gap: 40px; }
+            .image-block { height: 400px; }
+            .obs-grid { grid-template-columns: 1fr 1fr; }
+            .events-inner { grid-template-columns: 1fr; gap: 50px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+        }
+
+        /* ── RESPONSIVE: MOBILE ── */
+        @media (max-width: 768px) {
+            nav { padding: 15px 25px; }
+            .hamburger { display: flex; }
+            
+            .nav-links {
+                position: fixed; top: 0; right: -100%;
+                width: 80vw; height: 100vh;
+                background: rgba(10,10,12,0.98); backdrop-filter: blur(20px);
+                flex-direction: column; justify-content: center; gap: 35px;
+                transition: right 0.4s ease; box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+                z-index: 101; border-left: 1px solid var(--border);
+            }
+            .nav-links.nav-active { right: 0; }
+            .nav-links a { margin: 0; font-size: 1.1rem; letter-spacing: 0.15em; }
+            
+            .hamburger.toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
+            .hamburger.toggle span:nth-child(2) { opacity: 0; }
+            .hamburger.toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
+            #hero { height: 85vh; }
+            .hero-title { font-size: 3rem; }
+            
+            section { padding: 80px 25px; }
+            .grid-2 { grid-template-columns: 1fr; gap: 50px; }
+            .image-block { height: 320px; }
+            
+            .astral-content { grid-template-columns: 1fr; gap: 50px; padding: 20px 0; }
+            .obs-grid { grid-template-columns: 1fr; }
+            
+            .event-row { grid-template-columns: 1fr; text-align: center; gap: 10px; padding: 30px 0; }
+            .event-row:hover { padding-left: 0; }
+            
+            .footer-grid { grid-template-columns: 1fr; gap: 40px; }
+            .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor">
+        <div id="cursor-dot"></div>
+        <div id="cursor-ring"></div>
+    </div>
+
+    <nav id="navbar">
+        <a href="#hero" class="nav-logo">Observatorio <span>Federal</span></a>
+        
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <ul class="nav-links" id="nav-links">
+            <li><a href="#concept">The Concept</a></li>
+            <li><a href="#astral">Astral Night</a></li>
+            <li><a href="#infrastructure">Equipment</a></li>
+            <li><a href="#events">Calendar</a></li>
+            <li><a href="casacampo" class="nav-cta">Casa Campo</a></li>
+        </ul>
+    </nav>
+
+    <section id="hero">
+        <canvas id="star-canvas"></canvas>
+        <div class="hero-bg-overlay"></div>
+        <div class="hero-content reveal visible">
+            <div class="hero-eyebrow">Dark Sky Destination</div>
+            <h1 class="hero-title">
+                Observatorio
+                <em>Federal</em>
+            </h1>
+            <p class="hero-sub">Where the Pampas Meet the Universe</p>
+            <a href="#astral" class="btn-primary">Discover Astral Night</a>
+        </div>
+    </section>
+
+    <div class="intro-band">
+        <div class="marquee-track">
+            <span class="marquee-item">Rural Astrotourism</span>
+            <span class="marquee-item">Northern Entre Ríos</span>
+            <span class="marquee-item">Bortle Class 2 Skies</span>
+            <span class="marquee-item">Automated Telescopes</span>
+            <span class="marquee-item">Astrophotography</span>
+            <span class="marquee-item">Rural Astrotourism</span>
+            <span class="marquee-item">Northern Entre Ríos</span>
+            <span class="marquee-item">Bortle Class 2 Skies</span>
+            <span class="marquee-item">Automated Telescopes</span>
+            <span class="marquee-item">Astrophotography</span>
+        </div>
+    </div>
+
+    <section id="concept">
+        <div class="grid-2">
+            <div class="reveal">
+                <div class="section-eyebrow">The Destination</div>
+                <h2 class="section-title">Where the countryside<br>and the <em>cosmos</em> meet</h2>
+                <div class="text-block">
+                    <p>Observatorio Federal is an exclusive rural astrotourism destination nestled in the vast, unspoiled horizons of northern Entre Ríos. Benefiting from exceptionally low light pollution, we transform premium rural hospitality into an immersive scientific and sensory journey beneath the stars.</p>
+                    <p>Our contemporary rural architecture integrates seamlessly into the nocturnal landscape through charcoal structures, warm stone, and reclaimed timber — an aesthetic designed not to compete with nature, but to honor the night sky.</p>
+                </div>
+            </div>
+            <div class="image-block reveal reveal-delay-1" style="background-image: url('images/observatorio02.png');"></div>
+        </div>
+    </section>
+
+    <section id="astral">
+        <div class="astral-overlay"></div>
+        <div class="astral-content">
+            <div class="reveal">
+                <div class="section-eyebrow">Flagship Experience</div>
+                <h2 class="section-title">The <em>Astral Night</em><br>Journey</h2>
+                <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 30px;">An emotional arc from dusk to dawn — a complete sensory experience that reconnects guests with silence, nature, and the boundless universe above the pampas.</p>
+                <a href="#events" class="btn-primary">View Calendar</a>
+            </div>
+            
+            <div class="astral-timeline reveal reveal-delay-1">
+                <div class="timeline-item">
+                    <div class="timeline-num">I</div>
+                    <div class="timeline-text">
+                        <strong>Arrival & Welcome · Dusk</strong>
+                        <p>Begin the evening as the last light fades over the horizon. Welcome drink on the perimetral deck.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-num">II</div>
+                    <div class="timeline-text">
+                        <strong>Regional Dinner · 20:00</strong>
+                        <p>A curated menu celebrating Entre Ríos produce, served under dim amber light to begin dark adaptation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-num">III</div>
+                    <div class="timeline-text">
+                        <strong>Astronomical Talk · 21:30</strong>
+                        <p>An immersive introduction to the night sky — constellations, mythology, and the science of deep space.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-num">IV</div>
+                    <div class="timeline-text">
+                        <strong>Guided Observation · 22:15</strong>
+                        <p>Telescopes aligned to the night's celestial highlights. Stars, planets, nebulae, and the Milky Way core.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-num">V</div>
+                    <div class="timeline-text">
+                        <strong>Campfire & Silence · 00:30</strong>
+                        <p>A fire beneath a sky of ten thousand stars. Stories, wine, and the profound quiet of the pampas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="infrastructure">
+        <div style="max-width: 700px; text-align: center; margin: 0 auto;" class="reveal">
+            <div class="section-eyebrow" style="justify-content: center;">Equipment & Facilities</div>
+            <h2 class="section-title">A Rural <em>Observatory</em><br>Under Open Skies</h2>
+            <p style="color: var(--text-mid); font-size: 0.9rem;">Equipped with professional-grade instruments and designed for both scientific observation and sensory wonder, the observatory is the technical soul of the estate.</p>
+        </div>
+        
+        <div class="obs-grid">
+            <div class="obs-feature reveal">
+                <span class="obs-icon">🔭</span>
+                <h3 class="obs-feature-title">Automated Telescopes</h3>
+                <p class="obs-feature-desc">Professional-grade auto-tracking telescopes aligned for guided observation of planets, nebulae, and galaxies.</p>
+            </div>
+            <div class="obs-feature reveal reveal-delay-1">
+                <span class="obs-icon">🌌</span>
+                <h3 class="obs-feature-title">Immersive Dome</h3>
+                <p class="obs-feature-desc">An astronomical dome for immersive projections, educational sessions, and introductory cosmic talks.</p>
+            </div>
+            <div class="obs-feature reveal reveal-delay-2">
+                <span class="obs-icon">📷</span>
+                <h3 class="obs-feature-title">Astrophotography Zone</h3>
+                <p class="obs-feature-desc">Dedicated dark-sky platforms with stable mount points for long-exposure photography of the Milky Way.</p>
+            </div>
+            <div class="obs-feature reveal reveal-delay-3">
+                <span class="obs-icon">🔴</span>
+                <h3 class="obs-feature-title">Red-Light Systems</h3>
+                <p class="obs-feature-desc">All pathways and observation areas use dim red lighting to preserve night-adapted vision.</p>
+            </div>
+            <div class="obs-feature reveal">
+                <span class="obs-icon">🛋️</span>
+                <h3 class="obs-feature-title">Reclining Deck</h3>
+                <p class="obs-feature-desc">A terrace of reclining loungers angled toward the zenith — lie back and let the sky open above you.</p>
+            </div>
+            <div class="obs-feature reveal reveal-delay-1">
+                <span class="obs-icon">🎓</span>
+                <h3 class="obs-feature-title">Educational Programs</h3>
+                <p class="obs-feature-desc">Structured programs for schools and universities with tailored workshops and observing sessions.</p>
+            </div>
+            <div class="obs-feature reveal reveal-delay-2">
+                <span class="obs-icon">🌠</span>
+                <h3 class="obs-feature-title">Astro Binoculars</h3>
+                <p class="obs-feature-desc">High-power mounted binoculars for wide-field constellation tours — ideal for first-time sky watchers.</p>
+            </div>
+            <div class="obs-feature reveal reveal-delay-3">
+                <span class="obs-icon">🏅</span>
+                <h3 class="obs-feature-title">Dark Sky Path</h3>
+                <p class="obs-feature-desc">On track for international Dark Sky Destination certification, protecting the night for generations.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="events">
+        <div class="events-inner">
+            <div class="reveal">
+                <div class="section-eyebrow">2026 Calendar</div>
+                <h2 class="section-title">Special <em>Astronomical</em> Events</h2>
+                <p style="color: var(--text-mid); font-size: 0.9rem; margin-bottom: 30px;">Annual events synchronized with the cosmos. Plan your visit around the sky's most spectacular moments to experience them in total darkness.</p>
+            </div>
+            
+            <div class="events-list reveal reveal-delay-1">
+                <div class="event-row">
+                    <div class="event-date">Feb 17</div>
+                    <div class="event-name">Annular Solar Eclipse — Partial View</div>
+                    <div class="event-type">Eclipse</div>
+                </div>
+                <div class="event-row">
+                    <div class="event-date">May 06</div>
+                    <div class="event-name">Eta Aquariids — Southern Hemisphere Peak</div>
+                    <div class="event-type">Meteor Shower</div>
+                </div>
+                <div class="event-row">
+                    <div class="event-date">Aug 12</div>
+                    <div class="event-name">Perseid Meteor Shower — Peak Night</div>
+                    <div class="event-type">Meteor Shower</div>
+                </div>
+                <div class="event-row">
+                    <div class="event-date">Aug 28</div>
+                    <div class="event-name">Total Lunar Eclipse — Blood Moon</div>
+                    <div class="event-type">Eclipse</div>
+                </div>
+                <div class="event-row">
+                    <div class="event-date">Dec 14</div>
+                    <div class="event-name">Geminid Peak — Year's Best Shower</div>
+                    <div class="event-type">Meteor Shower</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">Observatorio <span>Federal</span></div>
+                <p>A premier rural astrotourism destination in northern Entre Ríos, Argentina. Where the pampas meet the universe.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Experiences</h4>
+                <ul>
+                    <li><a href="aviation">Private Aviation</a></li>
+                    <li><a href="suites">Boutique Suites</a></li>
+                    <li><a href="gastronomy">Regional Gastronomy</a></li>
+                    <li><a href="#hero">Observatorio</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Estate</h4>
+                <ul>
+                    <li><a href="casacampo">Casa Campo</a></li>
+                    <li><a href="#infrastructure">Equipment</a></li>
+                    <li><a href="#events">Calendar</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact</h4>
+                <ul>
+                    <li><a href="mailto:info@casacampo.com.ar">info@casacampo.com.ar</a></li>
+                    <li><a href="tel:+5493442000000">+54 9 3442 000 000</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">WhatsApp</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>© 2026 Observatorio Federal · Entre Ríos, Argentina</p>
+            <p>Designed for the night sky</p>
+        </div>
+    </footer>
+
+    <script>
+        // --- Custom Cursor ---
+        const dot = document.getElementById('cursor-dot');
+        const ring = document.getElementById('cursor-ring');
+        let mx = 0, my = 0, rx = 0, ry = 0;
+        document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+        function animateCursor() {
+            if(!dot || !ring) return;
+            rx += (mx - rx) * 0.18;
+            ry += (my - ry) * 0.18;
+            dot.style.left = mx + 'px'; dot.style.top = my + 'px';
+            ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        if(window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            animateCursor();
+        }
+
+        // --- Nav Scroll Effect ---
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
+
+        // --- Mobile Hamburger Menu ---
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navItems = document.querySelectorAll('.nav-links a');
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+            });
+        });
+
+        // --- Hero Canvas: Shooting Stars & Twinkles ---
+        (function() {
+            const canvas = document.getElementById('star-canvas');
+            if(!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let W, H, stars = [], shooting = [];
+
+            function resize() {
+                W = canvas.width = window.innerWidth;
+                H = canvas.height = window.innerHeight;
+                let starCount = W < 768 ? 150 : 280;
+                stars = Array.from({ length: starCount }, () => ({
+                    x: Math.random() * W, y: Math.random() * H,
+                    r: Math.random() * 1.6 + 0.2,
+                    o: Math.random() * 0.7 + 0.2,
+                    s: Math.random() * 0.008 + 0.002,
+                    t: Math.random() * Math.PI * 2
+                }));
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            function addShooting() {
+                shooting.push({
+                    x: Math.random() * W * 0.7 + W * 0.1,
+                    y: Math.random() * H * 0.4,
+                    vx: 4 + Math.random() * 4,
+                    vy: 2 + Math.random() * 3,
+                    len: 80 + Math.random() * 80,
+                    life: 1
+                });
+            }
+            setInterval(addShooting, 3800);
+
+            function draw() {
+                ctx.clearRect(0, 0, W, H);
+                stars.forEach(s => {
+                    s.t += s.s;
+                    const o = s.o * (0.7 + 0.3 * Math.sin(s.t));
+                    ctx.beginPath();
+                    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255,255,245,${o})`;
+                    ctx.fill();
+                });
+                shooting = shooting.filter(s => s.life > 0);
+                shooting.forEach(s => {
+                    const grad = ctx.createLinearGradient(s.x, s.y, s.x - s.vx * 12, s.y - s.vy * 12);
+                    grad.addColorStop(0, `rgba(200,169,110,${s.life * 0.9})`); // Gold tail
+                    grad.addColorStop(1, 'transparent');
+                    ctx.beginPath();
+                    ctx.moveTo(s.x, s.y);
+                    ctx.lineTo(s.x - s.vx * 14, s.y - s.vy * 14);
+                    ctx.strokeStyle = grad;
+                    ctx.lineWidth = 1.5;
+                    ctx.stroke();
+                    s.x += s.vx; s.y += s.vy; s.life -= 0.025;
+                });
+                requestAnimationFrame(draw);
+            }
+            draw();
+        })();
+
+        // --- Scroll Reveal Animations ---
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+        }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // --- Smooth Scrolling ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) target.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    </script>
+</body>
+</html>
