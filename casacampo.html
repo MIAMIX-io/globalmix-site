@@ -88,9 +88,16 @@
         .image-block { height: 500px; border-radius: 4px; background-size: cover; background-position: center; box-shadow: 0 20px 50px rgba(0,0,0,0.6); }
         .landscape-format { height: auto !important; aspect-ratio: 16 / 9; width: 100%; }
 
-        /* ── EXPERIENCES CARDS ── */
+        /* ── EXPERIENCES CARDS (LOCKED 3-COL GRID) ── */
         #features { background: var(--charcoal); }
-        .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; perspective: 1000px; max-width: 1400px; margin: 60px auto 0; }
+        .card-grid { 
+            display: grid; 
+            grid-template-columns: repeat(3, 1fr); /* Hard-locked to 3 columns to prevent auto-fit collapsing */
+            gap: 40px; 
+            perspective: 1000px; 
+            max-width: 1400px; 
+            margin: 60px auto 0; 
+        }
         .feature-card { position: relative; height: 480px; border-radius: 4px; transform-style: preserve-3d; transition: transform 0.1s; cursor: none; overflow: hidden; border: 1px solid var(--border); }
         .card-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.7s ease; filter: brightness(0.8); }
         .feature-card:hover .card-bg { transform: scale(1.05); filter: brightness(0.6); }
@@ -137,7 +144,7 @@
             #hero, .wide-banner { background-attachment: fixed; }
         }
 
-        /* ── RESPONSIVE: TABLET & IPAD ── */
+        /* ── RESPONSIVE: TABLET & IPAD (Locked 3-Column Tighter Grid) ── */
         @media (max-width: 1024px) {
             nav { padding: 20px 30px; }
             .nav-links a { margin-left: 20px; }
@@ -145,26 +152,52 @@
             .hero-title { font-size: 4rem; }
             .grid-2 { gap: 40px; }
             .image-block { height: 400px; }
+            
+            /* Tighter 3-Column Rules for iPad to prevent wrapping */
+            .card-grid { grid-template-columns: repeat(3, 1fr); gap: 20px; }
+            .feature-card { height: 380px; }
+            .card-overlay { padding: 20px; }
+            .card-overlay h3 { font-size: 1.4rem; margin-bottom: 8px; }
+            .card-overlay p { font-size: 0.75rem; line-height: 1.5; }
+            
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
         }
 
-        /* ── RESPONSIVE: MOBILE ── */
-        @media (max-width: 768px) {
+        /* ── RESPONSIVE: MOBILE PHONE ── */
+        @media (max-width: 767px) {
             nav { padding: 15px 25px; }
             .hamburger { display: flex; }
-            .nav-links { position: fixed; top: 0; right: -100%; width: 80vw; height: 100vh; background: rgba(10,10,12,0.98); backdrop-filter: blur(20px); flex-direction: column; justify-content: center; gap: 35px; transition: right 0.4s ease; box-shadow: -10px 0 30px rgba(0,0,0,0.8); z-index: 101; border-left: 1px solid var(--border); }
+            
+            .nav-links {
+                position: fixed; top: 0; right: -100%;
+                width: 80vw; height: 100vh;
+                background: rgba(10,10,12,0.98); backdrop-filter: blur(20px);
+                flex-direction: column; justify-content: center; gap: 35px;
+                transition: right 0.4s ease; box-shadow: -10px 0 30px rgba(0,0,0,0.8);
+                z-index: 101; border-left: 1px solid var(--border);
+            }
             .nav-links.nav-active { right: 0; }
             .nav-links a { margin: 0; font-size: 1.1rem; letter-spacing: 0.15em; }
+            
             .hamburger.toggle span:nth-child(1) { transform: rotate(-45deg) translate(-5px, 6px); }
             .hamburger.toggle span:nth-child(2) { opacity: 0; }
             .hamburger.toggle span:nth-child(3) { transform: rotate(45deg) translate(-5px, -6px); }
+
             #hero { height: 85vh; }
             .hero-title { font-size: 3rem; }
             .hero-sub { font-size: 0.7rem; }
+            
             section { padding: 80px 25px; }
             .grid-2 { grid-template-columns: 1fr; gap: 50px; }
             .image-block { height: 320px; }
-            .feature-card { height: 380px; }
+            
+            /* Collapse to 1 column on mobile phones */
+            .card-grid { grid-template-columns: 1fr; gap: 30px; }
+            .feature-card { height: 350px; }
+            .card-overlay { padding: 30px; }
+            .card-overlay h3 { font-size: 1.6rem; }
+            .card-overlay p { font-size: 0.85rem; }
+            
             .footer-grid { grid-template-columns: 1fr; gap: 40px; }
             .footer-bottom { flex-direction: column; gap: 15px; text-align: center; }
         }
@@ -181,15 +214,17 @@
         <a href="#hero" class="nav-logo">Casa <span>Campo</span></a>
         
         <div class="hamburger" id="hamburger">
-            <span></span><span></span><span></span>
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
 
         <ul class="nav-links" id="nav-links">
             <li><a href="#concept">The Concept</a></li>
-            <li><a href="/casacampo/aviation">Aviation</a></li>
-            <li><a href="/casacampo/suites">Suites</a></li>
-            <li><a href="/casacampo/gastronomy">Gastronomy</a></li>
-            <li><a href="/casacampo/observatorio" class="nav-cta">Observatorio</a></li>
+            <li><a href="aviation">Aviation</a></li>
+            <li><a href="suites">Suites</a></li>
+            <li><a href="gastronomy">Gastronomy</a></li>
+            <li><a href="https://www.globalmix.network/observatorio" class="nav-cta">Observatorio</a></li>
         </ul>
     </nav>
 
@@ -209,15 +244,15 @@
     <div class="intro-band">
         <div class="marquee-track">
             <span class="marquee-item">Premium Fly-In Lodge</span>
-            <span class="marquee-item">Bespoke Hospitality</span>
+            <span class="marquee-item">Curated Hospitality</span>
             <span class="marquee-item">Private Aerodrome</span>
             <span class="marquee-item">Regional Gastronomy</span>
-            <span class="marquee-item">Dark Sky Reserve</span>
+            <span class="marquee-item">Northern Entre Ríos</span>
             <span class="marquee-item">Premium Fly-In Lodge</span>
             <span class="marquee-item">Curated Hospitality</span>
             <span class="marquee-item">Private Aerodrome</span>
             <span class="marquee-item">Regional Gastronomy</span>
-            <span class="marquee-item">Dark Sky Reserve</span>
+            <span class="marquee-item">Northern Entre Ríos</span>
         </div>
     </div>
 
@@ -226,7 +261,7 @@
             <div class="reveal">
                 <div class="section-eyebrow">Bespoke Lodge & Aerodrome</div>
                 <h2 class="section-title">A Highly Differentiated <em>Proposition</em></h2>
-                <p style="margin-bottom: 20px; font-size: 0.9rem;">We combine concepts rarely integrated in Argentina: curated rural hospitality, premium experiences, and direct private flight access. This transforms the hotel into a destination in itself.</p>
+                <p style="margin-bottom: 20px; font-size: 0.9rem;">We combine three high-value concepts rarely integrated in Argentina: Bespoke rural hospitality, premium experiences, and direct private flight access. This transforms the hotel into a destination in itself.</p>
                 <p style="font-size: 0.9rem;">Designed for an exclusive segment, including international tourists, executives, premium sports fishermen, and private aircraft owners. The experience begins the moment you land.</p>
                 <div class="text-block">
                     <ul>
@@ -249,7 +284,7 @@
         </div>
 
         <div class="card-grid reveal reveal-delay-1">
-            <div class="feature-card" onclick="window.location.href='/casacampo/aviation'">
+            <div class="feature-card" onclick="window.location.href='aviation'">
                 <div class="card-bg" style="background-image: url('images/campo02.png');"></div>
                 <div class="card-overlay">
                     <h3>Private Aviation</h3>
@@ -257,7 +292,7 @@
                 </div>
             </div>
 
-            <div class="feature-card" onclick="window.location.href='/casacampo/suites'">
+            <div class="feature-card" onclick="window.location.href='suites'">
                 <div class="card-bg" style="background-image: url('images/campo03.png');"></div>
                 <div class="card-overlay">
                     <h3>Bespoke Suites</h3>
@@ -265,7 +300,7 @@
                 </div>
             </div>
 
-            <div class="feature-card" onclick="window.location.href='/casacampo/gastronomy'">
+            <div class="feature-card" onclick="window.location.href='gastronomy'">
                 <div class="card-bg" style="background-image: url('images/campo04.png');"></div>
                 <div class="card-overlay">
                     <h3>Regional Gastronomy</h3>
@@ -273,7 +308,7 @@
                 </div>
             </div>
 
-            <div class="feature-card" onclick="window.location.href='/casacampo/observatorio'">
+            <div class="feature-card" onclick="window.location.href='observatorio'">
                 <div class="card-bg" style="background-image: url('images/observatorio01.png');"></div>
                 <div class="card-overlay">
                     <h3>Dark Sky Observatory</h3>
@@ -281,16 +316,16 @@
                 </div>
             </div>
 
-            <div class="feature-card" onclick="window.location.href='/casacampo/spa'">
-                <div class="card-bg" style="background-image: url('/images/spa01.PNG');"></div>
+            <div class="feature-card" onclick="window.location.href='spa'">
+                <div class="card-bg" style="background-image: url('images/spa01.png');"></div>
                 <div class="card-overlay">
                     <h3>Spa & Wellness</h3>
                     <p>Disconnect and rejuvenate. Holistic treatments, thermal circuits, and nature-inspired therapies designed for ultimate relaxation.</p>
                 </div>
             </div>
 
-            <div class="feature-card" onclick="window.location.href='/casacampo/equestrian'">
-                <div class="card-bg" style="background-image: url('https://images.unsplash.com/photo-1550126417-c0c9e38eba50?q=80&w=1086&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+            <div class="feature-card" onclick="window.location.href='equestrian'">
+                <div class="card-bg" style="background-image: url('images/equestrian01.png');"></div>
                 <div class="card-overlay">
                     <h3>Equestrian & Outdoors</h3>
                     <p>Experience the Pampas. Polo lessons, guided horseback expeditions, Golden Dorado fishing, and exclusive hunting reserves.</p>
@@ -367,12 +402,12 @@
             <div class="footer-col">
                 <h4>Experiences</h4>
                 <ul>
-                    <li><a href="/casacampo/aviation">Private Aviation</a></li>
-                    <li><a href="/casacampo/suites">Bespoke Suites</a></li>
-                    <li><a href="/casacampo/gastronomy">Regional Gastronomy</a></li>
-                    <li><a href="/casacampo/observatorio">Observatorio</a></li>
-                    <li><a href="/casacampo/spa">Spa & Wellness</a></li>
-                    <li><a href="/casacampo/equestrian">Equestrian & Outdoors</a></li>
+                    <li><a href="aviation">Private Aviation</a></li>
+                    <li><a href="suites">Bespoke Suites</a></li>
+                    <li><a href="gastronomy">Regional Gastronomy</a></li>
+                    <li><a href="https://www.globalmix.network/observatorio">Observatorio</a></li>
+                    <li><a href="spa">Spa & Wellness</a></li>
+                    <li><a href="equestrian">Equestrian & Outdoors</a></li>
                 </ul>
             </div>
             <div class="footer-col">
@@ -413,44 +448,72 @@
             ring.style.left = rx + 'px'; ring.style.top = ry + 'px';
             requestAnimationFrame(animateCursor);
         }
-        if(window.matchMedia("(hover: hover) and (pointer: fine)").matches) { animateCursor(); }
+        if(window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            animateCursor();
+        }
 
         // --- Nav Scroll Effect ---
         const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 50);
+        });
 
         // --- Mobile Hamburger Menu ---
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('nav-links');
         const navItems = document.querySelectorAll('.nav-links a');
-        hamburger.addEventListener('click', () => { navLinks.classList.toggle('nav-active'); hamburger.classList.toggle('toggle'); });
-        navItems.forEach(item => { item.addEventListener('click', () => { navLinks.classList.remove('nav-active'); hamburger.classList.remove('toggle'); }); });
+
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('nav-active');
+            hamburger.classList.toggle('toggle');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                navLinks.classList.remove('nav-active');
+                hamburger.classList.remove('toggle');
+            });
+        });
 
         // --- Ember/Dust Particle System ---
         const canvas = document.getElementById('particle-canvas');
         const ctx = canvas.getContext('2d');
-        let width, height, particles = [];
+        let width, height;
+        let particles = [];
+
         function initParticles() {
-            width = canvas.width = window.innerWidth; height = canvas.height = window.innerHeight; particles = [];
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles = [];
             let particleCount = width < 768 ? 50 : 120;
             for (let i = 0; i < particleCount; i++) {
                 particles.push({
-                    x: Math.random() * width, y: Math.random() * height, z: Math.random() * 2 + 0.1, radius: Math.random() * 2 + 0.5,
-                    vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 1) * 0.5, alpha: Math.random() * 0.8 + 0.2, color: Math.random() > 0.5 ? '#d4a373' : '#ff7a00' 
+                    x: Math.random() * width, y: Math.random() * height,
+                    z: Math.random() * 2 + 0.1, radius: Math.random() * 2 + 0.5,
+                    vx: (Math.random() - 0.5) * 0.5, vy: (Math.random() - 1) * 0.5, 
+                    alpha: Math.random() * 0.8 + 0.2, color: Math.random() > 0.5 ? '#d4a373' : '#ff7a00' 
                 });
             }
         }
         window.addEventListener('resize', initParticles);
+        
         let pMouseX = 0, pMouseY = 0;
-        document.getElementById('hero').addEventListener('mousemove', (e) => { pMouseX = (e.clientX - width / 2) * 0.05; pMouseY = (e.clientY - height / 2) * 0.05; });
+        document.getElementById('hero').addEventListener('mousemove', (e) => {
+            pMouseX = (e.clientX - width / 2) * 0.05;
+            pMouseY = (e.clientY - height / 2) * 0.05;
+        });
+
         function animateParticles() {
             ctx.clearRect(0, 0, width, height);
             particles.forEach(p => {
                 p.x += p.vx; p.y += p.vy;
-                let px = p.x - (pMouseX * p.z), py = p.y - (pMouseY * p.z);
+                let px = p.x - (pMouseX * p.z);
+                let py = p.y - (pMouseY * p.z);
                 if (p.x < 0) p.x = width; if (p.x > width) p.x = 0;
                 if (p.y < 0) p.y = height; if (p.y > height) p.y = 0;
-                ctx.beginPath(); ctx.arc(px, py, p.radius * p.z, 0, Math.PI * 2); ctx.fillStyle = p.color; ctx.globalAlpha = p.alpha * (p.z / 2); ctx.shadowBlur = 10; ctx.shadowColor = p.color; ctx.fill();
+                ctx.beginPath(); ctx.arc(px, py, p.radius * p.z, 0, Math.PI * 2);
+                ctx.fillStyle = p.color; ctx.globalAlpha = p.alpha * (p.z / 2);
+                ctx.shadowBlur = 10; ctx.shadowColor = p.color; ctx.fill();
             });
             requestAnimationFrame(animateParticles);
         }
@@ -461,21 +524,29 @@
         cards.forEach(card => {
             card.addEventListener('mousemove', function(e) {
                 if(window.innerWidth <= 1024) return;
-                const rect = this.getBoundingClientRect(); const centerX = rect.left + rect.width / 2; const centerY = rect.top + rect.height / 2;
-                const mX = e.clientX - centerX; const mY = e.clientY - centerY;
-                const rotateX = (mY / (rect.height / 2)) * -12; const rotateY = (mX / (rect.width / 2)) * 12;
+                const rect = this.getBoundingClientRect();
+                const centerX = rect.left + rect.width / 2;
+                const centerY = rect.top + rect.height / 2;
+                const mX = e.clientX - centerX;
+                const mY = e.clientY - centerY;
+                const rotateX = (mY / (rect.height / 2)) * -12; 
+                const rotateY = (mX / (rect.width / 2)) * 12;
                 this.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             });
             card.addEventListener('mouseleave', function() {
                 if(window.innerWidth <= 1024) return;
-                this.style.transform = 'rotateX(0deg) rotateY(0deg)'; this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
+                this.style.transform = 'rotateX(0deg) rotateY(0deg)';
+                this.style.transition = 'transform 0.5s cubic-bezier(0.23, 1, 0.32, 1)';
                 setTimeout(() => { this.style.transition = 'transform 0.1s'; }, 500);
             });
         });
 
         // --- Scroll Reveal Animations ---
-        const observer = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } }); }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+        }, { threshold: 0.12, rootMargin: "0px 0px -50px 0px" });
         document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
     </script>
 </body>
 </html>
