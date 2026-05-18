@@ -1,0 +1,1388 @@
+```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Centro Cultural Colonia Federal | Campo Moderno</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Cinzel (para títulos elegantes rústicos) y Plus Jakarta Sans (para lectura limpia) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- FontAwesome para íconos rústicos e interactivos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Tailwind Config para paleta "Campo Moderno" -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        campo: {
+                            50: '#fcfaf6',   // Lino claro / fondo cálido
+                            100: '#f5efe4',  // Arena suave
+                            200: '#e3d5be',  // Madera clara / piedra vieja
+                            600: '#a6825c',  // Terracota / Cuero ocre
+                            700: '#8c6543',  // Nogal / Teja
+                            800: '#2b3f2d',  // Verde Campo Profundo
+                            900: '#1a271c',  // Sombra del bosque / Negro orgánico
+                        },
+                        dorado: {
+                            DEFAULT: '#cf9e5d',
+                            hover: '#b58547',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                        serif: ['Cinzel', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .wood-pattern {
+            background-color: #fcfaf6;
+            background-image: radial-gradient(#2b3f2d08 1px, transparent 0), radial-gradient(#2b3f2d08 1px, transparent 0);
+            background-size: 8px 8px;
+            background-position: 0 0, 4px 4px;
+        }
+        .blur-header {
+            backdrop-filter: blur(12px);
+            background-color: rgba(26, 39, 28, 0.9);
+        }
+    </style>
+</head>
+<body class="font-sans text-campo-900 wood-pattern overflow-x-hidden">
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 blur-header text-campo-50 border-b border-campo-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logotipo -->
+                <a href="#" class="flex flex-col">
+                    <span class="font-serif text-lg sm:text-xl md:text-2xl tracking-widest font-bold text-dorado">CENTRO CULTURAL</span>
+                    <span class="text-xs sm:text-sm uppercase tracking-[0.25em] text-campo-200">Colonia Federal</span>
+                </a>
+
+                <!-- Navegación Escritorio -->
+                <nav class="hidden md:flex space-x-6 lg:space-x-8 text-sm uppercase tracking-wider font-semibold">
+                    <a href="#proyecto" class="hover:text-dorado transition-colors">Proyecto</a>
+                    <a href="#plano" class="hover:text-dorado transition-colors">Plano Interactivo</a>
+                    <a href="#salon" class="hover:text-dorado transition-colors">Salón</a>
+                    <a href="#huespedes" class="hover:text-dorado transition-colors">Huéspedes</a>
+                    <a href="#actividades" class="hover:text-dorado transition-colors">Programas</a>
+                    <a href="#servicios" class="hover:text-dorado transition-colors">Catering</a>
+                </nav>
+
+                <!-- Botón Contacto / RRSS -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="https://instagram.com/culturacoloniafederal" target="_blank" class="text-campo-100 hover:text-dorado transition-colors text-lg" title="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/17864598797?text=Hola,%20quisiera%20más%20información%20sobre%20el%20Centro%20Cultural%20Colonia%20Federal" target="_blank" class="bg-dorado hover:bg-dorado-hover text-campo-900 font-bold px-5 py-2 rounded-full text-xs uppercase tracking-wider transition-all shadow-md flex items-center gap-2">
+                        <i class="fab fa-whatsapp text-sm"></i> Consultar
+                    </a>
+                </div>
+
+                <!-- Botón Menú Móvil -->
+                <button id="mobile-menu-btn" class="md:hidden text-campo-100 hover:text-dorado focus:outline-none" aria-label="Abrir Menú">
+                    <i class="fa-solid fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobile-menu" class="hidden md:hidden blur-header border-t border-campo-800/80 animate-fade-in">
+            <div class="px-4 pt-2 pb-6 space-y-3 text-center">
+                <a href="#proyecto" class="block py-2 text-campo-100 hover:text-dorado font-medium tracking-wider text-sm">EL PROYECTO</a>
+                <a href="#plano" class="block py-2 text-campo-100 hover:text-dorado font-medium tracking-wider text-sm">PLANO INTERACTIVO</a>
+                <a href="#salon" class="block py-2 text-campo-100 hover:text-dorado font-medium tracking-wider text-sm">EL SALÓN</a>
+                <a href="#huespedes" class="block py-2 text-campo-100 hover:text-dorado font-medium tracking-wider text-sm">CASA DE HUÉSPEDES</a>
+                <a href="#actividades" class="block py-2 text-campo-100 hover:text-dorado font-medium tracking-wider text-sm">PROGRAMAS & TALLERES</a>
+                <a href="#servicios" class="block py-2 text-campo-100 hover:text-dorado font-medium tracking-wider text-sm">GASTRONOMÍA "EL JAGUAR"</a>
+                <div class="pt-4 flex justify-center space-x-6 border-t border-campo-800/50">
+                    <a href="https://instagram.com/culturacoloniafederal" target="_blank" class="text-campo-200 hover:text-dorado text-2xl">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://wa.me/17864598797" target="_blank" class="text-emerald-400 hover:text-emerald-300 text-2xl">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (ESTILO CAMPO MODERNO) -->
+    <section class="relative min-h-screen flex items-center justify-center pt-24 pb-16 bg-campo-900 overflow-hidden">
+        <!-- Overlay Orgánico de Fondo -->
+        <div class="absolute inset-0 opacity-40 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-campo-800 via-campo-900 to-black z-0"></div>
+        
+        <!-- Ilustración de Fondo Abstracta del Techo a dos aguas / Campo -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] h-[80vw] max-w-[1000px] max-h-[1000px] border border-campo-800/30 rounded-full pointer-events-none z-0"></div>
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] max-w-[700px] max-h-[700px] border border-dorado/10 rounded-full pointer-events-none z-0"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center text-campo-50">
+            <!-- Distintivo Rústico -->
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-dorado/40 bg-campo-800/60 backdrop-blur-sm mb-6 text-dorado text-xs sm:text-sm font-semibold uppercase tracking-[0.2em] animate-pulse">
+                <i class="fa-solid fa-tree text-xs"></i> Uniendo Naturaleza, Cultura y Comunidad
+            </div>
+
+            <!-- Título Principal -->
+            <h1 class="font-serif text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight max-w-5xl mx-auto">
+                Espacio de Oportunidades y Encuentro Regional
+            </h1>
+
+            <p class="text-base sm:text-lg md:text-xl text-campo-200 font-light max-w-3xl mx-auto mb-10 leading-relaxed">
+                Descubre un complejo arquitectónico único en Colonia Federal. Diseñado para albergar espectáculos masivos, eventos corporativos exclusivos, programas educativos y hospedaje de primer nivel.
+            </p>
+
+            <!-- Acciones -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
+                <a href="#plano" class="w-full sm:w-auto bg-dorado hover:bg-dorado-hover text-campo-900 font-bold px-8 py-4 rounded-xl shadow-lg hover:shadow-dorado/20 transition-all transform hover:-translate-y-0.5 text-center uppercase tracking-wider text-sm">
+                    Explorar Plano Interactivo
+                </a>
+                <a href="#estimador" class="w-full sm:w-auto bg-transparent hover:bg-campo-800/40 border border-campo-200 text-campo-50 font-bold px-8 py-4 rounded-xl transition-all text-center uppercase tracking-wider text-sm">
+                    Planificar Evento
+                </a>
+            </div>
+
+            <!-- Datos Rápidos / Features en Barra Flotante -->
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-16 lg:mt-24 max-w-5xl mx-auto bg-campo-800/40 backdrop-blur-md p-6 rounded-2xl border border-campo-800/80">
+                <div class="text-center p-2 border-r border-campo-700/50 last:border-0">
+                    <span class="block text-2xl sm:text-3xl font-serif font-bold text-dorado">1.800 m²</span>
+                    <span class="text-xs text-campo-200 uppercase tracking-widest">Superficie Total</span>
+                </div>
+                <div class="text-center p-2 md:border-r border-campo-700/50 last:border-0">
+                    <span class="block text-2xl sm:text-3xl font-serif font-bold text-dorado">600 m²</span>
+                    <span class="text-xs text-campo-200 uppercase tracking-widest">Salón de Eventos</span>
+                </div>
+                <div class="text-center p-2 border-r border-campo-700/50 last:border-0">
+                    <span class="block text-2xl sm:text-3xl font-serif font-bold text-dorado">Hasta 1.200</span>
+                    <span class="text-xs text-campo-200 uppercase tracking-widest">Personas de Capacidad</span>
+                </div>
+                <div class="text-center p-2 last:border-0">
+                    <span class="block text-2xl sm:text-3xl font-serif font-bold text-dorado">6 Hab.</span>
+                    <span class="text-xs text-campo-200 uppercase tracking-widest">Casa de Huéspedes</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1. PRESENTACIÓN DEL PROYECTO -->
+    <section id="proyecto" class="py-20 sm:py-28 bg-campo-50 border-b border-campo-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Izquierda: Información de Visión -->
+                <div class="lg:col-span-7 space-y-6">
+                    <span class="text-dorado font-bold uppercase tracking-[0.25em] text-sm block">El Origen y Propósito</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-campo-900">
+                        Un Faro Cultural para Colonia Federal y su Región
+                    </h2>
+                    <p class="text-campo-700 text-base sm:text-lg leading-relaxed">
+                        El <strong>Centro Cultural Colonia Federal</strong> nace como una respuesta a la expansión urbana y la necesidad de contar con un epicentro integrador. Ubicado en un entorno natural que combina la paz del campo con una arquitectura moderna de excelencia, es el punto estratégico de conexión social, educativo, turístico y empresarial de la provincia.
+                    </p>
+                    
+                    <!-- Pilares del Proyecto -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-campo-800 text-dorado flex items-center justify-center shadow-md">
+                                <i class="fa-solid fa-graduation-cap text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-campo-900 text-base">Desarrollo Educativo</h3>
+                                <p class="text-sm text-campo-600">Formación técnica y tecnológica en vivo, radio, multimedia y oficios regionales.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-campo-800 text-dorado flex items-center justify-center shadow-md">
+                                <i class="fa-solid fa-users-rectangle text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-campo-900 text-base">Integración de Eventos</h3>
+                                <p class="text-sm text-campo-600">Espacios dinámicos listos para acoger desde peñas tradicionales hasta bodas elegantes.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-campo-800 text-dorado flex items-center justify-center shadow-md">
+                                <i class="fa-solid fa-radio text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-campo-900 text-base">Media & Streaming</h3>
+                                <p class="text-sm text-campo-600">Estación de radio y equipamiento audiovisual integrado para transmisiones de alta gama.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 rounded-xl bg-campo-800 text-dorado flex items-center justify-center shadow-md">
+                                <i class="fa-solid fa-hotel text-lg"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-bold text-campo-900 text-base">Alojamiento Exclusivo</h3>
+                                <p class="text-sm text-campo-600">Hospedaje de alta calidad para artistas, disertantes internacionales y familias de eventos.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Render Frontal e Imagen de Entrada -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-2xl overflow-hidden shadow-2xl border border-campo-200 group">
+                        <!-- Representación Visual del Frontis (Refiriendo a la imagen 2 cargada) -->
+                        <div class="bg-campo-900 p-8 pt-16 pb-12 flex flex-col justify-between aspect-[3/4] text-campo-50 relative">
+                            <!-- Fondo con gradiente simulando la luz que sale de los vitrales -->
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-campo-900/30 to-campo-900 z-0"></div>
+                            
+                            <!-- Dibujo minimalista del techo a dos aguas y claraboya -->
+                            <div class="relative z-10 border-t-2 border-l-2 border-r-2 border-dorado/30 h-40 w-full rounded-t-3xl flex items-center justify-center">
+                                <div class="w-1/2 h-full border-r border-dorado/10 flex justify-center">
+                                    <div class="w-full h-8 bg-dorado/10 border-b border-dorado/20 mt-4"></div>
+                                </div>
+                                <div class="w-1/2 h-full flex justify-center">
+                                    <div class="w-full h-8 bg-dorado/10 border-b border-dorado/20 mt-4"></div>
+                                </div>
+                                <span class="absolute -bottom-6 bg-campo-900 px-4 text-xs font-serif tracking-widest text-campo-200">TECHO CON CLARABOYA VIDRIADA</span>
+                            </div>
+
+                            <div class="relative z-10 text-center space-y-3 mt-12">
+                                <h4 class="font-serif text-2xl tracking-widest text-dorado font-bold">CENTRO CULTURAL</h4>
+                                <p class="text-xs uppercase tracking-[0.3em] text-campo-100">COLONIA FEDERAL</p>
+                                <div class="h-[1px] w-1/4 bg-dorado/50 mx-auto my-2"></div>
+                                <p class="text-xs text-campo-300 font-light italic">Fachada campestre moderna de tejas, pilares de ladrillo visto y grandes ventanales de acceso.</p>
+                            </div>
+
+                            <!-- Simulación de Entrada -->
+                            <div class="relative z-10 grid grid-cols-4 gap-1 h-20 border-t border-campo-800 mt-6">
+                                <div class="bg-black/40 border-r border-campo-800"></div>
+                                <div class="bg-black/20 border-r border-campo-800 flex items-end justify-center pb-2"><i class="fa-solid fa-person text-dorado/80"></i></div>
+                                <div class="bg-black/20 border-r border-campo-800 flex items-end justify-center pb-2"><i class="fa-solid fa-person-dress text-dorado/80"></i></div>
+                                <div class="bg-black/40"></div>
+                            </div>
+                        </div>
+
+                        <!-- Badge flotante -->
+                        <div class="absolute top-4 left-4 bg-dorado text-campo-900 text-xs font-bold px-3 py-1.5 rounded-lg shadow-md z-20 uppercase tracking-wider">
+                            RÉNDER FACHADA
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. DESCRIPCIÓN GENERAL DEL PREDIO - INTERACTIVO -->
+    <section id="plano" class="py-20 sm:py-28 bg-campo-100 text-campo-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-dorado font-bold uppercase tracking-[0.25em] text-sm">Distribución del Terreno</span>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-campo-900 mt-2">
+                    Plano Interactivo del Complejo ($30\text{ m} \times 60\text{ m}$)
+                </h2>
+                <p class="text-campo-600 mt-4">
+                    Haz clic o toca las distintas áreas del predio en el mapa interactivo para ver en detalle su distribución, dimensiones y propósitos.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                <!-- Columna Izquierda: Mapa Arquitectónico construido en HTML/Tailwind dinámico -->
+                <div class="lg:col-span-7 flex justify-center">
+                    <!-- Contenedor del Plano Escala 30m x 60m (Ratio 1:2) -->
+                    <div class="relative w-full max-w-[420px] aspect-[1/2] bg-emerald-900/10 border-4 border-campo-800 rounded-3xl p-4 shadow-2xl flex flex-col justify-between overflow-hidden" style="background-image: radial-gradient(#2b3f2d20 2px, transparent 0); background-size: 20px 20px;">
+                        
+                        <!-- Límites de Medidas visuales -->
+                        <div class="absolute top-2 left-0 w-full text-center text-[10px] text-campo-800 font-bold tracking-widest border-b border-dashed border-campo-800/40 pb-1 z-20">
+                            FRENTE: 30.00 METROS
+                        </div>
+                        <div class="absolute top-1/2 right-2 -translate-y-1/2 text-[10px] text-campo-800 font-bold tracking-widest rotate-90 origin-right whitespace-nowrap z-20">
+                            FONDO: 60.00 METROS
+                        </div>
+
+                        <!-- CONTENIDO DEL PREDIO (De arriba a abajo, según el plano de la imagen 1) -->
+                        <div class="space-y-4 z-10 flex flex-col h-full justify-between pt-6 pb-2">
+                            
+                            <!-- A. CASA DE HUÉSPEDES (Arriba, fondo del terreno) -->
+                            <div id="area-huespedes" onclick="selectArea('huespedes')" class="cursor-pointer transition-all duration-300 hover:scale-[1.02] border-2 border-campo-800 bg-amber-50 rounded-xl p-3 shadow-md hover:shadow-xl active:bg-amber-100 flex flex-col justify-between h-[22%]">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-bold text-campo-900 uppercase tracking-wider flex items-center gap-1">
+                                        <i class="fa-solid fa-house-user text-dorado"></i> Casa de Huéspedes
+                                    </span>
+                                    <span class="text-[9px] bg-dorado/20 text-campo-900 font-bold px-1.5 py-0.5 rounded">Fondo</span>
+                                </div>
+                                <div class="grid grid-cols-6 gap-1 my-1">
+                                    <div class="h-4 bg-campo-200 rounded border border-campo-800/30 flex items-center justify-center text-[8px] font-bold">H1</div>
+                                    <div class="h-4 bg-campo-200 rounded border border-campo-800/30 flex items-center justify-center text-[8px] font-bold">H2</div>
+                                    <div class="h-4 bg-campo-200 rounded border border-campo-800/30 flex items-center justify-center text-[8px] font-bold">H3</div>
+                                    <div class="h-4 bg-campo-200 rounded border border-campo-800/30 flex items-center justify-center text-[8px] font-bold">H4</div>
+                                    <div class="h-4 bg-campo-200 rounded border border-campo-800/30 flex items-center justify-center text-[8px] font-bold">H5</div>
+                                    <div class="h-4 bg-campo-200 rounded border border-campo-800/30 flex items-center justify-center text-[8px] font-bold">H6</div>
+                                </div>
+                                <div class="flex justify-between text-[9px] text-campo-600 font-medium">
+                                    <span>6 Dormitorios + Baños</span>
+                                    <span>Cocina/Living Comedor</span>
+                                </div>
+                            </div>
+
+                            <!-- Sendero de conexión -->
+                            <div class="h-6 w-8 bg-amber-100/60 border-l border-r border-dashed border-campo-800/30 mx-auto flex items-center justify-center text-[9px] text-campo-600 font-bold">
+                                SENDERO
+                            </div>
+
+                            <!-- B. EDIFICIO PRINCIPAL — CENTRO CULTURAL (Centro del terreno, 20x30m) -->
+                            <div id="area-salon" onclick="selectArea('salon')" class="cursor-pointer transition-all duration-300 hover:scale-[1.02] border-2 border-campo-800 bg-campo-50 rounded-xl p-3 shadow-lg hover:shadow-xl active:bg-campo-100 flex flex-col justify-between h-[52%]">
+                                <div class="flex justify-between items-center border-b border-campo-200 pb-1">
+                                    <span class="text-xs font-bold text-campo-900 uppercase tracking-wider flex items-center gap-1">
+                                        <i class="fa-solid fa-landmark text-campo-800"></i> Edificio Principal
+                                    </span>
+                                    <span class="text-[9px] bg-campo-800 text-campo-50 font-bold px-1.5 py-0.5 rounded">600 m²</span>
+                                </div>
+
+                                <!-- Escenario -->
+                                <div class="bg-amber-800/20 border border-amber-800 rounded p-1 text-center text-[10px] font-bold text-amber-900 uppercase tracking-widest my-1">
+                                    <i class="fa-solid fa-circle-play text-[9px]"></i> Escenario Principal
+                                </div>
+
+                                <!-- Salón de Usos Múltiples -->
+                                <div class="flex-1 bg-campo-100/50 border border-dashed border-campo-400 rounded-lg flex flex-col justify-center items-center my-1 p-2 text-center relative overflow-hidden">
+                                    <!-- Distribución simulada de Sillas -->
+                                    <div class="grid grid-cols-6 gap-1 opacity-20 w-full mb-1">
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                    </div>
+                                    <span class="text-[11px] font-bold text-campo-800 uppercase tracking-widest block">SALÓN DE USOS MÚLTIPLES</span>
+                                    <span class="text-[9px] text-campo-500 font-bold">20.00 x 30.00 metros</span>
+                                    <div class="grid grid-cols-6 gap-1 opacity-20 w-full mt-1">
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                        <div class="h-2 bg-campo-900 rounded-sm"></div>
+                                    </div>
+                                </div>
+
+                                <!-- Bloque Lateral Izquierdo: Cocina, Baños, Oficina -->
+                                <div class="grid grid-cols-4 gap-1 text-[8px] font-bold text-center uppercase tracking-wider mt-1">
+                                    <div class="bg-gray-200 border border-campo-300 p-1 rounded">Cocina</div>
+                                    <div class="bg-pink-100 border border-pink-200 p-1 rounded">Damas</div>
+                                    <div class="bg-blue-100 border border-blue-200 p-1 rounded">Caballeros</div>
+                                    <div class="bg-amber-100 border border-amber-200 p-1 rounded">Oficina 3</div>
+                                </div>
+                            </div>
+
+                            <!-- Sendero y Acceso Frontal -->
+                            <div class="h-4 w-8 bg-amber-100/60 border-l border-r border-dashed border-campo-800/30 mx-auto"></div>
+
+                            <!-- C. ÁREA RECREATIVA, ESTACIONAMIENTO Y ACCESO (Frente del terreno) -->
+                            <div id="area-acceso" onclick="selectArea('acceso')" class="cursor-pointer transition-all duration-300 hover:scale-[1.02] border-2 border-campo-800 bg-emerald-800/20 rounded-xl p-3 shadow-md hover:shadow-xl active:bg-emerald-800/30 flex justify-between gap-2 h-[18%]">
+                                <div class="w-1/2 bg-amber-100/40 rounded border border-campo-800/20 p-1 flex flex-col justify-between">
+                                    <span class="text-[9px] font-bold uppercase tracking-wider text-campo-900"><i class="fa-solid fa-child text-dorado"></i> Juegos</span>
+                                    <span class="text-[8px] text-campo-600">Área de juegos infantiles</span>
+                                </div>
+                                <div class="w-1/2 bg-slate-100/60 rounded border border-campo-800/20 p-1 flex flex-col justify-between">
+                                    <span class="text-[9px] font-bold uppercase tracking-wider text-campo-900"><i class="fa-solid fa-car text-slate-700"></i> Parking</span>
+                                    <div class="flex gap-1 justify-center">
+                                        <div class="w-3 h-4 bg-slate-400 rounded-sm border border-slate-600"></div>
+                                        <div class="w-3 h-4 bg-slate-500 rounded-sm border border-slate-600"></div>
+                                        <div class="w-3 h-4 bg-slate-600 rounded-sm border border-slate-600"></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Tarjeta de Detalle del Área Seleccionada -->
+                <div class="lg:col-span-5 flex flex-col justify-center">
+                    <div id="detail-card" class="bg-campo-50 rounded-2xl border border-campo-200 p-8 shadow-xl space-y-6 transition-all duration-500 transform translate-y-0">
+                        <!-- Carga dinámica aquí mediante JS -->
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 rounded-xl bg-campo-800 text-dorado flex items-center justify-center text-xl">
+                                <i class="fa-solid fa-circle-info"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-serif text-xl font-bold text-campo-900 uppercase tracking-wider">Explorar el Complejo</h3>
+                                <p class="text-xs text-campo-500 font-bold uppercase tracking-widest">Haz clic en una sección del plano</p>
+                            </div>
+                        </div>
+                        <div class="h-[1px] bg-campo-200 w-full"></div>
+                        <p class="text-campo-700 leading-relaxed text-sm">
+                            El terreno total abarca una superficie de $1.800\text{ m}^2$ ($30.00\text{ metros de frente por } 60.00\text{ metros de fondo}$), logrando un balance perfecto entre la imponente edificación cultural y el verde del entorno rural.
+                        </p>
+                        <ul class="space-y-2 text-sm text-campo-600 font-medium">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-dorado"></i> Acceso vial pavimentado de fácil ingreso</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-dorado"></i> Cuidado paisajístico con árboles regionales</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-dorado"></i> Integración peatonal limpia entre los dos edificios</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. DETALLE: EL SALÓN PRINCIPAL (CON SIMULADOR) -->
+    <section id="salon" class="py-20 sm:py-28 bg-campo-900 text-campo-50 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(ellipse_at_bottom,_var(--tw-gradient-stops))] from-campo-200 via-transparent to-transparent"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Izquierda: Información de Diseño Interior -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-dorado font-bold uppercase tracking-[0.25em] text-sm block">El Corazón del Complejo</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+                        Un Salón de Diseño Industrial Rústico
+                    </h2>
+                    <p class="text-campo-200 text-base sm:text-lg leading-relaxed">
+                        Inspirado en la calidez del campo moderno, el salón cuenta con una imponente **estructura de cabriadas de madera a la vista** que sostienen un techo a dos aguas con un gran ventanal cenital, permitiendo que la luz natural inunde el espacio durante el día. 
+                    </p>
+                    <p class="text-campo-300 text-sm sm:text-base leading-relaxed">
+                        Los enormes ventanales laterales de piso a techo integran el hermoso paisaje arbolado exterior directamente al interior del salón, creando una sensación de amplitud infinita y conexión directa con la naturaleza de Colonia Federal.
+                    </p>
+
+                    <!-- Atributos Clave del Salón -->
+                    <div class="grid grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 bg-campo-800/40 rounded-xl border border-campo-800">
+                            <i class="fa-solid fa-lightbulb text-dorado text-xl mb-2 block"></i>
+                            <h4 class="font-bold text-campo-50 text-sm">Claraboyas & Luz</h4>
+                            <p class="text-xs text-campo-300">Techo vidriado con control térmico.</p>
+                        </div>
+                        <div class="p-4 bg-campo-800/40 rounded-xl border border-campo-800">
+                            <i class="fa-solid fa-wind text-dorado text-xl mb-2 block"></i>
+                            <h4 class="font-bold text-campo-50 text-sm">Climatización</h4>
+                            <p class="text-xs text-campo-300">Preparado para frío/calor todo el año.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Representación Tridimensional del Interior -->
+                <div class="lg:col-span-6">
+                    <div class="relative bg-campo-950 rounded-2xl border border-campo-800 p-6 shadow-2xl aspect-[4/3] flex flex-col justify-between overflow-hidden">
+                        <!-- Fondo simulando cerchas de madera -->
+                        <div class="absolute inset-0 bg-gradient-to-b from-campo-950 via-campo-900 to-black z-0"></div>
+                        
+                        <!-- Dibujo de cerchas de madera expuestas en el techo -->
+                        <svg class="absolute top-0 left-0 w-full h-32 opacity-25 z-10" viewBox="0 0 400 100" fill="none" stroke="#cf9e5d" stroke-width="2">
+                            <!-- Cercha 1 -->
+                            <path d="M 0,20 L 200,60 L 400,20" />
+                            <path d="M 0,20 L 400,20" />
+                            <path d="M 200,60 L 200,20" />
+                            <path d="M 100,30 L 100,20 M 300,30 L 300,20" />
+                            <!-- Cercha 2 -->
+                            <path d="M 0,50 L 200,90 L 400,50" />
+                            <path d="M 0,50 L 400,50" />
+                            <path d="M 200,90 L 200,50" />
+                        </svg>
+
+                        <!-- Cabina Técnica e Iluminación Simulada -->
+                        <div class="relative z-20 flex justify-between items-center bg-campo-900/60 px-4 py-2 rounded-lg border border-campo-800 text-xs">
+                            <span class="text-dorado font-bold uppercase tracking-wider"><i class="fa-solid fa-sliders"></i> Sistema de Iluminación Truss</span>
+                            <span class="text-emerald-400"><i class="fa-solid fa-circle text-[8px] animate-pulse"></i> Activo</span>
+                        </div>
+
+                        <!-- Dibujo de Escenario con Cortinas Rojas Simuladas -->
+                        <div class="relative z-10 w-full h-32 bg-campo-900/40 border border-campo-800/80 rounded-xl mt-6 p-4 flex flex-col justify-between">
+                            <!-- Cortinas Rojas Flanqueadoras -->
+                            <div class="absolute top-0 left-0 bottom-0 w-12 bg-red-800/60 rounded-l-xl border-r border-red-950 flex items-center justify-center">
+                                <div class="w-1 h-full bg-red-900 opacity-50"></div>
+                            </div>
+                            <div class="absolute top-0 right-0 bottom-0 w-12 bg-red-800/60 rounded-r-xl border-l border-red-950 flex items-center justify-center">
+                                <div class="w-1 h-full bg-red-900 opacity-50"></div>
+                            </div>
+
+                            <!-- Centro del Escenario: Atril -->
+                            <div class="flex-1 flex flex-col items-center justify-center space-y-2">
+                                <div class="h-8 w-6 border-b-2 border-dorado bg-dorado/10 flex items-center justify-center rounded">
+                                    <i class="fa-solid fa-microphone text-[8px] text-dorado"></i>
+                                </div>
+                                <span class="text-[10px] text-dorado uppercase tracking-widest font-bold">Escenario Principal</span>
+                            </div>
+                        </div>
+
+                        <!-- Distribución Visual de Sillas del Auditorio -->
+                        <div class="relative z-10 grid grid-cols-10 gap-1.5 opacity-65 my-4">
+                            <!-- Filas de asientos -->
+                            <div class="h-3 bg-campo-800 border border-campo-700 rounded-sm"></div>
+                            <div class="h-3 bg-campo-800 border border-campo-700 rounded-sm"></div>
+                            <div class="h-3 bg-campo-800 border border-campo-700 rounded-sm"></div>
+                            <div class="h-3 bg-campo-800 border border-campo-700 rounded-sm"></div>
+                            <div class="h-3 bg-campo-800 border border-campo-700 rounded-sm"></div>
+                            <div class="h-3 bg-campo-800 border border-campo-700 rounded-sm"></div>
+                            <div class="h-3 bg-campo-800 border border-campo-700 rounded-sm"></div>
+                            <div class="h-3 bg-campo-800 border border-campo-700 rounded-sm"></div>
+                            <div class="h-3 bg-campo-800 border border-campo-700 rounded-sm"></div>
+                            <div class="h-3 bg-campo-800 border border-campo-700 rounded-sm"></div>
+                        </div>
+
+                        <div class="relative z-20 text-center text-xs text-campo-300 bg-campo-950/80 p-2 rounded border border-campo-800">
+                            Vista 3D simulada del Salón Principal y el Escenario.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PLANIFICADOR DE EVENTOS (SIMULADOR INTELIGENTE) -->
+    <section id="estimador" class="py-20 bg-campo-100 text-campo-900">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-campo-50 rounded-3xl border border-campo-200 p-6 sm:p-10 shadow-2xl space-y-8">
+                
+                <div class="text-center space-y-2">
+                    <span class="text-dorado font-bold uppercase tracking-widest text-xs">Herramienta Interactiva</span>
+                    <h3 class="font-serif text-2xl sm:text-3xl font-bold text-campo-900">Configurador Inteligente de Eventos</h3>
+                    <p class="text-sm text-campo-600 max-w-2xl mx-auto">
+                        Selecciona el tipo de evento y la distribución deseada para ver las sugerencias de aforo y requerimientos recomendados por nuestros expertos.
+                    </p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                    <!-- Controles del Simulador -->
+                    <div class="space-y-6">
+                        <!-- Selector de Formato de Evento -->
+                        <div>
+                            <label class="block text-xs font-bold uppercase tracking-wider text-campo-700 mb-3">1. Tipo de Formato de Distribución</label>
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                                <button onclick="setEventFormat('auditorio')" id="btn-auditorio" class="p-3 rounded-xl border-2 border-dorado bg-dorado/10 text-campo-900 font-bold text-xs uppercase tracking-wider text-center flex flex-col items-center gap-2 transition-all">
+                                    <i class="fa-solid fa-chair text-lg"></i> Auditorio
+                                </button>
+                                <button onclick="setEventFormat('social')" id="btn-social" class="p-3 rounded-xl border-2 border-campo-200 text-campo-600 hover:border-dorado font-bold text-xs uppercase tracking-wider text-center flex flex-col items-center gap-2 transition-all">
+                                    <i class="fa-solid fa-utensils text-lg"></i> Banquete/Mesa
+                                </button>
+                                <button onclick="setEventFormat('concierto')" id="btn-concierto" class="p-3 rounded-xl border-2 border-campo-200 text-campo-600 hover:border-dorado font-bold text-xs uppercase tracking-wider text-center flex flex-col items-center gap-2 transition-all">
+                                    <i class="fa-solid fa-users text-lg"></i> Concierto / Pie
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Selector de Cantidad de Invitados -->
+                        <div>
+                            <div class="flex justify-between items-center mb-2">
+                                <label class="block text-xs font-bold uppercase tracking-wider text-campo-700">2. Cantidad de Invitados</label>
+                                <span id="invitados-val" class="font-bold text-dorado text-lg">250 Personas</span>
+                            </div>
+                            <input id="slider-invitados" type="range" min="30" max="1200" value="250" oninput="updateGuests(this.value)" class="w-full h-2 bg-campo-200 rounded-lg appearance-none cursor-pointer accent-dorado">
+                            <div class="flex justify-between text-[10px] text-campo-500 font-bold mt-1">
+                                <span>30 Mínimo</span>
+                                <span>500 Sentados</span>
+                                <span>1200 Máximo</span>
+                            </div>
+                        </div>
+
+                        <!-- Checkbox Catering El Jaguar -->
+                        <div class="flex items-center gap-3 p-4 bg-campo-100 rounded-xl border border-campo-200">
+                            <input id="check-jaguar" type="checkbox" checked onchange="toggleJaguar()" class="w-5 h-5 rounded border-campo-300 text-dorado focus:ring-dorado accent-dorado">
+                            <div>
+                                <label for="check-jaguar" class="font-bold text-campo-900 text-sm cursor-pointer">Incluir Catering Gourmet "El Jaguar"</label>
+                                <p class="text-xs text-campo-600">Servicios gastronómicos y barra premium exclusiva.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Panel de Resultados Dinámicos -->
+                    <div class="bg-campo-900 text-campo-50 p-6 rounded-2xl border border-campo-800 space-y-6">
+                        <div class="flex justify-between items-center border-b border-campo-800 pb-4">
+                            <span class="text-xs uppercase tracking-widest text-campo-300 font-bold">Diagnóstico Técnico</span>
+                            <span id="viabilidad-badge" class="bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider">Viable</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-xs text-campo-400 block uppercase tracking-wider">Distribución Aconsejable</span>
+                                <p id="diag-distribucion" class="font-serif text-lg font-bold text-dorado">Configuración en Auditorio Sentado</p>
+                            </div>
+
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <span class="text-xs text-campo-400 block uppercase tracking-wider">Espacio Requerido</span>
+                                    <p id="diag-espacio" class="text-sm font-bold text-campo-100">~ 300 m² ocupados</p>
+                                </div>
+                                <div>
+                                    <span class="text-xs text-campo-400 block uppercase tracking-wider">Servicios Requeridos</span>
+                                    <p id="diag-banos" class="text-sm font-bold text-campo-100">Batería de Baños Estándar</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <span class="text-xs text-campo-400 block uppercase tracking-wider">Propuesta Gastronómica</span>
+                                <p id="diag-catering" class="text-sm font-semibold text-campo-200">Menú formal platado o Cocktail por "El Jaguar".</p>
+                            </div>
+                        </div>
+
+                        <!-- CTA WhatsApp personalizado -->
+                        <button onclick="sendReservationQuery()" class="w-full bg-dorado hover:bg-dorado-hover text-campo-900 font-bold py-3 px-6 rounded-xl transition-all uppercase tracking-wider text-xs flex items-center justify-center gap-2 shadow-lg">
+                            <i class="fab fa-whatsapp text-lg"></i> Consultar Disponibilidad
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CASA DE HUÉSPEDES -->
+    <section id="huespedes" class="py-20 sm:py-28 bg-campo-50 border-b border-campo-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Izquierda: Tarjetas / Diseño Visual de las Habitaciones -->
+                <div class="lg:col-span-6 space-y-6">
+                    <!-- Representación rústica de la distribución de la Casa (6 dormitorios, 2 baños compartidos amplios, living comedor grande, cocina) -->
+                    <div class="bg-amber-50 rounded-2xl border border-campo-200 p-6 shadow-xl relative overflow-hidden">
+                        <div class="absolute top-0 right-0 w-32 h-32 bg-dorado/5 rounded-full pointer-events-none -mr-16 -mt-16"></div>
+                        
+                        <div class="flex items-center justify-between mb-6">
+                            <span class="bg-campo-800 text-dorado text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest">ALQUILER COMPLETO / POR CUARTO</span>
+                            <span class="text-xs text-campo-500 font-bold"><i class="fa-solid fa-expand"></i> Plano Planta Alta</span>
+                        </div>
+
+                        <!-- Estructura visual de habitaciones de la Casa de Huéspedes -->
+                        <div class="border border-campo-800/20 rounded-xl p-3 bg-white space-y-4">
+                            <div class="text-center text-[10px] font-bold uppercase tracking-wider text-campo-600 border-b border-campo-100 pb-2">
+                                Distribución de la Casa de Huéspedes
+                            </div>
+
+                            <!-- Grilla de Habitaciones -->
+                            <div class="grid grid-cols-3 gap-2">
+                                <div class="bg-campo-100/40 p-2.5 rounded border border-campo-800/10 text-center">
+                                    <span class="block text-xs font-bold text-campo-900">Hab. 1</span>
+                                    <span class="text-[9px] text-campo-500">Matrimonial</span>
+                                </div>
+                                <div class="bg-campo-100/40 p-2.5 rounded border border-campo-800/10 text-center">
+                                    <span class="block text-xs font-bold text-campo-900">Hab. 2</span>
+                                    <span class="text-[9px] text-campo-500">Doble Twin</span>
+                                </div>
+                                <div class="bg-campo-100/40 p-2.5 rounded border border-campo-800/10 text-center">
+                                    <span class="block text-xs font-bold text-campo-900">Hab. 3</span>
+                                    <span class="text-[9px] text-campo-500">Matrimonial</span>
+                                </div>
+                                <div class="bg-campo-100/40 p-2.5 rounded border border-campo-800/10 text-center">
+                                    <span class="block text-xs font-bold text-campo-900">Hab. 4</span>
+                                    <span class="text-[9px] text-campo-500">Familiar</span>
+                                </div>
+                                <div class="bg-campo-100/40 p-2.5 rounded border border-campo-800/10 text-center">
+                                    <span class="block text-xs font-bold text-campo-900">Hab. 5</span>
+                                    <span class="text-[9px] text-campo-500">Doble Twin</span>
+                                </div>
+                                <div class="bg-campo-100/40 p-2.5 rounded border border-campo-800/10 text-center">
+                                    <span class="block text-xs font-bold text-campo-900">Hab. 6</span>
+                                    <span class="text-[9px] text-campo-500">Premium</span>
+                                </div>
+                            </div>
+
+                            <!-- Áreas comunes de la Casa de Huéspedes -->
+                            <div class="grid grid-cols-2 gap-2 text-center text-xs font-medium">
+                                <div class="bg-campo-800/5 text-campo-800 p-2 rounded border border-campo-800/10">
+                                    <i class="fa-solid fa-couch text-[10px] text-dorado"></i> Living Comedor Grande
+                                </div>
+                                <div class="bg-campo-800/5 text-campo-800 p-2 rounded border border-campo-800/10">
+                                    <i class="fa-solid fa-mitten text-[10px] text-dorado"></i> Cocina Completa Equipada
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Información del Alojamiento -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-dorado font-bold uppercase tracking-[0.25em] text-sm block">Alojamiento de Categoría</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-campo-900">
+                        La Casa de Huéspedes del Complejo
+                    </h2>
+                    <p class="text-campo-700 text-base sm:text-lg leading-relaxed">
+                        Un espacio residencial totalmente independiente pensado para ofrecer tranquilidad y confort absoluto. Ideal para hospedar a **artistas internacionales, conferencistas de congresos, familias de los novios, quinceañeras** o turistas que visitan Colonia Federal.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex gap-3 items-start">
+                            <div class="w-8 h-8 rounded-lg bg-campo-800 text-dorado flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-bed text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-campo-900 text-sm">Capacidad y Confort</h4>
+                                <p class="text-xs text-campo-600">6 amplias habitaciones equipadas con sábanas de alta densidad de hilos y camas premium.</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-3 items-start">
+                            <div class="w-8 h-8 rounded-lg bg-campo-800 text-dorado flex items-center justify-center flex-shrink-0">
+                                <i class="fa-solid fa-tv text-sm"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-campo-900 text-sm">Áreas de Convivencia</h4>
+                                <p class="text-xs text-campo-600">Living comedor con chimenea, televisión, wifi de alta velocidad y cocina industrial totalmente equipada.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. PROGRAMAS, CURSOS Y TALLERES (EXPLORADOR DINÁMICO) -->
+    <section id="actividades" class="py-20 sm:py-28 bg-campo-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-dorado font-bold uppercase tracking-[0.25em] text-sm">Una Agenda Dinámica</span>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-campo-900 mt-2">
+                    Programas, Formación y Cultura
+                </h2>
+                <p class="text-campo-600 mt-4">
+                    Filtra y descubre la amplia gama de actividades y talleres que se dictan durante todo el año en Colonia Federal.
+                </p>
+            </div>
+
+            <!-- Botones Filtros -->
+            <div class="flex flex-wrap justify-center gap-2 mb-10">
+                <button onclick="filterActivities('todos')" id="filter-todos" class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border-2 border-campo-800 bg-campo-800 text-campo-50 transition-all">
+                    Todos
+                </button>
+                <button onclick="filterActivities('formacion')" id="filter-formacion" class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border-2 border-campo-200 bg-white text-campo-600 hover:border-campo-800 transition-all">
+                    Formación Educativa
+                </button>
+                <button onclick="filterActivities('artes')" id="filter-artes" class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border-2 border-campo-200 bg-white text-campo-600 hover:border-campo-800 transition-all">
+                    Artes y Cultura
+                </button>
+                <button onclick="filterActivities('social')" id="filter-social" class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border-2 border-campo-200 bg-white text-campo-600 hover:border-campo-800 transition-all">
+                    Eventos Sociales
+                </button>
+                <button onclick="filterActivities('corporativo')" id="filter-corporativo" class="px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border-2 border-campo-200 bg-white text-campo-600 hover:border-campo-800 transition-all">
+                    Corporativo y Negocios
+                </button>
+            </div>
+
+            <!-- Grid de Tarjetas de Actividades -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="activities-grid">
+                
+                <!-- Formación Educativa: Marketing Digital -->
+                <div class="activity-card bg-white p-6 rounded-2xl border border-campo-200 shadow-lg space-y-4 hover:-translate-y-1 transition-all" data-category="formacion">
+                    <span class="text-[10px] bg-amber-500/10 text-amber-700 font-bold px-2 py-1 rounded uppercase tracking-wider">Formación</span>
+                    <h3 class="font-serif text-lg font-bold text-campo-900">Marketing Digital & IA aplicada</h3>
+                    <p class="text-xs text-campo-600">Herramientas digitales avanzadas, gestión de redes sociales y automatizaciones con IA para negocios regionales.</p>
+                    <div class="pt-2 border-t border-campo-100 flex justify-between items-center text-[11px] text-campo-500">
+                        <span><i class="fa-regular fa-clock"></i> Martes y Jueves</span>
+                        <span>Sede Colonia Federal</span>
+                    </div>
+                </div>
+
+                <!-- Formación Educativa: Producción de Radio -->
+                <div class="activity-card bg-white p-6 rounded-2xl border border-campo-200 shadow-lg space-y-4 hover:-translate-y-1 transition-all" data-category="formacion">
+                    <span class="text-[10px] bg-amber-500/10 text-amber-700 font-bold px-2 py-1 rounded uppercase tracking-wider">Formación</span>
+                    <h3 class="font-serif text-lg font-bold text-campo-900">Locución & Producción de Radio</h3>
+                    <p class="text-xs text-campo-600">Técnicas de modulación de voz, edición de audio digital, guionismo de radio y podcasting profesional en vivo.</p>
+                    <div class="pt-2 border-t border-campo-100 flex justify-between items-center text-[11px] text-campo-500">
+                        <span><i class="fa-regular fa-clock"></i> Lunes y Miércoles</span>
+                        <span>Cabina de Radio integrada</span>
+                    </div>
+                </div>
+
+                <!-- Artes: Folklore y Tango -->
+                <div class="activity-card bg-white p-6 rounded-2xl border border-campo-200 shadow-lg space-y-4 hover:-translate-y-1 transition-all" data-category="artes">
+                    <span class="text-[10px] bg-emerald-500/10 text-emerald-700 font-bold px-2 py-1 rounded uppercase tracking-wider">Artes y Cultura</span>
+                    <h3 class="font-serif text-lg font-bold text-campo-900">Danzas Folklóricas y Tango</h3>
+                    <p class="text-xs text-campo-600">Clases de baile regional tradicionales de folklore y tango con profesores de renombre nacional.</p>
+                    <div class="pt-2 border-t border-campo-100 flex justify-between items-center text-[11px] text-campo-500">
+                        <span><i class="fa-regular fa-clock"></i> Viernes de Peña</span>
+                        <span>Salón Principal</span>
+                    </div>
+                </div>
+
+                <!-- Artes: Teatro & Coros -->
+                <div class="activity-card bg-white p-6 rounded-2xl border border-campo-200 shadow-lg space-y-4 hover:-translate-y-1 transition-all" data-category="artes">
+                    <span class="text-[10px] bg-emerald-500/10 text-emerald-700 font-bold px-2 py-1 rounded uppercase tracking-wider">Artes y Cultura</span>
+                    <h3 class="font-serif text-lg font-bold text-campo-900">Taller Teatral & Coro Comunitario</h3>
+                    <p class="text-xs text-campo-600">Técnicas de improvisación corporal y vocal. Ensayos y representaciones en el gran Escenario Principal.</p>
+                    <div class="pt-2 border-t border-campo-100 flex justify-between items-center text-[11px] text-campo-500">
+                        <span><i class="fa-regular fa-clock"></i> Sábados por la mañana</span>
+                        <span>Escenario</span>
+                    </div>
+                </div>
+
+                <!-- Social: Bodas & 15 años -->
+                <div class="activity-card bg-white p-6 rounded-2xl border border-campo-200 shadow-lg space-y-4 hover:-translate-y-1 transition-all" data-category="social">
+                    <span class="text-[10px] bg-pink-500/10 text-pink-700 font-bold px-2 py-1 rounded uppercase tracking-wider">Sociales</span>
+                    <h3 class="font-serif text-lg font-bold text-campo-900">Bodas & Celebraciones de 15 años</h3>
+                    <p class="text-xs text-campo-600">Alquiler del salón completo con mesas, decoración rústica moderna y suite de preparación en la Casa de Huéspedes.</p>
+                    <div class="pt-2 border-t border-campo-100 flex justify-between items-center text-[11px] text-campo-500">
+                        <span><i class="fa-solid fa-users"></i> Capacidad 300</span>
+                        <span>Paquetes completos</span>
+                    </div>
+                </div>
+
+                <!-- Corporativo: Lanzamiento y Congresos -->
+                <div class="activity-card bg-white p-6 rounded-2xl border border-campo-200 shadow-lg space-y-4 hover:-translate-y-1 transition-all" data-category="corporativo">
+                    <span class="text-[10px] bg-blue-500/10 text-blue-700 font-bold px-2 py-1 rounded uppercase tracking-wider">Corporativo</span>
+                    <h3 class="font-serif text-lg font-bold text-campo-900">Presentaciones de Marca & Congresos</h3>
+                    <p class="text-xs text-campo-600">Infraestructura ideal para seminarios, capacitaciones corporativas, desfiles y rondas de negocios locales.</p>
+                    <div class="pt-2 border-t border-campo-100 flex justify-between items-center text-[11px] text-campo-500">
+                        <span><i class="fa-solid fa-plug"></i> Soporte Técnico Integrado</span>
+                        <span>Todo el año</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. ESTACIÓN DE RADIO & PRODUCCIÓN AUDIOVISUAL -->
+    <section class="py-20 sm:py-28 bg-campo-900 text-campo-50 relative overflow-hidden">
+        <!-- Elemento decorativo circular de fondo -->
+        <div class="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-dorado/5 border border-dorado/10 pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Izquierda: Información de Radio -->
+                <div class="lg:col-span-6 space-y-6">
+                    <span class="text-dorado font-bold uppercase tracking-[0.25em] text-sm block">Voz para la Región</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
+                        Estación de Radio & Streaming Integrada
+                    </h2>
+                    <p class="text-campo-200 text-base sm:text-lg leading-relaxed">
+                        El complejo cuenta con un estudio de transmisión de radio y streaming audiovisual con aislamiento acústico profesional, consolas digitales y equipamiento de última generación.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm text-campo-300">
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-microphone-lines text-dorado"></i> Transmisión en Vivo Multicanal</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-headset text-dorado"></i> Producción de Podcast Regional</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-signal text-dorado"></i> Cobertura de Eventos Culturales</div>
+                        <div class="flex items-center gap-2"><i class="fa-solid fa-camera-retro text-dorado"></i> Estudio de Video y Streaming</div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Reproductor de Radio Interactiva de Simulación -->
+                <div class="lg:col-span-6">
+                    <div class="bg-campo-950 rounded-2xl border border-campo-800 p-6 shadow-2xl space-y-6">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs uppercase tracking-widest text-campo-400 font-bold flex items-center gap-2">
+                                <i class="fa-solid fa-tower-broadcast text-dorado animate-ping"></i> Sintonizando Radio Colonia Federal
+                            </span>
+                            <span class="bg-dorado text-campo-900 text-[10px] font-bold px-2 py-0.5 rounded">FM 91.5 (Simulada)</span>
+                        </div>
+
+                        <!-- Panel de Audio Visualizer con Barras CSS Animadas -->
+                        <div class="h-24 bg-campo-900/40 rounded-xl border border-campo-800 flex items-end justify-center gap-1 p-4 overflow-hidden">
+                            <!-- Barras de ecualizador -->
+                            <div class="w-1.5 h-16 bg-dorado rounded-full animate-pulse"></div>
+                            <div class="w-1.5 h-10 bg-dorado rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                            <div class="w-1.5 h-14 bg-dorado rounded-full animate-pulse" style="animation-delay: 0.4s"></div>
+                            <div class="w-1.5 h-8 bg-dorado rounded-full animate-pulse" style="animation-delay: 0.1s"></div>
+                            <div class="w-1.5 h-12 bg-dorado rounded-full animate-pulse" style="animation-delay: 0.5s"></div>
+                            <div class="w-1.5 h-6 bg-dorado rounded-full animate-pulse" style="animation-delay: 0.3s"></div>
+                            <div class="w-1.5 h-16 bg-dorado rounded-full animate-pulse" style="animation-delay: 0.2s"></div>
+                        </div>
+
+                        <!-- Información de Track actual -->
+                        <div class="text-center space-y-1">
+                            <h4 id="radio-track-title" class="font-bold text-campo-100 text-sm">"Colonia Federal Al Aire"</h4>
+                            <p id="radio-track-artist" class="text-xs text-campo-400">Entrevistas, folklore y novedades de la región</p>
+                        </div>
+
+                        <!-- Controles de Audio de Simulación -->
+                        <div class="flex items-center justify-center gap-6">
+                            <button onclick="changeTrack(-1)" class="w-10 h-10 rounded-full bg-campo-800 hover:bg-campo-700 text-campo-200 flex items-center justify-center text-sm transition-all">
+                                <i class="fa-solid fa-backward"></i>
+                            </button>
+                            <button onclick="togglePlayRadio()" id="btn-radio-play" class="w-14 h-14 rounded-full bg-dorado hover:bg-dorado-hover text-campo-900 flex items-center justify-center text-xl shadow-lg transition-all">
+                                <i id="play-icon" class="fa-solid fa-play ml-1"></i>
+                            </button>
+                            <button onclick="changeTrack(1)" class="w-10 h-10 rounded-full bg-campo-800 hover:bg-campo-700 text-campo-200 flex items-center justify-center text-sm transition-all">
+                                <i class="fa-solid fa-forward"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. SERVICIO GASTRONÓMICO "EL JAGUAR" -->
+    <section id="servicios" class="py-20 sm:py-28 bg-campo-50 border-b border-campo-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Columna Izquierda: Tarjeta de Presentación Gastronómica de "El Jaguar" -->
+                <div class="lg:col-span-5 order-2 lg:order-1">
+                    <div class="bg-campo-900 text-campo-50 rounded-2xl p-8 border border-campo-800 shadow-2xl space-y-6 relative overflow-hidden">
+                        <!-- Sello Rústico "El Jaguar" -->
+                        <div class="absolute -bottom-10 -right-10 opacity-5 text-9xl font-serif text-dorado pointer-events-none">
+                            EJ
+                        </div>
+
+                        <div class="flex flex-col items-center text-center space-y-3">
+                            <div class="w-16 h-16 rounded-full bg-dorado/10 border border-dorado flex items-center justify-center text-dorado text-2xl">
+                                <i class="fa-solid fa-bowl-food"></i>
+                            </div>
+                            <h3 class="font-serif text-2xl font-bold tracking-widest text-dorado">“EL JAGUAR”</h3>
+                            <p class="text-xs uppercase tracking-[0.2em] text-campo-200">Gastronomía & Catering de Excelencia</p>
+                            <div class="h-[1px] bg-campo-800 w-1/3 my-2"></div>
+                        </div>
+
+                        <!-- Propuestas de Menú -->
+                        <div class="space-y-4 pt-2 text-sm">
+                            <div class="flex justify-between items-center border-b border-campo-800 pb-2">
+                                <span class="font-bold text-campo-100">Banquete de Bodas</span>
+                                <span class="text-dorado text-xs font-semibold">Premium</span>
+                            </div>
+                            <p class="text-xs text-campo-300">Asado a dos fuegos, platos gourmet regionales y postres autóctonos combinados con vinos seleccionados.</p>
+
+                            <div class="flex justify-between items-center border-b border-campo-800 pb-2 pt-2">
+                                <span class="font-bold text-campo-100">Barra de Tragos & Cócteles</span>
+                                <span class="text-dorado text-xs font-semibold">Exclusiva</span>
+                            </div>
+                            <p class="text-xs text-campo-300">Bartenders en vivo, coctelería internacional y cervezas regionales tiradas heladas.</p>
+
+                            <div class="flex justify-between items-center border-b border-campo-800 pb-2 pt-2">
+                                <span class="font-bold text-campo-100">Coffee Break Corporativo</span>
+                                <span class="text-dorado text-xs font-semibold">Ejecutivo</span>
+                            </div>
+                            <p class="text-xs text-campo-300">Café de especialidad, pastelería artesanal y bocadillos salados perfectos para seminarios.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna Derecha: Información del Servicio Gastronómico -->
+                <div class="lg:col-span-7 order-1 lg:order-2 space-y-6">
+                    <span class="text-dorado font-bold uppercase tracking-[0.25em] text-sm block">El Sabor de Colonia Federal</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-campo-900">
+                        Catering Gourmet Profesional con Identidad Regional
+                    </h2>
+                    <p class="text-campo-700 text-base sm:text-lg leading-relaxed">
+                        Nuestra cocina industrial integrada está operada exclusivamente por el prestigioso servicio gastronómico **“El Jaguar”**. Brindamos soluciones gastronómicas completas que se adaptan al tono y escala de tu evento.
+                    </p>
+                    <p class="text-campo-600 text-sm sm:text-base leading-relaxed">
+                        Desde elegantes bodas de 3 pasos hasta modernos buffets campestres y servicios de bar para eventos corporativos y recitales masivos. Priorizamos ingredientes orgánicos locales y productores de Colonia Federal para garantizar frescura absoluta en cada bocado.
+                    </p>
+                    
+                    <a href="https://wa.me/17864598797?text=Hola,%20me%20gustaria%20saber%20más%20sobre%20el%20servicio%20de%20catering%20de%20El%20Jaguar" target="_blank" class="inline-flex items-center gap-2 bg-campo-800 hover:bg-campo-900 text-dorado font-bold px-6 py-3.5 rounded-xl text-xs uppercase tracking-wider transition-all shadow-md">
+                        <i class="fa-solid fa-book-open"></i> Solicitar Menú y Precios
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. INSTAGRAM GRID & COMUNIDAD (@culturacoloniafederal) -->
+    <section class="py-20 sm:py-28 bg-campo-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-dorado font-bold uppercase tracking-[0.25em] text-sm">Síguenos en Redes</span>
+                <h2 class="font-serif text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-campo-900 mt-2">
+                    Nuestra Comunidad Online
+                </h2>
+                <a href="https://instagram.com/culturacoloniafederal" target="_blank" class="inline-flex items-center gap-2 text-campo-700 hover:text-dorado text-lg font-bold mt-3 transition-colors">
+                    <i class="fab fa-instagram"></i> @culturacoloniafederal
+                </a>
+            </div>
+
+            <!-- Feed de Instagram Simulando Fotos Espectaculares del Complejo (Basado en la Fachada, Interior y Planos) -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
+                <!-- Foto 1: Fachada Frontal Rústica -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden bg-campo-900 border border-campo-200 shadow-lg">
+                    <!-- Iconografía abstracta de la fachada frontal del centro cultural -->
+                    <div class="absolute inset-0 flex flex-col justify-between p-4 bg-gradient-to-t from-black/80 to-transparent">
+                        <span class="text-dorado text-[10px] font-bold tracking-widest uppercase">Exterior</span>
+                        <p class="text-xs text-campo-200">Fachada del Centro Cultural Colonia Federal</p>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 transition-all">
+                        <a href="https://instagram.com/culturacoloniafederal" target="_blank" class="text-campo-50 text-2xl"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Foto 2: Cabriadas de Madera Interior -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden bg-campo-950 border border-campo-200 shadow-lg">
+                    <!-- Representación esquemática del interior -->
+                    <div class="absolute inset-0 flex flex-col justify-between p-4 bg-gradient-to-t from-black/80 to-transparent">
+                        <span class="text-dorado text-[10px] font-bold tracking-widest uppercase">Interior</span>
+                        <p class="text-xs text-campo-200">Truses de madera y luz cenital deslumbrante</p>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 transition-all">
+                        <a href="https://instagram.com/culturacoloniafederal" target="_blank" class="text-campo-50 text-2xl"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Foto 3: Alquiler de Habitaciones / Huéspedes -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden bg-amber-950 border border-campo-200 shadow-lg">
+                    <div class="absolute inset-0 flex flex-col justify-between p-4 bg-gradient-to-t from-black/80 to-transparent">
+                        <span class="text-dorado text-[10px] font-bold tracking-widest uppercase">Alojamiento</span>
+                        <p class="text-xs text-campo-200">Casa de Huéspedes lista para recibir artistas</p>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 transition-all">
+                        <a href="https://instagram.com/culturacoloniafederal" target="_blank" class="text-campo-50 text-2xl"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Foto 4: Servicio "El Jaguar" en Bodas -->
+                <div class="group relative aspect-square rounded-2xl overflow-hidden bg-stone-900 border border-campo-200 shadow-lg">
+                    <div class="absolute inset-0 flex flex-col justify-between p-4 bg-gradient-to-t from-black/80 to-transparent">
+                        <span class="text-dorado text-[10px] font-bold tracking-widest uppercase">Gastronomía</span>
+                        <p class="text-xs text-campo-200">Platos gourmet del catering El Jaguar</p>
+                    </div>
+                    <div class="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 bg-black/60 transition-all">
+                        <a href="https://instagram.com/culturacoloniafederal" target="_blank" class="text-campo-50 text-2xl"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-campo-900 text-campo-50 pt-16 pb-8 border-t border-campo-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 pb-12 border-b border-campo-800">
+                
+                <!-- Columna 1: Presentación / Logos -->
+                <div class="space-y-4">
+                    <a href="#" class="flex flex-col">
+                        <span class="font-serif text-xl tracking-widest font-bold text-dorado">CENTRO CULTURAL</span>
+                        <span class="text-xs uppercase tracking-[0.25em] text-campo-300">Colonia Federal</span>
+                    </a>
+                    <p class="text-xs text-campo-400 font-light leading-relaxed">
+                        Un espacio dinámico de formación, arte, eventos y hospedaje de excelencia rural-urbana.
+                    </p>
+                    <!-- Iconos Redes -->
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/culturacoloniafederal" target="_blank" class="text-campo-300 hover:text-dorado text-lg transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/17864598797" target="_blank" class="text-campo-300 hover:text-dorado text-lg transition-colors">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Enlaces Rápidos -->
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm text-dorado uppercase tracking-wider">Enlaces</h4>
+                    <ul class="space-y-2 text-xs text-campo-300">
+                        <li><a href="#proyecto" class="hover:text-dorado transition-colors">Proyecto</a></li>
+                        <li><a href="#plano" class="hover:text-dorado transition-colors">Plano Interactivo</a></li>
+                        <li><a href="#salon" class="hover:text-dorado transition-colors">Salón Principal</a></li>
+                        <li><a href="#huespedes" class="hover:text-dorado transition-colors">Casa de Huéspedes</a></li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Información de Contacto -->
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm text-dorado uppercase tracking-wider">Contacto</h4>
+                    <ul class="space-y-2 text-xs text-campo-300">
+                        <li><i class="fa-solid fa-phone text-dorado mr-2"></i> +1 (786) 459-8797</li>
+                        <li><i class="fa-solid fa-location-dot text-dorado mr-2"></i> Colonia Federal, Entre Ríos, AR</li>
+                        <li><i class="fa-solid fa-envelope text-dorado mr-2"></i> contacto@culturacoloniafederal.com</li>
+                    </ul>
+                </div>
+
+                <!-- Columna 4: Horarios & Eventos -->
+                <div class="space-y-4">
+                    <h4 class="font-bold text-sm text-dorado uppercase tracking-wider">Horario de Administración</h4>
+                    <p class="text-xs text-campo-300">Lunes a Viernes de 09:00 a 18:00 hs.<br>Sábados y Domingos según cronograma de eventos del predio.</p>
+                </div>
+
+            </div>
+
+            <!-- Copy y Firma legal -->
+            <div class="pt-8 text-center text-xs text-campo-500 flex flex-col sm:flex-row justify-between items-center gap-4">
+                <span>© 2026 Centro Cultural Colonia Federal. Todos los derechos reservados.</span>
+                <span>Diseñado con estilo Campo Moderno</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WIDGET FLOTANTE DE WHATSAPP -->
+    <a href="https://wa.me/17864598797?text=Hola,%20quisiera%20realizar%20una%20consulta%20sobre%20el%20Centro%20Cultural%20Colonia%20Federal" target="_blank" class="fixed bottom-6 right-6 z-50 bg-emerald-500 hover:bg-emerald-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition-all transform hover:scale-110 active:scale-95 group" title="Escríbenos por WhatsApp">
+        <i class="fab fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-campo-900 text-campo-50 text-xs font-bold px-3 py-1.5 rounded-lg shadow-lg border border-campo-800 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap hidden sm:block">
+            ¿Cómo podemos ayudarte?
+        </span>
+    </a>
+
+    <!-- LÓGICA DE JAVASCRIPT DEL COMPLEJO -->
+    <script>
+        // --- MENÚ MÓVIL ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Ocultar menú móvil tras hacer clic en una opción
+        const mobileLinks = mobileMenu.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // --- CONTROL DEL PLANO INTERACTIVO ---
+        const areasData = {
+            huespedes: {
+                title: "Casa de Huéspedes",
+                subtitle: "6 Habitaciones & Confort Residencial",
+                desc: "Un edificio independiente diseñado especialmente para albergar cómodamente a artistas, técnicos, conferencistas, parejas de novios y familias de eventos. Cuenta con 6 habitaciones completamente climatizadas, baños privados y compartidos, una cocina equipada ideal para estadías autogestionadas, y un área social de living comedor amplia y confortable.",
+                bullets: [
+                    "6 habitaciones premium",
+                    "Living comedor espacioso",
+                    "Cocina integral totalmente equipada",
+                    "Aislamiento térmico y acústico",
+                    "Acceso directo y reservado"
+                ],
+                icon: "fa-house-user"
+            },
+            salon: {
+                title: "Edificio Principal (Salón)",
+                subtitle: "600 m² Cubiertos para Grandes Eventos",
+                desc: "El corazón social y cultural de Colonia Federal. Un salón multiusos de 20.00 x 30.00 metros con capacidad desde 300 hasta 1.200 personas. Cuenta con un Escenario Principal de gran escala equipado con soporte para sonido e iluminación profesional, cocina industrial lateral y depósitos de almacenamiento técnico.",
+                bullets: [
+                    "Formato Auditorio: Hasta 500 personas",
+                    "Formato Banquete Social: Hasta 300 personas",
+                    "Formato Concierto: Hasta 1.200 personas",
+                    "Escenario de alta resistencia para artes",
+                    "Cocina para servicios gastronómicos"
+                ],
+                icon: "fa-landmark"
+            },
+            acceso: {
+                title: "Área Recreativa & Acceso",
+                subtitle: "Juegos Infantiles, Estacionamiento y Estilo",
+                desc: "El acceso principal al predio te recibe con un portal de hierro forjado de estilo campestre que conecta al sendero adoquinado principal. Cuenta con un sector arbolado destinado a juegos infantiles para la diversión segura de los niños y un cómodo sector de estacionamiento sobre ripio consolidado.",
+                bullets: [
+                    "Estacionamiento interno seguro",
+                    "Área recreativa con juegos de madera",
+                    "Portal rústico moderno y sendero iluminado",
+                    "Paisajismo con vegetación nativa de la zona"
+                ],
+                icon: "fa-tree"
+            }
+        };
+
+        function selectArea(areaKey) {
+            const data = areasData[areaKey];
+            if (!data) return;
+
+            // Quitar estilos activos anteriores
+            document.getElementById('area-huespedes').classList.remove('border-dorado', 'bg-amber-100');
+            document.getElementById('area-salon').classList.remove('border-dorado', 'bg-campo-100');
+            document.getElementById('area-acceso').classList.remove('border-dorado', 'bg-emerald-800/30');
+
+            // Añadir estilos activos al elemento correspondiente
+            if (areaKey === 'huespedes') {
+                document.getElementById('area-huespedes').classList.add('border-dorado', 'bg-amber-100');
+            } else if (areaKey === 'salon') {
+                document.getElementById('area-salon').classList.add('border-dorado', 'bg-campo-100');
+            } else if (areaKey === 'acceso') {
+                document.getElementById('area-acceso').classList.add('border-dorado', 'bg-emerald-800/30');
+            }
+
+            // Actualizar la tarjeta de detalles con una animación fluida
+            const detailCard = document.getElementById('detail-card');
+            detailCard.style.opacity = '0';
+            detailCard.style.transform = 'translateY(10px)';
+
+            setTimeout(() => {
+                let bulletsHtml = "";
+                data.bullets.forEach(bullet => {
+                    bulletsHtml += `<li class="flex items-center gap-2"><i class="fa-solid fa-check text-dorado"></i> ${bullet}</li>`;
+                });
+
+                detailCard.innerHTML = `
+                    <div class="flex items-center gap-3 animate-fade-in">
+                        <div class="w-12 h-12 rounded-xl bg-campo-800 text-dorado flex items-center justify-center text-xl">
+                            <i class="fa-solid ${data.icon}"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-serif text-xl font-bold text-campo-900 uppercase tracking-wider">${data.title}</h3>
+                            <p class="text-xs text-dorado font-bold uppercase tracking-widest">${data.subtitle}</p>
+                        </div>
+                    </div>
+                    <div class="h-[1px] bg-campo-200 w-full"></div>
+                    <p class="text-campo-700 leading-relaxed text-sm animate-fade-in">${data.desc}</p>
+                    <ul class="space-y-2 text-sm text-campo-600 font-medium animate-fade-in">
+                        ${bulletsHtml}
+                    </ul>
+                `;
+                detailCard.style.opacity = '1';
+                detailCard.style.transform = 'translateY(0)';
+            }, 300);
+        }
+
+        // --- SIMULADOR DE EVENTOS INTELIGENTE ---
+        let currentFormat = 'auditorio';
+        let guestsCount = 250;
+        let includeJaguar = true;
+
+        function setEventFormat(format) {
+            currentFormat = format;
+            
+            // Estilos de los botones
+            const btnAuditorio = document.getElementById('btn-auditorio');
+            const btnSocial = document.getElementById('btn-social');
+            const btnConcierto = document.getElementById('btn-concierto');
+
+            // Reset
+            [btnAuditorio, btnSocial, btnConcierto].forEach(btn => {
+                btn.className = "p-3 rounded-xl border-2 border-campo-200 text-campo-600 hover:border-dorado font-bold text-xs uppercase tracking-wider text-center flex flex-col items-center gap-2 transition-all";
+            });
+
+            // Activo
+            const activeBtn = document.getElementById(`btn-${format}`);
+            activeBtn.className = "p-3 rounded-xl border-2 border-dorado bg-dorado/10 text-campo-900 font-bold text-xs uppercase tracking-wider text-center flex flex-col items-center gap-2 transition-all";
+
+            // Modificar valores del slider según restricciones lógicas reales del plano
+            const slider = document.getElementById('slider-invitados');
+            if (format === 'social') {
+                if (guestsCount > 300) {
+                    guestsCount = 300;
+                    slider.value = 300;
+                }
+                slider.max = 300;
+            } else if (format === 'auditorio') {
+                if (guestsCount > 500) {
+                    guestsCount = 500;
+                    slider.value = 500;
+                }
+                slider.max = 500;
+            } else {
+                slider.max = 1200;
+            }
+
+            updateGuests(slider.value);
+        }
+
+        function updateGuests(val) {
+            guestsCount = val;
+            document.getElementById('invitados-val').innerText = `${val} Personas`;
+            calculateSimulation();
+        }
+
+        function toggleJaguar() {
+            includeJaguar = document.getElementById('check-jaguar').checked;
+            calculateSimulation();
+        }
+
+        function calculateSimulation() {
+            const diagDistribucion = document.getElementById('diag-distribucion');
+            const diagEspacio = document.getElementById('diag-espacio');
+            const diagBanos = document.getElementById('diag-banos');
+            const diagCatering = document.getElementById('diag-catering');
+            const badge = document.getElementById('viabilidad-badge');
+
+            let formatText = "";
+            let spaceText = "";
+            let serviceText = "Batería de Baños Estándar";
+            let cateringText = includeJaguar ? "Operado bajo el menú premium de El Jaguar." : "Servicio externo o sin gastronomía contratada.";
+
+            // Cálculos según lo especificado en el informe del predio
+            if (currentFormat === 'auditorio') {
+                formatText = "Sillas ordenadas en filas frente al escenario";
+                spaceText = `~ ${(guestsCount * 0.8).toFixed(0)} m² necesarios de los 600 m² disponibles`;
+                if (guestsCount > 350) serviceText = "Batería completa y asistencia de limpieza";
+            } else if (currentFormat === 'social') {
+                formatText = "Mesas redondas distribuidas de 8-10 personas";
+                spaceText = `~ ${(guestsCount * 1.5).toFixed(0)} m² requeridos para mesas y pista de baile`;
+                if (guestsCount > 250) serviceText = "Servicio con soporte de personal en baños";
+            } else {
+                formatText = "Formato Concierto (Invitados parados en pista libre)";
+                spaceText = `~ ${(guestsCount * 0.5).toFixed(0)} m² de salón cubierto en pista fluida`;
+                if (guestsCount > 800) serviceText = "Atención máxima (Recomendado personal de apoyo)";
+            }
+
+            // Diagnóstico de viabilidad de aforo real
+            if (currentFormat === 'social' && guestsCount > 300) {
+                badge.innerText = "Límite Excedido";
+                badge.className = "bg-rose-500/20 text-rose-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider";
+            } else if (currentFormat === 'auditorio' && guestsCount > 500) {
+                badge.innerText = "Límite Excedido";
+                badge.className = "bg-rose-500/20 text-rose-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider";
+            } else {
+                badge.innerText = "Viable";
+                badge.className = "bg-emerald-500/20 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded uppercase tracking-wider";
+            }
+
+            diagDistribucion.innerText = formatText;
+            diagEspacio.innerText = spaceText;
+            diagBanos.innerText = serviceText;
+            diagCatering.innerText = cateringText;
+        }
+
+        function sendReservationQuery() {
+            const formattedMessage = `Hola, quisiera consultar disponibilidad de fecha para un evento. Formato: ${currentFormat.toUpperCase()} con un estimado de ${guestsCount} invitados. ${includeJaguar ? 'Me interesa el servicio de catering "El Jaguar".' : ''}`;
+            const url = `https://wa.me/17864598797?text=${encodeURIComponent(formattedMessage)}`;
+            window.open(url, '_blank');
+        }
+
+        // --- FILTRADO DE PROGRAMAS & ACTIVIDADES ---
+        function filterActivities(category) {
+            // Estilo botones filtros
+            const filterIds = ['todos', 'formacion', 'artes', 'social', 'corporativo'];
+            filterIds.forEach(id => {
+                const btn = document.getElementById(`filter-${id}`);
+                btn.className = "px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border-2 border-campo-200 bg-white text-campo-600 hover:border-campo-800 transition-all";
+            });
+
+            const activeBtn = document.getElementById(`filter-${category}`);
+            activeBtn.className = "px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider border-2 border-campo-800 bg-campo-800 text-campo-50 transition-all";
+
+            // Filtrado de las tarjetas reales
+            const cards = document.querySelectorAll('.activity-card');
+            cards.forEach(card => {
+                if (category === 'todos' || card.getAttribute('data-category') === category) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        // --- REPRODUCTOR DE RADIO SIMULADO ---
+        let isRadioPlaying = false;
+        let currentTrackIdx = 0;
+        const tracks = [
+            { title: "Colonia Federal Al Aire", artist: "Entrevistas, folklore y novedades de la región" },
+            { title: "Taller de Locución Profesional", artist: "Módulo práctico 2: Modulación de la Voz" },
+            { title: "Micro Podcast Agrario", artist: "Análisis mensual del crecimiento de Colonia Federal" }
+        ];
+
+        function togglePlayRadio() {
+            const icon = document.getElementById('play-icon');
+            if (isRadioPlaying) {
+                icon.className = "fa-solid fa-play ml-1";
+                isRadioPlaying = false;
+            } else {
+                icon.className = "fa-solid fa-pause";
+                isRadioPlaying = true;
+            }
+        }
+
+        function changeTrack(direction) {
+            currentTrackIdx += direction;
+            if (currentTrackIdx < 0) currentTrackIdx = tracks.length - 1;
+            if (currentTrackIdx >= tracks.length) currentTrackIdx = 0;
+
+            document.getElementById('radio-track-title').innerText = `"${tracks[currentTrackIdx].title}"`;
+            document.getElementById('radio-track-artist').innerText = tracks[currentTrackIdx].artist;
+            
+            // Autoplay al cambiar de track para simulación fluida
+            if (!isRadioPlaying) {
+                togglePlayRadio();
+            }
+        }
+
+        // Inicialización
+        window.onload = function() {
+            selectArea('salon');
+            calculateSimulation();
+        }
+    </script>
+</body>
+</html>
+
+```
