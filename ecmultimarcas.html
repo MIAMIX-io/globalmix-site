@@ -1,0 +1,1141 @@
+```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EC Multimarcas | Nuevos, Usados Seleccionados y Financiación</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Montserrat (Headers) & Space Grotesk (Modern/Global Sans) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#09090b',
+                            darkGray: '#18181b',
+                            midGray: '#27272a',
+                            lightGray: '#f4f4f5',
+                            red: '#e11d48',
+                            redHover: '#be123c',
+                        },
+                        whatsapp: '#25D366',
+                    },
+                    boxShadow: {
+                        'red-glow': '0 0 20px rgba(225, 29, 72, 0.25)',
+                        'red-glow-lg': '0 0 35px rgba(225, 29, 72, 0.4)',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: #09090b;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #27272a;
+            border-radius: 3px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: #be123c;
+        }
+    </style>
+</head>
+<body class="bg-brand-black text-zinc-100 font-sans selection:bg-brand-red selection:text-white antialiased custom-scrollbar">
+
+    <!-- TOP BAR (Ubicación y Urgencia) -->
+    <div class="bg-black border-b border-zinc-900 text-xs py-2.5 px-4 transition-all">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+            <div class="flex flex-wrap items-center justify-center gap-4 text-zinc-400">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-location-dot text-brand-red"></i> Colectora Aguirre Almada 415, Federal, Entre Ríos</span>
+                <span class="hidden md:inline text-zinc-800">|</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-clock text-brand-red"></i> Lun a Sáb: 8:00 a 12:00 - 16:00 a 20:00 hs</span>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-brand-red font-bold animate-pulse"><i class="fa-solid fa-fire mr-1"></i> Descuento 10% OFF Pago Contado</span>
+                <a href="https://wa.me/5493454405721" target="_blank" class="hover:text-whatsapp transition duration-300 flex items-center gap-1.5 font-semibold text-zinc-300">
+                    <i class="fa-brands fa-whatsapp text-whatsapp text-sm"></i> +54 9 3454 40 5721
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVBAR -->
+    <header class="sticky top-0 z-40 bg-brand-black/90 backdrop-blur-md border-b border-zinc-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="bg-brand-red p-2.5 rounded-lg text-white group-hover:scale-105 transition-transform duration-300 shadow-red-glow">
+                    <i class="fa-solid fa-gauge-high text-xl"></i>
+                </div>
+                <div>
+                    <span class="font-heading font-black text-2xl tracking-tighter text-white block">EC <span class="text-brand-red">MULTIMARCAS</span></span>
+                    <span class="text-[9px] tracking-[0.25em] text-zinc-500 block -mt-1 font-bold uppercase">Global Automotive</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center gap-8 font-heading font-bold text-xs uppercase tracking-wider text-zinc-400">
+                <a href="#hero" class="hover:text-brand-red transition-colors duration-200">Inicio</a>
+                <a href="#catalogo" class="hover:text-brand-red transition-colors duration-200">Inventario</a>
+                <a href="#financiacion" class="hover:text-brand-red transition-colors duration-200">Financiación</a>
+                <a href="#contacto" class="hover:text-brand-red transition-colors duration-200">Ubicación</a>
+            </nav>
+
+            <!-- CTA Desktop -->
+            <div class="hidden md:flex items-center gap-4">
+                <a href="#catalogo" class="bg-brand-red hover:bg-brand-redHover px-6 py-3 rounded-lg text-xs font-heading font-bold uppercase tracking-wider transition-all duration-300 text-white text-center shadow-red-glow hover:shadow-red-glow-lg">
+                    Ver Inventario
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-zinc-400 hover:text-white text-2xl focus:outline-none transition">
+                <i id="menu-icon" class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Nav Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-black border-b border-zinc-900 px-6 py-8 space-y-4 font-heading font-bold text-sm tracking-wider uppercase">
+            <a href="#hero" onclick="toggleMobileMenu()" class="block py-2.5 text-zinc-300 hover:text-brand-red border-b border-zinc-900 transition">Inicio</a>
+            <a href="#catalogo" onclick="toggleMobileMenu()" class="block py-2.5 text-zinc-300 hover:text-brand-red border-b border-zinc-900 transition">Inventario</a>
+            <a href="#financiacion" onclick="toggleMobileMenu()" class="block py-2.5 text-zinc-300 hover:text-brand-red border-b border-zinc-900 transition">Financiación</a>
+            <a href="#contacto" onclick="toggleMobileMenu()" class="block py-2.5 text-zinc-300 hover:text-brand-red transition">Ubicación</a>
+            <div class="pt-6 flex flex-col gap-3">
+                <a href="https://wa.me/5493454405721?text=Hola,%20quisiera%20hacer%20una%20consulta" target="_blank" class="bg-whatsapp hover:bg-green-600 text-white text-center py-3.5 rounded-xl flex items-center justify-center gap-2 font-bold shadow-lg shadow-whatsapp/10 text-xs tracking-wider uppercase transition">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> WhatsApp Directo
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION (High impact, Global Marketing Copy) -->
+    <section id="hero" class="relative bg-brand-black pt-16 pb-24 overflow-hidden min-h-[90vh] flex items-center">
+        <!-- Background Accents (Ambient Glows) -->
+        <div class="absolute inset-0 z-0 opacity-15 pointer-events-none">
+            <div class="absolute -top-40 right-10 w-[500px] h-[500px] bg-brand-red rounded-full blur-[140px]"></div>
+            <div class="absolute bottom-10 left-1/3 w-96 h-96 bg-zinc-800 rounded-full blur-[120px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Left Content -->
+                <div class="lg:col-span-7 space-y-8 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 bg-brand-red/10 text-brand-red border border-brand-red/20 px-4 py-2 rounded-full text-xs font-bold uppercase tracking-widest">
+                        <span class="flex h-2 w-2 rounded-full bg-brand-red animate-ping"></span> 
+                        BENEFICIO PREMIUM: 10% DE DESCUENTO AL CONTADO
+                    </div>
+                    
+                    <h1 class="font-heading font-black text-4xl sm:text-6xl lg:text-7xl text-white leading-tight uppercase tracking-tight">
+                        EL CAMINO HACIA TU <span class="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-400 to-brand-red">PRÓXIMO DESTINO</span>
+                    </h1>
+                    
+                    <p class="text-zinc-400 text-lg max-w-xl mx-auto lg:mx-0 leading-relaxed font-light">
+                        En <span class="text-white font-semibold">EC Multimarcas</span> redefinimos tu forma de comprar vehículos. Nuevos 0km y usados premium seleccionados bajo estándares internacionales de calidad, con financiación única.
+                    </p>
+                    
+                    <!-- Call To Actions -->
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                        <a href="#catalogo" class="bg-brand-red hover:bg-brand-redHover text-white font-heading font-black tracking-wider uppercase text-xs px-8 py-4.5 rounded-xl text-center transition-all duration-300 shadow-red-glow hover:shadow-red-glow-lg transform hover:-translate-y-0.5">
+                            Explorar Inventario
+                        </a>
+                        <a href="#financiacion" class="bg-brand-darkGray hover:bg-zinc-800 text-white font-heading font-black tracking-wider uppercase text-xs px-8 py-4.5 rounded-xl text-center transition border border-zinc-800 transform hover:-translate-y-0.5">
+                            Simular Mi Crédito
+                        </a>
+                    </div>
+                    
+                    <!-- Trust Badges -->
+                    <div class="grid grid-cols-3 gap-6 pt-10 max-w-lg mx-auto lg:mx-0 border-t border-zinc-900">
+                        <div>
+                            <span class="block font-heading font-black text-2xl lg:text-3xl text-white">100%</span>
+                            <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-bold">Garantizados</span>
+                        </div>
+                        <div>
+                            <span class="block font-heading font-black text-2xl lg:text-3xl text-brand-red">+10 Años</span>
+                            <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-bold">En el mercado</span>
+                        </div>
+                        <div>
+                            <span class="block font-heading font-black text-2xl lg:text-3xl text-white">Fácil</span>
+                            <span class="text-[10px] uppercase tracking-wider text-zinc-500 font-bold">Llave por llave</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Visual (Modern Global Hero Vehicle Vector Frame) -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative bg-gradient-to-b from-brand-darkGray to-black border border-zinc-800/80 p-6 rounded-[2.5rem] overflow-hidden shadow-2xl group">
+                        <!-- Top Accent Line -->
+                        <div class="absolute top-0 left-0 right-0 h-1.5 bg-gradient-to-r from-brand-red to-transparent"></div>
+                        
+                        <div class="aspect-video w-full rounded-2xl bg-zinc-950 overflow-hidden relative flex flex-col justify-center items-center p-6 border border-zinc-800">
+                            <!-- High End Car Premium SVG Vector representation -->
+                            <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-zinc-900/55 to-black/90 z-0"></div>
+                            
+                            <!-- Sports SUV SVG Outline -->
+                            <svg class="w-56 h-auto text-brand-red drop-shadow-[0_0_15px_rgba(225,29,72,0.4)] z-10 transition duration-500 group-hover:scale-105" viewBox="0 0 100 40" fill="currentColor">
+                                <path d="M12,23 Q12,14 22,14 L42,14 Q48,6 64,6 L82,6 Q89,12 94,22 L96,25 Q98,27 98,29 L92,30 Q91,34 85,34 Q79,34 78,30 L38,30 Q37,34 31,34 Q25,34 24,30 L12,30 Z" />
+                                <circle cx="31" cy="31" r="5" fill="#18181b" stroke="#e11d48" stroke-width="1.5" />
+                                <circle cx="78" cy="31" r="5" fill="#18181b" stroke="#e11d48" stroke-width="1.5" />
+                            </svg>
+                            
+                            <span class="font-heading font-black text-white text-center text-lg block z-10 uppercase tracking-tight mt-6">Ford Bronco Wildtrak V6</span>
+                            <span class="text-xs text-brand-red font-bold uppercase tracking-widest z-10 mt-1">Lanzamiento Exclusivo</span>
+                        </div>
+                        
+                        <div class="mt-6 flex justify-between items-center bg-zinc-950/80 p-4 rounded-xl border border-zinc-900">
+                            <div>
+                                <span class="text-[10px] text-zinc-500 block uppercase font-bold tracking-wider">Precio Especial Contado</span>
+                                <span class="text-xl font-heading font-black text-white">$64.800 USD</span>
+                            </div>
+                            <a href="https://wa.me/5493454405721?text=Hola!%20Me%20interesa%20la%20Ford%20Bronco%20Wildtrak%20V6" target="_blank" class="bg-brand-red hover:bg-brand-redHover text-white px-4 py-2.5 rounded-lg text-xs font-heading font-black uppercase tracking-wider transition flex items-center gap-2">
+                                <i class="fa-brands fa-whatsapp text-sm"></i> Reservar
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- METRICS & BENEFITS BANNER -->
+    <section class="bg-brand-darkGray py-16 border-y border-zinc-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                <!-- Benefit 1 -->
+                <div class="flex gap-5 items-start p-6 bg-brand-black/50 rounded-2xl border border-zinc-800/50 hover:border-brand-red/30 transition-colors duration-300">
+                    <div class="bg-brand-red/10 text-brand-red p-3.5 rounded-xl border border-brand-red/20 shadow-red-glow">
+                        <i class="fa-solid fa-coins text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-white uppercase tracking-tight">Descuentos Contado (10% OFF)</h3>
+                        <p class="text-zinc-400 text-xs mt-2 leading-relaxed">Beneficiate de nuestro descuento directo por pago cash sobre todos nuestros modelos nacionales e importados.</p>
+                    </div>
+                </div>
+                <!-- Benefit 2 -->
+                <div class="flex gap-5 items-start p-6 bg-brand-black/50 rounded-2xl border border-zinc-800/50 hover:border-brand-red/30 transition-colors duration-300">
+                    <div class="bg-brand-red/10 text-brand-red p-3.5 rounded-xl border border-brand-red/20 shadow-red-glow">
+                        <i class="fa-solid fa-file-invoice-dollar text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-white uppercase tracking-tight">Financiación Flexible</h3>
+                        <p class="text-zinc-400 text-xs mt-2 leading-relaxed">Financiamos hasta el 60% del valor del vehículo con planes exclusivos a sola firma y aprobación ágil.</p>
+                    </div>
+                </div>
+                <!-- Benefit 3 -->
+                <div class="flex gap-5 items-start p-6 bg-brand-black/50 rounded-2xl border border-zinc-800/50 hover:border-brand-red/30 transition-colors duration-300">
+                    <div class="bg-brand-red/10 text-brand-red p-3.5 rounded-xl border border-brand-red/20 shadow-red-glow">
+                        <i class="fa-solid fa-handshake text-xl"></i>
+                    </div>
+                    <div>
+                        <h3 class="font-heading font-bold text-base text-white uppercase tracking-tight">Toma de Usados Llave x Llave</h3>
+                        <p class="text-zinc-400 text-xs mt-2 leading-relaxed">Cotizamos tu usado al mejor valor de mercado para que no te quedes a pie en ningún momento del cambio.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CATALOGO (INVENTARIO DINAMICO) -->
+    <section id="catalogo" class="py-24 bg-brand-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-red font-bold text-xs uppercase tracking-widest block">EXCLUSIVIDAD EN CADA DETALLE</span>
+                <h2 class="font-heading font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">NUESTRO INVENTARIO</h2>
+                <div class="h-1.5 w-16 bg-brand-red mx-auto rounded-full"></div>
+                <p class="text-zinc-400 font-light text-sm">Vehículos cero kilómetros y usados premium estrictamente revisados y garantizados.</p>
+            </div>
+
+            <!-- Filtros Modernos -->
+            <div class="bg-brand-darkGray border border-zinc-800 p-6 rounded-2xl mb-12 shadow-xl">
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <!-- Buscar -->
+                    <div>
+                        <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">Buscar</label>
+                        <div class="relative">
+                            <input type="text" id="filter-search" oninput="filterCars()" placeholder="Ej: Toyota, Volkswagen..." class="w-full bg-brand-black border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-brand-red transition">
+                            <i class="fa-solid fa-magnifying-glass absolute right-4 top-3.5 text-zinc-600"></i>
+                        </div>
+                    </div>
+
+                    <!-- Estado -->
+                    <div>
+                        <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">Tipo de Vehículo</label>
+                        <select id="filter-status" onchange="filterCars()" class="w-full bg-brand-black border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition">
+                            <option value="all">Todos los estados</option>
+                            <option value="Nuevo">Nuevos (0km)</option>
+                            <option value="Usado">Usados Seleccionados</option>
+                        </select>
+                    </div>
+
+                    <!-- Categoría -->
+                    <div>
+                        <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">Segmento</label>
+                        <select id="filter-category" onchange="filterCars()" class="w-full bg-brand-black border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition">
+                            <option value="all">Todos los segmentos</option>
+                            <option value="SUV">SUV y Pickups</option>
+                            <option value="Deportivo">Hatchback & Deportivo</option>
+                            <option value="Sedán">Sedanes Premium</option>
+                        </select>
+                    </div>
+
+                    <!-- Ordenar por precio -->
+                    <div>
+                        <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">Ordenar por precio</label>
+                        <select id="filter-sort" onchange="filterCars()" class="w-full bg-brand-black border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-brand-red transition">
+                            <option value="default">Recomendados</option>
+                            <option value="price-asc">Menor precio</option>
+                            <option value="price-desc">Mayor precio</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Grilla Vehículos -->
+            <div id="cars-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Inyectado dinámicamente con Javascript -->
+            </div>
+
+            <!-- Sin resultados -->
+            <div id="no-results" class="hidden text-center py-20 bg-brand-darkGray border border-zinc-800 rounded-3xl">
+                <i class="fa-solid fa-triangle-exclamation text-brand-red text-5xl mb-4"></i>
+                <h3 class="font-heading font-bold text-xl text-white uppercase tracking-tight">No hay vehículos que coincidan</h3>
+                <p class="text-zinc-500 mt-2 text-sm">Intentá ajustando los filtros de búsqueda o contactanos directamente.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULADORA DE FINANCIACION (SIMULADOR PREMIUM) -->
+    <section id="financiacion" class="py-24 bg-brand-darkGray border-y border-zinc-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                
+                <!-- Left side info -->
+                <div class="lg:col-span-5 space-y-6">
+                    <span class="inline-flex items-center gap-2 bg-brand-red/10 text-brand-red border border-brand-red/20 px-4 py-1.5 rounded-full text-xs font-bold uppercase tracking-widest">
+                        <i class="fa-solid fa-percent"></i> Financiación Inmediata
+                    </span>
+                    <h2 class="font-heading font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">PROYECTÁ TU CRÉDITO</h2>
+                    <p class="text-zinc-400 leading-relaxed font-light text-sm">
+                        Nuestras tasas fijas y preferenciales te permiten planificar tu inversión con total tranquilidad. Elegí el vehículo que querés del catálogo de <span class="text-white font-semibold">EC Multimarcas</span>, establecé tu anticipo y simulá tu cuota mensual al instante.
+                    </p>
+                    
+                    <div class="space-y-4 pt-4 border-t border-zinc-800">
+                        <div class="flex items-center gap-4">
+                            <div class="bg-brand-red/10 text-brand-red p-2.5 rounded-xl border border-brand-red/20">
+                                <i class="fa-solid fa-check-double text-xs"></i>
+                            </div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-zinc-300">Tasa Preferencial Fija</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-brand-red/10 text-brand-red p-2.5 rounded-xl border border-brand-red/20">
+                                <i class="fa-solid fa-check-double text-xs"></i>
+                            </div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-zinc-300">Aprobación Rápida a Sola Firma</span>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="bg-brand-red/10 text-brand-red p-2.5 rounded-xl border border-brand-red/20">
+                                <i class="fa-solid fa-check-double text-xs"></i>
+                            </div>
+                            <span class="text-xs font-bold uppercase tracking-wider text-zinc-300">Mínimo Anticipo desde el 30%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right side simulator frame -->
+                <div class="lg:col-span-7">
+                    <div class="bg-brand-black border border-zinc-800 p-8 rounded-3xl shadow-red-glow/5 relative">
+                        <!-- Red Accent Badge -->
+                        <div class="absolute -top-3 right-6 bg-brand-red text-white text-[9px] font-heading font-black uppercase tracking-widest px-3 py-1 rounded-full shadow-red-glow">
+                            Cotización Online
+                        </div>
+
+                        <div class="space-y-6">
+                            <!-- Selector de Auto -->
+                            <div>
+                                <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-2">Seleccioná un modelo</label>
+                                <select id="calc-car-select" onchange="onSelectCarCalc()" class="w-full bg-brand-darkGray border border-zinc-800 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-red transition">
+                                    <option value="manual" data-price="35000">Ingresar valor manualmente (Personalizado)</option>
+                                    <!-- Inyectado por Javascript -->
+                                </select>
+                            </div>
+
+                            <!-- Input Manual -->
+                            <div id="calc-manual-price-container" class="transition-all duration-300">
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Valor de Referencia (USD)</label>
+                                    <span class="text-[10px] text-brand-red font-bold uppercase tracking-wider">Mínimo $5.000 USD</span>
+                                </div>
+                                <input type="number" id="calc-price" value="35000" min="5000" oninput="calculateFinance()" class="w-full bg-brand-darkGray border border-zinc-800 rounded-xl px-4 py-3.5 text-sm text-white focus:outline-none focus:border-brand-red transition">
+                            </div>
+
+                            <!-- Deslizador de Anticipo -->
+                            <div>
+                                <div class="flex justify-between items-center mb-2">
+                                    <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest">Anticipo de entrega inicial</label>
+                                    <span id="calc-anticipo-label" class="text-sm font-heading font-extrabold text-brand-red">$14.000 USD (40%)</span>
+                                </div>
+                                <input type="range" id="calc-anticipo-range" min="30" max="80" value="40" oninput="calculateFinance()" class="w-full accent-brand-red bg-zinc-800 rounded-lg appearance-none h-2 cursor-pointer">
+                                <div class="flex justify-between text-[10px] text-zinc-500 font-bold uppercase tracking-widest mt-1.5">
+                                    <span>Min (30%)</span>
+                                    <span>Max (80%)</span>
+                                </div>
+                            </div>
+
+                            <!-- Plazos -->
+                            <div>
+                                <label class="block text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Plazo de Financiación (Cuotas Mensuales)</label>
+                                <div class="grid grid-cols-4 gap-2">
+                                    <button type="button" onclick="setPlazo(12)" class="plazo-btn active py-3 bg-brand-red text-white rounded-xl text-xs font-heading font-black uppercase tracking-wider transition focus:outline-none">12 Meses</button>
+                                    <button type="button" onclick="setPlazo(24)" class="plazo-btn py-3 bg-brand-darkGray text-zinc-400 hover:bg-zinc-800 rounded-xl text-xs font-heading font-black uppercase tracking-wider transition focus:outline-none">24 Meses</button>
+                                    <button type="button" onclick="setPlazo(36)" class="plazo-btn py-3 bg-brand-darkGray text-zinc-400 hover:bg-zinc-800 rounded-xl text-xs font-heading font-black uppercase tracking-wider transition focus:outline-none">36 Meses</button>
+                                    <button type="button" onclick="setPlazo(48)" class="plazo-btn py-3 bg-brand-darkGray text-zinc-400 hover:bg-zinc-800 rounded-xl text-xs font-heading font-black uppercase tracking-wider transition focus:outline-none">48 Meses</button>
+                                </div>
+                            </div>
+
+                            <!-- Simulador de Cuotas Resultados -->
+                            <div class="bg-brand-darkGray border border-zinc-800/80 p-6 rounded-2xl grid grid-cols-1 md:grid-cols-2 gap-4 divide-y md:divide-y-0 md:divide-x divide-zinc-800">
+                                <div class="space-y-1">
+                                    <span class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold block">Monto a financiar</span>
+                                    <span id="calc-total-financed" class="text-xl font-heading font-black text-white">$21.000 USD</span>
+                                    <span class="text-[9px] text-zinc-600 block uppercase font-semibold">TNA Estimada: 12.5% fija</span>
+                                </div>
+                                <div class="md:pl-6 space-y-1 pt-4 md:pt-0">
+                                    <span class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold block">Cuota mensual aprox.</span>
+                                    <span id="calc-monthly-fee" class="text-2xl font-heading font-black text-brand-red">$1.968 USD</span>
+                                    <span class="text-[9px] text-zinc-600 block uppercase font-semibold">Sujeto a políticas de crédito</span>
+                                </div>
+                            </div>
+
+                            <!-- CTA WhatsApp simulacion -->
+                            <button onclick="requestFinanceWhatsApp()" class="w-full bg-whatsapp hover:bg-green-600 text-white font-heading font-bold text-xs uppercase tracking-wider py-4 rounded-xl text-center transition flex items-center justify-center gap-2 shadow-lg shadow-whatsapp/10">
+                                <i class="fa-brands fa-whatsapp text-lg"></i> Solicitar Aprobación de Plan
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACTO, OFICINAS Y MAPA -->
+    <section id="contacto" class="py-24 bg-brand-black">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+                <span class="text-brand-red font-bold text-xs uppercase tracking-widest block">SHOWROOM & ATENCION AL CLIENTE</span>
+                <h2 class="font-heading font-black text-3xl sm:text-5xl text-white uppercase tracking-tight">VISITANOS EN FEDERAL</h2>
+                <div class="h-1.5 w-16 bg-brand-red mx-auto rounded-full"></div>
+                <p class="text-zinc-400 font-light text-sm">Contamos con oficinas de atención y un moderno salón de exposición de vehículos.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-stretch">
+                <!-- Info y Formulario de contacto -->
+                <div class="lg:col-span-5 flex flex-col justify-between space-y-8">
+                    <div class="space-y-6">
+                        <div class="flex items-start gap-4">
+                            <div class="bg-brand-red/10 text-brand-red p-3 rounded-xl mt-1 border border-brand-red/20">
+                                <i class="fa-solid fa-map-location-dot text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-base text-white uppercase tracking-tight">Ubicación Estratégica</h4>
+                                <p class="text-zinc-400 text-sm mt-1">Colectora Aguirre Almada 415, Federal, Entre Ríos, Argentina</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="bg-brand-red/10 text-brand-red p-3 rounded-xl mt-1 border border-brand-red/20">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-base text-white uppercase tracking-tight">Contacto Comercial</h4>
+                                <p class="text-zinc-400 text-sm mt-1">Atención rápida por WhatsApp comercial</p>
+                                <a href="https://wa.me/5493454405721" target="_blank" class="text-brand-red hover:underline text-sm font-semibold mt-1 inline-block">+54 9 3454 40 5721</a>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="bg-brand-red/10 text-brand-red p-3 rounded-xl mt-1 border border-brand-red/20">
+                                <i class="fa-solid fa-envelope text-lg"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-heading font-bold text-base text-white uppercase tracking-tight">Canal Digital</h4>
+                                <p class="text-zinc-400 text-sm mt-1">contacto@ecmultimarcas.com.ar</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario de contacto de Marketing -->
+                    <form id="contact-form" onsubmit="submitContactForm(event)" class="bg-brand-darkGray border border-zinc-800 p-6 rounded-2xl space-y-4">
+                        <h4 class="font-heading font-bold text-sm text-white uppercase tracking-wider border-b border-zinc-800 pb-3">Agendá tu test-drive</h4>
+                        <div>
+                            <input type="text" id="contact-name" required placeholder="Nombre completo" class="w-full bg-brand-black border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-brand-red transition">
+                        </div>
+                        <div>
+                            <input type="tel" id="contact-phone" required placeholder="Número de celular con código de área" class="w-full bg-brand-black border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-brand-red transition">
+                        </div>
+                        <div>
+                            <textarea id="contact-message" rows="3" required placeholder="¿Qué auto del catálogo te interesa consultar?" class="w-full bg-brand-black border border-zinc-800 rounded-xl px-4 py-3 text-sm text-white placeholder-zinc-600 focus:outline-none focus:border-brand-red transition"></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-brand-red hover:bg-brand-redHover text-white font-heading font-bold text-xs uppercase tracking-wider py-3.5 rounded-xl text-center transition shadow-red-glow">
+                            Enviar Consulta Exclusiva
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Google Maps (Embedded) -->
+                <div class="lg:col-span-7 h-[450px] lg:h-auto min-h-[380px] rounded-3xl overflow-hidden border border-zinc-800 relative shadow-2xl">
+                    <iframe class="absolute inset-0 w-full h-full grayscale opacity-75" 
+                        src="https://maps.google.com/maps?q=Colectora%20Aguirre%20Almada%20415,%20Federal,%20Entre%20Rios,%20Argentina&t=&z=16&ie=UTF8&iwloc=&output=embed" 
+                        frameborder="0" scrolling="no" marginheight="0" marginwidth="0" allowfullscreen>
+                    </iframe>
+                    
+                    <div class="absolute bottom-4 left-4 right-4 bg-brand-black/95 border border-zinc-800 p-4 rounded-xl flex justify-between items-center z-10">
+                        <div>
+                            <span class="text-[9px] text-brand-red font-bold uppercase tracking-widest block">EXPOSICIÓN CENTRAL</span>
+                            <span class="text-xs text-white font-bold">EC MULTIMARCAS</span>
+                        </div>
+                        <a href="https://maps.google.com/?q=Colectora%20Aguirre%20Almada%20415,%20Federal,%20Entre%20Rios,%20Argentina" target="_blank" class="bg-brand-red hover:bg-brand-redHover px-3 py-2 rounded-lg text-[10px] font-heading font-bold text-white uppercase tracking-wider transition flex items-center gap-1">
+                            <i class="fa-solid fa-diamond-turn-right"></i> Cómo llegar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLOATING WHATSAPP WIDGET -->
+    <a href="https://wa.me/5493454405721?text=Hola!%20Visité%20su%20sitio%20web%20y%20me%20gustaría%20recibir%20asesoramiento" target="_blank" class="fixed bottom-6 right-6 z-50 bg-whatsapp hover:bg-green-600 text-white w-14 h-14 rounded-full flex items-center justify-center shadow-2xl transition transform hover:scale-110 active:scale-95 duration-200 group">
+        <i class="fa-brands fa-whatsapp text-3xl"></i>
+        <span class="absolute right-16 bg-brand-black text-white text-xs py-2 px-3.5 rounded-lg border border-zinc-800 shadow-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none whitespace-nowrap font-bold tracking-wider uppercase">
+            ¿Hablamos por WhatsApp?
+        </span>
+    </a>
+
+    <!-- CUSTOM TOAST NOTIFICATION -->
+    <div id="toast" class="fixed bottom-6 left-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 max-w-sm w-full bg-brand-darkGray border border-zinc-800 p-4 rounded-2xl shadow-2xl flex items-start gap-3">
+        <div class="bg-brand-red/15 text-brand-red p-2 rounded-lg" id="toast-icon">
+            <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="flex-1">
+            <h5 class="text-xs font-heading font-bold text-white uppercase tracking-wider" id="toast-title">Excelente</h5>
+            <p class="text-xs text-zinc-400 mt-1" id="toast-message">Mensaje enviado exitosamente.</p>
+        </div>
+        <button onclick="dismissToast()" class="text-zinc-500 hover:text-white transition">
+            <i class="fa-solid fa-xmark"></i>
+        </button>
+    </div>
+
+    <!-- VEHICLE DETAILS MODAL (Premium Pop-up) -->
+    <div id="car-modal" class="fixed inset-0 z-50 hidden overflow-y-auto bg-black/80 backdrop-blur-sm p-4 sm:p-6 md:p-10 flex items-center justify-center">
+        <div class="bg-brand-darkGray border border-zinc-800 w-full max-w-4xl rounded-3xl overflow-hidden relative shadow-red-glow-lg/10 flex flex-col md:flex-row max-h-[90vh]">
+            <!-- Close btn -->
+            <button onclick="closeCarModal()" class="absolute right-4 top-4 z-10 bg-black/60 text-zinc-400 hover:text-white p-2.5 rounded-full transition focus:outline-none">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <!-- Modal Left: Art frame -->
+            <div class="w-full md:w-1/2 bg-zinc-950 flex flex-col justify-center items-center p-8 relative min-h-[250px] border-b md:border-b-0 md:border-r border-zinc-800">
+                <div id="modal-car-image-container" class="w-full flex flex-col items-center">
+                    <!-- Dynamic inline SVG rendered on-the-fly -->
+                </div>
+            </div>
+
+            <!-- Modal Right: Premium Details & Conversion Form -->
+            <div class="w-full md:w-1/2 p-6 sm:p-8 flex flex-col justify-between overflow-y-auto custom-scrollbar">
+                <div class="space-y-6">
+                    <div>
+                        <span id="modal-car-tag" class="inline-block bg-brand-red/10 text-brand-red border border-brand-red/20 px-2.5 py-1 rounded-full text-[10px] font-heading font-black uppercase tracking-widest mb-2">Usado Premium</span>
+                        <h3 id="modal-car-name" class="font-heading font-black text-2xl text-white uppercase tracking-tight">Toyota Hilux SRX</h3>
+                        <p id="modal-car-category" class="text-xs text-zinc-500 font-bold uppercase tracking-widest mt-1">Pickups / SUV</p>
+                    </div>
+
+                    <!-- Ficha Técnica -->
+                    <div class="grid grid-cols-2 gap-4 border-y border-zinc-800/80 py-4">
+                        <div>
+                            <span class="text-[9px] text-zinc-500 block uppercase font-bold tracking-wider">Año de Fabricación</span>
+                            <span id="modal-car-year" class="text-sm font-semibold text-white">2021</span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-zinc-500 block uppercase font-bold tracking-wider">Odómetro (Km)</span>
+                            <span id="modal-car-km" class="text-sm font-semibold text-white">45.000 km</span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-zinc-500 block uppercase font-bold tracking-wider">Caja de cambios</span>
+                            <span id="modal-car-trans" class="text-sm font-semibold text-white">Automática</span>
+                        </div>
+                        <div>
+                            <span class="text-[9px] text-zinc-500 block uppercase font-bold tracking-wider">Motorización</span>
+                            <span id="modal-car-fuel" class="text-sm font-semibold text-white">Diésel</span>
+                        </div>
+                    </div>
+
+                    <!-- Bloque Precios Con Descuentos Contado -->
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-center bg-brand-red/5 border border-brand-red/10 p-4 rounded-xl">
+                            <div>
+                                <span class="text-[10px] text-brand-red font-black block uppercase tracking-wider">Precio Especial Contado (10% OFF)</span>
+                                <span id="modal-car-discount-price" class="text-2xl font-heading font-black text-white">$43.200 USD</span>
+                            </div>
+                            <span class="bg-brand-red text-white text-[9px] px-2.5 py-1 rounded-lg font-heading font-black uppercase tracking-widest">Ahorro Directo</span>
+                        </div>
+                        <div class="flex justify-between items-center text-xs text-zinc-400 px-1">
+                            <span>Precio Lista Financiado</span>
+                            <span id="modal-car-list-price" class="font-bold text-white">$48.000 USD</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-3 pt-6 border-t border-zinc-800">
+                    <button id="modal-whatsapp-btn" onclick="modalWhatsAppInquiry()" class="w-full bg-whatsapp hover:bg-green-600 text-white font-heading font-bold text-xs uppercase tracking-wider py-4 rounded-xl text-center transition flex items-center justify-center gap-2 shadow-lg shadow-whatsapp/10">
+                        <i class="fa-brands fa-whatsapp text-lg"></i> Consultar Disponibilidad
+                    </button>
+                    <button id="modal-finance-btn" onclick="modalGoToFinance()" class="w-full bg-zinc-800 hover:bg-zinc-700 text-white font-heading font-bold text-xs uppercase tracking-wider py-4 rounded-xl text-center transition border border-zinc-700">
+                        Simular Plan de Pago de este Modelo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="bg-black border-t border-zinc-900 py-16 text-sm text-zinc-500">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+                
+                <!-- Col 1: Brand Info -->
+                <div class="space-y-4">
+                    <a href="#" class="flex items-center gap-3">
+                        <div class="bg-brand-red p-2.5 rounded-lg text-white">
+                            <i class="fa-solid fa-gauge-high text-lg"></i>
+                        </div>
+                        <div>
+                            <span class="font-heading font-black text-lg tracking-tighter text-white block">EC MULTIMARCAS</span>
+                            <span class="text-[8px] tracking-[0.25em] text-brand-red block -mt-1 font-bold uppercase">Global Automotive</span>
+                        </div>
+                    </a>
+                    <p class="text-xs text-zinc-400 leading-relaxed font-light">
+                        Ofreciendo los vehículos más deseados del mercado global con esquemas de financiación locales que hacen posible tu compra en Federal, Entre Ríos.
+                    </p>
+                </div>
+
+                <!-- Col 2: Navigation Links -->
+                <div>
+                    <h5 class="font-heading font-bold text-xs text-white uppercase tracking-widest mb-4">Secciones</h5>
+                    <ul class="space-y-2.5 text-xs font-semibold">
+                        <li><a href="#hero" class="hover:text-brand-red transition">Inicio</a></li>
+                        <li><a href="#catalogo" class="hover:text-brand-red transition">Inventario</a></li>
+                        <li><a href="#financiacion" class="hover:text-brand-red transition">Simulador de Crédito</a></li>
+                        <li><a href="#contacto" class="hover:text-brand-red transition">Contacto y Showroom</a></li>
+                    </ul>
+                </div>
+
+                <!-- Col 3: Financiacion Specs -->
+                <div>
+                    <h5 class="font-heading font-bold text-xs text-white uppercase tracking-widest mb-4">Financiación</h5>
+                    <ul class="space-y-2.5 text-xs font-semibold">
+                        <li><span class="text-zinc-400">Tasas fijas preferenciales</span></li>
+                        <li><span class="text-zinc-400">Financiación de hasta el 60%</span></li>
+                        <li><span class="text-zinc-400">Plazos flexibles de 12 a 48 meses</span></li>
+                        <li><span class="text-zinc-400">Retiro Llave por Llave</span></li>
+                    </ul>
+                </div>
+
+                <!-- Col 4: Contact & Showroom -->
+                <div>
+                    <h5 class="font-heading font-bold text-xs text-white uppercase tracking-widest mb-4">Salón Oficial</h5>
+                    <p class="text-xs text-zinc-400 leading-relaxed font-light">
+                        Colectora Aguirre Almada 415,<br>
+                        Federal, Entre Ríos, Argentina<br>
+                        WhatsApp Directo: +54 9 3454 40 5721
+                    </p>
+                </div>
+            </div>
+
+            <div class="border-t border-zinc-900 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs font-medium">
+                <p>&copy; 2026 EC Multimarcas. Todos los derechos reservados. Las cuotas y cotizaciones son estimadas y sujetas a análisis crediticio.</p>
+                <p class="flex items-center gap-2 text-zinc-400">
+                    Estilo Global <span class="h-1.5 w-1.5 rounded-full bg-brand-red"></span> Diseñado para Conversión
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- INTERACTIVE LOGIC SCRIPT -->
+    <script>
+        // High Quality Simulated Inventory
+        const carsData = [
+            {
+                id: 1,
+                brand: "Toyota",
+                model: "Hilux 4x4 SRX V6",
+                year: 2022,
+                km: "34.000 km",
+                status: "Usado",
+                category: "SUV",
+                price: 49500,
+                transmission: "Automática",
+                fuel: "Diésel",
+                color: "Gris Platino",
+                svgType: "suv"
+            },
+            {
+                id: 2,
+                brand: "Volkswagen",
+                model: "Golf GTI Performance",
+                year: 2021,
+                km: "21.000 km",
+                status: "Usado",
+                category: "Deportivo",
+                price: 36000,
+                transmission: "Automática DSG",
+                fuel: "Nafta",
+                color: "Rojo Tornado",
+                svgType: "deportivo"
+            },
+            {
+                id: 3,
+                brand: "Jeep",
+                model: "Compass Limited T270",
+                year: 2024,
+                km: "Nuevo",
+                status: "Nuevo",
+                category: "SUV",
+                price: 38200,
+                transmission: "Automática",
+                fuel: "Nafta Turbo",
+                color: "Gris Grafito",
+                svgType: "suv"
+            },
+            {
+                id: 4,
+                brand: "Peugeot",
+                model: "208 GT Line Pro",
+                year: 2023,
+                km: "15.000 km",
+                status: "Usado",
+                category: "Deportivo",
+                price: 21500,
+                transmission: "Automática",
+                fuel: "Nafta",
+                color: "Blanco Nacarado",
+                svgType: "deportivo"
+            },
+            {
+                id: 5,
+                brand: "Audi",
+                model: "A4 S-Line 2.0 TFSI",
+                year: 2021,
+                km: "42.000 km",
+                status: "Usado",
+                category: "Sedán",
+                price: 41000,
+                transmission: "S-Tronic",
+                fuel: "Nafta",
+                color: "Negro Mito",
+                svgType: "sedan"
+            },
+            {
+                id: 6,
+                brand: "Fiat",
+                model: "Cronos Precision 1.8",
+                year: 2024,
+                km: "Nuevo",
+                status: "Nuevo",
+                category: "Sedán",
+                price: 19800,
+                transmission: "Manual",
+                fuel: "Nafta",
+                color: "Rojo Metalizado",
+                svgType: "sedan"
+            }
+        ];
+
+        // Global State variables
+        let currentPlazo = 12;
+        let selectedCarId = null;
+
+        // On Load Initializations
+        window.onload = function() {
+            renderCarCards(carsData);
+            populateCalcDropdown();
+            calculateFinance();
+        };
+
+        // Custom Vector SVG Generator based on Vehicle Segment
+        function getVehicleSVG(type, strokeColor = "text-brand-red") {
+            if (type === "suv") {
+                return `
+                    <svg class="w-28 h-auto ${strokeColor} drop-shadow-[0_0_10px_rgba(225,29,72,0.15)]" viewBox="0 0 100 40" fill="currentColor">
+                        <path d="M12,23 Q12,14 22,14 L42,14 Q48,6 64,6 L82,6 Q89,12 94,22 L96,25 Q98,27 98,29 L92,30 Q91,34 85,34 Q79,34 78,30 L38,30 Q37,34 31,34 Q25,34 24,30 L12,30 Z" />
+                        <circle cx="31" cy="31" r="5" fill="#09090b" stroke="#e11d48" stroke-width="1.5" />
+                        <circle cx="78" cy="31" r="5" fill="#09090b" stroke="#e11d48" stroke-width="1.5" />
+                    </svg>
+                `;
+            } else if (type === "deportivo") {
+                return `
+                    <svg class="w-28 h-auto ${strokeColor} drop-shadow-[0_0_10px_rgba(225,29,72,0.15)]" viewBox="0 0 100 40" fill="currentColor">
+                        <path d="M10,25 Q10,18 20,18 L35,18 Q40,11 50,11 L75,11 Q84,15 88,23 L91,25 Q93,27 93,29 L88,30 Q88,34 83,34 Q78,34 78,30 L35,30 Q35,34 30,34 Q25,34 25,30 L10,30 Z" />
+                        <circle cx="30" cy="31" r="5" fill="#09090b" stroke="#e11d48" stroke-width="1.5" />
+                        <circle cx="78" cy="31" r="5" fill="#09090b" stroke="#e11d48" stroke-width="1.5" />
+                    </svg>
+                `;
+            } else { // sedan
+                return `
+                    <svg class="w-28 h-auto ${strokeColor} drop-shadow-[0_0_10px_rgba(225,29,72,0.15)]" viewBox="0 0 100 40" fill="currentColor">
+                        <path d="M8,25 Q8,18 18,18 L32,18 Q36,10 48,10 L70,10 Q78,16 84,24 L92,25 Q94,27 94,29 L88,30 Q88,34 83,34 Q78,34 78,30 L34,30 Q34,34 29,34 Q24,34 24,30 L8,30 Z" />
+                        <circle cx="29" cy="31" r="5" fill="#09090b" stroke="#e11d48" stroke-width="1.5" />
+                        <circle cx="78" cy="31" r="5" fill="#09090b" stroke="#e11d48" stroke-width="1.5" />
+                    </svg>
+                `;
+            }
+        }
+
+        // Render Cards (Estilo Deportiva, Black & Red)
+        function renderCarCards(cars) {
+            const grid = document.getElementById('cars-grid');
+            const noResults = document.getElementById('no-results');
+            grid.innerHTML = "";
+
+            if (cars.length === 0) {
+                noResults.classList.remove('hidden');
+                grid.classList.add('hidden');
+                return;
+            }
+
+            noResults.classList.add('hidden');
+            grid.classList.remove('hidden');
+
+            cars.forEach(car => {
+                const discountPrice = car.price * 0.9; // 10% Cash discount
+                const formattedPrice = car.price.toLocaleString('es-AR');
+                const formattedDiscount = discountPrice.toLocaleString('es-AR');
+                const isNew = car.status === 'Nuevo';
+
+                const cardHtml = `
+                    <div class="bg-brand-darkGray border border-zinc-800 rounded-2xl overflow-hidden shadow-lg hover:border-brand-red/40 transition-all duration-300 flex flex-col justify-between group">
+                        
+                        <!-- Card Top (Visual vector frame) -->
+                        <div class="bg-zinc-950 p-6 flex flex-col justify-center items-center relative aspect-video border-b border-zinc-800/80">
+                            <!-- SVG Car Dynamic representation -->
+                            <div class="absolute inset-0 bg-gradient-to-b from-transparent to-brand-black/55"></div>
+                            <div class="transform group-hover:scale-105 transition-transform duration-300 z-10">
+                                ${getVehicleSVG(car.svgType, "text-zinc-400 group-hover:text-brand-red")}
+                            </div>
+                            
+                            <span class="absolute top-4 left-4 text-[9px] font-heading font-black uppercase tracking-widest px-2.5 py-1 rounded-full ${isNew ? 'bg-brand-red/10 text-brand-red border border-brand-red/20' : 'bg-zinc-800 text-zinc-400 border border-zinc-700/50'}">
+                                ${car.status}
+                            </span>
+                            <span class="absolute top-4 right-4 text-[9px] font-heading font-black uppercase tracking-widest px-2.5 py-1 rounded-full bg-zinc-900 text-zinc-500">
+                                ${car.year}
+                            </span>
+                        </div>
+
+                        <!-- Card Body (Info) -->
+                        <div class="p-6 space-y-4">
+                            <div>
+                                <h3 class="font-heading font-black text-lg text-white group-hover:text-brand-red transition-colors uppercase tracking-tight">${car.brand} <span class="font-light text-zinc-300">${car.model}</span></h3>
+                                <p class="text-[10px] text-zinc-500 mt-1 uppercase font-bold tracking-widest">${car.category}</p>
+                            </div>
+
+                            <!-- Spec grid -->
+                            <div class="grid grid-cols-2 gap-2 text-xs border-y border-zinc-800 py-3 text-zinc-400 font-medium">
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-gauge-high text-brand-red text-[10px]"></i> ${car.km}</span>
+                                <span class="flex items-center gap-1.5"><i class="fa-solid fa-gears text-brand-red text-[10px]"></i> ${car.transmission}</span>
+                            </div>
+
+                            <!-- Prices -->
+                            <div class="space-y-1.5 pt-1">
+                                <div class="flex justify-between items-baseline">
+                                    <span class="text-[10px] text-zinc-500 uppercase tracking-widest font-bold">Precio Lista:</span>
+                                    <span class="text-sm font-bold text-zinc-400">$${formattedPrice} USD</span>
+                                </div>
+                                <div class="flex justify-between items-baseline bg-brand-red/5 p-2 rounded-lg border border-brand-red/10">
+                                    <span class="text-[10px] text-brand-red font-black uppercase tracking-widest">Contado (10% OFF):</span>
+                                    <span class="text-xl font-heading font-black text-white">$${formattedDiscount} USD</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer (Actions) -->
+                        <div class="px-6 pb-6 pt-2 flex gap-2">
+                            <button onclick="openCarModal(${car.id})" class="flex-1 bg-zinc-800 hover:bg-zinc-700 text-xs text-white py-3.5 rounded-xl font-heading font-bold uppercase tracking-wider transition text-center">
+                                Ver Detalles
+                            </button>
+                            <a href="https://wa.me/5493454405721?text=Hola!%20Me%20interesa%20obtener%20más%20información%20sobre%20el%20${encodeURIComponent(car.brand + ' ' + car.model)}" target="_blank" class="bg-whatsapp hover:bg-green-600 text-white p-3.5 rounded-xl transition text-center flex items-center justify-center">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+        }
+
+        // Toggle Mobile Menu
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            const icon = document.getElementById('menu-icon');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                icon.className = "fa-solid fa-xmark";
+            } else {
+                menu.classList.add('hidden');
+                icon.className = "fa-solid fa-bars";
+            }
+        }
+
+        // Filter Cars logic
+        function filterCars() {
+            const searchVal = document.getElementById('filter-search').value.toLowerCase();
+            const statusVal = document.getElementById('filter-status').value;
+            const catVal = document.getElementById('filter-category').value;
+            const sortVal = document.getElementById('filter-sort').value;
+
+            let filtered = carsData.filter(car => {
+                const matchesSearch = car.brand.toLowerCase().includes(searchVal) || car.model.toLowerCase().includes(searchVal);
+                const matchesStatus = statusVal === 'all' || car.status === statusVal;
+                const matchesCat = catVal === 'all' || car.category === catVal;
+                return matchesSearch && matchesStatus && matchesCat;
+            });
+
+            // Sorting
+            if (sortVal === 'price-asc') {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortVal === 'price-desc') {
+                filtered.sort((a, b) => b.price - a.price);
+            }
+
+            renderCarCards(filtered);
+        }
+
+        // Populate Calculator Dropdown
+        function populateCalcDropdown() {
+            const select = document.getElementById('calc-car-select');
+            carsData.forEach(car => {
+                const opt = document.createElement('option');
+                opt.value = car.id;
+                opt.text = `${car.brand} ${car.model} (${car.year}) - $${car.price.toLocaleString('es-AR')} USD`;
+                opt.setAttribute('data-price', car.price);
+                select.appendChild(opt);
+            });
+        }
+
+        // Handle Change on Calculator Select
+        function onSelectCarCalc() {
+            const select = document.getElementById('calc-car-select');
+            const manualContainer = document.getElementById('calc-manual-price-container');
+            const priceInput = document.getElementById('calc-price');
+
+            if (select.value === 'manual') {
+                manualContainer.classList.remove('hidden');
+            } else {
+                manualContainer.classList.add('hidden');
+                const selectedOption = select.options[select.selectedIndex];
+                priceInput.value = selectedOption.getAttribute('data-price');
+            }
+            calculateFinance();
+        }
+
+        // Set Plazo (months) in Finance Calculator
+        function setPlazo(months) {
+            currentPlazo = months;
+            const buttons = document.querySelectorAll('.plazo-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.includes(months)) {
+                    btn.className = "plazo-btn active py-3 bg-brand-red text-white rounded-xl text-xs font-heading font-black uppercase tracking-wider transition focus:outline-none";
+                } else {
+                    btn.className = "plazo-btn py-3 bg-brand-darkGray text-zinc-400 hover:bg-zinc-800 rounded-xl text-xs font-heading font-black uppercase tracking-wider transition focus:outline-none";
+                }
+            });
+            calculateFinance();
+        }
+
+        // Main Finance Calculator Logic
+        function calculateFinance() {
+            const priceInput = document.getElementById('calc-price');
+            const anticipoRange = document.getElementById('calc-anticipo-range');
+            const anticipoLabel = document.getElementById('calc-anticipo-label');
+            const totalFinancedElem = document.getElementById('calc-total-financed');
+            const monthlyFeeElem = document.getElementById('calc-monthly-fee');
+
+            let price = parseFloat(priceInput.value);
+            if (isNaN(price) || price < 5000) {
+                price = 5000;
+            }
+
+            const pct = parseFloat(anticipoRange.value);
+            const anticipoVal = price * (pct / 100);
+            const totalFinanced = price - anticipoVal;
+
+            anticipoLabel.innerText = `$${anticipoVal.toLocaleString('es-AR', {maximumFractionDigits:0})} USD (${pct}%)`;
+            totalFinancedElem.innerText = `$${totalFinanced.toLocaleString('es-AR', {maximumFractionDigits:0})} USD`;
+
+            // Interest Rate Logic (Simplified PMT)
+            const annualRate = 0.125; // 12.5% TNA
+            const monthlyRate = annualRate / 12;
+            const cuotas = currentPlazo;
+
+            const cuotaValor = totalFinanced * (monthlyRate * Math.pow(1 + monthlyRate, cuotas)) / (Math.pow(1 + monthlyRate, cuotas) - 1);
+
+            monthlyFeeElem.innerText = `$${cuotaValor.toLocaleString('es-AR', {maximumFractionDigits:0})} USD`;
+        }
+
+        // WhatsApp redirect for finance simulation
+        function requestFinanceWhatsApp() {
+            const select = document.getElementById('calc-car-select');
+            const priceInput = document.getElementById('calc-price');
+            const anticipoRange = document.getElementById('calc-anticipo-range');
+            
+            let vehicleName = "Vehículo Personalizado";
+            if (select.value !== 'manual') {
+                vehicleName = select.options[select.selectedIndex].text.split(' - ')[0];
+            }
+
+            const total = parseFloat(priceInput.value);
+            const pct = parseFloat(anticipoRange.value);
+            const anticipo = total * (pct / 100);
+            const financiado = total - anticipo;
+            
+            const rate = 0.125 / 12;
+            const cuota = financiado * (rate * Math.pow(1 + rate, currentPlazo)) / (Math.pow(1 + rate, currentPlazo) - 1);
+
+            const message = `Hola EC Multimarcas! Estuve simulando las cuotas para mi próximo vehículo en su web y me gustaría avanzar con el análisis del crédito:\n\n` +
+                            `🚗 *Vehículo:* ${vehicleName}\n` +
+                            `💰 *Valor total:* $${total.toLocaleString('es-AR', {maximumFractionDigits:0})} USD\n` +
+                            `💵 *Anticipo:* $${anticipo.toLocaleString('es-AR', {maximumFractionDigits:0})} USD (${pct}%)\n` +
+                            `📅 *Plazo:* ${currentPlazo} meses de aprox. $${cuota.toLocaleString('es-AR', {maximumFractionDigits:0})} USD al mes.\n\n` +
+                            `¿Cuáles son los pasos a seguir para la pre-aprobación?`;
+
+            window.open(`https://wa.me/5493454405721?text=${encodeURIComponent(message)}`, '_blank');
+        }
+
+        // Modal Vehicle Interaction
+        function openCarModal(id) {
+            const car = carsData.find(c => c.id === id);
+            if (!car) return;
+
+            selectedCarId = id;
+            const isNew = car.status === 'Nuevo';
+
+            // Modal elements mapping
+            document.getElementById('modal-car-tag').innerText = car.status;
+            document.getElementById('modal-car-tag').className = `inline-block border px-2.5 py-1 rounded-full text-[9px] font-heading font-black uppercase tracking-widest mb-2 ${isNew ? 'bg-brand-red/10 text-brand-red border-brand-red/20' : 'bg-zinc-800 text-zinc-400 border-zinc-700/50'}`;
+            
+            document.getElementById('modal-car-name').innerText = `${car.brand} ${car.model}`;
+            document.getElementById('modal-car-category').innerText = car.category;
+            document.getElementById('modal-car-year').innerText = car.year;
+            document.getElementById('modal-car-km').innerText = car.km;
+            document.getElementById('modal-car-trans').innerText = car.transmission;
+            document.getElementById('modal-car-fuel').innerText = car.fuel;
+
+            const listPrice = car.price;
+            const discountPrice = car.price * 0.9;
+            document.getElementById('modal-car-list-price').innerText = `$${listPrice.toLocaleString('es-AR')} USD`;
+            document.getElementById('modal-car-discount-price').innerText = `$${discountPrice.toLocaleString('es-AR')} USD`;
+
+            // SVG in modal
+            const imageContainer = document.getElementById('modal-car-image-container');
+            imageContainer.innerHTML = `
+                <div class="p-6 bg-gradient-to-tr from-zinc-950 to-brand-darkGray rounded-2xl border border-zinc-900/80 shadow-inner flex flex-col justify-center items-center w-full min-h-[180px]">
+                    ${getVehicleSVG(car.svgType, "text-brand-red drop-shadow-[0_0_15px_rgba(225,29,72,0.3)]")}
+                    <p class="text-[10px] uppercase font-bold text-zinc-500 tracking-wider mt-4">Pintura: ${car.color}</p>
+                </div>
+            `;
+
+            // Show Modal
+            document.getElementById('car-modal').classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeCarModal() {
+            document.getElementById('car-modal').classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+        // Inquiry WhatsApp from Modal
+        function modalWhatsAppInquiry() {
+            const car = carsData.find(c => c.id === selectedCarId);
+            if (!car) return;
+            const msg = `Hola EC Multimarcas! Quiero consultar si tienen disponible el vehículo: *${car.brand} ${car.model} (${car.year})* que vi en su catálogo web.`;
+            window.open(`https://wa.me/5493454405721?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        // Modal Route to Finance Section
+        function modalGoToFinance() {
+            closeCarModal();
+            const select = document.getElementById('calc-car-select');
+            select.value = selectedCarId;
+            onSelectCarCalc();
+            
+            // Smooth Scroll
+            document.getElementById('financiacion').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // Toast notifications
+        function showToast(title, message, isSuccess = true) {
+            const toast = document.getElementById('toast');
+            const tTitle = document.getElementById('toast-title');
+            const tMessage = document.getElementById('toast-message');
+            const tIcon = document.getElementById('toast-icon');
+
+            tTitle.innerText = title;
+            tMessage.innerText = message;
+            
+            if (isSuccess) {
+                tIcon.className = "bg-green-500/10 text-whatsapp p-2 rounded-lg";
+                tIcon.innerHTML = `<i class="fa-solid fa-circle-check"></i>`;
+            } else {
+                tIcon.className = "bg-brand-red/10 text-brand-red p-2 rounded-lg";
+                tIcon.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i>`;
+            }
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            toast.classList.add('translate-y-0', 'opacity-100');
+
+            setTimeout(() => {
+                dismissToast();
+            }, 5000);
+        }
+
+        function dismissToast() {
+            const toast = document.getElementById('toast');
+            toast.classList.remove('translate-y-0', 'opacity-100');
+            toast.classList.add('translate-y-24', 'opacity-0');
+        }
+
+        // Contact Form Submission
+        function submitContactForm(event) {
+            event.preventDefault();
+            const name = document.getElementById('contact-name').value;
+            const phone = document.getElementById('contact-phone').value;
+            const message = document.getElementById('contact-message').value;
+
+            // Premium Notification toast
+            showToast("Mensaje Registrado", `Gracias ${name}, tu solicitud ya está en nuestro sistema de atención preferencial.`);
+            
+            // Clear fields
+            document.getElementById('contact-form').reset();
+        }
+    </script>
+</body>
+</html>
+
+```
