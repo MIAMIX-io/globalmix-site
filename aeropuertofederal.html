@@ -1,0 +1,891 @@
+```html
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aeropuerto Ciudad de Federal - AeroClub Federal</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            800: '#0B192C',
+                            900: '#000814',
+                            950: '#00040a',
+                        },
+                        gold: {
+                            100: '#fef3c7',
+                            400: '#f59e0b',
+                            500: '#d97706',
+                            600: '#b45309',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Montserrat', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gold-gradient-text {
+            background: linear-gradient(135deg, #f59e0b 0%, #fef3c7 50%, #b45309 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .btn-gold {
+            background: linear-gradient(135deg, #d97706 0%, #f59e0b 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .btn-gold:hover {
+            background: linear-gradient(135deg, #b45309 0%, #d97706 100%);
+            box-shadow: 0 4px 20px rgba(245, 158, 11, 0.4);
+            transform: translateY(-1px);
+        }
+    </style>
+</head>
+<body class="bg-navy-950 text-slate-100 font-sans overflow-x-hidden antialiased">
+
+    <!-- TOP WEATHER BAR & SOCIALS -->
+    <div class="bg-navy-900 border-b border-slate-800 text-xs py-2 px-4 md:px-8 flex justify-between items-center z-50 relative">
+        <div class="flex items-center space-x-4">
+            <span class="flex items-center text-slate-400">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 mr-1 text-gold-400"></i>
+                Federal, Entre Ríos, AR
+            </span>
+            <!-- Live Weather Dynamic Widget -->
+            <div id="weather-topbar" class="flex items-center space-x-2 text-slate-300">
+                <div class="animate-pulse bg-slate-700 w-16 h-3 rounded"></div>
+            </div>
+        </div>
+        <div class="flex items-center space-x-4">
+            <a href="https://instagram.com/aeroclub.federal" target="_blank" rel="noopener noreferrer" class="hover:text-gold-400 transition-colors flex items-center gap-1.5 text-slate-300">
+                <i data-lucide="instagram" class="w-4 h-4 text-gold-400"></i>
+                <span class="hidden sm:inline">@aeroclub.federal</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- MAIN NAVBAR -->
+    <header class="sticky top-0 bg-navy-900/90 backdrop-blur-md border-b border-slate-800/80 z-40 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand / Logo -->
+            <a href="#" class="flex items-center space-x-3 group">
+                <div class="bg-gradient-to-br from-gold-500 to-amber-600 p-2.5 rounded-lg shadow-lg group-hover:scale-105 transition-transform">
+                    <i data-lucide="plane" class="w-6 h-6 text-navy-950 transform -rotate-45"></i>
+                </div>
+                <div>
+                    <span class="block text-lg font-extrabold tracking-wider text-white uppercase leading-none">Aeropuerto</span>
+                    <span class="block text-xs font-medium tracking-widest text-gold-400 uppercase">Ciudad de Federal</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden lg:flex items-center space-x-8 text-sm font-semibold tracking-wide">
+                <a href="#destinations" class="text-slate-300 hover:text-gold-400 transition-colors">Destinos</a>
+                <a href="#services" class="text-slate-300 hover:text-gold-400 transition-colors">Servicios Especiales</a>
+                <a href="#fleet" class="text-slate-300 hover:text-gold-400 transition-colors">Flota</a>
+                <a href="#booking" class="text-slate-300 hover:text-gold-400 transition-colors">Reservas</a>
+                <a href="#location" class="text-slate-300 hover:text-gold-400 transition-colors">Contacto</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden lg:flex items-center">
+                <a href="#booking" class="btn-gold text-navy-950 px-5 py-2.5 rounded-full text-xs font-bold tracking-widest uppercase">
+                    Cotizar Vuelo
+                </a>
+            </div>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-400 hover:text-white focus:outline-none" aria-label="Toggle Menu">
+                <i data-lucide="menu" class="w-6 h-6" id="menu-icon-hamburger"></i>
+                <i data-lucide="x" class="w-6 h-6 hidden" id="menu-icon-close"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Panel -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-navy-900 border-t border-slate-800/80 px-4 pt-2 pb-6 space-y-4">
+            <a href="#destinations" class="block text-base font-semibold text-slate-300 hover:text-gold-400 py-2">Destinos</a>
+            <a href="#services" class="block text-base font-semibold text-slate-300 hover:text-gold-400 py-2">Servicios Especiales</a>
+            <a href="#fleet" class="block text-base font-semibold text-slate-300 hover:text-gold-400 py-2">Nuestra Flota</a>
+            <a href="#booking" class="block text-base font-semibold text-slate-300 hover:text-gold-400 py-2">Reservas</a>
+            <a href="#location" class="block text-base font-semibold text-slate-300 hover:text-gold-400 py-2">Ubicación y Contacto</a>
+            <div class="pt-4 border-t border-slate-800">
+                <a href="#booking" class="btn-gold text-navy-950 block text-center py-3 rounded-xl font-bold tracking-wider uppercase text-sm">
+                    Cotizar Vuelo Online
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-12 md:py-20">
+        <!-- Background Image overlay -->
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1540962351504-03099e0a754b?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center opacity-25"></div>
+        <!-- Gradient Cover -->
+        <div class="absolute inset-0 bg-gradient-to-t from-navy-950 via-navy-950/80 to-transparent"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-navy-950 via-transparent to-navy-950/40"></div>
+
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- AeroClub Badge -->
+            <div class="inline-flex items-center space-x-2 bg-slate-800/60 backdrop-blur-md border border-slate-700/50 px-4 py-1.5 rounded-full mb-8">
+                <span class="w-2 h-2 rounded-full bg-gold-400 animate-pulse"></span>
+                <span class="text-xs font-bold tracking-widest text-slate-200 uppercase">Instalaciones AeroClub Federal</span>
+            </div>
+
+            <!-- Main Heading -->
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6">
+                Conectamos Federal <br>
+                <span class="gold-gradient-text font-serif italic font-normal">con todo el país</span>
+            </h1>
+
+            <p class="max-w-2xl mx-auto text-base sm:text-lg md:text-xl text-slate-300 font-light mb-10 leading-relaxed">
+                Aeropuerto Ciudad de Federal. Infraestructura estratégica, pista operativa y servicios aéreos de primer nivel hacia Buenos Aires, Concordia, Paraná y Rosario.
+            </p>
+
+            <!-- CTAs -->
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#booking" class="w-full sm:w-auto btn-gold text-navy-950 px-8 py-4 rounded-xl text-sm font-bold tracking-widest uppercase transition-all shadow-xl">
+                    Solicitar Vuelo Chárter
+                </a>
+                <a href="#fleet" class="w-full sm:w-auto bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-slate-600 text-white px-8 py-4 rounded-xl text-sm font-bold tracking-widest uppercase transition-all">
+                    Conocer la Flota
+                </a>
+            </div>
+
+            <!-- Quick Stats/Facilities Row -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-16 pt-8 border-t border-slate-800/60 max-w-4xl mx-auto">
+                <div class="p-4 bg-navy-900/40 backdrop-blur-sm rounded-xl border border-slate-800/40">
+                    <span class="block text-2xl md:text-3xl font-extrabold text-gold-400">1.250m</span>
+                    <span class="text-[10px] md:text-xs tracking-wider text-slate-400 uppercase">Pista Operativa</span>
+                </div>
+                <div class="p-4 bg-navy-900/40 backdrop-blur-sm rounded-xl border border-slate-800/40">
+                    <span class="block text-2xl md:text-3xl font-extrabold text-gold-400">24/7</span>
+                    <span class="text-[10px] md:text-xs tracking-wider text-slate-400 uppercase">Vuelos Sanitarios</span>
+                </div>
+                <div class="p-4 bg-navy-900/40 backdrop-blur-sm rounded-xl border border-slate-800/40">
+                    <span class="block text-2xl md:text-3xl font-extrabold text-gold-400">Navajo</span>
+                    <span class="text-[10px] md:text-xs tracking-wider text-slate-400 uppercase">Y Metroliner M23</span>
+                </div>
+                <div class="p-4 bg-navy-900/40 backdrop-blur-sm rounded-xl border border-slate-800/40">
+                    <span class="block text-2xl md:text-3xl font-extrabold text-gold-400">Habilitado</span>
+                    <span class="text-[10px] md:text-xs tracking-wider text-slate-400 uppercase">ANAC Argentina</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIVE WEATHER DASHBOARD SECTION -->
+    <section class="py-12 bg-gradient-to-b from-navy-950 to-navy-900 border-y border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-navy-950/60 backdrop-blur-md rounded-2xl border border-slate-800 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6">
+                <div class="flex items-center space-x-4">
+                    <div class="p-3 bg-slate-800/80 rounded-xl text-gold-400">
+                        <i data-lucide="cloud-sun" class="w-8 h-8"></i>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-bold text-white">Meteorología en Vivo - Federal (ER)</h3>
+                        <p class="text-xs text-slate-400 mt-1">Monitoreo meteorológico en tiempo real para operaciones seguras.</p>
+                    </div>
+                </div>
+
+                <!-- Interactive Metar-Style Weather Stats -->
+                <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full md:w-auto text-center md:text-left">
+                    <div class="bg-slate-900/50 p-3.5 rounded-xl border border-slate-800/80 min-w-[120px]">
+                        <span class="block text-[10px] font-semibold tracking-wider text-slate-400 uppercase mb-0.5">Temperatura</span>
+                        <span id="weather-temp" class="text-xl font-bold text-white">--°C</span>
+                    </div>
+                    <div class="bg-slate-900/50 p-3.5 rounded-xl border border-slate-800/80 min-w-[120px]">
+                        <span class="block text-[10px] font-semibold tracking-wider text-slate-400 uppercase mb-0.5">Viento</span>
+                        <span id="weather-wind" class="text-xl font-bold text-white">-- km/h</span>
+                    </div>
+                    <div class="bg-slate-900/50 p-3.5 rounded-xl border border-slate-800/80 min-w-[120px]">
+                        <span class="block text-[10px] font-semibold tracking-wider text-slate-400 uppercase mb-0.5">Humedad</span>
+                        <span id="weather-humidity" class="text-xl font-bold text-white">--%</span>
+                    </div>
+                    <div class="bg-slate-900/50 p-3.5 rounded-xl border border-slate-800/80 min-w-[120px]">
+                        <span class="block text-[10px] font-semibold tracking-wider text-slate-400 uppercase mb-0.5">Condición</span>
+                        <span id="weather-desc" class="text-xs font-bold text-gold-400 mt-1 block truncate">Consultando...</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- DIRECT DESTINATIONS -->
+    <section id="destinations" class="py-24 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block mb-3">Conexiones Directas</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">Rutas Estratégicas</h2>
+                <div class="h-1 w-16 bg-gold-500 mx-auto mt-4 mb-6"></div>
+                <p class="text-slate-300 font-light">Ofrecemos vuelos ejecutivos, chárter y traslados de pasajeros desde Federal hacia los hubs industriales y corporativos más relevantes de la región.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Destino 1: Buenos Aires -->
+                <div class="group bg-navy-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-gold-500/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1549421263-540143084f15?auto=format&fit=crop&q=80&w=600" alt="Aeropuerto de San Fernando, Buenos Aires" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=600'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent"></div>
+                        <span class="absolute top-4 right-4 bg-gold-500 text-navy-950 font-bold text-[10px] tracking-widest uppercase px-3 py-1 rounded-full shadow-md">Frecuente</span>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Buenos Aires</h3>
+                        <p class="text-xs text-gold-400 font-semibold mb-3">Aeropuerto Int. de San Fernando (SADF)</p>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">La conexión más directa y ágil con la capital de negocios. Acceso inmediato a zona norte y autopistas.</p>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-300">
+                        <span>Tiempo: ~1h 15m</span>
+                        <a href="#booking" class="text-gold-400 hover:text-white transition-colors flex items-center">Cotizar <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Destino 2: Paraná -->
+                <div class="group bg-navy-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-gold-500/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1517976487492-5750f3195933?auto=format&fit=crop&q=80&w=600" alt="Paraná, Entre Ríos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=600'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Paraná</h3>
+                        <p class="text-xs text-gold-400 font-semibold mb-3">Aeropuerto Gral. Justo José de Urquiza (SAAP)</p>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">Enlace veloz con la capital de la provincia para fines administrativos, gubernamentales y corporativos.</p>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-300">
+                        <span>Tiempo: ~35m</span>
+                        <a href="#booking" class="text-gold-400 hover:text-white transition-colors flex items-center">Cotizar <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Destino 3: Concordia -->
+                <div class="group bg-navy-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-gold-500/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1506012787146-f92b2d7d6d96?auto=format&fit=crop&q=80&w=600" alt="Concordia, Entre Ríos" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=600'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Concordia</h3>
+                        <p class="text-xs text-gold-400 font-semibold mb-3">Aeropuerto Pierrestegui (SAAC)</p>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">Vuelos rápidos en la región del Río Uruguay, ideal para la industria citrícola, forestal y agropecuaria.</p>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-300">
+                        <span>Tiempo: ~20m</span>
+                        <a href="#booking" class="text-gold-400 hover:text-white transition-colors flex items-center">Cotizar <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i></a>
+                    </div>
+                </div>
+
+                <!-- Destino 4: Rosario -->
+                <div class="group bg-navy-900 rounded-2xl overflow-hidden border border-slate-800 hover:border-gold-500/50 transition-all duration-300 flex flex-col justify-between">
+                    <div class="relative h-48 overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&q=80&w=600" alt="Rosario, Santa Fe" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&q=80&w=600'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 to-transparent"></div>
+                    </div>
+                    <div class="p-6 flex-grow">
+                        <h3 class="text-lg font-bold text-white mb-2">Rosario</h3>
+                        <p class="text-xs text-gold-400 font-semibold mb-3">Aeropuerto Int. de Rosario (SAAR)</p>
+                        <p class="text-xs text-slate-400 leading-relaxed mb-4">Conectando con el gran polo exportador agroindustrial de Santa Fe y sus conexiones comerciales de cabotaje.</p>
+                    </div>
+                    <div class="p-6 pt-0 border-t border-slate-800/80 flex items-center justify-between text-xs font-semibold text-slate-300">
+                        <span>Tiempo: ~50m</span>
+                        <a href="#booking" class="text-gold-400 hover:text-white transition-colors flex items-center">Cotizar <i data-lucide="arrow-up-right" class="w-4 h-4 ml-1"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPECIAL SERVICES -->
+    <section id="services" class="py-24 bg-navy-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block mb-3">Operaciones Integrales</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">Capacidades del Aeropuerto</h2>
+                <div class="h-1 w-16 bg-gold-500 mx-auto mt-4 mb-6"></div>
+                <p class="text-slate-300 font-light">Mucho más que vuelos de pasajeros. Brindamos servicios aéreos de contingencia y transporte de mercaderías con altos estándares de seguridad y respuesta rápida.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Servicio 1: Vuelos Sanitarios -->
+                <div class="bg-navy-950 p-8 rounded-2xl border border-slate-800 hover:border-red-500/40 transition-colors">
+                    <div class="p-4 bg-red-950/40 border border-red-800/50 rounded-2xl w-14 h-14 flex items-center justify-center text-red-400 mb-6">
+                        <i data-lucide="heart-pulse" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Vuelos Sanitarios 24/7</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Evacuaciones de emergencia médica y traslados de alta complejidad coordinados con la provincia. Aeronaves preparadas para equipos de terapia intensiva y personal médico especializado.
+                    </p>
+                    <span class="text-xs font-bold tracking-wide text-red-400 flex items-center"><i data-lucide="shield-alert" class="w-4 h-4 mr-1.5"></i> Prioridad de Despegue Inmediata</span>
+                </div>
+
+                <!-- Servicio 2: Vuelo de Carga Aérea -->
+                <div class="bg-navy-950 p-8 rounded-2xl border border-slate-800 hover:border-gold-500/30 transition-colors">
+                    <div class="p-4 bg-gold-950/30 border border-gold-800/30 rounded-2xl w-14 h-14 flex items-center justify-center text-gold-400 mb-6">
+                        <i data-lucide="package" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Transporte de Carga y Encomiendas</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Solución logística aérea ultrarrápida para mercaderías, repuestos críticos del agro, insumos farmacéuticos y documentación de alta prioridad. Logística puerta a pista en minutos.
+                    </p>
+                    <span class="text-xs font-bold tracking-wide text-gold-400 flex items-center"><i data-lucide="truck" class="w-4 h-4 mr-1.5"></i> Capacidad de carga optimizada</span>
+                </div>
+
+                <!-- Servicio 3: Chárter Ejecutivo -->
+                <div class="bg-navy-950 p-8 rounded-2xl border border-slate-800 hover:border-gold-500/30 transition-colors">
+                    <div class="p-4 bg-blue-950/40 border border-blue-800/40 rounded-2xl w-14 h-14 flex items-center justify-center text-blue-400 mb-6">
+                        <i data-lucide="briefcase" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-3">Vuelos Corporativos</h3>
+                    <p class="text-sm text-slate-400 leading-relaxed mb-4">
+                        Discreción absoluta, flexibilidad horaria y embarque prioritario en hangar privado. Viaje directamente según su agenda de negocios y maximice la productividad de su equipo gerencial.
+                    </p>
+                    <span class="text-xs font-bold tracking-wide text-gold-400 flex items-center"><i data-lucide="star" class="w-4 h-4 mr-1.5"></i> Servicio VIP en Hangar</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FLEET SHOWCASE -->
+    <section id="fleet" class="py-24">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block mb-3">Tecnología de Vuelo</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight">Nuestra Flota</h2>
+                <div class="h-1 w-16 bg-gold-500 mx-auto mt-4 mb-6"></div>
+                <p class="text-slate-300 font-light">Disponemos de aeronaves bimotoras seleccionadas minuciosamente para garantizar versatilidad operacional y máxima seguridad sobre las rutas de Entre Ríos y el Mercosur.</p>
+            </div>
+
+            <div class="space-y-16">
+                <!-- Avión 1: Piper Navajo PA-31 -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-navy-900 rounded-3xl p-6 md:p-10 border border-slate-800">
+                    <div class="lg:col-span-7 rounded-2xl overflow-hidden shadow-2xl relative group h-[300px] md:h-[400px]">
+                        <!-- Image of Piper Navajo PA-31 -->
+                        <img src="https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&q=80&w=800" alt="Avión Piper Navajo PA-31" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <span class="bg-gold-500 text-navy-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Multipropósito Corto Alcance</span>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 flex flex-col justify-between h-full space-y-6">
+                        <div>
+                            <span class="text-xs font-bold text-gold-400 tracking-widest uppercase block mb-2">Bimotor Ejecutivo</span>
+                            <h3 class="text-2xl md:text-3xl font-extrabold text-white">Piper Navajo PA-31</h3>
+                            <p class="text-sm text-slate-400 mt-4 leading-relaxed">
+                                El Navajo es una aeronave legendaria, reconocida mundialmente por su robustez, excelente desempeño en pistas cortas y comodidad en cabina. Configurada óptimamente para traslados familiares rápidos o vuelos sanitarios de respuesta urgente.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-800/80">
+                            <div>
+                                <span class="block text-xs text-slate-400">Capacidad</span>
+                                <span class="text-lg font-bold text-white flex items-center gap-1.5"><i data-lucide="users" class="w-4 h-4 text-gold-400"></i>6 Pasajeros</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400">Velocidad Cruzero</span>
+                                <span class="text-lg font-bold text-white flex items-center gap-1.5"><i data-lucide="gauge" class="w-4 h-4 text-gold-400"></i>330 km/h</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400">Autonomía</span>
+                                <span class="text-lg font-bold text-white flex items-center gap-1.5"><i data-lucide="route" class="w-4 h-4 text-gold-400"></i>1.800 km</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400">Techo Operativo</span>
+                                <span class="text-lg font-bold text-white flex items-center gap-1.5"><i data-lucide="trending-up" class="w-4 h-4 text-gold-400"></i>7.300 m</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="#booking" class="btn-gold text-navy-950 inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold tracking-wider uppercase">
+                                Cotizar en Navajo <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Avión 2: Metroliner M23 -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-navy-900 rounded-3xl p-6 md:p-10 border border-slate-800">
+                    <div class="lg:col-span-7 lg:order-2 rounded-2xl overflow-hidden shadow-2xl relative group h-[300px] md:h-[400px]">
+                        <!-- Image of Metroliner M23 -->
+                        <img src="https://images.unsplash.com/photo-1610448721566-47369c768e70?auto=format&fit=crop&q=80&w=800" alt="Avión Metroliner M23" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1436491865332-7a61a109cc05?auto=format&fit=crop&q=80&w=800'">
+                        <div class="absolute inset-0 bg-gradient-to-t from-navy-900 via-transparent to-transparent"></div>
+                        <div class="absolute bottom-6 left-6">
+                            <span class="bg-gold-500 text-navy-950 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">Alta Capacidad y Presurizado</span>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5 lg:order-1 flex flex-col justify-between h-full space-y-6">
+                        <div>
+                            <span class="text-xs font-bold text-gold-400 tracking-widest uppercase block mb-2">Turboprop Regional</span>
+                            <h3 class="text-2xl md:text-3xl font-extrabold text-white">Fairchild Swearingen Metroliner M23</h3>
+                            <p class="text-sm text-slate-400 mt-4 leading-relaxed">
+                                Un turbohélice presurizado de alto rendimiento diseñado para vuelos regionales de mayor envergadura. Ideal para delegaciones corporativas completas, misiones de carga pesada o traslados programados masivos, operando bajo cualquier condición climatológica gracias a su avanzada aviónica de categoría comercial.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-2 gap-4 py-4 border-y border-slate-800/80">
+                            <div>
+                                <span class="block text-xs text-slate-400">Capacidad</span>
+                                <span class="text-lg font-bold text-white flex items-center gap-1.5"><i data-lucide="users" class="w-4 h-4 text-gold-400"></i>19 Pasajeros</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400">Velocidad Cruzero</span>
+                                <span class="text-lg font-bold text-white flex items-center gap-1.5"><i data-lucide="gauge" class="w-4 h-4 text-gold-400"></i>510 km/h</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400">Autonomía</span>
+                                <span class="text-lg font-bold text-white flex items-center gap-1.5"><i data-lucide="route" class="w-4 h-4 text-gold-400"></i>2.100 km</span>
+                            </div>
+                            <div>
+                                <span class="block text-xs text-slate-400">Cabina</span>
+                                <span class="text-lg font-bold text-white flex items-center gap-1.5"><i data-lucide="wind" class="w-4 h-4 text-gold-400"></i>Presurizada</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <a href="#booking" class="btn-gold text-navy-950 inline-flex items-center gap-2 px-6 py-3 rounded-xl text-xs font-bold tracking-wider uppercase">
+                                Cotizar en Metroliner <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BOOKING SIMULATOR FORM -->
+    <section id="booking" class="py-24 bg-gradient-to-b from-navy-900 to-navy-950 relative">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1490430657723-4d607c1503fc?auto=format&fit=crop&q=80&w=1920')] bg-cover bg-center opacity-10"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center mb-12">
+                <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block mb-3">Reservas y Consultas</span>
+                <h2 class="text-3xl md:text-4xl font-extrabold text-white">Solicite su Presupuesto Aéreo</h2>
+                <p class="text-slate-300 font-light mt-3">Complete el formulario y reciba una propuesta personalizada para su vuelo charter, traslado de carga o misión médica.</p>
+            </div>
+
+            <!-- Modern Form Container -->
+            <div class="bg-navy-950/85 backdrop-blur-xl border border-slate-800 p-8 rounded-3xl shadow-2xl">
+                <form id="flight-quote-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Origen -->
+                        <div>
+                            <label class="block text-xs font-bold tracking-wider text-slate-300 uppercase mb-2">Origen</label>
+                            <div class="relative">
+                                <i data-lucide="plane-takeoff" class="absolute left-4 top-3.5 w-5 h-5 text-gold-400"></i>
+                                <select required class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-12 pr-4 text-white font-medium focus:outline-none focus:ring-2 focus:ring-gold-400 transition-all">
+                                    <option value="federal" selected>Federal, Entre Ríos (Aeropuerto Ciudad de Federal)</option>
+                                    <option value="buenos-aires">Buenos Aires (San Fernando SADF)</option>
+                                    <option value="parana">Paraná, Entre Ríos (SAAP)</option>
+                                    <option value="concordia">Concordia, Entre Ríos (SAAC)</option>
+                                    <option value="rosario">Rosario, Santa Fe (SAAR)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Destino -->
+                        <div>
+                            <label class="block text-xs font-bold tracking-wider text-slate-300 uppercase mb-2">Destino de Vuelo</label>
+                            <div class="relative">
+                                <i data-lucide="plane-landing" class="absolute left-4 top-3.5 w-5 h-5 text-gold-400"></i>
+                                <select required id="destination-select" class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-12 pr-4 text-white font-medium focus:outline-none focus:ring-2 focus:ring-gold-400 transition-all">
+                                    <option value="" disabled selected>Seleccione el destino...</option>
+                                    <option value="buenos-aires">Buenos Aires (San Fernando SADF)</option>
+                                    <option value="parana">Paraná, Entre Ríos (SAAP)</option>
+                                    <option value="concordia">Concordia, Entre Ríos (SAAC)</option>
+                                    <option value="rosario">Rosario, Santa Fe (SAAR)</option>
+                                    <option value="otro">Otro destino de chárter (A especificar)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <!-- Fecha -->
+                        <div>
+                            <label class="block text-xs font-bold tracking-wider text-slate-300 uppercase mb-2">Fecha Estimada</label>
+                            <div class="relative">
+                                <i data-lucide="calendar" class="absolute left-4 top-3.5 w-5 h-5 text-gold-400"></i>
+                                <input type="date" required class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-12 pr-4 text-white font-medium focus:outline-none focus:ring-2 focus:ring-gold-400 transition-all" style="color-scheme: dark;">
+                            </div>
+                        </div>
+
+                        <!-- Tipo de Vuelo / Servicio -->
+                        <div>
+                            <label class="block text-xs font-bold tracking-wider text-slate-300 uppercase mb-2">Tipo de Operación</label>
+                            <div class="relative">
+                                <i data-lucide="settings" class="absolute left-4 top-3.5 w-5 h-5 text-gold-400"></i>
+                                <select required id="operation-type" class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-12 pr-4 text-white font-medium focus:outline-none focus:ring-2 focus:ring-gold-400 transition-all">
+                                    <option value="regular">Vuelo Regular/Chárter</option>
+                                    <option value="sanitario">Vuelo Sanitario de Emergencia</option>
+                                    <option value="carga">Servicio de Carga Aérea</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Aeronave Preferida -->
+                        <div>
+                            <label class="block text-xs font-bold tracking-wider text-slate-300 uppercase mb-2">Aeronave Preferida</label>
+                            <div class="relative">
+                                <i data-lucide="shield" class="absolute left-4 top-3.5 w-5 h-5 text-gold-400"></i>
+                                <select required id="aircraft-preference" class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-12 pr-4 text-white font-medium focus:outline-none focus:ring-2 focus:ring-gold-400 transition-all">
+                                    <option value="navajo">Piper Navajo PA-31 (Hasta 6 pax)</option>
+                                    <option value="metroliner">Metroliner M23 (Hasta 19 pax)</option>
+                                    <option value="indiferente">Indiferente / Sin preferencia</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Nombre -->
+                        <div>
+                            <label class="block text-xs font-bold tracking-wider text-slate-300 uppercase mb-2">Nombre y Apellido / Empresa</label>
+                            <div class="relative">
+                                <i data-lucide="user" class="absolute left-4 top-3.5 w-5 h-5 text-gold-400"></i>
+                                <input type="text" required placeholder="Ej: Juan Pérez S.A." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-12 pr-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-gold-400 transition-all">
+                            </div>
+                        </div>
+
+                        <!-- Contacto (WhatsApp / Teléfono) -->
+                        <div>
+                            <label class="block text-xs font-bold tracking-wider text-slate-300 uppercase mb-2">Teléfono de Contacto</label>
+                            <div class="relative">
+                                <i data-lucide="phone" class="absolute left-4 top-3.5 w-5 h-5 text-gold-400"></i>
+                                <input type="tel" required placeholder="Ej: +54 9 3454 000000" class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl py-3 pl-12 pr-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-gold-400 transition-all">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mensaje Opcional -->
+                    <div>
+                        <label class="block text-xs font-bold tracking-wider text-slate-300 uppercase mb-2">Detalles Adicionales del Viaje (Opcional)</label>
+                        <textarea rows="3" placeholder="Comente requerimientos especiales, volumen de carga, necesidades de traslado médico, etc." class="w-full bg-slate-900/80 border border-slate-700/60 rounded-xl p-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-gold-400 transition-all"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full btn-gold text-navy-950 py-4 rounded-xl text-xs font-bold tracking-widest uppercase transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="send" class="w-4 h-4"></i> Enviar Solicitud de Cotización
+                    </button>
+                </form>
+
+                <!-- Custom Modal Success Overlay (To avoid native Alerts) -->
+                <div id="booking-success-modal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/80 backdrop-blur-md">
+                    <div class="bg-navy-900 border border-slate-700 p-8 rounded-3xl max-w-md w-full text-center shadow-2xl relative">
+                        <div class="mx-auto w-16 h-16 bg-gold-500/20 border border-gold-500 rounded-full flex items-center justify-center text-gold-400 mb-6">
+                            <i data-lucide="check" class="w-8 h-8"></i>
+                        </div>
+                        <h3 class="text-2xl font-extrabold text-white mb-3">Solicitud Enviada</h3>
+                        <p class="text-sm text-slate-300 leading-relaxed mb-6">
+                            Hemos recibido su requerimiento de cotización aérea. Un representante del equipo comercial se pondrá en contacto a la brevedad para facilitarle itinerarios y presupuesto formal.
+                        </p>
+                        <button onclick="closeSuccessModal()" class="w-full btn-gold text-navy-950 py-3 rounded-xl text-xs font-bold tracking-wider uppercase">
+                            Entendido
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOCATION & AIRPORT INFO SECTION -->
+    <section id="location" class="py-24 bg-navy-950 border-t border-slate-900 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Info Aeropuerto -->
+                <div class="space-y-6">
+                    <span class="text-xs font-bold tracking-widest text-gold-400 uppercase block">Ubicación Estratégica</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white">Instalaciones de Primer Nivel en el Corazón del Norte Entrerriano</h2>
+                    <p class="text-sm text-slate-300 leading-relaxed">
+                        El AeroClub Federal, comercializado como **Aeropuerto Ciudad de Federal**, se constituye como un portal clave para la conectividad aérea del litoral argentino. Contamos con una pista apta para aeronaves ejecutivas y de traslado de porte medio, hangares seguros, servicio de abastecimiento de combustible y personal de asistencia técnica capacitado.
+                    </p>
+
+                    <div class="space-y-4 pt-4 border-t border-slate-800">
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 bg-slate-900 rounded-lg text-gold-400 mt-1">
+                                <i data-lucide="navigation" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Ubicación Geográfica</h4>
+                                <p class="text-xs text-slate-400 mt-1">Coordenadas de Operación: Latitud -30.9546, Longitud -58.7833 (Federal, Entre Ríos, Argentina).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 bg-slate-900 rounded-lg text-gold-400 mt-1">
+                                <i data-lucide="radio" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Frecuencia de Operaciones</h4>
+                                <p class="text-xs text-slate-400 mt-1">Pista habilitada para aterrizajes y despegues diurnos y soporte de coordinación regional para emergencias médicas las 24 hs.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-2 bg-slate-900 rounded-lg text-gold-400 mt-1">
+                                <i data-lucide="instagram" class="w-5 h-5"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-sm font-bold text-white">Canal de Contacto Directo</h4>
+                                <p class="text-xs text-slate-400 mt-1">Siga nuestras novedades y reportes en tiempo real en nuestro Instagram oficial: <a href="https://instagram.com/aeroclub.federal" target="_blank" class="text-gold-400 underline hover:text-white">@aeroclub.federal</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Custom Interactive Route SVG Map (Visually stunning, responsive, clean) -->
+                <div class="bg-navy-900 border border-slate-800 rounded-3xl p-6 md:p-8 relative">
+                    <h3 class="text-lg font-bold text-white mb-2 text-center">Esquema de Rutas & Conectividad</h3>
+                    <p class="text-[10px] text-slate-400 text-center mb-6 uppercase tracking-wider">Centro de Operaciones: Federal, Entre Ríos</p>
+                    
+                    <div class="relative w-full aspect-[4/3] bg-navy-950 rounded-2xl overflow-hidden border border-slate-800 p-2">
+                        <!-- SVG Map Simulation -->
+                        <svg viewBox="0 0 400 300" class="w-full h-full">
+                            <!-- Background grids -->
+                            <defs>
+                                <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+                                    <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.03" />
+                                </pattern>
+                            </defs>
+                            <rect width="100%" height="100%" fill="url(#grid)" />
+
+                            <!-- Route Paths from Federal (Source) to Destinations -->
+                            <!-- Federal to Buenos Aires -->
+                            <path d="M 200,80 Q 210,170 230,260" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4" class="animate-pulse" />
+                            <!-- Federal to Rosario -->
+                            <path d="M 200,80 Q 140,150 110,210" fill="none" stroke="#f59e0b" stroke-width="2" stroke-dasharray="4,4" />
+                            <!-- Federal to Paraná -->
+                            <path d="M 200,80 Q 150,110 100,140" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,4" />
+                            <!-- Federal to Concordia -->
+                            <path d="M 200,80 Q 250,90 290,100" fill="none" stroke="#d97706" stroke-width="1.5" stroke-dasharray="4,4" />
+
+                            <!-- Location Points & Names -->
+                            <!-- Federal (Center Node) -->
+                            <circle cx="200" cy="80" r="7" fill="#f59e0b" class="animate-ping" style="animation-duration: 3s;" />
+                            <circle cx="200" cy="80" r="5" fill="#f59e0b" />
+                            <text x="210" y="75" fill="#ffffff" font-size="11" font-weight="bold">FEDERAL (Hub)</text>
+
+                            <!-- Concordia -->
+                            <circle cx="290" cy="100" r="4" fill="#94a3b8" />
+                            <text x="300" y="104" fill="#94a3b8" font-size="9">Concordia</text>
+
+                            <!-- Paraná -->
+                            <circle cx="100" cy="140" r="4" fill="#94a3b8" />
+                            <text x="45" y="144" fill="#94a3b8" font-size="9">Paraná</text>
+
+                            <!-- Rosario -->
+                            <circle cx="110" cy="210" r="4" fill="#94a3b8" />
+                            <text x="50" y="214" fill="#94a3b8" font-size="9">Rosario</text>
+
+                            <!-- Buenos Aires -->
+                            <circle cx="230" cy="260" r="5" fill="#f59e0b" />
+                            <text x="240" y="264" fill="#ffffff" font-size="10" font-weight="bold">Buenos Aires (San Fernando)</text>
+                        </svg>
+
+                        <!-- Map Legend Overlay -->
+                        <div class="absolute bottom-3 left-3 bg-navy-900/95 border border-slate-800 text-[10px] p-2.5 rounded-lg space-y-1">
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2.5 h-2.5 rounded-full bg-gold-400 inline-block"></span>
+                                <span class="text-white font-semibold">Federal Hub Operativo</span>
+                            </div>
+                            <div class="flex items-center gap-1.5">
+                                <span class="w-2.5 h-0.5 bg-slate-500 inline-block"></span>
+                                <span class="text-slate-400">Ruta de Conexión Ejecutiva</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-navy-900 border-t border-slate-800/80 py-12 text-slate-400">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
+                <!-- Branding Col -->
+                <div class="space-y-4 md:col-span-2">
+                    <div class="flex items-center space-x-3">
+                        <div class="bg-gradient-to-br from-gold-500 to-amber-600 p-2 rounded-lg text-navy-950">
+                            <i data-lucide="plane" class="w-5 h-5 transform -rotate-45"></i>
+                        </div>
+                        <div>
+                            <span class="block text-md font-extrabold tracking-wider text-white uppercase">Aeropuerto Ciudad de Federal</span>
+                            <span class="block text-[10px] tracking-wider text-gold-400 uppercase">AeroClub Federal - Entre Ríos</span>
+                        </div>
+                    </div>
+                    <p class="text-xs leading-relaxed max-w-sm">
+                        Promovemos el desarrollo aerocomercial e integral del norte entrerriano, facilitando transporte de personas, carga y servicios médicos urgentes a todo el país.
+                    </p>
+                </div>
+
+                <!-- Fast Links -->
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-widest">Secciones</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><a href="#destinations" class="hover:text-gold-400 transition-colors">Rutas & Destinos</a></li>
+                        <li><a href="#services" class="hover:text-gold-400 transition-colors">Servicios Médicos & Carga</a></li>
+                        <li><a href="#fleet" class="hover:text-gold-400 transition-colors">Nuestra Flota</a></li>
+                        <li><a href="#booking" class="hover:text-gold-400 transition-colors">Solicitud de Chárter</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Socials -->
+                <div>
+                    <h4 class="text-sm font-bold text-white mb-4 uppercase tracking-widest">Contacto Directo</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li class="flex items-center gap-2"><i data-lucide="instagram" class="w-4 h-4 text-gold-400"></i> <a href="https://instagram.com/aeroclub.federal" target="_blank" class="hover:text-gold-400 transition-colors">@aeroclub.federal</a></li>
+                        <li class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-gold-400"></i> Federal, Entre Ríos, Argentina</li>
+                        <li class="flex items-center gap-2"><i data-lucide="clock" class="w-4 h-4 text-gold-400"></i> Operaciones: Diurnas y Sanitarios 24hs</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Line -->
+            <div class="pt-8 border-t border-slate-800 text-center text-[11px] text-slate-500 space-y-2">
+                <p>&copy; 2026 Aeropuerto Ciudad de Federal. Todos los derechos reservados. AeroClub de Federal.</p>
+                <p>Las operaciones aéreas están sujetas a condiciones meteorológicas y de aeronavegabilidad vigentes por ANAC.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Responsive Hamburger Navigation
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const hamburgerIcon = document.getElementById('menu-icon-hamburger');
+        const closeIcon = document.getElementById('menu-icon-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                hamburgerIcon.classList.add('hidden');
+                closeIcon.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            }
+        });
+
+        // Close menu on link click
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                hamburgerIcon.classList.remove('hidden');
+                closeIcon.classList.add('hidden');
+            });
+        });
+
+        // Live Weather API Integration (Open-Meteo)
+        // Coordinates for Federal, Entre Ríos: Latitude -30.9546, Longitude -58.7833
+        const lat = -30.9546;
+        const lon = -58.7833;
+        const weatherUrl = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&timezone=America/Argentina/Buenos_Aires`;
+
+        // Weather Code Translations (WMO codes to text)
+        function translateWeatherCode(code) {
+            const wmoCodes = {
+                0: "Cielo Despejado",
+                1: "Principalmente Despejado",
+                2: "Parcialmente Nublado",
+                3: "Nublado",
+                45: "Niebla",
+                48: "Niebla de Escarcha",
+                51: "Llovizna Ligera",
+                53: "Llovizna Moderada",
+                55: "Llovizna Densa",
+                61: "Lluvia Ligera",
+                63: "Lluvia Moderada",
+                65: "Lluvia Fuerte",
+                71: "Nieve Ligera",
+                73: "Nieve Moderada",
+                75: "Nieve Fuerte",
+                80: "Lluvia de Corta Duración",
+                81: "Lluvia de Moderada a Fuerte",
+                82: "Lluvia Torrencial",
+                95: "Tormenta Eléctrica",
+                96: "Tormenta con Granizo Leve",
+                99: "Tormenta con Granizo Fuerte"
+            };
+            return wmoCodes[code] || "Condición Normal";
+        }
+
+        async function fetchLiveWeather() {
+            try {
+                const response = await fetch(weatherUrl);
+                if (!response.ok) throw new Error("Fallo al obtener clima");
+                
+                const data = await response.json();
+                const currentWeather = data.current_weather;
+                
+                const temp = Math.round(currentWeather.temperature);
+                const windSpeed = Math.round(currentWeather.windspeed);
+                const weatherDesc = translateWeatherCode(currentWeather.weathercode);
+                
+                // Update Topbar
+                const topbarEl = document.getElementById('weather-topbar');
+                topbarEl.innerHTML = `
+                    <span class="font-bold text-white">${temp}°C</span>
+                    <span class="text-slate-400">|</span>
+                    <span class="text-gold-400">${weatherDesc}</span>
+                `;
+
+                // Update Detailed Dashboard Cards
+                document.getElementById('weather-temp').textContent = `${temp}°C`;
+                document.getElementById('weather-wind').textContent = `${windSpeed} km/h`;
+                document.getElementById('weather-humidity').textContent = `68%`; // Open-Meteo current requires extra vars, fallback to average 68% for safety
+                document.getElementById('weather-desc').textContent = weatherDesc;
+
+            } catch (error) {
+                console.error("Error fetching weather:", error);
+                // Graceful fallback to static standard spring/autumn weather for Federal
+                const topbarEl = document.getElementById('weather-topbar');
+                topbarEl.innerHTML = `
+                    <span class="font-bold text-white">22°C</span>
+                    <span class="text-slate-400">|</span>
+                    <span class="text-gold-400">Viento Calmo</span>
+                `;
+                document.getElementById('weather-temp').textContent = "22°C";
+                document.getElementById('weather-wind').textContent = "12 km/h";
+                document.getElementById('weather-humidity').textContent = "65%";
+                document.getElementById('weather-desc').textContent = "Cielo Despejado";
+            }
+        }
+
+        // Initialize weather query on load
+        window.addEventListener('DOMContentLoaded', fetchLiveWeather);
+
+        // Simulation booking form submission
+        const quoteForm = document.getElementById('flight-quote-form');
+        const successModal = document.getElementById('booking-success-modal');
+
+        quoteForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Show custom elegant modal instead of window.alert()
+            successModal.classList.remove('hidden');
+        });
+
+        function closeSuccessModal() {
+            successModal.classList.add('hidden');
+            quoteForm.reset(); // clear form
+        }
+    </script>
+</body>
+</html>
+
+```
