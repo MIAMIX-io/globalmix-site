@@ -1,0 +1,1039 @@
+```html
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marianela Pesoa | Travel Planner Freelance - Revista de Viajes</title>
+  
+  <!-- Google Fonts: Cinzel para títulos elegantes, Playfair para el toque editorial, Montserrat para legibilidad -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons para elementos de navegación y accesos -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            cinzel: ['Cinzel', 'serif'],
+            editorial: ['Playfair Display', 'serif'],
+            sans: ['Montserrat', 'sans-serif'],
+          },
+          colors: {
+            roseGold: {
+              light: '#F9ECEB',
+              DEFAULT: '#E5A9A9',
+              dark: '#B87D7D',
+            },
+            champagne: '#FCF8F5',
+            brandDark: '#231518',
+            sunsetPink: '#FAD2CD'
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Transición fluida para el paso de hojas de la revista */
+    .magazine-page {
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.5s ease;
+    }
+    
+    /* Efecto elegante para textos destacados */
+    .gold-shimmer {
+      background: linear-gradient(135deg, #E5A9A9 0%, #D89696 50%, #C98282 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    /* Scroll bar ultra fina */
+    ::-webkit-scrollbar {
+      width: 4px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #231518;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #E5A9A9;
+      border-radius: 2px;
+    }
+
+    /* Animación suave para la entrada de páginas */
+    .fade-in-slide {
+      animation: fadeInSlideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes fadeInSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(15px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body class="bg-brandDark text-champagne font-sans overflow-x-hidden relative min-h-screen pb-32">
+
+  <!-- FONDO ADAPTATIVO CON IMAGEN EN ALTA RESOLUCIÓN -->
+  <div class="fixed inset-0 w-full h-full z-0 transition-all duration-1000 ease-out scale-105" id="dynamic-bg" 
+       style="background: linear-gradient(180deg, rgba(35,21,24,0.85) 0%, rgba(35,21,24,0.95) 100%), url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=2000') no-repeat center center; background-size: cover;">
+  </div>
+
+  <!-- Luces decorativas de ambiente rosadas -->
+  <div class="absolute w-80 h-80 bg-roseGold/20 rounded-full blur-3xl top-10 left-10 pointer-events-none z-0"></div>
+  <div class="absolute w-80 h-80 bg-sunsetPink/15 rounded-full blur-3xl bottom-20 right-10 pointer-events-none z-0"></div>
+
+  <!-- HEADER PRINCIPAL -->
+  <header class="fixed top-0 left-0 w-full z-40 bg-brandDark/90 backdrop-blur-md border-b border-roseGold/10 px-4 md:px-8 py-3 flex justify-between items-center">
+    <div class="flex items-center space-x-3 cursor-pointer" onclick="goToPage(1)">
+      <!-- Isotipo MP Monograma con estela de avión -->
+      <div class="w-9 h-9 rounded-full border border-roseGold/30 flex items-center justify-center bg-brandDark relative">
+        <span class="font-cinzel text-xs text-roseGold font-bold">MP</span>
+        <div class="absolute inset-0 border border-roseGold/10 rounded-full scale-90 animate-pulse"></div>
+      </div>
+      <div>
+        <h1 class="font-cinzel text-xs tracking-[0.2em] font-bold text-white uppercase">Marianela Pesoa</h1>
+        <p class="text-[9px] tracking-[0.1em] text-roseGold uppercase">Travel Planner Freelance</p>
+      </div>
+    </div>
+
+    <!-- Navegador rápido para computadoras -->
+    <nav class="hidden lg:flex items-center space-x-5 text-[10px] uppercase tracking-[0.15em]">
+      <button onclick="goToPage(1)" class="hover:text-roseGold transition-colors">Inicio</button>
+      <button onclick="goToPage(3)" class="hover:text-roseGold transition-colors">Caribe & Maldivas</button>
+      <button onclick="goToPage(4)" class="hover:text-roseGold transition-colors">Asia Mística</button>
+      <button onclick="goToPage(6)" class="hover:text-roseGold transition-colors">Europa</button>
+      <button onclick="goToPage(7)" class="hover:text-roseGold transition-colors">Américas</button>
+      <button onclick="goToPage(11)" class="text-roseGold font-semibold hover:scale-105 transition-transform flex items-center gap-1">
+        <i data-lucide="calculator" class="w-3.5 h-3.5"></i> Planear Itinerario
+      </button>
+      <button onclick="goToPage(12)" class="hover:text-roseGold transition-colors">Contacto</button>
+    </nav>
+
+    <!-- Acceso rápido a WhatsApp Superior -->
+    <a href="https://wa.me/5493454401414" target="_blank" class="bg-roseGold/10 hover:bg-roseGold/25 border border-roseGold/30 rounded-lg px-3 py-1.5 text-[10px] uppercase tracking-[0.1em] text-roseGold font-semibold flex items-center space-x-1.5 transition-all">
+      <i data-lucide="message-circle" class="w-3.5 h-3.5 text-roseGold"></i>
+      <span>Consultar por WhatsApp</span>
+    </a>
+  </header>
+
+  <!-- CONTENEDOR PRINCIPAL DE LA REVISTA (PRESENTACIÓN FLUIDA Y CENTRADA) -->
+  <main class="relative z-10 pt-20 pb-12 min-h-[75vh] flex items-center justify-center px-4 md:px-8 max-w-7xl mx-auto">
+    
+    <!-- Botón Lateral Izquierdo de Navegación -->
+    <button onclick="prevPage()" class="absolute left-1 md:left-4 z-30 w-11 h-11 rounded-full border border-roseGold/20 bg-brandDark/80 backdrop-blur-md flex items-center justify-center text-roseGold hover:bg-roseGold hover:text-brandDark hover:border-transparent transition-all duration-300" aria-label="Anterior página">
+      <i data-lucide="chevron-left" class="w-5 h-5"></i>
+    </button>
+
+    <!-- VISOR DE PÁGINAS -->
+    <div class="w-full relative min-h-[62vh] md:min-h-[72vh] flex items-center justify-center overflow-hidden py-4">
+      
+      <!-- PÁGINA 1: PORTADA -->
+      <section id="page-1" class="magazine-page w-full max-w-4xl grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative overflow-hidden">
+        <div class="md:col-span-6 flex flex-col justify-between h-full space-y-6 md:space-y-8 z-10 fade-in-slide text-left">
+          <div class="space-y-3">
+            <span class="text-roseGold text-[10px] uppercase tracking-[0.25em] font-medium block">Tu asesora personal de confianza</span>
+            
+            <!-- Logo grande del flyer original -->
+            <div class="relative py-2">
+              <span class="font-cinzel text-6xl md:text-7xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-roseGold via-sunsetPink to-roseGold-dark tracking-tighter block leading-none">MP</span>
+              <div class="absolute top-2 left-16 border-t border-dashed border-roseGold/30 w-28 h-10 rounded-full transform -rotate-12 flex items-end justify-end px-2">
+                <i data-lucide="plane" class="w-3 h-3 text-roseGold transform rotate-45"></i>
+              </div>
+            </div>
+            
+            <h2 class="font-cinzel text-3xl md:text-4xl font-light tracking-[0.05em] text-white leading-tight uppercase">
+              Marianela <br>
+              <span class="font-editorial italic font-normal text-roseGold lowercase">Pesoa</span>
+            </h2>
+            
+            <div class="flex items-center space-x-2 text-roseGold py-1">
+              <span class="h-px w-6 bg-roseGold/40"></span>
+              <span class="text-[9px] uppercase tracking-[0.3em]">Travel Planner • Freelance</span>
+              <span class="h-px w-6 bg-roseGold/40"></span>
+            </div>
+          </div>
+
+          <div class="space-y-3">
+            <h3 class="font-editorial italic text-2xl md:text-3xl text-sunsetPink leading-relaxed">
+              "Hacé tu viaje, <br>viví tu historia."
+            </h3>
+            <div class="flex space-x-1.5 text-roseGold">
+              <i data-lucide="heart" class="w-4 h-4 fill-roseGold/30"></i>
+            </div>
+          </div>
+
+          <p class="text-[10px] text-gray-300 max-w-sm leading-relaxed">
+            Te doy la bienvenida a mi catálogo de destinos seleccionados. Aquí encontrarás alternativas perfectas, diseñadas a medida, con excelentes hoteles de 4 y 5 estrellas e itinerarios hechos con absoluta dedicación.
+          </p>
+        </div>
+
+        <div class="md:col-span-6 relative h-[300px] md:h-[420px] w-full rounded-lg overflow-hidden shadow-lg border border-roseGold/10 group z-10">
+          <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=1000" 
+               alt="Playa paradisíaca" 
+               class="w-full h-full object-cover transition-transform duration-[4000ms] group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brandDark/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 right-4 text-left">
+            <span class="text-[9px] uppercase tracking-widest text-roseGold font-semibold">Inspiración del día</span>
+            <p class="font-cinzel text-sm font-semibold text-white tracking-wider">Atardecer en el Caribe</p>
+            <p class="text-[10px] text-gray-300 italic font-editorial">El comienzo de tu próximo gran recuerdo</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PÁGINA 2: NUESTRA FILOSOFÍA -->
+      <section id="page-2" class="magazine-page w-full max-w-4xl hidden grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative text-left">
+        <div class="md:col-span-5 relative h-[250px] md:h-[400px] rounded-lg overflow-hidden border border-roseGold/10">
+          <img src="https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&q=80&w=800" 
+               alt="Planificando un viaje con mapa" 
+               class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-b from-transparent to-brandDark/60"></div>
+        </div>
+
+        <div class="md:col-span-7 space-y-5">
+          <span class="text-roseGold text-[10px] uppercase tracking-[0.25em]">Viajar Sin Complicaciones</span>
+          <h2 class="font-cinzel text-2xl md:text-3xl text-white font-light tracking-wide leading-tight">
+            Viajes Diseñados <br>
+            <span class="font-editorial italic text-roseGold lowercase">especialmente para vos</span>
+          </h2>
+          
+          <div class="h-px w-16 bg-roseGold/30"></div>
+
+          <p class="font-editorial text-base italic text-sunsetPink leading-relaxed">
+            "Me encargo de planificar cada detalle de tu itinerario para que solo te preocupes por armar tu equipaje y disfrutar."
+          </p>
+
+          <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-light">
+            <p>
+              Entiendo que cada viajero es único. Por eso, mi trabajo como tu asesora de viajes freelance es escuchar tus deseos y armar una propuesta adaptada a tu presupuesto, seleccionando los mejores hoteles de **4 y 5 estrellas** con excelente ubicación.
+            </p>
+            <p>
+              Me encargo de la logística completa: reservas de alojamiento confiables, traslados, sugerencias gastronómicas locales y las mejores actividades para que aproveches al máximo cada día de tus vacaciones.
+            </p>
+          </div>
+
+          <!-- Puntos Clave de Servicio -->
+          <div class="grid grid-cols-3 gap-3 pt-3 border-t border-roseGold/10">
+            <div>
+              <span class="font-cinzel text-roseGold font-bold text-base block">Hoteles 4/5★</span>
+              <span class="text-[8px] uppercase tracking-wider text-gray-400">Excelente calidad</span>
+            </div>
+            <div>
+              <span class="font-cinzel text-roseGold font-bold text-base block">Atención</span>
+              <span class="text-[8px] uppercase tracking-wider text-gray-400">Cercana y directa</span>
+            </div>
+            <div>
+              <span class="font-cinzel text-roseGold font-bold text-base block">A Medida</span>
+              <span class="text-[8px] uppercase tracking-wider text-gray-400">A tu propio ritmo</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PÁGINA 3: CARIBE & MALDIVAS -->
+      <section id="page-3" class="magazine-page w-full max-w-4xl hidden grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative text-left">
+        <div class="md:col-span-6 space-y-5">
+          <div class="flex items-center space-x-2">
+            <span class="px-2 py-0.5 bg-roseGold/15 text-roseGold text-[8px] uppercase tracking-widest rounded">Playas de ensueño</span>
+            <span class="text-gray-400 text-[10px] tracking-widest">Caribe & Maldivas</span>
+          </div>
+          
+          <h2 class="font-cinzel text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
+            Destinos Tropicales <br>e Islas Paradisíacas
+          </h2>
+          <p class="font-editorial text-base text-roseGold italic lowercase">La combinación perfecta de relax y sol</p>
+
+          <div class="h-px w-16 bg-roseGold/30"></div>
+
+          <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-light">
+            <p>
+              <strong class="text-white">Caribe Inolvidable:</strong> Disfrutá de la calidez y las aguas transparentes de <strong class="text-white">Cancún y Tulum</strong> en resorts todo incluido con todas las comodidades. O descubrí los mágicos rincones de <strong class="text-white">República Dominicana</strong>, las exóticas <strong class="text-white">Islas Vírgenes</strong> y las playas únicas de <strong class="text-white">Bahamas</strong>.
+            </p>
+            <p>
+              <strong class="text-white">Maldivas Clásico:</strong> Una experiencia única de bungalows y hoteles con excelentes servicios al borde de un mar de aguas cálidas y arrecifes de coral perfectos para hacer snorkel.
+            </p>
+          </div>
+
+          <div class="bg-roseGold/5 p-3.5 rounded-lg border border-roseGold/10 space-y-1">
+            <h4 class="text-[9px] uppercase tracking-wider text-roseGold font-bold flex items-center gap-1">
+              <i data-lucide="compass" class="w-3.5 h-3.5"></i> Lo que te espera:
+            </h4>
+            <p class="text-[10px] text-gray-300 italic">"Hoteles resort seleccionados de 4 y 5 estrellas, ubicados directamente sobre la playa, perfectos para viajar en pareja o en familia."</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 grid grid-cols-2 gap-3">
+          <div class="rounded-lg overflow-hidden border border-roseGold/10 h-64 md:h-80">
+            <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=600" 
+                 alt="Resort de playa caribeña" 
+                 class="w-full h-full object-cover" />
+          </div>
+          <div class="rounded-lg overflow-hidden border border-roseGold/10 h-64 md:h-80 translate-y-4">
+            <img src="https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&q=80&w=600" 
+                 alt="Villas en Maldivas" 
+                 class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </section>
+
+      <!-- PÁGINA 4: BALI & TAILANDIA -->
+      <section id="page-4" class="magazine-page w-full max-w-4xl hidden grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative text-left">
+        <div class="md:col-span-6 relative h-[280px] md:h-[400px] rounded-lg overflow-hidden border border-roseGold/10">
+          <img src="https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=800" 
+               alt="Templo en Bali" 
+               class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brandDark/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-left">
+            <span class="text-[9px] uppercase tracking-widest text-roseGold font-bold">Cultura y Bienestar</span>
+            <p class="font-cinzel text-base text-white font-semibold">Ubud & Chiang Mai</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 space-y-5">
+          <span class="text-roseGold text-[10px] uppercase tracking-[0.25em]">El Sudeste Asiático</span>
+          <h2 class="font-cinzel text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
+            Cultura, Templos <br>& Retiros de Yoga
+          </h2>
+          <p class="font-editorial text-base text-roseGold italic lowercase">Tailandia, Bali y experiencias espirituales</p>
+
+          <div class="h-px w-16 bg-roseGold/30"></div>
+
+          <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-light">
+            <p>
+              <strong class="text-white">Bali (La Isla de los Dioses):</strong> Disfrutá de la paz y el misticismo de <strong class="text-white">Ubud</strong>. Te propongo hermosos hoteles rodeados de campos de arroz con clases de yoga y meditación, ideales para desintoxicar la mente del estrés diario.
+            </p>
+            <p>
+              <strong class="text-white">Tailandia Exótica:</strong> Un recorrido inolvidable que va desde los espectaculares templos dorados de Bangkok hasta la naturaleza de Chiang Mai, finalizando con un descanso reparador en las espectaculares playas del sur de Phuket o Krabi.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-3 border-t border-roseGold/10">
+            <div>
+              <span class="text-roseGold font-cinzel text-[10px] uppercase tracking-wider block">Alojamientos Destacados</span>
+              <p class="text-[9px] text-gray-400">Hoteles boutique 4 estrellas superior con piscina infinita</p>
+            </div>
+            <div>
+              <span class="text-roseGold font-cinzel text-[10px] uppercase tracking-wider block">Experiencias locales</span>
+              <p class="text-[9px] text-gray-400">Clases de cocina local y tours guiados en español</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PÁGINA 5: JAPÓN & POLINESIA FRANCESA -->
+      <section id="page-5" class="magazine-page w-full max-w-4xl hidden grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative text-left">
+        <div class="md:col-span-6 space-y-5">
+          <span class="text-roseGold text-[10px] uppercase tracking-[0.25em]">Tradición y Playas Mágicas</span>
+          <h2 class="font-cinzel text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
+            El Japón Milenario & <br>Polinesia Francesa
+          </h2>
+          <p class="font-editorial text-base text-roseGold italic lowercase">Contraste entre tecnología, templos e islas mágicas</p>
+
+          <div class="h-px w-16 bg-roseGold/30"></div>
+
+          <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-light">
+            <p>
+              <strong class="text-white">Japón de Ensueño:</strong> Un destino asombroso donde convive la tecnología de <strong class="text-white">Tokio</strong> con los templos, jardines tradicionales y santuarios antiguos de <strong class="text-white">Kioto</strong>. Te organizo itinerarios en tren bala con hoteles muy cómodos y accesibles cercanos a las estaciones.
+            </p>
+            <p>
+              <strong class="text-white">Polinesia Francesa:</strong> La escapada ideal para una luna de miel o un viaje especial. Playas de postal, palmeras y una hospitalidad isleña inigualable en alojamientos de excelente confort de 4 y 5 estrellas.
+            </p>
+          </div>
+
+          <div class="bg-roseGold/5 p-3.5 rounded-lg border border-roseGold/10 flex items-center space-x-3">
+            <i data-lucide="star" class="w-6 h-6 text-roseGold shrink-0"></i>
+            <div>
+              <h4 class="text-[9px] uppercase tracking-wider text-roseGold font-bold">Tip de la Asesora:</h4>
+              <p class="text-[10px] text-gray-300 italic">"Hospedarse al menos una noche en un Ryokan tradicional en Japón para disfrutar de aguas termales y la hospitalidad nativa."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 relative h-[280px] md:h-[400px] rounded-lg overflow-hidden border border-roseGold/10">
+          <img src="https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=800" 
+               alt="Kioto y flores de cerezo" 
+               class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brandDark/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 right-4 text-right">
+            <span class="text-[9px] uppercase tracking-widest text-roseGold font-bold">Tradición eterna</span>
+            <p class="font-cinzel text-base text-white font-semibold">Kioto Cherry Blossoms</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PÁGINA 6: PARÍS & ÁMSTERDAM -->
+      <section id="page-6" class="magazine-page w-full max-w-4xl hidden grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative text-left">
+        <div class="md:col-span-6 relative h-[280px] md:h-[400px] rounded-lg overflow-hidden border border-roseGold/10">
+          <img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=800" 
+               alt="Eiffel Tower, París" 
+               class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brandDark/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-left">
+            <span class="text-[9px] uppercase tracking-widest text-roseGold font-bold">Clásicos de Europa</span>
+            <p class="font-cinzel text-base text-white font-semibold">París Romántico</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 space-y-5">
+          <span class="text-roseGold text-[10px] uppercase tracking-[0.25em]">El Viejo Continente</span>
+          <h2 class="font-cinzel text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
+            París, Ámsterdam <br>& El Corazón de Europa
+          </h2>
+          <p class="font-editorial text-base text-roseGold italic lowercase">La magia de las calles europeas de película</p>
+
+          <div class="h-px w-16 bg-roseGold/30"></div>
+
+          <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-light">
+            <p>
+              <strong class="text-white">París Encantador:</strong> Paseá por los Campos Elíseos, disfrutá de un café en Montmartre y visitá los museos más icónicos. Te reservo alojamiento en confortables hoteles de **4 estrellas** con excelente conexión de metro para que te traslades de forma ágil y segura.
+            </p>
+            <p>
+              <strong class="text-white">Ámsterdam y sus Canales:</strong> Recorré esta ciudad amigable en bicicleta o en un paseo en barco por los canales históricos. Alojate en fantásticos hoteles céntricos que combinan diseño moderno y la calidez del estilo holandés.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-3 border-t border-roseGold/10">
+            <div>
+              <span class="text-roseGold font-cinzel text-[10px] uppercase tracking-wider block">Ubicaciones Confort</span>
+              <p class="text-[9px] text-gray-400">Hoteles bien calificados en áreas céntricas y seguras</p>
+            </div>
+            <div>
+              <span class="text-roseGold font-cinzel text-[10px] uppercase tracking-wider block">Logística Total</span>
+              <p class="text-[9px] text-gray-400">Pases de tren interciudades incluidos y resueltos</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PÁGINA 7: LAS AMÉRICAS - MIAMI, NY & MACHU PICCHU -->
+      <section id="page-7" class="magazine-page w-full max-w-4xl hidden grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative text-left">
+        <div class="md:col-span-6 space-y-5">
+          <span class="text-roseGold text-[10px] uppercase tracking-[0.25em]">Viajes Dinámicos</span>
+          <h2 class="font-cinzel text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
+            Metrópolis Increíbles <br>& Caminos Ancestrales
+          </h2>
+          <p class="font-editorial text-base text-roseGold italic lowercase">Miami, New York y el misticismo de Machu Picchu</p>
+
+          <div class="h-px w-16 bg-roseGold/30"></div>
+
+          <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-light">
+            <p>
+              <strong class="text-white">La Energía de Estados Unidos:</strong> Desde las compras, la playa y el sol de <strong class="text-white">Miami</strong>, hasta las caminatas, espectáculos de Broadway y la inmensidad urbana de <strong class="text-white">New York</strong>. Te ofrezco hoteles espectaculares de 4 estrellas con inmejorable acceso.
+            </p>
+            <p>
+              <strong class="text-white">Machu Picchu (Perú):</strong> Una de las maravillas del mundo. Viajá con total tranquilidad de forma organizada: traslados desde Cusco, hermosos trenes panorámicos por el Valle Sagrado, guías locales oficiales e ingresos confirmados sin largas esperas.
+            </p>
+          </div>
+
+          <div class="bg-roseGold/5 p-3.5 rounded-lg border border-roseGold/10 space-y-1">
+            <h4 class="text-[9px] uppercase tracking-wider text-roseGold font-bold flex items-center gap-1">
+              <i data-lucide="map" class="w-3.5 h-3.5"></i> Plan de viaje:
+            </h4>
+            <p class="text-[10px] text-gray-300 italic">"Te armo la combinación de transporte y entradas de manera óptima para evitar filas y contratiempos."</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 grid grid-cols-2 gap-3">
+          <div class="rounded-lg overflow-hidden border border-roseGold/10 h-64 md:h-80">
+            <img src="https://images.unsplash.com/photo-1508849789987-4e5333c12b78?auto=format&fit=crop&q=80&w=600" 
+                 alt="Manhattan, New York" 
+                 class="w-full h-full object-cover" />
+          </div>
+          <div class="rounded-lg overflow-hidden border border-roseGold/10 h-64 md:h-80 translate-y-4">
+            <img src="https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?auto=format&fit=crop&q=80&w=600" 
+                 alt="Machu Picchu, Perú" 
+                 class="w-full h-full object-cover" />
+          </div>
+        </div>
+      </section>
+
+      <!-- PÁGINA 8: RÍO DE JANEIRO & BÚZIOS -->
+      <section id="page-8" class="magazine-page w-full max-w-4xl hidden grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative text-left">
+        <div class="md:col-span-6 relative h-[280px] md:h-[400px] rounded-lg overflow-hidden border border-roseGold/10">
+          <img src="https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&q=80&w=800" 
+               alt="Río de Janeiro, Brasil" 
+               class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brandDark/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-left">
+            <span class="text-[9px] uppercase tracking-widest text-roseGold font-bold">Sol y Ritmo de Brasil</span>
+            <p class="font-cinzel text-base text-white font-semibold">Río & Búzios</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 space-y-5">
+          <span class="text-roseGold text-[10px] uppercase tracking-[0.25em]">El Encanto de Brasil</span>
+          <h2 class="font-cinzel text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
+            Playas, Bossa Nova <br>& Descanso Total
+          </h2>
+          <p class="font-editorial text-base text-roseGold italic lowercase">La alegría brasileña con la comodidad ideal</p>
+
+          <div class="h-px w-16 bg-roseGold/30"></div>
+
+          <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-light">
+            <p>
+              <strong class="text-white">Río de Janeiro Clásico:</strong> Disfrutá de Copacabana e Ipanema con hoteles de 4 y 5 estrellas seleccionados en las zonas más seguras de la ciudad. Coordinamos tus traslados privados desde el aeropuerto e ingresos seguros al Cristo Redentor y el Pan de Azúcar.
+            </p>
+            <p>
+              <strong class="text-white">Búzios con Encanto:</strong> La perfecta combinación de calidez, paseos en barco por playas tranquilas y tardes de caminatas en la tradicional Rua das Pedras. Te sugiero posadas boutique hermosas a metros de las mejores ensenadas.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-3 border-t border-roseGold/10">
+            <div>
+              <span class="text-roseGold font-cinzel text-[10px] uppercase tracking-wider block">Seguridad y Confort</span>
+              <p class="text-[9px] text-gray-400">Hoteles con desayuno incluido en vecindarios tranquilos</p>
+            </div>
+            <div>
+              <span class="text-roseGold font-cinzel text-[10px] uppercase tracking-wider block">Paseos en barco</span>
+              <p class="text-[9px] text-gray-400">Paseos en goletas tradicionales con música y diversión</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PÁGINA 9: CRUCEROS Y TRAVESÍAS -->
+      <section id="page-9" class="magazine-page w-full max-w-4xl hidden grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative text-left">
+        <div class="md:col-span-6 space-y-5">
+          <span class="text-roseGold text-[10px] uppercase tracking-[0.25em]">Navegación & Diversión</span>
+          <h2 class="font-cinzel text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
+            Viajes en Crucero <br>Todo Resuelto
+          </h2>
+          <p class="font-editorial text-base text-roseGold italic lowercase">Dormir cada noche en una ciudad distinta sin desarmar valijas</p>
+
+          <div class="h-px w-16 bg-roseGold/30"></div>
+
+          <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-light">
+            <p>
+              Viajar en crucero es la opción más cómoda para conocer múltiples destinos con gastronomía de primer nivel, entretenimiento diario y relax todo incluido en un solo lugar.
+            </p>
+            <p>
+              Te ayudo a elegir la mejor naviera y camarote adaptados a tus planes: cruceros familiares con toboganes y parques de agua, cruceros modernos para parejas con spas y restaurantes temáticos, o recorridos fascinantes por el Caribe o el Mediterráneo.
+            </p>
+          </div>
+
+          <div class="bg-roseGold/5 p-3.5 rounded-lg border border-roseGold/10 flex items-center space-x-3">
+            <i data-lucide="anchor" class="w-6 h-6 text-roseGold shrink-0"></i>
+            <div>
+              <h4 class="text-[9px] uppercase tracking-wider text-roseGold font-bold">Ruta Recomendada:</h4>
+              <p class="text-[10px] text-gray-300 italic">"Cruceros de 7 noches por el Caribe saliendo de puertos cómodos sin necesidad de visas complejas."</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 relative h-[280px] md:h-[400px] rounded-lg overflow-hidden border border-roseGold/10">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=800" 
+               alt="Barco de crucero en alta mar" 
+               class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brandDark/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 right-4 text-right">
+            <span class="text-[9px] uppercase tracking-widest text-roseGold font-bold">Vacaciones sin límites</span>
+            <p class="font-cinzel text-base text-white font-semibold">Travesías de Mar</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- PÁGINA 10: BIENESTAR Y ESCAPADAS WELLNESS -->
+      <section id="page-10" class="magazine-page w-full max-w-4xl hidden grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative text-left">
+        <div class="md:col-span-6 relative h-[280px] md:h-[400px] rounded-lg overflow-hidden border border-roseGold/10">
+          <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=800" 
+               alt="Spa y bienestar" 
+               class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-brandDark/80 via-transparent to-transparent"></div>
+          <div class="absolute bottom-4 left-4 text-left">
+            <span class="text-[9px] uppercase tracking-widest text-roseGold font-bold">Pausa & Renovación</span>
+            <p class="font-cinzel text-base text-white font-semibold">Viajes Wellness</p>
+          </div>
+        </div>
+
+        <div class="md:col-span-6 space-y-5">
+          <span class="text-roseGold text-[10px] uppercase tracking-[0.25em]">Equilibrio Personal</span>
+          <h2 class="font-cinzel text-2xl md:text-3xl text-white tracking-wide uppercase leading-tight">
+            Viajes que Dejan Huella <br>& Sanan el Alma
+          </h2>
+          <p class="font-editorial text-base text-roseGold italic lowercase">Momento de recargar energías y cuidar tu salud</p>
+
+          <div class="h-px w-16 bg-roseGold/30"></div>
+
+          <div class="space-y-3 text-xs text-gray-300 leading-relaxed font-light">
+            <p>
+              A veces, viajar significa desconectarse para volver a conectar con uno mismo. Planifico escapadas y estancias dedicadas al bienestar físico, mental y espiritual.
+            </p>
+            <p>
+              Desde hoteles spa de aguas termales naturales en parajes tranquilos, hasta estancias en las sierras dedicadas a la meditación, masajes relajantes y menús saludables diseñados por nutricionistas expertos.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3 pt-3 border-t border-roseGold/10">
+            <div>
+              <span class="text-roseGold font-cinzel text-[10px] uppercase tracking-wider block">Paz Absoluta</span>
+              <p class="text-[9px] text-gray-400">Hoteles con spa completo y rodeados de naturaleza</p>
+            </div>
+            <div>
+              <span class="text-roseGold font-cinzel text-[10px] uppercase tracking-wider block">Comodidad mental</span>
+              <p class="text-[9px] text-gray-400">Actividades opcionales de caminatas y yoga guiado</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PÁGINA 11: COTIZADOR ACCESIBLE -->
+      <section id="page-11" class="magazine-page w-full max-w-4xl hidden bg-brandDark/80 backdrop-blur-xl p-5 md:p-8 rounded-xl border border-roseGold/15 shadow-xl relative text-left">
+        <div class="text-center max-w-xl mx-auto mb-4">
+          <span class="text-roseGold text-[9px] uppercase tracking-[0.25em] font-semibold block">Empezá a Soñar con tu Viaje</span>
+          <h2 class="font-cinzel text-xl md:text-2xl text-white font-medium tracking-wider">Planificador Inteligente de Viajes</h2>
+          <p class="font-editorial italic text-xs text-roseGold">Elegí tus opciones favoritas de confort y obtené un estimativo</p>
+          <div class="h-px w-12 bg-roseGold/30 mx-auto mt-2"></div>
+        </div>
+
+        <form id="luxury-calculator" class="grid grid-cols-1 md:grid-cols-2 gap-4" onsubmit="event.preventDefault(); sendWhatsAppProposal();">
+          
+          <!-- Seleccionar Destino -->
+          <div class="space-y-1">
+            <label class="text-[9px] uppercase tracking-widest text-roseGold font-semibold block">1. Elegí tu Destino Soñado</label>
+            <select id="calc-destination" class="w-full bg-brandDark border border-roseGold/20 rounded p-2 text-xs text-white focus:outline-none focus:border-roseGold transition-colors" onchange="calculateAccessibleBudget()">
+              <option value="Caribe Soñado (Cancún / Tulum / Rep. Dominicana)">Caribe Soñado (Cancún, Tulum, Dominicana, Bahamas)</option>
+              <option value="Tailandia & Bali (Cultura y Yoga)">Tailandia & Bali (Templos, Cultura & Naturaleza)</option>
+              <option value="Japón (Tradición, Templos y Modernidad)">Japón Tradicional (Tokio & Kioto)</option>
+              <option value="París, Ámsterdam & Europa">París, Ámsterdam & Europa (Hoteles 4★ céntricos)</option>
+              <option value="Machu Picchu (Perú Histórico)">Machu Picchu (Cusco, Tren & Entradas)</option>
+              <option value="Río de Janeiro & Búzios">Río de Janeiro & Búzios (Playas y Bossa Nova)</option>
+              <option value="Cruceros en Alta Mar">Cruceros por el Caribe / Mediterráneo todo incluido</option>
+              <option value="Escapada de Bienestar y Yoga">Escapadas Wellness (Relax & Spas)</option>
+            </select>
+          </div>
+
+          <!-- Cantidad de Noches -->
+          <div class="space-y-1">
+            <label class="text-[9px] uppercase tracking-widest text-roseGold font-semibold block">2. Duración de las Vacaciones</label>
+            <select id="calc-days" class="w-full bg-brandDark border border-roseGold/20 rounded p-2 text-xs text-white focus:outline-none focus:border-roseGold transition-colors" onchange="calculateAccessibleBudget()">
+              <option value="7">Semana de Descanso (7 Noches)</option>
+              <option value="10" selected>Itinerario Completo (10 Noches)</option>
+              <option value="14">Gran Recorrido (14 Noches)</option>
+            </select>
+          </div>
+
+          <!-- Estilo de Hospedaje -->
+          <div class="space-y-1">
+            <label class="text-[9px] uppercase tracking-widest text-roseGold font-semibold block">3. Categoría de Hospedaje</label>
+            <div class="grid grid-cols-2 gap-2">
+              <label class="border border-roseGold/20 rounded p-2 text-xs text-white flex items-center space-x-2 cursor-pointer hover:bg-roseGold/5">
+                <input type="radio" name="calc-hotel" value="Hotel 4★ Confortable" checked class="accent-roseGold" onchange="calculateAccessibleBudget()">
+                <div>
+                  <span class="font-semibold block text-[10px]">Hotel 4★ Confort</span>
+                  <span class="text-[8px] text-gray-400">Excelente ubicación y servicios</span>
+                </div>
+              </label>
+              <label class="border border-roseGold/20 rounded p-2 text-xs text-white flex items-center space-x-2 cursor-pointer hover:bg-roseGold/5">
+                <input type="radio" name="calc-hotel" value="Hotel 5★ de Categoría" class="accent-roseGold" onchange="calculateAccessibleBudget()">
+                <div>
+                  <span class="font-semibold block text-[10px]">Hotel 5★ Premium</span>
+                  <span class="text-[8px] text-gray-400">Servicio superior de alta calidad</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <!-- Servicios Adicionales -->
+          <div class="space-y-1">
+            <label class="text-[9px] uppercase tracking-widest text-roseGold font-semibold block">4. Qué te gustaría incluir</label>
+            <div class="grid grid-cols-2 gap-2 text-[9px]">
+              <label class="flex items-center space-x-1.5 text-gray-300 cursor-pointer">
+                <input type="checkbox" id="vip-concierge" value="Atención Telefónica 24hs" checked class="accent-roseGold" onchange="calculateAccessibleBudget()">
+                <span>Asistencia Telefónica 24hs</span>
+              </label>
+              <label class="flex items-center space-x-1.5 text-gray-300 cursor-pointer">
+                <input type="checkbox" id="vip-excursions" value="Excursiones con Guías" class="accent-roseGold" onchange="calculateAccessibleBudget()">
+                <span>Tours e ingresos con guías</span>
+              </label>
+              <label class="flex items-center space-x-1.5 text-gray-300 cursor-pointer">
+                <input type="checkbox" id="vip-flights" value="Traslados desde Aeropuertos" class="accent-roseGold" onchange="calculateAccessibleBudget()">
+                <span>Traslados en destino</span>
+              </label>
+              <label class="flex items-center space-x-1.5 text-gray-300 cursor-pointer">
+                <input type="checkbox" id="vip-yacht" value="Seguro de Asistencia Médica" checked class="accent-roseGold" onchange="calculateAccessibleBudget()">
+                <span>Seguro de asistencia médica</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- SECCIÓN DE RESULTADO Y COTIZACIÓN -->
+          <div class="md:col-span-2 bg-roseGold/5 border border-roseGold/20 rounded-lg p-3 flex flex-col md:flex-row justify-between items-center space-y-3 md:space-y-0 md:space-x-3">
+            <div class="text-center md:text-left">
+              <span class="text-[8px] uppercase tracking-widest text-roseGold block font-bold">Presupuesto Estimado de Viaje (Base Confort)</span>
+              <div class="font-cinzel text-lg md:text-xl text-white font-bold tracking-widest mt-0.5">
+                <span id="calc-price-range" class="text-roseGold">USD $1,850 - $2,900</span>
+                <span class="text-[9px] font-sans font-light text-gray-400"> / pasajero</span>
+              </div>
+              <p class="text-[8px] text-gray-400 mt-0.5 italic">*No incluye vuelos internacionales. Tarifas en base doble y sujetas a disponibilidad.</p>
+            </div>
+
+            <button type="submit" class="w-full md:w-auto bg-roseGold hover:bg-roseGold-dark text-brandDark font-bold uppercase tracking-[0.15em] text-[9px] px-5 py-3 rounded transition-all flex items-center justify-center space-x-1.5 shadow-md">
+              <i data-lucide="send" class="w-3.5 h-3.5"></i>
+              <span>Consultar este Itinerario</span>
+            </button>
+          </div>
+
+        </form>
+      </section>
+
+      <!-- PÁGINA 12: CONTACTO & QR -->
+      <section id="page-12" class="magazine-page w-full max-w-4xl hidden grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8 items-center bg-brandDark/75 backdrop-blur-xl p-5 md:p-10 rounded-xl border border-roseGold/10 shadow-xl relative text-left">
+        <div class="md:col-span-7 space-y-5">
+          <span class="text-roseGold text-xs uppercase tracking-[0.2em]">Contactate conmigo</span>
+          <h2 class="font-cinzel text-2xl md:text-4xl text-white font-light tracking-wide leading-none uppercase">
+            Hablemos de tu <br>
+            <span class="font-editorial italic text-roseGold lowercase">próxima aventura</span>
+          </h2>
+          
+          <div class="h-px w-16 bg-roseGold/30"></div>
+
+          <!-- Datos de Contacto Directos -->
+          <div class="space-y-3.5 pt-1">
+            
+            <a href="https://wa.me/5493454401414" target="_blank" class="flex items-center space-x-3 group">
+              <div class="w-8 h-8 rounded-full bg-roseGold/10 border border-roseGold/30 flex items-center justify-center group-hover:bg-roseGold transition-all">
+                <i data-lucide="phone" class="w-3.5 h-3.5 text-roseGold group-hover:text-brandDark"></i>
+              </div>
+              <div>
+                <span class="text-[8px] uppercase tracking-widest text-gray-400 block">WhatsApp y Consultas</span>
+                <span class="text-xs text-white font-medium group-hover:text-roseGold transition-colors">+54 9 3454 40 1414</span>
+              </div>
+            </a>
+
+            <div class="flex items-center space-x-3">
+              <div class="w-8 h-8 rounded-full bg-roseGold/10 border border-roseGold/30 flex items-center justify-center">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-roseGold"></i>
+              </div>
+              <div>
+                <span class="text-[8px] uppercase tracking-widest text-gray-400 block">Ubicación</span>
+                <span class="text-xs text-white font-medium">Federal, Entre Ríos, Argentina</span>
+              </div>
+            </div>
+
+            <a href="mailto:marianela.pesoa@gmail.com" class="flex items-center space-x-3 group">
+              <div class="w-8 h-8 rounded-full bg-roseGold/10 border border-roseGold/30 flex items-center justify-center group-hover:bg-roseGold transition-all">
+                <i data-lucide="mail" class="w-3.5 h-3.5 text-roseGold group-hover:text-brandDark"></i>
+              </div>
+              <div>
+                <span class="text-[8px] uppercase tracking-widest text-gray-400 block">E-mail</span>
+                <span class="text-xs text-white font-medium group-hover:text-roseGold transition-colors">marianela.pesoa@gmail.com</span>
+              </div>
+            </a>
+
+          </div>
+
+          <div class="p-3 bg-roseGold/5 rounded-lg border border-roseGold/10">
+            <p class="font-editorial italic text-xs text-sunsetPink">
+              "Escribime directamente por WhatsApp para empezar a cotizar y programar tu itinerario preferido."
+            </p>
+          </div>
+        </div>
+
+        <!-- Columna de QR directo a WhatsApp -->
+        <div class="md:col-span-5 flex flex-col items-center justify-center space-y-3">
+          <div class="p-4 bg-white rounded-xl shadow-lg max-w-[200px] cursor-pointer hover:scale-105 transition-transform relative group" onclick="window.open('https://wa.me/5493454401414', '_blank')">
+            <!-- QR de WhatsApp de Marianela -->
+            <img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://wa.me/5493454401414&color=231518" 
+                 alt="Código QR de WhatsApp" 
+                 class="w-36 h-36 object-contain rounded" />
+            <div class="absolute inset-0 bg-brandDark/85 opacity-0 group-hover:opacity-100 transition-opacity flex flex-col items-center justify-center rounded-xl p-3 text-center">
+              <i data-lucide="message-square" class="w-6 h-6 text-roseGold animate-bounce"></i>
+              <p class="text-[10px] font-semibold text-white uppercase tracking-wider mt-1.5">Tocar para chatear</p>
+            </div>
+          </div>
+          <span class="text-[8px] uppercase tracking-[0.15em] text-roseGold font-semibold">ESCANEÁ O TOCÁ PARA ESCRIBIRME</span>
+        </div>
+      </section>
+
+    </div>
+
+    <!-- Botón Lateral Derecho de Navegación -->
+    <button onclick="nextPage()" class="absolute right-1 md:right-4 z-30 w-11 h-11 rounded-full border border-roseGold/20 bg-brandDark/80 backdrop-blur-md flex items-center justify-center text-roseGold hover:bg-roseGold hover:text-brandDark hover:border-transparent transition-all duration-300" aria-label="Siguiente página">
+      <i data-lucide="chevron-right" class="w-5 h-5"></i>
+    </button>
+
+  </main>
+
+  <!-- CONTROLES DE LA REVISTA (PUNTOS Y PÁGINA ACTUAL) -->
+  <div class="relative z-20 max-w-lg mx-auto flex flex-col items-center space-y-2 px-4 pb-4">
+    <!-- Indicador de Página Numérica Activa -->
+    <div class="text-center">
+      <span class="font-cinzel text-[10px] text-white tracking-[0.2em]">PÁGINA <span id="current-page-num" class="text-roseGold font-bold">01</span> DE <span class="text-gray-400">12</span></span>
+      <span class="text-[9px] block text-roseGold uppercase tracking-widest mt-0.5" id="current-page-title">Portada</span>
+    </div>
+
+    <!-- Listado de Paginación Rápida con Puntitos -->
+    <div id="page-dots" class="flex space-x-1.5">
+      <!-- Se autocompleta con JS -->
+    </div>
+  </div>
+
+  <!-- PERSISTENTE FOOTER DE CONTACTO DE MARIANELA PESOA CON ACCESO A WHATSAPP -->
+  <footer class="fixed bottom-0 left-0 w-full z-40 bg-brandDark border-t border-roseGold/10 py-3.5 px-4 md:px-8 shadow-2xl">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center space-y-3.5 md:space-y-0 text-center md:text-left">
+      
+      <!-- Datos clave del Folleto -->
+      <div class="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-6 text-[11px] text-gray-300 font-medium">
+        <div class="flex items-center space-x-2">
+          <i data-lucide="user" class="w-3.5 h-3.5 text-roseGold"></i>
+          <span>Marianela Pesoa • Travel Planner Freelance</span>
+        </div>
+        <div class="hidden md:block text-roseGold/35">|</div>
+        <div class="flex items-center space-x-2">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-roseGold"></i>
+          <span>Federal, Entre Ríos</span>
+        </div>
+        <div class="hidden md:block text-roseGold/35">|</div>
+        <div class="flex items-center space-x-2">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-roseGold"></i>
+          <span class="hover:text-roseGold transition-colors">marianela.pesoa@gmail.com</span>
+        </div>
+      </div>
+
+      <!-- BOTÓN DE ACCESO DIRECTO A WHATSAPP FLOTANTE Y LLAMATIVO -->
+      <a href="https://wa.me/5493454401414" target="_blank" 
+         class="w-full md:w-auto bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-semibold text-xs tracking-wider px-5 py-2.5 rounded-full flex items-center justify-center space-x-2 shadow-lg transition-all transform animate-pulse duration-1000">
+        <i data-lucide="message-circle" class="w-4 h-4 fill-white"></i>
+        <span>Hablemos por WhatsApp</span>
+        <span class="font-bold text-[10px] bg-brandDark/30 px-1.5 py-0.5 rounded-full ml-1 text-emerald-200">+54 9 3454 40 1414</span>
+      </a>
+
+    </div>
+  </footer>
+
+  <!-- NOTIFICACIÓN DE ÉXITO -->
+  <div id="toast-notification" class="fixed bottom-28 right-4 z-50 bg-brandDark border border-roseGold text-white text-[11px] px-4 py-2.5 rounded-lg shadow-2xl translate-y-20 opacity-0 transition-all duration-300 flex items-center space-x-2 backdrop-blur-lg">
+    <i data-lucide="check" class="w-4 h-4 text-emerald-500"></i>
+    <span id="toast-message">Procesando...</span>
+  </div>
+
+  <script>
+    let currentPage = 1;
+    const totalPages = 12;
+
+    // Imágenes de fondo evocadoras para cada sección
+    const pageBackgrounds = {
+      1: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&q=80&w=2000", // Caribe
+      2: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&q=80&w=2000", // Planificando
+      3: "https://images.unsplash.com/photo-1439066615861-d1af74d74000?auto=format&fit=crop&q=80&w=2000", // Maldivas
+      4: "https://images.unsplash.com/photo-1537996194471-e657df975ab4?auto=format&fit=crop&q=80&w=2000", // Bali
+      5: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=2000", // Japón
+      6: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=2000", // París
+      7: "https://images.unsplash.com/photo-1508849789987-4e5333c12b78?auto=format&fit=crop&q=80&w=2000", // NY
+      8: "https://images.unsplash.com/photo-1483729558449-99ef09a8c325?auto=format&fit=crop&q=80&w=2000", // Río
+      9: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&q=80&w=2000", // Cruceros
+      10: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&q=80&w=2000", // Wellness
+      11: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&q=80&w=2000", // Planificador
+      12: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=2000"  // Ruta de viaje
+    };
+
+    const pageTitles = {
+      1: "Portada principal",
+      2: "Nuestra filosofía",
+      3: "Caribe & Maldivas",
+      4: "Tailandia & Bali",
+      5: "Japón & Polinesia",
+      6: "París & Ámsterdam",
+      7: "América del Norte & Sur",
+      8: "Río de Janeiro & Búzios",
+      9: "Cruceros y Travesías",
+      10: "Escapadas y Wellness",
+      11: "Calculadora de Viajes",
+      12: "Contacto directo"
+    };
+
+    window.onload = function() {
+      // Iniciar iconos lucide
+      lucide.createIcons();
+      buildPageDots();
+      goToPage(1);
+      calculateAccessibleBudget();
+
+      // Implementación táctil simple para pasar páginas
+      let startX = 0;
+      let endX = 0;
+      const mainVisor = document.querySelector('main');
+
+      mainVisor.addEventListener('touchstart', (e) => {
+        startX = e.changedTouches[0].screenX;
+      });
+
+      mainVisor.addEventListener('touchend', (e) => {
+        endX = e.changedTouches[0].screenX;
+        if (endX < startX - 60) nextPage();
+        if (endX > startX + 60) prevPage();
+      });
+    }
+
+    // Dibujar los indicadores circulares de página
+    function buildPageDots() {
+      const container = document.getElementById('page-dots');
+      container.innerHTML = '';
+      for (let i = 1; i <= totalPages; i++) {
+        const btn = document.createElement('button');
+        btn.id = `dot-${i}`;
+        btn.onclick = () => goToPage(i);
+        btn.className = `w-1.5 h-1.5 rounded-full transition-all duration-300 ${i === 1 ? 'bg-roseGold w-4' : 'bg-gray-500 hover:bg-roseGold/60'}`;
+        btn.setAttribute('aria-label', `Página ${i}`);
+        container.appendChild(btn);
+      }
+    }
+
+    // Ir a una página en específico
+    function goToPage(pageNum) {
+      if (pageNum < 1 || pageNum > totalPages) return;
+      
+      const currentElement = document.getElementById(`page-${currentPage}`);
+      if (currentElement) currentElement.classList.add('hidden');
+
+      currentPage = pageNum;
+
+      const newElement = document.getElementById(`page-${currentPage}`);
+      if (newPageElement = newElement) {
+        newPageElement.classList.remove('hidden');
+        newPageElement.classList.remove('fade-in-slide');
+        void newPageElement.offsetWidth; // Disparador para refrescar animación
+        newPageElement.classList.add('fade-in-slide');
+      }
+
+      // Cambiar fondo gradualmente
+      const bg = document.getElementById('dynamic-bg');
+      if (bg && pageBackgrounds[currentPage]) {
+        bg.style.backgroundImage = `linear-gradient(180deg, rgba(35,21,24,0.85) 0%, rgba(35,21,24,0.95) 100%), url('${pageBackgrounds[currentPage]}')`;
+      }
+
+      // Actualizar numeración
+      document.getElementById('current-page-num').textContent = String(currentPage).padStart(2, '0');
+      document.getElementById('current-page-title').textContent = pageTitles[currentPage];
+
+      // Actualizar puntos
+      for (let i = 1; i <= totalPages; i++) {
+        const dot = document.getElementById(`dot-${i}`);
+        if (dot) {
+          if (i === currentPage) {
+            dot.className = 'w-4 h-1.5 rounded-full bg-roseGold transition-all duration-300';
+          } else {
+            dot.className = 'w-1.5 h-1.5 rounded-full bg-gray-500 hover:bg-roseGold/60 transition-all duration-300';
+          }
+        }
+      }
+    }
+
+    function nextPage() {
+      if (currentPage < totalPages) goToPage(currentPage + 1);
+      else goToPage(1);
+    }
+
+    function prevPage() {
+      if (currentPage > 1) goToPage(currentPage - 1);
+      else goToPage(totalPages);
+    }
+
+    // Calculadora dinámica adaptada a confort (4 y 5 estrellas)
+    function calculateAccessibleBudget() {
+      const destination = document.getElementById('calc-destination').value;
+      const days = parseInt(document.getElementById('calc-days').value);
+      
+      const hotelOptions = document.getElementsByName('calc-hotel');
+      let hotelType = "Hotel 4★ Confortable";
+      for (let option of hotelOptions) {
+        if (option.checked) hotelType = option.value;
+      }
+
+      // Base estimada razonable por noche (Alojamiento + Servicios base)
+      let pricePerNight = 120;
+      if (destination.includes("Japón")) pricePerNight = 180;
+      else if (destination.includes("Europa")) pricePerNight = 160;
+      else if (destination.includes("Cruceros")) pricePerNight = 150;
+      else if (destination.includes("Machu")) pricePerNight = 190; // Incluye pases e ingresos básicos
+      else if (destination.includes("Bali")) pricePerNight = 100;
+
+      // Multiplicador de alojamiento 5★
+      let multiplier = 1.0;
+      if (hotelType.includes("Hotel 5★")) multiplier = 1.45;
+
+      // Costos adicionales
+      let extras = 0;
+      if (document.getElementById('vip-concierge').checked) extras += 40;
+      if (document.getElementById('vip-excursions').checked) extras += 150;
+      if (document.getElementById('vip-flights').checked) extras += 120;
+      if (document.getElementById('vip-yacht').checked) extras += 80;
+
+      let baseCost = (pricePerNight * days * multiplier) + extras;
+      let minEst = Math.round(baseCost * 0.95);
+      let maxEst = Math.round(baseCost * 1.15);
+
+      document.getElementById('calc-price-range').textContent = `USD $${minEst.toLocaleString()} - $${maxEst.toLocaleString()}`;
+    }
+
+    // Enviar consulta directa de itinerario por WhatsApp
+    function sendWhatsAppProposal() {
+      const destination = document.getElementById('calc-destination').value;
+      const days = document.getElementById('calc-days').options[document.getElementById('calc-days').selectedIndex].text;
+      
+      const hotelOptions = document.getElementsByName('calc-hotel');
+      let hotelType = "Hotel 4★ Confortable";
+      for (let option of hotelOptions) {
+        if (option.checked) hotelType = option.value;
+      }
+
+      let extras = [];
+      if (document.getElementById('vip-concierge').checked) extras.push("Atención 24hs");
+      if (document.getElementById('vip-excursions').checked) extras.push("Tours con Guías");
+      if (document.getElementById('vip-flights').checked) extras.push("Traslados locales");
+      if (document.getElementById('vip-yacht').checked) extras.push("Seguro médico");
+
+      const extrasTxt = extras.length > 0 ? extras.join(", ") : "Ninguno seleccionado";
+      const budget = document.getElementById('calc-price-range').textContent;
+
+      // Texto de WhatsApp amigable, cercano y estructurado
+      const waText = `¡Hola Marianela! Estuve mirando tu hermosa revista digital y quiero pedirte un presupuesto personalizado:
+
+🌍 *Destino:* ${destination}
+🕒 *Duración:* ${days}
+🏨 *Alojamiento preferido:* ${hotelType}
+✅ *Servicios incluidos:* ${extrasTxt}
+💳 *Estimación sugerida:* ${budget} por persona
+
+¿Podríamos conversar para coordinar detalles y ver las mejores opciones aéreas? ¡Muchas gracias!`;
+
+      const phone = "5493454401414";
+      const encoded = encodeURIComponent(waText);
+      const url = `https://wa.me/${phone}?text=${encoded}`;
+
+      showToast("¡Abriendo tu consulta en WhatsApp!");
+
+      setTimeout(() => {
+        window.open(url, '_blank');
+      }, 1200);
+    }
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-notification');
+      document.getElementById('toast-message').textContent = message;
+      
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3500);
+    }
+  </script>
+</body>
+</html>
+
+```
