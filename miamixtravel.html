@@ -1,0 +1,1390 @@
+import React, { useState, useEffect } from 'react';
+import { 
+  Globe, 
+  Camera, 
+  Handshake, 
+  Tv, 
+  Star, 
+  Sparkles, 
+  Search, 
+  MapPin, 
+  Calendar, 
+  Users, 
+  PhoneCall, 
+  Mail, 
+  MessageSquare, 
+  ChevronRight, 
+  CheckCircle2, 
+  X, 
+  Sliders, 
+  Send, 
+  ArrowRight, 
+  Crown, 
+  ShieldCheck, 
+  Award, 
+  Compass, 
+  Zap, 
+  Volume2, 
+  VolumeX, 
+  Key, 
+  Maximize2, 
+  Share2, 
+  Gem, 
+  SlidersHorizontal,
+  ChevronDown,
+  Check,
+  Play
+} from 'lucide-react';
+
+export default function App() {
+  // Navigation & Category States
+  const [activeCategory, setActiveCategory] = useState('Todos');
+  const [selectedPackage, setSelectedPackage] = useState(null);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [currency, setCurrency] = useState('USD');
+  const [isAudioPlaying, setIsAudioPlaying] = useState(false);
+
+  // VIP Card Customizer State
+  const [memberName, setMemberName] = useState('VALERIA RODRÍGUEZ');
+  const [cardTier, setCardTier] = useState('Gold');
+  const [copiedCode, setCopiedCode] = useState(false);
+
+  // Concierge Wizard Modal State
+  const [isWizardOpen, setIsWizardOpen] = useState(false);
+  const [wizardStep, setWizardStep] = useState(1);
+  const [wizardData, setWizardData] = useState({
+    destination: 'Europa - Paris & Costa Azul',
+    travelers: 2,
+    transport: 'Jet Privado + Yate 120ft',
+    mediaCoverage: 'Equipo Audiovisual & Cobertura Drone 4K',
+    stayStyle: 'Hoteles 7★ & Villas Privadas',
+    budget: '$15,000 - $30,000 USD',
+    specialNotes: ''
+  });
+
+  // Contact Info
+  const WHATSAPP_NUM = "+17864598797";
+  const WHATSAPP_LINK = `https://wa.me/17864598797`;
+  const EMAIL_ADDRESS = "info@miamix.io";
+
+  // Currencies Conversion Rates
+  const currencySymbols = { USD: '$', EUR: '€', GBP: '£' };
+  const currencyRates = { USD: 1, EUR: 0.92, GBP: 0.79 };
+
+  const formatPrice = (baseUSD) => {
+    const rate = currencyRates[currency] || 1;
+    const symbol = currencySymbols[currency] || '$';
+    const amount = Math.round(baseUSD * rate);
+    return `${symbol}${amount.toLocaleString()} ${currency}`;
+  };
+
+  // Requested 12 Categories + All
+  const categories = [
+    'Todos',
+    'Estados Unidos',
+    'Europa',
+    'Caribe',
+    'Asia',
+    'África',
+    'Centroamérica',
+    'Sudamérica',
+    'Medio Oriente',
+    'Islas Paradisíacas',
+    'Cruceros',
+    'Trenes',
+    'Salidas Grupales'
+  ];
+
+  // Pillars of the Commercial Alliance
+  const pillars = [
+    {
+      icon: Globe,
+      number: "01",
+      title: "VIAJES INTERNACIONALES",
+      subtitle: "Acceso Global Exclusivo",
+      desc: "Itinerarios diseñados a medida con hoteles de ultra lujo, traslados en jet o yate privado y experiencias VIP cerradas al público general."
+    },
+    {
+      icon: Camera,
+      number: "02",
+      title: "CONTENIDO Y COBERTURA",
+      subtitle: "Producción Audiovisual Haute Couture",
+      desc: "Fotógrafos, videógrafos y pilotos de dron profesionales asignados a tu viaje para convertir tus momentos en contenido digno de revista de moda."
+    },
+    {
+      icon: Handshake,
+      number: "03",
+      title: "ALIANZA ESTRATÉGICA",
+      subtitle: "Infinity Travel × MIAMIX",
+      desc: "La solidez operativa del turismo mundial unida al alcance mediático, fiesta y conexiones con celebridades de la marca MIAMIX."
+    },
+    {
+      icon: Tv,
+      number: "04",
+      title: "MEDIOS Y COMUNICACIÓN",
+      subtitle: "Presencia & Red Carpet VIP",
+      desc: "Pases VIP y Backstage para eventos galardonados, alfombras rojas, festivales internacionales y fiestas de alto perfil mediático."
+    }
+  ];
+
+  // Ultra Luxury Packages Catalog
+  const packages = [
+    {
+      id: 1,
+      title: "Paris Fashion Week Front-Row & Chateau Gala",
+      category: "Europa",
+      subtitle: "Moda, Celebridades y Gastronomía Michelin 3★",
+      basePriceUSD: 8500,
+      duration: "7 Días / 6 Noches",
+      location: "París & Valle del Loira, Francia",
+      badge: "High Fashion VIP",
+      image: "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&q=80&w=1200",
+      rating: "5.0 Royalty",
+      highlights: [
+        "Pases Front-Row a 3 desfiles de alta costura exclusivos",
+        "Estadía en Suite de Lujo en Hôtel de Crillon, Rosewood",
+        "Fotógrafo y estilista privado MIAMIX durante todo el viaje",
+        "Cena privada con diseñadores e influencers de renombre",
+        "Traslado en Helicóptero privado al Château de Chantilly"
+      ],
+      description: "Sumérgete en la cúspide del estilo mundial. Vive la semana de la moda parisina con credenciales de prensa y acceso tras bambalinas, complementado con alta gastronomía y trato de realeza."
+    },
+    {
+      id: 2,
+      title: "Miami Celeb Megayacht & Design District Luxe",
+      category: "Estados Unidos",
+      subtitle: "Star Island, Helios Nightlife & Privatized Bays",
+      basePriceUSD: 6200,
+      duration: "5 Días / 4 Noches",
+      location: "Miami Beach, Florida, EE.UU.",
+      badge: "Celeb Experience",
+      image: "https://images.unsplash.com/photo-1506966953602-c20cc11f75e3?auto=format&fit=crop&q=80&w=1200",
+      rating: "5.0 Platinum",
+      highlights: [
+        "Chárter de Megayate de 100 pies por Biscayne Bay con DJ & Chef",
+        "Mesa VIP reservada con botella en LIV, E11EVEN y Papi Steak",
+        "Sesión de fotos y video con Dron 4K en Star Island y Faena",
+        "Tour de compras en Design District con Personal Shopper VIP"
+      ],
+      description: "Experimenta la energía vibrante de Miami con la máxima discreción y estatus. Disfruta del sol caribeño a bordo de un yate privado y las noches más exclusivas del mundo."
+    },
+    {
+      id: 3,
+      title: "Maldivas Private Water Reserve & Submarine Dining",
+      category: "Islas Paradisíacas",
+      subtitle: "Villas Flotantes, Atolón Privado & Spa Holístico",
+      basePriceUSD: 11500,
+      duration: "8 Días / 7 Noches",
+      location: "Atolón Baa, Islas Maldivas",
+      badge: "Ultra Luxury Island",
+      image: "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&q=80&w=1200",
+      rating: "5.0 Imperial",
+      highlights: [
+        "Water Reserve de 2 pisos con tobogán directo al océano",
+        "Cena romántica privada a 6 metros bajo el mar",
+        "Vuelo escénico en hidroavión privado de lujo",
+        "Producción de cortometraje de viaje en resolución 8K"
+      ],
+      description: "El refugio definitivo para quienes buscan desconexión absoluta, aguas de cristal líquido y servicios ultralujosos en medio del Océano Índico."
+    },
+    {
+      id: 4,
+      title: "Dubai & Abu Dhabi Royal Palace & Supercar Rally",
+      category: "Medio Oriente",
+      subtitle: "Burj Al Arab 7★, Desierto VIP & Ferrari World",
+      basePriceUSD: 9800,
+      duration: "7 Días / 6 Noches",
+      location: "Dubái & Abu Dabi, E.A.U.",
+      badge: "Royal Collection",
+      image: "https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=1200",
+      rating: "5.0 Gold Luxe",
+      highlights: [
+        "Estadía en la Royal Suite del Burj Al Arab 7★",
+        "Superdeportivo (Bugatti / Lamborghini) a tu disposición",
+        "Campamento privado de ultralujo en las dunas con cena de gala",
+        "Acceso exclusivo al helipuerto del edificio para sesión de fotos"
+      ],
+      description: "Un recorrido fascinante por el epicentro de la arquitectura del futuro, el lujo sin límites y la hospitalidad árabe en su versión más majestuosa."
+    },
+    {
+      id: 5,
+      title: "St. Barths & Anguilla Billionaire Yacht Circuit",
+      category: "Caribe",
+      subtitle: "Gustavia Harbor, Nikki Beach VIP & Private Beach",
+      basePriceUSD: 7900,
+      duration: "6 Días / 5 Noches",
+      location: "San Bartolomé, Antillas Francesas",
+      badge: "Jet-Set Favorite",
+      image: "https://images.unsplash.com/photo-1548574505-5e2386903d8f?auto=format&fit=crop&q=80&w=1200",
+      rating: "4.9 Glamour",
+      highlights: [
+        "Villa privada con vista panorámica a la bahía de Gustavia",
+        "Mesa VIP permanente en Nikki Beach St. Barths",
+        "Navegación privada a las playas vírgenes de Anguilla",
+        "Cobertura audiovisual estilo campaña de moda veraniega"
+      ],
+      description: "El punto de encuentro por excelencia de la alta sociedad internacional. Elegancia caribeña con sazón francés y la mejor ambiente marina."
+    },
+    {
+      id: 6,
+      title: "Tokio Neón, Kioto Ryokan & Private Helicopter Ride",
+      category: "Asia",
+      subtitle: "Cultura Milenaria, Shinkansen First & Omakase 3★",
+      basePriceUSD: 9400,
+      duration: "10 Días / 9 Noches",
+      location: "Tokio, Kioto & Hakone, Japón",
+      badge: "Asian Mastery",
+      image: "https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?auto=format&fit=crop&q=80&w=1200",
+      rating: "5.0 Zen Luxe",
+      highlights: [
+        "Ryokan privado de lujo con manantial termal Onsen propio",
+        "Experiencia Omakase reservada por chef galardonado Michelin",
+        "Vuelo privado en helicóptero alrededor del Monte Fuji",
+        "Pases de primera clase Gran Class en el Tren Bala Shinkansen"
+      ],
+      description: "La armonía perfecta entre el futurismo vibrante de Ginza y la paz mística de las ceremonias de té en Kioto."
+    },
+    {
+      id: 7,
+      title: "Venice Simplon-Orient-Express: De Londres a Venecia",
+      category: "Trenes",
+      subtitle: "La Leyenda del Ferrocarril Clásico en Gran Suite",
+      basePriceUSD: 12800,
+      duration: "6 Días / 5 Noches",
+      location: "Reino Unido, Francia, Suiza e Italia",
+      badge: "Heritage Legend",
+      image: "https://images.unsplash.com/photo-1474487548417-781cb71495f3?auto=format&fit=crop&q=80&w=1200",
+      rating: "5.0 Historic",
+      highlights: [
+        "Gran Suite vintage con mayordomo personal disponible 24/7",
+        "Cenas de etiqueta con champagne ilimitado y pianista en vivo",
+        "Alojamiento en el Hotel Cipriani Belmond en Venecia",
+        "Paseo en Góndola privada con serenata al atardecer"
+      ],
+      description: "El viaje en tren más romántico y suntuoso jamás concebido. Revive la era dorada del viaje con acabados de madera fina y champán de añada."
+    },
+    {
+      id: 8,
+      title: "Costa Amalfitana & Mykonos Ultra Yacht Cruise",
+      category: "Cruceros",
+      subtitle: "Navegación Privada de Positano a las Cícladas",
+      basePriceUSD: 10900,
+      duration: "9 Días / 8 Noches",
+      location: "Italia & Grecia",
+      badge: "Mediterráneo VIP",
+      image: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&q=80&w=1200",
+      rating: "5.0 Mediterranean",
+      highlights: [
+        "Navegación en superyate boutique para solo 20 invitados",
+        "Anclaje exclusivo en Positano, Capri, Santorini y Mykonos",
+        "Fiesta nocturna temática 'All-White Night' organizada por MIAMIX",
+        "Atención personalizada por chef italiano y sumiller galardonado"
+      ],
+      description: "Explora las calas más bellas del Mediterráneo en un yate privado con fiestas al atardecer y servicios de altísima gastronomía."
+    },
+    {
+      id: 9,
+      title: "Salida Grupal VIP: Safari Glamour en Kenia & Zanzíbar",
+      category: "Salidas Grupales",
+      subtitle: "Masai Mara Glamping 5★ & Vuelo en Globo",
+      basePriceUSD: 8900,
+      duration: "11 Días / 10 Noches",
+      location: "Kenia & Tanzania",
+      badge: "Grupo Reducido (12 paxs)",
+      image: "https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&q=80&w=1200",
+      rating: "5.0 Wild Luxe",
+      highlights: [
+        "Lodge de lujo en tiendas de campaña de alta gama en Masai Mara",
+        "Vuelo en Globo Aerostático al amanecer con desayuno de Champagne",
+        "Acompañamiento por un Creador de Contenido & Embajador MIAMIX",
+        "Estadía de relax absoluto en villa privada frente a las playas de Zanzíbar"
+      ],
+      description: "Una expedición de safari con el máximo confort para admirar la vida salvaje africana y terminar festejando en las playas del Océano Índico."
+    }
+  ];
+
+  // Articles for Digital Haute Magazine
+  const articles = [
+    {
+      title: "Secretos de la Jet-Set: Dónde Veranean las Celebridades en 2026",
+      category: "LIFESTYLE & CELEBS",
+      date: "EDICIÓN DE VERANO 2026",
+      image: "https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&q=80&w=800",
+      readTime: "5 min de lectura",
+      snippet: "Desde las calas reservadas en St. Barths hasta las terrazas de Capri. Análisis de los refugios donde el lujo y la privacidad se fusionan."
+    },
+    {
+      title: "La Guía Definitiva para Producción Audiovisual en Viajes VIP",
+      category: "CONTENIDO & MEDIA",
+      date: "EDICIÓN DE VERANO 2026",
+      image: "https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?auto=format&fit=crop&q=80&w=800",
+      readTime: "7 min de lectura",
+      snippet: "Cómo nuestra alianza entre Infinity Travel y MIAMIX integra pilotos de dron y fotógrafos de moda para transformar tus vacaciones en una obra de arte."
+    },
+    {
+      title: "Megayates vs. Jets Privados: El Arte de Desplazarse sin Fronteras",
+      category: "HIGH-END TRAVEL",
+      date: "EDICIÓN DE VERANO 2026",
+      image: "https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&q=80&w=800",
+      readTime: "4 min de lectura",
+      snippet: "Comparativa técnica y de confort para elegir la mejor manera de llegar a los eventos más cotizados del planeta."
+    }
+  ];
+
+  // Filter packages based on active category and search input
+  const filteredPackages = packages.filter(pkg => {
+    const matchesCategory = activeCategory === 'Todos' || pkg.category === activeCategory;
+    const matchesSearch = pkg.title.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                          pkg.subtitle.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          pkg.location.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          pkg.category.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
+  });
+
+  const generateWhatsAppMessage = (title) => {
+    const msg = `¡Hola MIAMIX & Infinity Travel! Me interesa reservar la experiencia VIP: "${title}". Quisiera comunicarme con un Concierge Personalizado.`;
+    return `${WHATSAPP_LINK}?text=${encodeURIComponent(msg)}`;
+  };
+
+  const handleWizardSubmit = (e) => {
+    e.preventDefault();
+    const summary = 
+      `¡Hola Concierge VIP MIAMIX Travel!\n\n` +
+      `Solicito una propuesta de viaje totalmente personalizada:\n` +
+      `📍 Destino: ${wizardData.destination}\n` +
+      `👥 Pasajeros: ${wizardData.travelers}\n` +
+      `🚁 Transporte VIP: ${wizardData.transport}\n` +
+      `🏨 Hospedaje: ${wizardData.stayStyle}\n` +
+      `📸 Cobertura Media: ${wizardData.mediaCoverage}\n` +
+      `💰 Presupuesto estimado: ${wizardData.budget}\n` +
+      (wizardData.specialNotes ? `📝 Notas: ${wizardData.specialNotes}\n` : '') +
+      `\nQuedo a la espera de su llamada prioritarias.`;
+    
+    window.open(`${WHATSAPP_LINK}?text=${encodeURIComponent(summary)}`, '_blank');
+    setIsWizardOpen(false);
+  };
+
+  const copyShareLink = () => {
+    const textToCopy = `MIAMIX & Infinity Travel - VIP Club: https://miamix.io`;
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(textToCopy);
+    }
+    setCopiedCode(true);
+    setTimeout(() => setCopiedCode(false), 2500);
+  };
+
+  return (
+    <div className="min-h-screen bg-[#02040a] text-slate-100 font-sans selection:bg-pink-500 selection:text-white relative overflow-x-hidden">
+      
+      {/* GLOWING AMBIENT BACKGROUND LIGHTS */}
+      <div className="fixed top-0 left-1/4 w-96 h-96 bg-pink-600/15 rounded-full blur-[140px] pointer-events-none z-0"></div>
+      <div className="fixed top-1/3 right-10 w-[500px] h-[500px] bg-indigo-600/10 rounded-full blur-[160px] pointer-events-none z-0"></div>
+      <div className="fixed bottom-10 left-10 w-[400px] h-[400px] bg-amber-500/10 rounded-full blur-[150px] pointer-events-none z-0"></div>
+
+      {/* TOP ANNOUNCEMENT BAR WITH LIVE TICKER */}
+      <div className="relative z-50 bg-gradient-to-r from-[#0d031a] via-[#1a0526] to-[#0a0f26] border-b border-pink-500/30 text-xs font-semibold py-2.5 px-4">
+        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+          
+          <div className="flex items-center gap-3 text-pink-300">
+            <span className="flex h-2 w-2 relative">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-pink-500"></span>
+            </span>
+            <span className="tracking-widest uppercase text-[10px] sm:text-xs font-bold text-amber-300">
+              CONCIERGE VIP ACTIVO las 24 HORAS
+            </span>
+            <span className="hidden md:inline text-slate-600">|</span>
+            <span className="hidden md:inline text-slate-300 text-[11px]">
+              MIAMI • PARÍS • DUBÁI • SAN BARTOLOMÉ • TOKIO
+            </span>
+          </div>
+
+          <div className="flex items-center gap-4 text-[11px] font-mono text-slate-300">
+            {/* Currency Selector Switch */}
+            <div className="flex items-center gap-1 bg-black/50 px-2 py-0.5 rounded-full border border-white/10">
+              <span className="text-[10px] text-slate-400 mr-1">DIVISA:</span>
+              {['USD', 'EUR', 'GBP'].map((curr) => (
+                <button
+                  key={curr}
+                  onClick={() => setCurrency(curr)}
+                  className={`px-1.5 py-0.5 rounded text-[10px] font-bold transition-all ${
+                    currency === curr ? 'bg-pink-600 text-white shadow' : 'text-slate-400 hover:text-white'
+                  }`}
+                >
+                  {curr}
+                </button>
+              ))}
+            </div>
+
+            <a href={`mailto:${EMAIL_ADDRESS}`} className="hover:text-pink-400 transition-colors hidden sm:inline">
+              {EMAIL_ADDRESS}
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      {/* HEADER / STICKY GLASSMOGRAPHIC NAVIGATION */}
+      <header className="sticky top-0 z-40 bg-[#02040a]/80 backdrop-blur-xl border-b border-white/10 transition-all">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+          
+          {/* BRAND LOGO FUSION */}
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            
+            {/* Infinity Travel Icon */}
+            <div className="flex items-center gap-2">
+              <div className="relative w-10 h-10 flex items-center justify-center">
+                <svg viewBox="0 0 100 50" className="w-10 h-6 filter drop-shadow-[0_0_8px_rgba(6,182,212,0.5)]">
+                  <path 
+                    d="M 25 25 C 10 10, 0 25, 25 25 C 50 25, 50 10, 75 25 C 100 40, 75 40, 50 25 Z" 
+                    fill="none" 
+                    stroke="url(#infinityGradHero)" 
+                    strokeWidth="8"
+                    strokeLinecap="round"
+                  />
+                  <defs>
+                    <linearGradient id="infinityGradHero" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" stopColor="#ff512f" />
+                      <stop offset="50%" stopColor="#f09819" />
+                      <stop offset="100%" stopColor="#00c6ff" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+              </div>
+              <div className="hidden sm:block">
+                <span className="block font-serif italic text-lg text-white font-bold leading-none tracking-wide">Infinity</span>
+                <span className="block text-[8px] font-sans font-black text-cyan-400 tracking-[0.3em] uppercase">Travel Agency</span>
+              </div>
+            </div>
+
+            {/* Glowing Flare Divider */}
+            <div className="h-8 w-[1px] bg-gradient-to-b from-pink-500 via-purple-400 to-cyan-400 opacity-80"></div>
+
+            {/* MIAMIX Styled Logo */}
+            <div className="bg-gradient-to-r from-pink-600 via-fuchsia-600 to-purple-600 px-3.5 py-1.5 rounded-lg shadow-lg shadow-pink-600/30 border border-pink-400/30">
+              <span className="font-black text-lg md:text-xl tracking-[0.25em] text-white uppercase drop-shadow-[0_2px_10px_rgba(255,0,127,0.5)]">
+                MI<span className="text-pink-200">Λ</span>MIX
+              </span>
+            </div>
+
+          </div>
+
+          {/* DESKTOP NAV LINKS */}
+          <nav className="hidden lg:flex items-center gap-8 text-xs font-bold uppercase tracking-widest text-slate-300">
+            <a href="#destinos" className="hover:text-pink-400 transition-colors">Colección 2026</a>
+            <a href="#alianza" className="hover:text-pink-400 transition-colors">La Alianza</a>
+            <a href="#revista" className="hover:text-pink-400 transition-colors">Revista Fashion</a>
+            <a href="#club" className="hover:text-pink-400 transition-colors">Club VIP</a>
+            <a href="#contacto" className="hover:text-pink-400 transition-colors">Contacto</a>
+          </nav>
+
+          {/* ACTION BUTTONS */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setIsWizardOpen(true)}
+              className="hidden sm:flex items-center gap-2 px-4 py-2.5 rounded-full bg-white/5 hover:bg-pink-500/10 border border-pink-500/40 text-pink-300 text-xs font-bold uppercase tracking-wider transition-all"
+            >
+              <Crown className="w-3.5 h-3.5 text-amber-400" />
+              <span>Diseñar a Medida</span>
+            </button>
+
+            <a 
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white text-xs font-extrabold px-5 py-2.5 rounded-full shadow-[0_0_20px_rgba(255,0,127,0.4)] transition-all transform hover:scale-105"
+            >
+              <MessageSquare className="w-4 h-4" />
+              <span className="hidden md:inline">WhatsApp Concierge</span>
+              <span className="md:hidden">WhatsApp</span>
+            </a>
+          </div>
+
+        </div>
+      </header>
+
+      {/* HERO SECTION - HAUTE COUTURE EDITORIAL COVER */}
+      <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden py-20 px-4">
+        
+        {/* Background Image Layer with Cinematic Overlay */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1510414842594-a61c69b5ae57?auto=format&fit=crop&q=80&w=2200" 
+            alt="MIAMIX Luxury Travel Background" 
+            className="w-full h-full object-cover object-center opacity-30 scale-105 animate-pulse"
+            style={{ animationDuration: '16s' }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#02040a] via-[#02040a]/75 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-pink-950/30 via-purple-950/20 to-slate-950/60"></div>
+        </div>
+
+        {/* HERO CONTENT */}
+        <div className="relative z-10 max-w-5xl mx-auto text-center space-y-8">
+          
+          {/* Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-xl border border-pink-500/40 px-5 py-2 rounded-full text-pink-300 text-xs font-bold tracking-[0.25em] uppercase shadow-[0_0_30px_rgba(255,0,127,0.2)]">
+            <Sparkles className="w-4 h-4 text-amber-300 animate-spin" style={{ animationDuration: '8s' }} />
+            <span>ALIANZA COMERCIAL EXCLUSIVA 2026</span>
+          </div>
+
+          {/* Slogan Title */}
+          <h1 className="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight text-white leading-none">
+            UNIMOS DESTINOS. <br />
+            <span className="bg-gradient-to-r from-pink-400 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent drop-shadow-[0_4px_25px_rgba(255,0,127,0.5)]">
+              CONECTAMOS EXPERIENCIAS.
+            </span>
+          </h1>
+
+          <p className="max-w-3xl mx-auto text-slate-300 text-sm sm:text-base md:text-lg font-light leading-relaxed">
+            La plataforma definitiva donde **Infinity Travel Agency** e **MIAMIX** unen la excelencia del turismo de ultra lujo con la producción mediática, el entretenimiento VIP y los eventos de celebridades.
+          </p>
+
+          {/* SEARCH & CONCIERGE SEARCH BAR */}
+          <div className="max-w-3xl mx-auto bg-white/10 backdrop-blur-2xl border border-white/20 p-3 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.8)] flex flex-col sm:flex-row items-center gap-3">
+            <div className="relative flex-1 w-full">
+              <Search className="absolute left-4 top-3.5 w-5 h-5 text-pink-400" />
+              <input 
+                type="text" 
+                placeholder="Escribe tu destino soñado (Ej. París, Maldivas, Dubai, Yate en Miami)..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full pl-12 pr-4 py-3 bg-black/60 text-white placeholder-slate-400 rounded-xl text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-pink-500 border border-white/10"
+              />
+            </div>
+
+            <button 
+              onClick={() => {
+                const el = document.getElementById('destinos');
+                el?.scrollIntoView({ behavior: 'smooth' });
+              }}
+              className="w-full sm:w-auto bg-gradient-to-r from-pink-600 via-fuchsia-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white font-extrabold px-8 py-3.5 rounded-xl text-xs tracking-wider uppercase shadow-lg shadow-pink-600/40 transition-all flex items-center justify-center gap-2"
+            >
+              <span>Buscar Itinerarios</span>
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* HIGHLIGHT STATS */}
+          <div className="pt-8 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center border-t border-white/10 max-w-4xl mx-auto">
+            <div className="p-3 bg-white/5 rounded-2xl border border-white/5">
+              <p className="text-2xl sm:text-3xl font-black text-pink-400">12+</p>
+              <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mt-1">Categorías Globales</p>
+            </div>
+            <div className="p-3 bg-white/5 rounded-2xl border border-white/5">
+              <p className="text-2xl sm:text-3xl font-black text-cyan-400">100%</p>
+              <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mt-1">Atención Concierge VIP</p>
+            </div>
+            <div className="p-3 bg-white/5 rounded-2xl border border-white/5">
+              <p className="text-2xl sm:text-3xl font-black text-amber-400">Media 4K</p>
+              <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mt-1">Cobertura de Fotos & Dron</p>
+            </div>
+            <div className="p-3 bg-white/5 rounded-2xl border border-white/5">
+              <p className="text-2xl sm:text-3xl font-black text-fuchsia-400">7★ Luxe</p>
+              <p className="text-[10px] text-slate-400 uppercase font-bold tracking-widest mt-1">Hoteles & Villas Privadas</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ALLIANCE PILLARS SECTION - BASED ON SECOND UPLOADED IMAGE */}
+      <section id="alianza" className="py-24 bg-gradient-to-b from-[#02040a] via-[#080d21] to-[#02040a] border-y border-white/10 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <div className="text-center max-w-3xl mx-auto space-y-4 mb-16">
+            <div className="inline-flex items-center gap-2 text-pink-400 text-xs font-bold tracking-[0.3em] uppercase">
+              <Handshake className="w-4 h-4" />
+              <span>Acuerdo Comercial Estratégico</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-white">
+              Infinity Travel <span className="text-pink-500">×</span> MIAMIX
+            </h2>
+            <p className="text-slate-400 text-xs sm:text-sm leading-relaxed">
+              La convergencia perfecta entre el turismo internacional de alto nivel y la producción mediática con acceso a eventos y personalidades del mundo del espectáculo.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {pillars.map((pillar, idx) => {
+              const IconComp = pillar.icon;
+              return (
+                <div 
+                  key={idx}
+                  className="group relative bg-white/5 hover:bg-white/10 border border-white/10 hover:border-pink-500/50 p-8 rounded-3xl transition-all duration-500 hover:-translate-y-2 shadow-2xl flex flex-col justify-between"
+                >
+                  <div className="space-y-4">
+                    <div className="flex items-center justify-between">
+                      <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-pink-600 via-fuchsia-600 to-purple-700 flex items-center justify-center text-white shadow-lg shadow-pink-600/30 group-hover:scale-110 transition-transform">
+                        <IconComp className="w-7 h-7" />
+                      </div>
+                      <span className="text-3xl font-black text-white/10 group-hover:text-pink-500/30 font-mono transition-colors">
+                        {pillar.number}
+                      </span>
+                    </div>
+
+                    <div>
+                      <span className="text-[10px] font-bold text-pink-400 uppercase tracking-widest block">
+                        {pillar.subtitle}
+                      </span>
+                      <h3 className="text-lg font-black text-white mt-1 group-hover:text-pink-300 transition-colors uppercase tracking-wider">
+                        {pillar.title}
+                      </h3>
+                    </div>
+
+                    <p className="text-slate-400 text-xs leading-relaxed">
+                      {pillar.desc}
+                    </p>
+                  </div>
+
+                  <div className="pt-6 mt-6 border-t border-white/5 flex items-center gap-1 text-xs font-bold text-pink-400 group-hover:translate-x-1 transition-transform cursor-pointer">
+                    <span>Saber Más</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+        </div>
+      </section>
+
+      {/* DESTINATIONS CATALOG (12+ CATEGORIES) */}
+      <section id="destinos" className="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-12">
+          <div>
+            <span className="text-pink-400 text-xs font-extrabold tracking-[0.25em] uppercase block">Catálogo Exclusivo Mundial</span>
+            <h2 className="text-3xl sm:text-5xl font-black text-white mt-1">
+              Colección de Viajes VIP
+            </h2>
+            <p className="text-slate-400 text-xs sm:text-sm mt-2 max-w-xl">
+              Explora nuestros itinerarios en los destinos más fascinantes. Cada paquete incluye opción de servicio fotográfico, reservas VIP y atención concierge 24/7.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span className="text-xs text-slate-400">Mostrando <strong className="text-pink-400">{filteredPackages.length}</strong> itinerarios</span>
+          </div>
+        </div>
+
+        {/* CATEGORY FILTER TABS (SCROLLABLE ON MOBILE) */}
+        <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-12 no-scrollbar">
+          {categories.map((cat) => (
+            <button
+              key={cat}
+              onClick={() => setActiveCategory(cat)}
+              className={`px-5 py-3 rounded-2xl text-xs font-extrabold whitespace-nowrap transition-all duration-300 ${
+                activeCategory === cat
+                  ? 'bg-gradient-to-r from-pink-600 via-fuchsia-600 to-purple-600 text-white shadow-[0_0_20px_rgba(255,0,127,0.4)] scale-105 border border-pink-400/40'
+                  : 'bg-white/5 hover:bg-white/10 text-slate-300 border border-white/10'
+              }`}
+            >
+              {cat}
+            </button>
+          ))}
+        </div>
+
+        {/* PACKAGES GRID */}
+        {filteredPackages.length > 0 ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredPackages.map((pkg) => (
+              <div 
+                key={pkg.id}
+                className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-pink-500/50 transition-all duration-500 flex flex-col group hover:shadow-[0_10px_40px_rgba(255,0,127,0.15)] hover:-translate-y-1"
+              >
+                {/* Image Header with Hover Scale */}
+                <div className="relative h-72 overflow-hidden">
+                  <img 
+                    src={pkg.image} 
+                    alt={pkg.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#02040a] via-transparent to-black/50"></div>
+                  
+                  {/* Category Badge */}
+                  <span className="absolute top-4 left-4 bg-black/70 backdrop-blur-md text-pink-300 text-[10px] font-bold px-3.5 py-1.5 rounded-full uppercase tracking-wider border border-white/10">
+                    {pkg.category}
+                  </span>
+
+                  {/* Rating / Badge */}
+                  <span className="absolute top-4 right-4 bg-gradient-to-r from-pink-600 to-purple-600 text-white text-[10px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-wider shadow-lg">
+                    {pkg.badge}
+                  </span>
+
+                  {/* Bottom Meta in Image */}
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between text-xs text-slate-200">
+                    <span className="flex items-center gap-1.5 font-semibold text-white">
+                      <MapPin className="w-3.5 h-3.5 text-pink-400" />
+                      {pkg.location}
+                    </span>
+                    <span className="flex items-center gap-1 text-amber-300 font-bold bg-black/60 px-2.5 py-1 rounded-full border border-amber-500/30">
+                      <Star className="w-3.5 h-3.5 fill-amber-300 text-amber-300" />
+                      {pkg.rating}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Content Details */}
+                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    <h3 className="text-xl font-black text-white group-hover:text-pink-300 transition-colors leading-snug">
+                      {pkg.title}
+                    </h3>
+                    <p className="text-xs font-semibold text-pink-400 mt-1">
+                      {pkg.subtitle}
+                    </p>
+                    <p className="text-xs text-slate-300 mt-3 leading-relaxed line-clamp-3">
+                      {pkg.description}
+                    </p>
+                  </div>
+
+                  {/* Key Highlights */}
+                  <div className="space-y-2 pt-3 border-t border-white/10">
+                    {pkg.highlights.slice(0, 3).map((item, idx) => (
+                      <div key={idx} className="flex items-start gap-2 text-[11px] text-slate-300">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-pink-400 shrink-0 mt-0.5" />
+                        <span className="line-clamp-1">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Price & Action Button */}
+                  <div className="pt-4 border-t border-white/10 flex items-center justify-between">
+                    <div>
+                      <span className="text-[10px] uppercase tracking-wider text-slate-400 block font-bold">Tarifa Base Desde</span>
+                      <span className="text-xl font-black text-white bg-gradient-to-r from-pink-300 to-white bg-clip-text text-transparent">
+                        {formatPrice(pkg.basePriceUSD)}
+                      </span>
+                    </div>
+
+                    <button
+                      onClick={() => setSelectedPackage(pkg)}
+                      className="bg-white/10 hover:bg-pink-600 text-white px-5 py-2.5 rounded-xl text-xs font-extrabold transition-all flex items-center gap-1.5 border border-white/10 hover:border-pink-500 shadow-md"
+                    >
+                      <span>Detalles VIP</span>
+                      <ChevronRight className="w-4 h-4" />
+                    </button>
+                  </div>
+
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="text-center py-20 bg-white/5 rounded-3xl border border-white/10">
+            <Search className="w-12 h-12 text-slate-500 mx-auto mb-3" />
+            <h3 className="text-lg font-bold text-white">No encontramos paquetes para tu búsqueda</h3>
+            <p className="text-slate-400 text-xs mt-1">Intenta seleccionando otra categoría o limpiando el filtro.</p>
+            <button 
+              onClick={() => { setActiveCategory('Todos'); setSearchQuery(''); }}
+              className="mt-4 px-5 py-2.5 bg-pink-600 text-white rounded-full text-xs font-bold"
+            >
+              Ver Todo el Catálogo
+            </button>
+          </div>
+        )}
+
+      </section>
+
+      {/* VIP MEMBERSHIP CUSTOM CARD GENERATOR & LOUNGE */}
+      <section id="club" className="py-24 bg-gradient-to-b from-[#02040a] via-[#0b071a] to-[#02040a] border-y border-white/10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="text-center max-w-3xl mx-auto space-y-3 mb-16">
+            <div className="inline-flex items-center gap-2 text-amber-400 text-xs font-bold tracking-[0.25em] uppercase">
+              <Crown className="w-4 h-4" />
+              <span>Membresía Exclusiva</span>
+            </div>
+            <h2 className="text-3xl sm:text-5xl font-black text-white">
+              MIAMIX Travel Club VIP
+            </h2>
+            <p className="text-slate-400 text-xs sm:text-sm">
+              Genera tu tarjeta virtual personalizada de nuestro club privado y accede a trato prioritario, pases a eventos y servicio concierge dedicado.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* CARD CUSTOMIZER INPUTS */}
+            <div className="lg:col-span-5 space-y-6 bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl">
+              <h3 className="text-xl font-bold text-white flex items-center gap-2">
+                <Gem className="w-5 h-5 text-pink-400" />
+                <span>Personaliza tu Pasaporte VIP</span>
+              </h3>
+
+              <div className="space-y-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Nombre del Titular</label>
+                  <input 
+                    type="text" 
+                    value={memberName}
+                    onChange={(e) => setMemberName(e.target.value.toUpperCase())}
+                    maxLength={26}
+                    placeholder="TU NOMBRE COMPLETO"
+                    className="w-full bg-black/60 border border-white/20 rounded-xl px-4 py-3 text-xs text-white uppercase font-mono tracking-wider focus:outline-none focus:border-pink-500"
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Categoría de Membresía</label>
+                  <div className="grid grid-cols-3 gap-2">
+                    {['Silver', 'Gold', 'Black Diamond'].map((tier) => (
+                      <button
+                        key={tier}
+                        onClick={() => setCardTier(tier)}
+                        className={`py-2.5 rounded-xl text-[11px] font-extrabold uppercase transition-all ${
+                          cardTier === tier
+                            ? 'bg-gradient-to-r from-pink-600 to-purple-600 text-white shadow-lg border border-pink-400'
+                            : 'bg-white/5 text-slate-400 border border-white/10 hover:text-white'
+                        }`}
+                      >
+                        {tier}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="p-4 bg-black/40 rounded-2xl border border-white/10 text-xs text-slate-300 space-y-2">
+                  <p className="font-bold text-pink-400 flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4" />
+                    <span>Beneficios del Nivel {cardTier}:</span>
+                  </p>
+                  <p className="text-[11px] text-slate-400 leading-relaxed">
+                    {cardTier === 'Silver' && '• Concierge dedicado vía WhatsApp • Descuentos secret de último minuto en hoteles 5★.'}
+                    {cardTier === 'Gold' && '• Cobertura con fotógrafo/videógrafo 1 día por viaje • Acceso VIP a eventos de moda e influencers.'}
+                    {cardTier === 'Black Diamond' && '• Concierge VIP 24/7 • Tarifas especiales en Chárter de Jets & Yates • Cobertura total con Dron 4K.'}
+                  </p>
+                </div>
+
+                <a 
+                  href={`${WHATSAPP_LINK}?text=${encodeURIComponent(`¡Hola MIAMIX Travel! Quisiera activar mi Membresía Nivel ${cardTier} a nombre de: ${memberName}`)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full py-3.5 bg-gradient-to-r from-pink-600 via-fuchsia-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white text-xs font-extrabold rounded-xl shadow-lg shadow-pink-600/30 flex items-center justify-center gap-2 uppercase tracking-wider transition-all"
+                >
+                  <ShieldCheck className="w-4 h-4" />
+                  <span>Activar Membresía por WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+            {/* 3D CARD VISUAL PREVIEW */}
+            <div className="lg:col-span-7 flex justify-center">
+              <div className={`relative w-full max-w-md h-64 sm:h-72 rounded-3xl p-6 sm:p-8 flex flex-col justify-between shadow-[0_0_60px_rgba(255,0,127,0.3)] transition-all transform hover:scale-105 border ${
+                cardTier === 'Silver' 
+                  ? 'bg-gradient-to-br from-slate-900 via-slate-800 to-slate-950 border-slate-400/40' 
+                  : cardTier === 'Gold'
+                  ? 'bg-gradient-to-br from-pink-950 via-purple-900 to-slate-950 border-pink-500'
+                  : 'bg-gradient-to-br from-black via-slate-950 to-amber-950 border-amber-500/60'
+              }`}>
+                
+                {/* Holographic Metal Chip & Logo */}
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-10 h-8 rounded-lg bg-gradient-to-tr from-amber-300 via-yellow-500 to-amber-600 border border-amber-200/50 shadow-inner"></div>
+                    <span className="text-[10px] font-mono font-bold text-slate-400 tracking-widest">VIP PASSPORT</span>
+                  </div>
+
+                  <div className="text-right">
+                    <span className="font-black text-sm tracking-widest text-white block">
+                      MI<span className="text-pink-400">Λ</span>MIX
+                    </span>
+                    <span className="text-[8px] text-cyan-400 font-extrabold tracking-widest uppercase">Infinity Travel</span>
+                  </div>
+                </div>
+
+                {/* Card Number */}
+                <div className="font-mono text-base sm:text-xl font-bold tracking-[0.25em] text-white drop-shadow">
+                  4598 •••• •••• 8797
+                </div>
+
+                {/* Bottom Details */}
+                <div className="flex items-end justify-between border-t border-white/10 pt-4">
+                  <div>
+                    <span className="text-[8px] text-slate-400 uppercase tracking-widest block font-bold">MEMBER NAME</span>
+                    <span className="font-mono text-xs sm:text-sm font-bold text-white tracking-wider block truncate max-w-[200px]">
+                      {memberName || 'VALERIA RODRÍGUEZ'}
+                    </span>
+                  </div>
+
+                  <div className="text-right">
+                    <span className="text-[8px] text-slate-400 uppercase tracking-widest block font-bold">TIER</span>
+                    <span className={`font-black text-xs sm:text-sm tracking-wider uppercase ${
+                      cardTier === 'Silver' ? 'text-slate-300' : cardTier === 'Gold' ? 'text-pink-400' : 'text-amber-400'
+                    }`}>
+                      {cardTier} VIP
+                    </span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* DIGITAL HAUTE MAGAZINE SECTION */}
+      <section id="revista" className="py-24 bg-[#02040a] border-t border-white/10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-16">
+            <div>
+              <span className="text-pink-400 text-xs font-extrabold tracking-[0.25em] uppercase">Revista Digital Fashion & Travel</span>
+              <h2 className="text-3xl sm:text-5xl font-black text-white mt-1">
+                MIAMIX Haute Editorial
+              </h2>
+              <p className="text-slate-400 text-xs sm:text-sm mt-2">
+                Historias de viaje, detrás de escena en alfombras rojas y secretos de los destinos más codiciados.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {articles.map((art, idx) => (
+              <article key={idx} className="bg-white/5 border border-white/10 rounded-3xl overflow-hidden hover:border-pink-500/40 transition-all duration-500 group flex flex-col justify-between">
+                <div>
+                  <div className="h-56 overflow-hidden relative">
+                    <img 
+                      src={art.image} 
+                      alt={art.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                    />
+                    <span className="absolute top-4 left-4 bg-pink-600 text-white text-[9px] font-black px-3 py-1 rounded-full uppercase tracking-wider">
+                      {art.category}
+                    </span>
+                  </div>
+                  <div className="p-6 space-y-3">
+                    <div className="flex items-center gap-3 text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+                      <span>{art.date}</span>
+                      <span>•</span>
+                      <span>{art.readTime}</span>
+                    </div>
+                    <h3 className="text-lg font-black text-white group-hover:text-pink-300 transition-colors leading-snug">
+                      {art.title}
+                    </h3>
+                    <p className="text-xs text-slate-300 leading-relaxed line-clamp-3">
+                      {art.snippet}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="p-6 pt-0">
+                  <span className="text-xs font-extrabold text-pink-400 group-hover:text-pink-300 inline-flex items-center gap-1.5 cursor-pointer">
+                    <span>Leer Artículo Completo</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* BESPOKE CONCIERGE BANNER CTA */}
+      <section className="py-20 px-4 max-w-7xl mx-auto">
+        <div className="relative rounded-3xl overflow-hidden bg-gradient-to-r from-pink-950 via-purple-950 to-slate-950 border border-pink-500/40 p-8 sm:p-14 shadow-[0_0_60px_rgba(255,0,127,0.25)]">
+          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8">
+            <div className="space-y-4 text-center lg:text-left max-w-2xl">
+              <span className="bg-pink-500/20 text-pink-300 text-[10px] font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-widest border border-pink-500/30">
+                Atención Directa las 24 Horas
+              </span>
+              <h2 className="text-3xl sm:text-5xl font-black text-white leading-tight">
+                ¿Planeas un Viaje Privado o para un Grupo de Famosos?
+              </h2>
+              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                Coordinamos vuelos chárter en jet privado, megayates con chef personal, reservas cerradas al público y equipo fotográfico con dron listo para despegar.
+              </p>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
+              <button
+                onClick={() => setIsWizardOpen(true)}
+                className="bg-gradient-to-r from-pink-600 via-fuchsia-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white text-xs font-extrabold px-8 py-4 rounded-2xl shadow-xl shadow-pink-600/30 transition-all text-center flex items-center justify-center gap-2 uppercase tracking-wider"
+              >
+                <Crown className="w-4 h-4 text-amber-300" />
+                <span>Diseñar Itinerario Único</span>
+              </button>
+
+              <a
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="bg-white/10 hover:bg-white/20 text-white text-xs font-extrabold px-8 py-4 rounded-2xl border border-white/20 transition-all text-center flex items-center justify-center gap-2 uppercase tracking-wider"
+              >
+                <PhoneCall className="w-4 h-4 text-pink-400" />
+                <span>Llamar al Concierge</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT & RESERVATION LOUNGE */}
+      <section id="contacto" className="py-24 bg-gradient-to-b from-[#02040a] via-[#070b1a] to-black border-t border-white/10 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto">
+          
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            
+            <div className="space-y-8">
+              <div>
+                <span className="text-pink-400 text-xs font-extrabold tracking-[0.25em] uppercase">Contacto Oficial</span>
+                <h2 className="text-3xl sm:text-5xl font-black text-white mt-1 leading-tight">
+                  Reserva Tu Próxima Travesía de Lujo
+                </h2>
+                <p className="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                  Nuestro equipo de ejecutivos en **Infinity Travel** y los directores creativos de **MIAMIX** responderán a tu solicitud de forma personalizada.
+                </p>
+              </div>
+
+              <div className="space-y-4">
+                <a 
+                  href={WHATSAPP_LINK} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-green-500/20 text-green-400 flex items-center justify-center shrink-0">
+                    <MessageSquare className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold block">WhatsApp Concierge Directo</span>
+                    <span className="text-base font-black text-white group-hover:text-pink-400 transition-colors">{WHATSAPP_NUM}</span>
+                  </div>
+                </a>
+
+                <a 
+                  href={`mailto:${EMAIL_ADDRESS}`}
+                  className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 hover:bg-white/10 border border-white/10 transition-all group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-pink-500/20 text-pink-400 flex items-center justify-center shrink-0">
+                    <Mail className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold block">Correo Oficial de Reservas</span>
+                    <span className="text-base font-black text-white group-hover:text-pink-400 transition-colors">{EMAIL_ADDRESS}</span>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-4 p-5 rounded-2xl bg-white/5 border border-white/10">
+                  <div className="w-12 h-12 rounded-xl bg-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+                    <MapPin className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold block">Oficina Central</span>
+                    <span className="text-base font-black text-white">Miami, Florida, EE.UU. (Cobertura Mundial)</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            {/* DIRECT FORM */}
+            <div className="bg-white/5 border border-white/10 p-8 rounded-3xl backdrop-blur-xl shadow-2xl space-y-6">
+              <div>
+                <h3 className="text-xl font-black text-white">Solicitar Propuesta Privada</h3>
+                <p className="text-xs text-slate-400 mt-1">Ingresa tus datos y un especialista asignado se comunicará en menos de 2 horas.</p>
+              </div>
+
+              <form 
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  alert("¡Gracias! Tu solicitud ha sido recibida por el equipo de Concierge de MIAMIX Travel.");
+                }}
+                className="space-y-4"
+              >
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Nombre y Apellido</label>
+                  <input 
+                    type="text" 
+                    required 
+                    placeholder="Ej. Carlos Mendoza" 
+                    className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500"
+                  />
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Correo Electrónico</label>
+                    <input 
+                      type="email" 
+                      required 
+                      placeholder="nombre@ejemplo.com" 
+                      className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">WhatsApp / Teléfono</label>
+                    <input 
+                      type="tel" 
+                      required 
+                      placeholder="+1 786 000 0000" 
+                      className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500"
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Destino de Interés</label>
+                  <select className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-pink-500">
+                    {categories.filter(c => c !== 'Todos').map(c => (
+                      <option key={c} value={c} className="bg-slate-900 text-white">{c}</option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Detalles o Requerimientos Especiales</label>
+                  <textarea 
+                    rows={3} 
+                    placeholder="Escribe fechas estimadas, número de pasajeros, si requieren yate o jet privado..."
+                    className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-pink-500"
+                  ></textarea>
+                </div>
+
+                <button 
+                  type="submit" 
+                  className="w-full py-4 bg-gradient-to-r from-pink-600 via-fuchsia-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white text-xs font-extrabold rounded-xl shadow-lg shadow-pink-600/30 flex items-center justify-center gap-2 uppercase tracking-wider transition-all"
+                >
+                  <Send className="w-4 h-4" />
+                  <span>Enviar Consulta de Reserva</span>
+                </button>
+              </form>
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      {/* FOOTER WITH LEGAL RIGHTS */}
+      <footer className="bg-black py-12 px-4 border-t border-white/10 text-slate-400 text-xs">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+          
+          <div className="flex items-center gap-3">
+            <div className="bg-pink-600 text-white px-3 py-1 rounded font-black tracking-widest text-sm">
+              MIAMIX
+            </div>
+            <span className="text-slate-600">×</span>
+            <span className="font-serif italic text-white font-bold text-base">Infinity Travel</span>
+          </div>
+
+          <div className="space-y-1">
+            <p className="text-slate-200 font-bold">
+              Derechos de MIAMIX Travel © 2026. Todos los derechos reservados.
+            </p>
+            <p className="text-[11px] text-slate-500">
+              UNIMOS DESTINOS. CONECTAMOS EXPERIENCIAS.
+            </p>
+          </div>
+
+          <div className="flex items-center gap-6 text-slate-400 font-bold text-[11px]">
+            <a href={WHATSAPP_LINK} className="hover:text-pink-400 transition-colors">WHATSAPP</a>
+            <a href={`mailto:${EMAIL_ADDRESS}`} className="hover:text-pink-400 transition-colors">INFO@MIAMIX.IO</a>
+            <button onClick={copyShareLink} className="hover:text-pink-400 transition-colors flex items-center gap-1">
+              <Share2 className="w-3 h-3" />
+              <span>{copiedCode ? '¡COPIADO!' : 'COMPARTIR'}</span>
+            </button>
+          </div>
+
+        </div>
+      </footer>
+
+      {/* PACKAGE DETAILS MODAL */}
+      {selectedPackage && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl">
+          <div className="relative w-full max-w-3xl bg-[#090d1f] border border-pink-500/40 rounded-3xl overflow-hidden shadow-[0_0_80px_rgba(255,0,127,0.3)] max-h-[90vh] flex flex-col">
+            
+            <button 
+              onClick={() => setSelectedPackage(null)}
+              className="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-black/70 text-white hover:bg-pink-600 flex items-center justify-center transition-colors border border-white/20"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="relative h-64 sm:h-80 shrink-0">
+              <img 
+                src={selectedPackage.image} 
+                alt={selectedPackage.title} 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#090d1f] via-transparent to-black/60"></div>
+              
+              <div className="absolute bottom-6 left-6 right-6">
+                <span className="bg-pink-600 text-white text-[10px] font-black px-3.5 py-1.5 rounded-full uppercase tracking-wider">
+                  {selectedPackage.category}
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-black text-white mt-2">
+                  {selectedPackage.title}
+                </h3>
+                <p className="text-xs text-pink-300 font-semibold">{selectedPackage.subtitle}</p>
+              </div>
+            </div>
+
+            <div className="p-6 sm:p-8 space-y-6 overflow-y-auto flex-1">
+              
+              <div className="grid grid-cols-3 gap-4 p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Duración</span>
+                  <span className="text-xs sm:text-sm font-bold text-white">{selectedPackage.duration}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Calificación</span>
+                  <span className="text-xs sm:text-sm font-bold text-amber-300">{selectedPackage.rating}</span>
+                </div>
+                <div>
+                  <span className="text-[10px] text-slate-400 uppercase font-bold tracking-wider block">Precio Final</span>
+                  <span className="text-sm sm:text-lg font-black text-pink-400">{formatPrice(selectedPackage.basePriceUSD)}</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="text-xs font-bold text-slate-300 uppercase tracking-wider mb-2">Resumen de la Experiencia</h4>
+                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                  {selectedPackage.description}
+                </p>
+              </div>
+
+              <div>
+                <h4 className="text-xs font-bold text-pink-400 uppercase tracking-wider mb-3">Servicios VIP Incluidos</h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {selectedPackage.highlights.map((item, idx) => (
+                    <div key={idx} className="flex items-start gap-2.5 bg-white/5 p-3 rounded-xl border border-white/5 text-xs text-slate-200">
+                      <CheckCircle2 className="w-4 h-4 text-pink-400 shrink-0 mt-0.5" />
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+            </div>
+
+            <div className="p-4 sm:p-6 bg-black/60 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 shrink-0">
+              <span className="text-xs text-slate-400 hidden sm:inline-block">Atención Concierge 24/7 en WhatsApp</span>
+              <div className="flex items-center gap-3 w-full sm:w-auto">
+                <a
+                  href={`mailto:${EMAIL_ADDRESS}?subject=Reserva ${encodeURIComponent(selectedPackage.title)}`}
+                  className="flex-1 sm:flex-none px-5 py-3 rounded-xl border border-white/20 text-xs font-bold text-white hover:bg-white/10 text-center"
+                >
+                  Email
+                </a>
+                <a
+                  href={generateWhatsAppMessage(selectedPackage.title)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-none px-6 py-3 rounded-xl bg-gradient-to-r from-pink-600 to-purple-600 hover:from-pink-500 hover:to-purple-500 text-white text-xs font-extrabold text-center shadow-lg shadow-pink-600/30 flex items-center justify-center gap-2 uppercase tracking-wider"
+                >
+                  <MessageSquare className="w-4 h-4" />
+                  <span>Reservar por WhatsApp</span>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      )}
+
+      {/* CONCIERGE TRIP PLANNER WIZARD MODAL */}
+      {isWizardOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-xl">
+          <div className="relative w-full max-w-xl bg-[#090d1f] border border-pink-500/40 rounded-3xl p-6 sm:p-8 shadow-[0_0_80px_rgba(255,0,127,0.3)] space-y-6">
+            
+            <button 
+              onClick={() => setIsWizardOpen(false)}
+              className="absolute top-4 right-4 w-9 h-9 rounded-full bg-white/10 text-white hover:bg-pink-600 flex items-center justify-center transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div>
+              <span className="text-pink-400 text-xs font-extrabold uppercase tracking-widest block">Diseñador de Itinerarios VIP</span>
+              <h3 className="text-2xl font-black text-white mt-1">Crea Tu Experiencia a Medida</h3>
+              <p className="text-xs text-slate-400 mt-1">Selecciona tus preferencias y te enviaremos una propuesta personalizada.</p>
+            </div>
+
+            <form onSubmit={handleWizardSubmit} className="space-y-4">
+              <div>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Destino Principal</label>
+                <select 
+                  value={wizardData.destination}
+                  onChange={(e) => setWizardData({...wizardData, destination: e.target.value})}
+                  className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-xs text-white focus:outline-none focus:border-pink-500"
+                >
+                  {categories.filter(c => c !== 'Todos').map(c => (
+                    <option key={c} value={c} className="bg-slate-900">{c}</option>
+                  ))}
+                </select>
+              </div>
+
+              <div className="grid grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">N° de Pasajeros</label>
+                  <input 
+                    type="number" 
+                    min="1" 
+                    max="30"
+                    value={wizardData.travelers}
+                    onChange={(e) => setWizardData({...wizardData, travelers: e.target.value})}
+                    className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-xs text-white"
+                  />
+                </div>
+                <div>
+                  <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Presupuesto Estimado</label>
+                  <select 
+                    value={wizardData.budget}
+                    onChange={(e) => setWizardData({...wizardData, budget: e.target.value})}
+                    className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-xs text-white"
+                  >
+                    <option value="$5,000 - $10,000 USD" className="bg-slate-900">$5,000 - $10,000 USD</option>
+                    <option value="$10,000 - $25,000 USD" className="bg-slate-900">$10,000 - $25,000 USD</option>
+                    <option value="$25,000+ USD (Ultra Luxury)" className="bg-slate-900">$25,000+ USD (Ultra Luxury)</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Modo de Transporte Preferido</label>
+                <select 
+                  value={wizardData.transport}
+                  onChange={(e) => setWizardData({...wizardData, transport: e.target.value})}
+                  className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-xs text-white"
+                >
+                  <option value="Jet Privado + Yate 100ft+" className="bg-slate-900">Jet Privado + Megayate</option>
+                  <option value="Vuelos Comercial Primera Clase / Ejecutiva" className="bg-slate-900">Vuelos Comercial Primera Clase</option>
+                  <option value="Helicóptero & Chofer Privado" className="bg-slate-900">Helicóptero & Chofer Privado</option>
+                  <option value="Tren de Lujo / Crucero VIP" className="bg-slate-900">Tren de Lujo / Crucero VIP</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold text-slate-300 uppercase tracking-wider mb-1">Cobertura Audiovisual / Media</label>
+                <select 
+                  value={wizardData.mediaCoverage}
+                  onChange={(e) => setWizardData({...wizardData, mediaCoverage: e.target.value})}
+                  className="w-full bg-black/60 border border-white/10 rounded-xl px-4 py-3 text-xs text-white"
+                >
+                  <option value="Fotógrafo Profesional & Dron 4K" className="bg-slate-900">Fotógrafo Profesional & Dron 4K</option>
+                  <option value="Equipo Completo de Producción & PR" className="bg-slate-900">Equipo Completo de Producción & PR</option>
+                  <option value="Sin Cobertura (Solo Privacidad Total)" className="bg-slate-900">Sin Cobertura (Privacidad Total)</option>
+                </select>
+              </div>
+
+              <button 
+                type="submit" 
+                className="w-full py-4 bg-gradient-to-r from-pink-600 via-fuchsia-600 to-purple-600 text-white text-xs font-extrabold rounded-xl shadow-lg shadow-pink-600/30 flex items-center justify-center gap-2 uppercase tracking-wider"
+              >
+                <MessageSquare className="w-4 h-4" />
+                <span>Enviar Propuesta a WhatsApp Concierge</span>
+              </button>
+            </form>
+
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+}
+
