@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODAVÍA ESTOY ACÁ (STILL HERE) - Presentación de Serie & Guiones Completos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        netflix: ['Bebas Neue', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        script: ['Courier Prime', 'monospace'],
+                    },
+                    colors: {
+                        netflix: {
+                            red: '#E50914',
+                            darkRed: '#B81D24',
+                            bg: '#141414',
+                            card: '#181818',
+                            hover: '#282828',
+                            border: '#333333',
+                            gray: '#808080',
+                            gold: '#D4AF37'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #141414; color: #E5E5E5; font-family: 'Plus Jakarta Sans', sans-serif; overflow-x: hidden; }
+        .font-netflix-title { font-family: 'Bebas Neue', sans-serif; letter-spacing: 1px; }
+        .font-script-style { font-family: 'Courier Prime', monospace; }
+        .scene-heading { font-weight: bold; color: #E50914; margin-top: 1.75rem; margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        .character-name { font-weight: bold; text-align: center; margin-top: 1.25rem; color: #FFFFFF; letter-spacing: 1px; text-transform: uppercase; }
+        .parenthetical { text-align: center; font-style: italic; color: #A3A3A3; }
+        .dialogue-text { max-width: 30rem; margin-left: auto; margin-right: auto; margin-bottom: 0.75rem; color: #E5E5E5; line-height: 1.5; }
+        .action-text { margin-bottom: 1rem; color: #CCCCCC; line-height: 1.6; }
+        .act-header { text-align: center; font-weight: bold; color: #D4AF37; font-size: 1.1rem; margin-top: 2rem; margin-bottom: 1rem; text-transform: uppercase; border-bottom: 1px solid rgba(212, 175, 55, 0.3); padding-bottom: 0.5rem; }
+        ::-webkit-scrollbar { height: 6px; width: 6px; }
+        ::-webkit-scrollbar-track { background: #141414; }
+        ::-webkit-scrollbar-thumb { background: #333333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #E50914; }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(20,20,20,0.3) 0%, rgba(20,20,20,0.8) 70%, #141414 100%),
+                        radial-gradient(circle at 75% 25%, rgba(229, 9, 20, 0.2) 0%, transparent 60%);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-netflix-red selection:text-white">
+
+    <!-- BARRA DE NAVEGACIÓN -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/95 border-b border-neutral-800 px-4 sm:px-8 py-3 flex items-center justify-between">
+        <div class="flex items-center gap-6">
+            <a href="#hero" class="flex items-center gap-2 group">
+                <div class="bg-netflix-red text-white font-black font-netflix-title text-2xl px-2 py-0.5 rounded tracking-tighter shadow-lg shadow-netflix-red/40">N</div>
+                <div class="flex flex-col">
+                    <span class="font-netflix-title text-xl text-white tracking-wider leading-none group-hover:text-netflix-red transition">TODAVÍA ESTOY ACÁ</span>
+                    <span class="text-[9px] text-netflix-gold font-mono tracking-widest uppercase">PRESENTACIÓN OFICIAL & GUIONES</span>
+                </div>
+            </a>
+
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-slate-300">
+                <a href="#hero" class="hover:text-white transition">INICIO</a>
+                <a href="#concept" class="hover:text-white transition">CONCEPTO</a>
+                <a href="#script-reader" class="text-netflix-red font-bold hover:text-white transition"><i class="fas fa-scroll mr-1"></i> GUIONES (10 CAPÍTULOS)</a>
+                <a href="#characters" class="hover:text-white transition">ELENCO</a>
+                <a href="#contact" class="hover:text-white transition">CONTACTO EJECUTIVO</a>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <a href="#script-reader" class="px-4 py-2 rounded bg-netflix-red text-white text-xs font-bold tracking-wider hover:bg-netflix-darkRed transition flex items-center gap-2 shadow-md shadow-netflix-red/30 uppercase">
+                <i class="fas fa-book-open"></i> Lector de Guiones
+            </a>
+            <button onclick="openPitchModal()" class="hidden sm:inline-flex px-3 py-2 rounded border border-neutral-700 bg-black/50 hover:border-white text-xs font-semibold text-white transition items-center gap-2">
+                <i class="fas fa-volume-up text-netflix-red"></i> Pitch 60s
+            </button>
+        </div>
+    </header>
+
+    <!-- HERO BILLBOARD -->
+    <section id="hero" class="relative min-h-[92vh] flex items-end justify-start pt-32 pb-16 px-6 sm:px-12 hero-gradient overflow-hidden">
+        <div class="max-w-4xl relative z-10 space-y-6">
+            <div class="inline-flex items-center gap-2">
+                <span class="bg-netflix-red text-white text-[11px] font-bold font-mono px-2 py-0.5 rounded tracking-widest uppercase">SERIE ORIGINAL · PRESENTACIÓN OFICIAL</span>
+                <span class="text-xs text-netflix-gold font-mono font-semibold"><i class="fas fa-star mr-1"></i>98% Coincidencia Comercial</span>
+            </div>
+
+            <div>
+                <h1 class="font-netflix-title text-6xl sm:text-8xl md:text-9xl font-black text-white leading-none tracking-tight drop-shadow-2xl">TODAVÍA ESTOY ACÁ</h1>
+                <p class="font-netflix-title text-2xl sm:text-3xl text-netflix-gold tracking-widest mt-1">STILL HERE · 10 EPISODIOS CON GUION COMPLETO</p>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-3 text-xs sm:text-sm font-mono text-slate-300">
+                <span class="border border-neutral-600 px-1.5 py-0.5 rounded text-white font-bold bg-black/60">18+</span>
+                <span class="border border-neutral-600 px-1.5 py-0.5 rounded text-slate-300">DRAMA AUTOBIOGRÁFICO</span>
+                <span class="text-netflix-red font-bold">10 GUIONES DRAMÁTICOS</span>
+                <span>·</span>
+                <span>ARG · BRA · USA</span>
+            </div>
+
+            <p class="text-base sm:text-lg text-slate-200 max-w-2xl leading-relaxed font-sans drop-shadow">
+                "A los 50 años, un hombre mira hacia atrás y descubre que para sobrevivir tuvo que convertirse en muchas personas diferentes."
+            </p>
+
+            <div class="flex flex-wrap items-center gap-4 pt-4">
+                <a href="#script-reader" class="px-8 py-3.5 rounded bg-netflix-red text-white font-bold text-sm tracking-wider uppercase hover:bg-netflix-darkRed transition flex items-center gap-3 shadow-xl shadow-netflix-red/30">
+                    <i class="fas fa-scroll text-lg"></i> Abrir Lector de Guiones (Cap 1 al 10)
+                </a>
+                <button onclick="openPitchModal()" class="px-8 py-3.5 rounded bg-neutral-800/90 text-white font-bold text-sm tracking-wider uppercase hover:bg-neutral-700 transition flex items-center gap-3 border border-neutral-600">
+                    <i class="fas fa-play text-lg text-netflix-red"></i> Escuchar Pitch (60s)
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONCEPTO Y HOOK -->
+    <section id="concept" class="py-12 px-6 sm:px-12 border-t border-neutral-800 bg-netflix-bg">
+        <div class="max-w-6xl mx-auto space-y-6">
+            <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-neutral-800 pb-4">
+                <div>
+                    <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block mb-1">CÓDIGO DE PROYECTO: TEA-2026-S1</span>
+                    <h2 class="font-netflix-title text-4xl text-white">EL CONCEPTO DRAMÁTICO</h2>
+                </div>
+                <div class="text-xs font-mono text-netflix-gray">DOS CRISTHIAN: EL NARRADOR A LOS 50 Y EL PERSONAJE JOVEN</div>
+            </div>
+
+            <div class="bg-netflix-card border-l-4 border-netflix-red p-6 sm:p-8 rounded-r-xl shadow-2xl">
+                <p class="text-xl sm:text-2xl font-serif italic text-white leading-relaxed">
+                    "¿Cuánto de nosotros mismos tenemos que perder antes de aprender a vivir como realmente somos?"
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- LECTOR PROFESIONAL DE GUIONES COMPLETOS -->
+    <section id="script-reader" class="py-16 px-4 sm:px-8 border-t border-neutral-800 bg-black">
+        <div class="max-w-7xl mx-auto space-y-6">
+            <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-neutral-800 pb-6">
+                <div>
+                    <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block mb-1"><i class="fas fa-film mr-2"></i>HOLLYWOOD SCREENPLAY VIEWER</span>
+                    <h2 class="font-netflix-title text-4xl sm:text-5xl text-white">GUIONES COMPLETOS POR CAPÍTULO</h2>
+                </div>
+                <div class="flex flex-wrap items-center gap-3">
+                    <button onclick="toggleAudioVO()" id="btn-audio-vo" class="px-3 py-2 bg-neutral-800 hover:bg-neutral-700 text-xs font-mono font-bold text-netflix-gold rounded border border-neutral-700 flex items-center gap-2">
+                        <i class="fas fa-volume-up"></i> Voz en Off (IA)
+                    </button>
+                    <button onclick="window.print()" class="px-3 py-2 bg-neutral-800 hover:bg-neutral-700 text-xs font-mono text-slate-300 rounded border border-neutral-700">
+                        <i class="fas fa-print mr-1"></i> Imprimir Cap.
+                    </button>
+                </div>
+            </div>
+
+            <!-- NAVEGACIÓN EN PESTAÑAS (1 AL 10) -->
+            <div class="flex overflow-x-auto gap-2 pb-2">
+                <button onclick="selectChapter(1)" id="tab-1" class="tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-netflix-red text-white">CAP 1: EL CHICO DEL CAMPO</button>
+                <button onclick="selectChapter(2)" id="tab-2" class="tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-neutral-900 text-slate-400 hover:text-white border border-neutral-800">CAP 2: FEDERICO</button>
+                <button onclick="selectChapter(3)" id="tab-3" class="tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-neutral-900 text-slate-400 hover:text-white border border-neutral-800">CAP 3: PADRE A LOS 17</button>
+                <button onclick="selectChapter(4)" id="tab-4" class="tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-neutral-900 text-slate-400 hover:text-white border border-neutral-800">CAP 4: BRASIL</button>
+                <button onclick="selectChapter(5)" id="tab-5" class="tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-neutral-900 text-slate-400 hover:text-white border border-neutral-800">CAP 5: NEW YORK</button>
+                <button onclick="selectChapter(6)" id="tab-6" class="tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-neutral-900 text-slate-400 hover:text-white border border-neutral-800">CAP 6: BOBBY</button>
+                <button onclick="selectChapter(7)" id="tab-7" class="tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-neutral-900 text-slate-400 hover:text-white border border-neutral-800">CAP 7: COLÁGENO</button>
+                <button onclick="selectChapter(8)" id="tab-8" class="tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-neutral-900 text-slate-400 hover:text-white border border-neutral-800">CAP 8: YOLANDA</button>
+                <button onclick="selectChapter(9)" id="tab-9" class="tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-neutral-900 text-slate-400 hover:text-white border border-neutral-800">CAP 9: DESPUÉS DE TODO</button>
+                <button onclick="selectChapter(10)" id="tab-10" class="tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-neutral-900 text-slate-400 hover:text-white border border-neutral-800">CAP 10: TODAVÍA ESTOY ACÁ</button>
+            </div>
+
+            <!-- HOJA DE GUION COURIER PRIME -->
+            <div class="bg-netflix-card border border-neutral-800 rounded-2xl p-6 sm:p-12 shadow-2xl relative">
+                <div class="border-b border-neutral-800 pb-6 mb-8 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span id="script-num-tag" class="text-netflix-red font-mono font-bold text-xs uppercase tracking-widest">CAPÍTULO 1</span>
+                            <span id="script-age-tag" class="text-[10px] bg-neutral-800 text-netflix-gold px-2 py-0.5 rounded font-mono uppercase">EDAD: 8 - 13 AÑOS</span>
+                        </div>
+                        <h1 id="script-title" class="font-netflix-title text-4xl sm:text-6xl text-white mt-1">EL CHICO DEL CAMPO</h1>
+                        <p id="script-meta" class="text-xs font-mono text-slate-400 mt-1">Duración estimada: 50–55 minutos · Locaciones: Entre Ríos / Buenos Aires / Miami</p>
+                    </div>
+
+                    <div class="text-left sm:text-right shrink-0">
+                        <span class="text-xs font-mono text-slate-300 block">SERIE DRAMÁTICA ORIGINAL</span>
+                        <span class="text-[10px] font-mono text-netflix-gray">Guion por Cristhian Gassmann</span>
+                    </div>
+                </div>
+
+                <div id="script-body" class="font-script-style text-sm sm:text-base leading-relaxed text-slate-200 max-w-3xl mx-auto space-y-4"></div>
+
+                <div class="border-t border-neutral-800 pt-6 mt-12 text-center">
+                    <span class="text-[10px] font-mono text-netflix-gray uppercase block mb-1">ÚLTIMA FRASE DEL EPISODIO</span>
+                    <p id="script-quote" class="font-serif italic text-netflix-gold text-lg sm:text-xl">"Y esa fue apenas la primera mentira que tuve que contarle al mundo."</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ELENCO PRINCIPAL -->
+    <section id="characters" class="py-16 px-6 sm:px-12 border-t border-neutral-800 bg-black">
+        <div class="max-w-6xl mx-auto space-y-8">
+            <div class="border-b border-neutral-800 pb-4">
+                <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block mb-1">PERSONAJES Y DRAMATIZACIÓN</span>
+                <h2 class="font-netflix-title text-4xl text-white">ELENCO DE LA SERIE</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded">
+                    <span class="text-xs text-netflix-gold font-mono block mb-1">PROTAGONISTA</span>
+                    <h3 class="font-netflix-title text-3xl text-white">CRISTHIAN (50 / JOVEN)</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-2">Dos actores: el hombre maduro que reflexiona desde Miami y el joven que atraviesa el descubrimiento, la paternidad y las migraciones.</p>
+                </div>
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded">
+                    <span class="text-xs text-blue-400 font-mono block mb-1">EL ESPOSO</span>
+                    <h3 class="font-netflix-title text-3xl text-white">BOBBY</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-2">Norteamericano. Inicia como un encuentro casual por app y se convierte en el amor leal que decide quedarse tras la tormenta.</p>
+                </div>
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded">
+                    <span class="text-xs text-amber-400 font-mono block mb-1">LA ABUELA</span>
+                    <h3 class="font-netflix-title text-3xl text-white">YOLANDA</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-2">La raíz del campo argentino. Su amor incondicional es el refugio de Cristhian. Su muerte marca el fin de su infancia emocional.</p>
+                </div>
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded">
+                    <span class="text-xs text-red-500 font-mono block mb-1">25 AÑOS · EL DETONANTE</span>
+                    <h3 class="font-netflix-title text-3xl text-white">VÍCTOR ("COLÁGENO")</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-2">Padre venezolano no asumido. Utiliza la noche y sustancias como escape. Introduce el caos y el posterior diagnóstico.</p>
+                </div>
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded">
+                    <span class="text-xs text-purple-400 font-mono block mb-1">LA HIJA</span>
+                    <h3 class="font-netflix-title text-3xl text-white">ARIANNA</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-2">Nacida cuando Cristhian tenía 17 años. La migración y ausencias abrieron una distancia dolorosa no resuelta.</p>
+                </div>
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded">
+                    <span class="text-xs text-emerald-400 font-mono block mb-1">COMPAÑEROS</span>
+                    <h3 class="font-netflix-title text-3xl text-white">TANGO & SAMBA</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed mt-2">Los perros de la familia. Acompañan a Cristhian y Bobby en el presente de Miami, libres de pasado y prejuicios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULARIO DE CONTACTO EJECUTIVO -->
+    <section id="contact" class="py-16 px-6 sm:px-12 border-t border-neutral-800 bg-netflix-bg">
+        <div class="max-w-4xl mx-auto space-y-8">
+            <div class="text-center">
+                <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block mb-1">CONTACTO DE PRODUCCIÓN</span>
+                <h2 class="font-netflix-title text-4xl sm:text-5xl text-white">SOLICITUD DE MATERIALES Y PITCH</h2>
+            </div>
+
+            <form onsubmit="handleContactSubmit(event)" class="bg-black border border-neutral-800 p-8 rounded-xl space-y-4">
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 uppercase mb-1">Nombre y Apellido</label>
+                    <input type="text" required placeholder="Ej. Ejecutivo de Desarrollo" class="w-full bg-neutral-900 border border-neutral-800 rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-netflix-red">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 uppercase mb-1">Productora / Plataforma</label>
+                    <input type="text" required placeholder="Ej. Streaming Studio / Coproductora" class="w-full bg-neutral-900 border border-neutral-800 rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-netflix-red">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 uppercase mb-1">Email Profesional</label>
+                    <input type="email" required placeholder="ejecutivo@estudio.com" class="w-full bg-neutral-900 border border-neutral-800 rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-netflix-red">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 uppercase mb-1">Mensaje</label>
+                    <textarea rows="3" required placeholder="Deseo agendar una reunión de pitch y revisar los derechos..." class="w-full bg-neutral-900 border border-neutral-800 rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-netflix-red"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-netflix-red text-white font-bold text-xs tracking-wider font-mono uppercase rounded hover:bg-netflix-darkRed transition">
+                    ENVIAR MENSAJE
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 px-6 border-t border-neutral-800 bg-black text-center text-xs text-neutral-500 font-mono">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="bg-netflix-red text-white font-netflix-title px-1.5 py-0.5 rounded text-sm">N</span>
+                <span class="font-netflix-title text-white text-lg">TODAVÍA ESTOY ACÁ</span> · STILL HERE
+            </div>
+            <div>Dramatización basada en hechos reales. © 2026 Cristhian Gassmann.</div>
+        </div>
+    </footer>
+
+    <!-- MODAL PITCH EXPRESS -->
+    <div id="pitch-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-netflix-card border border-netflix-red p-6 sm:p-8 rounded-xl max-w-xl w-full relative shadow-2xl space-y-4">
+            <button onclick="closePitchModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl"><i class="fas fa-times"></i></button>
+            <span class="text-xs font-mono text-netflix-gold uppercase">PITCH EXPRESS (60 SEGUNDOS)</span>
+            <h3 class="font-netflix-title text-3xl text-white">¿DE QUÉ TRATA LA SERIE?</h3>
+            <div class="bg-black p-4 rounded border border-neutral-800 text-xs sm:text-sm text-slate-200 leading-relaxed">
+                "Es la historia de un hombre argentino que llegó a los 50 después de vivir varias vidas: fue criado por su abuela en el campo, fue padre a los 17, se enamoró de hombres, emigró a Brasil y Estados Unidos, sobrevivió a las drogas, entró al mundo del espectáculo, se casó con un estadounidense, vivió una relación de tres, recibió un diagnóstico de HIV y perdió a la mujer que lo crió. Y cuando finalmente parece que todo terminó, descubre que todavía tiene una vida por delante. Se llama <strong>TODAVÍA ESTOY ACÁ</strong>."
+            </div>
+            <div class="flex justify-end gap-2 pt-2">
+                <button onclick="closePitchModal()" class="px-4 py-2 bg-netflix-red text-white text-xs font-bold font-mono rounded uppercase">Cerrar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MOTOR DE GUIONES CAPITULARES (1 AL 10) -->
+    <script>
+        const chaptersData = {
+            1: {
+                numTag: "CAPÍTULO 1", ageTag: "EDAD: 8 - 13 AÑOS", title: "EL CHICO DEL CAMPO",
+                meta: "Duración estimada: 50–55 minutos · Locaciones: Entre Ríos / Buenos Aires / Miami",
+                quote: "“Y esa fue apenas la primera mentira que tuve que contarle al mundo.”",
+                body: `<div class="act-header">COLD OPEN</div><div class="scene-heading">EXT. MIAMI — AMANECER</div><div class="action-text">El cielo empieza a aclararse con matices violetas y dorados sobre el mar. Una casa tranquila en un barrio residencial. Un hombre de 50 años sale con dos perros. TANGO corre unos metros adelante. SAMBA se detiene y mira hacia atrás. CRISTHIAN (50) sonríe. Se escucha su voz suave y reflexiva.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">A los cincuenta años, cuando miro mi vida, hay algo que todavía no puedo entender.</div><div class="action-text">Pausa. Cristhian contempla el horizonte.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">¿Cómo puede una persona vivir tantas vidas sin dejar de ser la misma?</div><div class="scene-heading">EXT. CAMPO ARGENTINO — ENTRE RÍOS — DÍA (FLASHBACK)</div><div class="action-text">Un campo argentino. Caballos. Tierra seca. Una casa. Una mujer mayor abre una puerta. Es YOLANDA.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Antes de Miami. Antes de New York. Antes de Brasil. Antes de Bobby. Antes de todo… yo era solamente un chico del campo.</div><div class="text-center font-netflix-title text-3xl text-white my-6 tracking-widest">TÍTULO: TODAVÍA ESTOY ACÁ<br><span class="text-xl text-netflix-red">CAPÍTULO 1 — EL CHICO DEL CAMPO</span></div><div class="act-header">ACTO 1 — YOLANDA</div><div class="scene-heading">EXT. CAMPO — ENTRE RÍOS — DÍA</div><div class="action-text">Cristhian niño (8) corre detrás de un caballo. Yolanda lo observa desde la galería.</div><div class="character-name">YOLANDA</div><div class="dialogue-text">¡No te vayas tan lejos!</div><div class="character-name">CRISTHIAN (8)</div><div class="dialogue-text">¡No me voy!</div><div class="character-name">YOLANDA</div><div class="parenthetical">(sonriendo)</div><div class="dialogue-text">Eso dicen todos antes de irse.</div><div class="act-header">ACTO 2 — BUENOS AIRES</div><div class="scene-heading">INT. AUTOMÓVIL — RUTA — DÍA</div><div class="action-text">Cristhian viaja hacia Buenos Aires. El paisaje rural desaparece.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Yo tenía dos mundos. Uno estaba en Entre Ríos. El otro estaba en Buenos Aires.</div><div class="act-header">ACTO 3 — SER DIFERENTE</div><div class="scene-heading">EXT. ESCUELA — DÍA</div><div class="action-text">Cristhian observa a otros chicos hablar sobre chicas. Permanece callado.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">A veces uno descubre que es diferente antes de entender qué significa ser diferente.</div><div class="act-header">ACTO 4 — EL PRIMER SECRETO</div><div class="scene-heading">INT. ESCUELA PUPILA — PASILLO — NOCHE</div><div class="action-text">Cristhian tiene 13 años. Federico (13) está ahí. Se miran. PRIMER BESO.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Yo todavía no sabía que aquello se llamaba amor. Pero lo era.</div><div class="act-header">EPÍLOGO</div><div class="scene-heading">EXT. MIAMI — PRESENTE — AMANECER</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Federico fue mi primer amor. Pero no fue el último. Y esa fue apenas la primera mentira que tuve que contarle al mundo.</div>`
+            },
+            2: {
+                numTag: "CAPÍTULO 2", ageTag: "EDAD: 13 - 17 AÑOS", title: "FEDERICO",
+                meta: "Duración estimada: 50 minutos · Escuela Internado / Buenos Aires",
+                quote: "“Soy gay.”",
+                body: `<div class="act-header">COLD OPEN</div><div class="scene-heading">INT. MIAMI — PRESENTE — DÍA</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Hay personas que pasan por tu vida. Y hay personas que se convierten en una parte de ella aunque desaparezcan.</div><div class="act-header">ACTO 1 — EL ROMANCE OCULTO</div><div class="scene-heading">INT. ESCUELA PUPILA — NOCHE</div><div class="action-text">Cristhian (14) y Federico (14) viven dos años de cartas, besos y complicidad en secreto.</div><div class="character-name">FEDERICO</div><div class="dialogue-text">¿Vos alguna vez pensaste en casarte?</div><div class="character-name">CRISTHIAN (14)</div><div class="dialogue-text">Con una mujer, supongo.</div><div class="act-header">ACTO 2 — PEDRO Y EL DESPERTAR</div><div class="scene-heading">INT. EDIFICIO DE PADRES — NOCHE</div><div class="action-text">Cristhian (17) y Pedro (el portero nocturno). Descubrimiento estrictamente sexual.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Federico me enseñó lo que era enamorarme. Pedro me hizo entender que aquello también era sexual.</div><div class="act-header">ACTO 3 Y 4 — EL ESPEJO</div><div class="scene-heading">INT. HABITACIÓN — NOCHE</div><div class="action-text">Cristhian se mira al espejo solo en la noche.</div><div class="character-name">CRISTHIAN (17)</div><div class="dialogue-text">Soy gay.</div>`
+            },
+            3: {
+                numTag: "CAPÍTULO 3", ageTag: "EDAD: 17 AÑOS", title: "PADRE A LOS 17",
+                meta: "Duración estimada: 55 minutos · Buenos Aires",
+                quote: "“Te voy a cuidar.”",
+                body: `<div class="act-header">COLD OPEN</div><div class="scene-heading">EXT. PLAZA — DÍA</div><div class="action-text">Cristhian (17) y Analía (17). La ilusión fugaz de una vida común.</div><div class="act-header">ACTO 1 Y 2 — LA NOTICIA</div><div class="character-name">ANALÍA</div><div class="dialogue-text">Estoy embarazada, Cristhian.</div><div class="character-name">CRISTHIAN (17)</div><div class="dialogue-text">Voy a ser papá.</div><div class="act-header">ACTO 3 Y 4 — ARIANNA</div><div class="scene-heading">INT. HOSPITAL — NOCHE</div><div class="action-text">Nace Arianna. Cristhian la sostiene sintiendo un amor absoluto.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">El problema era que ahora tenía dos verdades. Era padre. Y también era gay. Y ninguna de las dos desaparecía porque la otra existiera.</div><div class="character-name">CRISTHIAN (17)</div><div class="dialogue-text">Te voy a cuidar.</div>`
+            },
+            4: {
+                numTag: "CAPÍTULO 4", ageTag: "EDAD: 20 AÑOS", title: "BRASIL",
+                meta: "Duración estimada: 48 minutos · Ushuaia / Brasil",
+                quote: "“Siempre te estás yendo.”",
+                body: `<div class="act-header">COLD OPEN</div><div class="scene-heading">INT. BAR USHUAIA — NOCHE</div><div class="action-text">Cristhian (20) se enamora de Bruno. Emigran juntos a Brasil.</div><div class="act-header">ACTO 1 Y 2 — LIBERTAD TROPICAL</div><div class="action-text">Portugués, fiesta, mar, sexo y el ingreso gradual de drogas.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Brasil fue el primer lugar donde pude ser alguien que nadie conocía. Pero esa libertad tenía un precio.</div><div class="act-header">ACTO 3 Y 4 — LA MUDANZA</div><div class="character-name">BRUNO</div><div class="dialogue-text">Siempre te estás yendo, Cristhian.</div>`
+            },
+            5: {
+                numTag: "CAPÍTULO 5", ageTag: "EDAD: 27 AÑOS", title: "NEW YORK",
+                meta: "Duración estimada: 54 minutos · Queens / Manhattan",
+                quote: "“Algún día voy a estar ahí.”",
+                body: `<div class="act-header">COLD OPEN</div><div class="scene-heading">EXT. QUEENS — INVIERNO</div><div class="action-text">Cristhian (27) enfrenta el frío americano. Mesero de día, bailarín en Queens de noche.</div><div class="act-header">ACTO 1 A 4 — AUDACIA CON MARIO</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Si esperaba a que alguien me diera permiso para hacer lo que quería, iba a esperar toda la vida.</div><div class="scene-heading">EXT. PUENTE DE BROOKLYN — NOCHE</div><div class="character-name">CRISTHIAN (27)</div><div class="dialogue-text">Algún día voy a estar ahí.</div>`
+            },
+            6: {
+                numTag: "CAPÍTULO 6", ageTag: "EDAD: 30 - 33 AÑOS", title: "BOBBY",
+                meta: "Duración estimada: 52 minutos · Miami, Florida",
+                quote: "“Descubrí que quizás una casa no era un lugar. Era una persona.”",
+                body: `<div class="act-header">COLD OPEN</div><div class="scene-heading">INT. MIAMI — NOCHE</div><div class="action-text">Cristhian (30) conoce a Bobby por app. El encuentro evoluciona hacia amor real.</div><div class="character-name">BOBBY</div><div class="dialogue-text">Are we dating?</div><div class="character-name">CRISTHIAN (30)</div><div class="dialogue-text">No.</div><div class="character-name">BOBBY</div><div class="dialogue-text">So what are we doing?</div><div class="character-name">CRISTHIAN (30)</div><div class="dialogue-text">I don't know.</div><div class="character-name">BOBBY</div><div class="dialogue-text">Better.</div><div class="act-header">ACTO 1 A 4 — EL MATRIMONIO</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Había pasado media vida buscando un lugar donde sentirme en casa. Y descubrí que quizás una casa no era un lugar. Era una persona.</div>`
+            },
+            7: {
+                numTag: "CAPÍTULO 7", ageTag: "EDAD: 40 AÑOS", title: "COLÁGENO",
+                meta: "Duración estimada: 55 minutos · Miami, Florida",
+                quote: "“Pero el colágeno no nos rejuveneció. Nos hizo perder la cabeza.”",
+                body: `<div class="act-header">COLD OPEN</div><div class="action-text">Víctor (25, venezolano) entra en la relación con Cristhian y Bobby. Descontrol y drogas.</div><div class="character-name">VÍCTOR</div><div class="dialogue-text">Ustedes me hacen sentir normal.</div><div class="act-header">ACTO 1 A 4 — EL DIAGNÓSTICO</div><div class="action-text">Diagnóstico positivo de HIV en clínica. Impacto total.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Nosotros le decíamos colágeno... Pero el colágeno no nos rejuveneció. Nos hizo perder la cabeza.</div>`
+            },
+            8: {
+                numTag: "CAPÍTULO 8", ageTag: "EDAD: 40 AÑOS", title: "YOLANDA",
+                meta: "Duración estimada: 54 minutos · Miami / Entre Ríos",
+                quote: "“Ese día entendí que casa también podía morir.”",
+                body: `<div class="act-header">COLD OPEN</div><div class="action-text">Llamada telefónica a Yolanda tras la noticia. Viaje de urgencia a Entre Ríos.</div><div class="act-header">ACTO 1 A 4 — LA PÉRDIDA</div><div class="action-text">Yolanda fallece. Silencio total. Distanciamiento doloroso con Arianna.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Durante toda mi vida pensé que siempre podía volver a casa. Ese día entendí que casa también podía morir.</div>`
+            },
+            9: {
+                numTag: "CAPÍTULO 9", ageTag: "EDAD: 40 - 45 AÑOS", title: "DESPUÉS DE TODO",
+                meta: "Duración estimada: 50 minutos · Miami, Florida",
+                quote: "“Por primera vez no quería escapar. Quería quedarme.”",
+                body: `<div class="act-header">COLD OPEN</div><div class="character-name">BOBBY</div><div class="dialogue-text">I'm here.</div><div class="character-name">CRISTHIAN (40)</div><div class="dialogue-text">¿Hasta cuándo?</div><div class="character-name">BOBBY</div><div class="dialogue-text">Until you don't need me.</div><div class="act-header">ACTO 1 A 4 — RECONSTRUCCIÓN</div><div class="action-text">Tratamiento médico, retorno al trabajo y estabilidad emocional.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">Por primera vez en mi vida no quería escapar. Quería quedarme.</div>`
+            },
+            10: {
+                numTag: "CAPÍTULO 10", ageTag: "EDAD: 50 AÑOS", title: "TODAVÍA ESTOY ACÁ",
+                meta: "Duración estimada: 58 minutos · Miami (Presente)",
+                quote: "“No sé cómo termina mi historia. Porque todavía no terminó.”",
+                body: `<div class="act-header">COLD OPEN</div><div class="action-text">Cristhian (50) arma una valija. Bobby lo observa.</div><div class="character-name">BOBBY</div><div class="dialogue-text">Where are we going?</div><div class="character-name">CRISTHIAN (50)</div><div class="dialogue-text">I don't know yet.</div><div class="act-header">ACTO 1 A 4 — FINAL ABIERTO</div><div class="action-text">Cristhian, Bobby, Tango y Samba caminan juntos frente al mar en la playa.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">A los trece años pensé que mi vida iba a ser una cosa... Y ahora tengo cincuenta. Todavía tengo preguntas. Pero también tengo amor. Y tengo ganas de ver qué viene después.</div><div class="character-name">CRISTHIAN (V.O.)</div><div class="dialogue-text">No sé cómo termina mi historia... porque todavía no terminó.</div><div class="text-center font-netflix-title text-4xl text-white my-6 tracking-widest">TODAVÍA ESTOY ACÁ<br><span class="text-xl text-netflix-gold">STILL HERE</span></div>`
+            }
+        };
+
+        function selectChapter(capNum) {
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.className = "tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-neutral-900 text-slate-400 hover:text-white border border-neutral-800";
+            });
+            const activeTab = document.getElementById(`tab-${capNum}`);
+            if (activeTab) {
+                activeTab.className = "tab-btn px-4 py-2.5 rounded text-xs font-mono font-bold whitespace-nowrap bg-netflix-red text-white";
+            }
+
+            const data = chaptersData[capNum];
+            if (data) {
+                document.getElementById('script-num-tag').innerText = data.numTag;
+                document.getElementById('script-age-tag').innerText = data.ageTag;
+                document.getElementById('script-title').innerText = data.title;
+                document.getElementById('script-meta').innerText = data.meta;
+                document.getElementById('script-body').innerHTML = data.body;
+                document.getElementById('script-quote').innerText = data.quote;
+            }
+        }
+
+        function openPitchModal() { document.getElementById('pitch-modal').classList.remove('hidden'); }
+        function closePitchModal() {
+            document.getElementById('pitch-modal').classList.add('hidden');
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        }
+
+        let isSpeaking = false;
+        function toggleAudioVO() {
+            if ('speechSynthesis' in window) {
+                if (isSpeaking) {
+                    window.speechSynthesis.cancel();
+                    isSpeaking = false;
+                    document.getElementById('btn-audio-vo').innerHTML = `<i class="fas fa-volume-up"></i> Voz en Off (IA)`;
+                } else {
+                    const activeText = document.getElementById('script-body').innerText;
+                    const utterance = new SpeechSynthesisUtterance(activeText);
+                    utterance.lang = 'es-ES';
+                    utterance.rate = 0.95;
+                    utterance.onend = () => {
+                        isSpeaking = false;
+                        document.getElementById('btn-audio-vo').innerHTML = `<i class="fas fa-volume-up"></i> Voz en Off (IA)`;
+                    };
+                    window.speechSynthesis.speak(utterance);
+                    isSpeaking = true;
+                    document.getElementById('btn-audio-vo').innerHTML = `<i class="fas fa-stop"></i> Detener Audio`;
+                }
+            } else { alert("Tu navegador no soporta síntesis de voz."); }
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            alert("¡Gracias! Mensaje recibido. El equipo de producción se pondrá en contacto a la brevedad.");
+            e.target.reset();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => selectChapter(1));
+    </script>
+</body>
+</html>
+
