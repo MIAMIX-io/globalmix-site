@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TODAVÍA ESTOY ACÁ (STILL HERE) - Netflix Style Pitch Site</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        netflix: ['Bebas Neue', 'sans-serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        netflix: {
+                            red: '#E50914',
+                            darkRed: '#B81D24',
+                            bg: '#141414',
+                            card: '#181818',
+                            hover: '#282828',
+                            border: '#333333',
+                            gray: '#808080',
+                            gold: '#D4AF37'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #141414;
+            color: #E5E5E5;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+        .font-netflix-title {
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 1px;
+        }
+        /* Netflix style card hover scale */
+        .netflix-card {
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+        .netflix-card:hover {
+            transform: scale(1.03);
+            border-color: #E50914;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(229, 9, 20, 0.3);
+        }
+        /* Custom Netflix scrollbar */
+        ::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #141414;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333333;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E50914;
+        }
+        .hero-gradient {
+            background: linear-gradient(180deg, rgba(20,20,20,0.2) 0%, rgba(20,20,20,0.7) 60%, #141414 100%),
+                        radial-gradient(circle at 70% 30%, rgba(229, 9, 20, 0.15) 0%, transparent 60%);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-netflix-red selection:text-white">
+
+    <!-- NETFLIX STREAMING HEADER NAV -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-black/90 via-black/60 to-transparent px-4 sm:px-8 py-3 transition-all duration-300 flex items-center justify-between" id="main-header">
+        <div class="flex items-center gap-6 sm:gap-10">
+            <!-- Brand Badge -->
+            <a href="#hero" class="flex items-center gap-2 group">
+                <div class="bg-netflix-red text-white font-black font-netflix-title text-2xl px-2 py-0.5 rounded tracking-tighter shadow-lg shadow-netflix-red/30">
+                    N
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-netflix-title text-xl text-white tracking-wider leading-none group-hover:text-netflix-red transition">TODAVÍA ESTOY ACÁ</span>
+                    <span class="text-[9px] text-netflix-gray font-mono tracking-widest uppercase">PITCH DE SERIE ORIGINAL</span>
+                </div>
+            </a>
+
+            <!-- Navigation Links -->
+            <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-slate-300">
+                <a href="#hero" class="hover:text-white transition">INICIO</a>
+                <a href="#concept" class="hover:text-white transition">CONCEPTO</a>
+                <a href="#episodes" class="hover:text-white transition">EPISODIOS</a>
+                <a href="#timeline" class="hover:text-white transition">LÍNEA DE TIEMPO</a>
+                <a href="#characters" class="hover:text-white transition">ELENCO</a>
+                <a href="#aesthetic" class="hover:text-white transition">ESTÉTICA</a>
+                <a href="#creator" class="hover:text-white transition">NOTA DEL CREADOR</a>
+            </nav>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <button onclick="openPitchModal()" class="px-4 py-2 rounded bg-netflix-red text-white text-xs font-bold tracking-wider hover:bg-netflix-darkRed transition flex items-center gap-2 shadow-md shadow-netflix-red/20 uppercase">
+                <i class="fas fa-play text-xs"></i> Pitch 60s
+            </button>
+            <a href="#onepager" class="hidden sm:inline-flex px-3 py-2 rounded border border-neutral-700 bg-black/40 hover:border-white text-xs font-semibold text-white transition items-center gap-2">
+                <i class="fas fa-file-pdf text-netflix-red"></i> Deck PDF
+            </a>
+        </div>
+    </header>
+
+    <!-- HERO BILLBOARD (NETFLIX STYLE) -->
+    <section id="hero" class="relative min-h-[92vh] flex items-end justify-start pt-32 pb-20 px-6 sm:px-12 hero-gradient overflow-hidden">
+        
+        <!-- Background Ambient Grid / Subtle Visual Elements -->
+        <div class="absolute inset-0 z-0 opacity-20 pointer-events-none bg-[radial-gradient(#333_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        
+        <div class="max-w-4xl relative z-10 space-y-6">
+            
+            <!-- Series N-Badge Ribbon -->
+            <div class="inline-flex items-center gap-2">
+                <span class="bg-netflix-red text-white text-[11px] font-bold font-mono px-2 py-0.5 rounded tracking-widest uppercase">SERIE EN DESARROLLO</span>
+                <span class="text-xs text-netflix-gold font-mono font-semibold"><i class="fas fa-star mr-1"></i>98% Coincidencia Comercial</span>
+            </div>
+
+            <!-- Big Title -->
+            <div>
+                <h1 class="font-netflix-title text-6xl sm:text-8xl md:text-9xl font-black text-white leading-none tracking-tight drop-shadow-2xl">
+                    TODAVÍA ESTOY ACÁ
+                </h1>
+                <p class="font-netflix-title text-2xl sm:text-4xl text-netflix-gold tracking-widest mt-1">
+                    STILL HERE
+                </p>
+            </div>
+
+            <!-- Tagline & Age Rating Line -->
+            <div class="flex flex-wrap items-center gap-3 text-xs sm:text-sm font-mono text-slate-300">
+                <span class="border border-neutral-600 px-1.5 py-0.5 rounded text-white font-bold bg-black/60">18+</span>
+                <span class="border border-neutral-600 px-1.5 py-0.5 rounded text-slate-300">10 EPISODIOS</span>
+                <span class="text-netflix-red font-bold">DRAMA AUTOBIOGRÁFICO</span>
+                <span>·</span>
+                <span>4 PAÍSES</span>
+                <span>·</span>
+                <span>3 IDIOMAS</span>
+            </div>
+
+            <p class="text-base sm:text-lg text-slate-200 max-w-2xl leading-relaxed font-sans drop-shadow">
+                "A los 50 años, un hombre mira hacia atrás y descubre que para sobrevivir tuvo que convertirse en muchas personas diferentes."
+            </p>
+
+            <p class="text-xs sm:text-sm text-slate-400 max-w-3xl leading-relaxed">
+                Desde un campo de Entre Ríos hasta las luces de Miami, una historia de cinco décadas sobre homosexualidad, paternidad adolescente, migración, mundo del espectáculo, drogas, matrimonio, HIV y la reconstrucción final de la identidad.
+            </p>
+
+            <!-- Metadata Badges / Content Tags -->
+            <div class="flex flex-wrap gap-2 text-[11px] font-mono text-slate-400 pt-1">
+                <span class="bg-neutral-900 border border-neutral-800 px-2.5 py-1 rounded">Sexo & Relaciones</span>
+                <span class="bg-neutral-900 border border-neutral-800 px-2.5 py-1 rounded">Sustancias & Noche</span>
+                <span class="bg-neutral-900 border border-neutral-800 px-2.5 py-1 rounded">Inmigración</span>
+                <span class="bg-neutral-900 border border-neutral-800 px-2.5 py-1 rounded">Supervivencia HIV</span>
+                <span class="bg-neutral-900 border border-neutral-800 px-2.5 py-1 rounded">Familia & Ausencias</span>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="flex flex-wrap items-center gap-4 pt-4">
+                <button onclick="openPitchModal()" class="px-8 py-3.5 rounded bg-white text-black font-bold text-sm tracking-wider uppercase hover:bg-slate-200 transition flex items-center gap-3 shadow-xl">
+                    <i class="fas fa-play text-lg"></i> Reproducir Pitch (60s)
+                </button>
+                <a href="#concept" class="px-8 py-3.5 rounded bg-neutral-800/90 text-white font-bold text-sm tracking-wider uppercase hover:bg-neutral-700 transition flex items-center gap-3 border border-neutral-600">
+                    <i class="fas fa-info-circle text-lg text-netflix-red"></i> Más Información
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 1: CONCEPTO & MATCH COMERCIAL -->
+    <section id="concept" class="py-16 px-6 sm:px-12 border-t border-neutral-800 bg-netflix-bg">
+        <div class="max-w-6xl mx-auto space-y-10">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between border-b border-neutral-800 pb-6">
+                <div>
+                    <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block mb-1">CÓDIGO DE PROYECTO: TEA-2026</span>
+                    <h2 class="font-netflix-title text-4xl sm:text-5xl text-white">EL CONCEPTO COMERCIAL</h2>
+                </div>
+                <div class="text-xs font-mono text-netflix-gray mt-2 md:mt-0">
+                    POSICIONAMIENTO EN PLATAFORMAS STREAMING PREMIUM
+                </div>
+            </div>
+
+            <!-- Hook Highlight Box -->
+            <div class="bg-netflix-card border-l-4 border-netflix-red p-8 sm:p-10 rounded-r-xl shadow-2xl relative">
+                <span class="text-xs text-netflix-red font-mono font-bold uppercase tracking-widest block mb-2"><i class="fas fa-fire mr-2"></i>PREGUNTA CENTRAL DE LA SERIE</span>
+                <p class="text-2xl sm:text-3xl font-serif italic text-white leading-relaxed">
+                    "¿Cuánto de nosotros mismos tenemos que perder antes de aprender a vivir como realmente somos?"
+                </p>
+            </div>
+
+            <!-- 3 Columns Netflix Style -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded-lg netflix-card">
+                    <div class="text-netflix-red text-2xl mb-3"><i class="fas fa-tv"></i></div>
+                    <h3 class="font-netflix-title text-2xl text-white mb-2">Más allá del "Coming of Age"</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        No se detiene en el descubrimiento adolescente. Explora la vida madura gay: ser padre a los 17, casarse a los 33, afrontar las adicciones nocturnas, recibir un diagnóstico de HIV a los 40 y encontrar paz a los 50.
+                    </p>
+                </div>
+
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded-lg netflix-card">
+                    <div class="text-netflix-red text-2xl mb-3"><i class="fas fa-globe"></i></div>
+                    <h3 class="font-netflix-title text-2xl text-white mb-2">Internacionalidad Orgánica</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Narrativa trilingüe natural (Español, Inglés y Portugués). Recorre Entre Ríos, Buenos Aires, la calidez tropical de Brasil, la frialdad urbana de Queens (New York) y el brillo nocturno de Miami.
+                    </p>
+                </div>
+
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded-lg netflix-card">
+                    <div class="text-netflix-red text-2xl mb-3"><i class="fas fa-user-ninja"></i></div>
+                    <h3 class="font-netflix-title text-2xl text-white mb-2">Protagonista Anti-Héroe</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Cristhian Gassmann no es presentado como un ejemplo perfecto. Toma decisiones erróneas, se equivoca como padre y pareja, cae en excesos y por eso resulta magnético y profundamente humano.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 2: TEMPORADA 1 - CAPÍTULOS (NETFLIX EPISODE SELECTOR) -->
+    <section id="episodes" class="py-16 px-6 sm:px-12 border-t border-neutral-800 bg-black">
+        <div class="max-w-6xl mx-auto space-y-8">
+            
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-neutral-800 pb-6">
+                <div>
+                    <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block mb-1">TEMPORADA 1 · 10 CAPÍTULOS</span>
+                    <h2 class="font-netflix-title text-4xl sm:text-5xl text-white">EPISODIOS DE LA SERIE</h2>
+                </div>
+                <div class="text-xs font-mono text-slate-400 bg-neutral-900 border border-neutral-800 px-4 py-2 rounded">
+                    Estructura: Doble línea temporal (Presente 50 Años ↔ Pasado)
+                </div>
+            </div>
+
+            <!-- Episodes List (Netflix Style Cards) -->
+            <div class="space-y-4">
+
+                <!-- Ep 1 -->
+                <div onclick="openEpisodeModal(1)" class="bg-netflix-card border border-neutral-800 hover:border-netflix-red p-5 rounded-lg transition cursor-pointer group flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-start gap-4">
+                        <span class="font-netflix-title text-4xl text-neutral-600 group-hover:text-netflix-red transition">01</span>
+                        <div>
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="font-netflix-title text-2xl text-white group-hover:text-netflix-red transition">EL CHICO DEL CAMPO</h3>
+                                <span class="text-[10px] font-mono bg-neutral-800 text-slate-300 px-2 py-0.5 rounded">PILOTO</span>
+                                <span class="text-[10px] font-mono text-netflix-gray">52 min</span>
+                            </div>
+                            <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                                Cristhian a los 50 en Miami observa su vida. Regreso a la infancia en Entre Ríos con su abuela Yolanda. La incómoda conciencia de ser diferente y el primer beso a los 13 con Federico.
+                            </p>
+                            <span class="text-[11px] text-netflix-gold font-serif italic mt-2 block">"Antes de saber quién quería ser, ya sabía que era diferente."</span>
+                        </div>
+                    </div>
+                    <button class="px-4 py-2 bg-neutral-800 group-hover:bg-netflix-red group-hover:text-white text-xs font-bold font-mono rounded transition text-slate-300 shrink-0">
+                        <i class="fas fa-play mr-1"></i> DETALLES
+                    </button>
+                </div>
+
+                <!-- Ep 2 -->
+                <div onclick="openEpisodeModal(2)" class="bg-netflix-card border border-neutral-800 hover:border-netflix-red p-5 rounded-lg transition cursor-pointer group flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-start gap-4">
+                        <span class="font-netflix-title text-4xl text-neutral-600 group-hover:text-netflix-red transition">02</span>
+                        <div>
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="font-netflix-title text-2xl text-white group-hover:text-netflix-red transition">FEDERICO</h3>
+                                <span class="text-[10px] font-mono text-netflix-gray">50 min</span>
+                            </div>
+                            <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                                Dos años de romance adolescente oculto en la escuela internado. Miedo, ternura y descubrimiento. Más tarde, la experiencia con Pedro (el portero nocturno) confirma su orientación.
+                            </p>
+                            <span class="text-[11px] text-netflix-gold font-serif italic mt-2 block">"El día que descubrí que podía enamorarme de un hombre."</span>
+                        </div>
+                    </div>
+                    <button class="px-4 py-2 bg-neutral-800 group-hover:bg-netflix-red group-hover:text-white text-xs font-bold font-mono rounded transition text-slate-300 shrink-0">
+                        <i class="fas fa-play mr-1"></i> DETALLES
+                    </button>
+                </div>
+
+                <!-- Ep 3 -->
+                <div onclick="openEpisodeModal(3)" class="bg-netflix-card border border-neutral-800 hover:border-netflix-red p-5 rounded-lg transition cursor-pointer group flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-start gap-4">
+                        <span class="font-netflix-title text-4xl text-neutral-600 group-hover:text-netflix-red transition">03</span>
+                        <div>
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="font-netflix-title text-2xl text-white group-hover:text-netflix-red transition">PADRE A LOS 17</h3>
+                                <span class="text-[10px] font-mono text-netflix-gray">55 min</span>
+                            </div>
+                            <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                                Analía queda embarazada. Nace Arianna. Cristhian se enfrenta al shock de la paternidad siendo un adolescente que aún no puede vivir libremente su verdad.
+                            </p>
+                            <span class="text-[11px] text-netflix-gold font-serif italic mt-2 block">"¿Cómo ser padre cuando todavía no sabes quién sos?"</span>
+                        </div>
+                    </div>
+                    <button class="px-4 py-2 bg-neutral-800 group-hover:bg-netflix-red group-hover:text-white text-xs font-bold font-mono rounded transition text-slate-300 shrink-0">
+                        <i class="fas fa-play mr-1"></i> DETALLES
+                    </button>
+                </div>
+
+                <!-- Ep 4 -->
+                <div onclick="openEpisodeModal(4)" class="bg-netflix-card border border-neutral-800 hover:border-netflix-red p-5 rounded-lg transition cursor-pointer group flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-start gap-4">
+                        <span class="font-netflix-title text-4xl text-neutral-600 group-hover:text-netflix-red transition">04</span>
+                        <div>
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="font-netflix-title text-2xl text-white group-hover:text-netflix-red transition">BRASIL</h3>
+                                <span class="text-[10px] font-mono text-netflix-gray">48 min</span>
+                            </div>
+                            <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                                Conoce a Bruno en Ushuaia y emigran a Brasil a los 20 años. Idioma, música, libertad tropical, la noche y las primeras experiencias con drogas.
+                            </p>
+                            <span class="text-[11px] text-netflix-gold font-serif italic mt-2 block">"Pensé que cambiando de país me convertía en otra persona."</span>
+                        </div>
+                    </div>
+                    <button class="px-4 py-2 bg-neutral-800 group-hover:bg-netflix-red group-hover:text-white text-xs font-bold font-mono rounded transition text-slate-300 shrink-0">
+                        <i class="fas fa-play mr-1"></i> DETALLES
+                    </button>
+                </div>
+
+                <!-- Ep 5 -->
+                <div onclick="openEpisodeModal(5)" class="bg-netflix-card border border-neutral-800 hover:border-netflix-red p-5 rounded-lg transition cursor-pointer group flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                    <div class="flex items-start gap-4">
+                        <span class="font-netflix-title text-4xl text-neutral-600 group-hover:text-netflix-red transition">05</span>
+                        <div>
+                            <div class="flex items-center gap-3 mb-1">
+                                <h3 class="font-netflix-title text-2xl text-white group-hover:text-netflix-red transition">NEW YORK</h3>
+                                <span class="text-[10px] font-mono text-netflix-gray">54 min</span>
+                            </div>
+                            <p class="text-xs text-slate-300 max-w-2xl leading-relaxed">
+                                A los 27 años, la crueldad del sueño americano en Queens. Trabajo pesado en restaurantes, bailarín de club nocturno, soledad urbana y amistades por conveniencia.
+                            </p>
+                            <span class="text-[11px] text-netflix-gold font-serif italic mt-2 block">"Sobrevivir en esta ciudad es una profesión de tiempo completo."</span>
+                        </div>
+                    </div>
+                    <button class="px-4 py-2 bg-neutral-800 group-hover:bg-netflix-red group-hover:text-white text-xs font-bold font-mono rounded transition text-slate-300 shrink-0">
+                        <i class="fas fa-play mr-1"></i> DETALLES
+                    </button>
+                </div>
+
+                <!-- Ep 6 to 10 Quick Summary Row -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-4">
+                    <div onclick="openEpisodeModal(6)" class="bg-neutral-900 border border-neutral-800 p-4 rounded hover:border-netflix-red transition cursor-pointer">
+                        <div class="flex items-center justify-between">
+                            <span class="font-netflix-title text-xl text-white">EP 06: BOBBY</span>
+                            <span class="text-[10px] text-netflix-gold font-mono">Miami · 33 Años</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Conexión inesperada mediante una app que se transforma en matrimonio y hogar.</p>
+                    </div>
+
+                    <div onclick="openEpisodeModal(7)" class="bg-neutral-900 border border-neutral-800 p-4 rounded hover:border-netflix-red transition cursor-pointer">
+                        <div class="flex items-center justify-between">
+                            <span class="font-netflix-title text-xl text-white">EP 07: COLÁGENO</span>
+                            <span class="text-[10px] text-netflix-red font-mono">El Diagnóstico HIV</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Ingreso de Víctor (25). Fiesta, descontrol de tres y la noticia que sacude sus vidas.</p>
+                    </div>
+
+                    <div onclick="openEpisodeModal(8)" class="bg-neutral-900 border border-neutral-800 p-4 rounded hover:border-netflix-red transition cursor-pointer">
+                        <div class="flex items-center justify-between">
+                            <span class="font-netflix-title text-xl text-white">EP 08: YOLANDA</span>
+                            <span class="text-[10px] text-slate-400 font-mono">Muerte & Duelo</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Pérdida de su abuela pocos días después del diagnóstico. Ausencia de su hija Arianna.</p>
+                    </div>
+
+                    <div onclick="openEpisodeModal(9)" class="bg-neutral-900 border border-neutral-800 p-4 rounded hover:border-netflix-red transition cursor-pointer">
+                        <div class="flex items-center justify-between">
+                            <span class="font-netflix-title text-xl text-white">EP 09: LA SEGUNDA VIDA</span>
+                            <span class="text-[10px] text-emerald-400 font-mono">Reconstrucción</span>
+                        </div>
+                        <p class="text-xs text-slate-400 mt-1">Tratamiento médico, lealtad inquebrantable de Bobby y retorno a la comunicación.</p>
+                    </div>
+                </div>
+
+                <div onclick="openEpisodeModal(10)" class="bg-gradient-to-r from-neutral-900 via-neutral-900 to-netflix-red/20 border border-netflix-red p-5 rounded-lg transition cursor-pointer flex justify-between items-center">
+                    <div>
+                        <span class="text-xs font-mono text-netflix-red font-bold uppercase block">EPISODIO 10 · CLÍMAX TEMPORADA 1</span>
+                        <h3 class="font-netflix-title text-3xl text-white">TODAVÍA ESTOY ACÁ</h3>
+                        <p class="text-xs text-slate-300 mt-1">50 años. Reconciliación con la memoria. Cristhian y Bobby arman una valija hacia lo desconocido.</p>
+                    </div>
+                    <button class="px-5 py-2.5 bg-netflix-red text-white text-xs font-bold font-mono rounded shadow-lg uppercase">
+                        VER FINAL
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 3: LÍNEA DE TIEMPO INTERACTIVA ("SEEK-BAR" NETFLIX STYLE) -->
+    <section id="timeline" class="py-16 px-6 sm:px-12 border-t border-neutral-800 bg-netflix-bg">
+        <div class="max-w-6xl mx-auto space-y-8">
+            
+            <div class="text-center max-w-2xl mx-auto">
+                <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block mb-1">REPRODUCCIÓN TEMPORAL</span>
+                <h2 class="font-netflix-title text-4xl sm:text-5xl text-white">5 DÉCADAS EN LA LÍNEA DE TIEMPO</h2>
+                <p class="text-xs text-slate-400 font-mono">Haz clic en los marcadores de la barra de reproducción para saltar de época.</p>
+            </div>
+
+            <!-- Seek Bar UI -->
+            <div class="bg-black border border-neutral-800 p-6 rounded-2xl space-y-6">
+                <!-- Age Buttons Bar -->
+                <div class="flex flex-wrap justify-between items-center gap-2 border-b border-neutral-800 pb-4">
+                    <button onclick="setTimelineAge(13)" id="tb-13" class="timeline-btn px-3 py-1.5 rounded bg-netflix-red text-white font-bold font-mono text-xs transition">13 AÑOS</button>
+                    <button onclick="setTimelineAge(17)" id="tb-17" class="timeline-btn px-3 py-1.5 rounded bg-neutral-800 text-slate-300 font-mono text-xs hover:text-white transition">17 AÑOS</button>
+                    <button onclick="setTimelineAge(20)" id="tb-20" class="timeline-btn px-3 py-1.5 rounded bg-neutral-800 text-slate-300 font-mono text-xs hover:text-white transition">20 AÑOS</button>
+                    <button onclick="setTimelineAge(27)" id="tb-27" class="timeline-btn px-3 py-1.5 rounded bg-neutral-800 text-slate-300 font-mono text-xs hover:text-white transition">27 AÑOS</button>
+                    <button onclick="setTimelineAge(30)" id="tb-30" class="timeline-btn px-3 py-1.5 rounded bg-neutral-800 text-slate-300 font-mono text-xs hover:text-white transition">30-33 AÑOS</button>
+                    <button onclick="setTimelineAge(40)" id="tb-40" class="timeline-btn px-3 py-1.5 rounded bg-neutral-800 text-slate-300 font-mono text-xs hover:text-white transition">40 AÑOS</button>
+                    <button onclick="setTimelineAge(50)" id="tb-50" class="timeline-btn px-3 py-1.5 rounded bg-neutral-800 text-slate-300 font-mono text-xs hover:text-white transition">50 AÑOS</button>
+                </div>
+
+                <!-- Video Scrub Bar Simulation -->
+                <div class="w-full bg-neutral-800 h-2 rounded-full relative overflow-hidden">
+                    <div id="scrub-progress" class="bg-netflix-red h-full w-[14%] transition-all duration-500"></div>
+                </div>
+
+                <!-- Dynamic Content Display -->
+                <div id="timeline-card" class="min-h-[220px] flex flex-col justify-between pt-2">
+                    <!-- JavaScript Populates this -->
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 4: ELENCO & PERSONAJES (NETFLIX CAST OVERLAYS) -->
+    <section id="characters" class="py-16 px-6 sm:px-12 border-t border-neutral-800 bg-black">
+        <div class="max-w-6xl mx-auto space-y-10">
+            
+            <div class="border-b border-neutral-800 pb-6">
+                <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block mb-1">UNIVERSO DRAMÁTICO</span>
+                <h2 class="font-netflix-title text-4xl sm:text-5xl text-white">ELENCO PRINCIPAL Y ARCOS</h2>
+            </div>
+
+            <!-- Cast Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <!-- Cristhian -->
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded-lg netflix-card space-y-3 relative">
+                    <span class="absolute top-4 right-4 bg-netflix-red text-white text-[10px] font-mono font-bold px-2 py-0.5 rounded uppercase">PROTAGONISTA</span>
+                    <div class="text-netflix-gold text-3xl"><i class="fas fa-user-circle"></i></div>
+                    <h3 class="font-netflix-title text-3xl text-white">CRISTHIAN GASSMANN</h3>
+                    <span class="text-xs text-netflix-gold font-mono block">50 Años · El Buscador Sobreviviente</span>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Argentino, comunicador, actor y padre. Criado en el campo, pasó por múltiples geografías. Un hombre imperfecto, pasional y profundamente humano.
+                    </p>
+                </div>
+
+                <!-- Bobby -->
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded-lg netflix-card space-y-3">
+                    <div class="text-blue-400 text-3xl"><i class="fas fa-ring"></i></div>
+                    <h3 class="font-netflix-title text-3xl text-white">BOBBY</h3>
+                    <span class="text-xs text-blue-400 font-mono block">El Amor que Permanece</span>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Norteamericano. Conocido originalmente mediante una app casual en Miami. Su relación trasciende para convertirse en el ancla leal de la vida de Cristhian.
+                    </p>
+                </div>
+
+                <!-- Yolanda -->
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded-lg netflix-card space-y-3">
+                    <div class="text-amber-400 text-3xl"><i class="fas fa-heart"></i></div>
+                    <h3 class="font-netflix-title text-3xl text-white">YOLANDA</h3>
+                    <span class="text-xs text-amber-400 font-mono block">La Abuela · La Raíz</span>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        La abuela que crió a Cristhian en el campo. Representa la infancia, la referencia moral y el hogar incondicional. Su fallecimiento marca el fin de la juventud.
+                    </p>
+                </div>
+
+                <!-- Víctor -->
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded-lg netflix-card space-y-3">
+                    <div class="text-red-500 text-3xl"><i class="fas fa-fire"></i></div>
+                    <h3 class="font-netflix-title text-3xl text-white">VÍCTOR ("COLÁGENO")</h3>
+                    <span class="text-xs text-red-500 font-mono block">25 Años · El Detonante</span>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Venezolano y padre. Incapaz de aceptar su sexualidad, huye en las drogas y el sexo nocturno. Ingresa a la pareja generando una espiral de descontrol y el posterior diagnóstico.
+                    </p>
+                </div>
+
+                <!-- Arianna -->
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded-lg netflix-card space-y-3">
+                    <div class="text-purple-400 text-3xl"><i class="fas fa-child"></i></div>
+                    <h3 class="font-netflix-title text-3xl text-white">ARIANNA</h3>
+                    <span class="text-xs text-purple-400 font-mono block">La Hija · La Herida Abierta</span>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Nacida cuando Cristhian tenía 17 años. La migración y distanciamientos familiares separaron a padre e hija. Se mantiene como un anhelo abierto y emotivo para la Temporada 2.
+                    </p>
+                </div>
+
+                <!-- Perros -->
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded-lg netflix-card space-y-3">
+                    <div class="text-emerald-400 text-3xl"><i class="fas fa-dog"></i></div>
+                    <h3 class="font-netflix-title text-3xl text-white">TANGO & SAMBA</h3>
+                    <span class="text-xs text-emerald-400 font-mono block">Presencia Silenciosa</span>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Los dos perros de la familia en Miami. Representan el presente libre de juicios. No conocen el pasado de Cristhian, solo lo acompañan en el presente.
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 5: ESTÉTICA & LENGUAJE VISUAL -->
+    <section id="aesthetic" class="py-16 px-6 sm:px-12 border-t border-neutral-800 bg-netflix-bg">
+        <div class="max-w-6xl mx-auto space-y-8">
+            
+            <div class="border-b border-neutral-800 pb-6">
+                <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block mb-1">PROPUESTA CINEMATOGRÁFICA</span>
+                <h2 class="font-netflix-title text-4xl sm:text-5xl text-white">PALETAS VISUALES POR ÉPOCA</h2>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-5 gap-3">
+                <div class="bg-black p-4 rounded border border-neutral-800 text-center">
+                    <div class="h-10 rounded bg-amber-900/80 border border-amber-600/30 mb-2"></div>
+                    <span class="font-netflix-title text-lg text-white block">ENTRE RÍOS</span>
+                    <span class="text-[10px] text-slate-400 font-mono">Tierra, luz rural cálida</span>
+                </div>
+                <div class="bg-black p-4 rounded border border-neutral-800 text-center">
+                    <div class="h-10 rounded bg-emerald-800/80 border border-emerald-500/30 mb-2"></div>
+                    <span class="font-netflix-title text-lg text-white block">BRASIL</span>
+                    <span class="text-[10px] text-slate-400 font-mono">Saturación tropical</span>
+                </div>
+                <div class="bg-black p-4 rounded border border-neutral-800 text-center">
+                    <div class="h-10 rounded bg-slate-800/90 border border-slate-500/30 mb-2"></div>
+                    <span class="font-netflix-title text-lg text-white block">NEW YORK</span>
+                    <span class="text-[10px] text-slate-400 font-mono">Azul frío, grises</span>
+                </div>
+                <div class="bg-black p-4 rounded border border-neutral-800 text-center">
+                    <div class="h-10 rounded bg-fuchsia-900/80 border border-fuchsia-500/30 mb-2"></div>
+                    <span class="font-netflix-title text-lg text-white block">MIAMI NOCHE</span>
+                    <span class="text-[10px] text-slate-400 font-mono">Neón, alto contraste</span>
+                </div>
+                <div class="bg-black p-4 rounded border border-neutral-800 text-center col-span-2 sm:col-span-1">
+                    <div class="h-10 rounded bg-slate-200/20 border border-white/30 mb-2"></div>
+                    <span class="font-netflix-title text-lg text-white block">PRESENTE</span>
+                    <span class="text-[10px] text-slate-400 font-mono">Luz natural, paz</span>
+                </div>
+            </div>
+
+            <!-- Motif -->
+            <div class="bg-netflix-card border border-neutral-800 p-6 rounded-lg flex items-center gap-6">
+                <div class="text-netflix-gold text-4xl shrink-0"><i class="fas fa-suitcase"></i></div>
+                <div>
+                    <h3 class="font-netflix-title text-2xl text-white">EL MOTIVO VISUAL: LA VALIJA</h3>
+                    <p class="text-xs text-slate-300 leading-relaxed">
+                        Aparece en cada migración geográfica y emocional: de Entre Ríos a Buenos Aires, Brasil, Queens y Miami. En el plano final, Cristhian y Bobby empacan una valija hacia un destino desconocido.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SECTION 6: NOTA DEL CREADOR -->
+    <section id="creator" class="py-16 px-6 sm:px-12 border-t border-neutral-800 bg-black">
+        <div class="max-w-4xl mx-auto">
+            <div class="bg-netflix-card border border-netflix-red p-8 sm:p-12 rounded-xl space-y-4">
+                <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block">DIRECTOR & CREATOR STATEMENT</span>
+                <h2 class="font-netflix-title text-4xl text-white">POR CRISTHIAN GASSMANN</h2>
+
+                <div class="space-y-4 text-xs sm:text-sm text-slate-300 italic leading-relaxed">
+                    <p>
+                        "Durante muchos años pensé que mi vida era demasiado complicada para contarla. Después entendí que justamente ahí estaba la historia."
+                    </p>
+                    <p>
+                        "Nací en Argentina y crecí en el campo con mi abuela. Fui padre siendo adolescente. Me enamoré de hombres cuando todavía no sabía cómo nombrar lo que sentía. Viví en Brasil. Me mudé a New York buscando una oportunidad. Trabajé de mesero y bailé en un club de Queens. Llegué a Miami y encontré el mundo del espectáculo."
+                    </p>
+                    <p>
+                        "Cometí errores. Entraron drogas, pasiones y pérdidas. Llegó un diagnóstico de HIV que cambió mi perspectiva, la muerte de mi abuela y ausencias familiares. Pero llegué a los 50. Y comprendí que sobrevivir significa algo más grande: seguir teniendo ganas de vivir."
+                    </p>
+                </div>
+
+                <div class="pt-4 border-t border-neutral-800 flex justify-between items-center text-xs font-mono text-slate-400">
+                    <span class="text-white font-bold">CRISTHIAN GASSMANN</span>
+                    <span>Miami, Florida · 2026</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 7: MATERIALES EJECUTIVOS Y CONTACTO -->
+    <section id="onepager" class="py-16 px-6 sm:px-12 border-t border-neutral-800 bg-netflix-bg">
+        <div class="max-w-5xl mx-auto text-center space-y-10">
+            
+            <div>
+                <span class="text-netflix-red font-mono text-xs tracking-widest uppercase block mb-1">RECURSOS DE ADQUISICIÓN</span>
+                <h2 class="font-netflix-title text-4xl sm:text-5xl text-white">SOLICITUD DE MATERIALES & PITCH</h2>
+                <p class="text-xs text-slate-400 font-mono mt-2">Paquete completo listo para comités de desarrollo y coproducción internacional.</p>
+            </div>
+
+            <!-- Download Action Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded text-left space-y-3">
+                    <i class="fas fa-file-pdf text-netflix-red text-2xl"></i>
+                    <h3 class="font-netflix-title text-2xl text-white">PITCH DECK (30 PÁG)</h3>
+                    <p class="text-xs text-slate-400">Presentación cinematográfica de alta calidad visual.</p>
+                    <button onclick="downloadPitchDeckPDF()" class="w-full py-2 bg-neutral-800 hover:bg-netflix-red hover:text-white text-xs font-bold font-mono rounded transition text-slate-200 uppercase">
+                        DESCARGAR DECK
+                    </button>
+                </div>
+
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded text-left space-y-3">
+                    <i class="fas fa-book text-netflix-gold text-2xl"></i>
+                    <h3 class="font-netflix-title text-2xl text-white">BIBLIA DE SERIE</h3>
+                    <p class="text-xs text-slate-400">Desglose de arcos, personajes y universo narrativo.</p>
+                    <button onclick="downloadBible()" class="w-full py-2 bg-neutral-800 hover:bg-netflix-red hover:text-white text-xs font-bold font-mono rounded transition text-slate-200 uppercase">
+                        SOLICITAR BIBLIA
+                    </button>
+                </div>
+
+                <div class="bg-netflix-card border border-neutral-800 p-6 rounded text-left space-y-3">
+                    <i class="fas fa-scroll text-blue-400 text-2xl"></i>
+                    <h3 class="font-netflix-title text-2xl text-white">GUION PILOTO</h3>
+                    <p class="text-xs text-slate-400">Episodio 1 "El Chico del Campo" en formato estándar.</p>
+                    <button onclick="requestPilotScript()" class="w-full py-2 bg-neutral-800 hover:bg-netflix-red hover:text-white text-xs font-bold font-mono rounded transition text-slate-200 uppercase">
+                        SOLICITAR GUION
+                    </button>
+                </div>
+            </div>
+
+            <!-- Form -->
+            <form onsubmit="handleContactSubmit(event)" class="bg-black border border-neutral-800 p-8 rounded-xl text-left space-y-4 max-w-2xl mx-auto">
+                <h3 class="font-netflix-title text-2xl text-white">CONTACTAR AL EQUIPO DE PRODUCCIÓN</h3>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 uppercase mb-1">Nombre y Apellido</label>
+                    <input type="text" required placeholder="Ej. Ejecutivo de Contenido" class="w-full bg-neutral-900 border border-neutral-800 rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-netflix-red">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 uppercase mb-1">Plataforma / Productora</label>
+                    <input type="text" required placeholder="Ej. Streaming Studio / Global Media" class="w-full bg-neutral-900 border border-neutral-800 rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-netflix-red">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 uppercase mb-1">Email Profesional</label>
+                    <input type="email" required placeholder="ejecutivo@plataforma.com" class="w-full bg-neutral-900 border border-neutral-800 rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-netflix-red">
+                </div>
+                <div>
+                    <label class="block text-xs font-mono text-slate-400 uppercase mb-1">Mensaje</label>
+                    <textarea rows="3" required placeholder="Solicito reunión de pitch y acceso al script del piloto..." class="w-full bg-neutral-900 border border-neutral-800 rounded px-4 py-2.5 text-xs text-white focus:outline-none focus:border-netflix-red"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-netflix-red text-white font-bold text-xs tracking-wider font-mono uppercase rounded hover:bg-netflix-darkRed transition">
+                    ENVIAR MENSAJE
+                </button>
+            </form>
+
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 px-6 border-t border-neutral-800 bg-black text-center text-xs text-neutral-500 font-mono">
+        <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-2">
+                <span class="bg-netflix-red text-white font-netflix-title px-1.5 py-0.5 rounded text-sm">N</span>
+                <span class="font-netflix-title text-white text-lg">TODAVÍA ESTOY ACÁ</span> · STILL HERE
+            </div>
+            <div>
+                © 2026 Cristhian Gassmann. Todos los derechos reservados.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL 1: PITCH EXPRESS DE 60 SEGUNDOS (NETFLIX PREVIEW POPUP) -->
+    <div id="pitch-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-netflix-card border border-netflix-red p-6 sm:p-8 rounded-xl max-w-xl w-full relative shadow-2xl space-y-4">
+            <button onclick="closePitchModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <div class="flex items-center gap-2">
+                <span class="bg-netflix-red text-white font-netflix-title text-lg px-2 py-0.5 rounded">N</span>
+                <span class="text-xs font-mono text-netflix-gold uppercase">PITCH DE ELEVADOR (60 SEGUNDOS)</span>
+            </div>
+
+            <h3 class="font-netflix-title text-3xl text-white">¿DE QUÉ TRATA LA SERIE?</h3>
+
+            <div class="bg-black p-4 rounded border border-neutral-800 text-xs sm:text-sm text-slate-200 leading-relaxed font-sans">
+                "Es la historia de un hombre argentino que llegó a los 50 después de vivir varias vidas: fue criado por su abuela en el campo, fue padre a los 17, se enamoró de hombres, emigró a Brasil y Estados Unidos, sobrevivió a las drogas, entró al mundo del espectáculo, se casó con un estadounidense, vivió una relación de tres, recibió un diagnóstico de HIV y perdió a la mujer que lo crió. Y cuando finalmente parece que todo terminó, descubre que todavía tiene una vida por delante. Se llama <strong>TODAVÍA ESTOY ACÁ</strong>."
+            </div>
+
+            <div class="flex items-center justify-between gap-4 pt-2">
+                <button onclick="speakPitchExpress()" class="px-4 py-2.5 rounded bg-netflix-red text-white text-xs font-bold font-mono hover:bg-netflix-darkRed transition flex items-center gap-2">
+                    <i class="fas fa-volume-up"></i> Escuchar Pitch (IA)
+                </button>
+                <button onclick="closePitchModal()" class="px-4 py-2.5 rounded bg-neutral-800 text-white text-xs font-bold font-mono uppercase hover:bg-neutral-700 transition">
+                    Cerrar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- MODAL 2: VISTA PREVIA DETALLADA DE EPISODIO -->
+    <div id="episode-modal" class="fixed inset-0 z-50 bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4">
+        <div class="bg-netflix-card border border-neutral-700 p-6 sm:p-8 rounded-xl max-w-2xl w-full relative shadow-2xl space-y-4">
+            <button onclick="closeEpisodeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">
+                <i class="fas fa-times"></i>
+            </button>
+
+            <span id="ep-modal-number" class="text-netflix-red font-mono font-bold text-xs uppercase block">EPISODIO</span>
+            <h3 id="ep-modal-title" class="font-netflix-title text-4xl text-white">TÍTULO DEL CAPÍTULO</h3>
+
+            <div id="ep-modal-body" class="text-xs sm:text-sm text-slate-300 space-y-3 leading-relaxed">
+                <!-- Javascript populates -->
+            </div>
+
+            <div class="pt-4 border-t border-neutral-800 flex justify-end">
+                <button onclick="closeEpisodeModal()" class="px-4 py-2 bg-netflix-red text-white font-bold text-xs font-mono uppercase rounded">
+                    CERRAR DETALLES
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // Timeline Data Dictionary
+        const timelineData = {
+            13: {
+                title: "13 AÑOS · EL ORIGEN Y FEDERICO",
+                location: "Entre Ríos / Escuela Internado",
+                desc: "Criado por su abuela Yolanda en el campo. Siente la incómoda vivencia de ser diferente. En la escuela internado florece un romance secreto de dos años con Federico. El primer beso que despierta su identidad.",
+                quote: "Antes de saber quién quería ser, ya sabía que era diferente.",
+                palette: "Tierra, sombras de internado, luz dorada de Entre Ríos",
+                tag: "Descubrimiento",
+                pct: "14%"
+            },
+            17: {
+                title: "17 AÑOS · PATERNIDAD PREMATURA",
+                location: "Buenos Aires",
+                desc: "Analía queda embarazada y nace Arianna. Cristhian afronta el choque de ser padre siendo adolescente mientras reprime angustiosamente su homosexualidad.",
+                quote: "¿Cómo ser padre cuando todavía no sabes quién sos?",
+                palette: "Grises urbanos, salas de hospital, contraste familiar",
+                tag: "Conflicto Moral",
+                pct: "28%"
+            },
+            20: {
+                title: "20 AÑOS · ESCAPE A BRASIL",
+                location: "Ushuaia / Brasil",
+                desc: "Conoce a Bruno y se mudan a Brasil. Contacto con el idioma portugués, la música tropical, la sensualidad, la noche y las primeras drogas.",
+                quote: "Pensé que cambiando de país me convertía en otra persona.",
+                palette: "Verde saturado, amarillo, noche tropical",
+                tag: "Migración & Libertad",
+                pct: "42%"
+            },
+            27: {
+                title: "27 AÑOS · DUREZA EN NEW YORK",
+                location: "Queens / Manhattan, New York",
+                desc: "El choque del sueño americano en Queens. Trabajo como mesero y bailarín en un club nocturno. Soledad de inmigrante y amistades condicionadas como Mario.",
+                quote: "Sobrevivir en esta ciudad es una profesión de tiempo completo.",
+                palette: "Azul frío, neón tenue, sombras del metro",
+                tag: "Supervivencia Urbana",
+                pct: "57%"
+            },
+            30: {
+                title: "30-33 AÑOS · MIAMI Y BOBBY",
+                location: "Miami, Florida",
+                desc: "Entrada al mundo del espectáculo y la televisión. Encuentro casual con Bobby mediante una app. La química evoluciona en matrimonio a los 33 años.",
+                quote: "Encontré un hogar donde menos lo esperaba.",
+                palette: "Blanco, dorado brillante, mar, noche de gala",
+                tag: "Amor & Carrera",
+                pct: "71%"
+            },
+            40: {
+                title: "40 AÑOS · COLÁGENO, HIV Y DUELO",
+                location: "Miami / Entre Ríos",
+                desc: "Ingreso de Víctor (25) en la pareja. Descontrol nocturno que resulta en el diagnóstico de HIV. Casi en paralelo, muere su abuela Yolanda y se distancia de Arianna.",
+                quote: "Cuando la casa de tu infancia desaparece, te toca crecer de golpe.",
+                palette: "Rojo intenso, luz desaturada de hospital, luto",
+                tag: "El Abismo",
+                pct: "85%"
+            },
+            50: {
+                title: "50 AÑOS · EL PRESENTE Y LA PAZ",
+                location: "Miami (Presente)",
+                desc: "Aceptación reconciliada del pasado. Junto a Bobby y sus perros Tango y Samba. Cristhian comprende que sobrevivir es seguir teniendo ganas de vivir.",
+                quote: "Sobreviví a todo lo que pensé que iba a destruirme.",
+                palette: "Luz natural, minimalismo, paz del horizonte",
+                tag: "Redención & Paz",
+                pct: "100%"
+            }
+        };
+
+        const episodeData = {
+            1: {
+                number: "EPISODIO 01 · PILOTO",
+                title: "EL CHICO DEL CAMPO",
+                body: "<p>Cristhian a los 50 en Miami contempla su vida en paz. De pronto, la memoria nos traslada al campo de Entre Ríos con su abuela Yolanda.</p><p>Vemos su infancia rural, la incomodidad de sentirse distinto y su llegada a la escuela internado a los 13 años. El capítulo concluye con una mirada, un acercamiento y el primer beso furtivo con Federico.</p><p class='italic text-netflix-gold'>Cliffhanger: 'Ese fue el día que descubrí que podía enamorarme de un hombre.'</p>"
+            },
+            2: {
+                number: "EPISODIO 02",
+                title: "FEDERICO",
+                body: "<p>Dos años de romance adolescente secreto en la escuela internado. Miedo, ternura y culpa. Más tarde, la experiencia con Pedro (el portero nocturno) confirma que su deseo homosexual no es una etapa pasajera.</p>"
+            },
+            3: {
+                number: "EPISODIO 03",
+                title: "PADRE A LOS 17",
+                body: "<p>Analía queda embarazada a los 17 años. Nace Arianna. Cristhian intenta asumir la paternidad prematura mientras sufre por no poder expresar libremente quién es realmente.</p>"
+            },
+            4: {
+                number: "EPISODIO 04",
+                title: "BRASIL",
+                body: "<p>Conoce a Bruno en Ushuaia y deciden emigrar a Brasil a los 20 años. Idioma portugués, color, sensualidad, libertad y los primeros excesos de la noche.</p>"
+            },
+            5: {
+                number: "EPISODIO 05",
+                title: "NEW YORK",
+                body: "<p>A los 27 años, la dureza del sueño americano en Queens. Trabajo como mesero, bailarín en club nocturno, soledad urbana y el mundo del espectáculo con Mario.</p>"
+            },
+            6: {
+                number: "EPISODIO 06",
+                title: "BOBBY",
+                body: "<p>Llegada a Miami a los 30. Oportunidades en televisión. Encuentro con Bobby por una app casual que termina convirtiéndose en matrimonio y amor leal a los 33 años.</p>"
+            },
+            7: {
+                number: "EPISODIO 07",
+                title: "COLÁGENO",
+                body: "<p>Víctor (25) entra en la relación de Cristhian y Bobby. Una dinámica de tres llena de fiesta y descontrol que pierde los límites y desemboca en el diagnóstico de HIV.</p>"
+            },
+            8: {
+                number: "EPISODIO 08",
+                title: "YOLANDA",
+                body: "<p>Duelo desgarrador: asimilar el diagnóstico positivo de HIV y despedir a su abuela Yolanda pocos días después. Distanciamiento definitivo con su hija Arianna.</p>"
+            },
+            9: {
+                number: "EPISODIO 09",
+                title: "LA SEGUNDA VIDA",
+                body: "<p>Proceso de reconstrucción personal. Tratamiento médico, fidelidad incondicional de Bobby, retorno al trabajo en comunicación y aceptación de las ausencias.</p>"
+            },
+            10: {
+                number: "EPISODIO 10 · CLÍMAX TEMPORADA 1",
+                title: "TODAVÍA ESTOY ACÁ",
+                body: "<p>Cristhian a los 50 años observa el camino recorrido. Junto a Bobby, Tango y Samba arman una valija. 'Where are we going?' 'I don't know yet'. Caminata hacia el horizonte.</p><p class='italic text-netflix-gold'>'No sé cómo termina mi historia. Porque todavía no terminó.'</p>"
+            }
+        };
+
+        function setTimelineAge(age) {
+            document.querySelectorAll('.timeline-btn').forEach(btn => {
+                btn.className = "timeline-btn px-3 py-1.5 rounded bg-neutral-800 text-slate-300 font-mono text-xs hover:text-white transition";
+            });
+            const activeBtn = document.getElementById(`tb-${age}`);
+            if (activeBtn) {
+                activeBtn.className = "timeline-btn px-3 py-1.5 rounded bg-netflix-red text-white font-bold font-mono text-xs transition";
+            }
+
+            const data = timelineData[age];
+            document.getElementById('scrub-progress').style.width = data.pct;
+
+            const card = document.getElementById('timeline-card');
+            card.innerHTML = `
+                <div>
+                    <div class="flex items-center justify-between gap-2 mb-2">
+                        <span class="text-xs font-mono text-netflix-red font-bold uppercase"><i class="fas fa-map-marker-alt mr-1"></i> ${data.location}</span>
+                        <span class="text-[10px] font-mono bg-neutral-800 text-netflix-gold px-2 py-0.5 rounded uppercase border border-neutral-700">${data.tag}</span>
+                    </div>
+                    <h3 class="font-netflix-title text-3xl text-white mb-2">${data.title}</h3>
+                    <p class="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans mb-4">${data.desc}</p>
+                </div>
+                <div class="pt-4 border-t border-neutral-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                    <span class="text-xs font-serif italic text-netflix-gold">"${data.quote}"</span>
+                    <span class="text-[10px] font-mono text-slate-400">Paleta: ${data.palette}</span>
+                </div>
+            `;
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimelineAge(13);
+        });
+
+        // Pitch Modal
+        function openPitchModal() {
+            document.getElementById('pitch-modal').classList.remove('hidden');
+        }
+        function closePitchModal() {
+            document.getElementById('pitch-modal').classList.add('hidden');
+            if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+        }
+
+        function speakPitchExpress() {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const text = "Es la historia de un hombre argentino que llegó a los 50 después de vivir varias vidas: fue criado por su abuela en el campo, fue padre a los 17, se enamoró de hombres, emigró a Brasil y Estados Unidos, sobrevivió a las drogas, entró al mundo del espectáculo, se casó con un estadounidense, vivió una relación de tres, recibió un diagnóstico de HIV y perdió a la mujer que lo crió. Y cuando finalmente parece que todo terminó, descubre que todavía tiene una vida por delante. Se llama Todavía Estoy Acá.";
+                const utterance = new SpeechSynthesisUtterance(text);
+                utterance.lang = 'es-ES';
+                utterance.rate = 0.95;
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert("Tu navegador no soporta síntesis de voz.");
+            }
+        }
+
+        // Episode Modal
+        function openEpisodeModal(epNum) {
+            const data = episodeData[epNum];
+            if (data) {
+                document.getElementById('ep-modal-number').innerText = data.number;
+                document.getElementById('ep-modal-title').innerText = data.title;
+                document.getElementById('ep-modal-body').innerHTML = data.body;
+                document.getElementById('episode-modal').classList.remove('hidden');
+            }
+        }
+        function closeEpisodeModal() {
+            document.getElementById('episode-modal').classList.add('hidden');
+        }
+
+        function downloadPitchDeckPDF() {
+            alert("Descargando Paquete Ejecutivo Estilo Netflix (Pitch Deck PDF)...");
+        }
+        function downloadBible() {
+            alert("Solicitud recibida. Se enviará la Biblia de Serie al correo ejecutivo verificado.");
+        }
+        function requestPilotScript() {
+            alert("Solicitud del Guion Piloto 'El Chico del Campo' enviada a revisión de NDA.");
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            alert("¡Gracias! La solicitud de pitch para 'TODAVÍA ESTOY ACÁ' ha sido enviada al equipo de producción.");
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
+
