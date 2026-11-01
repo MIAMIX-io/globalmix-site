@@ -77,12 +77,15 @@ nav .btn:hover{color:var(--acc)}
 .lead{color:var(--mute);margin:14px 0 0}
 .types{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0 0 30px;list-style:none}
 .types li{border:1px solid var(--line);padding:8px 16px;font:600 .85rem var(--d);border-radius:99px}
-.logos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;list-style:none;margin:0;padding:0}
-@media(min-width:620px){.logos{grid-template-columns:repeat(3,1fr)}}
-@media(min-width:960px){.logos{grid-template-columns:repeat(4,1fr)}}
-.logos a{background:#fff;height:130px;display:flex;align-items:center;justify-content:center;padding:20px;transition:box-shadow .2s}
+.lshow{margin-top:0}
+.logos{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;list-style:none;margin:0;padding:0}
+.logos::-webkit-scrollbar{display:none}
+.logos li{flex:0 0 72%;scroll-snap-align:start}
+@media(min-width:620px){.logos li{flex-basis:calc((100% - 12px)/2)}}
+@media(min-width:960px){.logos li{flex-basis:calc((100% - 24px)/3)}}
+.logos a{background:#fff;height:190px;display:flex;align-items:center;justify-content:center;padding:28px;transition:box-shadow .2s}
 .logos a:hover,.logos a:focus-visible{box-shadow:inset 0 -5px 0 var(--acc)}
-.logos img{max-height:100%;max-width:85%;width:auto;height:auto;object-fit:contain}
+.logos img{max-height:100%;max-width:92%;width:auto;height:auto;object-fit:contain}
 .logos a.ondark{background:var(--dark)}
 
 /* Sections */
@@ -204,7 +207,8 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:22px 30px;justify-content:space-bet
     </div>
    </div>
    <ul class="types"><li>Luxury hotels</li><li>Event planners</li><li>Corporate entities</li><li>Private clients</li></ul>
-   <ul class="logos">
+   <div class="show lshow">
+<ul class="logos" aria-label="Client logos" tabindex="0">
     <li><a href="https://www.marriott.com/brands/jw-marriott.mi" target="_blank" rel="noopener" aria-label="JW Marriott"><img src="images/logo-jw-marriott.png" alt="JW Marriott" loading="lazy"></a></li>
     <li><a href="https://www.sobewff.org" target="_blank" rel="noopener" aria-label="South Beach Wine &amp; Food Festival"><img src="images/logo-sobewff.png" alt="South Beach Wine &amp; Food Festival" loading="lazy"></a></li>
     <li><a href="https://www.fendichateauresidences.com" target="_blank" rel="noopener" aria-label="Fendi Chateau Residences"><img src="images/logo-fendi.png" alt="Fendi Chateau Residences" loading="lazy"></a></li>
@@ -218,6 +222,9 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:22px 30px;justify-content:space-bet
     <!-- Yann Nury logo appears light-colored, so its tile is dark. Remove class="ondark" if it displays poorly. -->
     <li><a class="ondark" href="https://www.yannnury.com" target="_blank" rel="noopener" aria-label="Yann Nury"><img src="images/logo-yann.png" alt="Yann Nury" loading="lazy"></a></li>
    </ul>
+  <button type="button" class="arrow prev" aria-label="Previous logos">&#8249;</button>
+<button type="button" class="arrow next" aria-label="Next logos">&#8250;</button>
+</div>
   </div>
  </section>
 
@@ -352,32 +359,37 @@ document.getElementById('f').addEventListener('submit',function(e){
 // Gallery lightbox
 var lb=document.getElementById('lb'),lbi=document.getElementById('lbi');
 document.querySelectorAll('.gal button').forEach(function(b){
-  b.addEventListener('click',function(){stop();lbi.src=b.dataset.src;lbi.alt=b.querySelector('img').alt;lb.showModal();});
+b.addEventListener('click',function(){galS.stop();lbi.src=b.dataset.src;lbi.alt=b.querySelector('img').alt;lb.showModal();});
 });
 document.getElementById('lbx').addEventListener('click',function(){lb.close();});
 lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
 
-// Gallery slideshow
-var g=document.querySelector('.gal'),timer,resumeT;
-var reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-function slide(d){
-  var f=g.querySelector('button'),w=f.offsetWidth+12;
-  if(d>0&&g.scrollLeft+g.clientWidth>=g.scrollWidth-6){g.scrollTo({left:0,behavior:'smooth'});}
-  else if(d<0&&g.scrollLeft<=2){g.scrollTo({left:g.scrollWidth,behavior:'smooth'});}
-  else{g.scrollBy({left:d*w,behavior:'smooth'});}
+// Slideshows (gallery + client logos)
+function slider(g,ms){
+  var timer,resumeT,reduce=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  var box=g.parentNode,gap=parseFloat(getComputedStyle(g).columnGap)||12;
+  function slide(d){
+    var w=g.firstElementChild.offsetWidth+gap;
+    if(d>0&&g.scrollLeft+g.clientWidth>=g.scrollWidth-6){g.scrollTo({left:0,behavior:'smooth'});}
+    else if(d<0&&g.scrollLeft<=2){g.scrollTo({left:g.scrollWidth,behavior:'smooth'});}
+    else{g.scrollBy({left:d*w,behavior:'smooth'});}
+  }
+  function start(){if(!reduce&&!timer){timer=setInterval(function(){slide(1);},ms);}}
+  function stop(){clearInterval(timer);timer=null;}
+  function pause(){stop();clearTimeout(resumeT);resumeT=setTimeout(start,6000);}
+  box.querySelector('.arrow.prev').addEventListener('click',function(){slide(-1);pause();});
+  box.querySelector('.arrow.next').addEventListener('click',function(){slide(1);pause();});
+  g.addEventListener('touchstart',pause,{passive:true});
+  g.addEventListener('focusin',pause);
+  g.addEventListener('keydown',function(e){if(e.key==='ArrowRight')slide(1);if(e.key==='ArrowLeft')slide(-1);});
+  g.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')stop();});
+  g.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')start();});
+  start();
+  return {start:start,stop:stop};
 }
-function start(){if(!reduce&&!timer){timer=setInterval(function(){slide(1);},4000);}}
-function stop(){clearInterval(timer);timer=null;}
-function pause(){stop();clearTimeout(resumeT);resumeT=setTimeout(start,6000);}
-document.querySelector('.arrow.prev').addEventListener('click',function(){slide(-1);pause();});
-document.querySelector('.arrow.next').addEventListener('click',function(){slide(1);pause();});
-g.addEventListener('touchstart',pause,{passive:true});
-g.addEventListener('focusin',pause);
-g.addEventListener('keydown',function(e){if(e.key==='ArrowRight')slide(1);if(e.key==='ArrowLeft')slide(-1);});
-g.addEventListener('pointerenter',function(e){if(e.pointerType==='mouse')stop();});
-g.addEventListener('pointerleave',function(e){if(e.pointerType==='mouse')start();});
-lb.addEventListener('close',start);
-start();
+var galS=slider(document.querySelector('.gal'),4000);
+var logoS=slider(document.querySelector('.logos'),3500);
+lb.addEventListener('close',galS.start);
 
 // Hide the floating Book Talent button when the form or footer is on screen
 var fab=document.getElementById('fab');
