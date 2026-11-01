@@ -44,7 +44,7 @@ blockquote{margin:30px 0 0;font:italic 400 20px/1.5 var(--serif);color:var(--bg)
 .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:36px;margin-top:50px}
 .cols div{border-top:1px solid var(--gold);padding-top:20px}.cols h3{font-size:21px;margin-bottom:10px}.cols p{margin:0;font-size:14.5px;color:var(--mute)}
 .years{display:flex;gap:60px;flex-wrap:wrap;margin:30px 0 40px}.years b{display:block;font:400 64px/1 var(--serif);color:var(--gold)}.years span{display:block;max-width:300px;margin-top:10px;color:var(--mute)}
-#phil{background:linear-gradient(90deg,var(--k) 45%,rgba(14,12,12,.2)),center/cover url(images/PHOTO-2026-10-31-20-11-11%203.jpg);padding:150px 0}
+#phil{background:center/cover url(images/PHOTO-2026-10-31-20-11-11%203.jpg);padding:150px 0}
 #phil h2{font-style:italic;max-width:560px;font-size:clamp(30px,4.2vw,44px)}#phil p{max-width:480px;color:var(--mute)}
 .show{position:relative;max-width:520px;margin:40px auto 0}
 .stage{position:relative;aspect-ratio:4/5;background:var(--k);overflow:hidden;cursor:zoom-in;box-shadow:12px 12px 0 rgba(0,0,0,.12);outline:1px solid var(--gold);outline-offset:-1px}
@@ -101,6 +101,29 @@ footer{padding:28px;text-align:center;font-size:12px;color:var(--mute);border-to
 @media(max-width:780px){section{padding:80px 0}.two,.story,.book{grid-template-columns:1fr;gap:40px}.book .cover{max-width:230px}#top .ph{inset:0;opacity:.45}nav div{gap:18px}nav b{display:none}.frame{margin-right:16px}}
 @media(max-width:780px){.nv{opacity:.85}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
+/* Podcast readability */
+#podcast .copy p{color:#2B2622;font-weight:400;font-size:18px;line-height:1.8}
+#podcast h2{color:var(--k)}
+#podcast h2 em{color:var(--bg)}
+#podcast .tag{color:var(--ink);font-weight:400}
+#podcast .choice p{color:var(--bg)}
+#podcast .close .big{color:var(--k)}
+#podcast .close .sub{color:var(--ink)}
+#podcast .close .sig{color:var(--bg)}
+#podcast .small{color:#8a6d3b}
+#podcast .card b{color:var(--iv)}
+@media(max-width:780px){
+  .card{flex-basis:calc(33.33% - 10px);min-width:96px}
+  .card b{font-size:12.5px}
+}
+#phil{position:relative}
+#phil::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,12,12,.85),rgba(14,12,12,.3) 55%,rgba(14,12,12,0))}
+#phil .wrap{position:relative}
+#phil p{color:#E4DACB;font-weight:400}
+@media(max-width:780px){
+  #phil{padding:340px 0 70px;background-position:center top}
+  #phil::before{background:linear-gradient(180deg,rgba(14,12,12,0) 25%,rgba(14,12,12,.92) 65%)}
+}
 </style></head><body>
 <nav><div class="wrap"><b>Julio Medina</b><div><a href="#sobre">About</a><a href="#historia">Story</a><a href="#libros">Books</a><a href="#podcast">Podcast</a><a href="#galeria">Gallery</a><a href="#contacto">Contact</a></div></div></nav>
 <header id="top"><div class="ph"></div><div class="wrap"><p class="small">Author · Memoirist · Storyteller</p><h1>Julio<br>Medina</h1><hr class="rule"><p class="t">A life shaped by experience. A voice shaped by truth.</p><a class="btn" href="#libros">Explore my books</a></div></header>
@@ -124,7 +147,7 @@ footer{padding:28px;text-align:center;font-size:12px;color:var(--mute);border-to
 <section id="libros"><div class="wrap"><h2>My books</h2>
 <article class="book"><img class="cv" src="images/PHOTO-2026-10-31-21-ADICTOS.jpg" alt="Cover of my book Adictos"><div>
 <h3>Adictos</h3><p class="by">Julio Medina</p><p>We are all addicted to something. To a person. To an emotion. To money. To power. To validation. To pain. To a version of ourselves we don’t know how to let go of.</p><p>ADICTOS is a raw and honest exploration of the things that quietly take control of our lives. Through personal experiences, real stories, and reflections born from survival, I explore relationships, loss, loneliness, migration, ambition, addiction, and the deeply human need to belong.</p><div class="links"><a class="btn" href="https://www.amazon.com/dp/B0HGT75RG5" target="_blank" rel="noopener">Buy on Amazon</a></div></div></article>
-<article class="book"><img class="cv" src="images/PHOTO-2026-10-31-20MIAMI.jpg" alt="Cover of my book From Chamboli to Miami" loading="lazy">
+<article class="book"><img class="cv" src="images/PHOTO-2026-10-31-20MIAMI.jpg" alt="Cover of my book From Chamboli to Miami" loading="lazy"><div>
 <h3>From Chamboli to Miami</h3><p class="sub">A True Story of Survival and Freedom (Spanish title: De Chamboli a Miami)</p><p class="yr">Published in 2025</p>
 <p>“From Chamboli to Miami” is my real, unfiltered testimony: that of a Cuban man who went through pain, repression, prison, migration, and hope to build a new life far from fear.</p><p>From the humble corners of Chamboli, in Havana, to the lights and challenges of Miami, this autobiography traces a life marked by struggle, discrimination, resilience, and the search for freedom.</p>
 <div class="links"><a class="btn" href="https://books.apple.com/us/book/de-chamboli-a-miami/id6751433060" target="_blank" rel="noopener">Spanish edition</a><a class="btn" href="https://www.thriftbooks.com/w/from-chamboli-to-miami-a-true-story-of-survival-and-freedom_julio-medina/56320548/" target="_blank" rel="noopener">English edition</a><a class="btn" href="https://www.amazon.com/dp/B0FGP1MJK4" target="_blank" rel="noopener">Spanish ebook on Amazon</a></div></div></article>
