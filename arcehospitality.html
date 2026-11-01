@@ -80,8 +80,14 @@ nav .btn:hover{color:var(--acc)}
 .lshow{margin-top:0}
 .logos{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;list-style:none;margin:0;padding:0}
 .logos::-webkit-scrollbar{display:none}
-.logos li{flex:0 0 72%;scroll-snap-align:start}
-@media(min-width:620px){.logos li{flex-basis:calc((100% - 12px)/2)}}
+.logos li{flex:0 0 72%;scroll-snap-align:center}
+.logos::before,.logos::after{content:"";flex:0 0 calc(14% - 12px)}
+.lshow .arrow{width:36px;height:36px;font-size:1.1rem}
+@media(min-width:620px){
+  .logos li{flex-basis:calc((100% - 12px)/2);scroll-snap-align:start}
+  .logos::before,.logos::after{display:none}
+  .lshow .arrow{width:44px;height:44px;font-size:1.3rem}
+}
 @media(min-width:960px){.logos li{flex-basis:calc((100% - 24px)/3)}}
 .logos a{background:#fff;height:190px;display:flex;align-items:center;justify-content:center;padding:28px;transition:box-shadow .2s}
 .logos a:hover,.logos a:focus-visible{box-shadow:inset 0 -5px 0 var(--acc)}
