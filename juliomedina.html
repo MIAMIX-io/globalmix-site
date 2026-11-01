@@ -141,6 +141,24 @@ footer{padding:28px;text-align:center;font-size:12px;color:var(--mute);border-to
   #top .ph{opacity:.9}
   #top .ph::after{background:linear-gradient(180deg,rgba(14,12,12,0) 30%,rgba(14,12,12,.85) 62%,var(--k) 100%)}
 }
+/* Flip cards */
+.card{background:none;border:0;outline:0;padding:0;display:block;position:relative;perspective:1000px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.card:focus-visible{outline:2px solid var(--gold);outline-offset:5px}
+.card .in{position:absolute;inset:0;transform-style:preserve-3d;-webkit-transform-style:preserve-3d;transition:transform .8s cubic-bezier(.4,.2,.2,1)}
+.card.flip .in{transform:rotateY(180deg)}
+.card .f{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:var(--k);border:1px solid var(--gold);outline:1px solid rgba(184,151,90,.35);outline-offset:-9px;padding:16px 6px}
+.card .front{display:grid;grid-template-rows:1fr auto 1fr;justify-items:center;text-align:center}
+.card .back{transform:rotateY(180deg);display:flex;flex-direction:column;justify-content:center;align-items:center;gap:10px;text-align:center;padding:20px 16px;background:var(--bg)}
+.card .back .g{color:var(--gold);font-size:13px;line-height:1}
+.card .back .t{font:400 16px var(--serif);color:var(--gold)}
+.card .back .d{font:italic 400 15px/1.45 var(--serif);color:var(--iv)}
+.hint{text-align:center;margin:-34px 0 50px}
+@media(max-width:780px){
+  .card .f{padding:12px 2px}
+  .card .back{padding:14px 8px;gap:7px}
+  .card .back .t{font-size:11.5px}
+  .card .back .d{font-size:11px;line-height:1.4}
+}
 </style></head><body>
 <nav><div class="wrap"><b>Julio Medina</b><div><a href="#sobre">About</a><a href="#historia">Story</a><a href="#libros">Books</a><a href="#podcast">Podcast</a><a href="#galeria">Gallery</a><a href="#contacto">Contact</a></div></div></nav>
 <header id="top"><div class="ph"></div><div class="wrap"><p class="small">Author · Memoirist · Storyteller</p><h1>Julio<br>Medina</h1><hr class="rule"><p class="t">A life shaped by experience. A voice shaped by truth.</p><a class="btn" href="#libros">Explore my books</a></div></header>
@@ -173,7 +191,16 @@ footer{padding:28px;text-align:center;font-size:12px;color:var(--mute);border-to
 
 <section id="podcast"><div class="wrap">
 <div class="head"><p class="small">My podcast</p><h2>7 <em>Values</em></h2><hr class="rule" style="margin:26px auto"><p class="tag">Seven cards. Seven values. A conversation to discover who we are when we set appearances aside.</p></div>
-<div class="deck" role="list" aria-label="The seven cards"><div class="card" role="listitem"><i>I</i><b>Love</b><u>◆</u></div><div class="card" role="listitem"><i>II</i><b>Integrity</b><u>◆</u></div><div class="card" role="listitem"><i>III</i><b>Honesty</b><u>◆</u></div><div class="card" role="listitem"><i>IV</i><b>Respect</b><u>◆</u></div><div class="card" role="listitem"><i>V</i><b>Responsibility</b><u>◆</u></div><div class="card" role="listitem"><i>VI</i><b>Gratitude</b><u>◆</u></div><div class="card" role="listitem"><i>VII</i><b>Perseverance</b><u>◆</u></div></div>
+<div class="deck" aria-label="The seven cards">
+<div class="card" role="button" tabindex="0" aria-pressed="false"><div class="in"><div class="f front"><i>I</i><b>Love</b><u>◆</u></div><div class="f back"><span class="g">◆</span><span class="t">Love</span><span class="d">The bond that makes everything else worth protecting.</span></div></div></div>
+<div class="card" role="button" tabindex="0" aria-pressed="false"><div class="in"><div class="f front"><i>II</i><b>Integrity</b><u>◆</u></div><div class="f back"><span class="g">◆</span><span class="t">Integrity</span><span class="d">Acting the same when no one is watching.</span></div></div></div>
+<div class="card" role="button" tabindex="0" aria-pressed="false"><div class="in"><div class="f front"><i>III</i><b>Honesty</b><u>◆</u></div><div class="f back"><span class="g">◆</span><span class="t">Honesty</span><span class="d">Telling the truth, even when it costs you.</span></div></div></div>
+<div class="card" role="button" tabindex="0" aria-pressed="false"><div class="in"><div class="f front"><i>IV</i><b>Respect</b><u>◆</u></div><div class="f back"><span class="g">◆</span><span class="t">Respect</span><span class="d">Seeing the dignity in every person.</span></div></div></div>
+<div class="card" role="button" tabindex="0" aria-pressed="false"><div class="in"><div class="f front"><i>V</i><b>Responsibility</b><u>◆</u></div><div class="f back"><span class="g">◆</span><span class="t">Responsibility</span><span class="d">Owning your choices and what follows.</span></div></div></div>
+<div class="card" role="button" tabindex="0" aria-pressed="false"><div class="in"><div class="f front"><i>VI</i><b>Gratitude</b><u>◆</u></div><div class="f back"><span class="g">◆</span><span class="t">Gratitude</span><span class="d">Honoring all that carried you here.</span></div></div></div>
+<div class="card" role="button" tabindex="0" aria-pressed="false"><div class="in"><div class="f front"><i>VII</i><b>Perseverance</b><u>◆</u></div><div class="f back"><span class="g">◆</span><span class="t">Perseverance</span><span class="d">The quiet strength to rise after every fall.</span></div></div></div>
+</div>
+<p class="small hint">Tap a card to turn it over</p>
 <div class="copy"><p>7 Values is the podcast I host to explore the experiences, decisions, and lessons that define each person.</p>
 <p>Through seven cards, each representing a core value (Love, Integrity, Honesty, Respect, Responsibility, Gratitude, and Perseverance), every episode becomes an authentic conversation about life, human bonds, personal challenges, and the principles that guide us.</p>
 <p>Rather than seeking perfect answers, I look for real stories, deep reflection, and experiences that can inspire others.</p></div>
@@ -211,4 +238,11 @@ sh.querySelector('.stage').onclick=()=>{im.src=sl[cur].src;im.alt=sl[cur].alt;cl
 d.onclick=e=>{if(e.target!==im)d.close()};d.onclose=play;
 sh.onmouseenter=()=>clearInterval(timer);sh.onmouseleave=()=>{if(!d.open)play()};
 play();
+</script>
+<script>
+document.querySelectorAll('.card').forEach(c=>{
+  const t=()=>{c.setAttribute('aria-pressed',c.classList.toggle('flip'))};
+  c.addEventListener('click',t);
+  c.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();t()}});
+});
 </script></body></html>
