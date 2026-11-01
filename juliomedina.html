@@ -124,6 +124,12 @@ footer{padding:28px;text-align:center;font-size:12px;color:var(--mute);border-to
   #phil{padding:340px 0 70px;background-position:center top}
   #phil::before{background:linear-gradient(180deg,rgba(14,12,12,0) 25%,rgba(14,12,12,.92) 65%)}
 }
+/* Hero: keep text off the face on mobile */
+@media(max-width:780px){
+  #top{align-items:end;padding:120px 0 60px}
+  #top .ph{opacity:.9}
+  #top .ph::after{background:linear-gradient(180deg,rgba(14,12,12,0) 30%,rgba(14,12,12,.85) 62%,var(--k) 100%)}
+}
 </style></head><body>
 <nav><div class="wrap"><b>Julio Medina</b><div><a href="#sobre">About</a><a href="#historia">Story</a><a href="#libros">Books</a><a href="#podcast">Podcast</a><a href="#galeria">Gallery</a><a href="#contacto">Contact</a></div></div></nav>
 <header id="top"><div class="ph"></div><div class="wrap"><p class="small">Author · Memoirist · Storyteller</p><h1>Julio<br>Medina</h1><hr class="rule"><p class="t">A life shaped by experience. A voice shaped by truth.</p><a class="btn" href="#libros">Explore my books</a></div></header>
