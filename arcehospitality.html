@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,837 +5,366 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>ARCE Hospitality | Hospitality Staffing in Miami &amp; South Florida</title>
 <meta name="description" content="ARCE Hospitality places trained chefs, servers, bartenders and event managers at hotels, festivals, corporate events and private parties across South Florida.">
+<meta name="theme-color" content="#2b2f32">
+
+<!-- Favicons -->
+<link rel="icon" href="images/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="images/favicon-64.png" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+<!-- Share preview (WhatsApp, iMessage, social). Update the domain if it differs. -->
+<link rel="canonical" href="https://arcehospitality.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ARCE Hospitality">
+<meta property="og:title" content="ARCE Hospitality | Empowering Excellence">
+<meta property="og:description" content="Trained chefs, servers, bartenders and event managers for South Florida’s hotels, festivals and private events.">
+<meta property="og:url" content="https://arcehospitality.com/">
+<meta property="og:image" content="https://arcehospitality.com/images/og-share.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;800&family=Raleway:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&family=Raleway:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg:#fff;
-  --soft:#dedede;
-  --ink:#17191b;
-  --mute:#4b5156;
-  --dark:#2b2f32;
-  --on-dark:#f4f4f4;
-  --acc:#ff4310;
-  --line:rgba(23,25,27,.14);
-  --tile:#fff;
-  --d:Montserrat,"Helvetica Neue",Arial,sans-serif;
-  --b:Raleway,"Helvetica Neue",Arial,sans-serif;
-  box-sizing:border-box;
-  padding-top:env(safe-area-inset-top,0px);
-  padding-bottom:env(safe-area-inset-bottom,0px);
-}
-
-@media (prefers-color-scheme:dark) {
-  :root:not([data-theme="light"]) {
-    --bg:#17191b;
-    --soft:#222527;
-    --ink:#f1f1f1;
-    --mute:#b4b9bd;
-    --dark:#0f1112;
-    --line:rgba(255,255,255,.16);
-    --tile:#f1f1f1;
-  }
-}
-
-:root[data-theme="dark"] {
-  --bg:#17191b;
-  --soft:#222527;
-  --ink:#f1f1f1;
-  --mute:#b4b9bd;
-  --dark:#0f1112;
-  --line:rgba(255,255,255,.16);
-  --tile:#f1f1f1;
-}
-
-*,*::before,*::after {
-  box-sizing:inherit;
-}
-
-html {
-  scroll-padding-top:calc(env(safe-area-inset-top,0px) + 76px);
-  scroll-behavior:smooth;
-}
-
-body {
-  margin:0;
-  background:var(--bg);
-  color:var(--ink);
-  font:400 17px/1.65 var(--b);
-  overflow-x:hidden;
-}
-
-body::before {
-  content:"";
-  position:fixed;
-  inset:0 0 auto;
-  height:env(safe-area-inset-top,0px);
-  background:var(--bg);
-  z-index:30;
-}
-
-img,svg { max-width:100%; }
-a { color:inherit; }
-
-:focus-visible {
-  outline:3px solid var(--acc);
-  outline-offset:3px;
-}
-
-.wrap {
-  max-width:1160px;
-  margin:0 auto;
-  padding:0 22px;
-}
-
-h1,h2,h3 {
-  font-family:var(--d);
-  text-transform:uppercase;
-  line-height:1.05;
-  margin:0;
-}
-
-h2 {
-  font-weight:800;
-  font-size:clamp(2rem,6vw,3.4rem);
-  letter-spacing:-.01em;
-}
-
-h3 {
-  font-weight:700;
-  font-size:1.05rem;
-  letter-spacing:.06em;
-  line-height:1.3;
-}
-
-p {
-  margin:0 0 1em;
-  max-width:62ch;
-}
-
-.bar {
-  display:block;
-  width:56px;
-  height:10px;
-  background:var(--acc);
-  margin-bottom:22px;
-}
-
-.btn {
-  display:inline-block;
-  font:600 1rem/1 var(--d);
-  padding:18px 28px;
-  background:var(--acc);
-  color:#fff;
-  text-decoration:none;
-  border:2px solid var(--acc);
-  cursor:pointer;
-  transition:background .2s,color .2s;
-}
-
-.btn:hover {
-  background:transparent;
-  color:var(--acc);
-}
-
-.btn.ghost {
-  background:transparent;
-  color:inherit;
-  border-color:currentColor;
-}
-
-.btn.ghost:hover {
-  color:var(--acc);
-  border-color:var(--acc);
-}
-
-/* HEADER */
-
-header {
-  position:sticky;
-  top:env(safe-area-inset-top,0px);
-  z-index:20;
-  background:var(--bg);
-  border-bottom:1px solid var(--line);
-}
-
-header .wrap {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:14px;
-  min-height:72px;
-}
-
-.brand {
-  font:800 1.15rem/1 var(--d);
-  letter-spacing:.14em;
-  text-decoration:none;
-}
-
-nav {
-  display:flex;
-  align-items:center;
-  gap:26px;
-}
-
-nav a {
-  font:600 .9rem var(--d);
-  text-decoration:none;
-}
-
-nav a:not(.btn):hover {
-  color:var(--acc);
-}
-
-nav .btn {
-  padding:14px 20px;
-  font-size:.9rem;
-  color:#fff;
-}
-
-nav .btn:hover {
-  color:var(--acc);
-}
-
-@media(max-width:820px) {
-  nav a:not(.btn) {
-    display:none;
-  }
-}
-
-/* HERO */
-
-.hero {
-  background:var(--dark);
-  color:var(--on-dark);
-  position:relative;
-  overflow:hidden;
-}
-
-.hero::after {
-  content:"AH";
-  position:absolute;
-  right:-2%;
-  bottom:-14%;
-  font:800 clamp(14rem,38vw,30rem)/1 var(--d);
-  color:#fff;
-  opacity:.04;
-  pointer-events:none;
-}
-
-.hero .wrap {
-  padding-top:clamp(64px,12vw,140px);
-  padding-bottom:clamp(64px,12vw,130px);
-  position:relative;
-  z-index:1;
-}
-
-.hero h1 {
-  font-weight:800;
-  font-size:clamp(2.6rem,9.5vw,6.4rem);
-  letter-spacing:-.02em;
-  max-width:11ch;
-}
-
-.hero p {
-  font-size:1.15rem;
-  margin:26px 0 34px;
-  color:#d6d8d9;
-}
-
-.cta {
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px;
-}
-
-/* CLIENTS */
-
-.clients {
-  background:var(--soft);
-  padding:clamp(56px,9vw,100px) 0;
-}
-
-.clients .top {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:space-between;
-  align-items:end;
-  gap:22px;
-  margin-bottom:40px;
-}
-
-.clients p.lead {
-  color:var(--mute);
-  margin:14px 0 0;
-}
-
-.types {
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-  padding:0;
-  margin:0 0 30px;
-  list-style:none;
-}
-
-.types li {
-  border:1px solid var(--line);
-  padding:8px 16px;
-  font:600 .85rem var(--d);
-  border-radius:99px;
-}
-
-.logos {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:12px;
-  list-style:none;
-  margin:0;
-  padding:0;
-}
-
-@media(min-width:620px) {
-  .logos {
-    grid-template-columns:repeat(3,1fr);
-  }
-}
-
-@media(min-width:960px) {
-  .logos {
-    grid-template-columns:repeat(6,1fr);
-  }
-}
-
-.logos li {
-  background:var(--tile);
-  color:#1d1f21;
-  min-height:108px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:14px;
-  transition:transform .2s,box-shadow .2s;
-}
-
-.logos li:hover {
-  box-shadow:inset 0 -4px 0 var(--acc);
-}
-
-.w1 {
-  font:700 .95rem var(--d);
-  letter-spacing:.2em;
-  text-transform:uppercase;
-}
-
-.w2 {
-  font:italic 600 1.35rem Georgia,"Times New Roman",serif;
-}
-
-.w3 {
-  font:800 1.3rem var(--d);
-  letter-spacing:-.03em;
-}
-
-.w4 {
-  font:500 .85rem var(--d);
-  letter-spacing:.3em;
-  text-transform:uppercase;
-}
-
-.logos small {
-  display:block;
-  font:500 .62rem var(--b);
-  letter-spacing:.14em;
-  margin-top:5px;
-  opacity:.65;
-}
-
-.note {
-  margin-top:18px;
-  font-size:.85rem;
-  color:var(--mute);
-}
-
-/* SECTIONS */
-
-section {
-  padding:clamp(56px,9vw,100px) 0;
-}
-
-.svc {
-  display:grid;
-  gap:0;
-  margin-top:44px;
-  border-top:1px solid var(--line);
-}
-
-@media(min-width:760px) {
-  .svc {
-    grid-template-columns:1fr 1fr;
-  }
-
-  .svc article:nth-child(odd) {
-    border-right:1px solid var(--line);
-    padding-right:36px;
-  }
-
-  .svc article:nth-child(even) {
-    padding-left:36px;
-  }
-}
-
-.svc article {
-  padding:30px 0;
-  border-bottom:1px solid var(--line);
-}
-
-.svc p {
-  color:var(--mute);
-  margin:12px 0 0;
-}
-
-.impact {
-  background:var(--dark);
-  color:var(--on-dark);
-}
-
-.stats {
-  display:grid;
-  grid-template-columns:repeat(2,1fr);
-  gap:34px 20px;
-  margin-top:44px;
-}
-
-@media(min-width:860px) {
-  .stats {
-    grid-template-columns:repeat(4,1fr);
-  }
-}
-
-.stats b {
-  display:block;
-  font:800 clamp(2.6rem,7vw,4.4rem)/1 var(--d);
-  color:var(--acc);
-}
-
-.stats span {
-  display:block;
-  margin-top:10px;
-  font:600 .85rem var(--d);
-  letter-spacing:.08em;
-}
-
-.about {
-  display:grid;
-  gap:34px;
-}
-
-@media(min-width:860px) {
-  .about {
-    grid-template-columns:1fr 1fr;
-    gap:70px;
-  }
-}
-
-.about p {
-  color:var(--mute);
-}
-
-.join {
-  background:var(--soft);
-}
-
-.join .box {
-  display:grid;
-  gap:26px;
-  align-items:center;
-}
-
-@media(min-width:860px) {
-  .join .box {
-    grid-template-columns:1.4fr 1fr;
-  }
-}
-
-/* CONTACT FORM */
-
-.contact {
-  display:grid;
-  gap:44px;
-}
-
-@media(min-width:900px) {
-  .contact {
-    grid-template-columns:1fr 1.2fr;
-  }
-}
-
-form {
-  display:grid;
-  gap:16px;
-}
-
-.row {
-  display:grid;
-  gap:16px;
-}
-
-@media(min-width:560px) {
-  .row {
-    grid-template-columns:1fr 1fr;
-  }
-}
-
-label {
-  display:grid;
-  gap:6px;
-  font:600 .88rem var(--d);
-}
-
-input,select,textarea {
-  font:inherit;
-  font-size:1rem;
-  color:var(--ink);
-  background:var(--bg);
-  border:1px solid var(--ink);
-  padding:14px;
-  border-radius:0;
-  width:100%;
-}
-
-textarea {
-  min-height:120px;
-  resize:vertical;
-}
-
-.ok {
-  display:none;
-  padding:16px;
-  border-left:6px solid var(--acc);
-  background:var(--soft);
-}
-
-.contact address {
-  font-style:normal;
-  color:var(--mute);
-}
-
-.contact address a {
-  display:block;
-  font:600 1.1rem var(--d);
-  color:var(--ink);
-  text-decoration:none;
-  margin-top:8px;
-}
-
-/* FOOTER */
-
-footer {
-  background:var(--dark);
-  color:var(--on-dark);
-  padding:34px 0;
-  font-size:.9rem;
-}
-
-footer .wrap {
-  display:flex;
-  flex-wrap:wrap;
-  gap:14px 30px;
-  justify-content:space-between;
-}
-
-footer a {
-  margin-right:18px;
-}
-
-/* MOBILE BOOKING BUTTON */
-
-.fab {
-  position:fixed;
-  left:14px;
-  right:14px;
-  bottom:calc(14px + env(safe-area-inset-bottom,0px));
-  z-index:25;
-  text-align:center;
-  box-shadow:0 8px 24px rgba(0,0,0,.3);
-}
-
-@media(min-width:821px) {
-  .fab {
-    display:none;
-  }
-}
-
-@media(prefers-reduced-motion:reduce) {
-  * {
-    transition:none!important;
-    scroll-behavior:auto!important;
-  }
-}
+:root{--bg:#fff;--soft:#dedede;--ink:#17191b;--mute:#4b5156;--dark:#2b2f32;--on-dark:#f4f4f4;--acc:#ff4310;--line:rgba(23,25,27,.14);
+--d:Montserrat,"Helvetica Neue",Arial,sans-serif;--b:Raleway,"Helvetica Neue",Arial,sans-serif;--s:"Mrs Saint Delafield","Snell Roundhand",cursive}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17191b;--soft:#222527;--ink:#f1f1f1;--mute:#b4b9bd;--dark:#0f1112;--line:rgba(255,255,255,.16)}}
+:root[data-theme="dark"]{--bg:#17191b;--soft:#222527;--ink:#f1f1f1;--mute:#b4b9bd;--dark:#0f1112;--line:rgba(255,255,255,.16)}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-padding-top:calc(env(safe-area-inset-top,0px) + 80px);scroll-behavior:smooth;height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--b);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--dark);z-index:30}
+img{max-width:100%;display:block}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:var(--d);text-transform:uppercase;line-height:1.05;margin:0}
+h2{font-weight:800;font-size:clamp(2rem,6vw,3.4rem);letter-spacing:-.01em}
+h3{font-weight:700;font-size:1.05rem;letter-spacing:.06em;line-height:1.3}
+p{margin:0 0 1em;max-width:62ch}
+.bar{display:block;width:56px;height:10px;background:var(--acc);margin-bottom:22px}
+.btn{display:inline-block;font:600 1rem/1 var(--d);padding:18px 28px;background:var(--acc);color:#fff;text-decoration:none;border:2px solid var(--acc);cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--acc)}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.btn.ghost:hover{color:var(--acc);border-color:var(--acc)}
+
+/* Header + logo */
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--dark);color:var(--on-dark)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:76px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.mono{font:400 3.1rem/1 var(--s);position:relative;padding:0 6px 0 2px}
+.mono::after{content:"";position:absolute;left:0;right:4px;bottom:6px;height:2px;background:var(--acc);transform:rotate(-8deg)}
+.lw{display:grid;gap:5px}
+.lw b{font:500 1.05rem/1 var(--d);letter-spacing:.2em}
+.lw i{font:300 .5rem/1 var(--d);letter-spacing:.42em;font-style:normal;opacity:.8}
+nav{display:flex;align-items:center;gap:26px}
+nav a{font:600 .9rem var(--d);text-decoration:none}
+nav a:not(.btn):hover{color:var(--acc)}
+nav .btn{padding:14px 20px;font-size:.9rem;color:#fff}
+nav .btn:hover{color:var(--acc)}
+@media(max-width:900px){nav a:not(.btn){display:none}}
+@media(max-width:380px){.lw i{display:none}}
+
+/* Hero */
+.hero{color:#fff;background:linear-gradient(rgba(20,22,24,.62),rgba(20,22,24,.78)),url("https://plus.unsplash.com/premium_photo-1681841594224-ad729a249113?auto=format&fit=crop&w=1800&q=70") center/cover var(--dark)}
+.hero .wrap{padding-top:clamp(80px,14vw,170px);padding-bottom:clamp(80px,14vw,160px)}
+.hero h1{font-weight:800;font-size:clamp(2.6rem,9.5vw,6.4rem);letter-spacing:-.02em;max-width:11ch}
+.hero p{font-size:1.15rem;margin:26px 0 34px;color:#e6e7e8}
+.cta{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Clients */
+.clients{background:var(--soft);padding:clamp(56px,9vw,100px) 0}
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:22px;margin-bottom:34px}
+.lead{color:var(--mute);margin:14px 0 0}
+.types{display:flex;flex-wrap:wrap;gap:10px;padding:0;margin:0 0 30px;list-style:none}
+.types li{border:1px solid var(--line);padding:8px 16px;font:600 .85rem var(--d);border-radius:99px}
+.logos{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;list-style:none;margin:0;padding:0}
+@media(min-width:620px){.logos{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:960px){.logos{grid-template-columns:repeat(4,1fr)}}
+.logos a{background:#fff;height:130px;display:flex;align-items:center;justify-content:center;padding:20px;transition:box-shadow .2s}
+.logos a:hover,.logos a:focus-visible{box-shadow:inset 0 -5px 0 var(--acc)}
+.logos img{max-height:100%;max-width:85%;width:auto;height:auto;object-fit:contain}
+.logos a.ondark{background:var(--dark)}
+
+/* Sections */
+section{padding:clamp(56px,9vw,100px) 0}
+.svc{display:grid;margin-top:44px;border-top:1px solid var(--line)}
+@media(min-width:760px){.svc{grid-template-columns:1fr 1fr}.svc article:nth-child(odd){border-right:1px solid var(--line);padding-right:36px}.svc article:nth-child(even){padding-left:36px}}
+.svc article{padding:30px 0;border-bottom:1px solid var(--line)}
+.svc p{color:var(--mute);margin:12px 0 0}
+
+/* Gallery */
+.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:36px}
+@media(min-width:760px){.gal{grid-template-columns:repeat(3,1fr);gap:14px}}
+.gal button{padding:0;border:0;background:var(--soft);cursor:zoom-in;aspect-ratio:4/5;overflow:hidden}
+.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal button:hover img{transform:scale(1.05)}
+dialog{border:0;padding:0;background:transparent;max-width:min(94vw,1100px);max-height:92vh;overflow:visible}
+dialog::backdrop{background:rgba(0,0,0,.85)}
+dialog img{max-height:86vh;margin:0 auto;object-fit:contain}
+dialog button{position:absolute;top:-46px;right:0;background:none;border:0;color:#fff;font:600 1rem var(--d);cursor:pointer;padding:10px}
+
+/* Impact */
+.impact{background:var(--dark);color:var(--on-dark)}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:34px 20px;margin-top:44px}
+@media(min-width:860px){.stats{grid-template-columns:repeat(4,1fr)}}
+.stats b{display:block;font:800 clamp(2.6rem,7vw,4.4rem)/1 var(--d);color:var(--acc)}
+.stats span{display:block;margin-top:10px;font:600 .85rem var(--d);letter-spacing:.08em}
+
+/* Testimonials */
+.quotes{display:grid;gap:18px;margin-top:40px}
+@media(min-width:860px){.quotes{grid-template-columns:repeat(3,1fr)}}
+.quotes figure{margin:0;padding:30px;background:var(--soft);border-top:6px solid var(--acc)}
+.quotes blockquote{margin:0 0 20px;font-size:1.05rem;line-height:1.6}
+.quotes figcaption{font:600 .85rem var(--d);letter-spacing:.04em}
+.quotes figcaption span{display:block;font:400 .85rem var(--b);color:var(--mute);margin-top:4px}
+
+/* About with background image */
+.about{color:#fff;background:linear-gradient(rgba(20,22,24,.7),rgba(20,22,24,.82)),url("https://images.unsplash.com/photo-1723832844292-6593a6a31756?auto=format&fit=crop&w=1800&q=70") center/cover var(--dark)}
+.about .grid{display:grid;gap:34px}
+@media(min-width:860px){.about .grid{grid-template-columns:1fr 1fr;gap:70px}}
+.about p{color:#e6e7e8}
+
+.join{background:var(--soft)}
+.join .box{display:grid;gap:26px;align-items:center}
+@media(min-width:860px){.join .box{grid-template-columns:1.4fr 1fr}}
+
+/* Form */
+.contact{display:grid;gap:44px}
+@media(min-width:900px){.contact{grid-template-columns:1fr 1.2fr}}
+form{display:grid;gap:16px}
+.row{display:grid;gap:16px}
+@media(min-width:560px){.row{grid-template-columns:1fr 1fr}}
+label,fieldset legend{display:grid;gap:6px;font:600 .88rem var(--d)}
+input,textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--bg);border:1px solid var(--ink);padding:0 14px;border-radius:0;width:100%;height:54px;min-height:54px;-webkit-appearance:none;appearance:none;line-height:52px;margin:0}
+input[type=date]{display:block;text-align:left;min-width:0;line-height:normal;padding-top:0;padding-bottom:0}
+input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0}
+input[type=date]::-webkit-calendar-picker-indicator{cursor:pointer}
+textarea{height:auto;min-height:120px;padding:14px;line-height:1.5;resize:vertical}
+fieldset{border:0;padding:0;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.chips label{display:block;font:500 .9rem var(--d);position:relative}
+.chips input{position:absolute;opacity:0;width:1px;height:1px;min-height:0}
+.chips span{display:block;padding:13px 18px;border:1px solid var(--ink);cursor:pointer;transition:background .15s}
+.chips input:checked+span{background:var(--acc);border-color:var(--acc);color:#fff}
+.chips input:focus-visible+span{outline:3px solid var(--acc);outline-offset:3px}
+.ok{display:none;padding:16px;border-left:6px solid var(--acc);background:var(--soft)}
+.contact address{font-style:normal;color:var(--mute)}
+.contact address a{display:block;font:600 1.1rem var(--d);color:var(--ink);text-decoration:none;margin-top:8px}
+
+/* Footer + socials */
+footer{background:var(--dark);color:var(--on-dark);padding:44px 0 calc(44px + 84px + env(safe-area-inset-bottom,0px))}
+@media(min-width:821px){footer{padding-bottom:44px}}
+footer .wrap{display:flex;flex-wrap:wrap;gap:22px 30px;justify-content:space-between;align-items:center}
+.social{display:flex;gap:12px;list-style:none;margin:0;padding:0}
+.social a{display:grid;place-items:center;width:46px;height:46px;border:1px solid rgba(255,255,255,.4);color:#fff;transition:background .2s,border-color .2s}
+.social a:hover{background:var(--acc);border-color:var(--acc)}
+.social svg{width:22px;height:22px;fill:currentColor}
+.fab{position:fixed;left:14px;right:14px;bottom:calc(14px + env(safe-area-inset-bottom,0px));z-index:25;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.3);transition:opacity .25s,transform .25s}
+.fab.hide{opacity:0;pointer-events:none;transform:translateY(20px)}
+@media(min-width:821px){.fab{display:none}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="wrap">
-    <a class="brand" href="#top">ARCE</a>
-    <nav aria-label="Main">
-      <a href="#clients">Clients</a>
-      <a href="#services">Services</a>
-      <a href="#about">About</a>
-      <a href="#join">Join our team</a>
-      <a class="btn" href="#contact">Book Talent</a>
-    </nav>
-  </div>
+ <div class="wrap">
+  <a class="logo" href="#top" aria-label="ARCE Hospitality, home">
+   <span class="mono" aria-hidden="true">AH</span>
+   <span class="lw"><b>ARCE HOSPITALITY</b><i>EMPOWERING EXCELLENCE</i></span>
+  </a>
+  <nav aria-label="Main">
+   <a href="#clients">Clients</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#join">Join our team</a>
+   <a class="btn" href="#contact">Book Talent</a>
+  </nav>
+ </div>
 </header>
 
 <main id="top">
-
-  <!-- HERO -->
-  <div class="hero">
-    <div class="wrap">
-      <h1>Empowering excellence in hospitality</h1>
-      <p>Trained chefs, servers, bartenders and event managers for South Florida’s hotels, festivals, corporate events and private parties.</p>
-      <div class="cta">
-        <a class="btn" href="#contact">Book Talent</a>
-        <a class="btn ghost" href="#clients">See who we work with</a>
-      </div>
-    </div>
+ <div class="hero">
+  <div class="wrap">
+   <h1>Empowering excellence in hospitality</h1>
+   <p>Trained chefs, servers, bartenders and event managers for South Florida’s hotels, festivals, corporate events and private parties.</p>
+   <div class="cta"><a class="btn" href="#contact">Book Talent</a><a class="btn ghost" href="#clients">See who we work with</a></div>
   </div>
+ </div>
 
-  <!-- CLIENTS -->
-  <section class="clients" id="clients" aria-labelledby="ch">
-    <div class="wrap">
-      <div class="top">
-        <div>
-          <span class="bar"></span>
-          <h2 id="ch">Our clients</h2>
-          <p class="lead">Luxury hotels, signature festivals, residences and foundations rely on ARCE to staff their most important nights.</p>
-        </div>
-        <a class="btn" href="#contact">Staff your event</a>
-      </div>
-
-      <ul class="types">
-        <li>Luxury hotels</li>
-        <li>Event planners</li>
-        <li>Corporate entities</li>
-        <li>Private clients</li>
-      </ul>
-
-      <ul class="logos">
-        <li><span class="w1">JW Marriott</span></li>
-        <li><span class="w4">Yann Nury</span></li>
-        <li><span class="w2">Penguin<small>HOTEL</small></span></li>
-        <li><span class="w3">FAM</span></li>
-        <li><span class="w4">Mayfair</span></li>
-        <li><span class="w1">Beachwalk<small>ELITE HOTELS &amp; RESORTS</small></span></li>
-        <li><span class="w2">Timothy Oulton</span></li>
-        <li><span class="w3">SOBEWFF<small>SOUTH BEACH WINE &amp; FOOD FESTIVAL</small></span></li>
-        <li><span class="w2">Miami Beach Women’s Club</span></li>
-        <li><span class="w4">Fendi Chateau<small>RESIDENCES</small></span></li>
-        <li><span class="w3">Pinch</span></li>
-        <li><span class="w2">Paloma Foundation</span></li>
-        <li><span class="w3">Pura Vida</span></li>
-        <li><span class="w4">Toscana Divino</span></li>
-        <li><span class="w2">The Margoa Family</span></li>
-        <li><span class="w3">South Beach Jazz Festival</span></li>
-        <li><span class="w1">University of Miami</span></li>
-      </ul>
-
-      <p class="note">Wordmarks shown as text placeholders. Swap in each client’s official logo file before launch.</p>
+ <!-- CLIENTS: logo files live in /images/logo-client/. Update any website URL below if needed. -->
+ <section class="clients" id="clients" aria-labelledby="ch">
+  <div class="wrap">
+   <div class="top">
+    <div>
+     <span class="bar"></span>
+     <h2 id="ch">Our clients</h2>
+     <p class="lead">Luxury hotels, signature festivals, residences and restaurants rely on ARCE to staff their most important nights.</p>
     </div>
-  </section>
+    <a class="btn" href="#contact">Staff your event</a>
+   </div>
+   <ul class="types"><li>Luxury hotels</li><li>Event planners</li><li>Corporate entities</li><li>Private clients</li></ul>
+   <ul class="logos">
+    <li><a href="https://www.marriott.com/brands/jw-marriott.mi" target="_blank" rel="noopener" aria-label="JW Marriott"><img src="images/logo-client/logo-jw-marriott.png" alt="JW Marriott" loading="lazy"></a></li>
+    <li><a href="https://www.sobewff.org" target="_blank" rel="noopener" aria-label="South Beach Wine &amp; Food Festival"><img src="images/logo-client/logo-sobewff.png" alt="South Beach Wine &amp; Food Festival" loading="lazy"></a></li>
+    <li><a href="https://www.fendichateauresidences.com" target="_blank" rel="noopener" aria-label="Fendi Chateau Residences"><img src="images/logo-client/logo-fendi.png" alt="Fendi Chateau Residences" loading="lazy"></a></li>
+    <li><a href="https://www.miami.edu" target="_blank" rel="noopener" aria-label="University of Miami"><img src="images/logo-client/logo-u-miami.webp" alt="University of Miami" loading="lazy"></a></li>
+    <li><a href="https://www.penguinhotelmiami.com" target="_blank" rel="noopener" aria-label="Penguin Hotel"><img src="images/logo-client/logo-penguine.png" alt="Penguin Hotel" loading="lazy"></a></li>
+    <li><a href="https://www.timothyoulton.com" target="_blank" rel="noopener" aria-label="Timothy Oulton"><img src="images/logo-client/logo-timothy.png" alt="Timothy Oulton" loading="lazy"></a></li>
+    <li><a href="https://www.southbeachjazzfestival.com" target="_blank" rel="noopener" aria-label="South Beach Jazz Festival"><img src="images/logo-client/logo-sobe-jazz.png" alt="South Beach Jazz Festival" loading="lazy"></a></li>
+    <li><a href="https://www.pinchkitchenandbar.com" target="_blank" rel="noopener" aria-label="Pinch Kitchen + Bar"><img src="images/logo-client/logo-pinch.jpeg" alt="Pinch Kitchen + Bar" loading="lazy"></a></li>
+    <li><a href="https://www.puravidamiami.com" target="_blank" rel="noopener" aria-label="Pura Vida Miami"><img src="images/logo-client/logo-pura-vida.webp" alt="Pura Vida Miami" loading="lazy"></a></li>
+    <li><a href="https://www.palomamiami.com" target="_blank" rel="noopener" aria-label="Paloma"><img src="images/logo-client/logo-paloma.webp" alt="Paloma" loading="lazy"></a></li>
+    <!-- Yann Nury logo appears light-colored, so its tile is dark. Remove class="ondark" if it displays poorly. -->
+    <li><a class="ondark" href="https://www.yannnury.com" target="_blank" rel="noopener" aria-label="Yann Nury"><img src="images/logo-client/logo-yann.png" alt="Yann Nury" loading="lazy"></a></li>
+   </ul>
+  </div>
+ </section>
 
-  <!-- SERVICES -->
-  <section id="services" aria-labelledby="sh">
-    <div class="wrap">
-      <span class="bar"></span>
-      <h2 id="sh">Our services</h2>
+ <section id="services" aria-labelledby="sh">
+  <div class="wrap">
+   <span class="bar"></span><h2 id="sh">Our services</h2>
+   <div class="svc">
+    <article><h3>Staffing solutions</h3><p>Chefs, servers, bartenders and event managers, placed to match your venue and your guests.</p></article>
+    <article><h3>Private party staffing</h3><p>Service teams for small dinners and large-scale private gatherings.</p></article>
+    <article><h3>Corporate hospitality</h3><p>Staff for corporate meetings, conferences and executive events.</p></article>
+    <article><h3>Custom hospitality</h3><p>A staffing plan built around your event, your timeline and your standards.</p></article>
+   </div>
+  </div>
+ </section>
 
-      <div class="svc">
-        <article>
-          <h3>Staffing solutions</h3>
-          <p>Chefs, servers, bartenders and event managers, placed to match your venue and your guests.</p>
-        </article>
+ <!-- GALLERY: two images (kitchen plate, hero) are Unsplash+ and need a license. -->
+ <section id="gallery" aria-labelledby="gh" style="padding-top:0">
+  <div class="wrap">
+   <span class="bar"></span><h2 id="gh">Service in action</h2>
+   <div class="gal">
+    <button type="button" data-src="https://images.unsplash.com/photo-1565608087341-404b25492fee?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1565608087341-404b25492fee?auto=format&fit=crop&w=700&q=70" alt="Chef in an apron holding a pot in a professional kitchen" loading="lazy"></button>
+    <button type="button" data-src="https://plus.unsplash.com/premium_photo-1687697859878-17e9ef6c75e6?auto=format&fit=crop&w=1400&q=75"><img src="https://plus.unsplash.com/premium_photo-1687697859878-17e9ef6c75e6?auto=format&fit=crop&w=700&q=70" alt="Chef presenting a plated dish in a restaurant kitchen" loading="lazy"></button>
+    <button type="button" data-src="https://images.unsplash.com/photo-1572715376701-98568319fd0b?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1572715376701-98568319fd0b?auto=format&fit=crop&w=700&q=70" alt="Chef standing behind a finished plate of vegetables" loading="lazy"></button>
+    <button type="button" data-src="https://images.unsplash.com/photo-1786209676820-f408e4fba31e?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1786209676820-f408e4fba31e?auto=format&fit=crop&w=700&q=70" alt="Server in a black apron pouring water at a long dining table" loading="lazy"></button>
+    <button type="button" data-src="https://images.unsplash.com/photo-1611266353853-d370b67187ed?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1611266353853-d370b67187ed?auto=format&fit=crop&w=700&q=70" alt="Bartender pouring a drink over ice into a clear glass" loading="lazy"></button>
+    <button type="button" data-src="https://images.unsplash.com/photo-1569924995007-e591d333f882?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1569924995007-e591d333f882?auto=format&fit=crop&w=700&q=70" alt="Row of cocktails with ice on a bar counter" loading="lazy"></button>
+   </div>
+  </div>
+ </section>
+ <dialog id="lb" aria-label="Photo viewer"><button type="button" id="lbx">Close</button><img alt="" id="lbi"></dialog>
 
-        <article>
-          <h3>Private party staffing</h3>
-          <p>Service teams for small dinners and large-scale private gatherings.</p>
-        </article>
+ <section class="impact" aria-labelledby="ih">
+  <div class="wrap">
+   <span class="bar"></span><h2 id="ih">Our impact</h2>
+   <div class="stats">
+    <div><b>98%</b><span>Client retention</span></div>
+    <div><b>200+</b><span>Professionals placed</span></div>
+    <div><b>1000+</b><span>Events staffed</span></div>
+    <div><b>24/7</b><span>Availability</span></div>
+   </div>
+  </div>
+ </section>
 
-        <article>
-          <h3>Corporate hospitality</h3>
-          <p>Staff for corporate meetings, conferences and executive events.</p>
-        </article>
+ <!-- TESTIMONIALS: SAMPLE COPY. Replace with real, approved quotes before launch. -->
+ <section aria-labelledby="th">
+  <div class="wrap">
+   <span class="bar"></span><h2 id="th">What clients say</h2>
+   <div class="quotes">
+    <figure><blockquote>“ARCE staffed our festival weekend with polished, prepared servers and bartenders. Guests noticed the difference.”</blockquote><figcaption>Events Team<span>South Beach Wine &amp; Food Festival</span></figcaption></figure>
+    <figure><blockquote>“When we needed extra hands on short notice, they delivered a professional team that blended in with ours.”</blockquote><figcaption>Food &amp; Beverage Leadership<span>JW Marriott</span></figcaption></figure>
+    <figure><blockquote>“Reliable, well trained and easy to work with. We rebook ARCE for every private event.”</blockquote><figcaption>Hospitality Management<span>Pura Vida Miami</span></figcaption></figure>
+   </div>
+  </div>
+ </section>
 
-        <article>
-          <h3>Custom hospitality</h3>
-          <p>A staffing plan built around your event, your timeline and your standards.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+ <section class="about" id="about" aria-labelledby="ah">
+  <div class="wrap grid">
+   <div><span class="bar"></span><h2 id="ah">Who we are</h2></div>
+   <div>
+    <p>ARCE Hospitality is a Miami staffing agency that provides highly trained hospitality professionals, so every guest experience feels seamless and exceptional.</p>
+    <p>We believe in creating connections through exceptional service. Our team curates experiences guests remember, and we aim to be South Florida’s leading hospitality staffing provider by staying committed to quality and adapting to a changing market.</p>
+   </div>
+  </div>
+ </section>
 
-  <!-- IMPACT -->
-  <section class="impact" aria-labelledby="ih">
-    <div class="wrap">
-      <span class="bar"></span>
-      <h2 id="ih">Our impact</h2>
+ <section class="join" id="join" aria-labelledby="jh">
+  <div class="wrap box">
+   <div><span class="bar"></span><h2 id="jh">Work with us</h2><p style="margin-top:18px">Chefs, servers, bartenders and event managers: join the ARCE roster and get placed at South Florida’s best events.</p></div>
+   <div><a class="btn" href="https://globalmix.network/arcehospitality/apply">Apply to join</a></div>
+  </div>
+ </section>
 
-      <div class="stats">
-        <div><b>98%</b><span>Client retention</span></div>
-        <div><b>200+</b><span>Professionals placed</span></div>
-        <div><b>1000+</b><span>Events staffed</span></div>
-        <div><b>24/7</b><span>Availability</span></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about" aria-labelledby="ah">
-    <div class="wrap about">
-      <div>
-        <span class="bar"></span>
-        <h2 id="ah">Who we are</h2>
-      </div>
-
-      <div>
-        <p>ARCE Hospitality is a Miami staffing agency that provides highly trained hospitality professionals, so every guest experience feels seamless and exceptional.</p>
-
-        <p>We believe in creating connections through exceptional service. Our team curates experiences guests remember, and we aim to be South Florida’s leading hospitality staffing provider by staying committed to quality and adapting to a changing market.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- JOIN OUR TEAM -->
-  <section class="join" id="join" aria-labelledby="jh">
-    <div class="wrap box">
-      <div>
-        <span class="bar"></span>
-        <h2 id="jh">Work with us</h2>
-        <p style="margin-top:18px">Chefs, servers, bartenders and event managers: join the ARCE roster and get placed at South Florida’s best events.</p>
-      </div>
-
-      <div>
-        <a class="btn" href="mailto:info@arcehospitality.com?subject=Join%20the%20ARCE%20team">Apply to join</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" aria-labelledby="coh">
-    <div class="wrap contact">
-      <div>
-        <span class="bar"></span>
-        <h2 id="coh">Book talent</h2>
-        <p style="margin-top:18px;color:var(--mute)">Tell us about your event and we’ll reply with a staffing plan.</p>
-
-        <address>
-          100 Southeast 2nd Street, Miami, FL
-          <a href="mailto:info@arcehospitality.com">info@arcehospitality.com</a>
-          <a href="tel:+17866904127">(786) 690-4127</a>
-        </address>
-      </div>
-
-      <form id="f">
-        <div class="row">
-          <label>
-            Name
-            <input name="name" required autocomplete="name">
-          </label>
-
-          <label>
-            Email
-            <input name="email" type="email" required autocomplete="email">
-          </label>
-        </div>
-
-        <div class="row">
-          <label>
-            Event date
-            <input name="date" type="date">
-          </label>
-
-          <label>
-            Guests
-            <input name="guests" inputmode="numeric" placeholder="Approximate headcount">
-          </label>
-        </div>
-
-        <label>
-          Roles needed
-          <select name="roles">
-            <option>Servers</option>
-            <option>Bartenders</option>
-            <option>Chefs</option>
-            <option>Event managers</option>
-            <option>A mix of roles</option>
-          </select>
-        </label>
-
-        <label>
-          Event details
-          <textarea name="msg" placeholder="Venue, timing, dress code, anything else"></textarea>
-        </label>
-
-        <button class="btn" type="submit">Send request</button>
-
-        <div class="ok" id="ok" role="status">
-          Your email app should open with this request ready to send. You can also write to info@arcehospitality.com.
-        </div>
-      </form>
-    </div>
-  </section>
-
+ <section id="contact" aria-labelledby="coh">
+  <div class="wrap contact">
+   <div>
+    <span class="bar"></span><h2 id="coh">Book talent</h2>
+    <p style="margin-top:18px;color:var(--mute)">Tell us about your event and we’ll reply with a staffing plan.</p>
+    <address>100 Southeast 2nd Street, Miami, FL
+     <a href="mailto:Enrique@Arcehospitality.com">Enrique@Arcehospitality.com</a>
+     <a href="tel:+17866904127">(786) 690-4127</a>
+     <a href="https://wa.me/17866904127">WhatsApp us</a>
+    </address>
+   </div>
+   <form id="f">
+    <div class="row"><label>Name<input name="name" required autocomplete="name"></label><label>Email<input name="email" type="email" required autocomplete="email"></label></div>
+    <div class="row"><label>Event date<input name="date" type="date"></label><label>Guests<input name="guests" inputmode="numeric" placeholder="Approximate headcount"></label></div>
+    <fieldset>
+     <legend>Roles needed (select all that apply)</legend>
+     <div class="chips">
+      <label><input type="checkbox" name="roles" value="Servers"><span>Servers</span></label>
+      <label><input type="checkbox" name="roles" value="Bartenders"><span>Bartenders</span></label>
+      <label><input type="checkbox" name="roles" value="Chefs"><span>Chefs</span></label>
+      <label><input type="checkbox" name="roles" value="Event managers"><span>Event managers</span></label>
+     </div>
+    </fieldset>
+    <label>Event details<textarea name="msg" placeholder="Venue, timing, dress code, anything else"></textarea></label>
+    <button class="btn" type="submit">Send request</button>
+    <div class="ok" id="ok" role="status">Your email app should open with this request ready to send. You can also write to Enrique@Arcehospitality.com.</div>
+   </form>
+  </div>
+ </section>
 </main>
 
-<!-- FOOTER -->
 <footer>
-  <div class="wrap">
-    <div>© 2026 ARCE Hospitality. All rights reserved.</div>
-
-    <div>
-      <a href="https://www.linkedin.com/company/arce-hospitality-allies/">LinkedIn</a>
-      <a href="https://instagram.com/aha_hospitality_">Instagram</a>
-    </div>
-  </div>
+ <div class="wrap">
+  <div>© 2026 ARCE Hospitality. All rights reserved.</div>
+  <ul class="social" aria-label="Social links">
+   <li><a href="https://www.instagram.com/arcehospitality" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9zm0 2a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zm5.2-3.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a></li>
+   <li><a href="https://www.linkedin.com/company/arce-hospitality-allies/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.5h4V21H3V9.5zm6.5 0h3.8v1.6h.1c.5-1 1.8-2 3.8-2 4 0 4.8 2.6 4.8 6V21h-4v-5.1c0-1.2 0-2.8-1.7-2.8s-2 1.3-2 2.7V21h-4V9.5z"/></svg></a></li>
+   <li><a href="https://wa.me/17866904127" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></a></li>
+   <li><a href="mailto:Enrique@Arcehospitality.com" aria-label="Email"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 5h18a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1zm1.500 2L12 12.500 19.500 7h-15zM4 9.300V17h16V9.300l-8 5.800-8-5.800z"/></svg></a></li>
+  </ul>
+ </div>
 </footer>
+<a class="btn fab" id="fab" href="#contact">Book Talent</a>
 
-<!-- MOBILE BOOKING BUTTON -->
-<a class="btn fab" href="#contact">Book Talent</a>
-
-<!-- JAVASCRIPT -->
 <script>
-document.getElementById('f').addEventListener('submit',function(e) {
+// Request form: opens the visitor's email app with the details filled in
+document.getElementById('f').addEventListener('submit',function(e){
   e.preventDefault();
-
-  var d = new FormData(e.target);
-  var g = function(k) {
-    return d.get(k) || 'Not specified';
-  };
-
-  var body =
-    'Name: ' + g('name') +
-    '\nEmail: ' + g('email') +
-    '\nEvent date: ' + g('date') +
-    '\nGuests: ' + g('guests') +
-    '\nRoles: ' + g('roles') +
-    '\n\n' + g('msg');
-
-  document.getElementById('ok').style.display = 'block';
-
-  window.location.href =
-    'mailto:info@arcehospitality.com?subject=' +
-    encodeURIComponent('Talent request from ' + g('name')) +
-    '&body=' + encodeURIComponent(body);
+  var d=new FormData(e.target),g=function(k){return d.get(k)||'Not specified'};
+  var roles=d.getAll('roles').join(', ')||'Not specified';
+  var body='Name: '+g('name')+'\nEmail: '+g('email')+'\nEvent date: '+g('date')+'\nGuests: '+g('guests')+'\nRoles: '+roles+'\n\n'+g('msg');
+  document.getElementById('ok').style.display='block';
+  window.location.href='mailto:Enrique@Arcehospitality.com?subject='+encodeURIComponent('Talent request from '+g('name'))+'&body='+encodeURIComponent(body);
 });
-</script>
 
+// Gallery lightbox
+var lb=document.getElementById('lb'),lbi=document.getElementById('lbi');
+document.querySelectorAll('.gal button').forEach(function(b){
+  b.addEventListener('click',function(){lbi.src=b.dataset.src;lbi.alt=b.querySelector('img').alt;lb.showModal();});
+});
+document.getElementById('lbx').addEventListener('click',function(){lb.close();});
+lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
+
+// Hide the floating Book Talent button when the form or footer is on screen
+var fab=document.getElementById('fab');
+if('IntersectionObserver' in window){
+  var seen={};
+  var io=new IntersectionObserver(function(es){
+    es.forEach(function(x){seen[x.target.id||'footer']=x.isIntersecting;});
+    fab.classList.toggle('hide',!!(seen.contact||seen.footer));
+  });
+  io.observe(document.getElementById('contact'));
+  io.observe(document.querySelector('footer'));
+}
+</script>
 </body>
 </html>
