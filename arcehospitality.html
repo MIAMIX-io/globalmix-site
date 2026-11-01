@@ -26,11 +26,11 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;700;800&family=Raleway:wght@400;500;600&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;700;800&family=Raleway:wght@400;500;600&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
 
 <style>
 :root{--bg:#fff;--soft:#dedede;--ink:#17191b;--mute:#4b5156;--dark:#2b2f32;--on-dark:#f4f4f4;--acc:#ff4310;--line:rgba(23,25,27,.14);
---d:Montserrat,"Helvetica Neue",Arial,sans-serif;--b:Raleway,"Helvetica Neue",Arial,sans-serif;--s:"Mrs Saint Delafield","Snell Roundhand",cursive}
+--d:Montserrat,"Helvetica Neue",Arial,sans-serif;--b:Raleway,"Helvetica Neue",Arial,sans-serif;--s:"Dancing Script","Snell Roundhand",cursive}
 @media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17191b;--soft:#222527;--ink:#f1f1f1;--mute:#b4b9bd;--dark:#0f1112;--line:rgba(255,255,255,.16)}}
 :root[data-theme="dark"]{--bg:#17191b;--soft:#222527;--ink:#f1f1f1;--mute:#b4b9bd;--dark:#0f1112;--line:rgba(255,255,255,.16)}
 *,*::before,*::after{box-sizing:border-box}
@@ -55,18 +55,15 @@ p{margin:0 0 1em;max-width:62ch}
 header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--dark);color:var(--on-dark)}
 header .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:76px}
 .logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
-.mono{font:400 3.1rem/1 var(--s);position:relative;padding:0 6px 0 2px}
-.mono::after{content:"";position:absolute;left:0;right:4px;bottom:6px;height:2px;background:var(--acc);transform:rotate(-8deg)}
-.lw{display:grid;gap:5px}
-.lw b{font:500 1.05rem/1 var(--d);letter-spacing:.2em}
-.lw i{font:300 .5rem/1 var(--d);letter-spacing:.42em;font-style:normal;opacity:.8}
+.mono{font:600 2.7rem/1 var(--s);padding:0 2px 4px 0}
+.lw b{font:200 1.1rem/1 var(--d);letter-spacing:.28em;white-space:nowrap;-webkit-text-stroke:.2px currentColor}
 nav{display:flex;align-items:center;gap:26px}
 nav a{font:600 .9rem var(--d);text-decoration:none}
 nav a:not(.btn):hover{color:var(--acc)}
 nav .btn{padding:14px 20px;font-size:.9rem;color:#fff}
 nav .btn:hover{color:var(--acc)}
 @media(max-width:900px){nav a:not(.btn){display:none}}
-@media(max-width:380px){.lw i{display:none}}
+@media(max-width:380px){.lw b{font-size:.9rem;letter-spacing:.18em}.mono{font-size:2.3rem}}
 
 /* Hero */
 .hero{color:#fff;background:linear-gradient(rgba(20,22,24,.62),rgba(20,22,24,.78)),url("https://plus.unsplash.com/premium_photo-1681841594224-ad729a249113?auto=format&fit=crop&w=1800&q=70") center/cover var(--dark)}
@@ -96,12 +93,17 @@ section{padding:clamp(56px,9vw,100px) 0}
 .svc article{padding:30px 0;border-bottom:1px solid var(--line)}
 .svc p{color:var(--mute);margin:12px 0 0}
 
-/* Gallery */
-.gal{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:36px}
-@media(min-width:760px){.gal{grid-template-columns:repeat(3,1fr);gap:14px}}
-.gal button{padding:0;border:0;background:var(--soft);cursor:zoom-in;aspect-ratio:4/5;overflow:hidden}
-.gal img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
-.gal button:hover img{transform:scale(1.05)}
+/* Gallery slideshow */
+.show{position:relative;margin-top:36px}
+.gal{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.gal::-webkit-scrollbar{display:none}
+.gal button{flex:0 0 100%;scroll-snap-align:start;aspect-ratio:4/3;padding:0;border:0;background:var(--soft);cursor:zoom-in;overflow:hidden}
+@media(min-width:760px){.gal button{flex-basis:calc((100% - 14px)/2);aspect-ratio:3/2}}
+@media(min-width:1040px){.gal button{flex-basis:calc((100% - 28px)/3);aspect-ratio:4/3}}
+.gal img{width:100%;height:100%;object-fit:cover}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border:0;background:var(--dark);color:#fff;font:600 1.3rem/1 var(--d);cursor:pointer;z-index:2;opacity:.92}
+.arrow:hover{background:var(--acc)}
+.arrow.prev{left:0}.arrow.next{right:0}
 dialog{border:0;padding:0;background:transparent;max-width:min(94vw,1100px);max-height:92vh;overflow:visible}
 dialog::backdrop{background:rgba(0,0,0,.85)}
 dialog img{max-height:86vh;margin:0 auto;object-fit:contain}
@@ -175,7 +177,7 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:22px 30px;justify-content:space-bet
  <div class="wrap">
   <a class="logo" href="#top" aria-label="ARCE Hospitality, home">
    <span class="mono" aria-hidden="true">AH</span>
-   <span class="lw"><b>ARCE HOSPITALITY</b><i>EMPOWERING EXCELLENCE</i></span>
+   <span class="lw"><b>ARCE HOSPITALITY</b></span>
   </a>
   <nav aria-label="Main">
    <a href="#clients">Clients</a><a href="#services">Services</a><a href="#gallery">Gallery</a><a href="#about">About</a><a href="#join">Join our team</a>
@@ -238,13 +240,17 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:22px 30px;justify-content:space-bet
  <section id="gallery" aria-labelledby="gh" style="padding-top:0">
   <div class="wrap">
    <span class="bar"></span><h2 id="gh">Service in action</h2>
-   <div class="gal">
+   <div class="show">
+   <div class="gal" role="region" aria-label="Photo slideshow" tabindex="0">
     <button type="button" data-src="https://images.unsplash.com/photo-1565608087341-404b25492fee?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1565608087341-404b25492fee?auto=format&fit=crop&w=700&q=70" alt="Chef in an apron holding a pot in a professional kitchen" loading="lazy"></button>
     <button type="button" data-src="https://plus.unsplash.com/premium_photo-1687697859878-17e9ef6c75e6?auto=format&fit=crop&w=1400&q=75"><img src="https://plus.unsplash.com/premium_photo-1687697859878-17e9ef6c75e6?auto=format&fit=crop&w=700&q=70" alt="Chef presenting a plated dish in a restaurant kitchen" loading="lazy"></button>
     <button type="button" data-src="https://images.unsplash.com/photo-1572715376701-98568319fd0b?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1572715376701-98568319fd0b?auto=format&fit=crop&w=700&q=70" alt="Chef standing behind a finished plate of vegetables" loading="lazy"></button>
     <button type="button" data-src="https://images.unsplash.com/photo-1786209676820-f408e4fba31e?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1786209676820-f408e4fba31e?auto=format&fit=crop&w=700&q=70" alt="Server in a black apron pouring water at a long dining table" loading="lazy"></button>
     <button type="button" data-src="https://images.unsplash.com/photo-1611266353853-d370b67187ed?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1611266353853-d370b67187ed?auto=format&fit=crop&w=700&q=70" alt="Bartender pouring a drink over ice into a clear glass" loading="lazy"></button>
     <button type="button" data-src="https://images.unsplash.com/photo-1569924995007-e591d333f882?auto=format&fit=crop&w=1400&q=75"><img src="https://images.unsplash.com/photo-1569924995007-e591d333f882?auto=format&fit=crop&w=700&q=70" alt="Row of cocktails with ice on a bar counter" loading="lazy"></button>
+   </div>
+   <button type="button" class="arrow prev" aria-label="Previous photo">&#8249;</button>
+   <button type="button" class="arrow next" aria-label="Next photo">&#8250;</button>
    </div>
   </div>
  </section>
@@ -349,10 +355,28 @@ document.getElementById('f').addEventListener('submit',function(e){
 // Gallery lightbox
 var lb=document.getElementById('lb'),lbi=document.getElementById('lbi');
 document.querySelectorAll('.gal button').forEach(function(b){
-  b.addEventListener('click',function(){lbi.src=b.dataset.src;lbi.alt=b.querySelector('img').alt;lb.showModal();});
+  b.addEventListener('click',function(){stop();lbi.src=b.dataset.src;lbi.alt=b.querySelector('img').alt;lb.showModal();});
 });
 document.getElementById('lbx').addEventListener('click',function(){lb.close();});
 lb.addEventListener('click',function(e){if(e.target===lb)lb.close();});
+
+// Gallery slideshow: swipe, arrows, gentle autoplay
+var g=document.querySelector('.gal'),timer;
+function slide(d){
+  var f=g.querySelector('button'),w=f.offsetWidth+14;
+  if(d>0&&g.scrollLeft+g.clientWidth>=g.scrollWidth-6){g.scrollTo({left:0,behavior:'smooth'});}
+  else if(d<0&&g.scrollLeft<=2){g.scrollTo({left:g.scrollWidth,behavior:'smooth'});}
+  else{g.scrollBy({left:d*w,behavior:'smooth'});}
+}
+document.querySelector('.arrow.prev').addEventListener('click',function(){slide(-1);stop();});
+document.querySelector('.arrow.next').addEventListener('click',function(){slide(1);stop();});
+g.addEventListener('keydown',function(e){if(e.key==='ArrowRight')slide(1);if(e.key==='ArrowLeft')slide(-1);});
+function start(){if(!window.matchMedia('(prefers-reduced-motion:reduce)').matches&&!timer){timer=setInterval(function(){slide(1);},5000);}}
+function stop(){clearInterval(timer);timer=null;}
+['pointerenter','touchstart','focusin'].forEach(function(ev){g.addEventListener(ev,stop,{passive:true});});
+g.addEventListener('pointerleave',start);
+lb.addEventListener('close',start);
+start();
 
 // Hide the floating Book Talent button when the form or footer is on screen
 var fab=document.getElementById('fab');
