@@ -1,1 +1,351 @@
-html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Apply | ARCE Hospitality</title>
+<meta name="description" content="Apply to join the ARCE Hospitality roster. Servers, bartenders, chefs and event managers across South Florida.">
+<meta name="theme-color" content="#2b2f32">
+<link rel="icon" href="https://arcehospitality.com/images/favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="https://arcehospitality.com/images/apple-touch-icon.png">
+<meta property="og:title" content="Apply | ARCE Hospitality">
+<meta property="og:description" content="Join the ARCE roster and get placed at South Florida’s best events.">
+<meta property="og:image" content="https://arcehospitality.com/images/og-share.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;500;700;800&family=Raleway:wght@400;500;600&family=Dancing+Script:wght@500;600&display=swap" rel="stylesheet">
+
+<style>
+:root{--bg:#fff;--soft:#dedede;--ink:#17191b;--mute:#4b5156;--dark:#2b2f32;--on-dark:#f4f4f4;--acc:#ff4310;--line:rgba(23,25,27,.14);
+--d:Montserrat,"Helvetica Neue",Arial,sans-serif;--b:Raleway,"Helvetica Neue",Arial,sans-serif;--s:"Dancing Script","Snell Roundhand",cursive}
+@media(prefers-color-scheme:dark){:root{--bg:#17191b;--soft:#222527;--ink:#f1f1f1;--mute:#b4b9bd;--dark:#0f1112;--line:rgba(255,255,255,.16)}}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(env(safe-area-inset-top,0px) + 90px)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--b);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--dark);z-index:30}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--acc);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;padding:0 22px}
+h1,h2{font-family:var(--d);text-transform:uppercase;line-height:1.05;margin:0}
+h1{font-weight:800;font-size:clamp(2rem,7vw,3.2rem);letter-spacing:-.01em}
+h2{font-weight:800;font-size:clamp(1.4rem,4.5vw,1.9rem)}
+p{margin:0 0 1em}
+.bar{display:block;width:56px;height:10px;background:var(--acc);margin-bottom:20px}
+.btn{display:inline-block;font:600 1rem/1 var(--d);padding:18px 28px;background:var(--acc);color:#fff;text-decoration:none;border:2px solid var(--acc);cursor:pointer;transition:background .2s,color .2s}
+.btn:hover{background:transparent;color:var(--acc)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{color:var(--acc);border-color:var(--acc)}
+.btn[disabled]{opacity:.55;pointer-events:none}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--dark);color:var(--on-dark)}
+header .wrap{max-width:1160px;display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:76px}
+.logo{display:flex;align-items:center;gap:12px;text-decoration:none;color:#fff}
+.mono{font:600 2.7rem/1 var(--s);padding:0 2px 4px 0}
+.lw b{font:200 1.1rem/1 var(--d);letter-spacing:.28em;white-space:nowrap;-webkit-text-stroke:.2px currentColor}
+.back{font:600 .9rem var(--d);text-decoration:none;color:#fff}
+.back:hover{color:var(--acc)}
+@media(max-width:560px){.lw b{font-size:.9rem;letter-spacing:.18em}.mono{font-size:2.3rem}.back{display:none}}
+
+.intro{background:var(--soft);padding:clamp(40px,8vw,72px) 0}
+.intro p{color:var(--mute);margin:16px 0 0;max-width:56ch}
+
+main .wrap{padding-top:34px;padding-bottom:70px}
+.prog{margin-bottom:30px}
+.prog small{font:600 .85rem var(--d);letter-spacing:.04em}
+.track{height:6px;background:var(--soft);margin-top:10px}
+.track i{display:block;height:100%;width:25%;background:var(--acc);transition:width .3s}
+
+.step{display:grid;gap:18px}
+.step[hidden]{display:none}
+.row{display:grid;gap:18px}
+@media(min-width:560px){.row{grid-template-columns:1fr 1fr}}
+label,legend{display:grid;gap:6px;font:600 .88rem var(--d)}
+.opt{font:400 .8rem var(--b);color:var(--mute)}
+input,select,textarea{font:inherit;font-size:1rem;color:var(--ink);background:var(--bg);border:1px solid var(--ink);padding:0 14px;border-radius:0;width:100%;height:54px;min-height:54px;-webkit-appearance:none;appearance:none;margin:0}
+input[type=date]{display:block;text-align:left;min-width:0}
+input[type=date]::-webkit-date-and-time-value{text-align:left;margin:0}
+select{background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9'><path d='M1 1l6 6 6-6' fill='none' stroke='%23888' stroke-width='2'/></svg>");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+textarea{height:auto;min-height:110px;padding:14px;line-height:1.5;resize:vertical}
+fieldset{border:0;padding:0;margin:0}
+.chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:8px}
+.chips label{display:block;font:500 .9rem var(--d);position:relative}
+.chips input{position:absolute;opacity:0;width:1px;height:1px;min-height:0;left:0;top:0}
+.chips span{display:block;padding:13px 18px;border:1px solid var(--ink);cursor:pointer;transition:background .15s}
+.chips input:checked+span{background:var(--acc);border-color:var(--acc);color:#fff}
+.chips input:focus-visible+span{outline:3px solid var(--acc);outline-offset:3px}
+.err{display:none;color:#c8300a;font:600 .85rem var(--b);margin-top:8px}
+.group.bad .err{display:block}
+@media(prefers-color-scheme:dark){.err{color:#ff8a6b}}
+
+.drop{display:grid;place-items:center;gap:6px;text-align:center;padding:30px 18px;border:2px dashed var(--ink);cursor:pointer;background:var(--soft)}
+.drop b{font:700 1rem var(--d)}
+.drop small{color:var(--mute)}
+.drop input{position:absolute;opacity:0;width:1px;height:1px;min-height:0}
+.drop.has{border-style:solid;border-color:var(--acc)}
+.check{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;font:400 .95rem/1.5 var(--b)}
+.check input{width:22px;height:22px;min-height:0;-webkit-appearance:auto;appearance:auto;accent-color:var(--acc);margin-top:3px}
+.note{background:var(--soft);border-left:6px solid var(--acc);padding:16px 18px;font-size:.92rem;color:var(--mute)}
+.note p{margin:0 0 .6em}.note p:last-child{margin:0}
+.nav{display:flex;justify-content:space-between;gap:12px;margin-top:10px}
+.hp{position:absolute;left:-9999px;height:0;overflow:hidden}
+#msg{display:none;padding:16px;border-left:6px solid var(--acc);background:var(--soft);margin-top:18px}
+.done{display:none;text-align:left}
+.done h2{margin-bottom:14px}
+
+footer{background:var(--dark);color:var(--on-dark);padding:30px 0 calc(30px + env(safe-area-inset-bottom,0px));font-size:.9rem}
+footer .wrap{max-width:1160px;padding-top:0;padding-bottom:0}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<header>
+ <div class="wrap">
+  <a class="logo" href="https://arcehospitality.com/" aria-label="ARCE Hospitality, home">
+   <span class="mono" aria-hidden="true">AH</span>
+   <span class="lw"><b>ARCE HOSPITALITY</b></span>
+  </a>
+  <a class="back" href="https://arcehospitality.com/">Back to site</a>
+ </div>
+</header>
+
+<div class="intro">
+ <div class="wrap">
+  <span class="bar"></span>
+  <h1>Join the ARCE team</h1>
+  <p>Four short steps, about five minutes. Tell us about yourself and attach your resume, and we’ll reach out when a role fits.</p>
+ </div>
+</div>
+
+<main>
+ <div class="wrap">
+  <div class="prog" id="prog" aria-live="polite">
+   <small id="plabel">Step 1 of 4: About you</small>
+   <div class="track"><i id="pbar"></i></div>
+  </div>
+
+  <form id="app" novalidate>
+   <!-- Spam trap: leave empty -->
+   <div class="hp" aria-hidden="true"><label>Company<input name="company" tabindex="-1" autocomplete="off"></label></div>
+
+   <!-- STEP 1 -->
+   <div class="step" data-title="About you">
+    <h2>About you</h2>
+    <div class="row">
+     <label>First name<input name="first_name" required autocomplete="given-name"></label>
+     <label>Last name<input name="last_name" required autocomplete="family-name"></label>
+    </div>
+    <label>Preferred name <span class="opt">(optional)</span><input name="preferred_name" autocomplete="nickname"></label>
+    <div class="row">
+     <label>Email<input name="email" type="email" required autocomplete="email" inputmode="email"></label>
+     <label>Mobile phone<input name="phone" type="tel" required autocomplete="tel" inputmode="tel"></label>
+    </div>
+    <div class="row">
+     <label>City<input name="city" required autocomplete="address-level2"></label>
+     <label>ZIP code<input name="zip" required autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}(-[0-9]{4})?" title="5-digit ZIP code"></label>
+    </div>
+    <fieldset class="group">
+     <legend>Are you at least 18 years old?</legend>
+     <div class="chips"><label><input type="radio" name="age_18" value="Yes" required><span>Yes</span></label><label><input type="radio" name="age_18" value="No"><span>No</span></label></div>
+    </fieldset>
+    <fieldset class="group">
+     <legend>Are you legally authorized to work in the United States?</legend>
+     <div class="chips"><label><input type="radio" name="work_auth" value="Yes" required><span>Yes</span></label><label><input type="radio" name="work_auth" value="No"><span>No</span></label></div>
+    </fieldset>
+    <fieldset class="group">
+     <legend>Do you have reliable transportation to events?</legend>
+     <div class="chips"><label><input type="radio" name="transport" value="Yes" required><span>Yes</span></label><label><input type="radio" name="transport" value="No"><span>No</span></label></div>
+    </fieldset>
+   </div>
+
+   <!-- STEP 2 -->
+   <div class="step" data-title="Experience" hidden>
+    <h2>Your experience</h2>
+    <fieldset class="group" data-min="1">
+     <legend>Roles you’re interested in</legend>
+     <div class="chips">
+      <label><input type="checkbox" name="roles" value="Server"><span>Server</span></label>
+      <label><input type="checkbox" name="roles" value="Bartender"><span>Bartender</span></label>
+      <label><input type="checkbox" name="roles" value="Chef / Cook"><span>Chef / Cook</span></label>
+      <label><input type="checkbox" name="roles" value="Event manager"><span>Event manager</span></label>
+      <label><input type="checkbox" name="roles" value="Other"><span>Other</span></label>
+     </div>
+     <div class="err">Please choose at least one role.</div>
+    </fieldset>
+    <label>Years of hospitality experience
+     <select name="years" required><option value="">Select</option><option>Less than 1</option><option>1 to 2</option><option>3 to 5</option><option>6 to 10</option><option>More than 10</option></select>
+    </label>
+    <div class="row">
+     <label>Most recent employer <span class="opt">(optional)</span><input name="last_employer" autocomplete="organization"></label>
+     <label>Your position there <span class="opt">(optional)</span><input name="last_position"></label>
+    </div>
+    <fieldset class="group">
+     <legend>Certifications <span class="opt">(optional, select any that apply)</span></legend>
+     <div class="chips">
+      <label><input type="checkbox" name="certs" value="Food handler"><span>Food handler</span></label>
+      <label><input type="checkbox" name="certs" value="Food manager"><span>Food manager</span></label>
+      <label><input type="checkbox" name="certs" value="Alcohol service"><span>Alcohol service</span></label>
+      <label><input type="checkbox" name="certs" value="CPR / First aid"><span>CPR / First aid</span></label>
+     </div>
+    </fieldset>
+    <label>Languages you speak <span class="opt">(optional)</span><input name="languages" placeholder="English, Spanish, Portuguese"></label>
+    <label>Anything else we should know <span class="opt">(optional)</span><textarea name="about" placeholder="Venues you’ve worked, specialties, events you love"></textarea></label>
+   </div>
+
+   <!-- STEP 3 -->
+   <div class="step" data-title="Resume and availability" hidden>
+    <h2>Resume and availability</h2>
+    <label class="drop" id="drop">
+     <b id="dtitle">Tap to upload your resume</b>
+     <small id="dsub">PDF, DOC or DOCX, up to 5 MB</small>
+     <input type="file" name="resume" id="resume" accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" required>
+    </label>
+    <div class="err" id="ferr"></div>
+    <label>LinkedIn profile <span class="opt">(optional)</span><input name="linkedin" type="url" inputmode="url" placeholder="https://www.linkedin.com/in/..."></label>
+    <fieldset class="group" data-min="1">
+     <legend>Days you’re generally available</legend>
+     <div class="chips">
+      <label><input type="checkbox" name="days" value="Mon"><span>Mon</span></label>
+      <label><input type="checkbox" name="days" value="Tue"><span>Tue</span></label>
+      <label><input type="checkbox" name="days" value="Wed"><span>Wed</span></label>
+      <label><input type="checkbox" name="days" value="Thu"><span>Thu</span></label>
+      <label><input type="checkbox" name="days" value="Fri"><span>Fri</span></label>
+      <label><input type="checkbox" name="days" value="Sat"><span>Sat</span></label>
+      <label><input type="checkbox" name="days" value="Sun"><span>Sun</span></label>
+     </div>
+     <div class="err">Please choose at least one day.</div>
+    </fieldset>
+    <fieldset class="group" data-min="1">
+     <legend>Shifts you can work</legend>
+     <div class="chips">
+      <label><input type="checkbox" name="shifts" value="Mornings"><span>Mornings</span></label>
+      <label><input type="checkbox" name="shifts" value="Afternoons"><span>Afternoons</span></label>
+      <label><input type="checkbox" name="shifts" value="Evenings"><span>Evenings</span></label>
+      <label><input type="checkbox" name="shifts" value="Late nights"><span>Late nights</span></label>
+     </div>
+     <div class="err">Please choose at least one shift.</div>
+    </fieldset>
+    <div class="row">
+     <label>Earliest start date<input name="start_date" type="date" required></label>
+     <label>How did you hear about us? <span class="opt">(optional)</span>
+      <select name="source"><option value="">Select</option><option>Referral</option><option>Instagram</option><option>LinkedIn</option><option>Search</option><option>Event</option><option>Other</option></select>
+     </label>
+    </div>
+   </div>
+
+   <!-- STEP 4 -->
+   <div class="step" data-title="Review and send" hidden>
+    <h2>Review and send</h2>
+    <div class="note">
+     <p><b>Your privacy.</b> This application doesn’t ask for your Social Security number, date of birth or ID documents. If we place you, we’ll collect required employment forms securely during onboarding.</p>
+     <p>ARCE Hospitality is an equal opportunity employer. We consider every applicant without regard to race, color, religion, sex, pregnancy, sexual orientation, gender identity, national origin, age, disability, genetic information, veteran status or any other protected status. If you need an accommodation to apply, email Enrique@Arcehospitality.com.</p>
+     <p>Submitting an application doesn’t guarantee placement or create an employment contract. Any engagement is at will.</p>
+    </div>
+    <label class="check"><input type="checkbox" name="certify" value="Yes" required><span>I certify the information in this application is true and complete to the best of my knowledge.</span></label>
+    <label class="check"><input type="checkbox" name="contact_consent" value="Yes" required><span>I agree that ARCE Hospitality may contact me by email, phone call and text message about work opportunities. Message and data rates may apply, and I can opt out at any time.</span></label>
+    <label>Type your full name as your signature<input name="signature" required autocomplete="name"></label>
+   </div>
+
+   <div class="nav">
+    <button class="btn ghost" type="button" id="prev" hidden>Back</button>
+    <button class="btn" type="button" id="next" style="margin-left:auto">Continue</button>
+    <button class="btn" type="submit" id="send" hidden style="margin-left:auto">Submit application</button>
+   </div>
+   <div id="msg" role="alert"></div>
+  </form>
+
+  <div class="done" id="done" tabindex="-1">
+   <span class="bar"></span>
+   <h2>Application received</h2>
+   <p>Thank you for applying to ARCE Hospitality. Our team reviews every application and will reach out by email or text if there’s a fit.</p>
+   <a class="btn" href="https://arcehospitality.com/">Back to site</a>
+  </div>
+ </div>
+</main>
+
+<footer><div class="wrap">© 2026 ARCE Hospitality. Questions? <a href="mailto:Enrique@Arcehospitality.com">Enrique@Arcehospitality.com</a></div></footer>
+
+<script>
+/* ==== SETUP: paste your form service URL here (see notes). ==== */
+var ENDPOINT = ""; // e.g. "https://formspree.io/f/xxxxxxx" or "https://api.web3forms.com/submit"
+var EXTRA_FIELDS = { /* e.g. access_key: "YOUR_WEB3FORMS_KEY" */ };
+var MAX_MB = 5;
+
+var form=document.getElementById('app'),steps=[].slice.call(form.querySelectorAll('.step')),cur=0;
+var prev=document.getElementById('prev'),next=document.getElementById('next'),send=document.getElementById('send'),msg=document.getElementById('msg');
+
+function show(n){
+  cur=n;
+  steps.forEach(function(s,k){s.hidden=(k!==n);});
+  document.getElementById('pbar').style.width=((n+1)/steps.length*100)+'%';
+  document.getElementById('plabel').textContent='Step '+(n+1)+' of '+steps.length+': '+steps[n].dataset.title;
+  prev.hidden=(n===0);next.hidden=(n===steps.length-1);send.hidden=(n!==steps.length-1);
+  msg.style.display='none';
+  document.getElementById('prog').scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function stepOK(step){
+  var groups=step.querySelectorAll('.group[data-min]');
+  for(var g=0;g<groups.length;g++){
+    var n=groups[g].querySelectorAll('input:checked').length,ok=n>=+groups[g].dataset.min;
+    groups[g].classList.toggle('bad',!ok);
+    if(!ok){groups[g].scrollIntoView({behavior:'smooth',block:'center'});return false;}
+  }
+  var els=step.querySelectorAll('input,select,textarea');
+  for(var i=0;i<els.length;i++){
+    if(els[i].name==='company')continue;
+    if(!els[i].checkValidity()){els[i].reportValidity();return false;}
+  }
+  return true;
+}
+
+next.addEventListener('click',function(){if(stepOK(steps[cur]))show(cur+1);});
+prev.addEventListener('click',function(){show(cur-1);});
+form.addEventListener('change',function(e){var g=e.target.closest&&e.target.closest('.group');if(g)g.classList.remove('bad');});
+
+// Resume picker
+var file=document.getElementById('resume'),drop=document.getElementById('drop'),ferr=document.getElementById('ferr');
+file.addEventListener('change',function(){
+  ferr.style.display='none';ferr.textContent='';
+  var f=file.files[0];
+  if(!f){drop.classList.remove('has');document.getElementById('dtitle').textContent='Tap to upload your resume';return;}
+  var okType=/\.(pdf|docx?)$/i.test(f.name);
+  if(!okType||f.size>MAX_MB*1024*1024){
+    file.value='';drop.classList.remove('has');
+    ferr.textContent=!okType?'Please upload a PDF, DOC or DOCX file.':'That file is over '+MAX_MB+' MB. Please upload a smaller one.';
+    ferr.style.display='block';
+    document.getElementById('dtitle').textContent='Tap to upload your resume';
+    return;
+  }
+  drop.classList.add('has');
+  document.getElementById('dtitle').textContent=f.name;
+  document.getElementById('dsub').textContent=(f.size/1024/1024).toFixed(2)+' MB. Tap to replace.';
+});
+
+function fail(t){msg.textContent=t;msg.style.display='block';send.disabled=false;send.textContent='Submit application';}
+
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  if(!stepOK(steps[cur]))return;
+  if(form.company.value){finish();return;} // bots
+  if(!ENDPOINT){fail('This form isn’t connected yet. Please email your resume to Enrique@Arcehospitality.com.');return;}
+  send.disabled=true;send.textContent='Sending...';
+  var fd=new FormData(form);
+  fd.delete('company');
+  fd.append('submitted_at',new Date().toISOString());
+  fd.append('page',location.href);
+  fd.append('_subject','New ARCE application: '+form.first_name.value+' '+form.last_name.value);
+  Object.keys(EXTRA_FIELDS).forEach(function(k){fd.append(k,EXTRA_FIELDS[k]);});
+  fetch(ENDPOINT,{method:'POST',body:fd,headers:{'Accept':'application/json'}})
+    .then(function(r){if(r.ok)finish();else fail('Something went wrong sending your application. Please try again or email Enrique@Arcehospitality.com.');})
+    .catch(function(){fail('We couldn’t reach the server. Check your connection and try again, or email Enrique@Arcehospitality.com.');});
+});
+
+function finish(){
+  form.style.display='none';document.getElementById('prog').style.display='none';
+  var d=document.getElementById('done');d.style.display='block';d.focus();window.scrollTo({top:0,behavior:'smooth'});
+}
+show(0);
+</script>
+</body>
+</html>
