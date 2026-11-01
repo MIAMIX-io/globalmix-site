@@ -201,6 +201,21 @@ a.plat:hover,a.plat:focus-visible{background:var(--bg);color:var(--iv);outline:0
 .eps-ctl .ar{width:40px;height:40px;border:1px solid var(--gold);background:none;color:var(--bg);font-size:22px;line-height:1;cursor:pointer;transition:.25s}
 .eps-ctl .ar:hover,.eps-ctl .ar:focus-visible{background:var(--gold);color:var(--k);outline:0}
 @media(max-width:780px){.plats{gap:8px}.plat{padding:11px 12px;font-size:11.5px;letter-spacing:.02em}}
+/* Tablet portrait: photo on top, text below (like phone, shorter photo) */
+@media(min-width:781px) and (max-width:1194px) and (orientation:portrait){
+  #phil{padding:0 0 100px;background:var(--k)}
+  #phil::before{content:"";position:static;display:block;width:100%;height:68vh;background:center top/cover no-repeat url(images/PHOTO-2026-10-PAST.jpg);-webkit-mask-image:linear-gradient(180deg,#000 65%,transparent 100%);mask-image:linear-gradient(180deg,#000 65%,transparent 100%);margin-bottom:36px}
+  #phil .wrap{max-width:720px}
+  #phil h2,#phil p{max-width:none}
+}
+/* Tablet landscape: text on the left, photo on the right */
+@media(min-width:781px) and (max-width:1400px) and (min-height:600px) and (orientation:landscape){
+  #phil{padding:0;background:var(--k);min-height:clamp(560px,78vh,760px);display:flex;align-items:center}
+  #phil::before{inset:0 0 0 50%;background:center top/cover no-repeat url(images/PHOTO-2026-10-PAST.jpg);-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 28%);mask-image:linear-gradient(90deg,transparent 0,#000 28%)}
+  #phil .wrap{width:100%}
+  #phil h2{max-width:min(46vw,520px)}
+  #phil p{max-width:min(44vw,460px)}
+}
 </style></head><body>
 <nav><div class="wrap"><b>Julio Medina</b><div><a href="#sobre">About</a><a href="#historia">Story</a><a href="#libros">Books</a><a href="#podcast">Podcast</a><a href="#galeria">Gallery</a><a href="#contacto">Contact</a></div></div></nav>
 <header id="top"><div class="ph"></div><div class="wrap"><p class="small">Author · Memoirist · Storyteller</p><h1>Julio<br>Medina</h1><hr class="rule"><p class="t">A life shaped by experience. A voice shaped by truth.</p><a class="btn" href="#libros">Explore my books</a></div></header>
