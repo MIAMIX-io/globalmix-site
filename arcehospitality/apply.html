@@ -251,6 +251,7 @@ footer .wrap{max-width:1160px;padding-top:0;padding-bottom:0}
     <button class="btn" type="button" id="next" style="margin-left:auto">Continue</button>
     <button class="btn" type="submit" id="send" hidden style="margin-left:auto">Submit application</button>
    </div>
+  <p id="hint" class="opt" hidden style="margin:0;text-align:right">Tick both boxes and type your name to submit.</p>
    <div id="msg" role="alert"></div>
   </form>
 
@@ -272,14 +273,23 @@ var EXTRA_FIELDS = { /* e.g. access_key: "YOUR_WEB3FORMS_KEY" */ };
 var MAX_MB = 5;
 
 var form=document.getElementById('app'),steps=[].slice.call(form.querySelectorAll('.step')),cur=0;
-var prev=document.getElementById('prev'),next=document.getElementById('next'),send=document.getElementById('send'),msg=document.getElementById('msg');
+var prev=document.getElementById('prev'),next=document.getElementById('next'),send=document.getElementById('send'),msg=document.getElementById('msg'),hint=document.getElementById('hint');
+
+function lastDone(){return form.certify.checked&&form.contact_consent.checked&&form.signature.value.trim().length>1;}
+function updateSend(){
+  var last=(cur===steps.length-1),done=lastDone();
+  send.hidden=!(last&&done);
+  hint.hidden=!(last&&!done);
+}
+form.addEventListener('input',updateSend);
+form.addEventListener('change',updateSend);
 
 function show(n){
   cur=n;
   steps.forEach(function(s,k){s.hidden=(k!==n);});
   document.getElementById('pbar').style.width=((n+1)/steps.length*100)+'%';
   document.getElementById('plabel').textContent='Step '+(n+1)+' of '+steps.length+': '+steps[n].dataset.title;
-  prev.hidden=(n===0);next.hidden=(n===steps.length-1);send.hidden=(n!==steps.length-1);
+  prev.hidden=(n===0);next.hidden=(n===steps.length-1);updateSend();
   msg.style.display='none';
   document.getElementById('prog').scrollIntoView({behavior:'smooth',block:'start'});
 }
