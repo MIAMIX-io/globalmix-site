@@ -176,8 +176,17 @@ footer{padding:28px;text-align:center;font-size:12px;color:var(--mute);border-to
   .card .f{padding:12px 2px}
   .card .back{padding:14px 8px;gap:7px}
   .card .back .t{font-size:11.5px}
-  .card .back .d{font-size:11px;line-height:1.4}
+    .card .back .d{font-size:11px;line-height:1.4}
 }
+/* Card rotation */
+.card.swap .in{transform:rotateY(90deg);transition-duration:.35s}
+.shuf{font:inherit;letter-spacing:inherit;text-transform:inherit;color:var(--bg);background:none;border:0;border-bottom:1px solid currentColor;padding:0 0 2px;margin-top:10px;cursor:pointer}
+.shuf:hover,.shuf:focus-visible{color:var(--k);outline:0}
+@media(min-width:781px){.card .back{padding:20px 10px}.card .back .t{font-size:15px}}
+.card b.mid{font-size:17px}
+.card b.long{font-size:15px}
+@media(max-width:780px){.card b.mid{font-size:11.5px}.card b.long{font-size:10.5px}}
+
 /* Episodes carousel */
 .eps-h{font:400 clamp(28px,5vw,38px)/1.2 var(--serif);color:var(--k);text-align:center;margin:10px 0 0}
 .eps{max-width:520px;margin:40px auto 0}
@@ -303,6 +312,103 @@ a.plat:hover,a.plat:focus-visible{background:var(--bg);color:var(--iv);outline:0
 <div class="ct"><div><small>Instagram</small><a href="https://www.instagram.com/iamedinauthor" target="_blank" rel="noopener">@iamedinauthor</a></div><div><small>Facebook</small><a href="https://www.facebook.com/juliomedinachamboliamiami" target="_blank" rel="noopener">/juliomedinachamboliamiami</a></div><div><small>Press &amp; media</small>MIAMIX<br><a href="mailto:Info@miamix.io">Info@miamix.io</a></div><div><small>Phone</small><a href="tel:+13059271473">+1 305 927 1473</a></div></div>
 <p class="end">Every life leaves a story. Every experience leaves a mark. And every new beginning offers the chance to write another chapter.</p></div></section>
 <footer>© 2026 Julio Medina · Miami, Florida</footer>
+<script>
+(()=>{
+const EVERY=8000;            // milliseconds between card swaps
+const START_WITH_FIRST_SEVEN=true;   // false = random seven on every page load
+
+// The full deck: [name, back-of-card description]. Keep names under 14 letters
+// and descriptions under about 50 characters so they fit on phones.
+const POOL=[
+["Love","The bond that makes everything else worth protecting."],
+["Integrity","Acting the same when no one is watching."],
+["Honesty","Telling the truth, even when it costs you."],
+["Respect","Seeing the dignity in every person."],
+["Responsibility","Owning your choices and what follows."],
+["Gratitude","Honoring all that carried you here."],
+["Perseverance","The quiet strength to rise after every fall."],
+["Family","The people who shape who you become."],
+["Friendship","The family we choose along the way."],
+["Loyalty","Standing by people when it is hard."],
+["Community","We rise further when we rise together."],
+["Humility","Knowing how much there is still to learn."],
+["Courage","Acting well even while afraid."],
+["Discipline","Doing what matters when motivation fades."],
+["Faith","Trusting what you cannot yet see."],
+["Hope","Believing a better chapter is possible."],
+["Inner Peace","Calm that does not depend on circumstances."],
+["Purpose","Knowing why you keep going."],
+["Freedom","Choosing your own path and owning it."],
+["Independence","Standing on your own two feet."],
+["Adventure","Saying yes to the unknown."],
+["Creativity","Turning what you feel into something new."],
+["Joy","Gladness found even in hard seasons."],
+["Success","Not just what you achieve, but who you become."],
+["Ambition","The drive to build something bigger than yourself."],
+["Excellence","Giving your best, even when no one is counting."],
+["Work","Effort that builds the life you imagine."],
+["Health","Caring for the body that carries you."],
+["Generosity","Giving without keeping score."],
+["Compassion","Feeling another person’s pain as your own."],
+["Justice","Standing up for what is fair."],
+["Nature","Finding stillness in the world around us."],
+["Forgiveness","Releasing the weight of what was done to you."],
+["Patience","Letting things unfold in their own time."],
+["Wisdom","What experience teaches when you listen."]
+];
+
+const cards=[...document.querySelectorAll('.deck .card')];
+if(!cards.length||POOL.length<=cards.length)return;
+const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const roman=n=>{let r='';[[50,'L'],[40,'XL'],[10,'X'],[9,'IX'],[5,'V'],[4,'IV'],[1,'I']].forEach(([v,s])=>{while(n>=v){r+=s;n-=v}});return r};
+const mix=a=>a.map(x=>[Math.random(),x]).sort((p,q)=>p[0]-q[0]).map(p=>p[1]);
+const all=[...POOL.keys()];
+let shown=START_WITH_FIRST_SEVEN?all.slice(0,cards.length):mix(all).slice(0,cards.length);
+let busy=false,inView=true;
+
+function paint(i){
+  const c=cards[i],[n,d]=POOL[shown[i]];
+  c.querySelector('.front i').textContent=roman(shown[i]+1);
+  const fb=c.querySelector('.front b');fb.textContent=n;fb.classList.toggle('long',n.length>11);fb.classList.toggle('mid',n.length>9&&n.length<12);
+  c.querySelector('.back .t').textContent=n;
+  c.querySelector('.back .d').textContent=d;
+}
+function swap(i,k,delay){
+  shown[i]=k;
+  setTimeout(()=>{
+    if(reduce){paint(i);return}
+    cards[i].classList.add('swap');
+    setTimeout(()=>{paint(i);cards[i].classList.remove('swap')},380);
+  },delay||0);
+}
+function tick(){
+  if(busy||document.hidden||!inView)return;
+  const free=cards.map((c,i)=>i).filter(i=>{const c=cards[i];return !c.classList.contains('flip')&&!c.classList.contains('swap')&&!c.matches(':hover')&&document.activeElement!==c});
+  const spare=all.filter(k=>!shown.includes(k));
+  if(!free.length||!spare.length)return;
+  swap(free[Math.floor(Math.random()*free.length)],spare[Math.floor(Math.random()*spare.length)]);
+}
+function reshuffle(){
+  busy=true;
+  cards.forEach(c=>{c.classList.remove('flip');c.setAttribute('aria-pressed','false')});
+  const next=mix(all).sort((a,b)=>shown.includes(a)-shown.includes(b)).slice(0,cards.length);
+  cards.forEach((c,i)=>swap(i,next[i],i*90));
+  setTimeout(()=>{busy=false},cards.length*90+900);
+}
+
+cards.forEach((c,i)=>paint(i));
+const hint=document.querySelector('.hint');
+if(hint){
+  const b=document.createElement('button');
+  b.type='button';b.className='shuf';b.textContent='↻ Shuffle the deck';b.onclick=reshuffle;
+  hint.append(document.createElement('br'),b);
+}
+if('IntersectionObserver' in window){
+  new IntersectionObserver(e=>{inView=e[0].isIntersecting},{threshold:.25}).observe(document.querySelector('.deck'));
+}
+if(!reduce)setInterval(tick,EVERY);
+})();
+</script>
 <script>
 const d=document.getElementById('lb'),im=d.querySelector('img'),sh=document.getElementById('show'),
 sl=[...sh.querySelectorAll('.stage img')],dots=[...sh.querySelectorAll('.dots button')];
