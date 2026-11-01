@@ -13,9 +13,35 @@
 <meta name="twitter:image" content="https://globalmix.network/images/share.jpg">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500&display=swap">
 <style>
-:root{--k:#0E0C0C;--iv:#F4EFE6;--gold:#B8975A;--bg:#5E1A26;--mute:#B9B0A4;--ink:#4A443E;--serif:'Lora',Georgia,serif;--sans:'Poppins',system-ui,sans-serif;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-*,*::before,*::after{box-sizing:inherit}html{scroll-behavior:smooth;scroll-padding-top:70px}
-body{margin:0;background:var(--k);color:var(--iv);font:300 16px/1.75 var(--sans)}
+:root{
+  --k:#0E0C0C;--iv:#F4EFE6;--gold:#B8975A;--bg:#5E1A26;--mute:#B9B0A4;--ink:#4A443E;
+  --serif:'Lora',Georgia,serif;--sans:'Poppins',system-ui,sans-serif;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+*,*::before,*::after{box-sizing:inherit}
+
+html{
+  scroll-behavior:smooth;
+  scroll-padding-top:70px;
+  overflow-x:clip;            /* Prevents horizontal pull across all modern browsers */
+  overscroll-behavior-x:none;  /* Kills horizontal swipe-bounce on mobile iOS/Android */
+  width:100%;
+  max-width:100%;
+}
+
+body{
+  margin:0;
+  background:var(--k);
+  color:var(--iv);
+  font:300 16px/1.75 var(--sans);
+  overflow-x:clip;            /* Backup hard boundary */
+  width:100%;
+  max-width:100%;
+  position:relative;
+  -webkit-text-size-adjust:100%;
+}
 img{display:block;max-width:100%}a{color:inherit}
 .wrap{max-width:1080px;margin:0 auto;padding:0 28px}
 h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.15;margin:0}
@@ -109,7 +135,7 @@ footer{padding:28px;text-align:center;font-size:12px;color:var(--mute);border-to
 #podcast .close .sig{font:500 13px var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
 #podcast .close .sub{font:italic 400 18px var(--serif);color:#E4DACB;margin-top:8px}
 @media(max-width:780px){.card{flex-basis:calc(25% - 14px);min-width:78px;padding:12px 2px}.card b{font-size:14px}.card i,.card u{font-size:13px}}
-@media(max-width:780px){section{padding:80px 0}.two,.story,.book{grid-template-columns:1fr;gap:40px}.book .cover{max-width:230px}#top .ph{inset:0;opacity:.45}nav div{gap:18px}nav b{display:none}.frame{margin-right:16px}}
+@media(max-width:780px){section{padding:80px 0}.two,.story,.book{grid-template-columns:1fr;gap:40px}.book .cover{max-width:230px}#top .ph{inset:0;opacity:.45}nav div{gap:18px}nav b{display:none}.frame{margin-right:16px}.frame::before{right:0}}
 @media(max-width:780px){.nv{opacity:.85}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto}}
 /* Podcast readability */
@@ -193,7 +219,7 @@ footer{padding:28px;text-align:center;font-size:12px;color:var(--mute);border-to
 .eps-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain}
 .eps-track::-webkit-scrollbar{display:none}
 .eps-track:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
-.ep{flex:0 0 100%;scroll-snap-align:center;padding:0 14px 16px}
+.ep{flex:0 0 100%;width:100%;max-width:100%;box-sizing:border-box;scroll-snap-align:center;padding:0 14px 16px}
 .ep-cv{position:relative}
 .ep-cv img{width:100%;aspect-ratio:1;object-fit:cover;outline:1px solid var(--gold);outline-offset:-1px;box-shadow:12px 12px 0 rgba(0,0,0,.12)}
 .badge{display:inline-block;margin:0 0 16px;padding:6px 12px;border:1px solid var(--gold);color:#8a6d3b;font:500 10px/1.4 var(--sans);letter-spacing:.2em;text-transform:uppercase}
