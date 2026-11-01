@@ -422,6 +422,141 @@ footer .wrap{display:flex;flex-wrap:wrap;gap:22px 30px;justify-content:space-bet
 .fab.hide{opacity:0;pointer-events:none;transform:translateY(20px)}
 @media(min-width:821px){.fab{display:none}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* =========================================
+   PREMIUM RESPONSIVE LAYOUT
+   Mobile + Tablet + Desktop
+========================================= */
+
+/* Global Box Sizing */
+*,
+*::before,
+*::after{
+  box-sizing:border-box;
+}
+
+/* Prevent Horizontal Page Movement */
+html{
+  width:100%;
+  max-width:100%;
+  overflow-x:clip;
+  scroll-behavior:smooth;
+  -webkit-text-size-adjust:100%;
+}
+
+body{
+  width:100%;
+  max-width:100%;
+  margin:0;
+  overflow-x:clip;
+  position:relative;
+}
+
+/* Prevent Oversized Elements */
+img,
+video,
+iframe,
+svg{
+  max-width:100%;
+}
+
+/* Keep Main Layout Within Viewport */
+main,
+header,
+footer,
+section,
+.container{
+  max-width:100%;
+}
+
+/* Preserve Intentional Gallery Scrolling */
+.gal,
+.logos{
+  max-width:100%;
+  overflow-x:auto;
+  overscroll-behavior-x:contain;
+  touch-action:pan-x pan-y;
+}
+
+/* Prevent Gallery Images From Expanding Layout */
+.gal img,
+.logos img{
+  max-width:100%;
+}
+
+/* =========================================
+   MOBILE STYLING
+========================================= */
+
+@media(max-width:619px){
+
+  html,
+  body{
+    overflow-x:clip;
+  }
+
+  body{
+    min-width:0;
+  }
+
+  section{
+    width:100%;
+  }
+
+  .container{
+    width:100%;
+    padding-left:20px;
+    padding-right:20px;
+  }
+
+  img{
+    height:auto;
+  }
+
+  /* Smooth gallery interaction */
+  .gal,
+  .logos{
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+  }
+
+}
+
+/* =========================================
+   TABLET STYLING
+========================================= */
+
+@media(min-width:620px) and (max-width:1039px){
+
+  html,
+  body{
+    overflow-x:clip;
+  }
+
+  .container{
+    width:100%;
+    padding-left:30px;
+    padding-right:30px;
+  }
+
+  section{
+    width:100%;
+  }
+
+}
+
+/* =========================================
+   DESKTOP STYLING
+========================================= */
+
+@media(min-width:1040px){
+
+  html,
+  body{
+    overflow-x:clip;
+  }
+
+}
 </style>
 </head>
 <body>
