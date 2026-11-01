@@ -132,8 +132,30 @@ footer{padding:28px;text-align:center;font-size:12px;color:var(--mute);border-to
 #phil .wrap{position:relative}
 #phil p{color:#E4DACB;font-weight:400}
 @media(max-width:780px){
-  #phil{padding:340px 0 70px;background-position:center top}
-  #phil::before{background:linear-gradient(180deg,rgba(14,12,12,0) 25%,rgba(14,12,12,.92) 65%)}
+  #phil{
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 60px 0;
+    background: none; /* Remove background on mobile */
+  }
+
+  /* Render the image cleanly in its own uncropped container above the text */
+  #phil::before{
+    content: "";
+    position: static;
+    display: block;
+    width: 100%;
+    aspect-ratio: 4 / 3; /* Adjusts height to show full frame */
+    background: center top / cover no-repeat url(https://globalmix.network/images/PHOTO-2026-10-PAST.jpg);
+    margin-bottom: 30px;
+    -webkit-mask-image: linear-gradient(180deg, black 80%, transparent 100%);
+    mask-image: linear-gradient(180deg, black 80%, transparent 100%);
+  }
+
+  #phil .wrap{
+    position: relative;
+    padding: 0 28px;
+  }
 }
 /* Hero: keep text off the face on mobile */
 @media(max-width:780px){
