@@ -96,8 +96,10 @@ blockquote{margin:30px 0 0;font:italic 400 20px/1.5 var(--serif);color:var(--bg)
 dialog{border:0;padding:0;background:transparent;max-width:94vw;max-height:94vh}dialog::backdrop{background:rgba(14,12,12,.94)}dialog img{max-height:90vh;margin:auto}
 dialog button{position:absolute;top:8px;right:8px;background:var(--k);color:var(--iv);border:1px solid var(--gold);width:40px;height:40px;font-size:20px;cursor:pointer}
 #contact{text-align:center}#contact h2{font-size:clamp(40px,7vw,72px)}
-.ct{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:28px;margin:50px 0;text-align:left}
-.ct div{border-top:1px solid var(--gold);padding-top:14px}.ct small{display:block;color:var(--gold);font-weight:500;letter-spacing:.14em}
+.social-icons { display: flex; justify-content: center; gap: 24px; margin: 40px 0; }
+.social-icons a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid rgba(184,151,90,.3); border-radius: 50%; color: var(--mute); transition: transform .25s, border-color .25s, color .25s; text-decoration: none; }
+.social-icons a:hover, .social-icons a:focus-visible { border-color: var(--gold); color: var(--gold); transform: translateY(-3px); outline: 0; }
+.social-icons svg { width: 20px; height: 20px; fill: currentColor; }
 .end{font:italic 400 19px/1.6 var(--serif);color:var(--mute);max-width:600px;margin:0 auto}
 footer{padding:28px;text-align:center;font-size:12px;color:var(--mute);border-top:1px solid rgba(184,151,90,.25)}
 
@@ -364,7 +366,26 @@ a.plat:hover,a.plat:focus-visible{background:var(--bg);color:var(--iv);outline:0
 <dialog id="lb"><img alt=""><button aria-label="Close">×</button></dialog>
 
 <section id="contacto"><div class="wrap"><p class="small">Connect</p><h2 style="margin-top:14px">Julio Medina</h2>
-<div class="ct"><div><small>Instagram</small><a href="https://www.instagram.com/iamedinauthor" target="_blank" rel="noopener">@iamedinauthor</a></div><div><small>Facebook</small><a href="https://www.facebook.com/juliomedinachamboliamiami" target="_blank" rel="noopener">/juliomedinachamboliamiami</a></div><div><small>Press &amp; media</small>MIAMIX<br><a href="mailto:Info@miamix.io">Info@miamix.io</a></div><div><small>Phone</small><a href="tel:+13059271473">+1 305 927 1473</a></div></div>
+
+<div class="social-icons">
+  <!-- Instagram -->
+  <a href="https://www.instagram.com/iamedinauthor" target="_blank" rel="noopener" aria-label="Instagram">
+    <svg viewBox="0 0 24 24"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm0 1.5a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7zm4.75-2.5a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z"/></svg>
+  </a>
+  <!-- Facebook -->
+  <a href="https://www.facebook.com/juliomedinachamboliamiami" target="_blank" rel="noopener" aria-label="Facebook">
+    <svg viewBox="0 0 24 24"><path d="M12 2.04c-5.5 0-10 4.48-10 10.02 0 5 3.66 9.15 8.44 9.9v-7h-2.54V12h2.54v-2.1c0-2.5 1.48-3.9 3.75-3.9 1.1 0 2.24.2 2.24.2v2.45h-1.27c-1.24 0-1.63.78-1.63 1.57V12h2.8l-.45 2.95h-2.35v7.02c4.78-.77 8.44-4.92 8.44-9.92 0-5.54-4.5-10.02-10-10.02z"/></svg>
+  </a>
+  <!-- Email -->
+  <a href="mailto:Info@miamix.io" aria-label="Email">
+    <svg viewBox="0 0 24 24"><path d="M2 5.5A2.5 2.5 0 0 1 4.5 3h15A2.5 2.5 0 0 1 22 5.5v13a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 18.5v-13zM4.5 4.5c-.55 0-1 .45-1 1v1.16l8.5 4.72 8.5-4.72V5.5c0-.55-.45-1-1-1h-15zm16 3.54-7.75 4.3a1.5 1.5 0 0 1-1.5 0L3.5 8.04v10.46c0 .55.45 1 1 1h15c.55 0 1-.45 1-1V8.04z"/></svg>
+  </a>
+  <!-- Phone -->
+  <a href="tel:+13059271473" aria-label="Phone">
+    <svg viewBox="0 0 24 24"><path d="M5.4 3.7c.4-.7 1.3-.9 2-.4l3.1 2.3c.6.4.8 1.1.5 1.7l-1 2.2c1.8 3.5 4.7 6.4 8.2 8.2l2.2-1c.6-.3 1.3-.1 1.7.5l2.3 3.1c.5.7.3 1.6-.4 2-.9.5-1.9.8-3 .8-7.7 0-14-6.3-14-14 0-1 .2-2 .7-2.9l.7-.5zm2.4 1.4-2.6-1.9c-.3.4-.5.9-.6 1.4-.4 2 .1 4.1 1 5.9 2 4 5 7 9 9 1.8.9 3.9 1.4 5.9 1 .5-.1 1-.3 1.4-.6l-1.9-2.6-1.9.9-1.3-.8c-4-2.3-7.2-5.5-9.5-9.5l-.8-1.3.9-1.9-2.6zm6.2 9.4z"/></svg>
+  </a>
+</div>
+
 <p class="end">Every life leaves a story. Every experience leaves a mark. And every new beginning offers the chance to write another chapter.</p></div></section>
 <footer>© 2026 Julio Medina · Miami, Florida</footer>
 <script>
