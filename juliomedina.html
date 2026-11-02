@@ -251,6 +251,27 @@ a.plat:hover,a.plat:focus-visible{background:var(--bg);color:var(--iv);outline:0
   #phil h2{max-width:min(46vw,520px)}
   #phil p{max-width:min(44vw,460px)}
 }
+/* Instagram feed */
+.ig{margin-top:90px;text-align:center}
+.ig .rule{margin-left:auto;margin-right:auto}
+.ig-h{font:400 clamp(26px,4.5vw,36px)/1.2 var(--serif);color:var(--bg);margin:10px 0 0}
+.ig-h a{text-decoration:none}
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:760px;margin:36px auto 0}
+.ig-grid:empty{display:none}
+.ig-t{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:#e4dacb;outline:1px solid var(--gold);outline-offset:-1px}
+.ig-t img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
+.ig-t.sk{animation:igp 1.2s ease-in-out infinite alternate}
+@keyframes igp{from{opacity:.5}to{opacity:1}}
+.ig-k{position:absolute;top:8px;right:8px;width:18px;height:18px;color:#fff;filter:drop-shadow(0 1px 2px rgba(0,0,0,.65))}
+.ig-t:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.ig-c{display:none}
+@media(hover:hover){
+  .ig-t:hover img{transform:scale(1.06)}
+  .ig-c{display:block;position:absolute;inset:auto 0 0;padding:36px 12px 12px;background:linear-gradient(transparent,rgba(14,12,12,.9));color:var(--iv);font:italic 400 13px/1.45 var(--serif);text-align:left;opacity:0;transition:opacity .35s}
+  .ig-c span{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .ig-t:hover .ig-c,.ig-t:focus-visible .ig-c{opacity:1}
+}
+.ig-cta{margin:32px 0 0}.ig-cta .btn{margin-top:0}
 </style></head><body>
 <nav><div class="wrap"><b>Julio Medina</b><div><a href="#sobre">About</a><a href="#historia">Story</a><a href="#libros">Books</a><a href="#podcast">Podcast</a><a href="#galeria">Gallery</a><a href="#contacto">Contact</a></div></div></nav>
 <header id="top"><div class="ph"></div><div class="wrap"><p class="small">Author · Memoirist · Storyteller</p><h1>Julio<br>Medina</h1><hr class="rule"><p class="t">A life shaped by experience. A voice shaped by truth.</p><a class="btn" href="#libros">Explore my books</a></div></header>
@@ -331,7 +352,15 @@ a.plat:hover,a.plat:focus-visible{background:var(--bg);color:var(--iv);outline:0
 <div class="show" id="show" aria-roledescription="carousel" aria-label="Photo gallery">
 <div class="stage"><img src="images/PHOTO-2026-10-31-20-11-12%205.jpg" alt="Me among the shelves of a classic library" style="object-position:center 20%" class=on><img src="images/PHOTO-2026-10-31-20-11-12%206.jpg" alt="Me walking down a palm-lined street in a leather jacket" style="object-position:center 20%"><img src="images/PHOTO-2026-10-31-20-11-12%207.jpg" alt="Me in a leather jacket and white tee in Miami Beach" style="object-position:center 20%"><img src="images/PHOTO-2026-10-31-20-11-12%208.jpg" alt="Me seated in a classic car at night" style="object-position:55% 30%"><img src="images/PHOTO-2026-10-BLAZER.jpg" alt="Me in a black blazer under warm light" style="object-position:center 25%"><img src="images/PHOTO-2026-10-31-20-11-12.jpg" alt="Me in a black leather jacket beside a car" style="object-position:center 25%"><img src="images/PHOTO-2026-10-31-20-11-13%202.jpg" alt="Me in a striped shirt in a studio armchair" style="object-position:28% 25%"><img src="images/PHOTO-2026-10-31-20-11-13%203.jpg" alt="Me in a leather jacket" style="object-position:center 25%"><img src="images/PHOTO-2026-10-31-20-11-13%204.jpg" alt="Me reading among old books" style="object-position:center 25%"><img src="images/PHOTO-2026-10-31-20-11-13%205.jpg" alt="Me in a linen suit" style="object-position:center 25%"><img src="images/PHOTO-2026-10-31-20-11-13%206.jpg" alt="Me with a cap and glasses" style="object-position:center 25%"></div>
 <button class="nv pv" aria-label="Previous photo">‹</button><button class="nv nx" aria-label="Next photo">›</button>
-<div class="dots"><button aria-label="Photo 1"></button><button aria-label="Photo 2"></button><button aria-label="Photo 3"></button><button aria-label="Photo 4"></button><button aria-label="Photo 5"></button><button aria-label="Photo 6"></button><button aria-label="Photo 7"></button><button aria-label="Photo 8"></button><button aria-label="Photo 9"></button><button aria-label="Photo 10"></button><button aria-label="Photo 11"></button></div></div></div></section>
+<div class="dots"><button aria-label="Photo 1"></button><button aria-label="Photo 2"></button><button aria-label="Photo 3"></button><button aria-label="Photo 4"></button><button aria-label="Photo 5"></button><button aria-label="Photo 6"></button><button aria-label="Photo 7"></button><button aria-label="Photo 8"></button><button aria-label="Photo 9"></button><button aria-label="Photo 10"></button><button aria-label="Photo 11"></button></div></div>
+<div class="ig" id="ig" data-feed="https://feeds.behold.so/NgqtlRSEtbkA8yBTNUpx" data-max="9">
+<hr class="rule" style="margin:0 auto 40px">
+<p class="small" style="margin:0">On Instagram</p>
+<h3 class="ig-h"><a href="https://www.instagram.com/iamedinauthor" target="_blank" rel="noopener">@iamedinauthor</a></h3>
+<div class="ig-grid" aria-live="polite"></div>
+<p class="ig-cta"><a class="btn" href="https://www.instagram.com/iamedinauthor" target="_blank" rel="noopener">Follow on Instagram</a></p>
+</div>
+</div></section>
 <dialog id="lb"><img alt=""><button aria-label="Close">×</button></dialog>
 
 <section id="contacto"><div class="wrap"><p class="small">Connect</p><h2 style="margin-top:14px">Julio Medina</h2>
@@ -482,4 +511,52 @@ ctl.querySelector('.nx').onclick=()=>go(idx()+1);
 if(eps.length<2)ctl.style.display='none';
 mark(0);
 })();
-</script></body></html>
+</script>
+<script>
+(()=>{
+const box=document.getElementById('ig');if(!box)return;
+const FEED=(box.dataset.feed||'').trim(),MAX=+box.dataset.max||9;
+const grid=box.querySelector('.ig-grid');
+if(!FEED)return;
+const KEY='ig:'+FEED,TTL=30*60*1000;
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const ico={
+  VIDEO:'<svg class="ig-k" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>',
+  CAROUSEL_ALBUM:'<svg class="ig-k" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1"/><path d="M4 16V5a1 1 0 0 1 1-1h11"/></svg>'
+};
+function render(d){
+  const posts=((d&&d.posts)||[]).filter(p=>p.permalink&&(p.sizes||p.mediaUrl)).slice(0,MAX);
+  if(!posts.length){grid.innerHTML='';return}
+  grid.innerHTML=posts.map(p=>{
+    const s=p.sizes||{},sm=s.small||{},md=s.medium||{};
+    const src=md.mediaUrl||sm.mediaUrl||p.thumbnailUrl||p.mediaUrl;
+    const set=sm.mediaUrl&&md.mediaUrl?' srcset="'+esc(sm.mediaUrl)+' 400w, '+esc(md.mediaUrl)+' 700w" sizes="(max-width:780px) 33vw, 250px"':'';
+    const cap=(p.prunedCaption||p.caption||'').replace(/\s+/g,' ').trim();
+    const alt=p.altText||cap.slice(0,120)||'Instagram post';
+    const bg=p.colorPalette&&p.colorPalette.dominant?' style="background:rgb('+esc(p.colorPalette.dominant)+')"':'';
+    return '<a class="ig-t" href="'+esc(p.permalink)+'" target="_blank" rel="noopener"'+bg+' aria-label="'+esc('View on Instagram: '+(cap.slice(0,80)||'post'))+'">'
+      +'<img src="'+esc(src)+'"'+set+' alt="'+esc(alt)+'" loading="lazy" decoding="async">'
+      +(ico[p.mediaType]||'')
+      +(cap?'<span class="ig-c"><span>'+esc(cap)+'</span></span>':'')+'</a>';
+  }).join('');
+}
+async function load(){
+  try{const c=JSON.parse(sessionStorage.getItem(KEY)||'null');if(c&&Date.now()-c.t<TTL){render(c.d);return}}catch(e){}
+  grid.innerHTML=Array(6).fill('<span class="ig-t sk"></span>').join('');
+  try{
+    const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),9000);
+    const r=await fetch(FEED,{signal:ctl.signal});clearTimeout(t);
+    if(!r.ok)throw 0;
+    const d=await r.json();
+    render(d);
+    try{sessionStorage.setItem(KEY,JSON.stringify({t:Date.now(),d:d}))}catch(e){}
+  }catch(e){grid.innerHTML=''}
+}
+if('IntersectionObserver' in window){
+  const io=new IntersectionObserver(e=>{if(e[0].isIntersecting){io.disconnect();load()}},{rootMargin:'400px'});
+  io.observe(box);
+}else load();
+})();
+</script>
+</body></html>
+
