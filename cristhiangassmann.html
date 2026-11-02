@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cristhian Gassmann — Founder of MIAMIX &amp; GlobalMix</title>
+<meta name="description" content="Cristhian Javier Gassmann: TV host, travel creator and founder of MIAMIX and GlobalMix. Miami · Tulum · Entre Ríos.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf7f6;--surface:#fff;--text:#150a0c;--muted:#6b5a5d;--accent:#b00f2e;--accent2:#7d0a20;--line:#eadcdd;
+  --serif:'Sora','Inter',system-ui,-apple-system,'Segoe UI',sans-serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#090506;--surface:#150b0d;--text:#f5eeee;--muted:#b3a0a3;--accent:#ef3b57;--accent2:#ff7a90;--line:#2a1519;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#090506;--surface:#150b0d;--text:#f5eeee;--muted:#b3a0a3;--accent:#ef3b57;--accent2:#ff7a90;--line:#2a1519;color-scheme:dark}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px));overflow-x:hidden;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{background:var(--bg);color:var(--text);font:400 16px/1.7 var(--sans);-webkit-font-smoothing:antialiased;padding-bottom:env(safe-area-inset-bottom,0px);overflow-x:clip;width:100%;position:relative}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--serif);line-height:1.12;font-weight:700;letter-spacing:-.025em}
+.wrap{max-width:1100px;margin:0 auto;padding:0 22px}
+section{padding:88px 0}
+.eyebrow{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:12px}
+h2{font-size:clamp(1.9rem,4.5vw,2.8rem);margin-bottom:20px}
+.lead{color:var(--muted);max-width:680px;font-size:1.06rem}
+
+/* nav */
+header{position:fixed;inset:0 0 auto 0;z-index:50;padding-top:env(safe-area-inset-top,0px);background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:var(--serif);font-weight:700;font-size:1.15rem;text-decoration:none;letter-spacing:.02em}
+.logo span{color:var(--accent)}
+.links{display:flex;gap:26px;align-items:center;margin-left:auto}
+.links a{text-decoration:none;font-size:.88rem;color:var(--muted);transition:color .2s}
+.links a:hover{color:var(--accent)}
+.burger{display:none;background:none;border:0;color:var(--text);font-size:1.6rem;cursor:pointer;padding:6px}
+@media(max-width:1024px){
+  .burger{display:block;margin-left:auto}
+  .links{position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:0;background:var(--bg);border-bottom:1px solid var(--line);max-height:0;overflow:hidden;transition:max-height .35s}
+  .links.open{max-height:420px}
+  .links a{width:100%;padding:14px 22px;border-top:1px solid var(--line)}
+}
+
+/* image placeholders */
+.ph{position:relative;overflow:hidden;background:linear-gradient(135deg,#120405,#b00f2e);display:flex;align-items:center;justify-content:center;text-align:center}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.ph .tag{position:relative;z-index:0;color:rgba(255,255,255,.88);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;padding:14px;line-height:1.5}
+.ph .tag b{display:block;font-weight:600;font-size:.8rem}
+
+/* hero */
+.hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;padding:0;color:#fff}
+.hero .ph{position:absolute;inset:0}
+.hero .ph .tag{position:absolute;top:96px;right:18px;z-index:1;text-align:right;opacity:.8}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25) 0%,rgba(0,0,0,.2) 40%,rgba(0,0,0,.78) 100%)}
+.hero .wrap{position:relative;z-index:2;padding-bottom:84px;padding-top:140px}
+.hero h1{font-size:clamp(2.3rem,8.5vw,5.4rem);margin-bottom:16px;font-weight:800;line-height:1;letter-spacing:-.03em;text-transform:uppercase}
+.hero p.sub{font-size:clamp(1rem,2.4vw,1.3rem);max-width:640px;color:rgba(255,255,255,.9);font-weight:300}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:22px 0 30px}
+.chips span{border:1px solid rgba(255,255,255,.4);border-radius:99px;padding:5px 14px;font-size:.78rem;letter-spacing:.06em;backdrop-filter:blur(6px);background:rgba(255,255,255,.08)}
+.btn{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;font-size:.9rem;padding:13px 26px;border-radius:99px;margin:0 10px 10px 0;border:1px solid var(--accent);transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+
+/* about */
+.about{display:grid;grid-template-columns:5fr 7fr;gap:56px;align-items:center}
+.about .ph{aspect-ratio:4/5;border-radius:18px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+.stat{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.stat b{display:block;font-family:var(--serif);font-size:1.5rem;color:var(--accent2)}
+.stat small{color:var(--muted);font-size:.78rem;line-height:1.3;display:block}
+@media(max-width:820px){.about{grid-template-columns:1fr;gap:30px}}
+
+/* timeline */
+.tl{position:relative;margin-top:40px;padding-left:28px;border-left:2px solid var(--line)}
+.tl .item{position:relative;margin-bottom:30px}
+.tl .item::before{content:"";position:absolute;left:-36px;top:7px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg)}
+.tl h3{font-size:1.2rem;margin-bottom:4px}
+.tl p{color:var(--muted);max-width:620px}
+
+/* cards */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(290px,100%),1fr));gap:24px;margin-top:40px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
+.card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(0,0,0,.14)}
+.card .ph{aspect-ratio:16/10}
+.card .body{padding:22px;display:flex;flex-direction:column;gap:10px;flex:1}
+.card .kicker{font-size:.7rem;letter-spacing:.18em;text-transform:uppercase;color:var(--accent2);font-weight:600}
+.card h3{font-size:1.3rem}
+.card p{color:var(--muted);font-size:.95rem;flex:1}
+.card .go{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:6px}
+.card .go a{font-size:.85rem;font-weight:600;color:var(--accent);text-decoration:none}
+.card .go a:hover{text-decoration:underline}
+.band{background:var(--surface);border-block:1px solid var(--line)}
+
+/* slideshow */
+.show{position:relative;margin-top:40px;border-radius:20px;overflow:hidden;aspect-ratio:16/9;background:#000;touch-action:pan-y}
+.track{display:flex;height:100%;transition:transform .7s cubic-bezier(.65,0,.25,1)}
+.slide{min-width:100%;height:100%;position:relative}
+.slide .ph{width:100%;height:100%}
+.cap{position:absolute;left:0;right:0;bottom:0;padding:44px 24px 22px;color:#fff;background:linear-gradient(transparent,rgba(0,0,0,.72));z-index:3;font-size:.95rem}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:46px;height:46px;border-radius:50%;border:0;background:rgba(0,0,0,.45);color:#fff;font-size:1.3rem;cursor:pointer;backdrop-filter:blur(6px);transition:background .2s}
+.arrow:hover{background:var(--accent);color:#fff}
+.arrow.prev{left:14px}.arrow.next{right:14px}
+.dots{position:absolute;bottom:12px;left:0;right:0;display:flex;justify-content:center;gap:8px;z-index:5}
+.dots button{width:9px;height:9px;border-radius:50%;border:0;background:rgba(255,255,255,.45);cursor:pointer;padding:0}
+.dots button.on{background:var(--accent);transform:scale(1.3)}
+@media(max-width:600px){.show{aspect-ratio:4/3}.arrow{width:38px;height:38px}}
+
+/* contact */
+#contact{padding:60px 0}
+.contact{text-align:center}
+.contact .lead{margin:0 auto 24px}
+.reach{display:flex;flex-wrap:wrap;justify-content:center;gap:10px}
+.pill{display:inline-flex;align-items:center;gap:9px;background:var(--surface);border:1px solid var(--line);border-radius:99px;padding:10px 18px;text-decoration:none;font-size:.92rem;font-weight:500;transition:border-color .2s}
+.pill:hover{border-color:var(--accent)}
+.pill svg{width:18px;height:18px;color:var(--accent)}
+.soc{display:flex;justify-content:center;gap:12px;margin-top:18px}
+.soc a{width:46px;height:46px;border-radius:50%;display:grid;place-items:center;color:var(--text);border:1px solid var(--line);transition:color .2s,border-color .2s,transform .2s}
+.soc a:hover{color:var(--accent);border-color:var(--accent);transform:translateY(-2px)}
+.soc svg{width:20px;height:20px}
+
+/* martin fierro */
+.hero .eyebrow{color:#ff8da1}
+.mf{background:radial-gradient(120% 90% at 85% 0%,#4a0a18 0%,#0a0507 62%);color:#f5eeee}
+.mf .eyebrow{color:#ff8da1}
+.mf .lead{color:#d2bfc2}
+.mf-top{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.mf-ph{aspect-ratio:4/5;border-radius:18px;border:1px solid rgba(255,255,255,.14)}
+.badges{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
+.badge{border:1px solid rgba(255,138,160,.5);border-radius:14px;padding:14px 18px;background:rgba(176,15,46,.22)}
+.badge b{display:block;font-family:var(--serif);font-size:1.15rem}
+.badge small{color:#d2bfc2;font-size:.78rem}
+.mf .show{margin-top:48px;border:1px solid rgba(255,255,255,.14)}
+@media(max-width:820px){.mf-top{grid-template-columns:1fr;gap:30px}.mf-ph{aspect-ratio:16/10}}
+footer{border-top:1px solid var(--line);padding:30px 0 calc(30px + env(safe-area-inset-bottom,0px));text-align:center;color:var(--muted);font-size:.82rem}
+
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.track{transition:none}html{scroll-behavior:auto}}
+/* ---- responsive polish: tablet + mobile ---- */
+img,svg,video{max-width:100%}
+h1,h2,h3,p,.stat b,.pill{overflow-wrap:anywhere}
+@media(max-width:1024px){
+  .wrap{padding:0 28px}
+  section{padding:72px 0}
+  .about,.mf-top{gap:40px}
+  .links a{padding-left:28px;padding-right:28px}
+}
+@media(max-width:820px){
+  .about,.mf-top{grid-template-columns:1fr}
+  .about .ph{aspect-ratio:4/3;max-width:560px;width:100%;margin:0 auto}
+}
+@media(max-width:600px){
+  body{font-size:15.5px;line-height:1.65}
+  .wrap{padding:0 20px}
+  section{padding:56px 0}
+  h2{margin-bottom:14px}
+  nav{height:58px}
+  html{scroll-padding-top:calc(58px + env(safe-area-inset-top,0px))}
+  .hero{min-height:92svh}
+  .hero .wrap{padding-top:110px;padding-bottom:44px}
+  .hero .ph .tag{top:76px;right:12px;font-size:.62rem;padding:0}
+  .hero p.sub{font-size:1rem}
+  .chips{gap:6px;margin:18px 0 24px}
+  .chips span{font-size:.7rem;padding:4px 11px}
+  .btn{display:block;text-align:center;margin:0 0 10px;width:100%}
+  .stats{grid-template-columns:1fr;gap:10px;margin-top:22px}
+  .stat{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px}
+  .stat b{font-size:1.1rem}
+  .stat small{text-align:right}
+  .tl{padding-left:22px;margin-top:28px}
+  .tl .item::before{left:-30px}
+  .grid{gap:18px;margin-top:28px}
+  .card .body{padding:18px}
+  .show{border-radius:16px;margin-top:28px}
+  .mf .show{margin-top:32px}
+  .cap{padding:30px 16px 34px;font-size:.85rem}
+  .arrow.prev{left:8px}.arrow.next{right:8px}
+  .dots{bottom:10px}
+  .badge{flex:1 1 140px;padding:12px 14px}
+  #contact{padding:48px 0}
+  .reach{flex-direction:column;align-items:stretch}
+  .pill{justify-content:center}
+}
+@media(max-width:360px){.hero h1{font-size:2.05rem}.eyebrow{letter-spacing:.16em}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="logo">Cristhian <span>Gassmann</span></a>
+      <button class="burger" id="burger" aria-label="Menu" aria-expanded="false">☰</button>
+      <div class="links" id="links">
+        <a href="#about">About</a>
+        <a href="#journey">Journey</a>
+        <a href="#martin-fierro">Martín Fierro</a>
+        <a href="#brands">Brands</a>
+        <a href="#projects">Projects</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+<!-- HERO -->
+<section class="hero">
+  <div class="ph">
+    <img src="images/hero.jpg" alt="Cristhian Gassmann" onerror="this.remove()">
+    <div class="tag"><b>Hero image</b>images/hero.jpg · 1920×1080+ · landscape portrait or travel shot</div>
+  </div>
+  <div class="wrap">
+    <p class="eyebrow">Miami · Tulum · Entre Ríos</p>
+    <h1>Cristhian<br>Gassmann</h1>
+    <p class="sub">Host, storyteller and founder of MIAMIX and GlobalMix — curating the world’s best experiences, from the Miami spotlight to the Caribbean jungle.</p>
+    <a class="btn" href="#projects">Explore Projects</a>
+    <a class="btn ghost" href="#contact">Get in Touch</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap about">
+    <div class="ph reveal">
+      <img src="images/portrait.jpg" alt="Portrait of Cristhian Gassmann" onerror="this.remove()">
+      <div class="tag"><b>Portrait</b>images/portrait.jpg · 4:5 vertical</div>
+    </div>
+    <div class="reveal">
+      <p class="eyebrow">About</p>
+      <h2>From Entre Ríos to the world</h2>
+      <p class="lead">Raised between Entre Ríos and Buenos Aires, Cristhian has lived and traveled across the globe before making his home in the United States — first in New York, then Miami. His career spans aviation, travel planning, tour guiding, hospitality and television, and it all comes together in one mission: connecting people with unforgettable places.</p>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey" class="band">
+  <div class="wrap reveal">
+    <p class="eyebrow">Journey</p>
+    <h2>A career in motion</h2>
+    <div class="tl">
+      <div class="item"><h3>Aerolíneas Argentinas</h3><p>Started in the skies with Argentina’s flag carrier, building a lifelong passion for global travel and service.</p></div>
+      <div class="item"><h3>Travel Planner &amp; Tour Guide</h3><p>Designed itineraries and led travelers through the world’s most memorable destinations.</p></div>
+      <div class="item"><h3>Hospitality</h3><p>Crafted high-touch guest experiences with an eye for detail and authentic local culture.</p></div>
+      <div class="item"><h3>Television Host</h3><p>Hosted major events, including the Martín Fierro Awards, Argentina’s most prestigious television honors.</p></div>
+      <div class="item"><h3>Martín Fierro Nomination</h3><p>Nominated for a Martín Fierro Award for his digital travel platform.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MARTIN FIERRO -->
+<section id="martin-fierro" class="mf">
+  <div class="wrap">
+    <div class="mf-top">
+      <div class="reveal">
+        <p class="eyebrow">Martín Fierro Awards</p>
+        <h2>On Argentina’s biggest television stage</h2>
+        <p class="lead">Cristhian has hosted events including the Martín Fierro Awards, the most prestigious honors in Argentine television, and was himself nominated for a Martín Fierro Award for his digital travel platform.</p>
+      </div>
+      <div class="ph mf-ph reveal">
+        <img src="images/mf-feature.jpg" alt="Cristhian at the Martín Fierro Awards" onerror="this.remove()">
+        <div class="tag"><b>Featured image</b>images/mf-feature.jpg · 4:5 vertical · red carpet or stage shot</div>
+      </div>
+    </div>
+    <div class="show reveal" id="mf-show" aria-roledescription="carousel" aria-label="Martín Fierro gallery">
+      <div class="track" id="mf-track"></div>
+      <button class="arrow prev" id="mf-prev" aria-label="Previous slide">‹</button>
+      <button class="arrow next" id="mf-next" aria-label="Next slide">›</button>
+      <div class="dots" id="mf-dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section id="brands">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Brands</p>
+      <h2>Networks that curate the good life</h2>
+    </div>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="ph"><img src="images/miamix.jpg" alt="MIAMIX" onerror="this.remove()"><div class="tag"><b>MIAMIX</b>images/miamix.jpg · 16:10</div></div>
+        <div class="body"><span class="kicker">Founder &amp; Creator</span><h3>MIAMIX</h3>
+          <p>Miami’s entertainment network covering everything from Formula 1 and the World Cup to fashion and nightlife.</p>
+          <div class="go"><a href="https://www.miamix.vip" target="_blank" rel="noopener">Visit MIAMIX →</a></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph"><img src="images/globalmix.jpg" alt="GlobalMix" onerror="this.remove()"><div class="tag"><b>GlobalMix</b>images/globalmix.jpg · 16:10</div></div>
+        <div class="body"><span class="kicker">Expansion</span><h3>GlobalMix</h3>
+          <p>A broader lens on curated travel: a virtual guide to exotic destinations with itineraries and must-dos, built as the ultimate travel companion.</p>
+          <div class="go"><a href="https://www.globalmix.network" target="_blank" rel="noopener">Visit GlobalMix →</a><a href="https://www.globalmix.network/travel" target="_blank" rel="noopener">Travel Network →</a></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="band">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">New Projects</p>
+      <h2>Building what’s next</h2>
+      <p class="lead">From the Riviera Maya jungle to the heart of Argentina, new developments and partnerships are taking shape.</p>
+    </div>
+
+    <h3 class="reveal" style="margin-top:48px;font-size:1.5rem">Tulum, Mexico</h3>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="ph"><img src="images/kristal-jungle.jpg" alt="Kristal Jungle" onerror="this.remove()"><div class="tag"><b>Kristal Jungle</b>images/kristal-jungle.jpg · 16:10</div></div>
+        <div class="body"><span class="kicker">Community Development</span><h3>Kristal Jungle</h3>
+          <p>Created in collaboration with architects: a jungle community ranging from high-end villas to eco-friendly cabanas, designed to live in harmony with nature.</p>
+          <div class="go"><a href="https://www.globalmix.network/casakristal" target="_blank" rel="noopener">Casa Kristal →</a><a href="https://www.globalmix.network/kristal%20Jungle" target="_blank" rel="noopener">Kristal Jungle →</a><a href="https://www.globalmix.network/villashunanhill" target="_blank" rel="noopener">Villas Hunan Hill →</a></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph"><img src="images/azulik.jpg" alt="Azulik" onerror="this.remove()"><div class="tag"><b>Azulik</b>images/azulik.jpg · 16:10</div></div>
+        <div class="body"><span class="kicker">Partnership</span><h3>Azulik</h3>
+          <p>Promoting the newest projects from Azulik, the eco-luxury icon of Tulum.</p>
+          <div class="go"><a href="https://www.globalmix.network/azulik" target="_blank" rel="noopener">Discover Azulik →</a></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph"><img src="images/faena.jpg" alt="Faena" onerror="this.remove()"><div class="tag"><b>Faena</b>images/faena.jpg · 16:10</div></div>
+        <div class="body"><span class="kicker">Partnership</span><h3>Faena</h3>
+          <p>Showcasing Faena’s new developments in the heart of Tulum.</p>
+          <div class="go"><a href="https://www.globalmix.network/faena" target="_blank" rel="noopener">Discover Faena →</a></div></div>
+      </article>
+    </div>
+
+    <h3 class="reveal" style="margin-top:56px;font-size:1.5rem">Entre Ríos, Argentina</h3>
+    <p class="lead reveal" style="margin-top:8px">Giving back to his hometown by encouraging tourism and regional growth.</p>
+    <div class="grid">
+      <article class="card reveal">
+        <div class="ph"><img src="images/aeropuerto.jpg" alt="Federal airport" onerror="this.remove()"><div class="tag"><b>Aeropuerto Federal</b>images/aeropuerto.jpg · 16:10</div></div>
+        <div class="body"><span class="kicker">Infrastructure</span><h3>Commercial Airport</h3>
+          <p>Supporting the creation of a commercial airport to open Entre Ríos to the world.</p>
+          <div class="go"><a href="https://www.globalmix.network/aeropuertofederal" target="_blank" rel="noopener">Learn more →</a></div></div>
+      </article>
+      <article class="card reveal">
+        <div class="ph"><img src="images/casa-campo.jpg" alt="Casa Campo" onerror="this.remove()"><div class="tag"><b>Casa Campo</b>images/casa-campo.jpg · 16:10</div></div>
+        <div class="body"><span class="kicker">Hospitality</span><h3>Destination Hotel &amp; Resort</h3>
+          <p>A destination hotel and resort that captures the charm and warmth of Argentine country life.</p>
+          <div class="go"><a href="https://www.globalmix.network/casacampo" target="_blank" rel="noopener">Learn more →</a></div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery">
+  <div class="wrap">
+    <div class="reveal">
+      <p class="eyebrow">Gallery</p>
+      <h2>Moments &amp; destinations</h2>
+    </div>
+    <div class="show reveal" id="show" aria-roledescription="carousel" aria-label="Photo gallery">
+      <div class="track" id="track"></div>
+      <button class="arrow prev" id="prev" aria-label="Previous slide">‹</button>
+      <button class="arrow next" id="next" aria-label="Next slide">›</button>
+      <div class="dots" id="dots"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="band contact">
+  <div class="wrap reveal">
+    <p class="eyebrow">Contact</p>
+    <h2>Let’s create something together</h2>
+    <p class="lead">Collaborations, hosting, partnerships and travel projects — reach out.</p>
+    <div class="reach">
+      <a class="pill" href="mailto:cristhian@miamix.io"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>cristhian@miamix.io</a>
+      <a class="pill" href="tel:+17864598797"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>+1 (786) 459-8797</a>
+    </div>
+    <div class="soc">
+      <a class="ig" href="https://instagram.com/cristhiangassmann" target="_blank" rel="noopener" aria-label="Instagram @cristhiangassmann"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <a class="fb" href="https://www.facebook.com/share/1cjV4Neu6c/?mibextid=wwXIfr" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      <a class="li" href="https://www.linkedin.com/in/cristhian-gassmann-60254a389?utm_source=share_via&amp;utm_content=profile&amp;utm_medium=member_ios" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">© <span id="yr"></span> Cristhian Javier Gassmann · MIAMIX · GlobalMix</div></footer>
+
+<script>
+/* ===== EDIT YOUR GALLERY HERE: add files to /images and list them ===== */
+var SLIDES=[
+  {src:"images/gallery-1.jpg",cap:"Hosting on stage"},
+  {src:"images/gallery-2.jpg",cap:"MIAMIX at the F1 Miami Grand Prix"},
+  {src:"images/gallery-3.jpg",cap:"Exploring the world’s destinations"},
+  {src:"images/gallery-4.jpg",cap:"Tulum, Mexico"},
+  {src:"images/gallery-5.jpg",cap:"Entre Ríos, Argentina"},
+  {src:"images/gallery-6.jpg",cap:"Behind the scenes"}
+];
+/* ===== MARTÍN FIERRO GALLERY: add files to /images and list them ===== */
+var MF_SLIDES=[
+  {src:"images/mf-1.jpg",cap:"Red carpet at the Martín Fierro Awards"},
+  {src:"images/mf-2.jpg",cap:"Hosting on the Martín Fierro stage"},
+  {src:"images/mf-3.jpg",cap:"Backstage with fellow honorees"},
+  {src:"images/mf-4.jpg",cap:"Nomination night"},
+  {src:"images/mf-5.jpg",cap:"Interviews with Argentina’s stars"},
+  {src:"images/mf-6.jpg",cap:"Celebrating the digital travel platform"}
+];
+var INTERVAL=5000;
+
+function initShow(SLIDES,p){
+  var track=document.getElementById(p+'track'),dots=document.getElementById(p+'dots'),show=document.getElementById(p+'show');
+  var i=0,timer;
+  SLIDES.forEach(function(s,n){
+    var d=document.createElement('div');d.className='slide';
+    d.innerHTML='<div class="ph"><img src="'+s.src+'" alt="'+s.cap+'" loading="lazy"><div class="tag"><b>Gallery image '+(n+1)+'</b>'+s.src+' · 16:9 landscape</div></div><div class="cap">'+s.cap+'</div>';
+    d.querySelector('img').onerror=function(){this.remove()};
+    track.appendChild(d);
+    var b=document.createElement('button');b.setAttribute('aria-label','Go to slide '+(n+1));
+    b.onclick=function(){go(n,true)};dots.appendChild(b);
+  });
+  function go(n,manual){
+    i=(n+SLIDES.length)%SLIDES.length;
+    track.style.transform='translateX(-'+(i*100)+'%)';
+    [].forEach.call(dots.children,function(b,k){b.className=k===i?'on':''});
+    if(manual)restart();
+  }
+  function restart(){clearInterval(timer);timer=setInterval(function(){go(i+1)},INTERVAL)}
+  document.getElementById(p+'next').onclick=function(){go(i+1,true)};
+  document.getElementById(p+'prev').onclick=function(){go(i-1,true)};
+  show.onmouseenter=function(){clearInterval(timer)};
+  show.onmouseleave=restart;
+  var x0=null;
+  show.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  show.addEventListener('touchend',function(e){if(x0===null)return;var dx=e.changedTouches[0].clientX-x0;if(Math.abs(dx)>40)go(i+(dx<0?1:-1),true);x0=null});
+  document.addEventListener('keydown',function(e){var r=show.getBoundingClientRect();if(r.top>innerHeight||r.bottom<0)return;if(e.key==='ArrowRight')go(i+1,true);if(e.key==='ArrowLeft')go(i-1,true)});
+  go(0);restart();
+}
+initShow(SLIDES,'');initShow(MF_SLIDES,'mf-');
+
+(function(){
+  /* mobile menu */
+  var burger=document.getElementById('burger'),links=document.getElementById('links');
+  burger.onclick=function(){var o=links.classList.toggle('open');burger.setAttribute('aria-expanded',o)};
+  links.addEventListener('click',function(e){if(e.target.tagName==='A'){links.classList.remove('open');burger.setAttribute('aria-expanded',false)}});
+
+  /* scroll reveal */
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.12});
+    els.forEach(function(el){io.observe(el)});
+  }else{els.forEach(function(el){el.classList.add('in')})}
+  document.getElementById('yr').textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
