@@ -54,9 +54,9 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 
 /* hero */
 .hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;color:#fff}
-.hero .ph{position:absolute;inset:0}
-.hero .ph img{object-position:center 22%}
-.hero .ph .tag{position:absolute;top:96px;right:18px;z-index:1;text-align:right;opacity:.8}
+.hero{background:#0a0507}
+.hero .ph{position:absolute;inset:calc(64px + env(safe-area-inset-top,0px)) 0 0 0}
+.hero .ph img{object-position:center top}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.1) 35%,rgba(0,0,0,.82) 100%)}
 .hero .wrap{position:relative;z-index:2;width:100%;padding-top:140px;padding-bottom:72px}
 .hero .eyebrow{color:#ff8da1;margin-bottom:14px}
@@ -220,7 +220,6 @@ h1,h2,h3,p,.stat b,.pill{overflow-wrap:anywhere}
 <section class="hero">
   <div class="ph">
     <img src="images/hero-cristhian.jpeg" alt="Cristhian Gassmann" onerror="this.remove()">
-    <div class="tag"><b>Hero image</b>images/hero-cristhian.jpeg · landscape or portrait</div>
   </div>
   <div class="wrap">
     <p class="eyebrow">Miami · Tulum · Entre Ríos</p>
