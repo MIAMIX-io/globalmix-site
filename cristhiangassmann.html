@@ -51,11 +51,11 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 
 /* hero */
-.hero{min-height:100svh;position:relative;display:flex;align-items:flex-end;color:#fff;background:#0a0507}
+.hero{min-height:110svh;position:relative;display:flex;align-items:flex-end;color:#fff;background:#0a0507;margin-bottom:-40px}
 .hero .ph{position:absolute;inset:calc(64px + env(safe-area-inset-top,0px)) 0 0 0}
 .hero .ph img{object-position:center top}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35) 0%,rgba(0,0,0,.1) 35%,rgba(0,0,0,.82) 100%)}
-.hero .wrap{position:relative;z-index:2;width:100%;padding-top:140px;padding-bottom:40px}
+.hero .wrap{position:relative;z-index:2;width:100%;padding-top:160px;padding-bottom:16px}
 .hero .eyebrow{color:#ff8da1;margin-bottom:14px}
 .hero h1{font-size:clamp(2.4rem,9vw,5.6rem);line-height:.98;letter-spacing:-.03em;font-weight:800;text-transform:uppercase;margin-bottom:18px;overflow-wrap:normal}
 .hero p.sub{max-width:34rem;font-size:clamp(1rem,2.4vw,1.25rem);line-height:1.6;color:rgba(255,255,255,.88);font-weight:300}
@@ -65,7 +65,7 @@ nav{display:flex;align-items:center;justify-content:space-between;height:64px}
 .btn.ghost{background:transparent;color:inherit;border-color:currentColor}
 
 @media(max-width:600px){
-  .hero .wrap{padding-top:110px;padding-bottom:24px}
+  .hero .wrap{padding-top:140px;padding-bottom:12px}
   .cta .btn{flex:1 1 0;width:auto;padding:13px 12px}
 }
 
@@ -202,8 +202,8 @@ h1,h2,h3,p,.stat b,.pill{overflow-wrap:anywhere}
   h2{margin-bottom:14px}
   nav{height:58px}
   html{scroll-padding-top:calc(58px + env(safe-area-inset-top,0px))}
-  .hero{min-height:92svh}
-  .hero .wrap{padding-top:110px;padding-bottom:44px}
+  .hero{min-height:105svh;margin-bottom:-20px}
+  .hero .wrap{padding-top:140px;padding-bottom:12px}
   .hero p.sub{font-size:1rem}
   .btn{display:block;text-align:center;margin:0 0 10px;width:100%}
   .stats{grid-template-columns:1fr;gap:10px;margin-top:22px}
