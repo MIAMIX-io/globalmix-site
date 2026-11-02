@@ -254,11 +254,13 @@ a.plat:hover,a.plat:focus-visible{background:var(--bg);color:var(--iv);outline:0
   #phil p{max-width:min(44vw,460px)}
 }
 /* Instagram feed */
-.ig{margin-top:90px;text-align:center}
+/* Reduced margin-top from 90px to 40px to pull it closer to the gallery */
+.ig{margin-top:40px;text-align:center}
 .ig .rule{margin-left:auto;margin-right:auto}
 .ig-h{font:400 clamp(26px,4.5vw,36px)/1.2 var(--serif);color:var(--bg);margin:10px 0 0}
 .ig-h a{text-decoration:none}
-.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:760px;margin:36px auto 0}
+/* Increased max-width from 760px to 960px and slightly bumped the gap to 14px */
+.ig-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:960px;margin:36px auto 0}
 .ig-grid:empty{display:none}
 .ig-t{position:relative;display:block;aspect-ratio:1;overflow:hidden;background:#e4dacb;outline:1px solid var(--gold);outline-offset:-1px}
 .ig-t img{width:100%;height:100%;object-fit:cover;transition:transform .6s ease}
