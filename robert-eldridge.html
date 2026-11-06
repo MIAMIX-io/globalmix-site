@@ -927,13 +927,28 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   document.querySelector("#work .track").scrollTo({left:0});
  };
 
- var TP=[
-  ["Event flyer photo","The first touchpoint. A flyer has to work in a feed and on a wall, in seconds. I design each one around the event’s energy and the venue’s identity. [Add a project example.]"],
-  ["Cocktail menu photo","Layout, type and hierarchy built for a dim room and a guest with one hand free. As a consultant I designed and developed cocktail menus for clients including Capital One’s airport lounges, so each one had to read fast and still feel considered. [Add a project example.]"],
-  ["Cocktail and garnish photo","The garnish is design too: color, shape and scale on the glass, matched to the menu and the room. [Add a project example.]"],
-  ["Screen or signage photo","Stage-facing screens and in-venue signage that guests read at a glance, even when the room is moving. [Add a project example.]"],
-  ["Brand system photo","One identity running from the printed menu to the glass, so every piece feels like the same night. [Add a project example.]"]
- ];
+ var TP = [
+  [
+    "Event promotion",
+    "Every event has a visual identity and a reason to bring people together. I design promotional materials that translate the energy of an event into a clear, recognizable message—built to work across social media, print and the venue itself."
+  ],
+  [
+    "Menu design",
+    "A menu is both a visual composition and a service tool. I bring together typography, hierarchy, format and beverage knowledge to create menus that are easy to navigate and aligned with the character of the venue. My consulting work has included cocktail menu design and development for clients such as Capital One’s airport lounges."
+  ],
+  [
+    "Cocktail presentation",
+    "The design continues beyond the page. Color, glassware, garnish, proportion and presentation all contribute to how a drink is experienced. My background behind the bar informs how I approach the visual details of a cocktail—from its first impression to its final presentation."
+  ],
+  [
+    "Digital & environmental",
+    "In a live environment, information has to be understood quickly. I consider how digital screens, event graphics and in-venue signage communicate within a space—balancing visibility, consistency and the movement of the room."
+  ],
+  [
+    "Brand identity",
+    "A strong identity should feel connected wherever it appears. I develop visual direction that carries across menus, promotional materials, digital assets and the guest experience, creating a cohesive expression of the venue, event or brand."
+  ]
+];
  function tp(i){$("tph").textContent=TP[i][0];$("ttx").textContent=TP[i][1];
   document.querySelectorAll("#touch button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.i==i)})}
  $("touch").onclick=function(e){var i=e.target.dataset.i;if(i!==undefined)tp(+i)};tp(0);
