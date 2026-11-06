@@ -45,12 +45,14 @@ header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;backgroun
 .btn.p{background:var(--ac);color:var(--onac);border-color:var(--ac)}
 .tlink{text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:6px;font-weight:500}
 
-.hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:end;padding-top:64px;padding-bottom:72px}
+.hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;grid-template-areas:"top pic" "act pic";grid-template-rows:1fr auto;gap:0 56px;align-items:end;padding-top:64px;padding-bottom:72px}
+.hero-top{grid-area:top}.hero-pic{grid-area:pic;width:100%;max-width:354px}.hero-act{grid-area:act;padding-top:20px}
 h1{font-size:clamp(3.2rem,9.5vw,7.6rem)}
 h1 span{display:block;animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
 h1 span+span{animation-delay:.12s;color:var(--ac);transition:color .5s}
 @keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-.tag{font-size:clamp(1.1rem,2vw,1.3rem);margin:28px 0 30px;max-width:44ch;color:var(--mut);min-height:5.4em}
+.tag{font-size:clamp(1.2rem,2.2vw,1.5rem);margin:24px 0 0;max-width:40ch;color:var(--fg)}
+.tag2{font-size:clamp(1.05rem,1.8vw,1.2rem);margin:0 0 28px;max-width:46ch;color:var(--mut)}
 .cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:34px}
 .lens{display:inline-flex;border:1px solid var(--fg)}
 .lens button{font:500 15px var(--body);border:0;background:none;color:var(--fg);padding:12px 24px;cursor:pointer}
@@ -62,12 +64,15 @@ h1 span+span{animation-delay:.12s;color:var(--ac);transition:color .5s}
 [data-lens="desk"] .pal{display:flex}
 .pal i:nth-child(1){background:#00CEC8}.pal i:nth-child(2){background:#FCEFC3}.pal i:nth-child(3){background:#FF9C5F}.pal i:nth-child(4){background:#FF69B4}.pal i{flex:1}
 
+.hero-pic .pal,.hero-pic .cap{width:calc(100% - 14px)}
 /* HERO PORTRAIT — BAR / DESIGN SWITCH */
 #top .hero-portraits {
   position: relative;
   display: block;
-  width: 100%;
+  width: calc(100% - 14px);
   max-width: 340px;
+  box-shadow: 14px 14px 0 var(--ac);
+  transition: box-shadow .5s;
   aspect-ratio: 4 / 5;
   overflow: hidden;
   padding: 0;
@@ -211,8 +216,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  }
 
  .hero .wrap{
-   padding-top:40px;
+   padding-top:28px;
+   grid-template-areas:"top" "pic" "act";
+   grid-template-rows:auto;
+   gap:28px 0;
  }
+ .hero-act{padding-top:0}
 
  .tag{
    min-height:0;
@@ -343,26 +352,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </div></header>
 
 <div class="hero" id="top"><div class="wrap">
- <div>
+ <div class="hero-top">
   <h1><span>Robert</span><span>Eldridge III</span></h1>
   <p class="tag" id="tag" aria-live="polite"></p>
+ </div>
+ <div class="hero-pic"><div class="pal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <div class="ph portrait hero-portraits">
+   <img class="hero-portrait-bar" src="images/robert-hero-bar.webp" alt="Robert Eldridge in a hospitality setting">
+   <img class="hero-portrait-design" src="images/robert-hero-desk.webp" alt="Robert Eldridge in a creative setting">
+  </div>
+  <div class="cap"><span data-only="bar">Miami · New York · London</span><span data-only="desk">Miami · New York · Buenos Aires</span><span>MIAMIX / GLOBAL-MIX</span></div>
+ </div>
+ <div class="hero-act">
+  <p class="tag2" id="tag2" aria-live="polite"></p>
   <div class="cta"><a class="btn p" id="c1" href="#exp"></a><a class="tlink" id="c2" href="#book"></a></div>
   <div class="lens" role="group" aria-label="Choose what to explore"><button id="lBar" aria-pressed="true">Behind the bar</button><button id="lDes" aria-pressed="false">At the desk</button></div>
  </div>
- <div><div class="pal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-<div class="ph portrait hero-portraits">
-  <img
-    class="hero-portrait-bar"
-    src="images/robert-hero-bar.webp"
-    alt="Robert Eldridge in a hospitality setting"
-  >
-  <img
-    class="hero-portrait-design"
-    src="images/robert-hero-desk.webp"
-    alt="Robert Eldridge in a creative setting"
-  >
-</div>
-  <div class="cap"><span data-only="bar">Miami · New York · London</span><span data-only="desk">Miami · New York · Buenos Aires</span><span>MIAMIX / GLOBAL-MIX</span></div></div>
 </div></div>
 
 <main id="page">
@@ -845,7 +850,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <article class="card">
         <img
           class="ph"
-          src="images/robert-shaker-mia .webp"
+          src="images/robert-shaker-mia%20.webp"
           alt="Broken Shaker Miami"
           loading="lazy"
         >
@@ -1009,11 +1014,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 (function(){
  var R=document.documentElement,$=function(i){return document.getElementById(i)},reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
  var T={
-  bar:{tag:"Fifteen years in hospitality, shaped by the energy of Miami and New York. I’ve led award-winning bars, developed beverage programs and guided hospitality projects from concept to execution—bringing together operational experience, creative direction and a designer’s perspective on the guest experience.",c1:["See my experience","#exp"],c2:["Read about the bar book","#book"],cp:"Hospitality consulting, beverage programs, the bar book or a MIAMIX partnership."},
-  desk:{tag:"Graphic designer with a foundation in visual communication and a career shaped by hospitality, restaurants and nightlife. From menus and promotional campaigns to brand identities and digital experiences, I bring a designer’s eye to the details that give a place its character.",c1:["See the work","#work"],c2:["Skills and studies","#skills"],cp:"Brand, web and print design for hospitality and nightlife, or a MIAMIX collaboration."}
+  bar:{tag:"Fifteen years in hospitality, shaped by the energy of Miami and New York.",tag2:"I’ve led award-winning bars, developed beverage programs and guided hospitality projects from concept to execution—bringing together operational experience, creative direction and a designer’s perspective on the guest experience.",c1:["See my experience","#exp"],c2:["Read about the bar book","#book"],cp:"Hospitality consulting, beverage programs, the bar book or a MIAMIX partnership."},
+  desk:{tag:"Graphic designer with a foundation in visual communication and a career shaped by hospitality, restaurants and nightlife.",tag2:"From menus and promotional campaigns to brand identities and digital experiences, I bring a designer’s eye to the details that give a place its character.",c1:["See the work","#work"],c2:["Skills and studies","#skills"],cp:"Brand, web and print design for hospitality and nightlife, or a MIAMIX collaboration."}
  };
  function lens(m,fade){
-  var go=function(){R.setAttribute("data-lens",m);var t=T[m];$("tag").textContent=t.tag;
+  var go=function(){R.setAttribute("data-lens",m);var t=T[m];$("tag").textContent=t.tag;$("tag2").textContent=t.tag2;
    $("c1").textContent=t.c1[0];$("c1").href=t.c1[1];$("c2").textContent=t.c2[0];$("c2").href=t.c2[1];$("cp").textContent=t.cp;
    $("lBar").setAttribute("aria-pressed",m==="bar");$("lDes").setAttribute("aria-pressed",m==="desk");
    if(fade){$("page").classList.remove("out");window.scrollTo({top:0})}};
