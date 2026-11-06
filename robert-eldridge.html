@@ -16,6 +16,8 @@
 html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
 *{box-sizing:border-box;margin:0;border-radius:0}
 img{max-width:100%}
+html,body{overflow-x:clip;max-width:100%}
+.blend>div,.book>div,.studies>div,.explore>div{min-width:0}
 body{background:var(--bg);color:var(--fg);font:400 17px/1.7 var(--body);transition:background .5s,color .5s}
 body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:30}
 h1,h2,.disp{font-family:var(--disp);font-weight:var(--dw);line-height:var(--dl);letter-spacing:var(--ls)}
@@ -157,42 +159,47 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .menu-tabs button[aria-pressed="true"]{color:var(--fg);border-color:var(--ac);border-bottom-width:3px}
 .menu-note{font-size:14px;margin-top:10px}
 
-/* CASE STUDY PREVIEW + FULLSCREEN PRESENTATION */
-#tph.case-mode{aspect-ratio:16/10;background:#E6DDCD;border:1px solid var(--line)}
-#tph.case-mode img{object-fit:cover;transform:scale(1.9);transform-origin:var(--zo,20% 25%);transition:transform .8s cubic-bezier(.2,.8,.2,1)}
-#tph.case-mode a:hover img,#tph.case-mode a:focus-visible img{transform:scale(2.1)}
-.cs{position:fixed;inset:0;z-index:100;display:flex;flex-direction:column;background:#FAF7F0;color:#1E1D1A;font-family:var(--body);padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+/* CASE STUDY PREVIEW + LANDSCAPE POP-UP PRESENTATION */
+#tph.case-mode{aspect-ratio:3/2;background:#E6DDCD;border:1px solid var(--line)}
+#tph.case-mode img{object-fit:contain}
+.cs{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:rgba(18,16,12,.72);opacity:0;transition:opacity .45s ease;padding:max(12px,env(safe-area-inset-top,0px)) 12px max(12px,env(safe-area-inset-bottom,0px))}
+.cs.open{opacity:1}
 .cs[hidden]{display:none}
+.cs-win{display:flex;flex-direction:column;background:#FAF7F0;color:#1E1D1A;font-family:var(--body);width:min(1180px,100%,calc(86vh*1.6));aspect-ratio:16/10;box-shadow:0 30px 80px rgba(0,0,0,.45)}
 .cs-bar,.cs-stage,.cs-nav{opacity:0;transition:opacity .45s ease .35s}
 .cs.open .cs-bar,.cs.open .cs-stage,.cs.open .cs-nav{opacity:1}
-.cs-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 24px;border-bottom:1px solid #D8CFC2}
+.cs-bar{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 22px;border-bottom:1px solid #D8CFC2}
 .cs-kick{font:600 11px var(--body);letter-spacing:.2em;text-transform:uppercase;color:#44513C}
-.cs-x{border:1px solid #1E1D1A;background:none;color:#1E1D1A;padding:8px 16px;cursor:pointer;font:500 14px var(--body)}
+.cs-x{border:1px solid #1E1D1A;background:none;color:#1E1D1A;padding:7px 14px;cursor:pointer;font:500 14px var(--body)}
 .cs-x:hover{background:#1E1D1A;color:#FAF7F0}
-.cs-stage{flex:1;min-height:0;display:grid;grid-template-columns:1.7fr 1fr;gap:40px;padding:28px 32px}
+.cs-stage{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);gap:32px;padding:22px 28px}
 .cs-img{position:relative;min-height:0;display:grid;place-items:center;background:#E6DDCD;border:1px solid #D5CBBF;overflow:hidden}
 .cs-img img{position:relative;width:100%;height:100%;object-fit:contain}
 .cs-img img[hidden]{display:none}
 .cs-ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:24px;font:500 14px var(--body);letter-spacing:.08em;text-transform:uppercase;color:#44513C}
-.cs-txt{display:flex;flex-direction:column;justify-content:center;gap:14px;overflow:auto}
+.cs-txt{display:flex;flex-direction:column;justify-content:center;gap:12px;overflow:auto;min-width:0}
 .cs-n{font:700 11px var(--body);letter-spacing:.22em;text-transform:uppercase;color:#8F4632}
-.cs-t{font:400 clamp(2rem,4vw,3.2rem)/1.05 Georgia,"Times New Roman",serif;color:#1E1D1A}
-.cs-d{font-size:16px;line-height:1.6;color:#35332F;max-width:46ch}
-.cs-sw{display:flex;flex-wrap:wrap;gap:12px 18px}
+.cs-t{font:400 clamp(1.7rem,3vw,2.6rem)/1.05 Georgia,"Times New Roman",serif;color:#1E1D1A}
+.cs-d{font-size:15px;line-height:1.55;color:#35332F;max-width:46ch}
+.cs-sw{display:flex;flex-wrap:wrap;gap:10px 16px}
 .cs-sw:empty{display:none}
 .cs-sw span{display:flex;align-items:center;gap:8px;font-size:13px;color:#35332F}
-.cs-sw i{width:28px;height:28px;border:1px solid rgba(0,0,0,.15)}
-.cs-nav{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:14px 24px;border-top:1px solid #D8CFC2}
-.cs-nav button{min-width:96px;height:44px;border:1px solid #1E1D1A;background:none;color:#1E1D1A;font:500 14px var(--body);cursor:pointer}
+.cs-sw i{width:26px;height:26px;border:1px solid rgba(0,0,0,.15)}
+.cs-nav{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 22px;border-top:1px solid #D8CFC2}
+.cs-nav button{min-width:88px;height:40px;border:1px solid #1E1D1A;background:none;color:#1E1D1A;font:500 14px var(--body);cursor:pointer}
 .cs-nav button:hover{background:#8F4632;border-color:#8F4632;color:#FAF7F0}
 .cs-count{font:600 12px var(--body);letter-spacing:.18em;text-transform:uppercase;color:#44513C}
 .cs-concept{font-size:12px;color:#6b665d}
 @media(max-width:860px){
- .cs-stage{grid-template-columns:1fr;grid-template-rows:minmax(0,42vh) 1fr;gap:18px;padding:16px}
- .cs-bar,.cs-nav{padding:12px 16px}
- .cs-kick{font-size:10px}
+ .cs-win{width:100%;aspect-ratio:auto;max-height:100%;overflow:auto}
+ .cs-stage{flex:none;grid-template-columns:minmax(0,1fr);gap:16px;padding:14px}
+ .cs-img{aspect-ratio:3/2}
+ .cs-txt{overflow:visible}
+ .cs-bar,.cs-nav{padding:10px 14px}
+ .cs-kick{font-size:10px;letter-spacing:.14em}
+ .cs-concept{display:none}
 }
-@media(prefers-reduced-motion:reduce){.cs-bar,.cs-stage,.cs-nav{transition:none}}
+@media(prefers-reduced-motion:reduce){.cs,.cs-bar,.cs-stage,.cs-nav{transition:none}}
 
 .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:56px}
 .skills div{border-top:3px solid var(--rule);padding-top:16px}
@@ -219,8 +226,8 @@ footer a{font-weight:700;text-decoration:underline;text-decoration-color:var(--a
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media(max-width:860px){
- .hero .wrap,.blend,.book,.studies{grid-template-columns:1fr}
- .explore{grid-template-columns:1fr;gap:24px}
+ .hero .wrap,.blend,.book,.studies{grid-template-columns:minmax(0,1fr)}
+ .explore{grid-template-columns:minmax(0,1fr);gap:24px}
  .trav .xlist{flex-direction:row;flex-wrap:wrap;gap:0 18px}
  .trav .xlist button{width:auto}
  .trav .xlist .meta{display:none}
@@ -514,10 +521,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
           <button type="button" data-menu="wine" aria-pressed="false">Wine List</button>
           <button type="button" data-menu="cocktails" aria-pressed="false">Cocktail Menu</button>
         </div>
-        <div class="menu-tabs" id="cstabs" role="group" aria-label="Choose a case study" hidden>
-          <button type="button" data-cs="brand" aria-pressed="true">Brand Identity</button>
-          <button type="button" data-cs="env" aria-pressed="false">Digital &amp; Environmental</button>
-        </div>
         <p id="ttx" aria-live="polite"></p>
         <p class="menu-note" id="menu-note" hidden>Select a menu above, then click the preview to open the full menu in a new tab.</p>
       </div>
@@ -637,12 +640,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 <footer><div class="wrap"><span>© <span id="yr"></span> Robert Eldridge III · Miami, FL</span><a href="#top">Back to top</a></div></footer>
 
 <div class="cs" id="cs" role="dialog" aria-modal="true" aria-label="Case study presentation" hidden>
- <div class="cs-bar"><span class="cs-kick" id="cs-kick"></span><button type="button" class="cs-x" id="cs-x">Close ✕</button></div>
- <div class="cs-stage">
-  <div class="cs-img"><span class="cs-ph" id="cs-ph"></span><img id="cs-img" alt=""></div>
-  <div class="cs-txt"><span class="cs-n" id="cs-n"></span><h3 class="cs-t" id="cs-t"></h3><p class="cs-d" id="cs-d"></p><div class="cs-sw" id="cs-sw"></div></div>
+ <div class="cs-win" id="cs-win">
+  <div class="cs-bar"><span class="cs-kick" id="cs-kick"></span><button type="button" class="cs-x" id="cs-x">Close ✕</button></div>
+  <div class="cs-stage">
+   <div class="cs-img"><span class="cs-ph" id="cs-ph"></span><img id="cs-img" alt=""></div>
+   <div class="cs-txt"><span class="cs-n" id="cs-n"></span><h3 class="cs-t" id="cs-t"></h3><p class="cs-d" id="cs-d"></p><div class="cs-sw" id="cs-sw"></div></div>
+  </div>
+  <div class="cs-nav"><button type="button" id="cs-prev" aria-label="Previous slide">Prev</button><span class="cs-count" id="cs-count"></span><span class="cs-concept">Concept project</span><button type="button" id="cs-next" aria-label="Next slide">Next</button></div>
  </div>
- <div class="cs-nav"><button type="button" id="cs-prev" aria-label="Previous slide">Prev</button><span class="cs-count" id="cs-count"></span><span class="cs-concept">Concept project</span><button type="button" id="cs-next" aria-label="Next slide">Next</button></div>
 </div>
 
 <script>
@@ -844,26 +849,34 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  function setMenu(key){
   menuKey=key;
   var m=MENUS[key];
-  $("tpimg").src=m.image;$("tpimg").alt=m.alt;
+  $("tpimg").onerror=null;$("tpimg").src=m.image;$("tpimg").alt=m.alt;
   $("menu-link").href=m.url;
   $("menu-link").setAttribute("aria-label",m.alt);
   document.querySelectorAll("#menutabs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.menu===key)});
  }
- // Case studies: preview images, slide images and copy. Edit paths here.
+ // Image loader: tries several file extensions so jpeg / jpg / webp / png all work.
+ // Names are case-sensitive on most web hosts, so match your file names exactly.
+ var EXTS=["jpeg","jpg","webp","png"];
+ function loadImg(im,base,fail){
+  var k=0;
+  im.onerror=function(){k++;if(k<EXTS.length){im.src=base+"."+EXTS[k]}else{im.onerror=null;if(fail)fail()}};
+  im.src=base+"."+EXTS[0];
+ }
+ // Case studies: use file names WITHOUT the extension. Edit paths here.
  var CS={
-  brand:{kick:"Brand identity · 01 · Casa Campo: Identity System",preview:"images/casa-campo-identity-preview.jpeg",origin:"18% 24%",alt:"Casa Campo identity system preview. Click to open the full presentation.",
+  brand:{kick:"Brand identity · 01 · Casa Campo: Identity System",preview:"images/casa-campo-identity-preview",alt:"Casa Campo identity system preview. Click to open the full presentation.",
    slides:[
-    {n:"01 — The primary mark",t:"Casa Campo",d:"A wordmark with a point of view, paired with a compact CC monogram. Cocina · Vino · Campo.",img:"images/casa-campo/identity-01-mark.jpeg"},
-    {n:"02 — The visual language",t:"Olive, terra and sand",d:"An expressive serif for headlines and a clean sans for supporting information. Fine rules, restrained framing and subtle botanical or topographic motifs.",img:"images/casa-campo/identity-02-language.jpeg",sw:[["Olive","#44513C"],["Terra","#8F4632"],["Sand","#E6DDCD"],["Ivory","#FAF7F0"]]},
-    {n:"03 — The system in use",t:"One identity, many objects",d:"Business cards, menu covers, coasters and matchbooks, and bottle labels, all clearly the same brand.",img:"images/casa-campo/identity-03-applications.jpeg"},
-    {n:"04 — Menus",t:"Wine list, cocktails and food",d:"The menus carry the system onto the table, so the brand keeps working as the restaurant grows.",img:"images/casa-campo/identity-04-menus.jpeg"}
+    {n:"01 — The primary mark",t:"Casa Campo",d:"A wordmark with a point of view, paired with a compact CC monogram. Cocina · Vino · Campo.",img:"images/casa-campo/identity-01-mark"},
+    {n:"02 — The visual language",t:"Olive, terra and sand",d:"An expressive serif for headlines and a clean sans for supporting information. Fine rules, restrained framing and subtle botanical or topographic motifs.",img:"images/casa-campo/identity-02-language",sw:[["Olive","#44513C"],["Terra","#8F4632"],["Sand","#E6DDCD"],["Ivory","#FAF7F0"]]},
+    {n:"03 — The system in use",t:"One identity, many objects",d:"Business cards, menu covers, coasters and matchbooks, and bottle labels, all clearly the same brand.",img:"images/casa-campo/identity-03-applications"},
+    {n:"04 — Menus",t:"Wine list, cocktails and food",d:"The menus carry the system onto the table, so the brand keeps working as the restaurant grows.",img:"images/casa-campo/identity-04-menus"}
    ]},
-  env:{kick:"Digital & environmental · 02 · Casa Campo: A Brand You Can Move Through",preview:"images/casa-campo-environmental-preview.jpeg",origin:"78% 30%",alt:"Casa Campo digital and environmental preview. Click to open the full presentation.",
+  env:{kick:"Digital & environmental · 02 · Casa Campo: A Brand You Can Move Through",preview:"images/casa-campo-environmental-preview",alt:"Casa Campo digital and environmental preview. Click to open the full presentation.",
    slides:[
-    {n:"01 — Arrival",t:"The first impression",d:"Exterior sign, entrance plaque and window graphics set the tone before a guest steps inside.",img:"images/casa-campo/env-01-arrival.jpeg"},
-    {n:"02 — Wayfinding",t:"Finding the way",d:"Directional signs, restroom markers, and identification for the patio and dining areas.",img:"images/casa-campo/env-02-wayfinding.jpeg"},
-    {n:"03 — The table",t:"Every touchpoint",d:"Menus, table numbers, coasters and reservation cards. The details guests hold and remember.",img:"images/casa-campo/env-03-table.jpeg"},
-    {n:"04 — The digital experience",t:"Before and after the visit",d:"Mobile menu, website, event announcements and digital displays extend the brand beyond the room.",img:"images/casa-campo/env-04-digital.jpeg"}
+    {n:"01 — Arrival",t:"The first impression",d:"Exterior sign, entrance plaque and window graphics set the tone before a guest steps inside.",img:"images/casa-campo/env-01-arrival"},
+    {n:"02 — Wayfinding",t:"Finding the way",d:"Directional signs, restroom markers, and identification for the patio and dining areas.",img:"images/casa-campo/env-02-wayfinding"},
+    {n:"03 — The table",t:"Every touchpoint",d:"Menus, table numbers, coasters and reservation cards. The details guests hold and remember.",img:"images/casa-campo/env-03-table"},
+    {n:"04 — The digital experience",t:"Before and after the visit",d:"Mobile menu, website, event announcements and digital displays extend the brand beyond the room.",img:"images/casa-campo/env-04-digital"}
    ]}
  };
  var csKey="brand",csIdx=0,csIsOpen=false,csReturn=null;
@@ -875,28 +888,35 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   $("cs-count").textContent=(csIdx+1)+" / "+c.slides.length;
   var sw=$("cs-sw");sw.innerHTML="";
   (sl.sw||[]).forEach(function(x){var e=document.createElement("span"),i=document.createElement("i");i.style.background=x[1];e.appendChild(i);e.appendChild(document.createTextNode(x[0]+" "+x[1]));sw.appendChild(e)});
-  im.hidden=false;im.onerror=function(){im.hidden=true};im.alt=sl.t;im.src=sl.img;
+  im.hidden=false;im.alt=sl.t;
+  loadImg(im,sl.img,function(){im.hidden=true});
  }
- function csClip(){var r=$("tph").getBoundingClientRect();return "inset("+r.top+"px "+(innerWidth-r.right)+"px "+(innerHeight-r.bottom)+"px "+r.left+"px)"}
+ function csClip(){
+  var w=$("cs-win").getBoundingClientRect(),r=$("tph").getBoundingClientRect();
+  return "inset("+(r.top-w.top)+"px "+(w.right-r.right)+"px "+(w.bottom-r.bottom)+"px "+(r.left-w.left)+"px)";
+ }
  function csOpen(){
-  var el=$("cs");csIdx=0;csRender();csReturn=document.activeElement;
-  if(reduce){el.hidden=false;el.style.clipPath="none";el.classList.add("open")}
+  var el=$("cs"),w=$("cs-win");csIdx=0;csRender();csReturn=document.activeElement;
+  el.hidden=false;
+  if(reduce){w.style.clipPath="none";el.classList.add("open")}
   else{
-   el.style.transition="none";el.style.clipPath=csClip();el.hidden=false;
-   void el.offsetWidth;
-   el.style.transition="clip-path .75s cubic-bezier(.2,.8,.2,1)";el.style.clipPath="inset(0px 0px 0px 0px)";
+   w.style.transition="none";w.style.clipPath="none";
+   w.style.clipPath=csClip();
+   void w.offsetWidth;
+   w.style.transition="clip-path .75s cubic-bezier(.2,.8,.2,1)";w.style.clipPath="inset(0px 0px 0px 0px)";
    el.classList.add("open");
   }
   document.body.style.overflow="hidden";csIsOpen=true;$("cs-x").focus();
  }
  function csClose(){
-  var el=$("cs");csIsOpen=false;el.classList.remove("open");
-  var done=function(){el.hidden=true;el.style.clipPath="";document.body.style.overflow="";if(csReturn&&csReturn.focus)csReturn.focus()};
+  var el=$("cs"),w=$("cs-win");csIsOpen=false;el.classList.remove("open");
+  var done=function(){el.hidden=true;w.style.clipPath="";document.body.style.overflow="";if(csReturn&&csReturn.focus)csReturn.focus()};
   if(reduce){done()}
-  else{el.style.transition="clip-path .6s cubic-bezier(.6,0,.2,1)";el.style.clipPath=csClip();setTimeout(done,620)}
+  else{w.style.transition="clip-path .6s cubic-bezier(.6,0,.2,1)";w.style.clipPath=csClip();setTimeout(done,620)}
  }
  function csStep(n){var L=CS[csKey].slides.length;csIdx=(csIdx+n+L)%L;csRender()}
  $("cs-x").onclick=csClose;$("cs-prev").onclick=function(){csStep(-1)};$("cs-next").onclick=function(){csStep(1)};
+ $("cs").addEventListener("click",function(e){if(e.target===$("cs"))csClose()});
  document.addEventListener("keydown",function(e){
   if(!csIsOpen)return;
   if(e.key==="Escape"){csClose()}
@@ -912,12 +932,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  $("cs").addEventListener("touchend",function(e){var d=e.changedTouches[0].clientX-csx;if(Math.abs(d)>60)csStep(d<0?1:-1)},{passive:true});
 
  function setCase(key){
-  csKey=key;var c=CS[key];
-  $("tpimg").src=c.preview;$("tpimg").alt=c.alt;
-  $("tph").style.setProperty("--zo",c.origin);
+  csKey=key;var c=CS[key],im=$("tpimg");
+  im.alt=c.alt;loadImg(im,c.preview);
   $("menu-link").setAttribute("href","#"+(key==="brand"?"brand-identity":"digital-environmental"));
   $("menu-link").setAttribute("aria-label",c.alt);
-  document.querySelectorAll("#cstabs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.cs===key)});
  }
  function tp(i){
   var isMenu=(i===1),isCase=(i===3||i===4);
@@ -926,7 +944,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   $("tph").classList.toggle("menu-mode",isMenu);
   $("tph").classList.toggle("case-mode",isCase);
   $("menutabs").hidden=!isMenu;
-  $("cstabs").hidden=!isCase;
   $("menu-note").hidden=!(isMenu||isCase);
   $("menu-open").hidden=!(isMenu||isCase);
   if(isMenu){
@@ -935,7 +952,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    $("menu-link").target="_blank";
    setMenu(menuKey);
   }else if(isCase){
-   $("menu-note").textContent="Select a case study above, then click the preview to open the full presentation.";
+   $("menu-note").textContent="Click the preview to open the full presentation.";
    $("menu-open").textContent="Open presentation ⤢";
    $("menu-link").removeAttribute("target");
    setCase(i===3?"env":"brand");
@@ -943,7 +960,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    $("menu-link").removeAttribute("href");
    $("menu-link").removeAttribute("aria-label");
    $("menu-link").target="_blank";
-   $("tpimg").src=DEFAULT_IMG.src;$("tpimg").alt=DEFAULT_IMG.alt;
+   $("tpimg").onerror=null;$("tpimg").src=DEFAULT_IMG.src;$("tpimg").alt=DEFAULT_IMG.alt;
   }
  }
  $("menu-link").addEventListener("click",function(e){
@@ -951,7 +968,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  });
  $("touch").onclick=function(e){var b=e.target.closest("button");if(b&&b.dataset.i!==undefined)tp(+b.dataset.i)};
  $("menutabs").onclick=function(e){var b=e.target.closest("button");if(b&&b.dataset.menu)setMenu(b.dataset.menu)};
- $("cstabs").onclick=function(e){var b=e.target.closest("button");if(b&&b.dataset.cs)tp(b.dataset.cs==="env"?3:4)};
  tp(0);
  $("yr").textContent=new Date().getFullYear();
 
