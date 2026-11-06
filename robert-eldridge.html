@@ -1046,7 +1046,7 @@ function loop(t){
     }).observe(t);
   }
 }
- }
+ 
  document.querySelectorAll(".track.loop").forEach(loop);
  document.querySelectorAll(".ctrl").forEach(function(c){
   var t=c.closest(".head").parentNode.querySelector(".track");
@@ -1087,6 +1087,7 @@ function loop(t){
   document.querySelectorAll("#touch button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.i==i)})}
  $("touch").onclick=function(e){var i=e.target.dataset.i;if(i!==undefined)tp(+i)};tp(0);
  $("yr").textContent=new Date().getFullYear();
+
 })();
 </script>
 </body>
