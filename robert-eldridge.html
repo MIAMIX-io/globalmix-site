@@ -23,7 +23,13 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--ac);outline-offset:3px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 28px}
 [data-lens="bar"] [data-only="desk"],[data-lens="desk"] [data-only="bar"]{display:none!important}
-#page{display:flex;flex-direction:column;transition:opacity .25s}#page.out{opacity:0}
+#page{
+  transition:opacity .25s;
+}
+
+#page.out{
+  opacity:0;
+}
 
 header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hd);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
@@ -533,62 +539,81 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </div>
       <div class="ph" style="aspect-ratio:4/3">Coursework or studio photo</div>
     </div>
-    <div class="skills">
+<div class="skills">
+  <div>
+    <h3>Visual design &amp; identity</h3>
+    <ul>
+      <li>Adobe Photoshop</li>
+      <li>Adobe Illustrator</li>
+      <li>Adobe InDesign</li>
+      <li>Brand identity development</li>
+      <li>Visual systems &amp; brand guidelines</li>
+      <li>Typography &amp; layout</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Web &amp; digital</h3>
+    <ul>
+      <li>HTML &amp; CSS</li>
+      <li>Responsive web design</li>
+      <li>Jekyll &amp; Liquid</li>
+      <li>Landing page design</li>
+      <li>GitHub-based workflows</li>
+      <li>Digital content design</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Print &amp; production</h3>
+    <ul>
+      <li>Print layout &amp; design</li>
+      <li>Menus &amp; promotional materials</li>
+      <li>Screen printing</li>
+      <li>Production specifications</li>
+      <li>Prepress &amp; artwork preparation</li>
+      <li>Image retouching</li>
+    </ul>
+  </div>
+  <div>
+    <h3>Photography &amp; image-making</h3>
+    <ul>
+      <li>Visual composition</li>
+      <li>Film developing</li>
+      <li>Darkroom printing</li>
+      <li>Digital image editing</li>
+      <li>Image preparation for print &amp; web</li>
+    </ul>
+  </div>
+</div>
+
+<section id="blend">
+  <div class="wrap">
+    <div class="head">
       <div>
-        <h3>Digital design</h3>
-        <ul>
-          <li>Adobe Photoshop</li>
-          <li>Adobe Illustrator</li>
-          <li>Adobe InDesign</li>
-          <li>Brand identity</li>
-          <li>Brand guidelines</li>
-        </ul>
+        <h2>Design that works in the room</h2>
+        <p class="lede">
+          My graphic design training taught me how to build visual systems.
+          My hospitality career taught me how those systems perform in real
+          environments. From event promotion and cocktail menus to signage,
+          presentation and the guest experience, I bring design and service
+          together as one connected discipline.
+        </p>
+      </div>
+     <div class="blend">
+      <div class="list" id="touch">
+        <button aria-pressed="true" data-i="0">Event promotion</button>
+        <button aria-pressed="false" data-i="1">Menu design</button>
+        <button aria-pressed="false" data-i="2">Cocktail presentation</button>
+        <button aria-pressed="false" data-i="3">Digital &amp; environmental</button>
+        <button aria-pressed="false" data-i="4">Brand identity</button>
       </div>
       <div>
-        <h3>Web &amp; development</h3>
-        <ul>
-          <li>HTML &amp; CSS</li>
-          <li>Jekyll &amp; Liquid</li>
-          <li>Responsive web design</li>
-          <li>Landing pages</li>
-          <li>GitHub-based workflows</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Print &amp; production</h3>
-        <ul>
-          <li>Screen printing</li>
-          <li>Menus &amp; promotional materials</li>
-          <li>Production specifications</li>
-          <li>Artwork preparation &amp; retouching</li>
-        </ul>
-      </div>
-      <div>
-        <h3>Photography</h3>
-        <ul>
-          <li>Darkroom printing</li>
-          <li>Film developing</li>
-          <li>Visual composition</li>
-          <li>Image editing</li>
-        </ul>
+        <!-- Replace with a project image for each touchpoint -->
+        <div class="ph" id="tph">Event promotion project</div>
+        <p id="ttx" aria-live="polite"></p>
       </div>
     </div>
   </div>
 </section>
-
-<section id="blend"><div class="wrap">
- <div class="head"><div><h2>Designed end to end</h2><p class="lede">My design training shaped how I build bar menus and event flyers. My bar career shaped how those pieces work in a moving room. I design the whole experience, from the printed menu in the guest’s hand to the garnish on the glass.</p></div></div>
- <div class="blend">
-  <div class="list" id="touch">
-   <button aria-pressed="true" data-i="0">Event flyers</button><button aria-pressed="false" data-i="1">Cocktail menus</button><button aria-pressed="false" data-i="2">Cocktails &amp; garnish</button><button aria-pressed="false" data-i="3">Screens &amp; signage</button><button aria-pressed="false" data-i="4">Brand</button>
-  </div>
-  <div>
-   <!-- REPLACE with a project image for each touchpoint -->
-   <div class="ph" id="tph">Event flyer photo</div>
-   <p id="ttx" aria-live="polite"></p>
-  </div>
- </div>
-</div></section>
 
 <section id="book" data-only="bar">
   <div class="wrap">
