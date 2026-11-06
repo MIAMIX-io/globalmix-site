@@ -102,7 +102,9 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .card.hid{display:none}
 .fmt{font-size:13px;font-weight:700;color:var(--ac2)}
 .card .btn{margin-top:auto;text-align:center;padding:11px 16px}
-
+#exp .card{
+  text-align:left;
+}
 .story{display:grid;grid-template-columns:1fr 2fr;gap:48px;padding:40px 0;border-top:1px solid var(--line)}
 .story:first-of-type{border-top:0;padding-top:0}
 .story h3{font:400 clamp(1.8rem,3.4vw,2.7rem)/1.1 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls)}
@@ -242,7 +244,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         <button data-d="1" aria-label="Next">Next</button>
       </div>
     </div>
-    <div class="track loop" data-fx data-interval="2400" tabindex="0"
+    <div class="track loop" data-fx data-interval="7000" tabindex="0"
          role="region" aria-label="Experience carousel, scrolls automatically">
       <article class="card">
         <span class="when">Ongoing</span>
@@ -886,15 +888,17 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   var all=[].slice.call(rail.children),iv=parseInt(t.dataset.interval)||0,fx=t.hasAttribute("data-fx");
   var p=0,ready=false,hover=false,vis=true,anim=null,nextAt=0;
   function dims(){var W=rail.scrollWidth/3;return{W:W,cW:t.clientWidth,st:W/N,cw:first.offsetWidth}}
-  function snap(d,x){var b=d.W+(d.cw-d.cW)/2;return b+Math.round((x-b)/d.st)*d.st}
+  function snap(d,x){
+  var b=d.W;
+  return b+Math.round((x-b)/d.st)*d.st;
   function go(to,dur){anim={f:p,t:to,s:performance.now(),d:dur}}
-  t._eng={step:function(n){var d=dims();if(!d.W)return;nextAt=performance.now()+iv*1.6;go(snap(d,anim?anim.t:p)+n*d.st,600)}};
+  t._eng={step:function(n){var d=dims();if(!d.W)return;nextAt=performance.now()+iv*1.6;go(snap(d,anim?anim.t:p)+n*d.st,400)}};
   function frame(now){
    var d=dims();
    if(d.W>0){
-    if(!ready){p=d.W+(d.cw-d.cW)/2;ready=true;nextAt=now+iv}
+    if(!ready){p=d.W;ready=true;nextAt=now+iv}
     if(anim){var k=Math.min(1,(now-anim.s)/anim.d),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;p=anim.f+(anim.t-anim.f)*e;if(k>=1)anim=null}
-    else if(iv&&!reduce&&vis&&!hover&&now>nextAt){nextAt=now+iv;go(snap(d,p)+d.st,800)}
+    else if(iv&&!reduce&&vis&&!hover&&now>nextAt){nextAt=now+iv;go(snap(d,p)+d.st,450)}
     var sh=0;while(p>=2*d.W){p-=d.W;sh-=d.W}while(p<d.W){p+=d.W;sh+=d.W}
     if(anim&&sh){anim.f+=sh;anim.t+=sh}
     rail.style.transform="translate3d("+(-p)+"px,0,0)";
