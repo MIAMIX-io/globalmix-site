@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en" data-lens="bar">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Robert Eldridge III — Bars, Brands &amp; Design</title>
+<meta name="description" content="Robert Eldridge III: bar director, hospitality consultant, graphic designer and founder of MIAMIX / GLOBAL-MIX.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#060A1F;--fg:#F6F1E7;--mut:#B8BFDD;--ac:#FF5A73;--onac:#060A1F;--ac2:#EBC66E;--rule:#EBC66E;--line:#1C2552;--card:#0E1536;--hd:rgba(6,10,31,.92);--ct:#FF5A73;--onct:#060A1F;--ft:#FF9AAA;
+ --body:"Instrument Sans",system-ui,sans-serif;--disp:"Poiret One","Instrument Sans",system-ui,sans-serif;--dw:400;--dl:1.05;--ls:.02em;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-lens="desk"]{--bg:#FFF8E8;--fg:#1B1220;--mut:#4B4A57;--ac:#DE2A7C;--onac:#fff;--ac2:#067F86;--rule:#1B1220;--line:#EBDDBA;--card:#fff;--hd:rgba(255,248,232,.92);--ct:#00CEC8;--onct:#1B1220;--ft:#1B1220;
+ --disp:"Instrument Sans",system-ui,sans-serif;--dw:700;--dl:.98;--ls:-.035em}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box;margin:0;border-radius:0}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.7 var(--body);transition:background .5s,color .5s}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:30}
+h1,h2,.disp{font-family:var(--disp);font-weight:var(--dw);line-height:var(--dl);letter-spacing:var(--ls)}
+h3{font:600 1.35rem/1.25 var(--body);letter-spacing:-.01em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+[data-lens="bar"] [data-only="desk"],[data-lens="desk"] [data-only="bar"]{display:none!important}
+#page{display:flex;flex-direction:column;transition:opacity .25s}#page.out{opacity:0}
+
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hd);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
+.logo{font:400 1.5rem var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);text-decoration:none}
+.links{display:flex;gap:22px;font-size:15px}
+.links a{text-decoration:none;color:var(--mut)}.links a:hover{color:var(--fg);text-decoration:underline;text-decoration-color:var(--ac);text-underline-offset:6px;text-decoration-thickness:2px}
+#menu{display:none;font:500 14px var(--body);border:1px solid var(--fg);background:none;color:var(--fg);padding:8px 14px;cursor:pointer}
+
+.btn{display:inline-block;font:600 15px var(--body);padding:14px 26px;text-decoration:none;border:1px solid var(--fg);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{background:var(--ac);color:var(--onac);border-color:var(--ac)}
+.tlink{text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:6px;font-weight:500}
+
+.hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:end;padding-top:64px;padding-bottom:72px}
+h1{font-size:clamp(3.2rem,9.5vw,7.6rem)}
+h1 span{display:block;animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
+h1 span+span{animation-delay:.12s;color:var(--ac);transition:color .5s}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.tag{font-size:clamp(1.1rem,2vw,1.3rem);margin:28px 0 30px;max-width:44ch;color:var(--mut);min-height:5.4em}
+.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:34px}
+.lens{display:inline-flex;border:1px solid var(--fg)}
+.lens button{font:500 15px var(--body);border:0;background:none;color:var(--fg);padding:12px 24px;cursor:pointer}
+.lens button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.ph{display:grid;place-items:center;text-align:center;font-size:14px;color:var(--mut);border:1px dashed var(--mut);background:var(--card);padding:14px}
+.portrait{aspect-ratio:4/5}
+.cap{font-size:14px;color:var(--mut);margin-top:12px;display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:10px}
+.pal{display:none;height:10px;margin-bottom:10px}
+[data-lens="desk"] .pal{display:flex}
+.pal i:nth-child(1){background:#00CEC8}.pal i:nth-child(2){background:#FCEFC3}.pal i:nth-child(3){background:#FF9C5F}.pal i:nth-child(4){background:#FF69B4}.pal i{flex:1}
+
+section{padding:80px 0;border-top:1px solid var(--line)}
+#exp{order:1}#stories{order:2}#field{order:3}#blend{order:4}#book{order:5}#tools-sec{order:6}
+#work{order:1}#skills{order:2}
+h2{font-size:clamp(2.4rem,6vw,4.2rem)}
+[data-lens="bar"] .head h2::after{content:"";display:block;width:88px;height:7px;border-top:1px solid var(--ac2);border-bottom:1px solid var(--ac2);margin-top:16px}
+.head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
+.lede{color:var(--mut);max-width:58ch;margin-top:12px}
+.tabs{display:flex;flex-wrap:wrap;gap:6px 26px;margin-bottom:22px}
+.tabs button{font:500 15px var(--body);background:none;border:0;border-bottom:2px solid transparent;color:var(--mut);padding:4px 0;cursor:pointer}
+.tabs button[aria-pressed="true"]{color:var(--fg);border-color:var(--ac)}
+
+.ctrl{display:flex;gap:8px}
+.ctrl button{min-width:44px;height:44px;border:1px solid var(--fg);background:none;color:var(--fg);font:500 14px var(--body);cursor:pointer;padding:0 14px}
+.ctrl button:hover{background:var(--ac);border-color:var(--ac);color:var(--onac)}
+.track{display:flex;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:6px}
+.track::-webkit-scrollbar{display:none}
+.track.snap{scroll-snap-type:x mandatory}
+.track.loop{overflow:hidden;padding-bottom:0}.rail .card{will-change:transform,opacity}
+.rail{display:flex;will-change:transform}
+.card{flex:0 0 min(360px,82vw);margin-right:22px;scroll-snap-align:start;border-top:3px solid var(--rule);padding:18px 0 0;display:flex;flex-direction:column;gap:10px}
+.card .when{font:400 2.2rem var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);color:var(--ac2);line-height:1.1}
+.card .org{color:var(--mut);font-size:15px;font-weight:500}
+.card ul{padding-left:18px;color:var(--mut);font-size:15px}.card li{margin-bottom:6px}
+.card p{color:var(--mut);font-size:15px}
+.card .ph{aspect-ratio:4/3}
+.card.hid{display:none}
+.fmt{font-size:13px;font-weight:700;color:var(--ac2)}
+.card .btn{margin-top:auto;text-align:center;padding:11px 16px}
+
+.story{display:grid;grid-template-columns:1fr 2fr;gap:48px;padding:40px 0;border-top:1px solid var(--line)}
+.story:first-of-type{border-top:0;padding-top:0}
+.story h3{font:400 clamp(1.8rem,3.4vw,2.7rem)/1.1 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls)}
+.story p{color:var(--mut);margin-bottom:16px;max-width:62ch}
+.story p:first-child{color:var(--fg);font-size:1.15rem}
+
+.blend{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
+.list button{display:block;width:100%;text-align:left;font:600 1.2rem var(--body);background:none;border:0;border-bottom:1px solid var(--line);color:var(--mut);padding:15px 0;cursor:pointer}
+.list button[aria-pressed="true"]{color:var(--fg);border-bottom:3px solid var(--ac)}
+.blend .ph{aspect-ratio:16/9;margin-bottom:18px}
+.blend p{color:var(--mut);max-width:54ch}
+
+.skills{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:56px}
+.skills div{border-top:3px solid var(--rule);padding-top:16px}
+.skills h3{margin-bottom:8px}
+.skills ul{list-style:none;padding:0;color:var(--mut);font-size:15px}.skills li{padding:5px 0;border-bottom:1px solid var(--line)}
+.studies{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
+.studies h3{font:400 clamp(1.8rem,3.4vw,2.7rem)/1.1 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);margin-bottom:14px}
+.studies p{color:var(--mut);margin-bottom:14px;max-width:60ch}
+
+.book{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center;margin-bottom:56px}
+.cover{aspect-ratio:3/4;max-width:340px;box-shadow:14px 14px 0 var(--ac)}
+.book h3{font:400 clamp(1.8rem,3.4vw,2.7rem)/1.1 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);margin-bottom:12px}
+.book p{color:var(--mut);margin-bottom:16px;max-width:54ch}
+.facts{font-size:15px}
+
+.contact{background:var(--ct);color:var(--onct);padding:80px 0;transition:background .5s}
+.contact h2{font-size:clamp(2.6rem,8vw,6rem)}
+.contact p{max-width:52ch;margin:16px 0 28px}
+.contact .btn{border-color:var(--onct);color:var(--onct)}
+.contact .btn.p{background:var(--onct);color:var(--ct);border-color:var(--onct)}
+footer{padding:28px 0;color:var(--ft);font-size:15px;font-weight:600}
+footer a{font-weight:700;text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:5px}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+
+@media(max-width:860px){
+ .hero .wrap,.blend,.book,.studies,.story{grid-template-columns:1fr}.story{gap:16px}.skills{grid-template-columns:1fr 1fr}.portrait{max-width:340px}.cover{margin:0 14px}
+ #menu{display:block}.hero .wrap{padding-top:40px}.tag{min-height:0}
+ .links{display:none;position:absolute;top:64px;left:-28px;right:-28px;background:var(--bg);flex-direction:column;padding:18px 28px;border-bottom:1px solid var(--line)}
+ .links.open{display:flex}
+}
+@media(max-width:520px){.skills{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header class="bar"><div class="wrap nav">
+ <a class="logo" href="#top">Robert Eldridge III</a>
+ <nav class="links" id="links-bar" data-only="bar" aria-label="Primary"><a href="#exp">Experience</a><a href="#stories">Stories</a><a href="#field">Travels</a><a href="#blend">Design &amp; bar</a><a href="#book">Bar book</a><a href="#tools-sec">Tools</a><a href="#contact">Contact</a></nav>
+ <nav class="links" id="links-desk" data-only="desk" aria-label="Primary"><a href="#work">Work</a><a href="#skills">Skills &amp; studies</a><a href="#blend">Design &amp; bar</a><a href="#contact">Contact</a></nav>
+ <button id="menu" aria-expanded="false">Menu</button>
+</div></header>
+
+<div class="hero" id="top"><div class="wrap">
+ <div>
+  <h1><span>Robert</span><span>Eldridge III</span></h1>
+  <p class="tag" id="tag" aria-live="polite"></p>
+  <div class="cta"><a class="btn p" id="c1" href="#exp"></a><a class="tlink" id="c2" href="#book"></a></div>
+  <div class="lens" role="group" aria-label="Choose what to explore"><button id="lBar" aria-pressed="true">Behind the bar</button><button id="lDes" aria-pressed="false">At the desk</button></div>
+ </div>
+ <div><div class="pal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+  <!-- REPLACE with: <img src="portrait.jpg" alt="Robert Eldridge III" style="width:100%;aspect-ratio:4/5;object-fit:cover"> -->
+  <div class="ph portrait">Portrait photo<br>(4:5, replace me)</div>
+  <div class="cap"><span data-only="bar">Miami · New York · London</span><span data-only="desk">Miami · New York · Buenos Aires</span><span>MIAMIX / GLOBAL-MIX</span></div></div>
+</div></div>
+
+<main id="page">
+
+<section id="exp" data-only="bar">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h2>Experience</h2>
+        <p class="lede">
+          A career shaped by hospitality, creative thinking and the people
+          behind the places I’ve helped bring to life.
+        </p>
+      </div>
+      <div class="ctrl">
+        <button data-d="-1" aria-label="Previous">Prev</button>
+        <button data-d="1" aria-label="Next">Next</button>
+      </div>
+    </div>
+    <div class="track loop" data-fx data-interval="2400" tabindex="0"
+         role="region" aria-label="Experience carousel, scrolls automatically">
+      <article class="card">
+        <span class="when">Ongoing</span>
+        <h3>Founder &amp; Graphic Designer</h3>
+        <span class="org">MIAMIX / GLOBAL-MIX</span>
+        <p>
+          What began as a passion for hospitality has grown into a creative
+          platform connecting travel, entertainment and premium lifestyle
+          culture. Through MIAMIX and GLOBAL-MIX, I bring together brand
+          strategy, graphic design and digital storytelling, building
+          identities and experiences that reflect the worlds I’ve spent
+          my career exploring.
+        </p>
+      </article>
+      <article class="card">
+        <span class="when">2023 – mid 2025</span>
+        <h3>Senior Consultant &amp; Project Manager</h3>
+        <span class="org">Unfiltered Hospitality</span>
+        <p>
+          Consulting allowed me to take the lessons of the bar beyond a
+          single venue. I developed beverage menus and training programs
+          for clients nationwide, including Capital One airport lounges,
+          STARR Restaurants’ Le Coucou and Buddakan, and the Russian Tea
+          Room. I also translated operational goals into practical systems
+          for teams, vendors, budgets and service.
+        </p>
+      </article>
+      <article class="card">
+        <span class="when">2022 – 2023</span>
+        <h3>South Florida Wine &amp; Spirits Specialist</h3>
+        <span class="org">Progress Wine Group</span>
+        <p>
+          This role brought me closer to the people and products that
+          shape a great beverage program. Working across South Florida,
+          I built relationships with suppliers, distributors and
+          hospitality teams, helping restaurants and hotels find products
+          that suited their concepts and guests. It was an opportunity
+          to see the industry from a different side of the bar.
+        </p>
+      </article>
+      <article class="card">
+        <span class="when">2020 – 2022</span>
+        <h3>Travel Content Creator</h3>
+        <span class="org">GLOBAL-MIX Travel</span>
+        <p>
+          When the world slowed down, I found a new way to tell stories.
+          Traveling by motorhome, I explored destinations, wineries and
+          local cultures while creating content for GLOBAL-MIX Travel
+          and Argentine media outlets, including Channel 7, Channel 13,
+          Crónica and Flow. The experience expanded my creative perspective
+          and connected hospitality with a much bigger world.
+        </p>
+      </article>
+      <article class="card">
+        <span class="when">2019 – 2020</span>
+        <h3>Opening Bar Manager</h3>
+        <span class="org">MILA, Miami Beach</span>
+        <p>
+          Joining MILA gave me the chance to help shape a new hospitality
+          experience in Miami Beach. As opening bar manager, I stepped
+          into the energy and pressure of bringing a concept to life,
+          building the bar operation and preparing for service. The
+          chapter was brief, arriving just before the pandemic, but it
+          was another reminder of how quickly this industry can change.
+        </p>
+      </article>
+      <article class="card">
+        <span class="when">2018 – 2019</span>
+        <h3>East Coast Bar Director</h3>
+        <span class="org">Broken Shaker &amp; 27 Restaurant</span>
+        <p>
+          Taking the Broken Shaker spirit from Miami to New York was
+          one of the defining transitions of my career. I helped guide
+          beverage and food-and-beverage operations across properties,
+          balancing the creative identity of the brand with budgets,
+          training, events and service. It challenged me to think beyond
+          one bar and lead with a broader operational perspective.
+        </p>
+      </article>
+      <article class="card">
+        <span class="when">2015 – 2018</span>
+        <h3>Bar Manager</h3>
+        <span class="org">Broken Shaker Miami</span>
+        <p>
+          Broken Shaker Miami became one of the most formative chapters
+          of my life behind the bar. I helped lead an award-winning,
+          high-volume program where creativity and hospitality were
+          inseparable. From developing the team to managing inventory,
+          vendors and budgets, I learned how to protect a bar’s character
+          while building the systems that keep it thriving.
+        </p>
+      </article>
+      <article class="card">
+        <span class="when">2011 – 2015</span>
+        <h3>Assistant Bar Manager</h3>
+        <span class="org">Empire State South</span>
+        <p>
+          Empire State South was where I began turning my passion for
+          cocktails into a deeper understanding of hospitality. Working
+          alongside a talented team, I helped manage labor, inventory
+          and vendor relationships while contributing to seasonal
+          beverage programs and staff training. Those years built the
+          foundation for the manager, mentor and creative professional
+          I would become.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="stories" data-only="bar">
+  <div class="wrap">
+    <div class="head">
+      <h2>Stories from the bar</h2>
+      <p>A career shaped by creativity, culture, and the people who make hospitality memorable.</p>
+    </div>
+    <div class="story">
+      <h3>Three trips to London. One Miami bar on the world stage.</h3>
+      <div>
+        <p>
+          Some experiences stay with you long after the last drink is served.
+          During my time with Broken Shaker, the bar earned international
+          recognition as one of the World's 50 Best Bars, taking us to London
+          in July 2017, October 2018, and July 2019.
+        </p>
+        <p>
+          More than an awards ceremony, each trip was an opportunity to
+          represent Miami, connect with the international hospitality
+          community, and exchange ideas with some of the industry's most
+          creative people. I also had the opportunity to guest bartend at
+          Madison rooftop bar and The Ned, bringing a little of the
+          Broken Shaker experience to London.
+        </p>
+        <p>
+          Those years reinforced something I've always believed:
+          hospitality is more than what's in the glass. It's about
+          culture, creativity, and the connections we create along the way.
+        </p>
+      </div>
+    </div>
+    <div class="story">
+      <h3>Taking the craft nationwide</h3>
+      <div>
+        <p>
+          My work eventually moved beyond the bar and onto the road.
+          Through Unfiltered Hospitality, I shifted into consulting,
+          developing cocktail menus, building beverage programs, and
+          training bartenders across the country.
+        </p>
+        <p>
+          Projects included Capital One airport lounges at DFW, IAD, DEN,
+          LAS, and JFK, where the challenge was delivering thoughtful,
+          consistent cocktail experiences in fast-moving travel
+          environments. In New York, I developed cocktails for STARR
+          Restaurants, including Michelin-starred Le Coucou and Buddakan.
+        </p>
+        <p>
+          I also worked with the legendary Russian Tea Room, helping
+          bring its cocktail program to a modern audience without losing
+          the nostalgia and character that make it an institution.
+        </p>
+        <p>
+          Each project reinforced the importance of understanding a
+          property's identity and audience. Whether developing a menu
+          for an iconic restaurant or a busy airport lounge, the goal
+          was always the same: create an experience that feels authentic,
+          memorable, and distinctly its own.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="field" data-only="bar">
+  <div class="wrap">
+    <div class="head">
+      <h2>Travels &amp; terroir</h2>
+      <p>Exploring the places, people, and traditions behind what we drink.</p>
+    </div>
+    <div class="story">
+      <h3>Great drinks start at the source</h3>
+      <div>
+        <p>
+          Some of my most memorable experiences in hospitality have taken
+          place far from the bar. Working alongside distributors and
+          spirits brands opened the door to the places where great
+          products begin. In Michoacán, Mexico, I visited the LaLuna
+          distillery, and through Patrón, had the opportunity to explore
+          their distillery on two occasions, including a visit during
+          Día de los Muertos.
+        </p>
+        <p>
+          My work with Broken Shaker also took me to Puerto Rico to scout
+          a location for a potential bar pop-up. Along the way, I visited
+          the Don Q and Bacardi distilleries, gaining a closer appreciation
+          for the island's rum-making heritage and the traditions behind
+          two iconic spirits.
+        </p>
+        <p>
+          Experiences like these changed the way I approach beverage
+          development. Understanding a spirit means understanding its
+          landscape, its producers, and the culture that gives it character.
+        </p>
+      </div>
+    </div>
+    <div class="story">
+      <h3>Wine country and the long way around Argentina</h3>
+      <div>
+        <p>
+          After 2020, travel became a different kind of education.
+          Life on the road in a motorhome offered the freedom to explore
+          at a slower pace, document the journey, and discover the people
+          and places shaping regional food and wine culture. Stops through
+          California and Oregon brought visits to wineries and a deeper
+          appreciation for the landscapes behind American winemaking.
+        </p>
+        <p>
+          Argentina gradually became another home base and an ongoing
+          journey of discovery. From the energy of Buenos Aires to the
+          vineyards of Mendoza, the lakes and mountains of Bariloche,
+          and Ushuaia at the end of the world, each destination offered
+          a different perspective on the country's extraordinary diversity.
+          Further north, the natural wonder of Iguazú and the distinctive
+          landscapes and traditions of Salta completed a journey that
+          continues to shape my connection to the country.
+        </p>
+        <p>
+          Whether visiting a vineyard, meeting a producer, or simply
+          taking the longer road between destinations, I've come to
+          appreciate that the best travel experiences share something
+          with great hospitality: they connect you to a place in a way
+          that stays with you.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" data-only="desk"><div class="wrap">
+ <div class="head"><div><h2>Selected work</h2><p class="lede">Brand, web, print and photography for bars, restaurants and nightlife.</p></div>
+  <div class="ctrl"><button data-d="-1" aria-label="Previous">Prev</button><button data-d="1" aria-label="Next">Next</button></div></div>
+ <div class="tabs" id="filters"><button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="brand">Brand</button><button aria-pressed="false" data-f="web">Web</button><button aria-pressed="false" data-f="print">Print</button><button aria-pressed="false" data-f="nightlife">Nightlife</button><button aria-pressed="false" data-f="photo">Photography</button></div>
+ <!-- REPLACE each .ph with an <img> when your exports are ready -->
+ <div class="track snap" tabindex="0" role="region" aria-label="Design gallery">
+  <article class="card" data-c="web"><div class="ph">Landing page screenshot</div><h3>MIAMIX landing page</h3><p>Responsive Jekyll/Liquid site with an articles gallery and partner marquee.</p></article>
+  <article class="card" data-c="brand"><div class="ph">Banner artwork</div><h3>GLOBAL-MIX LinkedIn banner</h3><p>Brand strategy turned into a consistent look across platforms.</p></article>
+  <article class="card" data-c="nightlife print"><div class="ph">Flyer or event graphic</div><h3>Event flyers</h3><p>Designed to read fast on a feed, a wall or a screen.</p></article>
+  <article class="card" data-c="nightlife print"><div class="ph">Menu design</div><h3>Cocktail menus</h3><p>Printed menus built for a dim room and a busy guest.</p></article>
+  <article class="card" data-c="print"><div class="ph">Pitch collateral</div><h3>Sponsorship collateral</h3><p>Visual concepts for partnership and sponsorship conversations.</p></article>
+  <article class="card" data-c="web"><div class="ph">Marquee preview</div><h3>Partner brands marquee</h3><p>A scrolling section that keeps partners visible without clutter.</p></article>
+  <article class="card" data-c="print"><div class="ph">Screen print photo</div><h3>Screen printing</h3><p>Prints from my vocational program. [Add detail.]</p></article>
+  <article class="card" data-c="photo"><div class="ph">Darkroom print</div><h3>Darkroom photography</h3><p>Darkroom work from my vocational program. [Add detail.]</p></article>
+ </div>
+</div></section>
+
+<section id="skills" data-only="desk">
+  <div class="wrap">
+    <div class="head">
+      <h2>Skills &amp; studies</h2>
+      <p>A foundation in visual communication, creative thinking, and the technology to bring ideas to life.</p>
+    </div>
+    <div class="studies">
+      <div>
+        <h3>Where it started: Courtland Vocational School</h3>
+        <p>
+          My interest in design started at Courtland Vocational School
+          in Virginia, where I completed a two-year graphic design
+          program and graduated at the top of my class. It was an
+          education rooted in both creativity and technical discipline,
+          with an emphasis on understanding how ideas translate
+          into finished work.
+        </p>
+        <p>
+          From Adobe Photoshop and early web coding to screen printing
+          and traditional darkroom photography, the program introduced
+          me to a range of creative disciplines. More importantly,
+          it taught me to think visually, work through details, and
+          understand the process behind good design.
+        </p>
+        <p>
+          Those skills followed me throughout my hospitality career.
+          Menus, promotional materials, event flyers, and brand
+          presentation became natural extensions of the work I was
+          already doing behind the bar. What started as a vocational
+          education gradually became another way to approach business,
+          branding, and creative problem-solving.
+        </p>
+        <p>
+          Today, that foundation has expanded into digital design
+          and web development, allowing me to take ideas from an
+          initial concept through visual identity, design, and
+          the finished online experience.
+        </p>
+      </div>
+      <div class="ph" style="aspect-ratio:4/3">Coursework or studio photo</div>
+    </div>
+    <div class="skills">
+      <div>
+        <h3>Digital design</h3>
+        <ul>
+          <li>Adobe Photoshop</li>
+          <li>Adobe Illustrator</li>
+          <li>Adobe InDesign</li>
+          <li>Brand identity</li>
+          <li>Brand guidelines</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Web &amp; development</h3>
+        <ul>
+          <li>HTML &amp; CSS</li>
+          <li>Jekyll &amp; Liquid</li>
+          <li>Responsive web design</li>
+          <li>Landing pages</li>
+          <li>GitHub-based workflows</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Print &amp; production</h3>
+        <ul>
+          <li>Screen printing</li>
+          <li>Menus &amp; promotional materials</li>
+          <li>Production specifications</li>
+          <li>Artwork preparation &amp; retouching</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Photography</h3>
+        <ul>
+          <li>Darkroom printing</li>
+          <li>Film developing</li>
+          <li>Visual composition</li>
+          <li>Image editing</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="blend"><div class="wrap">
+ <div class="head"><div><h2>Designed end to end</h2><p class="lede">My design training shaped how I build bar menus and event flyers. My bar career shaped how those pieces work in a moving room. I design the whole experience, from the printed menu in the guest’s hand to the garnish on the glass.</p></div></div>
+ <div class="blend">
+  <div class="list" id="touch">
+   <button aria-pressed="true" data-i="0">Event flyers</button><button aria-pressed="false" data-i="1">Cocktail menus</button><button aria-pressed="false" data-i="2">Cocktails &amp; garnish</button><button aria-pressed="false" data-i="3">Screens &amp; signage</button><button aria-pressed="false" data-i="4">Brand</button>
+  </div>
+  <div>
+   <!-- REPLACE with a project image for each touchpoint -->
+   <div class="ph" id="tph">Event flyer photo</div>
+   <p id="ttx" aria-live="polite"></p>
+  </div>
+ </div>
+</div></section>
+
+<section id="book" data-only="bar">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h2>The Bar Book</h2>
+        <p class="lede">
+          A personal collection of cocktails, stories, and the bars
+          that shaped my journey through hospitality.
+        </p>
+      </div>
+    </div>
+    <!-- BOOK INTRODUCTION -->
+    <div class="book">
+      <div class="ph cover">
+        Bar book cover<br>(3:4)
+      </div>
+      <div>
+        <h3>The Bars That Made Me</h3>
+        <p>
+          Every bar has a story, and behind every great cocktail
+          is usually a little more than one person's idea.
+          The Bars That Made Me is a look back at the places,
+          people, and creative experiences that shaped my journey
+          through hospitality, from Atlanta to Miami and New York.
+        </p>
+        <p>
+          Bringing together original recipes, contributions from
+          former colleagues, personal stories, and a visual archive
+          of menus and inspiration, the collection celebrates the
+          creativity that happens when talented people come together
+          behind a bar. Each recipe is credited to its creator,
+          recognizing the individuals whose ideas, techniques,
+          and collaborations helped define these chapters.
+        </p>
+        <p>
+          Part cocktail collection, part personal retrospective,
+          the book revisits the drinks, the places, and the people
+          who made the experience memorable. It's a tribute to
+          the craft, the friendships, and the shared creativity
+          that make hospitality such a remarkable industry.
+        </p>
+        <p class="facts">
+          [X] recipes · [X] pages · [Print / digital] · [Release date]
+        </p>
+        <a class="btn p"
+           href="mailto:robert@miamix.io?subject=The%20Bars%20That%20Made%20Me">
+          Ask about the book
+        </a>
+      </div>
+    </div>
+    <!-- FEATURED BAR CAROUSEL HEADING -->
+    <div class="head" style="margin-bottom:20px">
+      <h3 style="font-size:1.6rem">Inside: the bars</h3>
+      <div class="ctrl">
+        <button data-d="-1" aria-label="Previous">Prev</button>
+        <button data-d="1" aria-label="Next">Next</button>
+      </div>
+    </div>
+    <!-- FEATURED BAR CARDS -->
+    <div class="track loop" tabindex="0"
+         role="region" aria-label="Bars featured in the book">
+      <article class="card">
+        <img
+  class="ph"
+  src="/images/robert-ess-hero.webp"
+  alt="Empire State South in Atlanta"
+  loading="lazy"
+/>
+        <span class="org">2011 – 2015</span>
+        <h3>Empire State South</h3>
+        <p>
+          Where much of my foundation was built. My years at
+          Empire State South were an introduction to the depth
+          of modern restaurant hospitality, the discipline of
+          a great beverage program, and the creative possibilities
+          of the cocktail world. This chapter revisits the drinks,
+          influences, and experiences that helped shape the
+          bartender I would become.
+        </p>
+      </article>
+      <article class="card">
+        <img
+  class="ph"
+  src="/images/robert-shaker-mia.webp"
+  alt="Broken Shaker Miami"
+  loading="lazy"
+/>
+        <span class="org">2015 – 2018</span>
+        <h3>Broken Shaker Miami</h3>
+        <p>
+          A defining chapter, and one that took my career in
+          directions I could never have anticipated. Broken
+          Shaker was a place where creativity had room to
+          flourish, where ingredients and inspiration came
+          from unexpected places, and where the energy of
+          Miami became part of the experience. These are the
+          cocktails, collaborations, and memories from a time
+          that put our little corner of Miami on the international
+          hospitality map.
+        </p>
+      </article>
+      <article class="card">
+       <img
+  class="ph"
+  src="/images/robert-shaker-nyc.webp"
+  alt="Broken Shaker NYC"
+  loading="lazy"
+/>
+        <span class="org">2018 – 2019</span>
+        <h3>Broken Shaker New York</h3>
+        <p>
+          Taking a familiar creative spirit into a completely
+          different city. New York brought a new rhythm,
+          a different audience, and fresh opportunities to
+          explore what made Broken Shaker special. This chapter
+          captures the evolution of that experience, the people
+          behind it, and the cocktails that became part of
+          its New York story.
+        </p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="tools-sec" data-only="bar">
+  <div class="wrap">
+    <div class="head">
+      <div>
+        <h2>Tools from behind the bar</h2>
+        <p class="lede">
+          The templates, trackers and guides I used to keep a bar organized,
+          consistent and running smoothly. Practical resources built from
+          real-world experience, free to download and make your own.
+        </p>
+      </div>
+      <div class="ctrl">
+        <button data-d="-1" aria-label="Previous">Prev</button>
+        <button data-d="1" aria-label="Next">Next</button>
+      </div>
+    </div>
+    <div class="track loop" tabindex="0" role="region" aria-label="Free bar tools">
+      <article class="card">
+        <span class="fmt">Excel</span>
+        <h3>Recipe &amp; spec template</h3>
+        <p>
+          Every great cocktail starts with a clear, repeatable recipe.
+          Use this template to document ingredients, exact measurements,
+          preparation methods, glassware, garnish and service notes.
+          Keep your team working from the same specifications and build
+          a consistent foundation for menu development, training and
+          day-to-day service.
+        </p>
+        <a class="btn p" href="downloads/recipe-template.xlsx" download>
+          Download
+        </a>
+      </article>
+      <article class="card">
+        <span class="fmt">Excel</span>
+        <h3>Inventory count sheet</h3>
+        <p>
+          Take the guesswork out of inventory. Organize your stock by
+          category or storage location, record quantities on hand and
+          compare counts over time. A reliable inventory routine helps
+          identify usage patterns, monitor product movement, spot
+          discrepancies and make better purchasing decisions.
+        </p>
+        <a class="btn p" href="downloads/inventory-sheet.xlsx" download>
+          Download
+        </a>
+      </article>
+      <article class="card">
+        <span class="fmt">Excel</span>
+        <h3>Ordering &amp; par levels</h3>
+        <p>
+          Keep the right products on hand without overstocking.
+          Establish par levels for your essential ingredients and
+          supplies, compare current inventory against your targets
+          and identify what needs to be reordered. Use the sheet to
+          organize purchasing by vendor and create a more consistent
+          ordering routine.
+        </p>
+        <a class="btn p" href="downloads/ordering-par.xlsx" download>
+          Download
+        </a>
+      </article>
+      <article class="card">
+        <span class="fmt">Excel</span>
+        <h3>Cost &amp; pour-cost calculator</h3>
+        <p>
+          Understand the numbers behind every drink. Break down
+          ingredient costs, calculate the cost of a finished recipe
+          and evaluate pricing against your target margins. Whether
+          you're developing a new cocktail or reviewing an existing
+          menu, use this tool to make informed decisions about
+          profitability without losing sight of the guest experience.
+        </p>
+        <a class="btn p" href="downloads/cost-calculator.xlsx" download>
+          Download
+        </a>
+      </article>
+      <article class="card">
+        <span class="fmt">PDF</span>
+        <h3>Opening &amp; closing checklists</h3>
+        <p>
+          The details that happen before and after service matter.
+          Use these printable checklists to organize daily setup,
+          station preparation, cleaning, restocking, equipment checks
+          and end-of-shift responsibilities. Give your team a clear
+          routine to follow and help maintain consistent standards
+          across every shift.
+        </p>
+        <a class="btn p" href="downloads/checklists.pdf" download>
+          Download
+        </a>
+      </article>
+      <article class="card">
+        <span class="fmt">PDF</span>
+        <h3>Staff training tracker</h3>
+        <p>
+          Great service starts with a confident, well-prepared team.
+          Track staff progress across cocktail recipes, ingredients,
+          preparation techniques, menu knowledge and service standards.
+          Use it as a training reference for new hires, a tool for
+          ongoing development or a way to identify where additional
+          coaching will make a difference.
+        </p>
+        <a class="btn p" href="downloads/training-tracker.pdf" download>
+          Download
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<div class="contact" id="contact"><div class="wrap">
+ <h2>Let’s work together.</h2>
+ <p id="cp"></p>
+ <a class="btn p" href="mailto:robert@miamix.io">robert@miamix.io</a> <a class="btn" href="https://www.linkedin.com/in/robert-eldridge-91391a88">LinkedIn</a> <a class="btn" href="https://miamix.io">miamix.io</a>
+</div></div>
+<footer><div class="wrap"><span>© <span id="yr"></span> Robert Eldridge III · Miami, FL</span><a href="#top">Back to top</a></div></footer>
+
+<script>
+(function(){
+ var R=document.documentElement,$=function(i){return document.getElementById(i)},reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ var T={
+  bar:{tag:"Bar director, opening manager and hospitality consultant. Fifteen years of cocktail programs in Miami and New York, with a designer’s eye for the whole guest experience.",c1:["See my experience","#exp"],c2:["Read about the bar book","#book"],cp:"Hospitality consulting, beverage programs, the bar book or a MIAMIX partnership."},
+  desk:{tag:"Graphic designer for bars, restaurants and nightlife. Two years of vocational design training, then a career designing menus, flyers and whole guest experiences.",c1:["See the work","#work"],c2:["Skills and studies","#skills"],cp:"Brand, web and print design for hospitality and nightlife, or a MIAMIX collaboration."}
+ };
+ function lens(m,fade){
+  var go=function(){R.setAttribute("data-lens",m);var t=T[m];$("tag").textContent=t.tag;
+   $("c1").textContent=t.c1[0];$("c1").href=t.c1[1];$("c2").textContent=t.c2[0];$("c2").href=t.c2[1];$("cp").textContent=t.cp;
+   $("lBar").setAttribute("aria-pressed",m==="bar");$("lDes").setAttribute("aria-pressed",m==="desk");
+   if(fade){$("page").classList.remove("out");window.scrollTo({top:0})}};
+  if(fade&&!reduce){$("page").classList.add("out");setTimeout(go,250)}else go();
+ }
+ $("lBar").onclick=function(){lens("bar",1)};$("lDes").onclick=function(){lens("desk",1)};lens("bar");
+
+ $("menu").onclick=function(){var o=!$("links-bar").classList.contains("open");
+  ["links-bar","links-desk"].forEach(function(i){$(i).classList.toggle("open",o)});this.setAttribute("aria-expanded",o)};
+ document.querySelectorAll(".links").forEach(function(l){l.onclick=function(){$("links-bar").classList.remove("open");$("links-desk").classList.remove("open")}});
+
+ function loop(t){
+  var rail=document.createElement("div");rail.className="rail";
+  while(t.firstChild)rail.appendChild(t.firstChild);t.appendChild(rail);
+  var items=[].slice.call(rail.children),N=items.length,first=items[0];
+  function cl(k){var c=k.cloneNode(true);c.setAttribute("aria-hidden","true");[].forEach.call(c.querySelectorAll("a,button"),function(x){x.tabIndex=-1});return c}
+  items.forEach(function(k){rail.insertBefore(cl(k),first)});
+  items.forEach(function(k){rail.appendChild(cl(k))});
+  var all=[].slice.call(rail.children),iv=parseInt(t.dataset.interval)||0,fx=t.hasAttribute("data-fx");
+  var p=0,ready=false,hover=false,vis=true,anim=null,nextAt=0;
+  function dims(){var W=rail.scrollWidth/3;return{W:W,cW:t.clientWidth,st:W/N,cw:first.offsetWidth}}
+  function snap(d,x){var b=d.W+(d.cw-d.cW)/2;return b+Math.round((x-b)/d.st)*d.st}
+  function go(to,dur){anim={f:p,t:to,s:performance.now(),d:dur}}
+  t._eng={step:function(n){var d=dims();if(!d.W)return;nextAt=performance.now()+iv*1.6;go(snap(d,anim?anim.t:p)+n*d.st,600)}};
+  function frame(now){
+   var d=dims();
+   if(d.W>0){
+    if(!ready){p=d.W+(d.cw-d.cW)/2;ready=true;nextAt=now+iv}
+    if(anim){var k=Math.min(1,(now-anim.s)/anim.d),e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;p=anim.f+(anim.t-anim.f)*e;if(k>=1)anim=null}
+    else if(iv&&!reduce&&vis&&!hover&&now>nextAt){nextAt=now+iv;go(snap(d,p)+d.st,800)}
+    var sh=0;while(p>=2*d.W){p-=d.W;sh-=d.W}while(p<d.W){p+=d.W;sh+=d.W}
+    if(anim&&sh){anim.f+=sh;anim.t+=sh}
+    rail.style.transform="translate3d("+(-p)+"px,0,0)";
+    if(fx)for(var i=0;i<all.length;i++){var n=Math.min(1,Math.abs(i*d.st+d.cw/2-p-d.cW/2)/d.st);all[i].style.transform="scale("+(1-.1*n)+")";all[i].style.opacity=1-.6*n}
+   }
+   requestAnimationFrame(frame)}
+  requestAnimationFrame(frame);
+  t.addEventListener("mouseenter",function(){hover=true});
+  t.addEventListener("mouseleave",function(){hover=false;nextAt=performance.now()+iv});
+  t.addEventListener("focusin",function(){hover=true});
+  t.addEventListener("focusout",function(){hover=false;nextAt=performance.now()+iv});
+  var sx=0,sy=0;
+  t.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});
+  t.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;
+   if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)*1.5)t._eng.step(dx<0?1:-1)},{passive:true});
+  t.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){e.preventDefault();t._eng.step(1)}else if(e.key==="ArrowLeft"){e.preventDefault();t._eng.step(-1)}});
+  if("IntersectionObserver" in window)new IntersectionObserver(function(en){vis=en[0].isIntersecting}).observe(t);
+ }
+ document.querySelectorAll(".track.loop").forEach(loop);
+ document.querySelectorAll(".ctrl").forEach(function(c){
+  var t=c.closest(".head").parentNode.querySelector(".track");
+  c.querySelectorAll("[data-d]").forEach(function(b){b.onclick=function(){var n=+b.dataset.d;
+   if(t._eng)t._eng.step(n);else t.scrollBy({left:n*Math.min(380,t.clientWidth*.85),behavior:"smooth"})}});
+ });
+
+ var cards=document.querySelectorAll("#work .card");
+ $("filters").onclick=function(e){var f=e.target.dataset.f;if(!f)return;
+  this.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b===e.target)});
+  cards.forEach(function(c){c.classList.toggle("hid",f!=="all"&&c.dataset.c.split(" ").indexOf(f)<0)});
+  document.querySelector("#work .track").scrollTo({left:0});
+ };
+
+ var TP=[
+  ["Event flyer photo","The first touchpoint. A flyer has to work in a feed and on a wall, in seconds. I design each one around the event’s energy and the venue’s identity. [Add a project example.]"],
+  ["Cocktail menu photo","Layout, type and hierarchy built for a dim room and a guest with one hand free. As a consultant I designed and developed cocktail menus for clients including Capital One’s airport lounges, so each one had to read fast and still feel considered. [Add a project example.]"],
+  ["Cocktail and garnish photo","The garnish is design too: color, shape and scale on the glass, matched to the menu and the room. [Add a project example.]"],
+  ["Screen or signage photo","Stage-facing screens and in-venue signage that guests read at a glance, even when the room is moving. [Add a project example.]"],
+  ["Brand system photo","One identity running from the printed menu to the glass, so every piece feels like the same night. [Add a project example.]"]
+ ];
+ function tp(i){$("tph").textContent=TP[i][0];$("ttx").textContent=TP[i][1];
+  document.querySelectorAll("#touch button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.i==i)})}
+ $("touch").onclick=function(e){var i=e.target.dataset.i;if(i!==undefined)tp(+i)};tp(0);
+ $("yr").textContent=new Date().getFullYear();
+})();
+</script>
+</body>
+</html>
