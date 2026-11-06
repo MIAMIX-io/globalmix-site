@@ -7,6 +7,44 @@
 <meta name="description" content="Robert Eldridge III: bar director, hospitality consultant, graphic designer and founder of MIAMIX / GLOBAL-MIX.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+/* HERO PORTRAIT — BAR / DESIGN SWITCH */
+#top .hero-portraits {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  aspect-ratio: 4 / 5;
+  overflow: hidden;
+  padding: 0;
+  border: 0;
+}
+
+#top .hero-portraits img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: opacity .5s ease;
+}
+
+#top .hero-portrait-bar {
+  opacity: 1;
+}
+
+#top .hero-portrait-design {
+  opacity: 0;
+}
+
+html[data-lens="desk"] #top .hero-portrait-bar {
+  opacity: 0;
+}
+
+html[data-lens="desk"] #top .hero-portrait-design {
+  opacity: 1;
+}
 <style>
 :root{--bg:#060A1F;--fg:#F6F1E7;--mut:#B8BFDD;--ac:#FF5A73;--onac:#060A1F;--ac2:#EBC66E;--rule:#EBC66E;--line:#1C2552;--card:#0E1536;--hd:rgba(6,10,31,.92);--ct:#FF5A73;--onct:#060A1F;--ft:#FF9AAA;
  --body:"Instrument Sans",system-ui,sans-serif;--disp:"Poiret One","Instrument Sans",system-ui,sans-serif;--dw:400;--dl:1.05;--ls:.02em;
@@ -309,8 +347,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="lens" role="group" aria-label="Choose what to explore"><button id="lBar" aria-pressed="true">Behind the bar</button><button id="lDes" aria-pressed="false">At the desk</button></div>
  </div>
  <div><div class="pal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
-  <!-- REPLACE with: <img src="portrait.jpg" alt="Robert Eldridge III" style="width:100%;aspect-ratio:4/5;object-fit:cover"> -->
-  <div class="ph portrait">Portrait photo<br>(4:5, replace me)</div>
+<div class="ph portrait hero-portraits">
+  <img
+    class="hero-portrait-bar"
+    src="images/robert-hero-bar.webp"
+    alt="Robert Eldridge in a hospitality setting"
+  >
+  <img
+    class="hero-portrait-design"
+    src="images/robert-hero-desk.webp"
+    alt="Robert Eldridge in a creative setting"
+  >
+</div>
   <div class="cap"><span data-only="bar">Miami · New York · London</span><span data-only="desk">Miami · New York · Buenos Aires</span><span>MIAMIX / GLOBAL-MIX</span></div></div>
 </div></div>
 
