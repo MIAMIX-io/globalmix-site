@@ -171,6 +171,31 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .blend .ph{aspect-ratio:16/9;margin-bottom:18px}
 .blend p{color:var(--mut);max-width:54ch}
 
+.explore{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:48px;align-items:start}
+.xlist{display:flex;flex-direction:column}
+.xlist button{display:block;width:100%;text-align:left;font:inherit;background:none;border:0;border-bottom:1px solid var(--line);color:var(--mut);padding:16px 0;cursor:pointer}
+.xlist button[aria-selected="true"]{color:var(--fg);border-bottom:3px solid var(--ac)}
+.xlist .yr{display:block;font:400 2rem var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);color:var(--ac2);line-height:1.1}
+.xlist .ttl{display:block;font:600 1.15rem/1.3 var(--body);margin-top:4px}
+.xlist .meta{display:block;font-size:14px;color:var(--mut);margin-top:2px}
+.xlist .grp{font:700 12px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--ac2);margin:22px 0 2px}
+.xlist .grp:first-child{margin-top:0}
+.trav .xlist button{padding:12px 0}
+.xp[hidden]{display:none}
+.shot{margin:0 0 14px}
+.shotimg{aspect-ratio:16/10;width:100%;overflow:hidden}
+.shotimg img{display:block;width:100%;height:100%;object-fit:cover}
+.shot figcaption{font-size:14px;color:var(--mut);margin-top:10px}
+.chap .shot{margin-right:12px}
+.chap .shotimg{box-shadow:12px 12px 0 var(--ac)}
+.chap .shot figcaption{margin-top:22px}
+.trav .shotimg{border:1px solid var(--line);padding:8px;background:var(--card)}
+.trav .shotimg img{height:calc(100% - 0px)}
+.thumbs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.th{width:84px;height:58px;border:1px solid var(--line);background:var(--card) center/cover no-repeat;color:var(--mut);font:500 11px/1.25 var(--body);cursor:pointer;padding:4px;text-align:left;display:flex;align-items:flex-end}
+.th[aria-pressed="true"]{border:2px solid var(--ac);color:var(--fg)}
+.xtext p{color:var(--mut);margin-bottom:14px;max-width:62ch}
+.xtext p:first-child{color:var(--fg);font-size:1.1rem}
 .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:56px}
 .skills div{border-top:3px solid var(--rule);padding-top:16px}
 .skills h3{margin-bottom:8px}
@@ -205,6 +230,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  }
 
  .story{gap:16px}
+ .explore{grid-template-columns:1fr;gap:24px}
+ .trav .xlist{flex-direction:row;flex-wrap:wrap;gap:0 18px}
+ .trav .xlist button{width:auto}
+ .trav .xlist .meta{display:none}
+ .trav .xlist .grp{flex-basis:100%}
  .skills{grid-template-columns:1fr 1fr}
  .portrait{max-width:340px}
  .cover{margin:0}
@@ -498,126 +528,96 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
-<section id="stories" data-only="bar">
-  <div class="wrap">
-    <div class="head">
-      <h2>Stories from the bar</h2>
-      <p>A career shaped by creativity, culture, and the people who make hospitality memorable.</p>
-    </div>
-    <div class="story">
-      <h3>Top 50 Best Bars and One Miami bar on the world stage.</h3>
-      <div>
-        <p>
-          Some experiences stay with you long after the last drink is served.
-          During my time with Broken Shaker, the bar earned international
-          recognition as one of the World's 50 Best Bars, taking us to London
-          in July 2017, October 2018, and July 2019.
-        </p>
-        <p>
-          More than an awards ceremony, each trip was an opportunity to
-          represent Miami, connect with the international hospitality
-          community, and exchange ideas with some of the industry's most
-          creative people. I also had the opportunity to guest bartend at
-          Madison rooftop bar and The Ned, bringing a little of the
-          Broken Shaker experience to London.
-        </p>
-        <p>
-          Those years reinforced something I've always believed:
-          hospitality is more than what's in the glass. It's about
-          culture, creativity, and the connections we create along the way.
-        </p>
-      </div>
-    </div>
-    <div class="story">
-      <h3>Taking the craft nationwide</h3>
-      <div>
-        <p>
-          My work eventually moved beyond the bar and onto the road.
-          As a consultant, I developed cocktail menus, built beverage programs, 
-          and trained bartenders across the country.
-        </p>
-        <p>
-          Projects included Capital One airport lounges at DFW, IAD, DEN, LAS, and JFK, 
-          where I navigated the complexities of a large, multi-tiered operation
-          while delivering Michelin-starred-level cocktail experiences through the right tools, 
-          training, and operational standards. In New York, I developed cocktails for STARR Restaurants, 
-          including Michelin-starred Le Coucou and Buddakan, and collaborated with the legendary 
-          Russian Tea Room to modernize its cocktail program while preserving the nostalgia and 
-          character that make it an institution.
-        </p>
-        <p>
-          Each project reinforced the importance of understanding a
-          property's identity and audience. Whether developing a menu
-          for an iconic restaurant or a busy airport lounge, the goal
-          was always the same: create an experience that feels authentic,
-          memorable, and distinctly its own.
-        </p>
-      </div>
-    </div>
+<section id="stories" data-only="bar"><div class="wrap">
+ <div class="head"><div><h2>Stories from the bar</h2><p class="lede">Two chapters from two different eras of my career. Pick one.</p></div></div>
+ <div class="explore chap">
+  <div class="xlist" role="tablist" aria-label="Career chapters">
+   <button role="tab" aria-selected="true" aria-controls="sp0" data-i="0"><span class="yr">2017 – 2019</span><span class="ttl">Three trips to London for the Top 50</span><span class="meta">Broken Shaker · London</span></button>
+   <button role="tab" aria-selected="false" aria-controls="sp1" data-i="1"><span class="yr">2023 – 2025</span><span class="ttl">Taking the craft nationwide</span><span class="meta">Consulting · Nationwide</span></button>
   </div>
-</section>
+  <div class="xpanels">
+   <!-- TO ADD PHOTOS: set data-src on each thumbnail, e.g. data-src="images/london-awards.webp" -->
+   <div class="xp" id="sp0" role="tabpanel">
+    <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
+    <div class="thumbs">
+     <button class="th" data-src="" data-label="Awards night" data-cap="The Top 50 awards in London. [Add photo]"></button>
+     <button class="th" data-src="" data-label="Madison" data-cap="Guest bartending at Madison rooftop bar, London. [Add photo]"></button>
+     <button class="th" data-src="" data-label="The Ned" data-cap="Guest bartending at The Ned, London. [Add photo]"></button>
+    </div>
+    <div class="xtext">
+     <p>Some experiences stay with you long after the last drink is served. During my time with Broken Shaker, the bar earned international recognition as one of the World's 50 Best Bars, taking us to London in July 2017, October 2018, and July 2019.</p>
+     <p>More than an awards ceremony, each trip was an opportunity to represent Miami, connect with the international hospitality community, and exchange ideas with some of the industry's most creative people. I also had the opportunity to guest bartend at Madison rooftop bar and The Ned, bringing a little of the Broken Shaker experience to London.</p>
+     <p>Those years reinforced something I've always believed: hospitality is more than what's in the glass. It's about culture, creativity, and the connections we create along the way.</p>
+    </div>
+   </div>
+   <div class="xp" id="sp1" role="tabpanel" hidden>
+    <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
+    <div class="thumbs">
+     <button class="th" data-src="" data-label="Airport lounges" data-cap="Capital One airport lounges. [Add photo]"></button>
+     <button class="th" data-src="" data-label="Le Coucou" data-cap="Cocktails for STARR Restaurants’ Le Coucou, New York. [Add photo]"></button>
+     <button class="th" data-src="" data-label="Russian Tea Room" data-cap="The Russian Tea Room, New York. [Add photo]"></button>
+    </div>
+    <div class="xtext">
+     <p>My work eventually moved beyond the bar and onto the road. As a consultant, I developed cocktail menus, built beverage programs, and trained bartenders across the country.</p>
+     <p>Projects included Capital One airport lounges at DFW, IAD, DEN, LAS, and JFK, where I navigated the complexities of a large, multi-tiered operation while delivering Michelin-starred-level cocktail experiences through the right tools, training, and operational standards. In New York, I developed cocktails for STARR Restaurants, including Michelin-starred Le Coucou and Buddakan, and collaborated with the legendary Russian Tea Room to modernize its cocktail program while preserving the nostalgia and character that make it an institution.</p>
+     <p>Whether the room is an iconic restaurant or a busy airport lounge, the goal is the same: an experience that feels authentic, memorable, and distinctly its own.</p>
+    </div>
+   </div>
+  </div>
+ </div>
+</div></section>
 
-<section id="field" data-only="bar">
-  <div class="wrap">
-    <div class="head">
-      <h2>Beyond the Bar</h2>
-      <p>Discovering the people, places, and traditions behind every pour.</p>
-    </div>
-    <div class="story">
-      <h3>Great drinks start at the source</h3>
-      <div>
-        <p>
-          Some of my most memorable experiences in hospitality have taken place far from the bar. 
-          Working alongside distributors and spirits brands opened the door to the places where great products begin. 
-          In Michoacán, Mexico, I visited La Luna’s artisanal mezcal distillery, and through Patrón Tequila, explored its distillery on two occasions, 
-          including a visit during Día de los Muertos.
-        </p>
-        <p>
-          My work with Broken Shaker also took me to Puerto Rico to scout
-          a location for a potential bar pop-up. Along the way, I visited
-          the Don Q and Bacardi distilleries, gaining a closer appreciation
-          for the island's rum-making heritage and the traditions behind
-          two iconic spirits.
-        </p>
-        <p>
-          Experiences like these changed the way I approach beverage
-          development. Understanding a spirit means understanding its
-          landscape, its producers, and the culture that gives it character.
-        </p>
-      </div>
-    </div>
-    <div class="story">
-      <h3>Wine country and the long way around Argentina</h3>
-      <div>
-        <p>
-          After 2020, travel became a different kind of education.
-          Life on the road in a motorhome offered the freedom to explore
-          at a slower pace, document the journey, and discover the people
-          and places shaping regional food and wine culture. Stops through
-          California and Oregon brought visits to wineries and a deeper
-          appreciation for the landscapes behind American winemaking.
-        </p>
-        <p>
-          Argentina gradually became another home base and an ongoing
-          journey of discovery. From the energy of Buenos Aires to the
-          vineyards of Mendoza, the lakes and mountains of Bariloche,
-          and Ushuaia at the end of the world, each destination offered
-          a different perspective on the country's extraordinary diversity.
-          Further north, the natural wonder of Iguazú and the distinctive
-          landscapes and traditions of Salta completed a journey that
-          continues to shape my connection to the country.
-        </p>
-        <p>
-          Whether visiting a vineyard, meeting a producer, or simply
-          taking the longer road between destinations, I've come to
-          appreciate that the best travel experiences share something
-          with great hospitality: they connect you to a place in a way
-          that stays with you.
-        </p>
-      </div>
-    </div>
+<section id="field" data-only="bar"><div class="wrap">
+ <div class="head"><div><h2>Beyond the Bar</h2><p class="lede">Discovering the people, places, and traditions behind every pour.</p></div></div>
+ <div class="explore trav">
+  <div class="xlist" role="tablist" aria-label="Travel stops">
+   <p class="grp">At the source</p>
+   <button role="tab" aria-selected="true" aria-controls="tp0" data-i="0"><span class="ttl">Michoacán, Mexico</span><span class="meta">LaLuna distillery</span></button>
+   <button role="tab" aria-selected="false" aria-controls="tp1" data-i="1"><span class="ttl">Guadalajara, Mexico</span><span class="meta">Patrón distillery · two visits</span></button>
+   <button role="tab" aria-selected="false" aria-controls="tp2" data-i="2"><span class="ttl">Puerto Rico</span><span class="meta">Don Q &amp; Bacardi</span></button>
+   <p class="grp">On the road, 2020 onward</p>
+   <button role="tab" aria-selected="false" aria-controls="tp3" data-i="3"><span class="ttl">California &amp; Oregon</span><span class="meta">Wine country</span></button>
+   <button role="tab" aria-selected="false" aria-controls="tp4" data-i="4"><span class="ttl">Argentina</span><span class="meta">Buenos Aires to Ushuaia</span></button>
   </div>
-</section>
+  <div class="xpanels">
+   <div class="xp" id="tp0" role="tabpanel">
+    <figure class="shot"><div class="shotimg ph" data-src="" data-label="LaLuna distillery photo"></div><figcaption data-cap="LaLuna distillery, Michoacán, Mexico"></figcaption></figure>
+    <div class="xtext"><p>Some of my most memorable experiences in hospitality have taken place far from the bar. Working alongside distributors and spirits brands opened the door to the places where great products begin. In Michoacán, Mexico, I visited La Luna’s artisanal mezcal distillery in September, 2022.</p></div>
+   </div>
+   <div class="xp" id="tp1" role="tabpanel" hidden>
+    <figure class="shot"><div class="shotimg ph" data-src="" data-label="Guadalajara photo"></div><figcaption data-cap="Patrón distillery, Guadalajara, Mexico"></figcaption></figure>
+    <div class="xtext"><p>Patrón invited me to explore their distillery on two occasions, including a visit during Día de los Muertos, October, 2019.</p></div>
+   </div>
+   <div class="xp" id="tp2" role="tabpanel" hidden>
+    <figure class="shot"><div class="shotimg ph" data-src="" data-label="Puerto Rico photo"></div><figcaption data-cap="Puerto Rico distilleries"></figcaption></figure>
+    <div class="xtext"><p>My work with Broken Shaker took me to Puerto Rico to scout a location for a potential bar pop-up. Along the way, I visited the Don Q and Bacardi distilleries, gaining a closer appreciation for the island's rum-making heritage and the traditions behind two iconic spirits.</p></div>
+   </div>
+   <div class="xp" id="tp3" role="tabpanel" hidden>
+    <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
+    <div class="thumbs">
+     <button class="th" data-src="" data-label="California" data-cap="California wineries. [Add photo]"></button>
+     <button class="th" data-src="" data-label="Oregon" data-cap="Oregon wineries. [Add photo]"></button>
+     <button class="th" data-src="" data-label="Tasting" data-cap="A tasting on the road. [Add photo]"></button>
+     <button class="th" data-src="" data-label="The motorhome" data-cap="Life on the road in the motorhome. [Add photo]"></button>
+    </div>
+    <div class="xtext"><p>After 2020, life on the road in a motorhome offered the freedom to explore at a slower pace and document the journey. Stops through California and Oregon brought visits to wineries and a deeper appreciation for the landscapes behind American winemaking.</p></div>
+   </div>
+   <div class="xp" id="tp4" role="tabpanel" hidden>
+    <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
+    <div class="thumbs">
+     <button class="th" data-src="" data-label="Buenos Aires" data-cap="Buenos Aires. [Add photo]"></button>
+     <button class="th" data-src="" data-label="Mendoza" data-cap="Mendoza, on a winery tour. [Add photo]"></button>
+     <button class="th" data-src="" data-label="Bariloche" data-cap="Bariloche. [Add photo]"></button>
+     <button class="th" data-src="" data-label="Ushuaia" data-cap="Ushuaia, at the end of the world. [Add photo]"></button>
+     <button class="th" data-src="" data-label="Iguazú" data-cap="Iguazú. [Add photo]"></button>
+     <button class="th" data-src="" data-label="Salta" data-cap="Salta. [Add photo]"></button>
+    </div>
+    <div class="xtext"><p>Argentina gradually became another home base and an ongoing journey of discovery. From the energy of Buenos Aires to the vineyards of Mendoza, the lakes and mountains of Bariloche, and Ushuaia at the end of the world, each destination offered a different perspective on the country's extraordinary diversity. Further north, Iguazú and Salta completed a journey that continues to shape my connection to the country.</p></div>
+   </div>
+  </div>
+ </div>
+ <p class="lede" style="margin-top:36px;max-width:62ch">Understanding a spirit means understanding its landscape, its producers, and the culture that gives it character.</p>
+</div></section>
 
 <section id="work" data-only="desk"><div class="wrap">
  <div class="head"><div><h2>Selected work</h2><p class="lede">Brand, web, print and photography for bars, restaurants and nightlife.</p></div>
@@ -1127,6 +1127,43 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   var t=c.closest(".head").parentNode.querySelector(".track");
   c.querySelectorAll("[data-d]").forEach(function(b){b.onclick=function(){var n=+b.dataset.d;
    if(t._eng)t._eng.step(n);else t.scrollBy({left:n*Math.min(380,t.clientWidth*.85),behavior:"smooth"})}});
+ });
+
+ // story / travel explorers (tabs + photo switcher)
+ document.querySelectorAll(".explore").forEach(function(ex){
+  var tabs=[].slice.call(ex.querySelectorAll('[role="tab"]')),panels=[].slice.call(ex.querySelectorAll(".xp"));
+  function sel(i,focus){
+   tabs.forEach(function(b,k){b.setAttribute("aria-selected",k===i);b.tabIndex=k===i?0:-1});
+   panels.forEach(function(p,k){p.hidden=k!==i});
+   if(focus)tabs[i].focus();
+  }
+  tabs.forEach(function(b,k){
+   b.onclick=function(){sel(k)};
+   b.onkeydown=function(e){
+    var d=e.key==="ArrowDown"||e.key==="ArrowRight"?1:e.key==="ArrowUp"||e.key==="ArrowLeft"?-1:0;
+    if(d){e.preventDefault();sel((k+d+tabs.length)%tabs.length,true)}
+   };
+  });
+  panels.forEach(function(p){
+   var box=p.querySelector(".shotimg"),cap=p.querySelector("figcaption"),ths=[].slice.call(p.querySelectorAll(".th"));
+   function paint(src,label,text){
+    if(src){box.classList.remove("ph");box.innerHTML="";var im=new Image();im.src=src;im.alt=text||label||"";box.appendChild(im)}
+    else{box.classList.add("ph");box.textContent=label||""}
+    cap.textContent=text||"";
+   }
+   function show(th){
+    ths.forEach(function(x){x.setAttribute("aria-pressed",x===th)});
+    paint(th.dataset.src,th.dataset.label,th.dataset.cap);
+   }
+   ths.forEach(function(th){
+    th.setAttribute("aria-label",th.dataset.label);
+    if(th.dataset.src)th.style.backgroundImage="url('"+th.dataset.src+"')";else th.textContent=th.dataset.label;
+    th.onclick=function(){show(th)};
+   });
+   if(ths.length)show(ths[0]);
+   else paint(box.dataset.src,box.dataset.label,cap.dataset.cap);
+  });
+  sel(0);
  });
 
  var cards=document.querySelectorAll("#work .card");
