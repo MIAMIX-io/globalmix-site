@@ -213,6 +213,43 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 }
 @media(max-width:520px){.skills{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+/* LEFT ALIGNMENT — EXPERIENCE, BAR BOOK & TOOLS */
+
+/* Keep section headings aligned to the left */
+#exp .head,
+#book .head,
+#tools-sec .head {
+  justify-content: space-between;
+  align-items: flex-start;
+  text-align: left;
+}
+
+/* Align experience, bar book and tools cards */
+#exp .card,
+#book .track .card,
+#tools-sec .track .card {
+  text-align: left;
+  align-items: flex-start;
+}
+
+/* Keep card descriptions and headings left aligned */
+#exp .card h3,
+#exp .card p,
+#book .track .card h3,
+#book .track .card p,
+#tools-sec .track .card h3,
+#tools-sec .track .card p {
+  text-align: left;
+  width: 100%;
+}
+
+/* Keep carousel cards anchored to the left */
+#exp .rail,
+#book .rail,
+#tools-sec .rail {
+  justify-content: flex-start;
+}
 </style>
 </head>
 <body>
