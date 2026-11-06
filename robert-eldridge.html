@@ -7,7 +7,61 @@
 <meta name="description" content="Robert Eldridge III: bar director, hospitality consultant, graphic designer and founder of MIAMIX / GLOBAL-MIX.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poiret+One&family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-  
+<style>
+:root{--bg:#060A1F;--fg:#F6F1E7;--mut:#B8BFDD;--ac:#FF5A73;--onac:#060A1F;--ac2:#EBC66E;--rule:#EBC66E;--line:#1C2552;--card:#0E1536;--hd:rgba(6,10,31,.92);--ct:#FF5A73;--onct:#060A1F;--ft:#FF9AAA;
+ --body:"Instrument Sans",system-ui,sans-serif;--disp:"Poiret One","Instrument Sans",system-ui,sans-serif;--dw:400;--dl:1.05;--ls:.02em;
+ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-lens="desk"]{--bg:#FFF8E8;--fg:#1B1220;--mut:#4B4A57;--ac:#DE2A7C;--onac:#fff;--ac2:#067F86;--rule:#1B1220;--line:#EBDDBA;--card:#fff;--hd:rgba(255,248,232,.92);--ct:#00CEC8;--onct:#1B1220;--ft:#1B1220;
+ --disp:"Instrument Sans",system-ui,sans-serif;--dw:700;--dl:.98;--ls:-.035em}
+html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+*{box-sizing:border-box;margin:0;border-radius:0}
+body{background:var(--bg);color:var(--fg);font:400 17px/1.7 var(--body);transition:background .5s,color .5s}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:30}
+h1,h2,.disp{font-family:var(--disp);font-weight:var(--dw);line-height:var(--dl);letter-spacing:var(--ls)}
+h3{font:600 1.35rem/1.25 var(--body);letter-spacing:-.01em}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
+.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
+[data-lens="bar"] [data-only="desk"],[data-lens="desk"] [data-only="bar"]{display:none!important}
+#page{
+  display:flex;
+  flex-direction:column;
+  transition:opacity .25s;
+}
+
+#page.out{
+  opacity:0;
+}
+
+header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hd);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
+.logo{font:400 1.5rem var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);text-decoration:none}
+.links{display:flex;gap:22px;font-size:15px}
+.links a{text-decoration:none;color:var(--mut)}.links a:hover{color:var(--fg);text-decoration:underline;text-decoration-color:var(--ac);text-underline-offset:6px;text-decoration-thickness:2px}
+#menu{display:none;font:500 14px var(--body);border:1px solid var(--fg);background:none;color:var(--fg);padding:8px 14px;cursor:pointer}
+
+.btn{display:inline-block;font:600 15px var(--body);padding:14px 26px;text-decoration:none;border:1px solid var(--fg);transition:transform .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.p{background:var(--ac);color:var(--onac);border-color:var(--ac)}
+.tlink{text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:6px;font-weight:500}
+
+.hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:end;padding-top:64px;padding-bottom:72px}
+h1{font-size:clamp(3.2rem,9.5vw,7.6rem)}
+h1 span{display:block;animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
+h1 span+span{animation-delay:.12s;color:var(--ac);transition:color .5s}
+@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
+.tag{font-size:clamp(1.1rem,2vw,1.3rem);margin:28px 0 30px;max-width:44ch;color:var(--mut);min-height:5.4em}
+.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:34px}
+.lens{display:inline-flex;border:1px solid var(--fg)}
+.lens button{font:500 15px var(--body);border:0;background:none;color:var(--fg);padding:12px 24px;cursor:pointer}
+.lens button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
+.ph{display:grid;place-items:center;text-align:center;font-size:14px;color:var(--mut);border:1px dashed var(--mut);background:var(--card);padding:14px}
+.portrait{aspect-ratio:4/5}
+.cap{font-size:14px;color:var(--mut);margin-top:12px;display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:10px}
+.pal{display:none;height:10px;margin-bottom:10px}
+[data-lens="desk"] .pal{display:flex}
+.pal i:nth-child(1){background:#00CEC8}.pal i:nth-child(2){background:#FCEFC3}.pal i:nth-child(3){background:#FF9C5F}.pal i:nth-child(4){background:#FF69B4}.pal i{flex:1}
+
 /* HERO PORTRAIT — BAR / DESIGN SWITCH */
 #top .hero-portraits {
   position: relative;
@@ -45,58 +99,6 @@ html[data-lens="desk"] #top .hero-portrait-bar {
 html[data-lens="desk"] #top .hero-portrait-design {
   opacity: 1;
 }
-<style>
-:root{--bg:#060A1F;--fg:#F6F1E7;--mut:#B8BFDD;--ac:#FF5A73;--onac:#060A1F;--ac2:#EBC66E;--rule:#EBC66E;--line:#1C2552;--card:#0E1536;--hd:rgba(6,10,31,.92);--ct:#FF5A73;--onct:#060A1F;--ft:#FF9AAA;
- --body:"Instrument Sans",system-ui,sans-serif;--disp:"Poiret One","Instrument Sans",system-ui,sans-serif;--dw:400;--dl:1.05;--ls:.02em;
- box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-:root[data-lens="desk"]{--bg:#FFF8E8;--fg:#1B1220;--mut:#4B4A57;--ac:#DE2A7C;--onac:#fff;--ac2:#067F86;--rule:#1B1220;--line:#EBDDBA;--card:#fff;--hd:rgba(255,248,232,.92);--ct:#00CEC8;--onct:#1B1220;--ft:#1B1220;
- --disp:"Instrument Sans",system-ui,sans-serif;--dw:700;--dl:.98;--ls:-.035em}
-html{scroll-behavior:smooth;scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
-*{box-sizing:border-box;margin:0;border-radius:0}
-body{background:var(--bg);color:var(--fg);font:400 17px/1.7 var(--body);transition:background .5s,color .5s}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--hd);z-index:30}
-h1,h2,.disp{font-family:var(--disp);font-weight:var(--dw);line-height:var(--dl);letter-spacing:var(--ls)}
-h3{font:600 1.35rem/1.25 var(--body);letter-spacing:-.01em}
-a{color:inherit}
-:focus-visible{outline:3px solid var(--ac);outline-offset:3px}
-.wrap{max-width:1120px;margin:0 auto;padding:0 28px}
-[data-lens="bar"] [data-only="desk"],[data-lens="desk"] [data-only="bar"]{display:none!important}
-#page{
-  transition:opacity .25s;
-}
-
-#page.out{
-  opacity:0;
-}
-
-header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hd);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
-.logo{font:400 1.5rem var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);text-decoration:none}
-.links{display:flex;gap:22px;font-size:15px}
-.links a{text-decoration:none;color:var(--mut)}.links a:hover{color:var(--fg);text-decoration:underline;text-decoration-color:var(--ac);text-underline-offset:6px;text-decoration-thickness:2px}
-#menu{display:none;font:500 14px var(--body);border:1px solid var(--fg);background:none;color:var(--fg);padding:8px 14px;cursor:pointer}
-
-.btn{display:inline-block;font:600 15px var(--body);padding:14px 26px;text-decoration:none;border:1px solid var(--fg);transition:transform .2s}
-.btn:hover{transform:translateY(-2px)}
-.btn.p{background:var(--ac);color:var(--onac);border-color:var(--ac)}
-.tlink{text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:6px;font-weight:500}
-
-.hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:end;padding-top:64px;padding-bottom:72px}
-h1{font-size:clamp(3.2rem,9.5vw,7.6rem)}
-h1 span{display:block;animation:rise 1s cubic-bezier(.2,.8,.2,1) both}
-h1 span+span{animation-delay:.12s;color:var(--ac);transition:color .5s}
-@keyframes rise{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-.tag{font-size:clamp(1.1rem,2vw,1.3rem);margin:28px 0 30px;max-width:44ch;color:var(--mut);min-height:5.4em}
-.cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:34px}
-.lens{display:inline-flex;border:1px solid var(--fg)}
-.lens button{font:500 15px var(--body);border:0;background:none;color:var(--fg);padding:12px 24px;cursor:pointer}
-.lens button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
-.ph{display:grid;place-items:center;text-align:center;font-size:14px;color:var(--mut);border:1px dashed var(--mut);background:var(--card);padding:14px}
-.portrait{aspect-ratio:4/5}
-.cap{font-size:14px;color:var(--mut);margin-top:12px;display:flex;justify-content:space-between;gap:12px;border-top:1px solid var(--line);padding-top:10px}
-.pal{display:none;height:10px;margin-bottom:10px}
-[data-lens="desk"] .pal{display:flex}
-.pal i:nth-child(1){background:#00CEC8}.pal i:nth-child(2){background:#FCEFC3}.pal i:nth-child(3){background:#FF9C5F}.pal i:nth-child(4){background:#FF69B4}.pal i{flex:1}
 
 section{
   padding:80px 0;
@@ -174,6 +176,7 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 
 .book{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center;margin-bottom:56px}
 .cover{aspect-ratio:3/4;max-width:340px;box-shadow:14px 14px 0 var(--ac)}
+img.cover{display:block;width:calc(100% - 14px);height:auto;object-fit:cover}
 .book h3{font:400 clamp(1.8rem,3.4vw,2.7rem)/1.1 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);margin-bottom:12px}
 .book p{color:var(--mut);margin-bottom:16px;max-width:54ch}
 .facts{font-size:15px}
@@ -199,7 +202,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  .story{gap:16px}
  .skills{grid-template-columns:1fr 1fr}
  .portrait{max-width:340px}
- .cover{margin:0 14px}
+ .cover{margin:0}
 
  #menu{
    display:block;
@@ -676,50 +679,50 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </div>
       <div class="ph" style="aspect-ratio:4/3">Coursework or studio photo</div>
     </div>
-<div class="skills">
-  <div>
-    <h3>Visual design &amp; identity</h3>
-    <ul>
-      <li>Adobe Photoshop</li>
-      <li>Adobe Illustrator</li>
-      <li>Adobe InDesign</li>
-      <li>Brand identity development</li>
-      <li>Visual systems &amp; brand guidelines</li>
-      <li>Typography &amp; layout</li>
-    </ul>
-  </div>
-  <div>
-    <h3>Web &amp; digital</h3>
-    <ul>
-      <li>HTML &amp; CSS</li>
-      <li>Responsive web design</li>
-      <li>Jekyll &amp; Liquid</li>
-      <li>Landing page design</li>
-      <li>GitHub-based workflows</li>
-      <li>Digital content design</li>
-    </ul>
-  </div>
-  <div>
-    <h3>Print &amp; production</h3>
-    <ul>
-      <li>Print layout &amp; design</li>
-      <li>Menus &amp; promotional materials</li>
-      <li>Screen printing</li>
-      <li>Production specifications</li>
-      <li>Prepress &amp; artwork preparation</li>
-      <li>Image retouching</li>
-    </ul>
-  </div>
-  <div>
-    <h3>Photography &amp; image-making</h3>
-    <ul>
-      <li>Visual composition</li>
-      <li>Film developing</li>
-      <li>Darkroom printing</li>
-      <li>Digital image editing</li>
-      <li>Image preparation for print &amp; web</li>
-    </ul>
-  
+    <div class="skills">
+      <div>
+        <h3>Visual design &amp; identity</h3>
+        <ul>
+          <li>Adobe Photoshop</li>
+          <li>Adobe Illustrator</li>
+          <li>Adobe InDesign</li>
+          <li>Brand identity development</li>
+          <li>Visual systems &amp; brand guidelines</li>
+          <li>Typography &amp; layout</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Web &amp; digital</h3>
+        <ul>
+          <li>HTML &amp; CSS</li>
+          <li>Responsive web design</li>
+          <li>Jekyll &amp; Liquid</li>
+          <li>Landing page design</li>
+          <li>GitHub-based workflows</li>
+          <li>Digital content design</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Print &amp; production</h3>
+        <ul>
+          <li>Print layout &amp; design</li>
+          <li>Menus &amp; promotional materials</li>
+          <li>Screen printing</li>
+          <li>Production specifications</li>
+          <li>Prepress &amp; artwork preparation</li>
+          <li>Image retouching</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Photography &amp; image-making</h3>
+        <ul>
+          <li>Visual composition</li>
+          <li>Film developing</li>
+          <li>Darkroom printing</li>
+          <li>Digital image editing</li>
+          <li>Image preparation for print &amp; web</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -769,9 +772,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     </div>
     <!-- BOOK INTRODUCTION -->
     <div class="book">
-      <div class="ph cover">
-        Bar book cover<br>(3:4)
-      </div>
+      <img
+        class="cover"
+        src="images/book-cover.jpeg"
+        alt="The Bars That Made Me book cover"
+        loading="lazy"
+      >
       <div>
         <h3>The Bars That Made Me</h3>
         <p>
@@ -819,11 +825,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
          role="region" aria-label="Bars featured in the book">
       <article class="card">
         <img
-  class="ph"
-  src="/images/robert-ess-hero.webp"
-  alt="Empire State South in Atlanta"
-  loading="lazy"
-/>
+          class="ph"
+          src="images/robert-ess-hero.webp"
+          alt="Empire State South in Atlanta"
+          loading="lazy"
+        >
         <span class="org">2011 – 2015</span>
         <h3>Empire State South</h3>
         <p>
@@ -838,11 +844,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </article>
       <article class="card">
         <img
-  class="ph"
-  src="/images/robert-shaker-mia.webp"
-  alt="Broken Shaker Miami"
-  loading="lazy"
-/>
+          class="ph"
+          src="images/robert-shaker-mia.webp"
+          alt="Broken Shaker Miami"
+          loading="lazy"
+        >
         <span class="org">2015 – 2018</span>
         <h3>Broken Shaker Miami</h3>
         <p>
@@ -858,12 +864,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
         </p>
       </article>
       <article class="card">
-       <img
-  class="ph"
-  src="/images/robert-shaker-nyc.webp"
-  alt="Broken Shaker NYC"
-  loading="lazy"
-/>
+        <img
+          class="ph"
+          src="images/robert-shaker-nyc.webp"
+          alt="Broken Shaker NYC"
+          loading="lazy"
+        >
         <span class="org">2018 – 2019</span>
         <h3>Broken Shaker New York</h3>
         <p>
@@ -990,6 +996,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   </div>
 </section>
 
+</main>
+
 <div class="contact" id="contact"><div class="wrap">
  <h2>Let’s work together.</h2>
  <p id="cp"></p>
@@ -1017,8 +1025,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   ["links-bar","links-desk"].forEach(function(i){$(i).classList.toggle("open",o)});this.setAttribute("aria-expanded",o)};
  document.querySelectorAll(".links").forEach(function(l){l.onclick=function(){$("links-bar").classList.remove("open");$("links-desk").classList.remove("open")}});
 
- 
-function loop(t){
+ function loop(t){
   var rail=document.createElement("div");
   rail.className="rail";
 
@@ -1171,8 +1178,8 @@ function loop(t){
       vis=en[0].isIntersecting;
     }).observe(t);
   }
-}
- 
+ }
+
  document.querySelectorAll(".track.loop").forEach(loop);
  document.querySelectorAll(".ctrl").forEach(function(c){
   var t=c.closest(".head").parentNode.querySelector(".track");
@@ -1208,7 +1215,7 @@ function loop(t){
     "Brand identity",
     "A strong identity should feel connected wherever it appears. I develop visual direction that carries across menus, promotional materials, digital assets and the guest experience, creating a cohesive expression of the venue, event or brand."
   ]
-];
+ ];
  function tp(i){$("tph").textContent=TP[i][0];$("ttx").textContent=TP[i][1];
   document.querySelectorAll("#touch button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.i==i)})}
  $("touch").onclick=function(e){var i=e.target.dataset.i;if(i!==undefined)tp(+i)};tp(0);
