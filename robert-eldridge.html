@@ -225,12 +225,42 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   text-align: left;
 }
 
-/* Align experience, bar book and tools cards */
-#exp .card,
-#book .track .card,
-#tools-sec .track .card {
+/* FIX: Inside the bars image sizing */
+#book .track .card > img.ph {
+  display: block;
+  width: 100%;
+  height: 220px;
+  max-width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  padding: 0;
+  border: 0;
+  flex: 0 0 220px;
+}
+/* FIX: Design gallery card alignment */
+#work .track.snap {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  padding-left: 0;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+}
+
+#work .track.snap .card {
+  flex: 0 0 min(380px, 88vw);
+  margin-right: 40px;
+  scroll-snap-align: start;
   text-align: left;
-  align-items: flex-start;
+  align-items: stretch;
+}
+
+#work .track.snap .card .ph {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
 }
 
 /* Keep card descriptions and headings left aligned */
@@ -244,12 +274,23 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   width: 100%;
 }
 
-/* Keep carousel cards anchored to the left */
+/* BAR CAROUSEL ALIGNMENT */
 #exp .rail,
 #book .rail,
 #tools-sec .rail {
   justify-content: flex-start;
 }
+
+#exp .card,
+#book .card,
+#tools-sec .card {
+  text-align: left;
+}
+
+#book .track .card > img {
+  align-self: stretch;
+}
+
 </style>
 </head>
 <body>
