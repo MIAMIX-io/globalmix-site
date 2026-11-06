@@ -184,7 +184,7 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .xp[hidden]{display:none}
 .shot{margin:0 0 14px}
 .shotimg{aspect-ratio:16/10;width:100%;overflow:hidden}
-.shotimg img{display:block;width:100%;height:100%;object-fit:cover}
+.#tph img{display:block;width:100%;height:100%;object-fit:cover}
 .shot figcaption{font-size:14px;color:var(--mut);margin-top:10px}
 .chap .shot{margin-right:12px}
 .chap .shotimg{box-shadow:12px 12px 0 var(--ac)}
@@ -1181,7 +1181,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  };
 
  var TP = [
-  ],
+  ["", "Four places where design and service meet. Pick one."],
   [
     "Menu design",
     "A menu is more than a list of offerings; it’s a window into the business. Through thoughtful typography, hierarchy, format, and beverage knowledge, I approach menu design as a way to express a venue’s identity, communicate its vision, and guide the guest experience."
@@ -1199,10 +1199,12 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     "A strong identity should feel connected wherever it appears. I develop visual direction that carries across menus, promotional materials, digital assets and the guest experience, creating a cohesive expression of the venue, event or brand."
   ]
  ];
- function tp(i){$("tph").textContent=TP[i][0];$("ttx").textContent=TP[i][1];
-  document.querySelectorAll("#touch button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.i==i)})}
- $("touch").onclick=function(e){var i=e.target.dataset.i;if(i!==undefined)tp(+i)};tp(0);
- $("yr").textContent=new Date().getFullYear();
+ function tp(i){
+  $("ttx").textContent = TP[i][1];
+  document.querySelectorAll("#touch button").forEach(function(b){
+    b.setAttribute("aria-pressed", b.dataset.i == i);
+  });
+}
 
 })();
 </script>
