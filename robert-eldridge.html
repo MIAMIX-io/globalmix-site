@@ -54,9 +54,23 @@ h1 span+span{animation-delay:.12s;color:var(--ac);transition:color .5s}
 [data-lens="desk"] .pal{display:flex}
 .pal i:nth-child(1){background:#00CEC8}.pal i:nth-child(2){background:#FCEFC3}.pal i:nth-child(3){background:#FF9C5F}.pal i:nth-child(4){background:#FF69B4}.pal i{flex:1}
 
-section{padding:80px 0;border-top:1px solid var(--line)}
-#exp{order:1}#stories{order:2}#field{order:3}#blend{order:4}#book{order:5}#tools-sec{order:6}
-#work{order:1}#skills{order:2}
+section{
+  padding:80px 0;
+  border-top:1px solid var(--line);
+}
+
+/* Bar / hospitality section order */
+[data-lens="bar"] #exp{order:1}
+[data-lens="bar"] #stories{order:2}
+[data-lens="bar"] #field{order:3}
+[data-lens="bar"] #blend{order:4}
+[data-lens="bar"] #book{order:5}
+[data-lens="bar"] #tools-sec{order:6}
+
+/* Graphic design section order */
+[data-lens="desk"] #work{order:1}
+[data-lens="desk"] #skills{order:2}
+[data-lens="desk"] #blend{order:3}
 h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 [data-lens="bar"] .head h2::after{content:"";display:block;width:88px;height:7px;border-top:1px solid var(--ac2);border-bottom:1px solid var(--ac2);margin-top:16px}
 .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
