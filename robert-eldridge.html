@@ -213,6 +213,7 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .cover{aspect-ratio:3/4;max-width:340px;box-shadow:14px 14px 0 var(--ac)}
 img.cover{display:block;width:calc(100% - 14px);height:auto;object-fit:cover}
 .book h3{font:400 clamp(1.8rem,3.4vw,2.7rem)/1.1 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);margin-bottom:12px}
+.book h3 span{display:block}
 .book p{color:var(--mut);margin-bottom:16px;max-width:54ch}
 .facts{font-size:15px}
 
@@ -258,6 +259,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 #exp .card,#book .card,#tools-sec .card{text-align:left}
 #book .track .card > img{align-self:stretch}
 
+/* SELECTED WORK — loop carousel with images */
+#work .card{text-align:left}
+#work .track .card > img.ph{display:block;width:100%;height:220px;flex:0 0 220px;aspect-ratio:4/3;object-fit:cover;padding:0;border:0}
+#work .track .card h3,#work .track .card p{text-align:left;width:100%}
+
 /* STORIES — consistent photo size, no cropping (kept last so it wins) */
 #stories .shotimg{aspect-ratio:auto;height:clamp(240px,38vw,400px);background:var(--card);box-shadow:10px 10px 0 var(--ac)}
 #stories .shotimg img{width:100%;height:100%;object-fit:contain}
@@ -266,6 +272,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 #stories .xtext p:first-child{font-size:1.05rem}
 @media(min-width:861px){#stories .explore{grid-template-columns:minmax(0,.8fr) minmax(0,1.7fr);gap:40px}}
 </style>
+<script>
+window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)+1;
+ if(k<E.length){im.dataset.k=k;im.src=im.dataset.base+"."+E[k]}else{im.removeAttribute("onerror")}};
+</script>
 </head>
 <body>
 <header class="bar"><div class="wrap nav">
@@ -458,14 +468,14 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="ctrl"><button data-d="-1" aria-label="Previous">Prev</button><button data-d="1" aria-label="Next">Next</button></div></div>
  <div class="tabs" id="filters"><button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="brand">Brand</button><button aria-pressed="false" data-f="web">Web</button><button aria-pressed="false" data-f="print">Print</button><button aria-pressed="false" data-f="nightlife">Nightlife</button><button aria-pressed="false" data-f="photo">Photography</button></div>
  <div class="track snap" tabindex="0" role="region" aria-label="Design gallery">
-  <article class="card" data-c="web"><div class="ph">Landing page screenshot</div><h3>MIAMIX landing page</h3><p>Responsive Jekyll/Liquid site with an articles gallery and partner marquee.</p></article>
-  <article class="card" data-c="brand"><div class="ph">Banner artwork</div><h3>GLOBAL-MIX LinkedIn banner</h3><p>Brand strategy turned into a consistent look across platforms.</p></article>
-  <article class="card" data-c="nightlife print"><div class="ph">Flyer or event graphic</div><h3>Event flyers</h3><p>Designed to read fast on a feed, a wall or a screen.</p></article>
-  <article class="card" data-c="nightlife print"><div class="ph">Menu design</div><h3>Cocktail menus</h3><p>Printed menus built for a dim room and a busy guest.</p></article>
-  <article class="card" data-c="print"><div class="ph">Pitch collateral</div><h3>Sponsorship collateral</h3><p>Visual concepts for partnership and sponsorship conversations.</p></article>
-  <article class="card" data-c="web"><div class="ph">Marquee preview</div><h3>Partner brands marquee</h3><p>A scrolling section that keeps partners visible without clutter.</p></article>
-  <article class="card" data-c="print"><div class="ph">Screen print photo</div><h3>Screen printing</h3><p>Prints from my vocational program. [Add detail.]</p></article>
-  <article class="card" data-c="photo"><div class="ph">Darkroom print</div><h3>Darkroom photography</h3><p>Darkroom work from my vocational program. [Add detail.]</p></article>
+  <article class="card" data-c="web"><img class="ph" src="images/work/miamix-landing.jpeg" data-base="images/work/miamix-landing" onerror="imgFb(this)" alt="MIAMIX landing page" loading="lazy"><h3>MIAMIX landing page</h3><p>Responsive Jekyll/Liquid site with an articles gallery and partner marquee.</p></article>
+  <article class="card" data-c="brand"><img class="ph" src="images/work/globalmix-banner.jpeg" data-base="images/work/globalmix-banner" onerror="imgFb(this)" alt="GLOBAL-MIX LinkedIn banner" loading="lazy"><h3>GLOBAL-MIX LinkedIn banner</h3><p>Brand strategy turned into a consistent look across platforms.</p></article>
+  <article class="card" data-c="nightlife print"><img class="ph" src="images/work/event-flyers.jpeg" data-base="images/work/event-flyers" onerror="imgFb(this)" alt="Event flyers" loading="lazy"><h3>Event flyers</h3><p>Designed to read fast on a feed, a wall or a screen.</p></article>
+  <article class="card" data-c="nightlife print"><img class="ph" src="images/work/cocktail-menus.jpeg" data-base="images/work/cocktail-menus" onerror="imgFb(this)" alt="Cocktail menus" loading="lazy"><h3>Cocktail menus</h3><p>Printed menus built for a dim room and a busy guest.</p></article>
+  <article class="card" data-c="print"><img class="ph" src="images/work/sponsorship-collateral.jpeg" data-base="images/work/sponsorship-collateral" onerror="imgFb(this)" alt="Sponsorship collateral" loading="lazy"><h3>Sponsorship collateral</h3><p>Visual concepts for partnership and sponsorship conversations.</p></article>
+  <article class="card" data-c="web"><img class="ph" src="images/work/partner-marquee.jpeg" data-base="images/work/partner-marquee" onerror="imgFb(this)" alt="Partner brands marquee" loading="lazy"><h3>Partner brands marquee</h3><p>A scrolling section that keeps partners visible without clutter.</p></article>
+  <article class="card" data-c="print"><img class="ph" src="images/work/screen-printing.jpeg" data-base="images/work/screen-printing" onerror="imgFb(this)" alt="Screen printing" loading="lazy"><h3>Screen printing</h3><p>Prints from my vocational program. [Add detail.]</p></article>
+  <article class="card" data-c="photo"><img class="ph" src="images/work/darkroom-photography.jpeg" data-base="images/work/darkroom-photography" onerror="imgFb(this)" alt="Darkroom photography" loading="lazy"><h3>Darkroom photography</h3><p>Darkroom work from my vocational program. [Add detail.]</p></article>
  </div>
 </div></section>
 
@@ -539,7 +549,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
     <div class="book">
       <img class="cover" src="images/book-cover.jpeg" alt="Behind The Bar, Beyond The Ordinary book cover" loading="lazy">
       <div>
-       <h3><span>Behind The Bar</span><span>Beyond The Ordinary</span></h3>
+        <h3><span>Behind The Bar</span><span>Beyond The Ordinary</span></h3>
         <p>Every bar has a story, and behind every great cocktail is usually a little more than one person's idea. The Bars That Made Me is a look back at the places, people, and creative experiences that shaped my journey through hospitality, from Atlanta to Miami and New York.</p>
         <p>Bringing together original recipes, contributions from former colleagues, personal stories, and a visual archive of menus and inspiration, the collection celebrates the creativity that happens when talented people come together behind a bar. Each recipe is credited to its creator, recognizing the individuals whose ideas, techniques, and collaborations helped define these chapters.</p>
         <p>Part cocktail collection, part personal retrospective, the book revisits the drinks, the places, and the people who made the experience memorable. It's a tribute to the craft, the friendships, and the shared creativity that make hospitality such a remarkable industry.</p>
@@ -598,7 +608,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       </article>
       <article class="card">
         <span class="fmt">Excel</span>
-        <h3>Inventory & Ordering Guide</h3>
+        <h3>Inventory &amp; Ordering Guide</h3>
         <p>Keep your inventory organized and your purchasing consistent. Record quantities on hand by product category or storage location, establish par levels for essential ingredients and supplies, and compare current stock against your targets to identify what needs to be reordered. Track product movement, monitor usage patterns, spot discrepancies and organize purchasing by vendor. A reliable inventory routine helps reduce overstocking, prevent shortages and make smarter purchasing decisions.</p>
         <a class="btn p" href="downloads/inventory-order-sheet.xlsx" download>Download</a>
       </article>
@@ -700,6 +710,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   };
 
   function frame(now){
+    if(!t.isConnected)return;
     var s=step();
     if(s>0){
       if(!ready){ready=true;nextAt=now+iv}
@@ -762,8 +773,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
  document.querySelectorAll(".track.loop").forEach(loop);
  document.querySelectorAll(".ctrl").forEach(function(c){
-  var t=c.closest(".head").parentNode.querySelector(".track");
-  c.querySelectorAll("[data-d]").forEach(function(b){b.onclick=function(){var n=+b.dataset.d;
+  c.querySelectorAll("[data-d]").forEach(function(b){b.onclick=function(){var t=c.closest(".head").parentNode.querySelector(".track"),n=+b.dataset.d;
    if(t._eng)t._eng.step(n);else t.scrollBy({left:n*Math.min(380,t.clientWidth*.85),behavior:"smooth"})}});
  });
 
@@ -804,12 +814,24 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   sel(0);
  });
 
- var cards=document.querySelectorAll("#work .card");
+ // Selected work: loop carousel (rebuilt when a filter is chosen)
+ var workCards=[].slice.call(document.querySelectorAll("#work .card")).map(function(c){return c.cloneNode(true)});
+ function buildWork(f){
+  var old=document.querySelector("#work .track"),nt=document.createElement("div");
+  nt.tabIndex=0;nt.setAttribute("role","region");nt.setAttribute("aria-label","Design gallery");
+  var list=workCards.filter(function(c){return f==="all"||c.dataset.c.split(" ").indexOf(f)>-1});
+  list.forEach(function(c){nt.appendChild(c.cloneNode(true))});
+  var useLoop=list.length>=3;
+  nt.className="track "+(useLoop?"loop":"snap");
+  if(useLoop)nt.setAttribute("data-interval","7000");
+  old.parentNode.replaceChild(nt,old);
+  if(useLoop)loop(nt);
+ }
  $("filters").onclick=function(e){var f=e.target.dataset.f;if(!f)return;
   this.querySelectorAll("button").forEach(function(b){b.setAttribute("aria-pressed",b===e.target)});
-  cards.forEach(function(c){c.classList.toggle("hid",f!=="all"&&c.dataset.c.split(" ").indexOf(f)<0)});
-  document.querySelector("#work .track").scrollTo({left:0});
+  buildWork(f);
  };
+ buildWork("all");
 
  // Design that works in the room
  var TP = [
@@ -833,7 +855,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
  ];
 
  // Menu previews: update the paths below if your folders differ
- var DEFAULT_IMG={src:"images/cocktail-presentation.webp",alt:"Cocktail presentation showcasing creative glassware, garnish and visual composition"};
+ var DEFAULT_IMG={base:"images/cocktail-presentation",alt:"Cocktail presentation showcasing creative glassware, garnish and visual composition"};
  var MENUS={
   food:{image:"images/menu-food-preview.jpeg",url:"casacampo/menus/food-preview.pdf",alt:"Food menu design preview. Click to open the full menu."},
   wine:{image:"images/menu-wine-preview.jpeg",url:"casacampo/menus/wine-preview.pdf",alt:"Wine list design preview. Click to open the full menu."},
@@ -946,7 +968,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    $("menu-link").target="_blank";
    setMenu(menuKey);
   }else if(isCase){
-   $("menu-note").innerHTML = "<em>Click the preview to open the full presentation.</em>";
+   $("menu-note").innerHTML="<em>Click the preview to open the full presentation.</em>";
    $("menu-open").textContent="Open presentation ⤢";
    $("menu-link").removeAttribute("target");
    setCase(i===3?"env":"brand");
@@ -954,7 +976,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    $("menu-link").removeAttribute("href");
    $("menu-link").removeAttribute("aria-label");
    $("menu-link").target="_blank";
-   $("tpimg").onerror=null;$("tpimg").src=DEFAULT_IMG.src;$("tpimg").alt=DEFAULT_IMG.alt;
+   $("tpimg").alt=DEFAULT_IMG.alt;loadImg($("tpimg"),DEFAULT_IMG.base);
   }
  }
  $("menu-link").addEventListener("click",function(e){
