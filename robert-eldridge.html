@@ -946,7 +946,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
    $("menu-link").target="_blank";
    setMenu(menuKey);
   }else if(isCase){
-   $("menu-note").textContent="Click the preview to open the full presentation.";
+   $("menu-note").innerHTML = "<em>Click the preview to open the full presentation.</em>";
    $("menu-open").textContent="Open presentation ⤢";
    $("menu-link").removeAttribute("target");
    setCase(i===3?"env":"brand");
