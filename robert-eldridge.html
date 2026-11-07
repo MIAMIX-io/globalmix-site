@@ -267,6 +267,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 /* BEYOND THE BAR — picture first, thumbnails in rows of four, links below */
 .explore.trav{display:flex;flex-direction:column;gap:18px}
 .trav .xpanels,.trav .xp:not([hidden]){display:contents}
+.trav .shot,.trav .thumbs,.trav .xlist,.trav .xtext{align-self:stretch;width:100%;min-width:0}
 .trav .shot{order:1;margin:0}
 .trav .thumbs{order:2;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0}
 .trav .thumbs:has(.th:only-child){display:none}
@@ -275,8 +276,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .trav .xlist button{width:auto;padding:12px 0}
 .trav .xlist .grp{flex-basis:100%}
 .trav .xtext{order:4}
-.trav .shotimg{position:relative;aspect-ratio:16/9}
-.trav .shotimg img{object-fit:contain}
+.explore.trav{--ratio:3/2;align-items:stretch}
+.trav .shotimg{position:relative;aspect-ratio:var(--ratio);padding:0;border:0;background:var(--card)}
+.trav .shotimg.ph{border:1px dashed var(--mut)}
+.trav .shotimg img{display:block;width:100%;height:100%;object-fit:cover;margin:0}
 .trav .shotimg:not(.ph){cursor:zoom-in}
 .trav .shotimg:not(.ph)::after{content:"Enlarge ⤢";position:absolute;right:14px;bottom:14px;padding:6px 10px;background:rgba(0,0,0,.65);color:#fff;font:600 10px var(--body);letter-spacing:.12em;text-transform:uppercase;pointer-events:none}
 
@@ -409,7 +412,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
  <div class="head"><div><h2>Stories from the bar</h2><p class="lede">Two chapters from two different eras of my career. Pick one.</p></div></div>
  <div class="explore chap">
   <div class="xlist" role="tablist" aria-label="Career chapters">
-   <button role="tab" aria-selected="true" aria-controls="sp0" data-i="0"><span class="yr">2017 – 2019</span><span class="ttl">The London Connection</span><span class="meta">Broken Shaker · London</span></button>
+   <button role="tab" aria-selected="true" aria-controls="sp0" data-i="0"><span class="yr">2017 – 2019</span><span class="ttl">Three trips to London for the Top 50</span><span class="meta">Broken Shaker · London</span></button>
    <button role="tab" aria-selected="false" aria-controls="sp1" data-i="1"><span class="yr">2023 – 2025</span><span class="ttl">Taking the craft nationwide</span><span class="meta">Consulting · Nationwide</span></button>
   </div>
   <div class="xpanels">
@@ -422,10 +425,10 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
      <button class="th" data-src="images/awards-ned.jpeg" data-label="The Ned" data-cap="Guest bartending at The Ned, London."></button>
     </div>
     <div class="xtext">
-  <p>Some experiences stay with you long after the last drink is served. During my time with Broken Shaker, the bar earned international recognition on The World’s 50 Best Bars list, reaching No. 16 in 2016 and No. 18 in 2017. London became part of that journey, with visits in July 2017, October 2018, and July 2019.</p>
-  <p>Our first trip began with an invitation from Dandelyan for a Fourth of July American takeover. We brought a little Miami spirit to London, celebrating American hospitality, cocktails, and culture. The visits that followed offered opportunities to represent Miami, connect with the international hospitality community, and guest bartend at Madison rooftop bar and The Ned. During my second visit in 2018, Dandelyan claimed the No. 1 spot on The World’s 50 Best Bars list. I like to think I had a little something to do with the timing.</p>
-  <p>Those years reinforced something I’ve always believed: hospitality is more than what’s in the glass. It’s about culture, creativity, and the connections we create along the way.</p>
-</div>
+     <p>Some experiences stay with you long after the last drink is served. During my time with Broken Shaker, the bar earned international recognition as one of the World’s 50 Best Bars, taking us to London in July 2017, October 2018, and July 2019.</p>
+     <p>More than an awards ceremony, each trip was an opportunity to represent Miami, connect with the international hospitality community, and exchange ideas with some of the industry’s most creative people. I also had the opportunity to guest bartend at Dandelyan, Madison rooftop bar, and The Ned, bringing a little of the Broken Shaker experience to London. On my second visit in 2018, Dandelyan claimed the No. 1 spot on The World's 50 Best Bars list. I like to think I had a little something to do with the timing.</p>
+     <p>Those years reinforced something I've always believed: hospitality is more than what's in the glass. It's about culture, creativity, and the connections we create along the way.</p>
+    </div>
    </div>
    <div class="xp" id="sp1" role="tabpanel" hidden>
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
@@ -514,7 +517,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
   <div class="ctrl"><button data-d="-1" aria-label="Previous">Prev</button><button data-d="1" aria-label="Next">Next</button></div></div>
  <div class="tabs" id="filters"><button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="brand">Brand</button><button aria-pressed="false" data-f="web">Web</button><button aria-pressed="false" data-f="print">Print</button><button aria-pressed="false" data-f="nightlife">Nightlife</button><button aria-pressed="false" data-f="photo">Photography</button></div>
  <div class="track snap" tabindex="0" role="region" aria-label="Design gallery">
-  <article class="card" data-c="brand web"><img class="ph" src="images/work/globalmix-travel.jpeg" data-base="images/work/globalmix-travel" onerror="imgFb(this)" alt="GLOBAL-MIX Travel" loading="lazy"><h3><a href="https://globalmix.network/travel" target="_blank" rel="noopener noreferrer">GLOBAL-MIX Travel platform</a></h3><p>Brand strategy translated into a dynamic digital travel platform. An expansive database of curated itineraries spanning every continent. Discover new destinations, immerse yourself in diverse cultures, and find inspiration to explore the world in your own way.</p></article>
+  <article class="card" data-c="brand web"><img class="ph" src="images/work/globalmix-travel.jpeg" data-base="images/work/globalmix-travel" onerror="imgFb(this)" alt="GLOBAL-MIX Travel" loading="lazy"><h3>GLOBAL-MIX Travel platform</h3><p>Brand strategy turned into a dynamic and extensive database of travel itineraries that span every continent.</p></article>
   <article class="card" data-c="nightlife print"><img class="ph" src="images/work/cocktail-menus.jpeg" data-base="images/work/cocktail-menus" onerror="imgFb(this)" alt="Cocktail menus" loading="lazy"><h3>Cocktail menus</h3><p>Menu design at the intersection of hospitality and visual storytelling. From typography and layout to materials and print finishes, each menu is designed to complement the atmosphere of the room and the experience behind the bar.</p></article>
   <article class="card" data-c="print"><img class="ph" src="images/work/screen-printing.jpeg" data-base="images/work/screen-printing" onerror="imgFb(this)" alt="Screen printing" loading="lazy"><h3>Screen printing</h3><p>An exploration of graphic design through traditional screen-printing techniques. Created during my vocational design studies, these prints brought composition, color, texture and craftsmanship together through hands-on experimentation.</p></article>
   <article class="card" data-c="photo"><img class="ph" src="images/work/darkroom-photography.jpeg" data-base="images/work/darkroom-photography" onerror="imgFb(this)" alt="Darkroom photography" loading="lazy"><h3>Darkroom photography</h3><p>A study in light, composition and the art of the image. Developed during my vocational design studies, these black-and-white photographs explore traditional film photography and the tactile process of working in a darkroom.</p></article>
@@ -707,6 +710,12 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
 <script>
 (function(){
  var R=document.documentElement,$=function(i){return document.getElementById(i)},reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ var EXTS=["jpeg","jpg","webp","png"];
+ function bare(s){return s.replace(/\.(jpe?g|png|webp)$/i,"")}
+ function probe(src,cb){
+  var b=bare(src),t=[src].concat(EXTS.map(function(e){return b+"."+e}).filter(function(x){return x!==src})),k=0;
+  (function next(){if(k>=t.length){cb(null);return}var im=new Image();im.onload=function(){cb(t[k])};im.onerror=function(){k++;next()};im.src=t[k]})();
+ }
  var T={
   bar:{tag:"Fifteen years in hospitality, shaped by the energy of Miami and New York.",tag2:"I’ve led award-winning bars, developed beverage programs and guided hospitality projects from concept to execution—bringing together operational experience, creative direction and a designer’s perspective on the guest experience.",c1:["See my experience","#exp"],c2:["Read about the bar book","#book"],cp:"Hospitality consulting, beverage programs, the bar book or a MIAMIX partnership."},
   desk:{tag:"Graphic designer with a foundation in visual communication and a career shaped by hospitality, restaurants and nightlife.",tag2:"From menus and promotional campaigns to brand identities and digital experiences, I bring a designer’s eye to the details that give a place its character.",c1:["See the work","#work"],c2:["Skills and studies","#skills"],cp:"Brand, web and print design for hospitality and nightlife, or a MIAMIX collaboration."}
@@ -831,7 +840,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
  var lbList=[],lbIdx=0,lbIsOpen=false,lbRet=null,lbOnShow=null;
  function lbRender(){
   var it=lbList[lbIdx],one=lbList.length<2;
-  $("lb-img").src=it.src;$("lb-img").alt=it.cap||"";$("lb-cap").textContent=it.cap||"";
+  loadImg($("lb-img"),bare(it.src));$("lb-img").alt=it.cap||"";$("lb-cap").textContent=it.cap||"";
   $("lb-count").textContent=(lbIdx+1)+" / "+lbList.length;
   $("lb-p").hidden=one;$("lb-n").hidden=one;$("lb-count").hidden=one;
   if(lbOnShow)lbOnShow(lbIdx);
@@ -881,7 +890,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
   panels.forEach(function(p){
    var box=p.querySelector(".shotimg"),cap=p.querySelector("figcaption"),ths=[].slice.call(p.querySelectorAll(".th"));
    function paint(src,label,text){
-    if(src){box.classList.remove("ph");box.innerHTML="";var im=new Image();im.src=src;im.alt=text||label||"";box.appendChild(im)}
+    if(src){box.classList.remove("ph");box.innerHTML="";var im=new Image();im.alt=text||label||"";box.appendChild(im);loadImg(im,bare(src))}
     else{box.classList.add("ph");box.textContent=label||""}
     cap.textContent=text||"";
    }
@@ -893,7 +902,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
    }
    ths.forEach(function(th){
     th.setAttribute("aria-label",th.dataset.label);
-    if(th.dataset.src)th.style.backgroundImage="url('"+th.dataset.src+"')";else th.textContent=th.dataset.label;
+    if(th.dataset.src)probe(th.dataset.src,function(u){if(u)th.style.backgroundImage="url('"+u+"')"});else th.textContent=th.dataset.label;
     th.onclick=function(){show(th)};
    });
    if(ths.length)show(ths[0]);
