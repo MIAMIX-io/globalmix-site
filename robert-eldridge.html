@@ -970,6 +970,9 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     box.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key==="Space"||e.key===" "){e.preventDefault();openGal()}});
    }
   });
+  
+    sel(0);
+  });
 
  // Selected work: loop carousel (rebuilt when a filter is chosen)
  var workCards=[].slice.call(document.querySelectorAll("#work .card")).map(function(c){return c.cloneNode(true)});
