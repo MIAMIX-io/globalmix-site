@@ -925,8 +925,8 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     if(d){e.preventDefault();sel((k+d+tabs.length)%tabs.length,true)}
    };
   });
-  panels.forEach(function(p){
-   var box=p.querySelector(".shotimg"),cap=p.querySelector("figcaption"),ths=[].slice.call(p.querySelectorAll(".th"));
+    panels.forEach(function(p){
+   var box=p.querySelector(".shotimg"),cap=p.querySelector("figcaption"),ths=[].slice.call(p.querySelectorAll(".th")),bar=p.querySelector(".thumbs");
    function paint(src,label,text){
     if(src){box.classList.remove("ph");box.innerHTML="";var im=new Image();im.alt=text||label||"";box.appendChild(im);loadImg(im,bare(src))}
     else{box.classList.add("ph");box.textContent=label||""}
@@ -938,9 +938,17 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     ths.forEach(function(x){x.setAttribute("aria-pressed",x===th)});
     paint(th.dataset.src,th.dataset.label,th.dataset.cap);
    }
+   function refresh(){
+    var n=ths.filter(function(x){return !x.hidden}).length;
+    if(bar)bar.classList.toggle("solo",n<2);
+   }
    ths.forEach(function(th){
     th.setAttribute("aria-label",th.dataset.label);
-    if(th.dataset.src)probe(th.dataset.src,function(u){if(u)th.style.backgroundImage="url('"+u+"')"});else th.textContent=th.dataset.label;
+    if(th.dataset.src)probe(th.dataset.src,function(u){
+     if(u)th.style.backgroundImage="url('"+u+"')";
+     else th.hidden=true;
+     refresh();
+    });else th.textContent=th.dataset.label;
     th.onclick=function(){show(th)};
    });
    if(ths.length)show(ths[0]);
@@ -948,18 +956,17 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
    if(ex.classList.contains("trav")){
     var openGal=function(){
      if(box.classList.contains("ph"))return;
-     var list=ths.length?ths.map(function(th){return {src:th.dataset.src,cap:th.dataset.cap}}):[{src:box.dataset.src,cap:cap.dataset.cap}];
+     var vis=ths.filter(function(x){return !x.hidden});
+     var list=vis.length?vis.map(function(th){return {src:th.dataset.src,cap:th.dataset.cap}}):[{src:box.dataset.src,cap:cap.dataset.cap}];
      list=list.filter(function(x){return x.src});
      if(!list.length)return;
-     lbOpen(list,Math.min(Math.max(cur,0),list.length-1),function(i){if(ths.length&&ths[i])show(ths[i])});
+     lbOpen(list,Math.max(vis.indexOf(ths[cur]),0),function(i){if(vis[i])show(vis[i])});
     };
     box.setAttribute("role","button");box.tabIndex=0;box.setAttribute("aria-label","Open full-screen photo gallery");
     box.addEventListener("click",openGal);
-    box.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key===" "){e.preventDefault();openGal()}});
+    box.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key==="Space"||e.key===" "){e.preventDefault();openGal()}});
    }
   });
-  sel(0);
- });
 
  // Selected work: loop carousel (rebuilt when a filter is chosen)
  var workCards=[].slice.call(document.querySelectorAll("#work .card")).map(function(c){return c.cloneNode(true)});
