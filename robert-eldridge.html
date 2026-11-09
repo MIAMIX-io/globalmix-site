@@ -313,6 +313,19 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 .th[hidden]{display:none}
 .trav .thumbs.solo{display:none}
+@media (min-width: 861px) {
+  /* Make the hero section fill the viewport minus the 64px header */
+  .hero {
+    min-height: calc(100vh - 64px);
+    display: flex;
+    align-items: center;
+  }
+  
+  /* Increase the hero image size (original max-width was 354px) */
+  .hero-pic {
+    max-width: 500px; /* Adjust this value to your preferred size */
+  }
+}
 </style>
 <script>
 window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)+1;
