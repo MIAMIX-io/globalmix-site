@@ -137,7 +137,6 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .xtext p:first-of-type{color:var(--fg);font-size:1.1rem}
 .xtext h3{font:400 clamp(1.5rem,2.6vw,2rem)/1.15 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);margin-bottom:14px}
 
-
 .blend{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
 .list button{display:block;width:100%;text-align:left;font:600 1.2rem var(--body);background:none;border:0;border-bottom:1px solid var(--line);color:var(--mut);padding:15px 0;cursor:pointer}
 .list button[aria-pressed="true"]{color:var(--fg);border-bottom:3px solid var(--ac)}
@@ -309,7 +308,40 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 #stories .th{width:96px;height:64px}
 #stories .xtext p{font-size:16px}
 #stories .xtext p:first-child{font-size:1.05rem}
-@media(min-width:861px){#stories .explore{grid-template-columns:minmax(0,.8fr) minmax(0,1.7fr);gap:40px}}
+
+/* DESKTOP CUSTOM — STORIES FROM THE BAR + BEYOND THE BAR (min-width:861px only, mobile unchanged) */
+@media(min-width:861px){
+  /* STORIES FROM THE BAR: top row = timeline links (left) + story text (right),
+     bottom rows = large gallery full page-width (inside .wrap padding) + thumbs */
+  #stories .explore{grid-template-columns:minmax(0,.85fr) minmax(0,1.55fr);gap:28px 48px;align-items:start}
+  #stories .xpanels,#stories .xp:not([hidden]){display:contents}
+  #stories .xlist{grid-column:1;grid-row:1;align-self:start}
+  #stories .xtext{grid-column:2;grid-row:1;align-self:start;padding-top:6px}
+  #stories .xtext p{max-width:none}
+  #stories .shot{grid-column:1/-1;grid-row:2;margin:12px 12px 0 0;padding:0}
+  #stories .shotimg{height:clamp(360px,48vw,560px)}
+  #stories .thumbs{grid-column:1/-1;grid-row:3;display:flex;flex-wrap:wrap;gap:10px;margin:0}
+  #stories .th{width:112px;height:76px}
+
+  /* BEYOND THE BAR: keep large gallery on top (shot + thumbs already order 1/2),
+     widen story text to gallery / page width so it takes less vertical space */
+  #field .trav .xtext{max-width:none;width:100%}
+  #field .trav .xtext p,#field .trav .xtext h3{max-width:none}
+  #field .trav .xtext p{font-size:17px}
+
+  /* BEYOND THE BAR LINKS: two groups side-by-side on desktop.
+     "On the road, 2020 onward" moves up to the same line as "At the source". */
+  #field .trav .xlist{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);gap:0 48px;align-items:start}
+  #field .trav .xlist .grp{margin:0 0 2px;flex-basis:auto}
+  #field .trav .xlist button{width:100%}
+  #field .trav .xlist > :nth-child(1){grid-column:1;grid-row:1}
+  #field .trav .xlist > :nth-child(2){grid-column:1;grid-row:2}
+  #field .trav .xlist > :nth-child(3){grid-column:1;grid-row:3}
+  #field .trav .xlist > :nth-child(4){grid-column:1;grid-row:4}
+  #field .trav .xlist > :nth-child(5){grid-column:2;grid-row:1}
+  #field .trav .xlist > :nth-child(6){grid-column:2;grid-row:2}
+  #field .trav .xlist > :nth-child(7){grid-column:2;grid-row:3}
+}
 
 .th[hidden]{display:none}
 .trav .thumbs.solo{display:none}
@@ -384,7 +416,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
         <span class="when">2023 – mid 2025</span>
         <h3>Senior Consultant &amp; Project Manager</h3>
         <span class="org">Unfiltered Hospitality</span>
-        <p>Consulting allowed me to take the lessons of the bar beyond a single venue. I developed beverage menus and training programs for clients nationwide, including Capital One airport lounges, STARR Restaurants’ Le Coucou and Buddakan, and the Russian Tea Room. I also translated operational goals into practical systems for teams, vendors, budgets and service.</p>
+        <p>Consulting allowed me to take the lessons of the bar beyond a single venue. I developed beverage menus and training programs for clients nationwide, including 【entity-Capital One¦canonical_name=Capital One】 airport lounges, 【entity-STARR Restaurants¦canonical_name=STARR Restaurants】’ Le Coucou and Buddakan, and the Russian Tea Room. I also translated operational goals into practical systems for teams, vendors, budgets and service.</p>
       </article>
       <article class="card">
         <span class="when">2022 – 2023</span>
@@ -396,7 +428,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
         <span class="when">2020 – 2022</span>
         <h3>Travel Content Creator</h3>
         <span class="org">GLOBAL-MIX Travel</span>
-        <p>When the world slowed down, I found a new way to tell stories. Traveling by motorhome, I explored destinations, wineries and local cultures while creating content for GLOBAL-MIX Travel and Argentine media outlets, including Channel 7, Channel 13, Crónica and Flow. The experience expanded my creative perspective and connected hospitality with a much bigger world.</p>
+        <p>When the world slowed down, I found a new way to tell stories. Traveling by motorhome, I explored destinations, wineries and local cultures while creating content for GLOBAL-MIX Travel and Argentine media outlets, including 【entity-Channel 7¦canonical_name=Channel 7】, Channel 13, Crónica and Flow. The experience expanded my creative perspective and connected hospitality with a much bigger world.</p>
       </article>
       <article class="card">
         <span class="when">2019 – 2020</span>
@@ -440,25 +472,25 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
      <button class="th" data-src="images/stories/awards-london.png" data-label="Awards night" data-cap="The World's 50 Best Bars awards in London, 2018."></button>
      <button class="th" data-src="images/awards-dandelyan.jpeg" data-label="Dandelyan" data-cap="Guest bartending at Dandelyan, London, in 2017."></button>
      <button class="th" data-src="images/stories/awards-madison.png" data-label="Madison" data-cap="Guest bartending at Madison rooftop bar, London."></button>
-     <button class="th" data-src="images/awards-ned.jpeg" data-label="The Ned" data-cap="Guest bartending at The Ned, London."></button>
+     <button class="th" data-src="images/awards-ned.jpeg" data-label="【entity-The Ned¦canonical_name=The Ned】" data-cap="Guest bartending at 【entity-The Ned¦canonical_name=The Ned】, London."></button>
     </div>
     <div class="xtext">
      <p>Some experiences stay with you long after the last drink is served. During my time with Broken Shaker, the bar earned international recognition on The World’s 50 Best Bars list, reaching No. 16 in 2016 and No. 18 in 2017. London became part of that journey, with visits in July 2017, October 2018, and July 2019.</p>
-     <p>Our first trip began with an invitation from Dandelyan for a Fourth of July American takeover. We brought a little Miami spirit to London, celebrating American hospitality, cocktails, and culture. The visits that followed offered opportunities to represent Miami, connect with the international hospitality community, and guest bartend at Madison rooftop bar and The Ned. During my second visit in 2018, Dandelyan claimed the No. 1 spot on The World’s 50 Best Bars list. I like to think I had a little something to do with the timing.</p>
+     <p>Our first trip began with an invitation from Dandelyan for a Fourth of July American takeover. We brought a little Miami spirit to London, celebrating American hospitality, cocktails, and culture. The visits that followed offered opportunities to represent Miami, connect with the international hospitality community, and guest bartend at Madison rooftop bar and 【entity-The Ned¦canonical_name=The Ned】. During my second visit in 2018, Dandelyan claimed the No. 1 spot on The World’s 50 Best Bars list. I like to think I had a little something to do with the timing.</p>
      <p>Those years reinforced something I've always believed: hospitality is more than what's in the glass. It's about culture, creativity, and the connections we create along the way.</p>
     </div>
    </div>
    <div class="xp" id="sp1" role="tabpanel" hidden>
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
     <div class="thumbs">
-     <button class="th" data-src="images/stories/capital-jfk.png" data-label="Airport lounges" data-cap="Capital One airport lounge JFK."></button>
-     <button class="th" data-src="images/stories/capital-las.png" data-label="Airport lounges" data-cap="Capital One airport lounges LAS."></button>
-     <button class="th" data-src="images/stories/le-coucou.png" data-label="Le Coucou" data-cap="Cocktails for STARR Restaurants’ Le Coucou, New York."></button>
+     <button class="th" data-src="images/stories/capital-jfk.png" data-label="Airport lounges" data-cap="【entity-Capital One¦canonical_name=Capital One】 airport lounge JFK."></button>
+     <button class="th" data-src="images/stories/capital-las.png" data-label="Airport lounges" data-cap="【entity-Capital One¦canonical_name=Capital One】 airport lounges LAS."></button>
+     <button class="th" data-src="images/stories/le-coucou.png" data-label="Le Coucou" data-cap="Cocktails for 【entity-STARR Restaurants¦canonical_name=STARR Restaurants】’ Le Coucou, New York."></button>
      <button class="th" data-src="images/stories/russian-tea.png" data-label="Russian Tea Room" data-cap="The Russian Tea Room, New York."></button>
     </div>
     <div class="xtext">
      <p>My work eventually moved beyond the bar and onto the road. As a consultant, I developed cocktail menus, built beverage programs, and trained bartenders across the country.</p>
-     <p>Projects included Capital One airport lounges at DFW, IAD, DEN, LAS, and JFK, where I navigated the complexities of a large, multi-tiered operation while delivering Michelin-starred-level cocktail experiences through the right tools, training, and operational standards. In New York, I developed cocktails for STARR Restaurants, including Michelin-starred Le Coucou and Buddakan, and collaborated with the legendary Russian Tea Room to modernize its cocktail program while preserving the nostalgia and character that make it an institution.</p>
+     <p>Projects included 【entity-Capital One¦canonical_name=Capital One】 airport lounges at DFW, IAD, DEN, LAS, and JFK, where I navigated the complexities of a large, multi-tiered operation while delivering Michelin-starred-level cocktail experiences through the right tools, training, and operational standards. In New York, I developed cocktails for 【entity-STARR Restaurants¦canonical_name=STARR Restaurants】, including Michelin-starred Le Coucou and Buddakan, and collaborated with the legendary Russian Tea Room to modernize its cocktail program while preserving the nostalgia and character that make it an institution.</p>
      <p>Whether the room is an iconic restaurant or a busy airport lounge, the goal is the same: an experience that feels authentic, memorable, and distinctly its own.</p>
     </div>
    </div>
@@ -471,28 +503,28 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
  <div class="explore trav">
   <div class="xlist" role="tablist" aria-label="Travel stops">
    <p class="grp">At the source</p>
-   <button role="tab" aria-selected="true" aria-controls="tp0" data-i="0"><span class="ttl">Michoacán, Mexico</span><span class="meta">LaLuna distillery</span></button>
+   <button role="tab" aria-selected="true" aria-controls="tp0" data-i="0"><span class="ttl">Michoacán, Mexico</span><span class="meta">【entity-LaLuna¦canonical_name=LaLuna】 distillery</span></button>
    <button role="tab" aria-selected="false" aria-controls="tp1" data-i="1"><span class="ttl">Guadalajara, Mexico</span><span class="meta">Patrón distillery · two visits</span></button>
-   <button role="tab" aria-selected="false" aria-controls="tp2" data-i="2"><span class="ttl">Puerto Rico</span><span class="meta">Don Q &amp; Bacardi</span></button>
+   <button role="tab" aria-selected="false" aria-controls="tp2" data-i="2"><span class="ttl">Puerto Rico</span><span class="meta">Don Q &amp; 【entity-Bacardi¦canonical_name=Bacardi】</span></button>
    <p class="grp">On the road, 2020 onward</p>
    <button role="tab" aria-selected="false" aria-controls="tp3" data-i="3"><span class="ttl">California &amp; Oregon</span><span class="meta">Wine country</span></button>
    <button role="tab" aria-selected="false" aria-controls="tp4" data-i="4"><span class="ttl">Argentina</span><span class="meta">Buenos Aires to Ushuaia</span></button>
   </div>
   <div class="xpanels">
 
-   <!-- STOP 1: LA LUNA -->
+   <!-- STOP 1: 【entity-LA LUNA¦canonical_name=LaLuna】 -->
    <div class="xp" id="tp0" role="tabpanel">
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
     <div class="thumbs">
-       <button class="th" data-src="images/la-luna.jpeg" data-label="La Luna distillery" data-cap="La Luna’s artisanal mezcal distillery, Michoacán, Mexico."></button>
+       <button class="th" data-src="images/la-luna.jpeg" data-label="【entity-La Luna¦canonical_name=LaLuna】 distillery" data-cap="【entity-La Luna¦canonical_name=LaLuna】’s artisanal mezcal distillery, Michoacán, Mexico."></button>
        <button class="th" data-src="images/la-luna-morelia.jpeg" data-label="Morelia" data-cap="Morelia, our home base in Michoacán."></button>
-       <button class="th" data-src="images/la-luna-celebration.jpeg" data-label="The celebration" data-cap="La Luna’s welcome celebration at the distillery."></button>
-       <button class="th" data-src="images/la-luna-cellar.jpeg" data-label="Cellar speakeasy" data-cap="The hidden cellar speakeasy at La Luna."></button>
+       <button class="th" data-src="images/la-luna-celebration.jpeg" data-label="The celebration" data-cap="【entity-La Luna¦canonical_name=LaLuna】’s welcome celebration at the distillery."></button>
+       <button class="th" data-src="images/la-luna-cellar.jpeg" data-label="Cellar speakeasy" data-cap="The hidden cellar speakeasy at 【entity-La Luna¦canonical_name=LaLuna】."></button>
       </div>
     <div class="xtext">
-     <h3>La Luna — Michoacán, Mexico</h3>
-     <p>Some of my most memorable experiences in hospitality have taken place far from the bar. Working alongside distributors and spirits brands opened the door to the places where great products begin. In September 2022, I traveled to Michoacán, Mexico, to visit La Luna’s artisanal mezcal distillery, where generations of tradition and craftsmanship are reflected in every bottle.</p>
-     <p>Our home base was Morelia, a city rich in culture and character. Evenings led us to local discoveries, including a speakeasy known simply as Nameless. But the most unforgettable experience unfolded at the distillery itself. La Luna welcomed us with a celebration featuring live music, horseback riding, and a hidden cellar speakeasy of its own — an experience that brought the spirit of the region to life in a way no tasting ever could.</p>
+     <h3>【entity-La Luna¦canonical_name=LaLuna】 — Michoacán, Mexico</h3>
+     <p>Some of my most memorable experiences in hospitality have taken place far from the bar. Working alongside distributors and spirits brands opened the door to the places where great products begin. In September 2022, I traveled to Michoacán, Mexico, to visit 【entity-La Luna¦canonical_name=LaLuna】’s artisanal mezcal distillery, where generations of tradition and craftsmanship are reflected in every bottle.</p>
+     <p>Our home base was Morelia, a city rich in culture and character. Evenings led us to local discoveries, including a speakeasy known simply as Nameless. But the most unforgettable experience unfolded at the distillery itself. 【entity-La Luna¦canonical_name=LaLuna】 welcomed us with a celebration featuring live music, horseback riding, and a hidden cellar speakeasy of its own — an experience that brought the spirit of the region to life in a way no tasting ever could.</p>
      <p>That journey through Michoacán offered a deeper appreciation for mezcal — and for the people, traditions, and places behind it.</p>
     </div>
    </div>
@@ -517,7 +549,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
    <div class="xp" id="tp2" role="tabpanel" hidden>
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
     <div class="thumbs">
-       <button class="th" data-src="images/bacardi-pr.jpeg" data-label="Bacardí" data-cap="The Bacardí distillery, Puerto Rico."></button>
+       <button class="th" data-src="images/【entity-bacardi¦canonical_name=Bacardi】-pr.jpeg" data-label="【entity-Bacardí¦canonical_name=Bacardi】" data-cap="The 【entity-Bacardí¦canonical_name=Bacardi】 distillery, Puerto Rico."></button>
        <button class="th" data-src="images/pr-cane-camp.jpeg" data-label="Cane Camp" data-cap="Cane Camp, the rum-education experience with Don Q."></button>
        <button class="th" data-src="images/pr-don-q.jpeg" data-label="Don Q" data-cap="The Don Q distillery."></button>
        <button class="th" data-src="images/pr-bioluminescence.jpeg" data-label="Bioluminescence" data-cap="A boat ride to see Puerto Rico’s bioluminescent waters."></button>
@@ -525,7 +557,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     <div class="xtext">
      <h3>Puerto Rico &amp; Cane Camp</h3>
      <p>My first visit to Puerto Rico came in March 2016 while scouting locations for a potential Broken Shaker pop-up. During the trip, I connected with Lush Life Productions, creators of Cane Camp, an immersive rum-education experience developed for bartenders in partnership with Don Q. I had the rare opportunity to experience the guided journey privately, accompanied only by the camp’s operators and guides rather than the usual group of bartenders. As part of the experience, we visited the Don Q distillery and Medalla Brewery, explored the island, and ended one evening with a boat ride to witness its extraordinary bioluminescent waters.</p>
-     <p>I returned in August 2019, this time visiting the Bacardí distillery. The tour offered another perspective on the island’s rum-making heritage, culminating in a particularly memorable keepsake: a gifted bottle of Bacardí 8, which I personally hand-dipped in wax to seal. While in San Juan, I also stopped at La Factoría, a fellow World’s 50 Best Bars destination. It was especially meaningful to experience their bar at home after having the pleasure of hosting their team for a Broken Shaker pop-up in Miami.</p>
+     <p>I returned in August 2019, this time visiting the 【entity-Bacardí¦canonical_name=Bacardi】 distillery. The tour offered another perspective on the island’s rum-making heritage, culminating in a particularly memorable keepsake: a gifted bottle of 【entity-Bacardí¦canonical_name=Bacardi】 8, which I personally hand-dipped in wax to seal. While in San Juan, I also stopped at La Factoría, a fellow World’s 50 Best Bars destination. It was especially meaningful to experience their bar at home after having the pleasure of hosting their team for a Broken Shaker pop-up in Miami.</p>
      <p>Over the years, Puerto Rico has become a place I’ve returned to for both work and leisure. From the traditions behind its iconic spirits to the natural beauty of its coastline and the people shaping its cocktail culture, each visit has offered a new appreciation for the island and its hospitality community.</p>
     </div>
    </div>
@@ -591,14 +623,14 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
       <div>
         <h3>Where it started: Courtland Vocational School</h3>
         <p>My interest in design began at Courtland Vocational School in Virginia, where I completed a two-year graphic design program and graduated at the top of my class. The curriculum balanced creative exploration with technical discipline, teaching me how to translate ideas into finished work.</p>
-        <p>From Adobe Photoshop and early web coding to screen printing and traditional darkroom photography, I explored a range of creative disciplines. More importantly, I learned to think visually, pay attention to detail, and understand the process behind good design.</p>
+        <p>From 【entity-Adobe Photoshop¦canonical_name=Adobe Photoshop】 and early web coding to screen printing and traditional darkroom photography, I explored a range of creative disciplines. More importantly, I learned to think visually, pay attention to detail, and understand the process behind good design.</p>
         <p>Those skills followed me throughout my hospitality career. Menus, promotional materials, event flyers, and brand presentations became natural extensions of my work behind the bar — another way to approach business, branding, and creative problem-solving.</p>
         <p>Today, that foundation continues to evolve through digital design and web development, allowing me to take ideas from initial concept to visual identity and finished digital experience.</p>
       </div>
       <img class="ph" src="images/work/miamix-office-night.webp" alt="MIAMIX office at night" loading="lazy" style="aspect-ratio:4/3;width:100%;object-fit:cover;padding:0;border:0">
     </div>
     <div class="skills">
-      <div><h3>Visual design &amp; identity</h3><ul><li>Adobe Photoshop</li><li>Adobe Illustrator</li><li>Adobe InDesign</li><li>Brand identity development</li><li>Visual systems &amp; brand guidelines</li><li>Typography &amp; layout</li></ul></div>
+      <div><h3>Visual design &amp; identity</h3><ul><li>【entity-Adobe Photoshop¦canonical_name=Adobe Photoshop】</li><li>Adobe Illustrator</li><li>Adobe InDesign</li><li>Brand identity development</li><li>Visual systems &amp; brand guidelines</li><li>Typography &amp; layout</li></ul></div>
       <div><h3>Web &amp; digital</h3><ul><li>HTML &amp; CSS</li><li>Responsive web design</li><li>Jekyll &amp; Liquid</li><li>Landing page design</li><li>GitHub-based workflows</li><li>Digital content design</li></ul></div>
       <div><h3>Print &amp; production</h3><ul><li>Print layout &amp; design</li><li>Menus &amp; promotional materials</li><li>Screen printing</li><li>Production specifications</li><li>Prepress &amp; artwork preparation</li><li>Image retouching</li></ul></div>
       <div><h3>Photography &amp; image-making</h3><ul><li>Visual composition</li><li>Film developing</li><li>Darkroom printing</li><li>Digital image editing</li><li>Image preparation for print &amp; web</li></ul></div>
@@ -964,7 +996,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
    ths.forEach(function(th){
     th.setAttribute("aria-label",th.dataset.label);
     if(th.dataset.src)probe(th.dataset.src,function(u){
-     if(u)th.style.backgroundImage="url('"+u+"')";
+     if(u)th.style.backgroundImage="url('"+u+"'";
      else th.hidden=true;
      refresh();
     });else th.textContent=th.dataset.label;
