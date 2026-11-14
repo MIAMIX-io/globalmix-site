@@ -26,14 +26,14 @@ header.bar{position:sticky;z-index:20;background:var(--hd);backdrop-filter:blur(
 .lens{display:inline-flex;border:1px solid var(--fg);flex-wrap:wrap}.lens button{font:500 14px var(--body);border:0;background:none;color:var(--fg);padding:12px 18px;cursor:pointer}.lens button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
 .btn{display:inline-block;font:600 15px var(--body);padding:14px 26px;text-decoration:none;border:1px solid var(--fg);background:transparent;color:var(--fg);cursor:pointer;text-align:center}.btn:hover{transform:translateY(-2px)}.btn.p{background:var(--ac);color:var(--onac);border-color:var(--ac)}
 .tlink{text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:6px;font-weight:500}
-.hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;grid-template-areas:"top pic" "act pic";gap:0 56px;align-items:end;padding-top:64px;padding-bottom:72px}
+.hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;grid-template-areas:"top pic" "act pic";gap:0 56px;align-items:end;padding-top:36px;padding-bottom:40px}
 .hero-top{grid-area:top}.hero-pic{grid-area:pic;width:100%;max-width:354px}.hero-act{grid-area:act;padding-top:20px}
-h1{font-size:clamp(3.2rem,9.5vw,7.6rem)}h1 span{display:block}h1 span+span{color:var(--ac)}
-.tag{font-size:clamp(1.2rem,2.2vw,1.5rem);margin:24px 0 0;max-width:40ch}.tag2{font-size:clamp(1.05rem,1.8vw,1.2rem);margin:0 0 28px;max-width:46ch;color:var(--mut)}
+h1{font-size:clamp(2.2rem,6vw,4.6rem)}h1 span{display:block}h1 span+span{color:var(--ac)}
+.tag{font-size:clamp(1.05rem,1.8vw,1.25rem);margin:24px 0 0;max-width:40ch}.tag2{font-size:clamp(1.05rem,1.8vw,1.2rem);margin:0 0 28px;max-width:46ch;color:var(--mut)}
 .cta{display:flex;flex-wrap:wrap;gap:14px;align-items:center;margin-bottom:34px}
 .pal{display:none;height:10px;margin-bottom:10px}html[data-lens="desk"] .pal{display:flex}.pal i{flex:1}.pal i:nth-child(1){background:#00CEC8}.pal i:nth-child(2){background:#FCEFC3}.pal i:nth-child(3){background:#FF9C5F}.pal i:nth-child(4){background:#FF69B4}
 .cap{font-size:14px;color:var(--mut);margin-top:12px;display:flex;flex-direction:column;gap:2px;border-top:1px solid var(--line);padding-top:10px}
-.hero-card{border:1px solid var(--line);background:var(--card);padding:22px;box-shadow:14px 14px 0 var(--ac)}.hero-big{font:400 clamp(3.2rem,7vw,5.2rem)/.95 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls)}.hero-big em{font-style:normal;color:var(--ac2)}.hero-card p{color:var(--mut);font-size:15px;line-height:1.6;margin-top:10px}
+.hero-card{border:1px solid var(--line);background:var(--card);padding:22px;box-shadow:14px 14px 0 var(--ac)}.hero-big{font:400 clamp(2.2rem,5vw,3.4rem)/.95 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls)}.hero-big em{font-style:normal;color:var(--ac2)}.hero-card p{color:var(--mut);font-size:15px;line-height:1.6;margin-top:10px}
 .venue-rows{margin-top:16px;border-top:1px solid var(--line)}.venue-row{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid var(--line);font-size:14px}.venue-row strong{font-size:16px}.venue-row span:last-child{color:var(--ac2);font-weight:700}
 section{padding:80px 0;border-top:1px solid var(--line)}h2{font-size:clamp(2.4rem,6vw,4.2rem)}html[data-lens="bar"] .head h2::after{content:"";display:block;width:88px;height:7px;border-top:1px solid var(--ac2);border-bottom:1px solid var(--ac2);margin-top:16px}
 .head{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap;margin-bottom:36px}.lede{color:var(--mut);max-width:58ch;margin-top:12px}.kicker{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ac2);margin-bottom:10px}
@@ -248,7 +248,8 @@ function loadOne(name){
 Promise.all([loadOne('atlanta.json'), loadOne('miami.json'), loadOne('new-york.json')]).then(function(scenes){
   render(scenes);
 }).catch(function(err){
-  statusEl.innerHTML='Could not load the JSON files ('+esc(err.message)+'). <br>Your page is at <code>'+esc(window.location.href)+'</code> — it is looking for the JSONs in the same folder as the HTML, or in a <code>bar-book/</code> subfolder.';
+  statusEl.innerHTML='Could not load the JSON files ('+esc(err.message)+'). <br>Your page is at <code>'+esc(window.location.href)+'</code> — it is looking for the JSONs in the same folder as the HTML, or in a <code>bar-book/</code> subfolder. Check: open <code>atlanta.json</code> next to this page in your browser. If that 404s, upload <code>atlanta.json</code>, <code>miami.json</code>, <code>new-york.json</code> to the same folder as this HTML on the server.';
+  if(countEl) countEl.textContent='JSON not loaded — atlanta.json 404 at '+window.location.href;
 });
 })();
 </script>
