@@ -221,7 +221,8 @@ function bindCarousels(){
       if(!track) return;
       var card=track.querySelector('.gallery-card');
       var w=card?card.offsetWidth+16:340;
-      track.scrollBy({left:-w,behavior:'smooth'});
+      if(track.scrollLeft<=4){track.scrollTo({left:track.scrollWidth,behavior:'smooth'});}
+      else{track.scrollBy({left:-w,behavior:'smooth'});}
     });
   });
   document.querySelectorAll('[data-next]').forEach(function(btn){
@@ -230,7 +231,8 @@ function bindCarousels(){
       if(!track) return;
       var card=track.querySelector('.gallery-card');
       var w=card?card.offsetWidth+16:340;
-      track.scrollBy({left:w,behavior:'smooth'});
+      if(track.scrollLeft+track.clientWidth>=track.scrollWidth-4){track.scrollTo({left:0,behavior:'smooth'});}
+      else{track.scrollBy({left:w,behavior:'smooth'});}
     });
   });
   document.querySelectorAll('[data-dot]').forEach(function(dot){
@@ -255,14 +257,14 @@ function bindCarousels(){
       });
       var prevBtn=document.querySelector('[data-prev="'+track.id+'"]');
       var nextBtn=document.querySelector('[data-next="'+track.id+'"]');
-      if(prevBtn) prevBtn.disabled = track.scrollLeft<=4;
-      if(nextBtn) nextBtn.disabled = track.scrollLeft+track.clientWidth >= track.scrollWidth-4;
+      if(prevBtn) prevBtn.disabled = cards.length<2;
+      if(nextBtn) nextBtn.disabled = cards.length<2;
     }
     track.addEventListener('scroll',onScroll,{passive:true});
     onScroll();
     track.addEventListener('keydown',function(e){
-      if(e.key==='ArrowRight'){track.scrollBy({left:340,behavior:'smooth'}); e.preventDefault();}
-      if(e.key==='ArrowLeft'){track.scrollBy({left:-340,behavior:'smooth'}); e.preventDefault();}
+      if(e.key==='ArrowRight'){var nb=document.querySelector('[data-next="'+track.id+'"]'); if(nb) nb.click(); e.preventDefault();}
+      if(e.key==='ArrowLeft'){var pb=document.querySelector('[data-prev="'+track.id+'"]'); if(pb) pb.click(); e.preventDefault();}
     });
   });
 }
