@@ -46,10 +46,20 @@ button.tlink{background:none;border:none;padding:0;cursor:pointer;font:inherit}
 .scene-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}@media(max-width:860px){.scene-grid{grid-template-columns:1fr}.hero .wrap{grid-template-columns:1fr;grid-template-areas:"top" "pic" "act";padding-top:28px;gap:28px}}
 .scene-card{background:var(--card);border:1px solid var(--line);border-top:3px solid var(--rule);padding:20px;display:flex;flex-direction:column;gap:8px}.scene-num{font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ac2)}.scene-card h3{font:400 2.2rem/1.1 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);color:var(--ac2)}.scene-venue{font-weight:600;font-size:17px}.scene-tagline{font:400 1.35rem/1.2 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls)}.scene-blurb,.scene-count{color:var(--mut);font-size:15px;line-height:1.6}.scene-count{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
 .scene-section{padding:48px 0;border-top:1px solid var(--line)}.scene-head{margin-bottom:24px}.scene-head h3{font:400 2.2rem/1.1 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);color:var(--ac2)}
-.chapter-block{padding:28px 0;border-top:1px solid var(--line)}
+
+.chapter-block{padding:0;border-top:1px solid var(--line)}
+.chapter-toggle{width:100%;display:flex;justify-content:space-between;align-items:center;gap:16px;text-align:left;background:none;border:none;color:var(--fg);cursor:pointer;padding:22px 0;font:inherit}
+.chapter-toggle:hover .chapter-title{text-decoration:underline;text-decoration-color:var(--ac);text-underline-offset:4px;text-decoration-thickness:2px}
+.chapter-toggle-text{display:flex;flex-direction:column;gap:2px;align-items:flex-start}
+.chapter-title{font:400 1.7rem/1.2 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls)}
+.chapter-chevron{font-size:22px;line-height:1;color:var(--ac);transition:transform .25s;flex-shrink:0}
+.chapter-block[data-open="false"] .chapter-chevron{transform:rotate(-90deg)}
+.chapter-body{display:block}
+.chapter-block[data-open="false"] .chapter-body{display:none}
+.chapter-body-inner{padding:0 0 28px}
+
 .chapter-block h4{font:400 1.7rem/1.2 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls)}
 .chapter-sub{color:var(--mut);font-size:16px;margin-top:4px}
-.chapter-preview-line{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--fg);margin:12px 0 16px}
 .carousel-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
 .carousel-count{font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
 .carousel-nav{display:flex;gap:8px}
@@ -76,17 +86,17 @@ footer{padding:28px 0;color:var(--ft);font-size:15px;font-weight:600}footer .wra
 </style>
 </head>
 <body>
-<header class="bar"><div class="wrap nav"><a class="logo" href="https://globalmix.network/robert-eldridge.html">Robert Eldridge III</a><nav class="links" aria-label="Primary"><a href="#scenes">Scenes</a><a href="#book">Bar Book</a><a href="#contact">Contact</a></nav><div class="nav-right"><span class="count-pill">507 recipes · 144 Atlanta · 292 Miami · 71 New York</span><div class="lens" role="group" aria-label="Choose what to explore"><button type="button" data-lens-value="bar" aria-pressed="false">Behind the bar</button><button type="button" data-lens-value="desk" aria-pressed="true">At the desk</button></div></div></div></header>
+<header class="bar"><div class="wrap nav"><a class="logo" href="https://globalmix.network/robert-eldridge.html">Robert Eldridge III</a><nav class="links" aria-label="Primary"><a href="#scenes">Scenes</a><a href="#book">Bar Book</a><a href="#contact">Contact</a></nav><div class="nav-right"><div class="lens" role="group" aria-label="Choose what to explore"><button type="button" data-lens-value="bar" aria-pressed="false">Behind the bar</button><button type="button" data-lens-value="desk" aria-pressed="true">At the desk</button></div></div></div></header>
 <main>
-<div class="hero" id="top"><div class="wrap"><div class="hero-top"><p class="kicker">The Bar Book · Behind The Bar — Beyond The Ordinary</p><h1><span>Behind The Bar</span><span>Beyond The Ordinary</span></h1><p class="tag">Fifteen years in hospitality, shaped by Atlanta, Miami and New York.</p></div><div class="hero-pic"><div class="pal" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="hero-card"><div class="hero-big"><em>507</em> recipes</div><p>Every build, every house-made — from the masters .</p><div class="venue-rows"><div class="venue-row"><span><strong>Atlanta</strong> · Empire State South · 682 ingredient lines</span><span>144</span></div><div class="venue-row"><span><strong>Miami</strong> · Broken Shaker · 1,556 ingredient lines</span><span>292</span></div><div class="venue-row"><span><strong>New York</strong> · Broken Shaker NY · 382 ingredient lines</span><span>71</span></div><div class="venue-row"><span><strong>Preview sample</strong> · 3 per chapter</span><span>69</span></div></div></div><div class="cap"><span>Miami · New York · Atlanta</span><span>MIAMIX / GLOBAL-MIX</span></div></div><div class="hero-act"><p class="tag2">507 recipes — every build, every house-made. Desk mode is for editing.</p><div class="cta"><a class="btn p" href="#book">Browse the book</a><a class="tlink" href="#scenes">See the three scenes</a></div><div class="lens" role="group" aria-label="Choose what to explore"><button type="button" data-lens-value="bar" aria-pressed="false">Behind the bar</button><button type="button" data-lens-value="desk" aria-pressed="true">At the desk</button></div></div></div></div>
-<section id="scenes"><div class="wrap"><div class="head"><div><p class="kicker">Three scenes</p><h2>Three venues, one book</h2><p class="lede">Pick a scene to load it. A career shaped by hospitality, creative thinking and the people behind the places.</p></div></div><div class="scene-grid" id="scene-grid"></div></div></section>
-<section id="book" style="padding-top:56px"><div class="wrap"><div class="head"><div><p class="kicker">The Bar Book</p><h2>THE RECIPE COLLECTION<br>Nine Chapters</h2><p class="lede">A personal collection of cocktails, stories, and the bars that shaped the journey.</p><p class="preview-note">Preview — showing a sample from each chapter of the selected scene only</p></div><div><span class="count-pill">Preview · 27 cards per scene</span></div></div>
-<div class="controls"><div class="controls-inner"><div class="search-row"><div class="search-wrap"><label for="recipe-search">Search</label><input id="recipe-search" type="search" placeholder="Drink, ingredient, spirit…" aria-label="Search recipes in the preview" value=""></div></div><nav class="scene-nav-links" aria-label="Choose a scene to load"><button type="button" data-scene-btn="atlanta" aria-pressed="true">Scene 01 · ATLANTA</button><button type="button" data-scene-btn="miami" aria-pressed="false">Scene 02 · MIAMI</button><button type="button" data-scene-btn="new-york" aria-pressed="false">Scene 03 · NEW YORK</button></nav><div class="result-line"><span id="result-count">Loading Atlanta…</span><span id="mode-label">Desk mode · for editing</span></div></div></div>
-<div id="status" class="status" role="status">Loading atlanta.json… — only the selected scene loads. Click Miami or New York to load that scene.</div>
+<div class="hero" id="top"><div class="wrap"><div class="hero-top"><p class="kicker">The Bar Book · Behind The Bar — Beyond The Ordinary</p><h1><span>Behind The Bar</span><span>Beyond The Ordinary</span></h1><p class="tag">Fifteen years in hospitality, shaped by Atlanta, Miami and New York.</p></div><div class="hero-pic"><div class="pal" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="hero-card"><div class="hero-big"><em>507</em> recipes</div><p>Every build, every house-made — from Atlanta, Miami and New York.</p><div class="venue-rows"><div class="venue-row"><span><strong>Atlanta</strong> · Empire State South</span></div><div class="venue-row"><span><strong>Miami</strong> · Broken Shaker</span></div><div class="venue-row"><span><strong>New York</strong> · Broken Shaker NY</span></div></div></div><div class="cap"><span>Miami · New York · Atlanta</span><span>MIAMIX / GLOBAL-MIX</span></div></div><div class="hero-act"><p class="tag2">Browse the collection by scene.</p><div class="cta"><a class="btn p" href="#book">Browse the book</a><a class="tlink" href="#scenes">See the three scenes</a></div><div class="lens" role="group" aria-label="Choose what to explore"><button type="button" data-lens-value="bar" aria-pressed="false">Behind the bar</button><button type="button" data-lens-value="desk" aria-pressed="true">At the desk</button></div></div></div></div>
+<section id="scenes"><div class="wrap"><div class="head"><div><p class="kicker">Three scenes</p><h2>Three venues, one book</h2><p class="lede">A career shaped by hospitality, creative thinking and the people behind the places. Each scene is told in nine chapters.</p></div></div><div class="scene-grid" id="scene-grid"></div></div></section>
+<section id="book" style="padding-top:56px"><div class="wrap"><div class="head"><div><p class="kicker">The Bar Book</p><h2>THE RECIPE COLLECTION<br>Nine Chapters</h2><p class="lede">A personal collection of cocktails, stories, and the bars that shaped the journey.</p></div><div></div></div>
+<div class="controls"><div class="controls-inner"><div class="search-row"><div class="search-wrap"><label for="recipe-search">Search</label><input id="recipe-search" type="search" placeholder="Drink, ingredient, spirit…" aria-label="Search recipes" value=""></div></div><nav class="scene-nav-links" aria-label="Choose a scene to load"><button type="button" data-scene-btn="atlanta" aria-pressed="true">Scene 01 · ATLANTA</button><button type="button" data-scene-btn="miami" aria-pressed="false">Scene 02 · MIAMI</button><button type="button" data-scene-btn="new-york" aria-pressed="false">Scene 03 · NEW YORK</button></nav><div class="result-line"><span id="result-count">Atlanta</span></div></div></div>
+<div id="status" class="status" role="status">Loading Atlanta…</div>
 <div id="book-content"></div>
 </div></section>
 </main>
-<section id="contact" class="contact"><div class="wrap"><h2>Let’s talk</h2><p>Bookings, menus, and the full 507-recipe collection.</p><a class="btn p" href="mailto:hello@example.com">Get in touch</a></div></section>
+<section id="contact" class="contact"><div class="wrap"><h2>Let’s talk</h2><p>Bookings, menus, and the full collection.</p><a class="btn p" href="mailto:hello@example.com">Get in touch</a></div></section>
 <footer><div class="wrap"><span>© Robert Eldridge III — The Bar Book</span><a href="#top">Back to top</a></div></footer>
 <script>
 (function(){
@@ -99,8 +109,6 @@ function setLens(lens){
     var v=btn.getAttribute('data-lens-value')||(btn.textContent.indexOf('Behind')!==-1?'bar':'desk');
     btn.setAttribute('aria-pressed',v===lens?'true':'false');
   });
-  var m=document.getElementById('mode-label');
-  if(m) m.textContent = lens==='bar' ? 'Bar mode · for service' : 'Desk mode · for editing';
   try{localStorage.setItem('bar-book-lens',lens);}catch(e){}
 }
 var saved=null; try{saved=localStorage.getItem('bar-book-lens');}catch(e){}
@@ -128,33 +136,47 @@ function cardHTML(c){
     +'<div class="build-sec"><h4>Spirit Descriptions &amp; Substitutions</h4><p>'+esc(c.spiritNotes||'')+'</p></div>'
     +'</div></article>';
 }
-function chapterHTML(scene, ch){
+function chapterHTML(scene, ch, isFirst){
   var trackId='track-'+scene.sceneId+'-'+ch.number;
-  var cards = ch.cards && ch.cards.length ? ch.cards.map(cardHTML).join('') : '<div class="empty">'+esc(ch.emptyNote||'No preview drink in this chapter for this scene.')+'</div>';
+  var bodyId='body-'+scene.sceneId+'-'+ch.number;
+  var cards = ch.cards && ch.cards.length ? ch.cards.map(cardHTML).join('') : '<div class="empty">No drinks in this chapter yet.</div>';
   var hasCards = ch.cards && ch.cards.length>0;
   var nav = hasCards ? '<div class="carousel-nav"><button type="button" data-prev="'+trackId+'" aria-label="Previous card">‹ Prev</button><button type="button" data-next="'+trackId+'" aria-label="Next card">Next ›</button></div>' : '';
   var dots = hasCards ? '<div class="dots" data-dots="'+trackId+'">'+ch.cards.map(function(_,i){return '<button type="button" data-dot="'+i+'" data-track="'+trackId+'" aria-label="Go to card '+(i+1)+'"></button>';}).join('')+'</div>' : '';
-  return '<div class="chapter-block" id="scene-'+esc(scene.sceneId)+'-chapter-'+ch.number+'" data-chapter="'+ch.number+'">'
-    +'<p class="kicker">CHAPTER '+ch.number+'</p><h4>'+esc(ch.title)+'</h4><p class="chapter-sub">'+esc(ch.subtitle)+'</p><p class="chapter-preview-line">'+esc(ch.previewLine)+'</p>'
-    +'<div class="carousel-head"><span class="carousel-count" data-count="'+trackId+'">'+(hasCards?('1 / '+ch.cards.length):'0 cards')+'</span>'+nav+'</div>'
+  var open = isFirst ? 'true' : 'false';
+  return '<div class="chapter-block" id="scene-'+esc(scene.sceneId)+'-chapter-'+ch.number+'" data-chapter="'+ch.number+'" data-open="'+open+'">'
+    +'<button type="button" class="chapter-toggle" aria-expanded="'+open+'" aria-controls="'+bodyId+'"><span class="chapter-toggle-text"><span class="kicker">CHAPTER '+ch.number+'</span><span class="chapter-title">'+esc(ch.title)+'</span><span class="chapter-sub">'+esc(ch.subtitle)+'</span></span><span class="chapter-chevron" aria-hidden="true">⌄</span></button>'
+    +'<div class="chapter-body" id="'+bodyId+'"><div class="chapter-body-inner">'
+    +'<div class="carousel-head"><span class="carousel-count" data-count="'+trackId+'">'+(hasCards?('1 / '+ch.cards.length):'')+'</span>'+nav+'</div>'
     +'<div class="carousel-track" id="'+trackId+'" tabindex="0" aria-label="'+esc(scene.scene)+' Chapter '+ch.number+' carousel">'+cards+'</div>'
     +dots
+    +'</div></div>'
     +'</div>';
 }
 function sceneHTML(scene, idx){
-  var chapters = scene.chapters.map(function(ch){return chapterHTML(scene,ch);}).join('');
+  var chapters = scene.chapters.map(function(ch,i){return chapterHTML(scene,ch,i===0);}).join('');
   return '<section class="scene-section" id="scene-'+esc(scene.sceneId)+'" aria-label="Scene 0'+(idx+1)+' — '+esc(scene.scene)+'">'
-    +'<div class="scene-head"><p class="kicker">SCENE 0'+(idx+1)+'</p><h3>'+esc(scene.scene)+'</h3><p class="scene-venue">'+esc(scene.venue)+'</p><p class="scene-tagline">'+esc(scene.tagline)+'</p><p class="lede">'+esc(scene.totalRecipes)+' recipes in this scene · '+esc(scene.ingredientLines)+' ingredient lines · 9 chapters · preview shows 3 per chapter</p></div>'
+    +'<div class="scene-head"><p class="kicker">SCENE 0'+(idx+1)+'</p><h3>'+esc(scene.scene)+'</h3><p class="scene-venue">'+esc(scene.venue)+'</p><p class="scene-tagline">'+esc(scene.tagline)+'</p></div>'
     + chapters + '</section>';
 }
 function sceneCardHTML(scene, idx){
-  return '<article class="scene-card"><p class="scene-num">SCENE 0'+(idx+1)+'</p><h3>'+esc(scene.scene)+'</h3><p class="scene-venue">'+esc(scene.venue)+'</p><p class="scene-tagline">'+esc(scene.tagline)+'</p><p class="scene-blurb">'+esc(scene.blurb)+'</p><p class="scene-count">'+esc(scene.totalRecipes)+' recipes · '+esc(scene.ingredientLines)+' ingredient lines · 9 chapters</p><button type="button" class="tlink" data-jump-scene="'+esc(scene.sceneId)+'">Load Scene 0'+(idx+1)+' in the collection →</button></article>';
+  return '<article class="scene-card"><p class="scene-num">SCENE 0'+(idx+1)+'</p><h3>'+esc(scene.scene)+'</h3><p class="scene-venue">'+esc(scene.venue)+'</p><p class="scene-tagline">'+esc(scene.tagline)+'</p><p class="scene-blurb">'+esc(scene.blurb)+'</p><button type="button" class="tlink" data-jump-scene="'+esc(scene.sceneId)+'">View Scene 0'+(idx+1)+' →</button></article>';
 }
 var searchInput=document.getElementById('recipe-search');
 var statusEl=document.getElementById('status');
 var contentEl=document.getElementById('book-content');
 var gridEl=document.getElementById('scene-grid');
 var countEl=document.getElementById('result-count');
+function setChapterOpen(block, open){
+  block.setAttribute('data-open', open?'true':'false');
+  var btn=block.querySelector('.chapter-toggle');
+  if(btn) btn.setAttribute('aria-expanded', open?'true':'false');
+  if(open){
+    // Refresh carousel counters once it becomes visible
+    var track=block.querySelector('.carousel-track');
+    if(track){ track.dispatchEvent(new Event('scroll')); }
+  }
+}
 function updateCount(){
   var q=searchInput?searchInput.value.trim().toLowerCase():'';
   var total=0, visible=0;
@@ -164,20 +186,38 @@ function updateCount(){
     total++;
     if(show) visible++;
   });
-  document.querySelectorAll('.chapter-block').forEach(function(block){
+  document.querySelectorAll('.chapter-block').forEach(function(block, idx){
     var cards=block.querySelectorAll('.gallery-card');
     if(!cards.length){ block.style.display = !q ? '' : 'none'; return; }
     var any=[].some.call(cards,function(c){return c.style.display!=='none';});
     block.style.display=any?'':'none';
+    if(q){
+      // When searching, auto-open chapters with matches, collapse the rest
+      if(any) setChapterOpen(block, true); else setChapterOpen(block, false);
+    } else {
+      // No search: first chapter open, rest collapsed
+      setChapterOpen(block, idx===0);
+    }
   });
   document.querySelectorAll('.scene-section').forEach(function(sec){
     var blocks=sec.querySelectorAll('.chapter-block');
     var any=[].some.call(blocks,function(b){return b.style.display!=='none';});
     sec.style.display=any?'':'none';
   });
-  if(countEl) countEl.textContent = q ? ('Showing '+visible+' of '+total+' cards in '+currentSceneId+' · “'+searchInput.value.trim()+'”') : ('Preview — '+total+' cards in '+currentSceneId+' · 3 per chapter');
+  var sceneLabel = currentSceneId==='new-york' ? 'New York' : (currentSceneId==='atlanta' ? 'Atlanta' : 'Miami');
+  if(countEl) countEl.textContent = q ? (visible+' found in '+sceneLabel+' for “'+searchInput.value.trim()+'”') : sceneLabel;
 }
 if(searchInput) searchInput.addEventListener('input', updateCount);
+function bindAccordions(){
+  document.querySelectorAll('.chapter-toggle').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var block=btn.closest('.chapter-block');
+      if(!block) return;
+      var isOpen=block.getAttribute('data-open')==='true';
+      setChapterOpen(block, !isOpen);
+    });
+  });
+}
 function bindCarousels(){
   document.querySelectorAll('[data-prev]').forEach(function(btn){
     btn.addEventListener('click',function(){
@@ -232,9 +272,9 @@ function bindCarousels(){
 }
 // --- Selected-scene only loading ---
 var SCENES_META=[
-  {sceneId:'atlanta',scene:'ATLANTA',venue:'Empire State South',tagline:'Southern roots, first service.',blurb:'Where it started — Southern hospitality, classic builds, and the discipline of a busy dining room.',totalRecipes:144,ingredientLines:682},
-  {sceneId:'miami',scene:'MIAMI',venue:'Broken Shaker',tagline:'Tropical, loud, alive.',blurb:'Freezer-cold, garden-fresh, and built for volume — Miami taught speed without losing soul.',totalRecipes:292,ingredientLines:1556},
-  {sceneId:'new-york',scene:'NEW YORK',venue:'Broken Shaker NY',tagline:'Precision under pressure.',blurb:'New York sharpened everything — tighter specs, deeper spirits knowledge, faster decisions.',totalRecipes:71,ingredientLines:382}
+  {sceneId:'atlanta',scene:'ATLANTA',venue:'Empire State South',tagline:'Southern roots, first service.',blurb:'Where it started — Southern hospitality, classic builds, and the discipline of a busy dining room.'},
+  {sceneId:'miami',scene:'MIAMI',venue:'Broken Shaker',tagline:'Tropical, loud, alive.',blurb:'Freezer-cold, garden-fresh, and built for volume — Miami taught speed without losing soul.'},
+  {sceneId:'new-york',scene:'NEW YORK',venue:'Broken Shaker NY',tagline:'Precision under pressure.',blurb:'New York sharpened everything — tighter specs, deeper spirits knowledge, faster decisions.'}
 ];
 var sceneCache={};
 var currentSceneId='atlanta';
@@ -259,6 +299,7 @@ function renderSingleScene(scene){
   contentEl.innerHTML=sceneHTML(scene, idx);
   statusEl.style.display='none';
   bindCarousels();
+  bindAccordions();
   updateCount();
 }
 function loadScene(id){
@@ -272,15 +313,16 @@ function loadScene(id){
     return;
   }
   statusEl.style.display='';
-  statusEl.textContent='Loading '+id+'.json… — only this scene loads.';
-  if(countEl) countEl.textContent='Loading '+id+'…';
+  var _label = id==='new-york' ? 'New York' : (id==='atlanta' ? 'Atlanta' : 'Miami');
+  statusEl.textContent='Loading '+_label+'…';
+  if(countEl) countEl.textContent='Loading '+_label+'…';
   contentEl.innerHTML='';
   loadOne(id+'.json').then(function(scene){
     sceneCache[id]=scene;
     renderSingleScene(scene);
   }).catch(function(err){
-    statusEl.innerHTML='Could not load '+esc(id)+'.json ('+esc(err.message)+'). <br>Your page is at <code>'+esc(window.location.href)+'</code> — it is looking for the JSON in the same folder as the HTML, or in a <code>bar-book/</code> subfolder. Check: open <code>'+esc(id)+'.json</code> next to this page in your browser. If that 404s, upload <code>atlanta.json</code>, <code>miami.json</code>, <code>new-york.json</code> to the same folder as this HTML on the server.';
-    if(countEl) countEl.textContent='JSON not loaded — '+id+'.json 404 at '+window.location.href;
+    statusEl.textContent='Couldn\'t load this scene — please refresh or try another scene.';
+    if(countEl) countEl.textContent='Couldn\'t load this scene';
   });
 }
 function loadOne(name){
