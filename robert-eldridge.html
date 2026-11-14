@@ -28,19 +28,16 @@ a{color:inherit}
 [data-lens="bar"] [data-only="desk"],[data-lens="desk"] [data-only="bar"]{display:none!important}
 #page{display:flex;flex-direction:column;transition:opacity .25s}
 #page.out{opacity:0}
-
 header.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--hd);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:64px;gap:16px;position:relative}
 .logo{font:400 1.5rem var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);text-decoration:none}
 .links{display:flex;gap:22px;font-size:15px}
 .links a{text-decoration:none;color:var(--mut)}.links a:hover{color:var(--fg);text-decoration:underline;text-decoration-color:var(--ac);text-underline-offset:6px;text-decoration-thickness:2px}
 #menu{display:none;font:500 14px var(--body);border:1px solid var(--fg);background:none;color:var(--fg);padding:8px 14px;cursor:pointer}
-
 .btn{display:inline-block;font:600 15px var(--body);padding:14px 26px;text-decoration:none;border:1px solid var(--fg);transition:transform .2s}
 .btn:hover{transform:translateY(-2px)}
 .btn.p{background:var(--ac);color:var(--onac);border-color:var(--ac)}
 .tlink{text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:6px;font-weight:500}
-
 .hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;grid-template-areas:"top pic" "act pic";grid-template-rows:1fr auto;gap:0 56px;align-items:end;padding-top:64px;padding-bottom:72px}
 .hero-top{grid-area:top}.hero-pic{grid-area:pic;width:100%;max-width:354px}.hero-act{grid-area:act;padding-top:20px}
 h1{font-size:clamp(3.2rem,9.5vw,7.6rem)}
@@ -60,29 +57,22 @@ h1 span+span{animation-delay:.12s;color:var(--ac);transition:color .5s}
 [data-lens="desk"] .pal{display:flex}
 .pal i:nth-child(1){background:#00CEC8}.pal i:nth-child(2){background:#FCEFC3}.pal i:nth-child(3){background:#FF9C5F}.pal i:nth-child(4){background:#FF69B4}.pal i{flex:1}
 .hero-pic .pal,.hero-pic .cap{width:calc(100% - 14px)}
-
-/* HERO PORTRAIT — BAR / DESIGN SWITCH */
 #top .hero-portraits{position:relative;display:block;width:calc(100% - 14px);max-width:340px;box-shadow:14px 14px 0 var(--ac);transition:box-shadow .5s;aspect-ratio:4/5;overflow:hidden;padding:0;border:0}
 #top .hero-portraits img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;transition:opacity .5s ease}
 #top .hero-portrait-bar{opacity:1}
 #top .hero-portrait-design{opacity:0}
 html[data-lens="desk"] #top .hero-portrait-bar{opacity:0}
 html[data-lens="desk"] #top .hero-portrait-design{opacity:1}
-
 section{padding:80px 0;border-top:1px solid var(--line)}
-
-/* Bar / hospitality section order */
 [data-lens="bar"] #exp{order:1}
 [data-lens="bar"] #stories{order:2}
 [data-lens="bar"] #field{order:3}
 [data-lens="bar"] #blend{order:4}
 [data-lens="bar"] #book{order:5}
 [data-lens="bar"] #tools-sec{order:6}
-/* Graphic design section order */
 [data-lens="desk"] #work{order:1}
 [data-lens="desk"] #skills{order:2}
 [data-lens="desk"] #blend{order:3}
-
 h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 [data-lens="bar"] .head h2::after{content:"";display:block;width:88px;height:7px;border-top:1px solid var(--ac2);border-bottom:1px solid var(--ac2);margin-top:16px}
 .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:36px}
@@ -90,7 +80,6 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .tabs{display:flex;flex-wrap:wrap;gap:6px 26px;margin-bottom:22px}
 .tabs button{font:500 15px var(--body);background:none;border:0;border-bottom:2px solid transparent;color:var(--mut);padding:4px 0;cursor:pointer}
 .tabs button[aria-pressed="true"]{color:var(--fg);border-color:var(--ac)}
-
 .ctrl{display:flex;gap:8px}
 .ctrl button{min-width:44px;height:44px;border:1px solid var(--fg);background:none;color:var(--fg);font:500 14px var(--body);cursor:pointer;padding:0 14px}
 .ctrl button:hover{background:var(--ac);border-color:var(--ac);color:var(--onac)}
@@ -109,7 +98,6 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .fmt{font-size:13px;font-weight:700;color:var(--ac2)}
 .card .btn{margin-top:auto;text-align:center;padding:11px 16px}
 #exp .card{text-align:left}
-
 .explore{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.6fr);gap:48px;align-items:start}
 .xlist{display:flex;flex-direction:column}
 .xlist button{display:block;width:100%;text-align:left;font:inherit;background:none;border:0;border-bottom:1px solid var(--line);color:var(--mut);padding:16px 0;cursor:pointer}
@@ -136,20 +124,15 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .xtext p{color:var(--mut);margin-bottom:14px;max-width:62ch}
 .xtext p:first-of-type{color:var(--fg);font-size:1.1rem}
 .xtext h3{font:400 clamp(1.5rem,2.6vw,2rem)/1.15 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);margin-bottom:14px}
-
-
 .blend{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px}
 .list button{display:block;width:100%;text-align:left;font:600 1.2rem var(--body);background:none;border:0;border-bottom:1px solid var(--line);color:var(--mut);padding:15px 0;cursor:pointer}
 .list button[aria-pressed="true"]{color:var(--fg);border-bottom:3px solid var(--ac)}
 .blend .ph{aspect-ratio:16/9;margin-bottom:18px}
 .blend p{color:var(--mut);max-width:54ch}
-/* cocktail photo fills its frame */
 #tph{position:relative;padding:0;border:0;overflow:hidden;display:block}
 #tph img{position:absolute;inset:0;display:block;width:100%;height:100%;object-fit:cover}
 #tph a{position:absolute;inset:0;display:block;color:inherit;text-decoration:none}
 #tph a:not([href]){pointer-events:none}
-
-/* MENU DESIGN — interactive menu previews */
 #tph.menu-mode{aspect-ratio:4/3;background:var(--card);border:1px solid var(--line)}
 #tph.menu-mode img{object-fit:cover;padding:0}
 .menu-open{position:absolute;right:12px;bottom:12px;padding:8px 12px;background:#FAF7F0;color:#1E1D1A;font:600 10px var(--body);letter-spacing:.12em;text-transform:uppercase}
@@ -160,8 +143,6 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .menu-tabs button:hover{color:var(--fg);border-color:var(--fg)}
 .menu-tabs button[aria-pressed="true"]{color:var(--fg);border-color:var(--ac);border-bottom-width:3px}
 .menu-note{font-size:14px;margin-top:10px}
-
-/* CASE STUDY PREVIEW + LANDSCAPE POP-UP PRESENTATION */
 #tph.case-mode{aspect-ratio:3/2;background:#E6DDCD;border:1px solid var(--line)}
 #tph.case-mode img{object-fit:contain}
 .cs{position:fixed;inset:0;z-index:100;display:grid;place-items:center;background:rgba(18,16,12,.72);opacity:0;transition:opacity .45s ease;padding:max(12px,env(safe-area-inset-top,0px)) 12px max(12px,env(safe-area-inset-bottom,0px))}
@@ -202,7 +183,6 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
  .cs-concept{display:none}
 }
 @media(prefers-reduced-motion:reduce){.cs,.cs-bar,.cs-stage,.cs-nav{transition:none}}
-
 .skills{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:56px}
 .skills div{border-top:3px solid var(--rule);padding-top:16px}
 .skills h3{margin-bottom:8px}
@@ -210,7 +190,6 @@ h2{font-size:clamp(2.4rem,6vw,4.2rem)}
 .studies{display:grid;grid-template-columns:1.2fr .8fr;gap:48px;align-items:center}
 .studies h3{font:400 clamp(1.8rem,3.4vw,2.7rem)/1.1 var(--disp);font-weight:var(--dw);letter-spacing:var(--ls);margin-bottom:14px}
 .studies p{color:var(--mut);margin-bottom:14px;max-width:60ch}
-
 .book{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center;margin-bottom:56px}
 .cover{aspect-ratio:3/4;max-width:340px;box-shadow:14px 14px 0 var(--ac)}
 img.cover{display:block;width:calc(100% - 14px);height:auto;object-fit:cover}
@@ -218,7 +197,6 @@ img.cover{display:block;width:calc(100% - 14px);height:auto;object-fit:cover}
 .book h3 span{display:block}
 .book p{color:var(--mut);margin-bottom:16px;max-width:54ch}
 .facts{font-size:15px}
-
 .contact{background:var(--ct);color:var(--onct);padding:80px 0;transition:background .5s}
 .contact h2{font-size:clamp(2.6rem,8vw,6rem)}
 .contact p{max-width:52ch;margin:16px 0 28px}
@@ -227,7 +205,6 @@ img.cover{display:block;width:calc(100% - 14px);height:auto;object-fit:cover}
 footer{padding:28px 0;color:var(--ft);font-size:15px;font-weight:600}
 footer a{font-weight:700;text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:5px}
 footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-
 @media(max-width:860px){
  .hero .wrap,.blend,.book,.studies{grid-template-columns:minmax(0,1fr)}
  .explore{grid-template-columns:minmax(0,1fr);gap:24px}
@@ -249,8 +226,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 }
 @media(max-width:520px){.skills{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
-
-/* LEFT ALIGNMENT — EXPERIENCE, BAR BOOK & TOOLS */
 #exp .head,#book .head,#tools-sec .head{justify-content:space-between;align-items:flex-start;text-align:left}
 #book .track .card > img.ph{display:block;width:100%;height:220px;max-width:100%;aspect-ratio:4/3;object-fit:cover;padding:0;border:0;flex:0 0 220px}
 #work .track.snap{display:flex;justify-content:flex-start;align-items:stretch;width:100%;padding-left:0;overflow-x:auto;scroll-snap-type:x mandatory}
@@ -260,13 +235,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 #exp .rail,#book .rail,#tools-sec .rail{justify-content:flex-start}
 #exp .card,#book .card,#tools-sec .card{text-align:left}
 #book .track .card > img{align-self:stretch}
-
-/* SELECTED WORK — loop carousel with images */
 #work .card{text-align:left}
 #work .track .card > img.ph{display:block;width:100%;height:220px;flex:0 0 220px;aspect-ratio:4/3;object-fit:cover;padding:0;border:0}
 #work .track .card h3,#work .track .card p{text-align:left;width:100%}
-
-/* BEYOND THE BAR — picture first, thumbnails in rows of four, links below */
 .explore.trav{display:flex;flex-direction:column;gap:18px}
 .trav .xpanels,.trav .xp:not([hidden]){display:contents}
 .trav .shot,.trav .thumbs,.trav .xlist,.trav .xtext{align-self:stretch;width:100%;min-width:0}
@@ -284,8 +255,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .trav .shotimg img{display:block;width:100%;height:100%;object-fit:cover;margin:0}
 .trav .shotimg:not(.ph){cursor:zoom-in}
 .trav .shotimg:not(.ph)::after{content:"Enlarge ⤢";position:absolute;right:14px;bottom:14px;padding:6px 10px;background:rgba(0,0,0,.65);color:#fff;font:600 10px var(--body);letter-spacing:.12em;text-transform:uppercase;pointer-events:none}
-
-/* FULL-SCREEN PHOTO GALLERY */
 .lb{position:fixed;inset:0;z-index:110;display:flex;align-items:center;justify-content:center;background:rgba(8,8,10,.96);opacity:0;transition:opacity .3s ease;padding:64px 72px 56px}
 .lb.open{opacity:1}
 .lb[hidden]{display:none}
@@ -302,32 +271,21 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .lb-count{position:absolute;top:max(24px,env(safe-area-inset-top,0px));left:20px;color:#E8E3D8;font:600 12px var(--body);letter-spacing:.18em;text-transform:uppercase}
 @media(max-width:860px){.lb{padding:64px 10px 48px}.lb-nav{top:auto;bottom:10px;transform:none;width:52px;height:44px}.lb-p{left:calc(50% - 60px)}.lb-n{right:calc(50% - 60px)}}
 @media(prefers-reduced-motion:reduce){.lb,.lb-fig img{transition:none}}
-
-/* STORIES — consistent photo size, no cropping (kept last so it wins) */
 #stories .shotimg{aspect-ratio:auto;height:clamp(240px,38vw,400px);background:var(--card);box-shadow:10px 10px 0 var(--ac)}
 #stories .shotimg img{width:100%;height:100%;object-fit:contain}
 #stories .th{width:96px;height:64px}
 #stories .xtext p{font-size:16px}
 #stories .xtext p:first-child{font-size:1.05rem}
 @media(min-width:861px){#stories .explore{grid-template-columns:minmax(0,.8fr) minmax(0,1.7fr);gap:40px}}
-
 .th[hidden]{display:none}
 .trav .thumbs.solo{display:none}
 @media (min-width: 861px) {
-  /* Make the hero section fill the viewport minus the 64px header */
-  .hero {
-    min-height: calc(100vh - 64px);
-    display: flex;
-    align-items: center;
-  }
-  
-  /* Increase the hero image size (original max-width was 354px) */
-  .hero-pic {
-    max-width: 500px; /* Adjust this value to your preferred size */
-  }
+  .hero {min-height: calc(100vh - 64px);display: flex;align-items: center;}
+  .hero-pic {max-width: 500px;}
 }
 </style>
 <script>
+window.R2_BASE="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev";
 window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)+1;
  if(k<E.length){im.dataset.k=k;im.src=im.dataset.base+"."+E[k]}else{im.removeAttribute("onerror")}};
 </script>
@@ -339,7 +297,6 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
  <nav class="links" id="links-desk" data-only="desk" aria-label="Primary"><a href="#work">Work</a><a href="#skills">Skills &amp; studies</a><a href="#blend">Design &amp; bar</a><a href="#contact">Contact</a></nav>
  <button id="menu" aria-expanded="false">Menu</button>
 </div></header>
-
 <div class="hero" id="top"><div class="wrap">
  <div class="hero-top">
   <h1><span>Robert</span><span>Eldridge III</span></h1>
@@ -347,8 +304,8 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
  </div>
  <div class="hero-pic"><div class="pal" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
   <div class="ph portrait hero-portraits">
-   <img class="hero-portrait-bar" src="images/robert-hero-bar.webp" alt="Robert Eldridge in a hospitality setting">
-   <img class="hero-portrait-design" src="images/robert-hero-desk.webp" alt="Robert Eldridge in a creative setting">
+   <img class="hero-portrait-bar" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/hero/robert-hero-bar.webp" alt="Robert Eldridge in a hospitality setting">
+   <img class="hero-portrait-design" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/hero/robert-hero-desk.webp" alt="Robert Eldridge in a creative setting">
   </div>
   <div class="cap"><span data-only="bar">Miami · New York · London</span><span data-only="desk">Miami · New York · Buenos Aires</span><span>MIAMIX / GLOBAL-MIX</span></div>
  </div>
@@ -358,9 +315,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
   <div class="lens" role="group" aria-label="Choose what to explore"><button id="lBar" aria-pressed="true">Behind the bar</button><button id="lDes" aria-pressed="false">At the desk</button></div>
  </div>
 </div></div>
-
 <main id="page">
-
 <section id="exp" data-only="bar">
   <div class="wrap">
     <div class="head">
@@ -384,7 +339,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
         <span class="when">2023 – mid 2025</span>
         <h3>Senior Consultant &amp; Project Manager</h3>
         <span class="org">Unfiltered Hospitality</span>
-        <p>Consulting allowed me to take the lessons of the bar beyond a single venue. I developed beverage menus and training programs for clients nationwide, including Capital One airport lounges, STARR Restaurants’ Le Coucou and Buddakan, and the Russian Tea Room. I also translated operational goals into practical systems for teams, vendors, budgets and service.</p>
+        <p>Consulting allowed me to take the lessons of the bar beyond a single venue. I developed beverage menus and training programs for clients nationwide, including 【entity-Capital One¦canonical_name=Capital One】 airport lounges, 【entity-STARR Restaurants¦canonical_name=STARR Restaurants】’ Le Coucou and Buddakan, and the Russian Tea Room. I also translated operational goals into practical systems for teams, vendors, budgets and service.</p>
       </article>
       <article class="card">
         <span class="when">2022 – 2023</span>
@@ -396,7 +351,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
         <span class="when">2020 – 2022</span>
         <h3>Travel Content Creator</h3>
         <span class="org">GLOBAL-MIX Travel</span>
-        <p>When the world slowed down, I found a new way to tell stories. Traveling by motorhome, I explored destinations, wineries and local cultures while creating content for GLOBAL-MIX Travel and Argentine media outlets, including Channel 7, Channel 13, Crónica and Flow. The experience expanded my creative perspective and connected hospitality with a much bigger world.</p>
+        <p>When the world slowed down, I found a new way to tell stories. Traveling by motorhome, I explored destinations, wineries and local cultures while creating content for GLOBAL-MIX Travel and Argentine media outlets, including 【entity-Channel 7¦canonical_name=Channel 7】, Channel 13, Crónica and Flow. The experience expanded my creative perspective and connected hospitality with a much bigger world.</p>
       </article>
       <article class="card">
         <span class="when">2019 – 2020</span>
@@ -425,7 +380,6 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     </div>
   </div>
 </section>
-
 <section id="stories" data-only="bar"><div class="wrap">
  <div class="head"><div><h2>Stories from the bar</h2><p class="lede">Two chapters from two different eras of my career. Click on the timelines to read switch between the stories.</p></div></div>
  <div class="explore chap">
@@ -437,74 +391,69 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
    <div class="xp" id="sp0" role="tabpanel">
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
     <div class="thumbs">
-     <button class="th" data-src="images/stories/awards-london.png" data-label="Awards night" data-cap="The World's 50 Best Bars awards in London, 2018."></button>
-     <button class="th" data-src="images/awards-dandelyan.jpeg" data-label="Dandelyan" data-cap="Guest bartending at Dandelyan, London, in 2017."></button>
-     <button class="th" data-src="images/stories/awards-madison.png" data-label="Madison" data-cap="Guest bartending at Madison rooftop bar, London."></button>
-     <button class="th" data-src="images/awards-ned.jpeg" data-label="The Ned" data-cap="Guest bartending at The Ned, London."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/stories/awards-london.png" data-label="Awards night" data-cap="The World's 50 Best Bars awards in London, 2018."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/stories/awards-dandelyan.jpeg" data-label="Dandelyan" data-cap="Guest bartending at Dandelyan, London, in 2017."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/stories/awards-madison.png" data-label="Madison" data-cap="Guest bartending at Madison rooftop bar, London."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/stories/awards-ned.jpeg" data-label="【entity-The Ned¦canonical_name=The Ned】" data-cap="Guest bartending at 【entity-The Ned¦canonical_name=The Ned】, London."></button>
     </div>
     <div class="xtext">
      <p>Some experiences stay with you long after the last drink is served. During my time with Broken Shaker, the bar earned international recognition on The World’s 50 Best Bars list, reaching No. 16 in 2016 and No. 18 in 2017. London became part of that journey, with visits in July 2017, October 2018, and July 2019.</p>
-     <p>Our first trip began with an invitation from Dandelyan for a Fourth of July American takeover. We brought a little Miami spirit to London, celebrating American hospitality, cocktails, and culture. The visits that followed offered opportunities to represent Miami, connect with the international hospitality community, and guest bartend at Madison rooftop bar and The Ned. During my second visit in 2018, Dandelyan claimed the No. 1 spot on The World’s 50 Best Bars list. I like to think I had a little something to do with the timing.</p>
+     <p>Our first trip began with an invitation from Dandelyan for a Fourth of July American takeover. We brought a little Miami spirit to London, celebrating American hospitality, cocktails, and culture. The visits that followed offered opportunities to represent Miami, connect with the international hospitality community, and guest bartend at Madison rooftop bar and 【entity-The Ned¦canonical_name=The Ned】. During my second visit in 2018, Dandelyan claimed the No. 1 spot on The World’s 50 Best Bars list. I like to think I had a little something to do with the timing.</p>
      <p>Those years reinforced something I've always believed: hospitality is more than what's in the glass. It's about culture, creativity, and the connections we create along the way.</p>
     </div>
    </div>
    <div class="xp" id="sp1" role="tabpanel" hidden>
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
     <div class="thumbs">
-     <button class="th" data-src="images/stories/capital-jfk.png" data-label="Airport lounges" data-cap="Capital One airport lounge JFK."></button>
-     <button class="th" data-src="images/stories/capital-las.png" data-label="Airport lounges" data-cap="Capital One airport lounges LAS."></button>
-     <button class="th" data-src="images/stories/le-coucou.png" data-label="Le Coucou" data-cap="Cocktails for STARR Restaurants’ Le Coucou, New York."></button>
-     <button class="th" data-src="images/stories/russian-tea.png" data-label="Russian Tea Room" data-cap="The Russian Tea Room, New York."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/stories/capital-jfk.png" data-label="Airport lounges" data-cap="【entity-Capital One¦canonical_name=Capital One】 airport lounge JFK."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/stories/capital-las.png" data-label="Airport lounges" data-cap="【entity-Capital One¦canonical_name=Capital One】 airport lounges LAS."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/stories/le-coucou.png" data-label="Le Coucou" data-cap="Cocktails for 【entity-STARR Restaurants¦canonical_name=STARR Restaurants】’ Le Coucou, New York."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/stories/russian-tea.png" data-label="Russian Tea Room" data-cap="The Russian Tea Room, New York."></button>
     </div>
     <div class="xtext">
      <p>My work eventually moved beyond the bar and onto the road. As a consultant, I developed cocktail menus, built beverage programs, and trained bartenders across the country.</p>
-     <p>Projects included Capital One airport lounges at DFW, IAD, DEN, LAS, and JFK, where I navigated the complexities of a large, multi-tiered operation while delivering Michelin-starred-level cocktail experiences through the right tools, training, and operational standards. In New York, I developed cocktails for STARR Restaurants, including Michelin-starred Le Coucou and Buddakan, and collaborated with the legendary Russian Tea Room to modernize its cocktail program while preserving the nostalgia and character that make it an institution.</p>
+     <p>Projects included 【entity-Capital One¦canonical_name=Capital One】 airport lounges at DFW, IAD, DEN, LAS, and JFK, where I navigated the complexities of a large, multi-tiered operation while delivering Michelin-starred-level cocktail experiences through the right tools, training, and operational standards. In New York, I developed cocktails for STARR Restaurants, including Michelin-starred Le Coucou and Buddakan, and collaborated with the legendary Russian Tea Room to modernize its cocktail program while preserving the nostalgia and character that make it an institution.</p>
      <p>Whether the room is an iconic restaurant or a busy airport lounge, the goal is the same: an experience that feels authentic, memorable, and distinctly its own.</p>
     </div>
    </div>
   </div>
  </div>
 </div></section>
-
 <section id="field" data-only="bar"><div class="wrap">
  <div class="head"><div><h2>Beyond the Bar</h2><p class="lede">Discovering the people, places, and traditions behind every pour.</p></div></div>
  <div class="explore trav">
   <div class="xlist" role="tablist" aria-label="Travel stops">
    <p class="grp">At the source</p>
-   <button role="tab" aria-selected="true" aria-controls="tp0" data-i="0"><span class="ttl">Michoacán, Mexico</span><span class="meta">LaLuna distillery</span></button>
+   <button role="tab" aria-selected="true" aria-controls="tp0" data-i="0"><span class="ttl">Michoacán, Mexico</span><span class="meta">【entity-LaLuna¦canonical_name=LaLuna】 distillery</span></button>
    <button role="tab" aria-selected="false" aria-controls="tp1" data-i="1"><span class="ttl">Guadalajara, Mexico</span><span class="meta">Patrón distillery · two visits</span></button>
-   <button role="tab" aria-selected="false" aria-controls="tp2" data-i="2"><span class="ttl">Puerto Rico</span><span class="meta">Don Q &amp; Bacardi</span></button>
+   <button role="tab" aria-selected="false" aria-controls="tp2" data-i="2"><span class="ttl">Puerto Rico</span><span class="meta">Don Q &amp; 【entity-Bacardi¦canonical_name=Bacardi】</span></button>
    <p class="grp">On the road, 2020 onward</p>
    <button role="tab" aria-selected="false" aria-controls="tp3" data-i="3"><span class="ttl">California &amp; Oregon</span><span class="meta">Wine country</span></button>
    <button role="tab" aria-selected="false" aria-controls="tp4" data-i="4"><span class="ttl">Argentina</span><span class="meta">Buenos Aires to Ushuaia</span></button>
   </div>
   <div class="xpanels">
-
-   <!-- STOP 1: LA LUNA -->
    <div class="xp" id="tp0" role="tabpanel">
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
     <div class="thumbs">
-       <button class="th" data-src="images/la-luna.jpeg" data-label="La Luna distillery" data-cap="La Luna’s artisanal mezcal distillery, Michoacán, Mexico."></button>
-       <button class="th" data-src="images/la-luna-morelia.jpeg" data-label="Morelia" data-cap="Morelia, our home base in Michoacán."></button>
-       <button class="th" data-src="images/la-luna-celebration.jpeg" data-label="The celebration" data-cap="La Luna’s welcome celebration at the distillery."></button>
-       <button class="th" data-src="images/la-luna-cellar.jpeg" data-label="Cellar speakeasy" data-cap="The hidden cellar speakeasy at La Luna."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/la-luna.jpeg" data-label="【entity-La Luna¦canonical_name=LaLuna】 distillery" data-cap="【entity-La Luna¦canonical_name=LaLuna】’s artisanal mezcal distillery, Michoacán, Mexico."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/la-luna-morelia.jpeg" data-label="Morelia" data-cap="Morelia, our home base in Michoacán."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/la-luna-celebration.jpeg" data-label="The celebration" data-cap="【entity-La Luna¦canonical_name=LaLuna】’s welcome celebration at the distillery."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/la-luna-cellar.jpeg" data-label="Cellar speakeasy" data-cap="The hidden cellar speakeasy at 【entity-La Luna¦canonical_name=LaLuna】."></button>
       </div>
     <div class="xtext">
-     <h3>La Luna — Michoacán, Mexico</h3>
-     <p>Some of my most memorable experiences in hospitality have taken place far from the bar. Working alongside distributors and spirits brands opened the door to the places where great products begin. In September 2022, I traveled to Michoacán, Mexico, to visit La Luna’s artisanal mezcal distillery, where generations of tradition and craftsmanship are reflected in every bottle.</p>
-     <p>Our home base was Morelia, a city rich in culture and character. Evenings led us to local discoveries, including a speakeasy known simply as Nameless. But the most unforgettable experience unfolded at the distillery itself. La Luna welcomed us with a celebration featuring live music, horseback riding, and a hidden cellar speakeasy of its own — an experience that brought the spirit of the region to life in a way no tasting ever could.</p>
+     <h3>【entity-La Luna¦canonical_name=LaLuna】 — Michoacán, Mexico</h3>
+     <p>Some of my most memorable experiences in hospitality have taken place far from the bar. Working alongside distributors and spirits brands opened the door to the places where great products begin. In September 2022, I traveled to Michoacán, Mexico, to visit 【entity-La Luna¦canonical_name=LaLuna】’s artisanal mezcal distillery, where generations of tradition and craftsmanship are reflected in every bottle.</p>
+     <p>Our home base was Morelia, a city rich in culture and character. Evenings led us to local discoveries, including a speakeasy known simply as Nameless. But the most unforgettable experience unfolded at the distillery itself. 【entity-La Luna¦canonical_name=LaLuna】 welcomed us with a celebration featuring live music, horseback riding, and a hidden cellar speakeasy of its own — an experience that brought the spirit of the region to life in a way no tasting ever could.</p>
      <p>That journey through Michoacán offered a deeper appreciation for mezcal — and for the people, traditions, and places behind it.</p>
     </div>
    </div>
-
-   <!-- STOP 2: PATRÓN -->
    <div class="xp" id="tp1" role="tabpanel" hidden>
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
     <div class="thumbs">
-       <button class="th" data-src="images/patron-mx.jpeg" data-label="Patrón distillery" data-cap="Patrón distillery, Guadalajara, Mexico."></button>
-       <button class="th" data-src="images/patron-hacienda.jpeg" data-label="The hacienda" data-cap="Hacienda Patrón, Jalisco."></button>
-       <button class="th" data-src="images/patron-agave.jpeg" data-label="Agave fields" data-cap="The agave landscape of Jalisco."></button>
-       <button class="th" data-src="images/patron-muertos.jpeg" data-label="Día de los Muertos" data-cap="Día de los Muertos celebration at the distillery, October 2019."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/patron-mx.jpeg" data-label="Patrón distillery" data-cap="Patrón distillery, Guadalajara, Mexico."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/patron-hacienda.jpeg" data-label="The hacienda" data-cap="Hacienda Patrón, Jalisco."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/patron-agave.jpeg" data-label="Agave fields" data-cap="The agave landscape of Jalisco."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/patron-muertos.jpeg" data-label="Día de los Muertos" data-cap="Día de los Muertos celebration at the distillery, October 2019."></button>
       </div>
     <div class="xtext">
      <h3>Patrón Tequila Hacienda Tours</h3>
@@ -512,32 +461,28 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
      <p>Nearly three years later, I was excited to return and see how much had evolved. By October 2019, Patrón had completed its overnight guest accommodations, creating a more immersive experience. Returning for a Día de los Muertos celebration held on-site at the distillery made the visit especially memorable—a chance to experience the spirit alongside the traditions and culture that give it character. I’m grateful to have had the Hacienda experience firsthand and to have gained a deeper appreciation for a spirit that has always been a personal favorite.</p>
     </div>
    </div>
-
-   <!-- STOP 3: PUERTO RICO -->
    <div class="xp" id="tp2" role="tabpanel" hidden>
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
     <div class="thumbs">
-       <button class="th" data-src="images/bacardi-pr.jpeg" data-label="Bacardí" data-cap="The Bacardí distillery, Puerto Rico."></button>
-       <button class="th" data-src="images/pr-cane-camp.jpeg" data-label="Cane Camp" data-cap="Cane Camp, the rum-education experience with Don Q."></button>
-       <button class="th" data-src="images/pr-don-q.jpeg" data-label="Don Q" data-cap="The Don Q distillery."></button>
-       <button class="th" data-src="images/pr-bioluminescence.jpeg" data-label="Bioluminescence" data-cap="A boat ride to see Puerto Rico’s bioluminescent waters."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/bacardi-pr.jpeg" data-label="【entity-Bacardí¦canonical_name=Bacardi】" data-cap="The 【entity-Bacardí¦canonical_name=Bacardi】 distillery, Puerto Rico."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/pr-cane-camp.jpeg" data-label="Cane Camp" data-cap="Cane Camp, the rum-education experience with Don Q."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/pr-don-q.jpeg" data-label="Don Q" data-cap="The Don Q distillery."></button>
+       <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/pr-bioluminescence.jpeg" data-label="Bioluminescence" data-cap="A boat ride to see Puerto Rico’s bioluminescent waters."></button>
       </div>
     <div class="xtext">
      <h3>Puerto Rico &amp; Cane Camp</h3>
      <p>My first visit to Puerto Rico came in March 2016 while scouting locations for a potential Broken Shaker pop-up. During the trip, I connected with Lush Life Productions, creators of Cane Camp, an immersive rum-education experience developed for bartenders in partnership with Don Q. I had the rare opportunity to experience the guided journey privately, accompanied only by the camp’s operators and guides rather than the usual group of bartenders. As part of the experience, we visited the Don Q distillery and Medalla Brewery, explored the island, and ended one evening with a boat ride to witness its extraordinary bioluminescent waters.</p>
-     <p>I returned in August 2019, this time visiting the Bacardí distillery. The tour offered another perspective on the island’s rum-making heritage, culminating in a particularly memorable keepsake: a gifted bottle of Bacardí 8, which I personally hand-dipped in wax to seal. While in San Juan, I also stopped at La Factoría, a fellow World’s 50 Best Bars destination. It was especially meaningful to experience their bar at home after having the pleasure of hosting their team for a Broken Shaker pop-up in Miami.</p>
+     <p>I returned in August 2019, this time visiting the 【entity-Bacardí¦canonical_name=Bacardi】 distillery. The tour offered another perspective on the island’s rum-making heritage, culminating in a particularly memorable keepsake: a gifted bottle of 【entity-Bacardí¦canonical_name=Bacardi】 8, which I personally hand-dipped in wax to seal. While in San Juan, I also stopped at La Factoría, a fellow World’s 50 Best Bars destination. It was especially meaningful to experience their bar at home after having the pleasure of hosting their team for a Broken Shaker pop-up in Miami.</p>
      <p>Over the years, Puerto Rico has become a place I’ve returned to for both work and leisure. From the traditions behind its iconic spirits to the natural beauty of its coastline and the people shaping its cocktail culture, each visit has offered a new appreciation for the island and its hospitality community.</p>
     </div>
    </div>
-
-   <!-- STOP 4: CALIFORNIA & OREGON -->
    <div class="xp" id="tp3" role="tabpanel" hidden>
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
     <div class="thumbs">
-     <button class="th" data-src="images/ca-winery.jpeg" data-label="California" data-cap="California wineries."></button>
-     <button class="th" data-src="images/or-winery.jpeg" data-label="Oregon" data-cap="Oregon wineries."></button>
-     <button class="th" data-src="images/ca-tasting.jpeg" data-label="Tasting" data-cap="A tasting on the road."></button>
-     <button class="th" data-src="images/motorhome-travel.jpeg" data-label="The motorhome" data-cap="Life on the road in the motorhome."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/ca-winery.jpeg" data-label="California" data-cap="California wineries."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/or-winery.jpeg" data-label="Oregon" data-cap="Oregon wineries."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/ca-tasting.jpeg" data-label="Tasting" data-cap="A tasting on the road."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/motorhome-travel.jpeg" data-label="The motorhome" data-cap="Life on the road in the motorhome."></button>
     </div>
     <div class="xtext">
      <p>When the pandemic brought hospitality to a standstill, it also created an opportunity to explore a different direction. Life on the road in a motorhome gave me the freedom to travel at a slower pace, work remotely, and expand my digital and media projects. Along the way, I began documenting destinations, wineries, and local cultures, creating content for GLOBAL-MIX Travel and Argentine media outlets including Channel 7, Channel 13, Crónica, and Flow.<p>
@@ -545,17 +490,15 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
      <p>One particularly memorable stop was Robert Mondavi Winery, where I enjoyed Fumé Blanc paired with caviar—an unexpected touch of luxury along the way. These journeys gave me a new appreciation for the places behind the products, while expanding how I approached storytelling, travel, and hospitality beyond the traditional bar and restaurant environment.</p>
     </div>
    </div>
-
-   <!-- STOP 5: ARGENTINA -->
    <div class="xp" id="tp4" role="tabpanel" hidden>
     <figure class="shot"><div class="shotimg ph"></div><figcaption></figcaption></figure>
     <div class="thumbs">
-     <button class="th" data-src="images/ar-buenos.jpeg" data-label="Buenos Aires" data-cap="Buenos Aires."></button>
-     <button class="th" data-src="images/ar-mendoza.jpeg" data-label="Mendoza" data-cap="Mendoza, on a winery tour."></button>
-     <button class="th" data-src="images/ar-bariloche.jpeg" data-label="Bariloche" data-cap="Bariloche."></button>
-     <button class="th" data-src="images/ar-ushuaia.jpeg" data-label="Ushuaia" data-cap="Ushuaia, at the end of the world."></button>
-     <button class="th" data-src="images/ar-Iguazu.jpeg" data-label="Iguazu" data-cap="Iguazu."></button>
-     <button class="th" data-src="images/ar-salta.jpeg" data-label="Salta" data-cap="Salta."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/ar-buenos.jpeg" data-label="Buenos Aires" data-cap="Buenos Aires."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/ar-mendoza.jpeg" data-label="Mendoza" data-cap="Mendoza, on a winery tour."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/ar-bariloche.jpeg" data-label="Bariloche" data-cap="Bariloche."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/ar-ushuaia.jpeg" data-label="Ushuaia" data-cap="Ushuaia, at the end of the world."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/ar-Iguazu.jpeg" data-label="Iguazu" data-cap="Iguazu."></button>
+     <button class="th" data-src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/travel/ar-salta.jpeg" data-label="Salta" data-cap="Salta."></button>
     </div>
     <div class="xtext">
      <p>Argentina gradually became another home base, with journeys often lasting months at a time rather than just a few days. Spending extended periods in different regions allowed me to settle into the rhythm of each place, experience local culture, and discover the country beyond its familiar landmarks. From the energy and European character of Buenos Aires to the vineyards of Mendoza, each destination revealed another side of Argentine life.</p>
@@ -563,24 +506,21 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
      </p>What began as travel gradually became a deeper connection to the country. The extended stays, changing landscapes, food, wine, and everyday encounters gave me an appreciation for Argentina that goes well beyond tourism. It's a place I continue to return to, with something new to discover each time.</p>
     </div>
    </div>
-
-  </div><!-- /xpanels -->
- </div><!-- /explore -->
+  </div>
+ </div>
  <p class="lede" style="margin-top:36px;max-width:62ch">Understanding a spirit means understanding its landscape, its producers, and the culture that gives it character.</p>
 </div></section>
-
 <section id="work" data-only="desk"><div class="wrap">
  <div class="head"><div><h2>Selected work</h2><p class="lede">Brand, web, print and photography for bars, restaurants and nightlife.</p></div>
   <div class="ctrl"><button data-d="-1" aria-label="Previous">Prev</button><button data-d="1" aria-label="Next">Next</button></div></div>
  <div class="tabs" id="filters"><button aria-pressed="true" data-f="all">All</button><button aria-pressed="false" data-f="brand">Brand</button><button aria-pressed="false" data-f="web">Web</button><button aria-pressed="false" data-f="print">Print</button><button aria-pressed="false" data-f="nightlife">Nightlife</button><button aria-pressed="false" data-f="photo">Photography</button></div>
  <div class="track snap" tabindex="0" role="region" aria-label="Design gallery">
-  <article class="card" data-c="brand web"><img class="ph" src="images/work/globalmix-travel.jpeg" data-base="images/work/globalmix-travel" onerror="imgFb(this)" alt="GLOBAL-MIX Travel" loading="lazy"><h3>GLOBAL-MIX Travel platform</h3><p>Brand strategy turned into a dynamic and extensive database of travel itineraries that span every continent.</p></article>
-  <article class="card" data-c="nightlife print"><img class="ph" src="images/work/cocktail-menus.jpeg" data-base="images/work/cocktail-menus" onerror="imgFb(this)" alt="Cocktail menus" loading="lazy"><h3>Cocktail menus</h3><p>Menu design at the intersection of hospitality and visual storytelling. From typography and layout to materials and print finishes, each menu is designed to complement the atmosphere of the room and the experience behind the bar.</p></article>
-  <article class="card" data-c="print"><img class="ph" src="images/work/screen-printing.jpeg" data-base="images/work/screen-printing" onerror="imgFb(this)" alt="Screen printing" loading="lazy"><h3>Screen printing</h3><p>An exploration of graphic design through traditional screen-printing techniques. Created during my vocational design studies, these prints brought composition, color, texture and craftsmanship together through hands-on experimentation.</p></article>
-  <article class="card" data-c="photo"><img class="ph" src="images/work/darkroom-photography.jpeg" data-base="images/work/darkroom-photography" onerror="imgFb(this)" alt="Darkroom photography" loading="lazy"><h3>Darkroom photography</h3><p>A study in light, composition and the art of the image. Developed during my vocational design studies, these black-and-white photographs explore traditional film photography and the tactile process of working in a darkroom.</p></article>
+  <article class="card" data-c="brand web"><img class="ph" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/work/globalmix-travel.jpeg" data-base="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/work/globalmix-travel" onerror="imgFb(this)" alt="GLOBAL-MIX Travel" loading="lazy"><h3>GLOBAL-MIX Travel platform</h3><p>Brand strategy turned into a dynamic and extensive database of travel itineraries that span every continent.</p></article>
+  <article class="card" data-c="nightlife print"><img class="ph" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/work/cocktail-menus.jpeg" data-base="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/work/cocktail-menus" onerror="imgFb(this)" alt="Cocktail menus" loading="lazy"><h3>Cocktail menus</h3><p>Menu design at the intersection of hospitality and visual storytelling. From typography and layout to materials and print finishes, each menu is designed to complement the atmosphere of the room and the experience behind the bar.</p></article>
+  <article class="card" data-c="print"><img class="ph" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/work/screen-printing.jpeg" data-base="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/work/screen-printing" onerror="imgFb(this)" alt="Screen printing" loading="lazy"><h3>Screen printing</h3><p>An exploration of graphic design through traditional screen-printing techniques. Created during my vocational design studies, these prints brought composition, color, texture and craftsmanship together through hands-on experimentation.</p></article>
+  <article class="card" data-c="photo"><img class="ph" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/work/darkroom-photography.jpeg" data-base="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/work/darkroom-photography" onerror="imgFb(this)" alt="Darkroom photography" loading="lazy"><h3>Darkroom photography</h3><p>A study in light, composition and the art of the image. Developed during my vocational design studies, these black-and-white photographs explore traditional film photography and the tactile process of working in a darkroom.</p></article>
  </div>
 </div></section>
-
 <section id="skills" data-only="desk">
   <div class="wrap">
     <div class="head">
@@ -591,21 +531,20 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
       <div>
         <h3>Where it started: Courtland Vocational School</h3>
         <p>My interest in design began at Courtland Vocational School in Virginia, where I completed a two-year graphic design program and graduated at the top of my class. The curriculum balanced creative exploration with technical discipline, teaching me how to translate ideas into finished work.</p>
-        <p>From Adobe Photoshop and early web coding to screen printing and traditional darkroom photography, I explored a range of creative disciplines. More importantly, I learned to think visually, pay attention to detail, and understand the process behind good design.</p>
+        <p>From 【entity-Adobe Photoshop¦canonical_name=Adobe Photoshop】 and early web coding to screen printing and traditional darkroom photography, I explored a range of creative disciplines. More importantly, I learned to think visually, pay attention to detail, and understand the process behind good design.</p>
         <p>Those skills followed me throughout my hospitality career. Menus, promotional materials, event flyers, and brand presentations became natural extensions of my work behind the bar — another way to approach business, branding, and creative problem-solving.</p>
         <p>Today, that foundation continues to evolve through digital design and web development, allowing me to take ideas from initial concept to visual identity and finished digital experience.</p>
       </div>
-      <img class="ph" src="images/work/miamix-office-night.webp" alt="MIAMIX office at night" loading="lazy" style="aspect-ratio:4/3;width:100%;object-fit:cover;padding:0;border:0">
+      <img class="ph" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/work/miamix-office-night.webp" alt="MIAMIX office at night" loading="lazy" style="aspect-ratio:4/3;width:100%;object-fit:cover;padding:0;border:0">
     </div>
     <div class="skills">
-      <div><h3>Visual design &amp; identity</h3><ul><li>Adobe Photoshop</li><li>Adobe Illustrator</li><li>Adobe InDesign</li><li>Brand identity development</li><li>Visual systems &amp; brand guidelines</li><li>Typography &amp; layout</li></ul></div>
+      <div><h3>Visual design &amp; identity</h3><ul><li>【entity-Adobe Photoshop¦canonical_name=Adobe Photoshop】</li><li>Adobe Illustrator</li><li>Adobe InDesign</li><li>Brand identity development</li><li>Visual systems &amp; brand guidelines</li><li>Typography &amp; layout</li></ul></div>
       <div><h3>Web &amp; digital</h3><ul><li>HTML &amp; CSS</li><li>Responsive web design</li><li>Jekyll &amp; Liquid</li><li>Landing page design</li><li>GitHub-based workflows</li><li>Digital content design</li></ul></div>
       <div><h3>Print &amp; production</h3><ul><li>Print layout &amp; design</li><li>Menus &amp; promotional materials</li><li>Screen printing</li><li>Production specifications</li><li>Prepress &amp; artwork preparation</li><li>Image retouching</li></ul></div>
       <div><h3>Photography &amp; image-making</h3><ul><li>Visual composition</li><li>Film developing</li><li>Darkroom printing</li><li>Digital image editing</li><li>Image preparation for print &amp; web</li></ul></div>
     </div>
   </div>
 </section>
-
 <section id="blend">
   <div class="wrap">
     <div class="head">
@@ -624,7 +563,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
       <div>
         <div class="ph" id="tph">
           <a id="menu-link" target="_blank" rel="noopener">
-            <img id="tpimg" src="images/cocktail-presentation.jpeg" alt="Cocktail presentation showcasing creative glassware, garnish and visual composition" loading="lazy">
+            <img id="tpimg" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/design/cocktail-presentation.jpeg" alt="Cocktail presentation showcasing creative glassware, garnish and visual composition" loading="lazy">
             <span class="menu-open" id="menu-open" hidden>View menu ↗</span>
           </a>
         </div>
@@ -639,7 +578,6 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     </div>
   </div>
 </section>
-
 <section id="book" data-only="bar">
   <div class="wrap">
     <div class="head">
@@ -649,7 +587,7 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
       </div>
     </div>
     <div class="book">
-      <img class="cover" src="images/book-cover.webp" alt="Behind The Bar, Beyond The Ordinary book cover" loading="lazy">
+      <img class="cover" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/book/book-cover.webp" alt="Behind The Bar, Beyond The Ordinary book cover" loading="lazy">
       <div>
         <h3><span>Behind The Bar</span><span>Beyond The Ordinary</span></h3>
         <p>Every bar has a story, and behind every great cocktail is usually a little more than one person's idea. The Bars That Made Me is a look back at the places, people, and creative experiences that shaped my journey through hospitality, from Atlanta to Miami and New York.</p>
@@ -668,19 +606,19 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     </div>
     <div class="track loop" tabindex="0" role="region" aria-label="Bars featured in the book">
       <article class="card">
-        <img class="ph" src="images/robert-ess-hero.webp" alt="Empire State South in Atlanta" loading="lazy">
+        <img class="ph" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/book/robert-ess-hero.webp" alt="Empire State South in Atlanta" loading="lazy">
         <span class="org">2011 – 2015</span>
         <h3>Empire State South</h3>
         <p>Where much of my foundation was built. My years at Empire State South were an introduction to the depth of modern restaurant hospitality, the discipline of a great beverage program, and the creative possibilities of the cocktail world. This chapter revisits the drinks, influences, and experiences that helped shape the bartender I would become.</p>
       </article>
       <article class="card">
-        <img class="ph" src="images/robert-shaker-mia%20.webp" alt="Broken Shaker Miami" loading="lazy">
+        <img class="ph" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/book/robert-shaker-mia.webp" alt="Broken Shaker Miami" loading="lazy">
         <span class="org">2015 – 2018</span>
         <h3>Broken Shaker Miami</h3>
         <p>A defining chapter, and one that took my career in directions I could never have anticipated. Broken Shaker was a place where creativity had room to flourish, where ingredients and inspiration came from unexpected places, and where the energy of Miami became part of the experience. These are the cocktails, collaborations, and memories from a time that put our little corner of Miami on the international hospitality map.</p>
       </article>
       <article class="card">
-        <img class="ph" src="images/robert-shaker-nyc.webp" alt="Broken Shaker NYC" loading="lazy">
+        <img class="ph" src="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev/book/robert-shaker-nyc.webp" alt="Broken Shaker NYC" loading="lazy">
         <span class="org">2018 – 2019</span>
         <h3>Broken Shaker New York</h3>
         <p>Taking a familiar creative spirit into a completely different city. New York brought a new rhythm, a different audience, and fresh opportunities to explore what made Broken Shaker special. This chapter captures the evolution of that experience, the people behind it, and the cocktails that became part of its New York story.</p>
@@ -688,7 +626,6 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     </div>
   </div>
 </section>
-
 <section id="tools-sec" data-only="bar">
   <div class="wrap">
     <div class="head">
@@ -735,16 +672,13 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     </div>
   </div>
 </section>
-
 </main>
-
 <div class="contact" id="contact"><div class="wrap">
  <h2>Let’s work together.</h2>
  <p id="cp"></p>
  <a class="btn p" href="mailto:robert@miamix.io">robert@miamix.io</a> <a class="btn" href="https://www.linkedin.com/in/robert-eldridge-91391a88">LinkedIn</a> <a class="btn" href="https://miamix.io">miamix.io</a>
 </div></div>
 <footer><div class="wrap"><span>© <span id="yr"></span> Robert Eldridge III · Miami, FL</span><a href="#top">Back to top</a></div></footer>
-
 <div class="cs" id="cs" role="dialog" aria-modal="true" aria-label="Case study presentation" hidden>
  <div class="cs-win" id="cs-win">
   <div class="cs-bar"><span class="cs-kick" id="cs-kick"></span><button type="button" class="cs-x" id="cs-x">Close ✕</button></div>
@@ -755,7 +689,6 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
   <div class="cs-nav"><button type="button" id="cs-prev" aria-label="Previous slide">Prev</button><span class="cs-count" id="cs-count"></span><span class="cs-concept">Concept project</span><button type="button" id="cs-next" aria-label="Next slide">Next</button></div>
  </div>
 </div>
-
 <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo gallery" hidden>
  <button type="button" class="lb-x" id="lb-x" aria-label="Close gallery">✕</button>
  <span class="lb-count" id="lb-count"></span>
@@ -763,10 +696,10 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
  <figure class="lb-fig"><img id="lb-img" alt=""><figcaption id="lb-cap"></figcaption></figure>
  <button type="button" class="lb-nav lb-n" id="lb-n" aria-label="Next photo">›</button>
 </div>
-
 <script>
 (function(){
  var R=document.documentElement,$=function(i){return document.getElementById(i)},reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+ var R2_BASE="https://pub-aa92f4267a7648af8d6f878cedc4d90f.r2.dev";
  var EXTS=["jpeg","jpg","webp","png"];
  function bare(s){return s.replace(/\.(jpe?g|png|webp)$/i,"")}
  function probe(src,cb){
@@ -785,20 +718,16 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
   if(fade&&!reduce){$("page").classList.add("out");setTimeout(go,250)}else go();
  }
  $("lBar").onclick=function(){lens("bar",1)};$("lDes").onclick=function(){lens("desk",1)};lens("bar");
-
  $("menu").onclick=function(){var o=!$("links-bar").classList.contains("open");
   ["links-bar","links-desk"].forEach(function(i){$(i).classList.toggle("open",o)});this.setAttribute("aria-expanded",o)};
  document.querySelectorAll(".links").forEach(function(l){l.onclick=function(){$("links-bar").classList.remove("open");$("links-desk").classList.remove("open")}});
-
  function loop(t){
   var rail=document.createElement("div");
   rail.className="rail";
   while(t.firstChild)rail.appendChild(t.firstChild);
   t.appendChild(rail);
-
   var items=[].slice.call(rail.children);
   var N=items.length,first=items[0];
-
   function cl(k){
     var c=k.cloneNode(true);
     c.setAttribute("aria-hidden","true");
@@ -807,47 +736,29 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
   }
   items.forEach(function(k){rail.insertBefore(cl(k),first)});
   items.forEach(function(k){rail.appendChild(cl(k))});
-
   var all=[].slice.call(rail.children);
   var iv=parseInt(t.dataset.interval)||0;
   var fx=t.hasAttribute("data-fx");
-
   var u=0,ready=false,hover=false,vis=true,anim=null,nextAt=0;
-
   function step(){return all[1].offsetLeft-all[0].offsetLeft}
   function go(to,dur){anim={f:u,t:to,s:performance.now(),d:dur}}
-
-  t._eng={
-    step:function(n){
-      if(!step())return;
-      nextAt=performance.now()+iv*1.6;
-      go(Math.round(anim?anim.t:u)+n,400);
-    }
-  };
-
+  t._eng={step:function(n){if(!step())return;nextAt=performance.now()+iv*1.6;go(Math.round(anim?anim.t:u)+n,400);}};
   function frame(now){
     if(!t.isConnected)return;
     var s=step();
     if(s>0){
       if(!ready){ready=true;nextAt=now+iv}
-
       if(anim){
         var k=Math.min(1,(now-anim.s)/anim.d);
         var e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2;
         u=anim.f+(anim.t-anim.f)*e;
         if(k>=1)anim=null;
-      }else if(iv&&!reduce&&vis&&!hover&&now>nextAt){
-        nextAt=now+iv;
-        go(Math.round(u)+1,450);
-      }
-
+      }else if(iv&&!reduce&&vis&&!hover&&now>nextAt){nextAt=now+iv;go(Math.round(u)+1,450);}
       var sh=0;
       while(u>=N){u-=N;sh-=N}
       while(u<0){u+=N;sh+=N}
       if(anim&&sh){anim.f+=sh;anim.t+=sh}
-
       rail.style.transform="translate3d("+(-(N+u)*s)+"px,0,0)";
-
       if(fx){
         for(var i=0;i<all.length;i++){
           var n=Math.min(1,Math.abs(i-N-u));
@@ -859,41 +770,21 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
-
   t.addEventListener("mouseenter",function(){hover=true});
   t.addEventListener("mouseleave",function(){hover=false;nextAt=performance.now()+iv});
   t.addEventListener("focusin",function(){hover=true});
   t.addEventListener("focusout",function(){hover=false;nextAt=performance.now()+iv});
-
   var sx=0,sy=0;
-  t.addEventListener("touchstart",function(e){
-    sx=e.touches[0].clientX;
-    sy=e.touches[0].clientY;
-  },{passive:true});
-  t.addEventListener("touchend",function(e){
-    var dx=e.changedTouches[0].clientX-sx;
-    var dy=e.changedTouches[0].clientY-sy;
-    if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)*1.5){
-      t._eng.step(dx<0?1:-1);
-    }
-  },{passive:true});
-  t.addEventListener("keydown",function(e){
-    if(e.key==="ArrowRight"){e.preventDefault();t._eng.step(1)}
-    else if(e.key==="ArrowLeft"){e.preventDefault();t._eng.step(-1)}
-  });
-
-  if("IntersectionObserver" in window){
-    new IntersectionObserver(function(en){vis=en[0].isIntersecting}).observe(t);
-  }
+  t.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY;},{passive:true});
+  t.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx;var dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>40&&Math.abs(dx)>Math.abs(dy)*1.5){t._eng.step(dx<0?1:-1);}},{passive:true});
+  t.addEventListener("keydown",function(e){if(e.key==="ArrowRight"){e.preventDefault();t._eng.step(1)}else if(e.key==="ArrowLeft"){e.preventDefault();t._eng.step(-1)}});
+  if("IntersectionObserver" in window){new IntersectionObserver(function(en){vis=en[0].isIntersecting}).observe(t);}
  }
-
  document.querySelectorAll(".track.loop").forEach(loop);
  document.querySelectorAll(".ctrl").forEach(function(c){
   c.querySelectorAll("[data-d]").forEach(function(b){b.onclick=function(){var t=c.closest(".head").parentNode.querySelector(".track"),n=+b.dataset.d;
    if(t._eng)t._eng.step(n);else t.scrollBy({left:n*Math.min(380,t.clientWidth*.85),behavior:"smooth"})}});
  });
-
- // Full-screen photo gallery (used by Beyond the Bar)
  var lbList=[],lbIdx=0,lbIsOpen=false,lbRet=null,lbOnShow=null;
  function lbRender(){
   var it=lbList[lbIdx],one=lbList.length<2;
@@ -928,8 +819,6 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
  var lbx=0;
  $("lb").addEventListener("touchstart",function(e){lbx=e.touches[0].clientX},{passive:true});
  $("lb").addEventListener("touchend",function(e){var d=e.changedTouches[0].clientX-lbx;if(Math.abs(d)>50)lbStep(d<0?1:-1)},{passive:true});
-
- // story / travel explorers (tabs + photo switcher)
  document.querySelectorAll(".explore").forEach(function(ex){
   var tabs=[].slice.call(ex.querySelectorAll('[role="tab"]')),panels=[].slice.call(ex.querySelectorAll(".xp"));
   function sel(i,focus){
@@ -986,11 +875,8 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
     box.addEventListener("keydown",function(e){if(e.key==="Enter"||e.key==="Space"||e.key===" "){e.preventDefault();openGal()}});
    }
   });
-  
     sel(0);
   });
-
- // Selected work: loop carousel (rebuilt when a filter is chosen)
  var workCards=[].slice.call(document.querySelectorAll("#work .card")).map(function(c){return c.cloneNode(true)});
  function buildWork(f){
   var old=document.querySelector("#work .track"),nt=document.createElement("div");
@@ -1008,33 +894,17 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
   buildWork(f);
  };
  buildWork("all");
-
- // Design that works in the room
  var TP = [
-  [
-    "Menu design",
-    "A menu is more than a list of offerings; it’s a window into the business. Through thoughtful typography, hierarchy, format, and beverage knowledge, I approach menu design as a way to express a venue’s identity, communicate its vision, and guide the guest experience."
-  ],
-  [
-    "Cocktail presentation",
-    "The design continues beyond the page. Color, glassware, garnish, proportion and presentation all contribute to how a drink is experienced. My background behind the bar informs how I approach the visual details of a cocktail—from its first impression to its final presentation."
-  ],
-  [
-    "Digital & environmental",
-    "In a live environment, information has to be understood quickly. I consider how digital screens, event graphics and in-venue signage communicate within a space—balancing visibility, consistency and the movement of the room."
-  ],
-  [
-    "Brand identity",
-    "A strong identity should feel connected wherever it appears. I develop visual direction that carries across menus, promotional materials, digital assets and the guest experience, creating a cohesive expression of the venue, event or brand."
-  ]
+  ["Menu design","A menu is more than a list of offerings; it’s a window into the business. Through thoughtful typography, hierarchy, format, and beverage knowledge, I approach menu design as a way to express a venue’s identity, communicate its vision, and guide the guest experience."],
+  ["Cocktail presentation","The design continues beyond the page. Color, glassware, garnish, proportion and presentation all contribute to how a drink is experienced. My background behind the bar informs how I approach the visual details of a cocktail—from its first impression to its final presentation."],
+  ["Digital & environmental","In a live environment, information has to be understood quickly. I consider how digital screens, event graphics and in-venue signage communicate within a space—balancing visibility, consistency and the movement of the room."],
+  ["Brand identity","A strong identity should feel connected wherever it appears. I develop visual direction that carries across menus, promotional materials, digital assets and the guest experience, creating a cohesive expression of the venue, event or brand."]
  ];
-
- // Menu previews: update the paths below if your folders differ
- var DEFAULT_IMG={base:"images/cocktail-presentation",alt:"Cocktail presentation showcasing creative glassware, garnish and visual composition"};
+ var DEFAULT_IMG={base:R2_BASE+"/design/cocktail-presentation",alt:"Cocktail presentation showcasing creative glassware, garnish and visual composition"};
  var MENUS={
-  food:{pos:"50% 0%",image:"images/menu-food-preview.jpeg",url:"casacampo/menus/food-preview.pdf",alt:"Food menu design preview. Click to open the full menu."},
-  wine:{pos:"50% 0%",image:"images/menu-wine-preview.jpeg",url:"casacampo/menus/wine-preview.pdf",alt:"Wine list design preview. Click to open the full menu."},
-  cocktails:{pos:"50% 0%",image:"images/menu-cocktail-preview.jpeg",url:"casacampo/menus/cocktail-preview.pdf",alt:"Cocktail menu design preview. Click to open the full menu."}
+  food:{pos:"50% 0%",image:R2_BASE+"/design/menu-food-preview.jpeg",url:"casacampo/menus/food-preview.pdf",alt:"Food menu design preview. Click to open the full menu."},
+  wine:{pos:"50% 0%",image:R2_BASE+"/design/menu-wine-preview.jpeg",url:"casacampo/menus/wine-preview.pdf",alt:"Wine list design preview. Click to open the full menu."},
+  cocktails:{pos:"50% 0%",image:R2_BASE+"/design/menu-cocktail-preview.jpeg",url:"casacampo/menus/cocktail-preview.pdf",alt:"Cocktail menu design preview. Click to open the full menu."}
  };
  var menuKey="food";
  function setMenu(key){
@@ -1045,33 +915,28 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
   $("menu-link").setAttribute("aria-label",m.alt);
   document.querySelectorAll("#menutabs button").forEach(function(b){b.setAttribute("aria-pressed",b.dataset.menu===key)});
  }
- // Image loader: tries several file extensions so jpeg / jpg / webp / png all work.
- // Names are case-sensitive on most web hosts, so match your file names exactly.
- var EXTS=["jpeg","jpg","webp","png"];
  function loadImg(im,base,fail){
   var k=0;
   im.onerror=function(){k++;if(k<EXTS.length){im.src=base+"."+EXTS[k]}else{im.onerror=null;if(fail)fail()}};
   im.src=base+"."+EXTS[0];
  }
- // Case studies: use file names WITHOUT the extension. Edit paths here.
  var CS={
-  brand:{kick:"Brand identity · 01 · Casa Campo: Identity System",preview:"images/casa-campo-identity-preview",alt:"Casa Campo identity system preview. Click to open the full presentation.",
+  brand:{kick:"Brand identity · 01 · Casa Campo: Identity System",preview:R2_BASE+"/design/casa-campo-identity-preview",alt:"Casa Campo identity system preview. Click to open the full presentation.",
    slides:[
-    {n:"01 — The primary mark",t:"Casa Campo",d:"A wordmark with a point of view, paired with a compact CC monogram. Cocina · Vino · Campo.",img:"images/casa-campo/identity-01-mark"},
-    {n:"02 — The visual language",t:"Olive, terra and sand",d:"An expressive serif for headlines and a clean sans for supporting information. Fine rules, restrained framing and subtle botanical or topographic motifs.",img:"images/casa-campo/identity-02-language",sw:[["Olive","#44513C"],["Terra","#8F4632"],["Sand","#E6DDCD"],["Ivory","#FAF7F0"]]},
-    {n:"03 — The system in use",t:"One identity, many objects",d:"Business cards, menu covers, coasters and matchbooks, and bottle labels, all clearly the same brand.",img:"images/casa-campo/identity-03-applications"},
-    {n:"04 — Menus",t:"Wine list, cocktails and food",d:"The menus carry the system onto the table, so the brand keeps working as the restaurant grows.",img:"images/casa-campo/identity-04-menus"}
+    {n:"01 — The primary mark",t:"Casa Campo",d:"A wordmark with a point of view, paired with a compact CC monogram. Cocina · Vino · Campo.",img:R2_BASE+"/design/casa-campo/identity-01-mark"},
+    {n:"02 — The visual language",t:"Olive, terra and sand",d:"An expressive serif for headlines and a clean sans for supporting information. Fine rules, restrained framing and subtle botanical or topographic motifs.",img:R2_BASE+"/design/casa-campo/identity-02-language",sw:[["Olive","#44513C"],["Terra","#8F4632"],["Sand","#E6DDCD"],["Ivory","#FAF7F0"]]},
+    {n:"03 — The system in use",t:"One identity, many objects",d:"Business cards, menu covers, coasters and matchbooks, and bottle labels, all clearly the same brand.",img:R2_BASE+"/design/casa-campo/identity-03-applications"},
+    {n:"04 — Menus",t:"Wine list, cocktails and food",d:"The menus carry the system onto the table, so the brand keeps working as the restaurant grows.",img:R2_BASE+"/design/casa-campo/identity-04-menus"}
    ]},
-  env:{kick:"Digital & environmental · 02 · Casa Campo: A Brand You Can Move Through",preview:"images/casa-campo-environmental-preview",alt:"Casa Campo digital and environmental preview. Click to open the full presentation.",
+  env:{kick:"Digital & environmental · 02 · Casa Campo: A Brand You Can Move Through",preview:R2_BASE+"/design/casa-campo-environmental-preview",alt:"Casa Campo digital and environmental preview. Click to open the full presentation.",
    slides:[
-    {n:"01 — Arrival",t:"The first impression",d:"Exterior sign, entrance plaque and window graphics set the tone before a guest steps inside.",img:"images/casa-campo/env-01-arrival"},
-    {n:"02 — Wayfinding",t:"Finding the way",d:"Directional signs, restroom markers, and identification for the patio and dining areas.",img:"images/casa-campo/env-02-wayfinding"},
-    {n:"03 — The table",t:"Every touchpoint",d:"Menus, table numbers, coasters and reservation cards. The details guests hold and remember.",img:"images/casa-campo/env-03-table"},
-    {n:"04 — The digital experience",t:"Before and after the visit",d:"Mobile menu, website, event announcements and digital displays extend the brand beyond the room.",img:"images/casa-campo/env-04-digital"}
+    {n:"01 — Arrival",t:"The first impression",d:"Exterior sign, entrance plaque and window graphics set the tone before a guest steps inside.",img:R2_BASE+"/design/casa-campo/env-01-arrival"},
+    {n:"02 — Wayfinding",t:"Finding the way",d:"Directional signs, restroom markers, and identification for the patio and dining areas.",img:R2_BASE+"/design/casa-campo/env-02-wayfinding"},
+    {n:"03 — The table",t:"Every touchpoint",d:"Menus, table numbers, coasters and reservation cards. The details guests hold and remember.",img:R2_BASE+"/design/casa-campo/env-03-table"},
+    {n:"04 — The digital experience",t:"Before and after the visit",d:"Mobile menu, website, event announcements and digital displays extend the brand beyond the room.",img:R2_BASE+"/design/casa-campo/env-04-digital"}
    ]}
  };
  var csKey="brand",csIdx=0,csIsOpen=false,csReturn=null;
-
  function csRender(){
   var c=CS[csKey],sl=c.slides[csIdx],im=$("cs-img");
   $("cs-kick").textContent=c.kick;$("cs-n").textContent=sl.n;$("cs-t").textContent=sl.t;$("cs-d").textContent=sl.d;
@@ -1121,7 +986,6 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
  var csx=0;
  $("cs").addEventListener("touchstart",function(e){csx=e.touches[0].clientX},{passive:true});
  $("cs").addEventListener("touchend",function(e){var d=e.changedTouches[0].clientX-csx;if(Math.abs(d)>60)csStep(d<0?1:-1)},{passive:true});
-
  function setCase(key){
   csKey=key;var c=CS[key],im=$("tpimg");
   im.alt=c.alt;loadImg(im,c.preview);
@@ -1162,7 +1026,6 @@ window.imgFb=function(im){var E=["jpeg","jpg","webp","png"],k=(+im.dataset.k||0)
  $("menutabs").onclick=function(e){var b=e.target.closest("button");if(b&&b.dataset.menu)setMenu(b.dataset.menu)};
  tp(0);
  $("yr").textContent=new Date().getFullYear();
-
 })();
 </script>
 </body>
