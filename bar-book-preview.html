@@ -77,7 +77,6 @@ button.tlink{background:none;border:none;padding:0;cursor:pointer;font:inherit}
 .build-sec h4{font:700 12px var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--fg);margin-bottom:6px}
 .build-sec ul{padding-left:18px;color:var(--mut);font-size:14px;line-height:1.6}.build-sec li{margin-bottom:3px;overflow-wrap:anywhere}
 .build-sec p{color:var(--mut);font-size:14px;line-height:1.6;overflow-wrap:anywhere;white-space:pre-wrap}.build-sec p+p{margin-top:6px}
-.pill{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);padding:4px 8px;color:var(--mut);margin-right:6px;margin-bottom:4px}
 .empty{border:1px dashed var(--mut);padding:28px;text-align:center;color:var(--mut);background:var(--card)}
 .dots{display:flex;gap:6px;align-items:center;flex-wrap:wrap}.dots button{width:9px;height:9px;border-radius:50%;border:1px solid var(--mut);background:transparent;cursor:pointer;padding:0}.dots button[aria-current="true"]{background:var(--ac);border-color:var(--ac)}
 .contact{background:var(--ct);color:var(--onct);padding:80px 0}.contact h2{font-size:clamp(2.6rem,8vw,6rem)}.contact p{max-width:52ch;margin:16px 0 28px}.contact .btn{border-color:var(--onct);color:var(--onct)}.contact .btn.p{background:var(--onct);color:var(--ct);border-color:var(--onct)}
@@ -89,7 +88,7 @@ footer{padding:28px 0;color:var(--ft);font-size:15px;font-weight:600}footer .wra
 <header class="bar"><div class="wrap nav"><a class="logo" href="https://globalmix.network/robert-eldridge.html">Robert Eldridge III</a><nav class="links" aria-label="Primary"><a href="#scenes">Scenes</a><a href="#book">Bar Book</a><a href="#contact">Contact</a></nav><div class="nav-right"><div class="lens" role="group" aria-label="Choose what to explore"><button type="button" data-lens-value="bar" aria-pressed="false">Behind the bar</button><button type="button" data-lens-value="desk" aria-pressed="true">At the desk</button></div></div></div></header>
 <main>
 <div class="hero" id="top"><div class="wrap"><div class="hero-top"><p class="kicker">The Bar Book · Behind The Bar — Beyond The Ordinary</p><h1><span>Behind The Bar</span><span>Beyond The Ordinary</span></h1><p class="tag">Fifteen years in hospitality, shaped by Atlanta, Miami and New York.</p></div><div class="hero-pic"><div class="pal" aria-hidden="true"><i></i><i></i><i></i><i></i></div><div class="hero-card"><div class="hero-big"><em>507</em> recipes</div><p>Every build, every house-made — from Atlanta, Miami and New York.</p><div class="venue-rows"><div class="venue-row"><span><strong>Atlanta</strong> · Empire State South</span></div><div class="venue-row"><span><strong>Miami</strong> · Broken Shaker</span></div><div class="venue-row"><span><strong>New York</strong> · Broken Shaker NY</span></div></div></div><div class="cap"><span>Miami · New York · Atlanta</span><span>MIAMIX / GLOBAL-MIX</span></div></div><div class="hero-act"><p class="tag2">Browse the collection by scene.</p><div class="cta"><a class="btn p" href="#book">Browse the book</a><a class="tlink" href="#scenes">See the three scenes</a></div><div class="lens" role="group" aria-label="Choose what to explore"><button type="button" data-lens-value="bar" aria-pressed="false">Behind the bar</button><button type="button" data-lens-value="desk" aria-pressed="true">At the desk</button></div></div></div></div>
-<section id="scenes"><div class="wrap"><div class="head"><div><p class="kicker">Three scenes</p><h2>Three venues, one book</h2><p class="lede">A career shaped by hospitality, creative thinking and the people behind the places. Each scene is told in nine chapters sorted by spirits.</p></div></div><div class="scene-grid" id="scene-grid"></div></div></section>
+<section id="scenes"><div class="wrap"><div class="head"><div><p class="kicker">Three scenes</p><h2>Three venues, one book</h2><p class="lede">A career shaped by hospitality, creative thinking and the people behind the places. Each scene is told in nine chapters.</p></div></div><div class="scene-grid" id="scene-grid"></div></div></section>
 <section id="book" style="padding-top:56px"><div class="wrap"><div class="head"><div><p class="kicker">The Bar Book</p><h2>THE RECIPE COLLECTION<br>Nine Chapters</h2><p class="lede">A personal collection of cocktails, stories, and the bars that shaped the journey.</p></div><div></div></div>
 <div class="controls"><div class="controls-inner"><div class="search-row"><div class="search-wrap"><label for="recipe-search">Search</label><input id="recipe-search" type="search" placeholder="Drink, ingredient, spirit…" aria-label="Search recipes" value=""></div></div><nav class="scene-nav-links" aria-label="Choose a scene to load"><button type="button" data-scene-btn="atlanta" aria-pressed="true">Scene 01 · ATLANTA</button><button type="button" data-scene-btn="miami" aria-pressed="false">Scene 02 · MIAMI</button><button type="button" data-scene-btn="new-york" aria-pressed="false">Scene 03 · NEW YORK</button></nav><div class="result-line"><span id="result-count">Atlanta</span></div></div></div>
 <div id="status" class="status" role="status">Loading Atlanta…</div>
@@ -121,19 +120,16 @@ document.querySelectorAll('.lens button').forEach(function(btn){
 });
 function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
 function cardHTML(c){
-  var pills=(c.pills||[]).map(function(p){return '<span class="pill">'+esc(p)+'</span>';}).join('');
   var ings=(c.ingredients||[]).map(function(i){return '<p>'+esc(i)+'</p>';}).join('');
   return '<article class="gallery-card" data-card-id="'+esc(c.id)+'" tabindex="0">'
     +'<span class="when">'+esc(c.when)+'</span>'
     +'<span class="org">'+esc(c.org)+'</span>'
     +'<h3>'+esc(c.name)+'</h3>'
-    +'<div>'+pills+'</div>'
     +'<div class="build">'
     +'<div class="build-sec"><h4>Cocktail Ingredients</h4>'+(ings||'<p>—</p>')+'</div>'
     +'<div class="build-sec"><h4>Technique</h4><p>'+esc(c.technique||'—')+'</p></div>'
     +'<div class="build-sec"><h4>Glassware &amp; Garnish</h4><p>'+esc(c.glassware||'—')+'</p></div>'
-    +'<div class="build-sec"><h4>House Made Ingredients</h4><p>'+esc(c.houseMade||'None — no house-made ingredient in this build.')+'</p></div>'
-    +'<div class="build-sec"><h4>Spirit Descriptions &amp; Substitutions</h4><p>'+esc(c.spiritNotes||'')+'</p></div>'
+    +'<div class="build-sec"><h4>House Made Ingredients</h4><p>'+esc((function(h){ h=String(h||'').trim(); if(!h || h.toLowerCase().indexOf('no house-made')!==-1) return 'None'; return h; })(c.houseMade))+'</p></div>'
     +'</div></article>';
 }
 function chapterHTML(scene, ch, isFirst){
@@ -272,9 +268,9 @@ function bindCarousels(){
 }
 // --- Selected-scene only loading ---
 var SCENES_META=[
-  {sceneId:'atlanta',scene:'ATLANTA',venue:'Empire State South',tagline:'The Foundation.',blurb:'Atlanta was where I discovered the connection between cocktails, culinary technique, and creativity. At Empire State South, working alongside talented chefs shaped my approach to ingredients and laid the foundation for my craft behind the bar.'},
-  {sceneId:'miami',scene:'MIAMI',venue:'Broken Shaker',tagline:'Finding a Creative Voice.',blurb:'Miami was where I found my creative voice. At Broken Shaker, fresh ingredients, experimentation, and collaboration shaped my approach to cocktails and introduced me to a bar culture that reached far beyond Miami.'},
-  {sceneId:'new-york',scene:'NEW YORK',venue:'Broken Shaker NY',tagline:'Building Beyond the Bar.',blurb:'New York challenged me to help build Broken Shaker from the ground up. Opening the Gramercy location taught me to balance creative vision with planning, teamwork, and the discipline required to bring a bar to life.'}
+  {sceneId:'atlanta',scene:'ATLANTA',venue:'Empire State South',tagline:'Southern roots, first service.',blurb:'Where it started — Southern hospitality, classic builds, and the discipline of a busy dining room.'},
+  {sceneId:'miami',scene:'MIAMI',venue:'Broken Shaker',tagline:'Tropical, loud, alive.',blurb:'Freezer-cold, garden-fresh, and built for volume — Miami taught speed without losing soul.'},
+  {sceneId:'new-york',scene:'NEW YORK',venue:'Broken Shaker NY',tagline:'Precision under pressure.',blurb:'New York sharpened everything — tighter specs, deeper spirits knowledge, faster decisions.'}
 ];
 var sceneCache={};
 var currentSceneId='atlanta';
