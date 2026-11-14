@@ -20,11 +20,6 @@
           "name": "Bourbon Flip",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Whiskey",
-          "pills": [
-            "Atlanta",
-            "Chapter 1",
-            "House-made"
-          ],
           "ingredients": [
             "2.0 oz Russells Reserve",
             "1.0 oz Molasses Simple",
@@ -33,19 +28,13 @@
           ],
           "technique": "Combine and dry shake. Then shake again with ice",
           "glassware": "Martini glass — Garnish: Grated nutmeg",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-davila-30",
           "name": "Davila",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Agave (Tequila & Mezcal)",
-          "pills": [
-            "Atlanta",
-            "Chapter 1",
-            "House-made"
-          ],
           "ingredients": [
             "1.5 oz Espolon Reposado",
             "0.5 oz Antica Carpano",
@@ -55,19 +44,13 @@
           ],
           "technique": "Stir all with ice Strain into chilled coupe. Top with bitters",
           "glassware": "Chilled coupe — Garnish: Flamed Orange peel",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-death-in-gulfstream-32",
           "name": "Death in Gulfstream",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Gin",
-          "pills": [
-            "Atlanta",
-            "Chapter 1",
-            "House-made"
-          ],
           "ingredients": [
             "2.0 oz Genever",
             "1.0 oz lime",
@@ -76,8 +59,7 @@
           ],
           "technique": "Build everything except bitters. Swizzle until glass is cold. Float Angostura",
           "glassware": "Collins glass / Crushed ice — Garnish: Lime twist",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         }
       ]
     },
@@ -93,11 +75,6 @@
           "name": "Alpine Summer",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Gin",
-          "pills": [
-            "Atlanta",
-            "Chapter 2",
-            "House-made"
-          ],
           "ingredients": [
             "1.0 oz Hayman's Royal Dock Gin",
             "0.75 oz Dolin Genepi",
@@ -109,19 +86,13 @@
           ],
           "technique": "Shake, Fine Strain up, top with prosecco",
           "glassware": "Leopold Coupe",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-aviation-6",
           "name": "Aviation",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Gin",
-          "pills": [
-            "Atlanta",
-            "Chapter 2",
-            "House-made"
-          ],
           "ingredients": [
             "2.0 oz Gin",
             "0.5 oz lemon juice",
@@ -130,19 +101,13 @@
           ],
           "technique": "Shake all ingredients, Fine strain",
           "glassware": "Chilled coupe — Garnish: Lemon twist",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-bees-knees-8",
           "name": "Bees Knees",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Gin",
-          "pills": [
-            "Atlanta",
-            "Chapter 2",
-            "House-made"
-          ],
           "ingredients": [
             "2.0 oz Gin",
             "1.0 oz Honey Syrup",
@@ -150,8 +115,7 @@
           ],
           "technique": "Combine ingredients and shake with ice. Fine strain up",
           "glassware": "Coupe",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         }
       ]
     },
@@ -167,11 +131,6 @@
           "name": "Afternoon Howdy",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Rum / Rhum",
-          "pills": [
-            "Atlanta",
-            "Chapter 3",
-            "House-made"
-          ],
           "ingredients": [
             "1.0 oz Rhum St. James",
             "0.75 oz Montenegro",
@@ -181,19 +140,13 @@
           ],
           "technique": "Stir no less than 18 seconds",
           "glassware": "Rocks glass / three cubes — Garnish: Flame orange disk",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-bali-hai-7",
           "name": "Bali Hai",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Rum/Rhum",
-          "pills": [
-            "Atlanta",
-            "Chapter 3",
-            "House-made"
-          ],
           "ingredients": [
             "0.75 oz Rhum Clement",
             "0.75 oz Blackwell Rum",
@@ -205,19 +158,13 @@
           ],
           "technique": "Stir with whole ice",
           "glassware": "Chilled rocks glass / three fresh ice cubes — Garnish: Lime peel twist",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-chocolate-cocktail-22",
           "name": "Chocolate Cocktail",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Rum/Rhum",
-          "pills": [
-            "Atlanta",
-            "Chapter 3",
-            "House-made"
-          ],
           "ingredients": [
             "0.5 oz Banks white Rum",
             "1.0 oz Creme de cacao",
@@ -226,8 +173,7 @@
           ],
           "technique": "Combine ingredients and shake with ice, Fine strain",
           "glassware": "Chilled Leopold coupe",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         }
       ]
     },
@@ -243,11 +189,6 @@
           "name": "Andalusian Gypsy",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Whiskey",
-          "pills": [
-            "Atlanta",
-            "Chapter 4",
-            "House-made"
-          ],
           "ingredients": [
             "1.0 oz Manzanilla Sherry",
             "1.0 oz Isle of Skye Scotch",
@@ -257,19 +198,13 @@
           ],
           "technique": "Stir all ingredients except bitters. Strain up",
           "glassware": "Small Coupe — Garnish: Express lemon peel, top with bitters",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-benny-joy-9",
           "name": "Benny Joy",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Whiskey",
-          "pills": [
-            "Atlanta",
-            "Chapter 4",
-            "House-made"
-          ],
           "ingredients": [
             "1.0 oz Pecan Bourbon",
             "1.0 oz Calvados",
@@ -279,19 +214,13 @@
           ],
           "technique": "Combine ingredients and shake with ice, Fine strain",
           "glassware": "Rocks glass / two medium cubes",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-blood-and-sand-12",
           "name": "Blood and Sand",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Whiskey",
-          "pills": [
-            "Atlanta",
-            "Chapter 4",
-            "House-made"
-          ],
           "ingredients": [
             "1.0 oz Scotch",
             "0.75 oz Cocchi Vermouth di Torino",
@@ -301,8 +230,7 @@
           ],
           "technique": "Combine in mixing glass shake. Fine strain",
           "glassware": "Rocks glass / fresh ice",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         }
       ]
     },
@@ -318,11 +246,6 @@
           "name": "Abner Jay, The",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Agave (Tequila & Mezcal)",
-          "pills": [
-            "Atlanta",
-            "Chapter 5",
-            "House-made"
-          ],
           "ingredients": [
             "1.0 oz Sombra Mezcal",
             "1.0 oz Oloroso Sherry",
@@ -333,19 +256,13 @@
           ],
           "technique": "Combine & Shake. Fine Strain",
           "glassware": "Small coupe",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-fever-dream-42",
           "name": "Fever Dream",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Agave (Tequila & Mezcal)",
-          "pills": [
-            "Atlanta",
-            "Chapter 5",
-            "House-made"
-          ],
           "ingredients": [
             "1.5 oz Sombra Mezcal",
             "0.5 oz Amaro Abano",
@@ -355,19 +272,13 @@
           ],
           "technique": "Combine all but Creme de Menthe, Stir with ice. Strain into rinsed coupe",
           "glassware": "Chilled coupe / Creme de Menthe rinse — Garnish: Candied kumquat",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-green-eyed-bandit-52",
           "name": "Green Eyed Bandit",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Agave (Tequila & Mezcal)",
-          "pills": [
-            "Atlanta",
-            "Chapter 5",
-            "House-made"
-          ],
           "ingredients": [
             "1.5 oz Crema de Mezcal",
             "0.75 oz Breckinridge Bitter",
@@ -379,8 +290,7 @@
           ],
           "technique": "Muddle cucumber, add rest but pepper. Shake, fine strain",
           "glassware": "Fresh ice — Garnish: Garnish with pepper",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         }
       ]
     },
@@ -396,11 +306,6 @@
           "name": "Auttuno Notte",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Brandy",
-          "pills": [
-            "Atlanta",
-            "Chapter 6",
-            "House-made"
-          ],
           "ingredients": [
             "0.5 oz Calvados",
             "0.75 oz Fernet",
@@ -410,19 +315,13 @@
           ],
           "technique": "Shake with ice and fine strain up",
           "glassware": "Coupe — Garnish: Half moon dehydrated apple",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-claiborne-swale-23",
           "name": "Claiborne Swale",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Whiskey",
-          "pills": [
-            "Atlanta",
-            "Chapter 6",
-            "House-made"
-          ],
           "ingredients": [
             "1.0 oz Romante Brandy Solera",
             "0.75 oz Johnny Drum",
@@ -433,19 +332,13 @@
           ],
           "technique": "Shake fine strain up",
           "glassware": "Chilled Leopold Coupe",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-dark-surf-29",
           "name": "Dark Surf",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Brandy",
-          "pills": [
-            "Atlanta",
-            "Chapter 6",
-            "House-made"
-          ],
           "ingredients": [
             "1.0 oz Pierre Ferrand Cognac",
             "0.75 oz Manzanilla Sherry",
@@ -454,8 +347,7 @@
           ],
           "technique": "Stir w/ ice Strain up",
           "glassware": "Chilled coupe — Garnish: Banana Chip",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         }
       ]
     },
@@ -471,11 +363,6 @@
           "name": "Strange Mercy",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Liqueurs, Aperitifs & Fortified Wine",
-          "pills": [
-            "Atlanta",
-            "Chapter 7",
-            "House-made"
-          ],
           "ingredients": [
             "0.5 oz Fernet Branca",
             "1.0 oz lime juice",
@@ -487,8 +374,7 @@
           ],
           "technique": "Roll, Strain, Swizzle",
           "glassware": "Belgian / crushed ice — Garnish: Lime wheel",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         }
       ]
     },
@@ -504,11 +390,6 @@
           "name": "Absinthe Frappe",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Liqueurs, Aperitifs & Fortified Wine",
-          "pills": [
-            "Atlanta",
-            "Chapter 8",
-            "House-made"
-          ],
           "ingredients": [
             "2.0 oz Absinthe",
             "0.5 oz Water",
@@ -516,19 +397,13 @@
           ],
           "technique": "Shake with ice, strain, top with soda",
           "glassware": "Rocks glass / crushed ice — Garnish: Mint leaf",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-champagne-cocktail-21",
           "name": "Champagne Cocktail",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Champagne",
-          "pills": [
-            "Atlanta",
-            "Chapter 8",
-            "House-made"
-          ],
           "ingredients": [
             "1.0 sugar cube",
             "4.0-5.0 dash Angostura",
@@ -536,19 +411,13 @@
           ],
           "technique": "In flute saturate sugar cube with bitters and slowly add Prosecco",
           "glassware": "Flute",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-collins-generic-25",
           "name": "Collins (Generic)",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Gin",
-          "pills": [
-            "Atlanta",
-            "Chapter 8",
-            "House-made"
-          ],
           "ingredients": [
             "2.0 oz Spirit",
             "1.0 oz Simple syrup",
@@ -557,8 +426,7 @@
           ],
           "technique": "Shake all but soda strain. Top with Soda",
           "glassware": "Collins glass / ice — Garnish: Lemon wheel and cherry",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         }
       ]
     },
@@ -574,11 +442,6 @@
           "name": "Coffee Cocktail",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Brandy",
-          "pills": [
-            "Atlanta",
-            "Chapter 9",
-            "House-made"
-          ],
           "ingredients": [
             "1.0 oz Ansac Cognac",
             "1.0 oz Ruby Port",
@@ -588,19 +451,13 @@
           ],
           "technique": "Dry shake ingredients for 20 sec. Add ice and shake, Fine strain",
           "glassware": "Coupe",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         },
         {
           "id": "recipe-st-patrick-s-batallion-126",
           "name": "St. Patrick's Batallion",
           "when": "Atlanta — Empire State South",
           "org": "ESS • Agave (Tequila & Mezcal)",
-          "pills": [
-            "Atlanta",
-            "Chapter 9",
-            "House-made"
-          ],
           "ingredients": [
             "0.75 oz Tapatío",
             "0.75 oz Irishman Irish Whiskey",
@@ -612,8 +469,7 @@
           ],
           "technique": "Stir with ice, Fine Strain up. top with bitters",
           "glassware": "Leopold Coupe — Garnish: Expressed orange peel",
-          "houseMade": "None — no house-made ingredient in this build.",
-          "spiritNotes": "See ingredients — use quality ingredients in the same style, and taste for balance."
+          "houseMade": "None"
         }
       ]
     }
