@@ -4,15 +4,15 @@
   "venue": "Broken Shaker NYC",
   "tagline": "Building Beyond the Bar",
   "blurb": "A familiar creative spirit carried into a different rhythm — and beyond the bar itself.",
-  "totalRecipes": 71,
-  "ingredientLines": 382,
-  "previewCards": 22,
+  "totalRecipes": 76,
+  "ingredientLines": 481,
+  "previewCards": 40,
   "chapters": [
     {
       "number": 1,
       "title": "FIRST IMPRESSIONS",
       "subtitle": "Aperitifs, Bitters & Fortified Wine",
-      "previewLine": "Preview — showing 3 of 29 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 29 in this chapter in this scene",
       "totalInChapter": 29,
       "cards": [
         {
@@ -60,6 +60,37 @@
           "technique": "Stir down on big rock. Other Rocks glass Mango Jerky and pink seahorse",
           "glassware": "See Technique — glass and garnish are in the build.",
           "houseMade": "Mango Vinegar: 1 kg of Boiron Mango Puree 18 oz champagne vinegar 6 oz of Simple syrup Method: Combime all ingredients in Vitamix and blend for 5 min.  Start on low and then move to hi slowly until all things are blended. Infusion of Negoni: 1 Part Bacardi 4yr 1 Part Campari 1 Part Carpano Antica 1 Cup Coconut Oil Method: Combine and let sit for a minimum of three days. Refrigerate to solidify oil and strain off."
+        },
+        {
+          "id": "recipe-don-t-be-a-jerk-506",
+          "name": "Don't Be a Jerk",
+          "when": "New York — Broken Shaker",
+          "org": "New York — NY 2.0 Menu October 2018",
+          "ingredients": [
+            "1 oz Bombay Gin-Roibis-hibiscus tea",
+            ".75 oz Lillet",
+            ".5 oz Campari",
+            ".5 oz Orange Wine",
+            ".5 oz Chinola"
+          ],
+          "technique": "Stir, serve over big rock. express grapefruit peel and garnish",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Bombay Gin-Rooibos-Hibiscus Tea: 1 bottle Bombay Gin 4 Roibis hibiscus tea bags Method: Combine and let sit for 20-30min"
+        },
+        {
+          "id": "recipe-garden-negroni-507",
+          "name": "Garden Negroni",
+          "when": "New York — Broken Shaker",
+          "org": "New York — Large Format Cocktails",
+          "ingredients": [
+            "7 oz Bombay Gin",
+            "7 oz Campari",
+            "7 oz Sweet Vermouth",
+            "4 oz filtered water"
+          ],
+          "technique": "Build in bottle, add herbs to bottle (Rosemarry, sage, mint) serve with water glasses w/2 cubes of KD ice (per person) Garnish tray with orange half moons",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": null
         }
       ]
     },
@@ -67,7 +98,7 @@
       "number": 2,
       "title": "A CLEAR PERSPECTIVE",
       "subtitle": "Vodka & Gin",
-      "previewLine": "Preview — showing 3 of 12 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 12 in this chapter in this scene",
       "totalInChapter": 12,
       "cards": [
         {
@@ -120,6 +151,39 @@
           "technique": "Build in shaker collins with KD ice. Garnish Lemon wheels and sage boquet",
           "glassware": "See Technique — glass and garnish are in the build.",
           "houseMade": "Cranberry Herbes de Provence: 2 quarts pure cranberry juice 1 quart sugar 4 Tbsp herbs de provence Method: Bring cranberry juice up to a simmer. Add herbs de provence and let cook for 5 min. Remove from heat and let steep for an additional 10min then strain. Add sugar, stirr in to disolve. store, label, and refrigerate."
+        },
+        {
+          "id": "recipe-corpse-reviver-19-508",
+          "name": "Corpse Reviver #19",
+          "when": "New York — Broken Shaker",
+          "org": "New York — NY Eve Bottle Cocktails 2018",
+          "ingredients": [
+            "1 Liter Beefeater Gin",
+            "1 Liter Cocchi Americano",
+            "1 Liter saffron-coriander cordial",
+            "1 Liter fresh lemon",
+            "750ml Filterd water"
+          ],
+          "technique": "Combine in batch and fill bottle to order. Serve bottle cocktail with coupes, rocks glass with lemon wheels for garnish. Sugest to guest that cocktail can be topped with champagne",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Saffron-coriander cordial: 2 quarts water 2 quarts over proof vodka 4 quarts sugar 2 cups saffron 1 cup corriander seed 3 tablespoons citric acid Method: In large pot toast corriander seed then add water and safrron. bring to a simmer and cook for 10min. reduce heat and add sugar and stir to disolve. let cool and add overproof vodka and citric acid. transfer to quart container, lable and store."
+        },
+        {
+          "id": "recipe-curry-in-a-hurry-509",
+          "name": "Curry in a Hurry",
+          "when": "New York — Broken Shaker",
+          "org": "New York — NY 1st Menu",
+          "ingredients": [
+            "1 oz Bombay Dry Gin",
+            ".5 oz Grey Goose Vodka",
+            ".25 oz St. Germain",
+            ".5 oz Red Curry Honey",
+            "1 oz Pineapple",
+            ".25 oz of Lemon"
+          ],
+          "technique": "Whip Shake, down, Shaker Rocks Glass, crushed ice. garnish with dehydrated lemon wheel and dried flowers",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Red Curry Honey: 2 TBSP of Cumin Seeds 2 TBSP of Cardamom seeds 2 TBSP of Coriander seeds 1/2 Cup of Sliced Turmeric 1 TBSP of mustard seeds 2 tsp of Cayenne 1 Whole Red Pepper 2 qt of Honey 1 qt of Water Method: STEP 1: Combine Cummin, Coriander, Sliced Turmeric, Mustard seed, and Cayenne, in a pot with Honey and water on Med/Hi heat. Let simmer for 10 min. STEP 2: add Cardamom and let simmer for 5 min. Remove from heat, strain off solids and let cool to room temp. Pour mixture into Vitamix with red pepper. Red pepper must be de-seeded and have it's top and bottom removed. Blend until red pepper is completely liquified. Strain off solids again and label and date."
         }
       ]
     },
@@ -127,7 +191,7 @@
       "number": 3,
       "title": "ISLAND STATE OF MIND",
       "subtitle": "Rum, Rhum & Other Cane Spirits",
-      "previewLine": "Preview — showing 3 of 5 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 5 in this chapter in this scene",
       "totalInChapter": 5,
       "cards": [
         {
@@ -179,6 +243,40 @@
           "technique": "Build in paper hot cup, garnish with lemon wheels, wrap with printed paper sleeves and plastic green leaf",
           "glassware": "See Technique — glass and garnish are in the build.",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-donkey-kong-510",
+          "name": "Donkey Kong",
+          "when": "New York — Broken Shaker",
+          "org": "New York — N.Y Spring Menu March 2019",
+          "ingredients": [
+            "1 oz Zacappa",
+            ".5 oz Wild Turkey 101",
+            ".25 Creme de Banana",
+            "1 oz of Fermented Banana Honey",
+            ".5 oz Coconut cream",
+            ".25 oz lime",
+            ".5 oz pina",
+            "1 vial Mole Bitters"
+          ],
+          "technique": "Shake, Turkish Collins, crushed ice, Mint sprig, mini flowers, Glamor Shot",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Fermented Banana Coconut Milk: 5 Bananas 2% by weight of Salt 1 quart simple .5 quart Honey Syrup 2 oz of Banana de bresil Method: Cover ripe bananas in salt and let sit over night untill super ripe and funky. Then blend bananas into simple, honey, and liquor"
+        },
+        {
+          "id": "recipe-preserved-lime-caipirinha-511",
+          "name": "Preserved Lime Caipirinha",
+          "when": "New York — Broken Shaker",
+          "org": "New York — NY 1st Menu",
+          "ingredients": [
+            "1.75oz Yaguara Cachaca",
+            ".25 Fresh lime",
+            "1 oz Jicama Syrup",
+            "Shake w/ 2 washed Tajin Preserved Limes"
+          ],
+          "technique": "Shaker, Press 1 preserved lime with muddler, shaker rocks glass, dirty dump. Garnish with 1 preserved lime",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Tajin Preserved Limes: 20 Limes 2 cup of Salt 1 cup of Tajin 1 quart of Lime juices 1 quart water Method: Chop limes in to wedges. Add salt and tajin into double quart and then fill with lime juice until limes are covered. Let sit for two weeks. | Jicama Syrup: 2 Jicama 1 quart sugar Method: Juice 2 Jicama's should equal 1 quart. add 1 quart of sugar and stir"
         }
       ]
     },
@@ -186,8 +284,8 @@
       "number": 4,
       "title": "THE SPIRIT OF OAK",
       "subtitle": "Whiskey, American & Abroad",
-      "previewLine": "Preview — showing 3 of 4 in this chapter in this scene",
-      "totalInChapter": 4,
+      "previewLine": "Preview — showing 5 of 5 in this chapter in this scene",
+      "totalInChapter": 5,
       "cards": [
         {
           "id": "recipe-cafecito-anticuado-497",
@@ -236,6 +334,39 @@
           "technique": "Stir, up in a Nick and Nora, Black Cherry",
           "glassware": "See Technique — glass and garnish are in the build.",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-black-tea-old-fashion-512",
+          "name": "Black Tea Old Fashion",
+          "when": "New York — Broken Shaker",
+          "org": "New York — N.Y Summer Menu March 2019",
+          "ingredients": [
+            "1.5 oz Old Forester infused w/ lapsang tea",
+            ".5 Suntory Toki",
+            "< .5 oz Black Tea Syrup",
+            "1 dash ango",
+            "2 dash orange bitters"
+          ],
+          "technique": "Stir, rocks glass, big cube. Garnish with expressed lemon peel",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Black Tea Syrup: 12 qt Black Tea (36 tea bags) 12 qt Sugar Method: 3 tea bags per quart of hot water. Let sit for 15 min. Combine with sugar | Lapsang Infused Whiskey: 3 liter bottles Old Forester 1 Liter Suntory Toki 2 cups Lapsang tea Method: Combine ingredients and let tea steep for 15-20min stiring ocasionaly to infuse. Strain off tea and transfer back to bottle or batch."
+        },
+        {
+          "id": "recipe-chicory-coffee-old-fashion-513",
+          "name": "Chicory Coffee Old Fashion",
+          "when": "New York — Broken Shaker",
+          "org": "New York — N.Y FallWinter Menu 2019-2020",
+          "ingredients": [
+            "1.5 oz Old Forester",
+            ".5 Suntory Toki",
+            ".5 Mr. Black Coffee",
+            ".25 Chicory Cane Syrup",
+            "1 dash ango",
+            "2 dash orange bitters"
+          ],
+          "technique": "Stir, rocks glass, big cube. Garnish with expressed lemon peel",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Chicory Cane Syrup: 2 Cups of Chicory 1 qt sugar 1 qt water"
         }
       ]
     },
@@ -243,7 +374,7 @@
       "number": 5,
       "title": "BORN OF THE EARTH",
       "subtitle": "Agave, Tequila & Mezcal",
-      "previewLine": "Preview — showing 3 of 6 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 6 in this chapter in this scene",
       "totalInChapter": 6,
       "cards": [
         {
@@ -295,6 +426,43 @@
           "technique": "Build in bottle and serve with water glasses w/ 2 cubes of KD Ice (per person).  Garnish tray with Grapefruit half moons",
           "glassware": "See Technique — glass and garnish are in the build.",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-bobby-lava-514",
+          "name": "Bobby Lava",
+          "when": "New York — Broken Shaker",
+          "org": "New York — N.Y Spring Menu March 2019",
+          "ingredients": [
+            "2 oz Espolon",
+            "1 oz Lime",
+            ".5 oz of Spicy",
+            "2 dashes Orange Bitters",
+            "3 dashes Fuego",
+            "1 spoonfull Blueberry Jam"
+          ],
+          "technique": "Shake with KD. Rocks glass. Spicy Salt rim and glamor shot of the man himself fiacco",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": null
+        },
+        {
+          "id": "recipe-party-people-515",
+          "name": "Party People",
+          "when": "New York — Broken Shaker",
+          "org": "New York — N.Y Spring Menu March 2019",
+          "ingredients": [
+            "10 oz El Tesoro blanco",
+            "8 oz Fino Sherry",
+            "10 oz Pineapple Juice",
+            "4 oz cucumber juice",
+            "6 oz saffron syrup",
+            "6 oz lemon juice",
+            "1.5 oz lime",
+            "1 oz Suze",
+            "6 dashes Celery bitters"
+          ],
+          "technique": "Combine all in large 1 gallon pineapple beverage dispenser w/spigot. Add KD ice and garnish with pineapple 1/2 moons. Add crushed and KD ice and garnish with cucumber coins/dials. Top with crushed ice and garnish w/flowers. Place lid on dispenser and garnish top with mint and flowers. Place cement block/stand on table with glassware (branded glassware with KD ice, mint, and flower) Place drink dispenser on cement block stand and pour first round for guest.",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": null
         }
       ]
     },
@@ -302,8 +470,8 @@
       "number": 6,
       "title": "FRUIT OF THE MATTER",
       "subtitle": "Cognac, Brandy & Eau de Vie",
-      "previewLine": "Preview — showing 1 of 1 in this chapter in this scene",
-      "totalInChapter": 1,
+      "previewLine": "Preview — showing 3 of 3 in this chapter in this scene",
+      "totalInChapter": 3,
       "cards": [
         {
           "id": "recipe-island-time-469",
@@ -321,6 +489,39 @@
           "technique": "Whip Shake. Turkish Collins, Dehy Pina Ring. Pink Seahorse. Skewered Papaya Chunks",
           "glassware": "See Technique — glass and garnish are in the build.",
           "houseMade": "Matcha Syrup: 18 oz Match Powder 64 oz of (60/40) simple 12 oz Almond milk 12 oz Rinehall Mango Brandy Method: Combine all ingredients and stir together.  Seal, label, and date."
+        },
+        {
+          "id": "recipe-euro-jungle-516",
+          "name": "Euro Jungle",
+          "when": "New York — Broken Shaker",
+          "org": "New York — NY 2.0 Menu October 2018",
+          "ingredients": [
+            ".75 oz Johnny Black",
+            ".75 oz Hennessy",
+            ".5 oz Cream Sherry",
+            ".5 oz Banana Du Bresil",
+            "2 Vial Mole Bitters."
+          ],
+          "technique": "Stir. Up in a N&N with a Plaintain Chip",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": null
+        },
+        {
+          "id": "recipe-moon-over-mi-yami-517",
+          "name": "Moon over Mi-YAMi",
+          "when": "New York — Broken Shaker",
+          "org": "New York — N.Y FallWinter Menu 2019-2020",
+          "ingredients": [
+            ".75 oz Ron Zacapa",
+            ".75 oz Bulleit",
+            ".5 oz Meletti",
+            ".5 Oj",
+            "1.25 oz of Sweet Potato Coco Mix",
+            "1 dash of Black Walnut Bitters"
+          ],
+          "technique": "Combine and whip shake. Turkish Collins with crushed ice. Grated Nutmeg and 3 Pineapple fronds. toasted marshmellow on center frond.",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Sweet Potato / Coconut Mix: 75 oz of Sweet Potato Puree 50 oz of Thai Coconut Milk 50 oz of Vanilla Syurp 2 TBL spoons of Vanilla Extract 3/4 Cup of Kosher Salt Method: Combine ingredients in Vitamix and blend."
         }
       ]
     },
@@ -328,16 +529,51 @@
       "number": 7,
       "title": "AFTER HOURS",
       "subtitle": "Amaro & Digestifs",
-      "previewLine": "Preview — showing 0 of 0 in this chapter in this scene",
-      "totalInChapter": 0,
-      "cards": [],
+      "previewLine": "Preview — showing 2 of 2 in this chapter in this scene",
+      "totalInChapter": 2,
+      "cards": [
+        {
+          "id": "recipe-chickie-cherry-cola-518",
+          "name": "Chickie Cherry Cola",
+          "when": "New York — Broken Shaker",
+          "org": "New York — N.Y FallWinter Menu 2019-2020",
+          "ingredients": [
+            "1.5 oz Wild Turkey 101",
+            ".5 Fernet Branca",
+            ".5 oz Cherry Coke Syrup",
+            ".5 Lime juice",
+            "2 dashes Cherry / Vanilla Bitters",
+            "top with Soda"
+          ],
+          "technique": "Combine and shake all but soda. Pour into Turkish Collins Glass and top with soda. Give gentle stir and garnish with a lime wedge and Cherry Skewer",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Vanilla Syrup: 2 TBSP of Vanilla Extract 1 qt of simple Method: Combine and stir until vanilla is well incorperated | Cherry Coke Syrup: Bag in Box Syrup"
+        },
+        {
+          "id": "recipe-pink-panther-519",
+          "name": "Pink Panther",
+          "when": "New York — Broken Shaker",
+          "org": "New York — NY 2.0 Menu October 2018",
+          "ingredients": [
+            ".5 oz Grey Goose Vodka",
+            "1 oz Lo-Fi Gentian Amaro",
+            ".5 amontialldo Sherry",
+            ".5 Lemon",
+            "1.25 Ginger Coco Lopez",
+            "3 dashes Saline solution"
+          ],
+          "technique": "Whip Shake. Turkish collins glass. Crushed Ice. Flowers and Pink Seahorse.",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Ginger Coco: 6 qt Ginger Syrup 4 qt Coco Lopez Method: Combine in Vitamix and blend gently until all things are mixed."
+        }
+      ],
       "emptyNote": "No preview drink in this chapter for this scene."
     },
     {
       "number": 8,
       "title": "ON THE LIGHTER SIDE",
       "subtitle": "Low & No ABV",
-      "previewLine": "Preview — showing 3 of 7 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 7 in this chapter in this scene",
       "totalInChapter": 7,
       "cards": [
         {
@@ -385,6 +621,38 @@
           "technique": "Combine ingredients and stir with ice. Strain into a rockes glass over one large cube. Express orange peel and discard. Garinsh with dehy orange wheel and star anise",
           "glassware": "See Technique — glass and garnish are in the build.",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-festivus-mule-520",
+          "name": "Festivus Mule",
+          "when": "New York — Broken Shaker",
+          "org": "New York — N.Y FallWinter Menu 2019-2020",
+          "ingredients": [
+            "1 oz Absolut lime",
+            "1 oz Aperol",
+            ".5 oz of Lime",
+            "1.25 Cranberry-Ginger syrup",
+            "Top soda"
+          ],
+          "technique": "Combine and whip shake, pour into collins. Top with fresh ice and soda, cranberries, 1 dehy lime, and a rosemary sprig",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Cranberry Ginger Syrup: 12 cans of Cranberry Sauce 3 quart Ginger syrup Method: Combine ingredients in Vitamix and blend"
+        },
+        {
+          "id": "recipe-hotline-hussy-521",
+          "name": "Hotline Hussy",
+          "when": "New York — Broken Shaker",
+          "org": "New York — Governors Ball 2019",
+          "ingredients": [
+            "1.5 oz Bacardi Lime",
+            ".5 oz ginger syrup",
+            ".75 oz lime",
+            "1 dash cardamon bitters",
+            "Top Fever-Tree grapefruit soda"
+          ],
+          "technique": "Build ingredients in tall glass, add ice and garnish with lime wheels",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Ginger Syrup: 1 quart ginger juice 2 quarts water 3 quarts sugar Method: Combine all ingredients and stir well until sugar is full incoperated and dissolved"
         }
       ]
     },
@@ -392,7 +660,7 @@
       "number": 9,
       "title": "SWEET SPOT",
       "subtitle": "Dessert & Cream-Based Cocktails",
-      "previewLine": "Preview — showing 3 of 7 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 7 in this chapter in this scene",
       "totalInChapter": 7,
       "cards": [
         {
@@ -442,6 +710,36 @@
           "technique": "Buid, shake and then strain into large format.  Serve with rock Candy in each glass",
           "glassware": "See Technique — glass and garnish are in the build.",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-cocopuff-old-fashioned-variant-2-522",
+          "name": "Cocopuff Old Fashioned - Variant 2",
+          "when": "New York — Broken Shaker",
+          "org": "New York — Large Format Cocktails",
+          "ingredients": [
+            "18 oz Cocopuff infused Old Forester",
+            "3 oz Demerara simple",
+            "4 oz filtered water"
+          ],
+          "technique": "Build in bottle, serve with water glasses w/2 cubes of KD ice (per person) Garnish tray with orange peels",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Coco Infusion: 3 L of Old Forester 750 ml of Lot 40 Family Size of Coco Puffs (16oz) Method: Pour bottles into 3 Gal Cambro. Add Cereal and let sit overnight. Must only sit for one day. Anymore and it can ferment."
+        },
+        {
+          "id": "recipe-hebrew-hammer-523",
+          "name": "Hebrew Hammer",
+          "when": "New York — Broken Shaker",
+          "org": "New York — NY 1st Menu",
+          "ingredients": [
+            ".75 oz Johnny Black",
+            ".75 oz Ron Zacappa",
+            ".5 oz Tahini - Date Honey",
+            "2 oz Hazelnut milk - CoCo Lopez",
+            "2 dash angostura bitters"
+          ],
+          "technique": "Whip Shaker, Turkish Glass, bitters float. serve on ceramic coaster. garnish dreidel",
+          "glassware": "See Technique — glass and garnish are in the build.",
+          "houseMade": "Hazelnut - Coco Lopez: 30 oz Hazelnut milk 1 (15 oz) Coco Lopez can Method: Combine all ingredients in a Vitamix and Blend | Date-Honey: 8 pitted dates 1 cup Tahini 1 quart Honey 1 quart Water Method: Combine ingredients in Vitamix and blend on high until well combined. Fine strain off solids"
         }
       ]
     }
