@@ -16,49 +16,46 @@
       "totalInChapter": 17,
       "cards": [
         {
-          "id": "recipe-bourbon-flip-14",
-          "name": "Bourbon Flip",
+          "id": "recipe-absinthe-frappe-2",
+          "name": "Absinthe Frappe",
           "when": "Atlanta — Empire State South",
-          "org": "ESS • Whiskey",
+          "org": "ESS • Pastis",
           "ingredients": [
-            "2.0 oz Russells Reserve",
-            "1.0 oz Molasses Simple",
-            "1.0 oz 1/2 and 1/2",
-            "1.0 egg"
+            "2.0 oz Absinthe",
+            "0.5 oz Water",
+            "1.0 barspoon to 0.5 oz Simple",
           ],
-          "technique": "Combine and dry shake. Then shake again with ice",
-          "glassware": "Martini glass — Garnish: Grated nutmeg",
+          "technique": "Shake with ice, strain, top with splash soda",
+          "glassware": "Rocks glass - crushed ice - Mint leaf garnish",
           "houseMade": "None"
         },
         {
-          "id": "recipe-davila-30",
-          "name": "Davila",
+          "id": "recipe-death-on-the-Moon-33",
+          "name": "Death on the Moon",
           "when": "Atlanta — Empire State South",
-          "org": "ESS • Agave (Tequila & Mezcal)",
+          "org": "ESS • Pastis",
           "ingredients": [
-            "1.5 oz Espolon Reposado",
-            "0.5 oz Antica Carpano",
-            "1.0 oz Mex Coke Reduction",
-            "2.0 bspn Luxardo Maraschino",
-            "6.0 drops mole bitters"
+            "0.5 oz Pear Eau-de-Vie Vanilla Infused",
+            "0.5 oz St George Absinthe",
+            "0.5 oz lemon",
+            "0.25 oz Simple",
+            "Top w/ Prosecco"
           ],
-          "technique": "Stir all with ice Strain into chilled coupe. Top with bitters",
-          "glassware": "Chilled coupe — Garnish: Flamed Orange peel",
+          "technique": "Combine ingredients, add ice and shake. Fine Strain, top with Prosecco",
+          "glassware": "Flute no garnish",
           "houseMade": "None"
         },
         {
-          "id": "recipe-death-in-gulfstream-32",
-          "name": "Death in Gulfstream",
+          "id": "recipe-death-in-afternoon-31",
+          "name": "Death in the Afternoon",
           "when": "Atlanta — Empire State South",
-          "org": "ESS • Gin",
+          "org": "ESS • Pastis",
           "ingredients": [
-            "2.0 oz Genever",
-            "1.0 oz lime",
-            "0.5 oz Simple",
-            "Float Angostura Bitters"
+            "0.5 oz Absinthe",
+            "Top w/ Champagne",
           ],
-          "technique": "Build everything except bitters. Swizzle until glass is cold. Float Angostura",
-          "glassware": "Collins glass / Crushed ice — Garnish: Lime twist",
+          "technique": "Combine ingredients and carefully Stir",
+          "glassware": "Champagne flute no garnish",
           "houseMade": "None"
         },
         {
