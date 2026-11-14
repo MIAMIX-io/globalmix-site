@@ -6,13 +6,13 @@
   "blurb": "Where the foundation was built — structure, discipline, and the first pages of the book.",
   "totalRecipes": 144,
   "ingredientLines": 682,
-  "previewCards": 24,
+  "previewCards": 42,
   "chapters": [
     {
       "number": 1,
       "title": "FIRST IMPRESSIONS",
       "subtitle": "Aperitifs, Bitters & Fortified Wine",
-      "previewLine": "Preview — showing 3 of 17 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 17 in this chapter in this scene",
       "totalInChapter": 17,
       "cards": [
         {
@@ -60,6 +60,38 @@
           "technique": "Build everything except bitters. Swizzle until glass is cold. Float Angostura",
           "glassware": "Collins glass / Crushed ice — Garnish: Lime twist",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-fault-creep-41",
+          "name": "Fault Creep",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Liqueurs, Aperitifs & Fortified Wine",
+          "ingredients": [
+            "1.5 oz Cocchi Americano",
+            "0.5 oz Fernet Branca",
+            "1 oz Pineapple Juice",
+            "1 bsp Lemon Juice",
+            "3 dashes Angostura"
+          ],
+          "technique": "Shake, Fine Strain up",
+          "glassware": "Leopold Coupe — Garnish: Pineapple Leaf",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-veronica-umbrosa-135",
+          "name": "Veronica Umbrosa",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Liqueurs, Aperitifs & Fortified Wine",
+          "ingredients": [
+            "0.5 oz Byrrh",
+            "0.5 oz Dolin Dry",
+            "0.5 oz Pierre Ferrand Cognac",
+            "0.25 oz Lemon Juice",
+            "2 dashes Swedish Herb Bitters"
+          ],
+          "technique": "Shake with ice, Fine strain into coupe",
+          "glassware": "Coupe",
+          "houseMade": "None"
         }
       ]
     },
@@ -67,7 +99,7 @@
       "number": 2,
       "title": "A CLEAR PERSPECTIVE",
       "subtitle": "Vodka & Gin",
-      "previewLine": "Preview — showing 3 of 42 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 42 in this chapter in this scene",
       "totalInChapter": 42,
       "cards": [
         {
@@ -116,6 +148,36 @@
           "technique": "Combine ingredients and shake with ice. Fine strain up",
           "glassware": "Coupe",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-bijou-10",
+          "name": "Bijou",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Gin",
+          "ingredients": [
+            "0.5 oz Gin",
+            "0.5 oz Punt E Mes",
+            "0.5 oz Green Chartreuse",
+            "3 dashes Orange Bitters"
+          ],
+          "technique": "Combine ingredients with ice and Stir",
+          "glassware": "Chilled Coupe",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-bitter-end-11",
+          "name": "Bitter End",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Gin",
+          "ingredients": [
+            "0.5 oz Smalls Gin or Cardamaro",
+            "0.5 oz Luxardo Amaro",
+            "0.5 oz Lemon Juice",
+            "Top with Ginger Ale"
+          ],
+          "technique": "Shake all but ginger ale and Strain. Top with ginger ale",
+          "glassware": "Rocks Glass / No Ice — Garnish: Lemon Peel",
+          "houseMade": "None"
         }
       ]
     },
@@ -123,7 +185,7 @@
       "number": 3,
       "title": "ISLAND STATE OF MIND",
       "subtitle": "Rum, Rhum & Other Cane Spirits",
-      "previewLine": "Preview — showing 3 of 16 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 16 in this chapter in this scene",
       "totalInChapter": 16,
       "cards": [
         {
@@ -174,6 +236,34 @@
           "technique": "Combine ingredients and shake with ice, Fine strain",
           "glassware": "Chilled Leopold coupe",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-daiquiri-28",
+          "name": "Daiquiri",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Rum / Rhum",
+          "ingredients": [
+            "2 oz White Rum",
+            "1 oz Lime Juice",
+            "1 oz Simple Syrup"
+          ],
+          "technique": "Shake all ingredients with ice, strain",
+          "glassware": "Chilled Coupe — Garnish: Lime Twist",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-doctor-cocktail-37",
+          "name": "Doctor Cocktail",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Rum / Rhum",
+          "ingredients": [
+            "2 oz Jamaican Rum",
+            "1 oz Swedish Punsch",
+            "1 oz Lime Juice"
+          ],
+          "technique": "Shake all ingredients with ice. fine strain up",
+          "glassware": "Coupe — Garnish: Lime Twist",
+          "houseMade": "None"
         }
       ]
     },
@@ -181,7 +271,7 @@
       "number": 4,
       "title": "THE SPIRIT OF OAK",
       "subtitle": "Whiskey, American & Abroad",
-      "previewLine": "Preview — showing 3 of 32 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 32 in this chapter in this scene",
       "totalInChapter": 32,
       "cards": [
         {
@@ -231,6 +321,36 @@
           "technique": "Combine in mixing glass shake. Fine strain",
           "glassware": "Rocks glass / fresh ice",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-brief-encounter-15",
+          "name": "Brief Encounter",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Whiskey",
+          "ingredients": [
+            "1 oz Lion's Pride Dark Oat",
+            "1 oz Carpano Antica Vermouth",
+            "0.25 oz Strawberry Shrub",
+            "1 dash Whiskey Barrel Bitters"
+          ],
+          "technique": "Stir with ice. Strain up",
+          "glassware": "Chilled Tulip — Garnish: Lemon Peel",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-brooklyn-17",
+          "name": "Brooklyn",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Whiskey",
+          "ingredients": [
+            "2 oz Rye Whiskey",
+            "1 oz Dolin Dry Vermouth",
+            "0.25 oz Maraschino Liqueur",
+            "0.25 oz China China"
+          ],
+          "technique": "Stir with ice and strain up",
+          "glassware": "Chilled Coupe",
+          "houseMade": "None"
         }
       ]
     },
@@ -238,7 +358,7 @@
       "number": 5,
       "title": "BORN OF THE EARTH",
       "subtitle": "Agave, Tequila & Mezcal",
-      "previewLine": "Preview — showing 3 of 9 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 9 in this chapter in this scene",
       "totalInChapter": 9,
       "cards": [
         {
@@ -291,6 +411,37 @@
           "technique": "Muddle cucumber, add rest but pepper. Shake, fine strain",
           "glassware": "Fresh ice — Garnish: Garnish with pepper",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-don-dante-38",
+          "name": "Don Dante",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Agave (Tequila & Mezcal)",
+          "ingredients": [
+            "1 oz Noilly Prat Dry Vermouth",
+            "1 oz Campari",
+            "1 oz Espolon Reposado",
+            "0.5 oz Cointreau"
+          ],
+          "technique": "Combine all and Stir, Strain",
+          "glassware": "Small Coupe — Garnish: Lemon Twist",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-dust-in-the-sun-39",
+          "name": "Dust in the Sun",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Agave (Tequila & Mezcal)",
+          "ingredients": [
+            "1.25 oz Espolon Reposado",
+            "1 oz Cardamaro",
+            "0.5 oz Galliano",
+            "1 bsp Borghetti Espresso Liquor",
+            "3 drops Vanilla Bean Tincture"
+          ],
+          "technique": "Combine ingredients, Stir. express lemon peel into Coupe",
+          "glassware": "Coupe",
+          "houseMade": "None"
         }
       ]
     },
@@ -298,7 +449,7 @@
       "number": 6,
       "title": "FRUIT OF THE MATTER",
       "subtitle": "Cognac, Brandy & Eau de Vie",
-      "previewLine": "Preview — showing 3 of 13 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 13 in this chapter in this scene",
       "totalInChapter": 13,
       "cards": [
         {
@@ -348,6 +499,38 @@
           "technique": "Stir w/ ice Strain up",
           "glassware": "Chilled coupe — Garnish: Banana Chip",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-death-on-the-moon-33",
+          "name": "Death on the Moon",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Brandy",
+          "ingredients": [
+            "0.5 oz Pear Eau-de-Vie (Vanilla)",
+            "0.5 oz St George Absinthe",
+            "0.5 oz Lemon Juice",
+            "0.25 oz Simple Syrup",
+            "Top with Prosecco"
+          ],
+          "technique": "Combine ingredients, add ice and shake. Fine Strain, top with Prosecco",
+          "glassware": "Flute",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-delores-34",
+          "name": "Delores",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Brandy",
+          "ingredients": [
+            "2 oz Blume Marillen Eau de Vie",
+            "1 oz Peppercorn Elderflower Syrup",
+            "1 oz Lemon Juice",
+            "Top with Peychauds Bitters",
+            "Top with Soda"
+          ],
+          "technique": "Shake all but Soda and bitters, Strain. Top with bitters and soda",
+          "glassware": "Collins Glass / Ice — Garnish: Lemon Twist",
+          "houseMade": "None"
         }
       ]
     },
@@ -355,8 +538,8 @@
       "number": 7,
       "title": "AFTER HOURS",
       "subtitle": "Amaro & Digestifs",
-      "previewLine": "Preview — showing 1 of 1 in this chapter in this scene",
-      "totalInChapter": 1,
+      "previewLine": "Preview — showing 3 of 3 in this chapter in this scene",
+      "totalInChapter": 3,
       "cards": [
         {
           "id": "recipe-strange-mercy-128",
@@ -375,6 +558,35 @@
           "technique": "Roll, Strain, Swizzle",
           "glassware": "Belgian / crushed ice — Garnish: Lime wheel",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-hanky-panky-53",
+          "name": "Hanky Panky",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Gin",
+          "ingredients": [
+            "1.5 oz Gin",
+            "1.5 oz Cocchi Di Torino",
+            "3 dashes Fernet Branca"
+          ],
+          "technique": "Stir with ice, Strain up",
+          "glassware": "Dessert Tulip — Garnish: Lemon Twist",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-paper-plane-92",
+          "name": "Paper Plane",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Whiskey",
+          "ingredients": [
+            "0.75 oz Bourbon",
+            "0.75 oz Aperol",
+            "0.75 oz Nonino",
+            "0.75 oz Lemon Juice"
+          ],
+          "technique": "Combine in mixing glass, fine Strain up",
+          "glassware": "Cocktail Glass — Garnish: Orange Twist",
+          "houseMade": "None"
         }
       ]
     },
@@ -382,7 +594,7 @@
       "number": 8,
       "title": "ON THE LIGHTER SIDE",
       "subtitle": "Low & No ABV",
-      "previewLine": "Preview — showing 3 of 12 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 12 in this chapter in this scene",
       "totalInChapter": 12,
       "cards": [
         {
@@ -427,6 +639,33 @@
           "technique": "Shake all but soda strain. Top with Soda",
           "glassware": "Collins glass / ice — Garnish: Lemon wheel and cherry",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-death-in-afternoon-31",
+          "name": "Death in Afternoon",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Champagne",
+          "ingredients": [
+            "0.5 oz Absinthe",
+            "Top with Champagne"
+          ],
+          "technique": "Combine ingredients and carefully Stir",
+          "glassware": "Champagne Flute",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-venetian-spritz-134",
+          "name": "Venetian Spritz",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Liqueurs, Aperitifs & Fortified Wine",
+          "ingredients": [
+            "1 oz Campari",
+            "1 oz Aperol",
+            "Top with Blanc de Blanc"
+          ],
+          "technique": "Add ingredients then ice",
+          "glassware": "Bordeaux Glass / Ice — Garnish: Orange Slice",
+          "houseMade": "None"
         }
       ]
     },
@@ -434,8 +673,8 @@
       "number": 9,
       "title": "SWEET SPOT",
       "subtitle": "Dessert & Cream-Based Cocktails",
-      "previewLine": "Preview — showing 2 of 2 in this chapter in this scene",
-      "totalInChapter": 2,
+      "previewLine": "Preview — showing 4 of 4 in this chapter in this scene",
+      "totalInChapter": 4,
       "cards": [
         {
           "id": "recipe-coffee-cocktail-24",
@@ -469,6 +708,38 @@
           ],
           "technique": "Stir with ice, Fine Strain up. top with bitters",
           "glassware": "Leopold Coupe — Garnish: Expressed orange peel",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-happy-accidents-54",
+          "name": "Happy Accidents",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Whiskey",
+          "ingredients": [
+            "0.75 oz Elijah Craig 12yr",
+            "0.75 oz Braulio",
+            "0.75 oz Cherry Heering",
+            "0.5 oz Lemon Juice",
+            "0.25 oz Créme de Cacao"
+          ],
+          "technique": "Shake all with ice, Fine Strain",
+          "glassware": "Jeweled Cocktail Glass — Garnish: Three Skewered Maraschino Cherries",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-pisco-sour-99",
+          "name": "Pisco Sour",
+          "when": "Atlanta — Empire State South",
+          "org": "ESS • Brandy",
+          "ingredients": [
+            "2 oz Pisco",
+            "1 oz Lime Juice",
+            "0.75 oz Simple Syrup",
+            "1 White",
+            "3 drops Angostura Bitters"
+          ],
+          "technique": "Combine ingredients, dry shake. and ice and shake again. fine Strain",
+          "glassware": "Tulip — Garnish: Top with Drops",
           "houseMade": "None"
         }
       ]
