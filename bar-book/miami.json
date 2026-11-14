@@ -6,13 +6,13 @@
   "blurb": "Where creativity had room to flourish — brighter, looser, and open to the tropics.",
   "totalRecipes": 292,
   "ingredientLines": 1556,
-  "previewCards": 23,
+  "previewCards": 41,
   "chapters": [
     {
       "number": 1,
       "title": "FIRST IMPRESSIONS",
       "subtitle": "Aperitifs, Bitters & Fortified Wine",
-      "previewLine": "Preview — showing 3 of 62 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 62 in this chapter in this scene",
       "totalInChapter": 62,
       "cards": [
         {
@@ -69,6 +69,39 @@
           "technique": "Combine ingredients Dry shake, add ice and shake again Fine strain up into chilled coupe Using a coaster cover half the drink and Myst other half with Floral Spray.",
           "glassware": "Garnished with Egg White.",
           "houseMade": "Recipe Name: Marriage Mix Ingredients List: 1 liter Blue Beefeater 1 liter Dolin Blanc 1 liter Floral Syrup 1 oz Hibiscus syrup Prep Instructions: Floral Syrup bring water to a boil add dried rose buds and marigolds let steep for 10 min strain and add sugar 6 sugar - 4 water."
+        },
+        {
+          "id": "recipe-bitter-truth-312",
+          "name": "Bitter Truth",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — Current Menu 218",
+          "ingredients": [
+            "0.75 oz Redemption Rye",
+            "0.75 oz OFTD plantation",
+            "0.5 oz blackstrap campari",
+            "0.5 oz Pineapple Oleo Sacchrum",
+            "2 dash Falernum bitters"
+          ],
+          "technique": "Combine all ingredients in mixing glass and stir. Strain into Rocks glass over big cube.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Blackstrap Campari Ingredients List: 1 oz molasses 3 cinnamon sticks (cracked) 8-9 cloves Vanilla bean (split) Per one bottle camapari"
+        },
+        {
+          "id": "recipe-calypso-s-garden-313",
+          "name": "Calypso's Garden",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — Menu 51019-71819",
+          "ingredients": [
+            "1 oz New Amserdam Vodka",
+            "1 oz Dolin Dry Vermouth",
+            "1 oz Cucumber Syrup",
+            "0.25 oz Montenegro",
+            "1 oz Lemon",
+            "1 dash Celery Bitters"
+          ],
+          "technique": "Combine and shake with ice. strain into footed pilsner. Garnish with cucumber ribbon, Shaker palm swizzle, and lemon wheel",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Fennel Syrup Ingredients List: 2 part Cucumber Juice 2 parts sugar"
         }
       ]
     },
@@ -76,7 +109,7 @@
       "number": 2,
       "title": "A CLEAR PERSPECTIVE",
       "subtitle": "Vodka & Gin",
-      "previewLine": "Preview — showing 3 of 71 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 71 in this chapter in this scene",
       "totalInChapter": 71,
       "cards": [
         {
@@ -140,6 +173,41 @@
           "technique": "Add Water, Chopped Ginger, and Black Peppercorn in md pot. Bring to a boil then add Sarsparilla. Remove from heat and let steep like tea for around 10 min. Add sugar and return to heat, once sugar has dissolved remove from heat and strain off solids. Finally add 3 oz of Ginger juice and equal parts pear juice. NA.",
           "glassware": "Garnished with pear juice.",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-art-blazer-314",
+          "name": "Art Blazer",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 112917-011818",
+          "ingredients": [
+            "1.5 oz New Amsterdam Vodka",
+            "0.75 oz Fresh Pineapple",
+            "0.5 oz Fresh Lime",
+            "<0.5 oz Cinnamon Syrup",
+            "<0.25 oz Suze",
+            "One Vial Tiki Bitters"
+          ],
+          "technique": "Build in Collins glass with mint leaves. Swizzle and top with yellow redbull. Garnish Pineapple chunk and mint boquet",
+          "glassware": "Garnished with Yellow Red Bull and Mint.",
+          "houseMade": "Recipe Name: Blazer Mix Ingredients List: 1 botle Suze 5 quarts House Cinnamon Syrup"
+        },
+        {
+          "id": "recipe-assembly-required-315",
+          "name": "Assembly Required",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 092216 - 110216",
+          "ingredients": [
+            "1 oz Vodka",
+            "0.5 oz Acquavit",
+            "0.5 oz Simple Syrup",
+            "0.5 oz Swedish Punsch",
+            "1 oz Lemon Juice",
+            "2 Dash Swedish Herbs",
+            "2 Barspoon Lingonberry Jam"
+          ],
+          "technique": "Combine all Ingredients and Shake with Ice. Double Strain into Coupe. Garnish with Dill Frond and Picked Swedish Fish.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Asembly Mix Ingredients List: 750 ml Acquavit 750 ml Swedish Punsch 750 ml Simple Syrup"
         }
       ]
     },
@@ -147,7 +215,7 @@
       "number": 3,
       "title": "ISLAND STATE OF MIND",
       "subtitle": "Rum, Rhum & Other Cane Spirits",
-      "previewLine": "Preview — showing 3 of 18 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 18 in this chapter in this scene",
       "totalInChapter": 18,
       "cards": [
         {
@@ -197,6 +265,42 @@
           "technique": "Combine Ingredients in glass add ice and stir. Strain up into footed rocks Garnish with skewered cherry.",
           "glassware": "Served as specified in the original build.",
           "houseMade": "Recipe Name: Rum Mix Ingredients List: 6 btls cocchi di Torino 1 chai masala packet from storage 24 oz all-spice syrup Prep Instructions: Combine all ingredients in Cambro let rest for 3 days If this isn't possible combine 2btls cocchi, 1/3 chai packet, and 8oz syrup in large infuser bag seal in rapid infuser Let stand at least 12 hours. Strain through fine sieve 2-3 times removeing as much sediment possible."
+        },
+        {
+          "id": "recipe-bali-hai-316",
+          "name": "Bali Hai",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 112917-011818",
+          "ingredients": [
+            "1 oz Appleton Rum",
+            "0.5 oz Zacapa",
+            "0.5 oz Coruba",
+            "0.5 oz PX Sherry",
+            "0.25 oz Palo Cortado",
+            "barspoon 151",
+            "4 dash St. George Coffee",
+            "2 dash Jamacian #2"
+          ],
+          "technique": "Combine and stir, strain up into chilled footed rocks glass. express orange and discard. garnish with clove studded orange peel disk",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-bitter-daquari-317",
+          "name": "Bitter Daquari",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — NYE Cocktails 2018",
+          "ingredients": [
+            "1 liter Ron Zacappa",
+            "1 Liter Cynar",
+            "1 Liter lime juice",
+            "750 ml simple",
+            "1 tablespoon salt",
+            "500 ml filtered water"
+          ],
+          "technique": "Combine in batch and fill bottle to order. Serve bottle cocktail with coupe, garnish with star fruit on rim",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None"
         }
       ]
     },
@@ -204,7 +308,7 @@
       "number": 4,
       "title": "THE SPIRIT OF OAK",
       "subtitle": "Whiskey, American & Abroad",
-      "previewLine": "Preview — showing 3 of 37 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 37 in this chapter in this scene",
       "totalInChapter": 37,
       "cards": [
         {
@@ -254,6 +358,39 @@
           "technique": "Combine ingredients in mixing glass and stir. Strain over one large cube in rocks glass. Express orange peel and Granish with toasted marshamallow. Agave (see house syrups).",
           "glassware": "Garnished with Toasted vegan Marshmallow.",
           "houseMade": "Recipe Name: Cocoa Bourbon Ingredients List: 1 Bag Cocoa puff ceral 4 bottles House Bourbon Prep Instructions: Combine all ingredients in Cambro and lets sit for 24hours. Strain infused bourbon into clean cambro and press any excess bourbon from cereal infusion. Bottle and label correctly."
+        },
+        {
+          "id": "recipe-amity-island-318",
+          "name": "Amity Island",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 061016 - 081016",
+          "ingredients": [
+            "1 oz Rye",
+            "1.25 Cherry Pistachio Syrup",
+            "0.5 oz Lemon",
+            "2 Dash Ango",
+            "1 oz Narragansett"
+          ],
+          "technique": "Combine all ingredients except Beer in a Footed Pilsner Glass Add Crushed Ice and Swizzle Add Beer and Top with Crushed Garnish with Umbrella and Gummy Sharks",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Cherry Syrup Ingredients List: 2000ML Simple Syrup 1000ML Cherry Puree 1 tsp Pistachio Extract"
+        },
+        {
+          "id": "recipe-cowboy-breakfast-of-319",
+          "name": "Cowboy Breakfast OF",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 011115-121715",
+          "ingredients": [
+            "2 oz Bourbon base",
+            "<0.5 oz maple",
+            "- maple cut with simple",
+            "- 3 parts simple",
+            "- 1 part maple",
+            "3 dashes bacon orange bitters"
+          ],
+          "technique": "Combine Ingredients glass add ice and stir. Strain into rocks glass over one large ice cube. Garnish with orange peel",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Bourbon base Ingredients List: Equal parts Old Forester and Mellow Corn whiskey that has been infused with Chicory. Mellow Corn infusion is one tablespoon to one bottle of whiskey. | Recipe Name: Bacon orange bitters Ingredients List: 3 strips cooked bacon with one bottle of orange bitters"
         }
       ]
     },
@@ -261,7 +398,7 @@
       "number": 5,
       "title": "BORN OF THE EARTH",
       "subtitle": "Agave, Tequila & Mezcal",
-      "previewLine": "Preview — showing 3 of 36 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 36 in this chapter in this scene",
       "totalInChapter": 36,
       "cards": [
         {
@@ -309,6 +446,38 @@
           "technique": "Combine in batch and fill bottle to order. Serve bottle cocktail with rocks glass over one big cube, garnish with lime wheel on top of big rock. Server to refresh glassware w/ ice when nescacarry.",
           "glassware": "Served as specified in the original build.",
           "houseMade": "Recipe Name: Arabian Spiced Agave Ingredients List: 4 quarts water 6 quarts Agave 8 tablespoon black pepper 6 tablespoons cumin seed 4 tablespoons paprika 4 tablespoons coriander seed 3 nutmeg crushed 4 cinamon sticks 4 cloves Prep Instructions: In pot toast cumin and corriander seed. Add water and other spices and bring to a simmer. Let cook for 10min, reduce heat and let steep for an additional 10min. Strain off solids and add agave, stir well to combine."
+        },
+        {
+          "id": "recipe-blueberry-negroni-320",
+          "name": "Blueberry Negroni",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 052517-071217",
+          "ingredients": [
+            "1 oz Illegal Mezcal",
+            "0.5 oz Montenegro Amaro",
+            "0.5 oz Manzanilla Sherry",
+            "0.35 oz Smoked Blueberry Syrup"
+          ],
+          "technique": "Combine in mixing glass and stir with ice. Strain into rocks glass over one large cube. express lemon peel and discard. garnish with skewered blueberries",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Smoked Bluebery Ingredients List: 4 packs Blueberries Smoked 3 packs Blueberries Un-Smoked 4 quarts Water 6 quarts Sugar | Recipe Name: Amaro-Manzanilla Blend Ingredients List: 750 ml Amaro Montenegro 750 ml Manzanilla"
+        },
+        {
+          "id": "recipe-coco-loco-321",
+          "name": "Coco Loco",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 41118-052118",
+          "ingredients": [
+            "1 oz Coconut washed tequila",
+            "0.75 oz Montenegro",
+            "0.75 oz Miro Extra Seco Vermouth",
+            "0.25 oz Cream Sherry",
+            "1 vial Salt Tincture",
+            "3 dashes Orange Bitters"
+          ],
+          "technique": "Not listed in the guide — ingredients only.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None"
         }
       ]
     },
@@ -316,8 +485,8 @@
       "number": 6,
       "title": "FRUIT OF THE MATTER",
       "subtitle": "Cognac, Brandy & Eau de Vie",
-      "previewLine": "Preview — showing 2 of 2 in this chapter in this scene",
-      "totalInChapter": 2,
+      "previewLine": "Preview — showing 4 of 4 in this chapter in this scene",
+      "totalInChapter": 4,
       "cards": [
         {
           "id": "recipe-favela-chic-bg-230",
@@ -353,6 +522,40 @@
           "technique": "Stir, serve up in nick and nora -NA-.",
           "glassware": "Served as specified in the original build.",
           "houseMade": "None"
+        },
+        {
+          "id": "recipe-catch-my-wave-322",
+          "name": "Catch My Wave",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 052517-071217",
+          "ingredients": [
+            "2.5 oz Milk Punch",
+            "dash Lemon",
+            "Top with Blue Bubbles"
+          ],
+          "technique": "Pour Milk Punch into rocks glass over one large cube. Top with Blue Bubbles and garnish with grated lime",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Milk Punch Ingredients List: 10 oz Bombay Sapphire 6 oz Pear Brandy 2 oz Banana Liquor 1 oz Angostura Bitters 2 oz Almon Tincture 16 oz French vanilla Tea 8 oz Hot Water 12 oz Citrus (lime/lemon) 1 quart sugar 3 Bananas 2 Ginger Nubs 3 Cinnamon Sticks 6 Star Anise 3 Nutmeg Coriander Seed Chinchona Bark | Recipe Name: Blue Bubbles Ingredients List: 10 oz Soda Water 10 oz tonic Syrup 2 oz Lime Juice 1.5 oz Lecithin 2 drops blue food color"
+        },
+        {
+          "id": "recipe-caught-in-the-rain-323",
+          "name": "Caught in the Rain",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 091218-111118",
+          "ingredients": [
+            "1.5 oz Rainwater Maderia-rasin infused",
+            "0.5 oz Chinola",
+            "0.5 oz Elyx",
+            "25 oz St George Pear Barandy",
+            "1 dash Bolivar Bitters",
+            "Express Lime peel",
+            "Raisin Vodka",
+            "1 Box Raisins",
+            "3 Liters Absolute Elyx"
+          ],
+          "technique": "Not listed in the guide — ingredients only. House prep (Raisin Vodka): Add ingredients to a lexan tub and cover with platic wrap and let sit overnight",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Raisin Vodka Ingredients List: 1 Box Raisins 3 Liters Absolute Elyx"
         }
       ]
     },
@@ -360,16 +563,48 @@
       "number": 7,
       "title": "AFTER HOURS",
       "subtitle": "Amaro & Digestifs",
-      "previewLine": "Preview — showing 0 of 0 in this chapter in this scene",
-      "totalInChapter": 0,
-      "cards": [],
+      "previewLine": "Preview — showing 2 of 2 in this chapter in this scene",
+      "totalInChapter": 2,
+      "cards": [
+        {
+          "id": "recipe-badass-amaro-daquiri-324",
+          "name": "Badass Amaro Daquiri",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 092216 - 110216",
+          "ingredients": [
+            "0.75 oz Montenegro Amaro",
+            "0.5 oz Cynar",
+            "0.25 oz Amaro di Angostura",
+            "0.5 oz Muscavado Simple",
+            "the juice of one lime (hand press)",
+            "1/2 Vial saline tincture"
+          ],
+          "technique": "Combine all ingredients and shake with ice. Fine Strain up into chilled nick and nora. Garnish with dehydrated orange half wheel topped with pink sea salt.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None"
+        },
+        {
+          "id": "recipe-cranky-panky-325",
+          "name": "Cranky Panky",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 081415-092415",
+          "ingredients": [
+            "1.5 oz Bombay",
+            "1 oz Dolin Rouge",
+            "0.25 oz Fernet Mix"
+          ],
+          "technique": "Combine Ingredients glass add ice and stir. Strain up into footed rocks Garnish with orange peel",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Fernet Mix Ingredients List: Equal parts Fernet and Amargo Angostura liquor"
+        }
+      ],
       "emptyNote": "No preview drink in this chapter for this scene."
     },
     {
       "number": 8,
       "title": "ON THE LIGHTER SIDE",
       "subtitle": "Low & No ABV",
-      "previewLine": "Preview — showing 3 of 37 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 37 in this chapter in this scene",
       "totalInChapter": 37,
       "cards": [
         {
@@ -421,6 +656,39 @@
           "technique": "Combine in tin and shake with ice fine strain up into chilled coupe garnish with lemon wheel topped with pomagranate seeds Atomize aromatic Pomagranate-cardamom.",
           "glassware": "Garnished with Egg White.",
           "houseMade": "Recipe Name: Mollasses Ingredients List: 2 parts Pomagranate Mollasses 1 part Water Prep Instructions: Combine ingredients per the original method. Recipe Name: Cardamom syrup Ingredients List: 2 qts water 3 quart sugar 1/2 cup cardamom 1/4 cup juniper berries Prep Instructions: In pot toast the cardomom pods add water and simmer on md high reduce tempature and let steep add sugar, bring up heat stir until dissolved, strain off Cardamom. Recipe Name: Candyland Mix Ingredients List: 2 (750 ml bottles) Fabuloso 2 (750 ml bottles) Noily Prat Dry vermouth 1,125 ml cardamom syrup 1 (750 ml) bottle P.F. Dry Curacao 750 ml pomagranate molasses (2-1) Prep Instructions: Combine ingredients per the original method."
+        },
+        {
+          "id": "recipe-basel-dreaming-326",
+          "name": "Basel Dreaming",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — Current Menu 11.14",
+          "ingredients": [
+            "0.75 oz Fords Gin",
+            "0.75 oz Dolin Blanc",
+            "0.75 oz Papaya Agave",
+            "1 oz fresh lemon",
+            "top orange redbull"
+          ],
+          "technique": "shake with mint Combine all but redbull and shake. Strain into collins glass with KD ice. Top with orange redbull and garnish orange half moon and mint boquet",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Papya Agave Ingredients List: 1 part Papya Puree 1 part Agave nectar"
+        },
+        {
+          "id": "recipe-bayside-britney-327",
+          "name": "Bayside Britney",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 052517-82217",
+          "ingredients": [
+            "0.75 oz Vodka",
+            "0.75 oz Bacardi Superior",
+            "0.75 oz Ginger Syrup",
+            "1 oz Lime Juice",
+            "3 sprigs fresh tarragon",
+            "top soda"
+          ],
+          "technique": "Combine and stir, Strain into rocks glass over watermellon scented ice. garnish with skewered watermelon ribon and crystalized ginger",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Watermelon Rose Ice Ingredients List: 4 quarts water 1 cup dried rose tea tsp citric acid 8 oz Aperol 3 barspoons Watermelon extract"
         }
       ]
     },
@@ -428,7 +696,7 @@
       "number": 9,
       "title": "SWEET SPOT",
       "subtitle": "Dessert & Cream-Based Cocktails",
-      "previewLine": "Preview — showing 3 of 29 in this chapter in this scene",
+      "previewLine": "Preview — showing 5 of 29 in this chapter in this scene",
       "totalInChapter": 29,
       "cards": [
         {
@@ -481,6 +749,41 @@
           "technique": "Combine and shake, strain into rocks glass over one large cube. Garnish with orange half moon.",
           "glassware": "Served as specified in the original build.",
           "houseMade": "Recipe Name: Orgeat Ingredients List: 1 qaurt Almond Milk 1 quart Sugar 1 teaspoon orange blossom water Prep Instructions: Combine and stirr well until sugar is disolved."
+        },
+        {
+          "id": "recipe-burning-the-devil-328",
+          "name": "Burning The Devil",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 100417-112917",
+          "ingredients": [
+            "1 oz Pumpkin-Pecan Orgeat",
+            "0.75 oz Don Q Anejo",
+            "0.5 oz Ron Zacappa",
+            "0.5 oz Rainwater Maderia",
+            "0.25 oz Irish Cream",
+            "bar spoon Averna",
+            "1/2 vial Mole Bitters",
+            "1 egg"
+          ],
+          "technique": "Shake, Footed pilsner. Crushed ice. Garnish pecan crumbles and toasted marshmallow coated in pecan dust.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Pecan Orgeat Ingredients List: 4 quarts Water 6 quarts sugar 2 quarts pecans | Recipe Name: Pumpkin-Pecan Ingredients List: 1 part Pecan Orgeat 1.5 part Pumpkin Puree"
+        },
+        {
+          "id": "recipe-burning-to-shine-329",
+          "name": "Burning To Shine",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — Menu 1024-1204",
+          "ingredients": [
+            "1 oz Ron Zacapa",
+            "0.5 oz Kronan",
+            "0.25 oz Disarrono",
+            "0.75 oz Tiki- Mango puree",
+            "0.75 oz Lime"
+          ],
+          "technique": "Combine all ingredients into shaker. Shake into rocks glass with crushed ice. Garnish with mint sprig and lime wedge.",
+          "glassware": "Garnished with Ango Float.",
+          "houseMade": "Recipe Name: Tiki-Mango Syrup Ingredients List: 1 qt Mango puree 1 qt House tiki Syrup"
         }
       ]
     }
