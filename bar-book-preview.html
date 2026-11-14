@@ -235,15 +235,20 @@ function render(scenes){
   bindCarousels();
   updateCount();
 }
-Promise.all([
-  fetch('atlanta.json').then(function(r){if(!r.ok) throw new Error('atlanta.json '+r.status); return r.json();}),
-  fetch('miami.json').then(function(r){if(!r.ok) throw new Error('miami.json '+r.status); return r.json();}),
-  fetch('new-york.json').then(function(r){if(!r.ok) throw new Error('new-york.json '+r.status); return r.json();})
-]).then(function(scenes){
+function loadOne(name){
+  var tries=[name,'bar-book/'+name,'/bar-book/'+name,'/'+name];
+  var attempt=0;
+  function next(){
+    if(attempt>=tries.length) return Promise.reject(new Error(name+' 404 — tried '+tries.join(', ')));
+    var url=tries[attempt++];
+    return fetch(url).then(function(r){ if(!r.ok) return next(); return r.json(); }).catch(function(){ return next(); });
+  }
+  return next();
+}
+Promise.all([loadOne('atlanta.json'), loadOne('miami.json'), loadOne('new-york.json')]).then(function(scenes){
   render(scenes);
 }).catch(function(err){
-  statusEl.innerHTML='Could not load the JSON files ('+esc(err.message)+'). <br>Open this page through a local server or hosting — <code>fetch</code> is blocked from <code>file://</code>. Try: <code>python3 -m http.server</code> in this folder, then open <code>http://localhost:8000/bar-book-index.html</code>. Keep <code>atlanta.json</code>, <code>miami.json</code>, <code>new-york.json</code> in the same folder as the HTML.';
-  if(countEl) countEl.textContent='JSON not loaded — serve this folder over http';
+  statusEl.innerHTML='Could not load the JSON files ('+esc(err.message)+'). <br>Your page is at <code>'+esc(window.location.href)+'</code> — it is looking for the JSONs in the same folder as the HTML, or in a <code>bar-book/</code> subfolder.';
 });
 })();
 </script>
