@@ -25,7 +25,39 @@ header.bar{position:sticky;z-index:20;background:var(--hd);backdrop-filter:blur(
 .count-pill{font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;border:1px solid var(--line);padding:7px 10px;color:var(--mut)}
 .lens{display:inline-flex;border:1px solid var(--fg);flex-wrap:wrap}.lens button{font:500 14px var(--body);border:0;background:none;color:var(--fg);padding:12px 18px;cursor:pointer}.lens button[aria-pressed="true"]{background:var(--fg);color:var(--bg)}
 .btn{display:inline-block;font:600 15px var(--body);padding:14px 26px;text-decoration:none;border:1px solid var(--fg);background:transparent;color:var(--fg);cursor:pointer;text-align:center}.btn:hover{transform:translateY(-2px)}.btn.p{background:var(--ac);color:var(--onac);border-color:var(--ac)}
-.tlink{text-decoration:underline;text-decoration-color:var(--ac);text-decoration-thickness:2px;text-underline-offset:6px;font-weight:500}
+/* Replace the existing .tlink block with this */
+.tlink,
+a.tlink,
+button.tlink{
+  color:var(--fg);
+  text-decoration:underline;
+  text-decoration-color:var(--ac);
+  text-decoration-thickness:2px;
+  text-underline-offset:6px;
+  font-weight:500;
+}
+
+.tlink:visited,
+a.tlink:visited{
+  color:var(--fg);
+}
+
+.tlink:hover,
+a.tlink:hover,
+button.tlink:hover{
+  color:var(--ac);
+}
+
+/* Button version — strip default button chrome so it looks like the <a> version */
+button.tlink{
+  background:none;
+  border:0;
+  border-bottom:0;
+  padding:0;
+  font:inherit;
+  cursor:pointer;
+  text-align:left;
+}
 .hero .wrap{display:grid;grid-template-columns:1.5fr 1fr;grid-template-areas:"top pic" "act pic";gap:0 56px;align-items:end;padding-top:36px;padding-bottom:40px}
 .hero-top{grid-area:top}.hero-pic{grid-area:pic;width:100%;max-width:354px}.hero-act{grid-area:act;padding-top:20px}
 h1{font-size:clamp(2.2rem,6vw,4.6rem)}h1 span{display:block}h1 span+span{color:var(--ac)}
