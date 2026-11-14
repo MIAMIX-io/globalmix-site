@@ -1,0 +1,635 @@
+{
+  "scene": "Miami",
+  "sceneId": "miami",
+  "venue": "Broken Shaker Miami",
+  "tagline": "Finding a Creative Voice",
+  "blurb": "Where creativity had room to flourish — brighter, looser, and open to the tropics.",
+  "totalRecipes": 292,
+  "ingredientLines": 1556,
+  "previewCards": 23,
+  "chapters": [
+    {
+      "number": 1,
+      "title": "FIRST IMPRESSIONS",
+      "subtitle": "Aperitifs, Bitters & Fortified Wine",
+      "previewLine": "Preview — showing 3 of 62 in this chapter in this scene",
+      "totalInChapter": 62,
+      "cards": [
+        {
+          "id": "recipe-the-rose-mary-streach-146",
+          "name": "\"The Rose Mary Streach\"",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 52118-072518",
+          "pills": [
+            "Miami",
+            "Chapter 1",
+            "Cross-venue",
+            "House-made"
+          ],
+          "ingredients": [
+            "8 oz Rose wine",
+            "2 oz Aperol",
+            "2 oz Grapefruit-pineapple oleo",
+            "2 oz fresh lemon",
+            "Fresh fruit",
+            "Prapefruit-Pineapple Oleo",
+            "8-10 grapefruits",
+            "4 quarts sugar",
+            "4 quarts pineapple juice"
+          ],
+          "technique": "Peel grapefruits, add peels to sugar and muddle well to express oils into sugar. cover and let macerate overnight so sugar can continue to pull oils. On the following day add fresh pineapple juice and stirr well to combine until sugar dissolves. Fine strain off solids, quart and refridgreate.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None — no house-made ingredient in this build.",
+          "spiritNotes": "Aperol — bittersweet orange aperitivo, lighter and sweeter than Campari. Substitution: use another orange aperitivo; Campari will be more bitter, so pull back a touch and add a little sweetness. Wine — in this build it brings acidity and fruit. Substitution: use a fresh, dry wine in the same style; sparkling wine should be fresh and well-chilled."
+        },
+        {
+          "id": "recipe-alpine-blast-153",
+          "name": "Alpine Blast",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — Menu 95-1024",
+          "pills": [
+            "Miami",
+            "Chapter 1",
+            "Cross-venue",
+            "House-made"
+          ],
+          "ingredients": [
+            "0.5 oz Kaffir Lime Bombay",
+            "0.5 oz Genepy",
+            "0.5 oz Aquavit",
+            "0.5 oz Green Chartreuse",
+            "1 oz Pineapple",
+            "0.5 oz Lemon",
+            "0.25 oz Simple"
+          ],
+          "technique": "Combine all ingredients in pilsner and swizzle. Garnish with Pineapple fron and dehydrated lemon wheel.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Kaffir Lime Bombay Ingredients List: 12 Kaffir Leaves 1 Bottle Bombay Dry Prep Instructions: Blend ingredients in vitamix for 25-30 seconds. Coffee strain and bottle with label.",
+          "spiritNotes": "Gin — juniper-forward with botanicals, citrus, and spice. London Dry is classic and crisp. Substitution: use a London Dry gin for the classic profile; for a softer build, try a contemporary gin with citrus and floral notes. Aquavit — caraway- and dill-forward Scandinavian spirit. Substitution: use another aquavit; gin with caraway will not match it."
+        },
+        {
+          "id": "recipe-arranged-marriage-159",
+          "name": "Arranged Marriage",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 061016 - 081016",
+          "pills": [
+            "Miami",
+            "Chapter 1",
+            "Cross-venue",
+            "House-made"
+          ],
+          "ingredients": [
+            "1 oz Blue Beefeater",
+            "1 oz dolin Blanc",
+            "< 1 oz Floral syrup",
+            "0.75 oz lemon",
+            "Bar spoon hibiscus syrup",
+            "3 dashes rose water"
+          ],
+          "technique": "Combine ingredients Dry shake, add ice and shake again Fine strain up into chilled coupe Using a coaster cover half the drink and Myst other half with Floral Spray.",
+          "glassware": "Garnished with Egg White.",
+          "houseMade": "Recipe Name: Marriage Mix Ingredients List: 1 liter Blue Beefeater 1 liter Dolin Blanc 1 liter Floral Syrup 1 oz Hibiscus syrup Prep Instructions: Floral Syrup bring water to a boil add dried rose buds and marigolds let steep for 10 min strain and add sugar 6 sugar - 4 water.",
+          "spiritNotes": "Gin — juniper-forward with botanicals, citrus, and spice. London Dry is classic and crisp. Substitution: use a London Dry gin for the classic profile; for a softer build, try a contemporary gin with citrus and floral notes. Vermouth — aromatized, fortified wine with herbs and botanicals. Substitution: use a fresh, quality vermouth in the same style (sweet, dry, or blanc) and keep it refrigerated after opening."
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "title": "A CLEAR PERSPECTIVE",
+      "subtitle": "Vodka & Gin",
+      "previewLine": "Preview — showing 3 of 71 in this chapter in this scene",
+      "totalInChapter": 71,
+      "cards": [
+        {
+          "id": "recipe-14th-moon-148",
+          "name": "14th Moon",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 072518-091218",
+          "pills": [
+            "Miami",
+            "Chapter 2",
+            "House-made"
+          ],
+          "ingredients": [
+            "0.75 oz Coconut washed Bobby's Gin",
+            "0.25 oz Chinola",
+            "0.5 oz Absolut",
+            "3 oz Carbonated coconut tonic",
+            "Carbonated Coconut Tonic",
+            "1 cup lavender syrup",
+            "1 cup Tonic Syrup",
+            "3 quarts Coconut water",
+            "2 teaspoon citric or tartaric acid"
+          ],
+          "technique": "Combine and fill siphon then charge twice with CO2 charger.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None — no house-made ingredient in this build.",
+          "spiritNotes": "Tequila — blue agave spirit from Jalisco. Blanco is bright, peppery, and clean; reposado adds oak, vanilla, and caramel. Substitution: swap blanco for blanco and reposado for reposado in the same quality tier; for a smokier take, split the base with mezcal. Vodka — a clean, neutral spirit that lets the modifiers shine. Substitution: any quality unflavored vodka works; a wheat or potato vodka adds a touch more body. Gin — juniper-forward with botanicals, citrus, and spice. London Dry is classic and crisp. Substitution: use a London Dry gin for the classic profile; for a softer build, try a contemporary gin with citrus and floral notes."
+        },
+        {
+          "id": "recipe-a-gossemar-149",
+          "name": "A Gossemar",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — Current Menu 218",
+          "pills": [
+            "Miami",
+            "Chapter 2",
+            "House-made"
+          ],
+          "ingredients": [
+            "0.75 oz Absolut Vodka",
+            "0.75 oz iichicko",
+            "0.5 oz italicus",
+            "0.5 oz Honeydew reduction",
+            "0.75 Lemon",
+            "2 dash cardamom bitters"
+          ],
+          "technique": "Combine in shaker tin and shake with KD ice. Fine Strain over chilled coupe and garnish with thyme.",
+          "glassware": "Served in Coupe and garnished with Lemon zest.",
+          "houseMade": "Recipe Name: Honeydew Reduction Ingredients List: 1 whole Honeydew 1 part sugar Prep Instructions: Combine in blender and blend on high until fully pureed and sugar is incorporated.",
+          "spiritNotes": "Vodka — a clean, neutral spirit that lets the modifiers shine. Substitution: any quality unflavored vodka works; a wheat or potato vodka adds a touch more body."
+        },
+        {
+          "id": "recipe-act-naturally-152",
+          "name": "Act Naturally",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 110216-122016",
+          "pills": [
+            "Miami",
+            "Chapter 2",
+            "Cross-venue",
+            "House-made"
+          ],
+          "ingredients": [
+            "1 oz Bombay Dry Gin",
+            "1 oz Sarsparilla, Ginger, Pear",
+            "0.25 oz Amao di Angnostura",
+            "0.25 oz Lemon",
+            "3 dash Jamican #1",
+            "Top with French Cider",
+            "Rocks glass, KD ice. Top with French Cider. Garnish Apple Slices",
+            "Sarsparilla Pear",
+            "2 quarts of Water",
+            "4 quarts Sugar",
+            "2 large nubs of ginger Chopped",
+            "4 Tablespoons Black Peppercorn",
+            "1 cup Sarsparilla",
+            "3 oz Ginger Juice"
+          ],
+          "technique": "Add Water, Chopped Ginger, and Black Peppercorn in md pot. Bring to a boil then add Sarsparilla. Remove from heat and let steep like tea for around 10 min. Add sugar and return to heat, once sugar has dissolved remove from heat and strain off solids. Finally add 3 oz of Ginger juice and equal parts pear juice. NA.",
+          "glassware": "Garnished with pear juice.",
+          "houseMade": "None — no house-made ingredient in this build.",
+          "spiritNotes": "Gin — juniper-forward with botanicals, citrus, and spice. London Dry is classic and crisp. Substitution: use a London Dry gin for the classic profile; for a softer build, try a contemporary gin with citrus and floral notes."
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "title": "ISLAND STATE OF MIND",
+      "subtitle": "Rum, Rhum & Other Cane Spirits",
+      "previewLine": "Preview — showing 3 of 18 in this chapter in this scene",
+      "totalInChapter": 18,
+      "cards": [
+        {
+          "id": "recipe-o-face-be-144",
+          "name": "\"O\" Face (BE)",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 051716 - 061116",
+          "pills": [
+            "Miami",
+            "Chapter 3",
+            "House-made"
+          ],
+          "ingredients": [
+            "1 oz Don Q Anejo",
+            "1 oz Martini Rubino",
+            "0.5 oz Fwago white rum",
+            "0.25 oz Montenagro Amaro"
+          ],
+          "technique": "Combine and stir with ice Strain up into chilled footed rocks Garnish expressed grapefruit peel \"O\" Mix 1 (750ml) bottle Montenagro 2 (750ml) bottles Fwago 4 (750ml) bottles Martini Rubino 4 (750ml) bottles Don Q Anejo.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None — no house-made ingredient in this build.",
+          "spiritNotes": "Rum — cane spirit ranging from light and grassy to dark and molasses-rich. Substitution: match the style — white rum for light and clean, aged rum for depth and caramel. Amaro — bitter Italian herbal liqueur, complex and bittersweet. Substitution: use another amaro in the same family; adjust for sweetness and bitterness."
+        },
+        {
+          "id": "recipe-bread-maker-175",
+          "name": "Bread Maker",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 011818-3618",
+          "pills": [
+            "Miami",
+            "Chapter 3",
+            "Cross-venue",
+            "House-made"
+          ],
+          "ingredients": [
+            "2 oz Kavas",
+            "0.75 oz Bulleit Rye",
+            "0.75 oz Appleton rum",
+            "0.5 oz Lemon",
+            "0.25 oz Cinnamon",
+            "3 dash angostura",
+            "1 vial Saline Tincture",
+            "Teaspoon Cynar"
+          ],
+          "technique": "Not listed in the guide — ingredients only.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None — no house-made ingredient in this build.",
+          "spiritNotes": "Rye whiskey — spicier and drier than bourbon, with pepper, baking spice, and grain. Substitution: use a 100-proof rye; bourbon will soften and sweeten the build. Whiskey — aged grain spirit with oak, vanilla, and spice. Substitution: match the style — bourbon for sweetness, rye for spice, Irish whiskey for softness. Rum — cane spirit ranging from light and grassy to dark and molasses-rich. Substitution: match the style — white rum for light and clean, aged rum for depth and caramel."
+        },
+        {
+          "id": "recipe-chai-rum-manhatten-188",
+          "name": "Chai Rum Manhatten",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 070215 - 081415",
+          "pills": [
+            "Miami",
+            "Chapter 3",
+            "House-made"
+          ],
+          "ingredients": [
+            "2 oz Aged Rum",
+            "1 oz Rum Mix",
+            "1 dash Tiki Bitters"
+          ],
+          "technique": "Combine Ingredients in glass add ice and stir. Strain up into footed rocks Garnish with skewered cherry.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Rum Mix Ingredients List: 6 btls cocchi di Torino 1 chai masala packet from storage 24 oz all-spice syrup Prep Instructions: Combine all ingredients in Cambro let rest for 3 days If this isn't possible combine 2btls cocchi, 1/3 chai packet, and 8oz syrup in large infuser bag seal in rapid infuser Let stand at least 12 hours. Strain through fine sieve 2-3 times removeing as much sediment possible.",
+          "spiritNotes": "Rum — cane spirit ranging from light and grassy to dark and molasses-rich. Substitution: match the style — white rum for light and clean, aged rum for depth and caramel."
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "title": "THE SPIRIT OF OAK",
+      "subtitle": "Whiskey, American & Abroad",
+      "previewLine": "Preview — showing 3 of 37 in this chapter in this scene",
+      "totalInChapter": 37,
+      "cards": [
+        {
+          "id": "recipe-sage-butter-old-fashioned-145",
+          "name": "\"Sage\" Butter Old Fashioned",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — Menu 21119-510",
+          "pills": [
+            "Miami",
+            "Chapter 4",
+            "Cross-venue",
+            "House-made"
+          ],
+          "ingredients": [
+            "1.5 oz Butterwash Bourbon",
+            "0.5 oz Wild Turkey Rye",
+            "0.5 oz Sage Demerara",
+            "2 drop Sesame",
+            "2 Drop Scardborough",
+            "3 drops CBD oil"
+          ],
+          "technique": "Combine ingredients in mixing glass and stir. Strain over one large cube in rocks glass. Express orange peel and discard. Garnish with sage leaf.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Sage Demerara Ingredients List: (See original) Prep Instructions: Heat >1/2 gallon of Demerara syrup. Remove from heat. Add 1 bunch sage. Steep 1 hour. Strain and cool.",
+          "spiritNotes": "Bourbon — corn-based American whiskey with vanilla, caramel, and oak. Substitution: use a bourbon in the same proof range; a wheated bourbon will be softer, a high-rye bourbon spicier. Rye whiskey — spicier and drier than bourbon, with pepper, baking spice, and grain. Substitution: use a 100-proof rye; bourbon will soften and sweeten the build. Whiskey — aged grain spirit with oak, vanilla, and spice. Substitution: match the style — bourbon for sweetness, rye for spice, Irish whiskey for softness."
+        },
+        {
+          "id": "recipe-aaron-s-smoke-chop-150",
+          "name": "Aaron's Smoke Chop",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 091218-111118",
+          "pills": [
+            "Miami",
+            "Chapter 4",
+            "House-made"
+          ],
+          "ingredients": [
+            "2 oz Pistachio Infused Old Forester",
+            "0.25 oz Maple"
+          ],
+          "technique": "Stir, and strain into rocks glass over one large cube. Express orange peel and grated pistachio.",
+          "glassware": "Garnished with Smoked Pistachio.",
+          "houseMade": "Recipe Name: Smoked Pistacio Bourbon Ingredients List: 6 Liters Old Forester 1 quart Pistachios Prep Instructions: Add ingredients to a Lexan tub(long flat one) cover with plastic wrap and smoke for 10 minutes with The Smoking Gun and wood chips.",
+          "spiritNotes": "Bourbon — corn-based American whiskey with vanilla, caramel, and oak. Substitution: use a bourbon in the same proof range; a wheated bourbon will be softer, a high-rye bourbon spicier."
+        },
+        {
+          "id": "recipe-abuelitas-of-151",
+          "name": "Abuelitas OF",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — Menu 1024-1204",
+          "pills": [
+            "Miami",
+            "Chapter 4",
+            "Cross-venue",
+            "House-made"
+          ],
+          "ingredients": [
+            "1 oz Cocopuff Infused Bourbon",
+            "0.5 oz Bulleit Rye",
+            "0.25 oz Ilegal Mezcal",
+            "0.25 oz Ancho Reyes",
+            "0.25 oz Frangelico",
+            "0.25 oz Agave",
+            "2 dash Ango & Mole Bitters"
+          ],
+          "technique": "Combine ingredients in mixing glass and stir. Strain over one large cube in rocks glass. Express orange peel and Granish with toasted marshamallow. Agave (see house syrups).",
+          "glassware": "Garnished with Toasted vegan Marshmallow.",
+          "houseMade": "Recipe Name: Cocoa Bourbon Ingredients List: 1 Bag Cocoa puff ceral 4 bottles House Bourbon Prep Instructions: Combine all ingredients in Cambro and lets sit for 24hours. Strain infused bourbon into clean cambro and press any excess bourbon from cereal infusion. Bottle and label correctly.",
+          "spiritNotes": "Mezcal — a smoky agave spirit from Oaxaca, earthy and complex with notes of smoke, citrus, and roasted agave. Substitution: use another quality mezcal in the same style; for less smoke, split with a blanco tequila, or use a reposado tequila with a whisper of peated whisky. Tequila — blue agave spirit from Jalisco. Blanco is bright, peppery, and clean; reposado adds oak, vanilla, and caramel. Substitution: swap blanco for blanco and reposado for reposado in the same quality tier; for a smokier take, split the base with mezcal. Bourbon — corn-based American whiskey with vanilla, caramel, and oak. Substitution: use a bourbon in the same proof range; a wheated bourbon will be softer, a high-rye bourbon spicier."
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "title": "BORN OF THE EARTH",
+      "subtitle": "Agave, Tequila & Mezcal",
+      "previewLine": "Preview — showing 3 of 36 in this chapter in this scene",
+      "totalInChapter": 36,
+      "cards": [
+        {
+          "id": "recipe-shakerfam-147",
+          "name": "#Shakerfam",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 082617-100417",
+          "pills": [
+            "Miami",
+            "Chapter 5",
+            "House-made"
+          ],
+          "ingredients": [
+            "2 oz Tequila Altos",
+            "0.75 spicy syrup",
+            "0.75 lemon",
+            "3 dashes fucking fire bitter"
+          ],
+          "technique": "Combine all ingredients and shake with ice. Strain over collins glass. Add fernet and rosemary ice spierce and top with Grapefruit ancho Verde soda water. Garnish with Grapefruit wheel and naked lady.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Grapefruit Ancho Verde soda water Ingredients List: 1qt Grapefruit Juice 1qt Water 2 oz Ancho Verde 2 oz Passion fruit juice Prep Instructions: Combine ingredients per the original method.",
+          "spiritNotes": "Tequila — blue agave spirit from Jalisco. Blanco is bright, peppery, and clean; reposado adds oak, vanilla, and caramel. Substitution: swap blanco for blanco and reposado for reposado in the same quality tier; for a smokier take, split the base with mezcal."
+        },
+        {
+          "id": "recipe-alvato-swizzle-154",
+          "name": "Alvato Swizzle",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 070215 - 081415",
+          "pills": [
+            "Miami",
+            "Chapter 5",
+            "House-made"
+          ],
+          "ingredients": [
+            "1.5 oz Altos blanco tequila",
+            "1 oz watermelon juice",
+            "0.75 oz lime",
+            "0.75 oz spicy syrup"
+          ],
+          "technique": "Build in footed pilsner add crushed ice and swizzle. Fill with crushed ice Garnish with watermelon wedge and sprig of mint Spicy Surup.",
+          "glassware": "Garnished with two sprigs of cilantro.",
+          "houseMade": "None — no house-made ingredient in this build.",
+          "spiritNotes": "Tequila — blue agave spirit from Jalisco. Blanco is bright, peppery, and clean; reposado adds oak, vanilla, and caramel. Substitution: swap blanco for blanco and reposado for reposado in the same quality tier; for a smokier take, split the base with mezcal."
+        },
+        {
+          "id": "recipe-arabian-daisy-158",
+          "name": "Arabian Daisy",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — NYE Cocktails 2018",
+          "pills": [
+            "Miami",
+            "Chapter 5",
+            "Cross-venue",
+            "House-made"
+          ],
+          "ingredients": [
+            "2 liters Altos Tequila",
+            "1 liter fresh lemon",
+            "750 ml Arabian spiced Agave",
+            "1 oz orange bitters",
+            "750 ml filtered water"
+          ],
+          "technique": "Combine in batch and fill bottle to order. Serve bottle cocktail with rocks glass over one big cube, garnish with lime wheel on top of big rock. Server to refresh glassware w/ ice when nescacarry.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Arabian Spiced Agave Ingredients List: 4 quarts water 6 quarts Agave 8 tablespoon black pepper 6 tablespoons cumin seed 4 tablespoons paprika 4 tablespoons coriander seed 3 nutmeg crushed 4 cinamon sticks 4 cloves Prep Instructions: In pot toast cumin and corriander seed. Add water and other spices and bring to a simmer. Let cook for 10min, reduce heat and let steep for an additional 10min. Strain off solids and add agave, stir well to combine.",
+          "spiritNotes": "Tequila — blue agave spirit from Jalisco. Blanco is bright, peppery, and clean; reposado adds oak, vanilla, and caramel. Substitution: swap blanco for blanco and reposado for reposado in the same quality tier; for a smokier take, split the base with mezcal."
+        }
+      ]
+    },
+    {
+      "number": 6,
+      "title": "FRUIT OF THE MATTER",
+      "subtitle": "Cognac, Brandy & Eau de Vie",
+      "previewLine": "Preview — showing 2 of 2 in this chapter in this scene",
+      "totalInChapter": 2,
+      "cards": [
+        {
+          "id": "recipe-favela-chic-bg-230",
+          "name": "Favela Chic (BG)",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 040516 - 051616",
+          "pills": [
+            "Miami",
+            "Chapter 6",
+            "House-made"
+          ],
+          "ingredients": [
+            "1.oz Leblon Cahaca",
+            "0.5 oz Apple Brandy",
+            "0.25 oz Salers",
+            "1 oz Green Apple Cordial",
+            "0.5 oz Black Pepper Honey",
+            "0.75 oz Lemon Juice",
+            "3 Dash Bay Leaf Tincture"
+          ],
+          "technique": "Combine all Ingredients Shake with Ice and Strain into collins Glass over KD Ice top with soda Garnish with Bay Leaf and dehydrated apple.",
+          "glassware": "Garnished with Absinthe Rinse and soda toop.",
+          "houseMade": "Recipe Name: Flavela Mix Ingredients List: 3,000 ml Green Apple Cordial 1,500 ml Apple Brandy 1,500 ml Black Pepper Honey 750 ml Salers Green Apple Cordial Prep Instructions: Combine ingredients per the original method.",
+          "spiritNotes": "Brandy — aged grape spirit, warm and fruity. Substitution: use a VSOP Cognac or an aged brandy; apple brandy adds orchard fruit."
+        },
+        {
+          "id": "recipe-nouveau-carre-311",
+          "name": "Nouveau Carre",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 100417-112917",
+          "pills": [
+            "Miami",
+            "Chapter 6",
+            "Cross-venue",
+            "House-made"
+          ],
+          "ingredients": [
+            "0.75 oz Monkey Shoulder",
+            "0.75 oz Calvados",
+            "0.75 oz Punt e Mes",
+            "Barspoon Benedictine",
+            "3 dashes Cherry Bark Bitters",
+            "1 dash Angnostura"
+          ],
+          "technique": "Stir, serve up in nick and nora -NA-.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None — no house-made ingredient in this build.",
+          "spiritNotes": "Brandy — aged grape spirit, warm and fruity. Substitution: use a VSOP Cognac or an aged brandy; apple brandy adds orchard fruit."
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "title": "AFTER HOURS",
+      "subtitle": "Amaro & Digestifs",
+      "previewLine": "Preview — showing 0 of 0 in this chapter in this scene",
+      "totalInChapter": 0,
+      "cards": [],
+      "emptyNote": "No preview drink in this chapter for this scene."
+    },
+    {
+      "number": 8,
+      "title": "ON THE LIGHTER SIDE",
+      "subtitle": "Low & No ABV",
+      "previewLine": "Preview — showing 3 of 37 in this chapter in this scene",
+      "totalInChapter": 37,
+      "cards": [
+        {
+          "id": "recipe-bad-ass-blood-sand-164",
+          "name": "Bad Ass Blood & Sand",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 011818-3618",
+          "pills": [
+            "Miami",
+            "Chapter 8",
+            "House-made"
+          ],
+          "ingredients": [
+            "1 oz Monkey Shoulder",
+            "0.75 oz Sour Orange",
+            "0.75 oz PX Sherry",
+            "0.25 oz Pimento Dram",
+            "6 muddled blueberries"
+          ],
+          "technique": "Not listed in the guide — ingredients only.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None — no house-made ingredient in this build.",
+          "spiritNotes": "Sherry — fortified wine from Jerez, from dry and nutty to rich and sweet. Substitution: match the style — fino or manzanilla for dry, amontillado for nutty, oloroso for rich."
+        },
+        {
+          "id": "recipe-bukowski-daiquiri-178",
+          "name": "Bukowski Daiquiri",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 082617-100417",
+          "pills": [
+            "Miami",
+            "Chapter 8",
+            "House-made"
+          ],
+          "ingredients": [
+            "1 oz Bacardi",
+            "0.5 oz Appleton",
+            "0.5 oz port wine",
+            "0.5 oz grapefruit",
+            "0.5 oz lemon",
+            "0.25 oz simple"
+          ],
+          "technique": "Combine ingredients and shake with ice. Fine strain into footed rocks and garnish with lemon ribbon skewered with cherry.",
+          "glassware": "Garnished with Mist Falarnum.",
+          "houseMade": "None — no house-made ingredient in this build.",
+          "spiritNotes": "Rum — cane spirit ranging from light and grassy to dark and molasses-rich. Substitution: match the style — white rum for light and clean, aged rum for depth and caramel."
+        },
+        {
+          "id": "recipe-candyland-remix-v-be-vb-182",
+          "name": "Candyland Remix (V-BE-VB)",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 030816 - 040416",
+          "pills": [
+            "Miami",
+            "Chapter 8",
+            "House-made"
+          ],
+          "ingredients": [
+            "1 oz Fabuloso",
+            "1 oz Noily Prat Dry vermouth",
+            "0.75 oz cardamom syrup",
+            "0.5 oz lemon",
+            "0.5 oz P.F. Dry Curacao",
+            "0.5 oz pomagranate molasses (2-1)"
+          ],
+          "technique": "Combine in tin and shake with ice fine strain up into chilled coupe garnish with lemon wheel topped with pomagranate seeds Atomize aromatic Pomagranate-cardamom.",
+          "glassware": "Garnished with Egg White.",
+          "houseMade": "Recipe Name: Mollasses Ingredients List: 2 parts Pomagranate Mollasses 1 part Water Prep Instructions: Combine ingredients per the original method. Recipe Name: Cardamom syrup Ingredients List: 2 qts water 3 quart sugar 1/2 cup cardamom 1/4 cup juniper berries Prep Instructions: In pot toast the cardomom pods add water and simmer on md high reduce tempature and let steep add sugar, bring up heat stir until dissolved, strain off Cardamom. Recipe Name: Candyland Mix Ingredients List: 2 (750 ml bottles) Fabuloso 2 (750 ml bottles) Noily Prat Dry vermouth 1,125 ml cardamom syrup 1 (750 ml) bottle P.F. Dry Curacao 750 ml pomagranate molasses (2-1) Prep Instructions: Combine ingredients per the original method.",
+          "spiritNotes": "Vermouth — aromatized, fortified wine with herbs and botanicals. Substitution: use a fresh, quality vermouth in the same style (sweet, dry, or blanc) and keep it refrigerated after opening."
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "title": "SWEET SPOT",
+      "subtitle": "Dessert & Cream-Based Cocktails",
+      "previewLine": "Preview — showing 3 of 29 in this chapter in this scene",
+      "totalInChapter": 29,
+      "cards": [
+        {
+          "id": "recipe-always-dreaming-155",
+          "name": "Always Dreaming",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — 052517-071217",
+          "pills": [
+            "Miami",
+            "Chapter 9",
+            "House-made"
+          ],
+          "ingredients": [
+            "0.75 oz Old Forester",
+            "1 oz Cocchi Americano",
+            "Barspoon Zucca",
+            "Dash fresh Lemon Juice",
+            "Top with Strawberry-Pineapple Soda"
+          ],
+          "technique": "Combine in collins glass. Top with Strawberry-Pineapple Soda. Fill with KD ice. Garnish mint Boquet and chocolate-straberry dots.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Strawberry-Pineapple Soda Ingredients List: 3 quarts Water 2 pack Strawberries 1/4 lb Mint Leftover rind from 1 pineapple Leftover shells from 10 juiced limes 1/2 quart sugar 1 tbs citric acid Prep Instructions: In large pot combine water with strawberries (chopped), bring to a simmer and cook until strawberries have lost their color. Next add lime shells, pineapple rinds, and mit and cook until limes start turning brown. Strain off solids and add sugar and citric acid. Carbonate in soda siphon.",
+          "spiritNotes": "Bourbon — corn-based American whiskey with vanilla, caramel, and oak. Substitution: use a bourbon in the same proof range; a wheated bourbon will be softer, a high-rye bourbon spicier. Vermouth — aromatized, fortified wine with herbs and botanicals. Substitution: use a fresh, quality vermouth in the same style (sweet, dry, or blanc) and keep it refrigerated after opening."
+        },
+        {
+          "id": "recipe-bad-apple-163",
+          "name": "Bad Apple",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — Current Menu 11.14",
+          "pills": [
+            "Miami",
+            "Chapter 9",
+            "House-made"
+          ],
+          "ingredients": [
+            "0.5 oz PX Sherry",
+            "0.5 oz Cream Sherry",
+            "0.5 oz Ron Zacapa",
+            "0.5 oz Lairds Apple Brandy",
+            "0.75 oz Apple Cider Syrup",
+            "0.5 oz Lemon Juice",
+            "Mole or Choclate Bitters"
+          ],
+          "technique": "Combine all ingredients in a collins glass and swizzle with crushed ice, Garnish with apple and mint Spiced Apple Cider Syrup Bring Liquids to a boil add all ingredients and let simmer for 10 min, strain all solids and let cool. Quart for use 1/2 Quart Brown Sugar 2 Tsp Grated Cinnamon 1 Tsp Allspice 1 Tsp Grated Nutmeg 1 Tsp Clove Pinch of Salt Half Gallon Apple Cider Bring Liquids to a boil add all ingredients and let simmer for 10 min, strain all solids and let cool. Quart for use.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "None — no house-made ingredient in this build.",
+          "spiritNotes": "Brandy — aged grape spirit, warm and fruity. Substitution: use a VSOP Cognac or an aged brandy; apple brandy adds orchard fruit. Sherry — fortified wine from Jerez, from dry and nutty to rich and sweet. Substitution: match the style — fino or manzanilla for dry, amontillado for nutty, oloroso for rich."
+        },
+        {
+          "id": "recipe-bricklayer-176",
+          "name": "Bricklayer",
+          "when": "Miami — Broken Shaker",
+          "org": "Miami — Bacardi Legacy Features 232019",
+          "pills": [
+            "Miami",
+            "Chapter 9",
+            "House-made"
+          ],
+          "ingredients": [
+            "1.5 oz Bacardi White",
+            "0.3 oz Amontillado",
+            "0.4 oz Orgeat",
+            "0.75 oz Lemon Juice",
+            "1 dash Absinthe",
+            "2 dash Orange Bitters"
+          ],
+          "technique": "Combine and shake, strain into rocks glass over one large cube. Garnish with orange half moon.",
+          "glassware": "Served as specified in the original build.",
+          "houseMade": "Recipe Name: Orgeat Ingredients List: 1 qaurt Almond Milk 1 quart Sugar 1 teaspoon orange blossom water Prep Instructions: Combine and stirr well until sugar is disolved.",
+          "spiritNotes": "Rum — cane spirit ranging from light and grassy to dark and molasses-rich. Substitution: match the style — white rum for light and clean, aged rum for depth and caramel. Sherry — fortified wine from Jerez, from dry and nutty to rich and sweet. Substitution: match the style — fino or manzanilla for dry, amontillado for nutty, oloroso for rich. Absinthe — anise-forward, herbal, and potent. Substitution: use another quality absinthe; pastis is the closest, with a softer profile."
+        }
+      ]
+    }
+  ]
+}
